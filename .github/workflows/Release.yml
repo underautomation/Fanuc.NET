@@ -1,0 +1,35 @@
+name: CI
+
+on: 
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nuget/setup-nuget@v1
+    - name: Build Windows Desktop
+      run: |
+        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+        .\MSBuild.exe $Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\WindowsDesktop_VS2019.sln -p:Configuration=Release
+        rm $Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\obj -r -fo
+    - name: zip libraries
+      run: |
+        cd "$Env:GITHUB_WORKSPACE\.NET\Libraries\"
+        7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\YaskawaSDK.zip *
+    - name: zip full .NET\Examples
+      run: 7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\YaskawaSDK_Full.zip $Env:GITHUB_WORKSPACE\.NET\Examples $Env:GITHUB_WORKSPACE\.NET\Libraries
+    - name: zip desktop example
+      run: |
+        cd "$Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\bin\Release\"
+        7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\YaskawaSDK_DesktopExample.zip *
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "YaskawaSDK_Full.zip,YaskawaSDK_DesktopExample.zip,YaskawaSDK.zip"
+        bodyFile: "whatsNew.md"
+        token: ${{ secrets.GITHUB_TOKEN }}
