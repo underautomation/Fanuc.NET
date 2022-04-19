@@ -43,6 +43,7 @@ public partial class ConnectControl : UserControl, IUserControl
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
         var parameters = new ConnectParameters();
         parameters.IP = txtIP.Text;
+        parameters.TelnetKcl.Enable = chkTelnet.Checked;
 
         // Store information
         Config.Current.ConnectParameters = parameters;
@@ -56,5 +57,10 @@ public partial class ConnectControl : UserControl, IUserControl
     {
         // Disconnect all services
         _robot.Disconnect();
+    }
+
+    private void btnConnect_Click(object sender, KeyEventArgs e)
+    {
+
     }
 }
