@@ -30,11 +30,15 @@ public partial class SummaryControl : UserControl, IUserControl
     public void OnOpen() {
         if (!_robot.Ftp.Connected) return;
 
-        grid.SelectedObject= _robot.Ftp.KnownFiles.Diagnostic.ReadSummary();
+        UpdateFile();
 
+        grid.ExpandAllGridItems();
    }
     #endregion
 
-
+    private void UpdateFile()
+    {
+        grid.SelectedObject= _robot.Ftp.KnownFiles.Diagnostic.ReadSummary();
+    }
 
 }
