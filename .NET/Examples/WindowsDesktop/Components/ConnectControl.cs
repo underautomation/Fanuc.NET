@@ -16,6 +16,13 @@ public partial class ConnectControl : UserControl, IUserControl
 
         // Use stored information or set to default
         txtIP.Text = parameters?.IP ?? "192.168.0.1";
+
+        chkTelnet.Checked = parameters.TelnetKcl.Enable;
+        txtTelnetKclPassword.Text = parameters.TelnetKcl.Password;
+
+        chkFtp.Checked = parameters.Ftp.Enable;
+        txtFtpUser.Text = parameters.Ftp.User;
+        txtFtpPassword.Text = parameters.Ftp.Password;
     }
 
     #region IUserControl
@@ -44,6 +51,11 @@ public partial class ConnectControl : UserControl, IUserControl
         var parameters = new ConnectParameters();
         parameters.IP = txtIP.Text;
         parameters.TelnetKcl.Enable = chkTelnet.Checked;
+        parameters.TelnetKcl.Password = txtTelnetKclPassword.Text;
+
+        parameters.Ftp.Enable = chkFtp.Checked;
+        parameters.Ftp.User = txtFtpUser.Text;
+        parameters.Ftp.Password = txtFtpPassword.Text;
 
         // Store information
         Config.Current.ConnectParameters = parameters;
@@ -57,10 +69,5 @@ public partial class ConnectControl : UserControl, IUserControl
     {
         // Disconnect all services
         _robot.Disconnect();
-    }
-
-    private void btnConnect_Click(object sender, KeyEventArgs e)
-    {
-
     }
 }

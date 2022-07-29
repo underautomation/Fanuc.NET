@@ -47,6 +47,7 @@ public class Config
     #region HMI Properties
     public string Licensee { get; set; }
     public string Key { get; set; }
+    public string FtpPath { get; set; }
     #endregion
 }
 
