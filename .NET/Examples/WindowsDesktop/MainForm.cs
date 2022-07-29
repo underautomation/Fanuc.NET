@@ -29,7 +29,7 @@ public partial class MainForm : Form
         AddNode(new ConnectControl(_robot));
         AddNode(new TelnetKclControl(_robot));
         AddNode(new SftpControl(_robot));
-        AddNode(new SummaryControl(_robot));
+        AddNode(new KnowFileControl(_robot));
         AddNode(new LicenseControl());
 
         // Select first node at startup

@@ -37,7 +37,6 @@ partial class TelnetKclControl
             this.btnPause = new System.Windows.Forms.Button();
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
-            this.cbPrograms = new CueTextBox();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
@@ -47,7 +46,6 @@ partial class TelnetKclControl
             this.btnSetVariable = new System.Windows.Forms.Button();
             this.txtVariableNewValue = new System.Windows.Forms.TextBox();
             this.txtVariableName = new System.Windows.Forms.TextBox();
-            this.txtVariableProgram = new CueTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,6 +62,9 @@ partial class TelnetKclControl
             this.cbPorts = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
+            this.btnGetVariable = new System.Windows.Forms.Button();
+            this.txtVariableProgram = new CueTextBox();
+            this.cbPrograms = new CueTextBox();
             this.GroupBox3.SuspendLayout();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -186,14 +187,6 @@ partial class TelnetKclControl
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // cbPrograms
-            // 
-            this.cbPrograms.Cue = "Program name";
-            this.cbPrograms.Location = new System.Drawing.Point(16, 20);
-            this.cbPrograms.Name = "cbPrograms";
-            this.cbPrograms.Size = new System.Drawing.Size(146, 20);
-            this.cbPrograms.TabIndex = 2;
-            // 
             // splitMain
             // 
             this.splitMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -260,6 +253,7 @@ partial class TelnetKclControl
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnGetVariable);
             this.groupBox4.Controls.Add(this.btnSetVariable);
             this.groupBox4.Controls.Add(this.txtVariableNewValue);
             this.groupBox4.Controls.Add(this.txtVariableName);
@@ -297,14 +291,7 @@ partial class TelnetKclControl
             this.txtVariableName.Name = "txtVariableName";
             this.txtVariableName.Size = new System.Drawing.Size(149, 20);
             this.txtVariableName.TabIndex = 2;
-            // 
-            // txtVariableProgram
-            // 
-            this.txtVariableProgram.Cue = "Optional";
-            this.txtVariableProgram.Location = new System.Drawing.Point(76, 48);
-            this.txtVariableProgram.Name = "txtVariableProgram";
-            this.txtVariableProgram.Size = new System.Drawing.Size(149, 20);
-            this.txtVariableProgram.TabIndex = 1;
+            this.txtVariableName.Text = "$RMT_MASTER";
             // 
             // label7
             // 
@@ -486,6 +473,32 @@ partial class TelnetKclControl
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // btnGetVariable
+            // 
+            this.btnGetVariable.Location = new System.Drawing.Point(231, 33);
+            this.btnGetVariable.Name = "btnGetVariable";
+            this.btnGetVariable.Size = new System.Drawing.Size(156, 23);
+            this.btnGetVariable.TabIndex = 0;
+            this.btnGetVariable.Text = "Get variable value";
+            this.btnGetVariable.UseVisualStyleBackColor = true;
+            this.btnGetVariable.Click += new System.EventHandler(this.btnGetVariable_Click);
+            // 
+            // txtVariableProgram
+            // 
+            this.txtVariableProgram.Cue = "Optional";
+            this.txtVariableProgram.Location = new System.Drawing.Point(76, 48);
+            this.txtVariableProgram.Name = "txtVariableProgram";
+            this.txtVariableProgram.Size = new System.Drawing.Size(149, 20);
+            this.txtVariableProgram.TabIndex = 1;
+            // 
+            // cbPrograms
+            // 
+            this.cbPrograms.Cue = "Program name";
+            this.cbPrograms.Location = new System.Drawing.Point(16, 20);
+            this.cbPrograms.Name = "cbPrograms";
+            this.cbPrograms.Size = new System.Drawing.Size(146, 20);
+            this.cbPrograms.TabIndex = 2;
+            // 
             // TelnetKclControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,4 +561,5 @@ partial class TelnetKclControl
     internal System.Windows.Forms.Button btnSimulate;
     internal System.Windows.Forms.Button btnUnsimulatePort;
     private CueTextBox cbPrograms;
+    internal System.Windows.Forms.Button btnGetVariable;
 }

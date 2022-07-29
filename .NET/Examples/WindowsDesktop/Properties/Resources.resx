@@ -117,50 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="arrow-right-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow-right-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrow-up-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow-up-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete-bin-5-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-bin-5-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="download-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file-edit-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file-edit-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder-add-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-add-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="refresh-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="folder-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folder-shared-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-shared-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="file-edit-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-edit-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save-3-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-3-fill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="folder-add-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-add-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow-right-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-right-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow-up-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-up-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tools-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tools-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete-bin-5-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-bin-5-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upload-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upload-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ua" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ua.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pause.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="UnderAutomation132" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UnderAutomation132.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="upload-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\upload-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder-shared-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-shared-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\play.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

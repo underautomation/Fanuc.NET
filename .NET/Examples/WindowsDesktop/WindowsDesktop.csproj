@@ -88,11 +88,11 @@
     <Compile Include="Components\FtpControl.Designer.cs">
       <DependentUpon>FtpControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\SummaryControl.cs">
+    <Compile Include="Components\KnowFileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\SummaryControl.Designer.cs">
-      <DependentUpon>SummaryControl.cs</DependentUpon>
+    <Compile Include="Components\KnowFileControl.Designer.cs">
+      <DependentUpon>KnowFileControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\TelnetKclControl.cs">
       <SubType>UserControl</SubType>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="Components\FtpControl.resx">
       <DependentUpon>FtpControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\SummaryControl.resx">
-      <DependentUpon>SummaryControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\KnowFileControl.resx">
+      <DependentUpon>KnowFileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\TelnetKclControl.resx">
       <DependentUpon>TelnetKclControl.cs</DependentUpon>
@@ -216,6 +216,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\upload-2-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
   </ItemGroup>
   <Choose>
     <When Condition="$(SolutionName.EndsWith(`Dev`))" />

@@ -126,4 +126,8 @@ public partial class TelnetKclControl : UserControl, IUserControl
         _robot.TelnetKcl.SetVariable(txtVariableName.Text, txtVariableNewValue.Text, txtVariableProgram.Text);
     }
 
+    private void btnGetVariable_Click(object sender, EventArgs e)
+    {
+        _robot.TelnetKcl.GetVariable(txtVariableName.Text, txtVariableProgram.Text);
+    }
 }
