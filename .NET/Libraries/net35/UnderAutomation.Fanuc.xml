@@ -4907,6 +4907,14 @@
             </summary>
             <param name="name">The name of any KAREL or TP program in memory</param>
         </member>
+        <member name="M:UnderAutomation.Fanuc.TelnetKcl.Internal.TelnetKclClientBase.GetVariable(System.String,System.String)">
+            <summary>
+            Get the name, type, and value of the specified variable.
+            You can display the values of system variables that allow KCL read access or the values of program variables.
+            Use brackets ([]) after the variable name to specify a specific ARRAY element. If you do not specify a specific element the entire variable is displayed.        ''' </summary>
+            <param name="name">A valid program variable</param>
+            <param name="program">The name of any KAREL or TP program</param>
+        </member>
         <member name="M:UnderAutomation.Fanuc.TelnetKcl.Internal.TelnetKclClientBase.Simulate(UnderAutomation.Fanuc.TelnetKcl.KCLPorts,System.Int32,System.Int32)">
             <summary>
             Simulating I/O allows you to test a program that uses I/O. Simulating I/O does not actually send output signals or receive input signals.
