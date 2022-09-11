@@ -30,6 +30,6 @@ jobs:
         7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\FanucSDK_DesktopExample.zip *
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "YaskawaSDK_Full.zip,FanucSDK_DesktopExample.zip,FanucSDK.zip"
+        artifacts: "FanucSDK_Full.zip,FanucSDK_DesktopExample.zip,FanucSDK.zip"
         bodyFile: "whatsNew.md"
         token: ${{ secrets.GITHUB_TOKEN }}
