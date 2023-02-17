@@ -27,6 +27,7 @@ partial class ConnectControl
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblConnected = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@ partial class ConnectControl
             this.label3 = new System.Windows.Forms.Label();
             this.txtFtpUser = new System.Windows.Forms.TextBox();
             this.txtFtpPassword = new System.Windows.Forms.TextBox();
+            this.addressTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +51,8 @@ partial class ConnectControl
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.lblConnected, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -67,7 +69,7 @@ partial class ConnectControl
             this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 12;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -79,15 +81,15 @@ partial class ConnectControl
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(538, 227);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(538, 344);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // lblConnected
             // 
             this.lblConnected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblConnected.Location = new System.Drawing.Point(92, 230);
+            this.lblConnected.Location = new System.Drawing.Point(179, 265);
             this.lblConnected.Name = "lblConnected";
-            this.lblConnected.Size = new System.Drawing.Size(191, 25);
+            this.lblConnected.Size = new System.Drawing.Size(194, 25);
             this.lblConnected.TabIndex = 19;
             this.lblConnected.Text = "______";
             this.lblConnected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,27 +98,32 @@ partial class ConnectControl
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 6);
+            this.label1.Cursor = System.Windows.Forms.Cursors.Help;
+            this.label1.Location = new System.Drawing.Point(8, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(168, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "IP address :";
+            this.label1.Text = "IP address\r\nor\r\nPath to RoboGuide robot directory";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.addressTooltip.SetToolTip(this.label1, "192.168.0.1\r\nC:\\Fanuc\\MyCell\\Myrobot\r\n\\\\my-dev-machine\\MyCell\\MyRobot");
             // 
             // txtIP
             // 
             this.txtIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIP.Location = new System.Drawing.Point(92, 3);
+            this.txtIP.Cursor = System.Windows.Forms.Cursors.Help;
+            this.txtIP.Location = new System.Drawing.Point(179, 20);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(191, 20);
+            this.txtIP.Size = new System.Drawing.Size(194, 20);
             this.txtIP.TabIndex = 1;
             this.txtIP.Text = "192.168.0.1";
+            this.addressTooltip.SetToolTip(this.txtIP, "192.168.0.1\r\nC:\\Fanuc\\MyCell\\MyRobot\r\n\\\\my-dev-machine\\MyCell\\MyRobot\r\n");
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 71);
+            this.label5.Location = new System.Drawing.Point(94, 106);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
@@ -128,7 +135,7 @@ partial class ConnectControl
             this.chkTelnet.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chkTelnet.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.chkTelnet, 2);
-            this.chkTelnet.Location = new System.Drawing.Point(92, 44);
+            this.chkTelnet.Location = new System.Drawing.Point(179, 79);
             this.chkTelnet.Name = "chkTelnet";
             this.chkTelnet.Size = new System.Drawing.Size(115, 17);
             this.chkTelnet.TabIndex = 4;
@@ -140,9 +147,9 @@ partial class ConnectControl
             this.panel1.Controls.Add(this.btnConnect);
             this.panel1.Controls.Add(this.btnDisconnect);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(92, 198);
+            this.panel1.Location = new System.Drawing.Point(179, 233);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(191, 29);
+            this.panel1.Size = new System.Drawing.Size(194, 29);
             this.panel1.TabIndex = 12;
             // 
             // btnConnect
@@ -159,7 +166,7 @@ partial class ConnectControl
             // btnDisconnect
             // 
             this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnDisconnect.Location = new System.Drawing.Point(99, 0);
+            this.btnDisconnect.Location = new System.Drawing.Point(102, 0);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(92, 29);
             this.btnDisconnect.TabIndex = 18;
@@ -169,7 +176,7 @@ partial class ConnectControl
             // 
             // txtTelnetKclPassword
             // 
-            this.txtTelnetKclPassword.Location = new System.Drawing.Point(92, 68);
+            this.txtTelnetKclPassword.Location = new System.Drawing.Point(179, 103);
             this.txtTelnetKclPassword.Name = "txtTelnetKclPassword";
             this.txtTelnetKclPassword.Size = new System.Drawing.Size(100, 20);
             this.txtTelnetKclPassword.TabIndex = 20;
@@ -178,7 +185,7 @@ partial class ConnectControl
             // 
             this.chkFtp.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chkFtp.AutoSize = true;
-            this.chkFtp.Location = new System.Drawing.Point(92, 109);
+            this.chkFtp.Location = new System.Drawing.Point(179, 144);
             this.chkFtp.Name = "chkFtp";
             this.chkFtp.Size = new System.Drawing.Size(82, 17);
             this.chkFtp.TabIndex = 4;
@@ -189,7 +196,7 @@ partial class ConnectControl
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 136);
+            this.label2.Location = new System.Drawing.Point(120, 171);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
@@ -200,7 +207,7 @@ partial class ConnectControl
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 161);
+            this.label3.Location = new System.Drawing.Point(95, 196);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 13);
@@ -209,17 +216,25 @@ partial class ConnectControl
             // 
             // txtFtpUser
             // 
-            this.txtFtpUser.Location = new System.Drawing.Point(92, 133);
+            this.txtFtpUser.Location = new System.Drawing.Point(179, 168);
             this.txtFtpUser.Name = "txtFtpUser";
             this.txtFtpUser.Size = new System.Drawing.Size(100, 20);
             this.txtFtpUser.TabIndex = 20;
             // 
             // txtFtpPassword
             // 
-            this.txtFtpPassword.Location = new System.Drawing.Point(92, 158);
+            this.txtFtpPassword.Location = new System.Drawing.Point(179, 193);
             this.txtFtpPassword.Name = "txtFtpPassword";
             this.txtFtpPassword.Size = new System.Drawing.Size(100, 20);
             this.txtFtpPassword.TabIndex = 20;
+            // 
+            // addressTooltip
+            // 
+            this.addressTooltip.AutomaticDelay = 0;
+            this.addressTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.addressTooltip.ToolTipTitle = "Examples :";
+            this.addressTooltip.UseAnimation = false;
+            this.addressTooltip.UseFading = false;
             // 
             // ConnectControl
             // 
@@ -252,4 +267,5 @@ partial class ConnectControl
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.TextBox txtFtpUser;
     private System.Windows.Forms.TextBox txtFtpPassword;
+    private System.Windows.Forms.ToolTip addressTooltip;
 }

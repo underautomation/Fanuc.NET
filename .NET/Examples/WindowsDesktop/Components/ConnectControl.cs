@@ -15,7 +15,7 @@ public partial class ConnectControl : UserControl, IUserControl
         var parameters = Config.Current.ConnectParameters ?? new ConnectParameters();
 
         // Use stored information or set to default
-        txtIP.Text = parameters?.IP ?? "192.168.0.1";
+        txtIP.Text = parameters?.Address ?? "192.168.0.1";
 
         chkTelnet.Checked = parameters.TelnetKcl.Enable;
         txtTelnetKclPassword.Text = parameters.TelnetKcl.Password;
@@ -49,7 +49,7 @@ public partial class ConnectControl : UserControl, IUserControl
     {
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
         var parameters = new ConnectParameters();
-        parameters.IP = txtIP.Text;
+        parameters.Address = txtIP.Text;
         parameters.TelnetKcl.Enable = chkTelnet.Checked;
         parameters.TelnetKcl.Password = txtTelnetKclPassword.Text;
 
