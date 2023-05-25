@@ -1,5 +1,5 @@
 ﻿
-    partial class SftpControl
+    partial class FileHandlingControl
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SftpControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileHandlingControl));
             this.SplitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lstFolder = new System.Windows.Forms.ListView();
             this.lstFolderImageList = new System.Windows.Forms.ImageList(this.components);

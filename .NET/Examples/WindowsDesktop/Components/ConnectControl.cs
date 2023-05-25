@@ -18,11 +18,11 @@ public partial class ConnectControl : UserControl, IUserControl
         txtIP.Text = parameters?.Address ?? "192.168.0.1";
 
         chkTelnet.Checked = parameters.TelnetKcl.Enable;
-        txtTelnetKclPassword.Text = parameters.TelnetKcl.Password;
+        txtTelnetKclPassword.Text = parameters.TelnetKcl.TelnetKclPassword;
 
         chkFtp.Checked = parameters.Ftp.Enable;
-        txtFtpUser.Text = parameters.Ftp.User;
-        txtFtpPassword.Text = parameters.Ftp.Password;
+        txtFtpUser.Text = parameters.Ftp.FtpUser;
+        txtFtpPassword.Text = parameters.Ftp.FtpPassword;
     }
 
     #region IUserControl
@@ -51,11 +51,11 @@ public partial class ConnectControl : UserControl, IUserControl
         var parameters = new ConnectParameters();
         parameters.Address = txtIP.Text;
         parameters.TelnetKcl.Enable = chkTelnet.Checked;
-        parameters.TelnetKcl.Password = txtTelnetKclPassword.Text;
+        parameters.TelnetKcl.TelnetKclPassword = txtTelnetKclPassword.Text;
 
         parameters.Ftp.Enable = chkFtp.Checked;
-        parameters.Ftp.User = txtFtpUser.Text;
-        parameters.Ftp.Password = txtFtpPassword.Text;
+        parameters.Ftp.FtpUser = txtFtpUser.Text;
+        parameters.Ftp.FtpPassword = txtFtpPassword.Text;
 
         // Store information
         Config.Current.ConnectParameters = parameters;

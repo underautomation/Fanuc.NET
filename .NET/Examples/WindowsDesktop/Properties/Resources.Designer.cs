@@ -81,6 +81,60 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot add an external item to the view. Use AddNew() or add to source list instead..
+        /// </summary>
+        internal static string CannotAddItem {
+            get {
+                return ResourceManager.GetString("CannotAddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot add a new item due to no object being provided in the AddingNew event and a lack of default public constructor..
+        /// </summary>
+        internal static string CannotAddNewItem {
+            get {
+                return ResourceManager.GetString("CannotAddNewItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot add a new item when NewItemsList is null..
+        /// </summary>
+        internal static string CannotAddWhenNewItemsListNull {
+            get {
+                return ResourceManager.GetString("CannotAddWhenNewItemsListNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot clear this view..
+        /// </summary>
+        internal static string CannotClearView {
+            get {
+                return ResourceManager.GetString("CannotClearView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot insert an external item into this collection..
+        /// </summary>
+        internal static string CannotInsertItem {
+            get {
+                return ResourceManager.GetString("CannotInsertItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot set an item in the view..
+        /// </summary>
+        internal static string CannotSetItem {
+            get {
+                return ResourceManager.GetString("CannotSetItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap delete_bin_5_line {
@@ -151,12 +205,66 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to includeDelegate cannot be null..
+        /// </summary>
+        internal static string IncludeDelegateCannotBeNull {
+            get {
+                return ResourceManager.GetString("IncludeDelegateCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item in list is not of type {0}..
+        /// </summary>
+        internal static string InvalidListItemType {
+            get {
+                return ResourceManager.GetString("InvalidListItemType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source list does not implement IList..
+        /// </summary>
+        internal static string InvalidSourceList {
+            get {
+                return ResourceManager.GetString("InvalidSourceList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item was not of type {0}..
+        /// </summary>
+        internal static string ItemTypeIncorrect {
+            get {
+                return ResourceManager.GetString("ItemTypeIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap loading {
             get {
                 object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (no filter).
+        /// </summary>
+        internal static string NoFilter {
+            get {
+                return ResourceManager.GetString("NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object cannot be null..
+        /// </summary>
+        internal static string ObjectCannotBeNull {
+            get {
+                return ResourceManager.GetString("ObjectCannotBeNull", resourceCulture);
             }
         }
         
@@ -181,6 +289,24 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (predicate filter).
+        /// </summary>
+        internal static string PredicateFilter {
+            get {
+                return ResourceManager.GetString("PredicateFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property {0} does not exist in type {1}..
+        /// </summary>
+        internal static string PropertyNotFound {
+            get {
+                return ResourceManager.GetString("PropertyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap refresh_line {
@@ -197,6 +323,42 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties {
             get {
                 object obj = ResourceManager.GetObject("save-3-fill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source list already added to the view..
+        /// </summary>
+        internal static string SourceListAlreadyAdded {
+            get {
+                return ResourceManager.GetString("SourceListAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source list is not in the view..
+        /// </summary>
+        internal static string SourceListNotFound {
+            get {
+                return ResourceManager.GetString("SourceListNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SourceLists cannot be null..
+        /// </summary>
+        internal static string SourceListsNull {
+            get {
+                return ResourceManager.GetString("SourceListsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronized access to the view is not supported..
+        /// </summary>
+        internal static string SyncAccessNotSupported {
+            get {
+                return ResourceManager.GetString("SyncAccessNotSupported", resourceCulture);
             }
         }
         

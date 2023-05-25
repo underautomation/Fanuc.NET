@@ -1,5 +1,5 @@
 ﻿
-partial class TelnetKclControl
+partial class RemoteCommandsControl
 {
     /// <summary> 
     /// Variable nécessaire au concepteur.

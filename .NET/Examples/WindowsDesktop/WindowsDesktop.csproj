@@ -72,6 +72,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingListView\AggregateBindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\BindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\CompositeItemFilter.cs" />
+    <Compile Include="BindingListView\IItemFilter.cs" />
+    <Compile Include="BindingListView\INotifyingEditableObject.cs" />
+    <Compile Include="BindingListView\InvalidSourceListException.cs" />
+    <Compile Include="BindingListView\MultiSourceIndexList.cs" />
+    <Compile Include="BindingListView\ObjectView.cs" />
+    <Compile Include="BindingListView\ProvidedViewPropertyDescriptor.cs" />
     <Compile Include="Components\ConnectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,29 +95,35 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\IUserControl.cs" />
-    <Compile Include="Components\FtpControl.cs">
+    <Compile Include="Components\FileHandlingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\FtpControl.Designer.cs">
-      <DependentUpon>FtpControl.cs</DependentUpon>
+    <Compile Include="Components\FileHandlingControl.Designer.cs">
+      <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\KnowFileControl.cs">
+    <Compile Include="Components\MemoryAccessControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\KnowFileControl.Designer.cs">
-      <DependentUpon>KnowFileControl.cs</DependentUpon>
+    <Compile Include="Components\MemoryAccessControl.Designer.cs">
+      <DependentUpon>MemoryAccessControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\TelnetKclControl.cs">
+    <Compile Include="Components\RemoteCommandsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\TelnetKclControl.Designer.cs">
-      <DependentUpon>TelnetKclControl.cs</DependentUpon>
+    <Compile Include="Components\RemoteCommandsControl.Designer.cs">
+      <DependentUpon>RemoteCommandsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\LicenseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\LicenseControl.Designer.cs">
       <DependentUpon>LicenseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\VariableTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\VariableTable.Designer.cs">
+      <DependentUpon>VariableTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="Helpers\Logger.cs" />
@@ -123,17 +142,20 @@
     <EmbeddedResource Include="Components\ConnectControl.resx">
       <DependentUpon>ConnectControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\FtpControl.resx">
-      <DependentUpon>FtpControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\FileHandlingControl.resx">
+      <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\KnowFileControl.resx">
-      <DependentUpon>KnowFileControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\MemoryAccessControl.resx">
+      <DependentUpon>MemoryAccessControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\TelnetKclControl.resx">
-      <DependentUpon>TelnetKclControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\RemoteCommandsControl.resx">
+      <DependentUpon>RemoteCommandsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\LicenseControl.resx">
       <DependentUpon>LicenseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\VariableTable.resx">
+      <DependentUpon>VariableTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -144,6 +166,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\UnderAutomation.Fanuc.MemoryAccess.Files.GenericField.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -171,12 +194,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
-      <Project>{7c1069e0-bdbe-4bda-bc2e-1d1b0b2810b7}</Project>
-      <Name>Fanuc</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow-right-line.png" />
@@ -225,6 +242,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
+      <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
+      <Name>Fanuc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="$(SolutionName.EndsWith(`Dev`))" />
