@@ -1,1 +1,1 @@
-First version which includes main features
+Add connection to Roboguide simulator
