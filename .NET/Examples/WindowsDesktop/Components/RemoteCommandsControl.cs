@@ -38,7 +38,7 @@ public partial class RemoteCommandsControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Re!ote control";
+    public string Title => "Remote control";
 
     public bool FeatureEnabled => _robot.RemoteCommands.Connected;
 

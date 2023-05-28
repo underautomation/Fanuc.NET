@@ -44,6 +44,8 @@ public class Config
 
     public ConnectParameters ConnectParameters { get; set; } = new ConnectParameters();
 
+    public string[] CheckedVariableFiles { get; set; }
+
     #region HMI Properties
     public string Licensee { get; set; }
     public string Key { get; set; }

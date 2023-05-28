@@ -101,11 +101,23 @@
     <Compile Include="Components\FileHandlingControl.Designer.cs">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\MemoryAccessControl.cs">
+    <Compile Include="Components\SelectVariablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\SelectVariablesForm.Designer.cs">
+      <DependentUpon>SelectVariablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LoadVariableProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\LoadVariableProgressForm.Designer.cs">
+      <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\VariablesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\MemoryAccessControl.Designer.cs">
-      <DependentUpon>MemoryAccessControl.cs</DependentUpon>
+    <Compile Include="Components\VariablesControl.Designer.cs">
+      <DependentUpon>VariablesControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\RemoteCommandsControl.cs">
       <SubType>UserControl</SubType>
@@ -119,11 +131,11 @@
     <Compile Include="Components\LicenseControl.Designer.cs">
       <DependentUpon>LicenseControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\VariableTable.cs">
+    <Compile Include="Components\VariableTableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\VariableTable.Designer.cs">
-      <DependentUpon>VariableTable.cs</DependentUpon>
+    <Compile Include="Components\VariableTableControl.Designer.cs">
+      <DependentUpon>VariableTableControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="Helpers\Logger.cs" />
@@ -145,8 +157,14 @@
     <EmbeddedResource Include="Components\FileHandlingControl.resx">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\MemoryAccessControl.resx">
-      <DependentUpon>MemoryAccessControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\SelectVariablesForm.resx">
+      <DependentUpon>SelectVariablesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\LoadVariableProgressForm.resx">
+      <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\VariablesControl.resx">
+      <DependentUpon>VariablesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\RemoteCommandsControl.resx">
       <DependentUpon>RemoteCommandsControl.cs</DependentUpon>
@@ -154,8 +172,8 @@
     <EmbeddedResource Include="Components\LicenseControl.resx">
       <DependentUpon>LicenseControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\VariableTable.resx">
-      <DependentUpon>VariableTable.cs</DependentUpon>
+    <EmbeddedResource Include="Components\VariableTableControl.resx">
+      <DependentUpon>VariableTableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -166,6 +184,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Files\system.va">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\DataSources\UnderAutomation.Fanuc.MemoryAccess.Files.GenericField.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,25 +1,32 @@
 ﻿using Equin.ApplicationFramework;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using UnderAutomation.Fanuc.MemoryAccess.Files;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
+using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.MemoryAccess.Files;
 
-public partial class VariableTable : UserControl
+public partial class VariableTableControl : UserControl
 {
-    public VariableTable()
+
+    public VariableTableControl()
     {
         InitializeComponent();
+        Show(null);
     }
 
+    private FanucRobot _robot;
+    public void SetRobot(FanucRobot robot)
+    {
+        TypeDescriptor.AddAttributes(typeof(object), new TypeConverterAttribute(typeof(ObjectConverter)));
+        _robot = robot;
+    }
 
-    private IGenericVariableType _root;
     private IGenericVariableType _current;
-
 
     public void Show(IGenericVariableType root)
     {
-        _root = root;
         InternalShow(root);
     }
 
@@ -27,6 +34,9 @@ public partial class VariableTable : UserControl
     public void InternalShow(IGenericVariableType element)
     {
         _current = element;
+        propertyGrid.SelectedObject = element;
+
+        HandleWritePanel(element as GenericValue);
         bindingSource.DataSource = new BindingListView<GenericField>(element?.Fields);
 
         txtSearch.SuspendLayout();
@@ -56,7 +66,7 @@ public partial class VariableTable : UserControl
 
                 foreach (var parent in hierarchy)
                 {
-                    var rootLink = new LinkLabel() { Text = parent.Name, AutoSize = true, Margin=Padding.Empty, Padding=Padding.Empty };
+                    var rootLink = new LinkLabel() { Text = parent.Name, AutoSize = true, Margin = Padding.Empty, Padding = Padding.Empty };
 
                     rootLink.Click += (o, e) => Show(parent);
                     pnlNav.Controls.Add(rootLink);
@@ -73,9 +83,14 @@ public partial class VariableTable : UserControl
         }
     }
 
+    public void PeriodicUpdate()
+    {
+        btnWrite.Enabled = _robot.RemoteCommands.Connected;
+    }
+
     private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex > 1) return; // only consider Name column for simple click
+        if (e.ColumnIndex > 0) return; // only consider Name column for simple click
         SelectRow(e.RowIndex);
     }
 
@@ -103,4 +118,31 @@ public partial class VariableTable : UserControl
         (bindingSource.DataSource as BindingListView<GenericField>)?.ApplyFilter(x => x.Name.IndexOf(txtSearch.Text, StringComparison.InvariantCultureIgnoreCase) >= 0);
     }
 
+    private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
+    {
+        if (_current?.Fields is null) return;
+
+        if (e.RowIndex < 0 || e.RowIndex >= grid.Rows.Count) return;
+
+        var cellContent = grid.Rows[e.RowIndex].Cells[0].Value?.ToString();
+
+        if (string.IsNullOrEmpty(cellContent)) return;
+
+        propertyGrid.SelectedObject = _current.Fields.FirstOrDefault(x => string.Equals(x.Name, cellContent, StringComparison.InvariantCultureIgnoreCase)); ;
+
+    }
+
+
+    private void HandleWritePanel(GenericValue genericValue)
+    {
+        pnlWrite.Visible = genericValue is object && genericValue.Kind == ValueKind.Value;
+        txtValue.Text = genericValue?.Value;
+        txtNewValue.Text = (genericValue?.IsUninitialized).GetValueOrDefault() ? "" : txtValue.Text;
+        txtVariableName.Text = genericValue?.FullName;
+    }
+
+    private void btnWrite_Click(object sender, EventArgs e)
+    {
+        _robot?.RemoteCommands.SetVariable(txtVariableName.Text, txtNewValue.Text);
+    }
 }

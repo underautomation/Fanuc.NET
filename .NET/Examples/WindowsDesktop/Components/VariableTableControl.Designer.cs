@@ -1,5 +1,5 @@
 ﻿
-    partial class VariableTable
+    partial class VariableTableControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -39,10 +39,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.txtSearch = new CueTextBox();
+            this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlWrite = new System.Windows.Forms.Panel();
+            this.txtValue = new System.Windows.Forms.TextBox();
+            this.txtVariableName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNewValue = new CueTextBox();
+            this.btnWrite = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.pnlNav.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlWrite.SuspendLayout();
             this.SuspendLayout();
             // 
             // grid
@@ -53,7 +66,6 @@
             this.grid.AllowUserToResizeRows = false;
             this.grid.AutoGenerateColumns = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.ColumnHeadersVisible = false;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
@@ -61,14 +73,19 @@
             this.valueDataGridViewTextBoxColumn});
             this.grid.DataSource = this.bindingSource;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 20);
+            this.grid.Location = new System.Drawing.Point(0, 120);
+            this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
+            this.grid.RowHeadersVisible = false;
+            this.grid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(500, 480);
+            this.grid.Size = new System.Drawing.Size(515, 380);
             this.grid.TabIndex = 0;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
+            this.grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_RowEnter);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -114,7 +131,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(500, 20);
+            this.panel3.Size = new System.Drawing.Size(715, 20);
             this.panel3.TabIndex = 3;
             // 
             // pnlNav
@@ -124,7 +141,7 @@
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNav.Location = new System.Drawing.Point(0, 0);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(370, 20);
+            this.pnlNav.Size = new System.Drawing.Size(585, 20);
             this.pnlNav.TabIndex = 0;
             // 
             // label1
@@ -150,26 +167,129 @@
             // 
             this.txtSearch.Cue = "Find...";
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtSearch.Location = new System.Drawing.Point(370, 0);
+            this.txtSearch.Location = new System.Drawing.Point(585, 0);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(130, 20);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // VariableTable
+            // propertyGrid
+            // 
+            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid.Name = "propertyGrid";
+            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+            this.propertyGrid.Size = new System.Drawing.Size(200, 480);
+            this.propertyGrid.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.propertyGrid);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(515, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 480);
+            this.panel1.TabIndex = 5;
+            // 
+            // pnlWrite
+            // 
+            this.pnlWrite.Controls.Add(this.txtValue);
+            this.pnlWrite.Controls.Add(this.txtVariableName);
+            this.pnlWrite.Controls.Add(this.label4);
+            this.pnlWrite.Controls.Add(this.label3);
+            this.pnlWrite.Controls.Add(this.label2);
+            this.pnlWrite.Controls.Add(this.txtNewValue);
+            this.pnlWrite.Controls.Add(this.btnWrite);
+            this.pnlWrite.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlWrite.Location = new System.Drawing.Point(0, 20);
+            this.pnlWrite.Name = "pnlWrite";
+            this.pnlWrite.Size = new System.Drawing.Size(515, 100);
+            this.pnlWrite.TabIndex = 6;
+            // 
+            // txtValue
+            // 
+            this.txtValue.Location = new System.Drawing.Point(109, 36);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.ReadOnly = true;
+            this.txtValue.Size = new System.Drawing.Size(236, 20);
+            this.txtValue.TabIndex = 4;
+            // 
+            // txtVariableName
+            // 
+            this.txtVariableName.Location = new System.Drawing.Point(109, 13);
+            this.txtVariableName.Name = "txtVariableName";
+            this.txtVariableName.ReadOnly = true;
+            this.txtVariableName.Size = new System.Drawing.Size(236, 20);
+            this.txtVariableName.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "New value :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.Location = new System.Drawing.Point(3, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Value :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.Location = new System.Drawing.Point(3, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Variable :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNewValue
+            // 
+            this.txtNewValue.Cue = "New value to write...";
+            this.txtNewValue.Location = new System.Drawing.Point(109, 62);
+            this.txtNewValue.Name = "txtNewValue";
+            this.txtNewValue.Size = new System.Drawing.Size(155, 20);
+            this.txtNewValue.TabIndex = 2;
+            // 
+            // btnWrite
+            // 
+            this.btnWrite.Location = new System.Drawing.Point(270, 61);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(75, 23);
+            this.btnWrite.TabIndex = 0;
+            this.btnWrite.Text = "Write";
+            this.toolTip.SetToolTip(this.btnWrite, "Remote commands should be connected");
+            this.btnWrite.UseVisualStyleBackColor = true;
+            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
+            // 
+            // VariableTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
+            this.Controls.Add(this.pnlWrite);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
-            this.Name = "VariableTable";
-            this.Size = new System.Drawing.Size(500, 500);
+            this.Name = "VariableTableControl";
+            this.Size = new System.Drawing.Size(715, 500);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnlNav.ResumeLayout(false);
             this.pnlNav.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.pnlWrite.ResumeLayout(false);
+            this.pnlWrite.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -187,4 +307,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.LinkLabel linkLabel1;
+    private System.Windows.Forms.PropertyGrid propertyGrid;
+    private System.Windows.Forms.Panel panel1;
+    private System.Windows.Forms.Panel pnlWrite;
+    private System.Windows.Forms.Button btnWrite;
+    private System.Windows.Forms.TextBox txtValue;
+    private System.Windows.Forms.TextBox txtVariableName;
+    private System.Windows.Forms.Label label4;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label2;
+    private CueTextBox txtNewValue;
+    private System.Windows.Forms.ToolTip toolTip;
 }

@@ -26,8 +26,8 @@ public partial class MainForm : Form
         InitializeComponent();
 
         // Add nodes in left menu and instanciate associated control 
-        AddNode(new MemoryAccessControl(_robot));
         AddNode(new ConnectControl(_robot));
+        AddNode(new VariablesControl(_robot));
         AddNode(new RemoteCommandsControl(_robot));
         AddNode(new FileHandlingControl(_robot));
         AddNode(new LicenseControl());

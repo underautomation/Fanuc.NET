@@ -88,10 +88,7 @@ public class ExpandableCollectionPropertyDescriptor : PropertyDescriptor
         return _Collection[_Index];
     }
 
-    public override bool IsReadOnly
-    {
-        get { return false; }
-    }
+    public override bool IsReadOnly => true;
 
     public override string Name
     {
