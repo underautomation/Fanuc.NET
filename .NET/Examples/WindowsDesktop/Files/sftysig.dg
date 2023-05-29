@@ -1,0 +1,19 @@
+F Number: 0000000   
+VERSION : LR HandlingTool      
+$VERSION: V9.30147      6/29/2021
+DATE:     15-MAR-22 18:01 
+
+STOP SIGNALS::
+
+External ESTOP   FALSE
+SOP Estop        FALSE
+TP ESTOP         FALSE
+Hand Broken      TRUE 
+OverTravel       FALSE
+Low Air Alarm    FALSE
+Fence Open       FALSE
+Belt Broken      FALSE
+TP Enable        FALSE
+TP Deadman       FALSE
+SVOFF Detect     FALSE
+Non Teacher Enb  FALSE

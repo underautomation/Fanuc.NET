@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Equin.ApplicationFramework
 {
@@ -10,7 +8,7 @@ namespace Equin.ApplicationFramework
         public InvalidSourceListException()
             : base(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.InvalidSourceList)
         {
-            
+
         }
 
         public InvalidSourceListException(string message)

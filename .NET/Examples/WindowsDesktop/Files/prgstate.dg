@@ -1,0 +1,691 @@
+F Number: 0000000   
+VERSION : LR HandlingTool      
+$VERSION: V9.30147      6/29/2021
+DATE:     15-MAR-22 18:01 
+
+TASK STATES:
+
+1         NEW6 status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: NEW6                                
+Line:     1       Program: NEW6                                  Type: TP    
+
+2  ZDTMSGTYPES status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: ZDTMSGTYPES                         
+Line:   556       Program: ZDTMSGTYPES                           Type: PC    
+
+3     USR_EVT2 status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: USR_EVT2                            
+Line:   223       Program: USR_EVT2                              Type: PC    
+
+4       PSCOLD status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: PSCOLD                              
+Line:    93       Program: PSCOLD                                Type: PC    
+
+5     SYRSRUTL status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: SYRSRUTL                            
+Line:    63       Program: SYRSRUTL                              Type: PC    
+
+6      ATSHELL RUNNING @ 1069 in ATSHELL of ATSHELL
+
+******  History Data  ******
+Routine depth: 0  Routine: ATSHELL                             
+Line:  1069       Program: ATSHELL                               Type: PC    
+
+7      SWIMSET status = ABORTED
+
+******  History Data  ******
+Routine depth: 0  Routine: SWIMSET                             
+Line:   348       Program: SWIMSET                               Type: PC    
+
+
+PROGRAM STATES:
+-BCKED8-      TP    
+Task: no   
+Size:  132  
+Lines:    0  
+Program name:    -BCKED8-  
+Comment:         
+Program size:    132 bytes
+Created time:    08-MAR-22 13:53 
+Last modified:   08-MAR-22 13:53 
+Allocated size:  376 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+-BCKED9-      TP    
+Task: no   
+Size:  132  
+Lines:    0  
+Program name:    -BCKED9-  
+Comment:         
+Program size:    132 bytes
+Created time:    08-MAR-22 13:53 
+Last modified:   08-MAR-22 13:53 
+Allocated size:  376 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+-BCKEDT-      TP    
+Task: no   
+Size:  132  
+Lines:    0  
+Program name:    -BCKEDT-  
+Comment:         
+Program size:    132 bytes
+Created time:    08-MAR-22 13:53 
+Last modified:   08-MAR-22 13:53 
+Allocated size:  376 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+AAAAAA        TP    
+Task: no   
+Size:  495  
+Lines:    4  
+Program name:    AAAAAA  
+Comment:         
+Program size:    495 bytes
+Created time:    15-MAR-22 17:01 
+Last modified:   15-MAR-22 17:01 
+Allocated size:  851 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+AAVMMAIN      PC    
+Task: no   
+Size: 15360  
+Vars:    76  
+Types:     0  
+Program name:    AAVMMAIN  
+Comment:         
+Program size:    15360 bytes
+Created time:    08-MAR-22 14:56 
+Last modified:   08-MAR-22 14:56 
+Source file:     FRS:AAVMMAIN.PC
+Allocated size:  17770 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+Checksum:        53546
+
+BICSETUP      VR    
+Task: no   
+Size:    0  
+Vars:     1  
+Types:     0  
+Program name:    BICSETUP  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  244 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+CBPARAM       VR    
+Task: no   
+Size:    0  
+Vars:    28  
+Types:     0  
+Program name:    CBPARAM  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  244 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+COMSET        PC    
+Task: no   
+Size: 17527  
+Vars:    23  
+Types:     0  
+Program name:    COMSET  
+Comment:         
+Program size:    17527 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\HTTPD\COMSET.PC
+Allocated size:  20349 bytes
+Protection:      OFF
+Stack size:      1000 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+Checksum:        52193
+
+GEMDATA       PC    
+Task: no   
+Size:   12  
+Vars:     4  
+Types:     0  
+Program name:    GEMDATA  
+Comment:         GEM Vars
+Program size:    12 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\PCSEND\GEMDATA.PC
+Allocated size:  293 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+Checksum:        59922
+
+GETDATA       MACRO 
+Task: no   
+Size:  286  
+Lines:    2  
+Program name:    GETDATA  
+Comment:         Get PC Data
+Program size:    286 bytes
+Created time:    14-OCT-10 11:38 
+Last modified:   01-JUN-99 14:21 
+Source file:     SENDDATA
+Allocated size:  658 bytes
+Protection:      ON
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+GET_HOME      PC    
+Task: no   
+Size: 1767  
+Vars:    17  
+Types:     0  
+Program name:    GET_HOME  
+Comment:         Get Home Pos
+Program size:    1767 bytes
+Created time:    03-DEC-21 18:17 
+Last modified:   03-DEC-21 18:17 
+Source file:     PRODUCT\CMSHCORE\GET_HOME.PC
+Allocated size:  2316 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       1
+Ignore abort:    3
+Ignore pause:    7
+Checksum:        37861
+
+GRIPPER_CLOSE  MACRO 
+Task: no   
+Size:  226  
+Lines:    3  
+Program name:    GRIPPER_CLOSE  
+Comment:         Close Gripper
+Program size:    226 bytes
+Created time:    08-MAR-22 21:03 
+Last modified:   08-MAR-22 21:03 
+Source file:     T_GRIPCLOS
+Allocated size:  586 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+GRIPPER_OPEN  MACRO 
+Task: no   
+Size:  226  
+Lines:    3  
+Program name:    GRIPPER_OPEN  
+Comment:         Open Gripper
+Program size:    226 bytes
+Created time:    08-MAR-22 21:03 
+Last modified:   08-MAR-22 21:03 
+Source file:     T_GRIPOPEN
+Allocated size:  586 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+HTCOLREC      VR    
+Task: no   
+Size:    0  
+Vars:     4  
+Types:     0  
+Program name:    HTCOLREC  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  244 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+HTTPKCL       VR    
+Task: no   
+Size:    0  
+Vars:     8  
+Types:     0  
+Program name:    HTTPKCL  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  244 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+IRC_COUNTER   PC    
+Task: no   
+Size: 1474  
+Vars:    14  
+Types:     0  
+Program name:    IRC_COUNTER  
+Comment:         Send Custom Mess
+Program size:    1474 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\RMCNSTD\IRC_COUNTER.PC
+Allocated size:  2338 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    5
+Ignore pause:    7
+Checksum:        29723
+
+IRC_MSG       PC    
+Task: no   
+Size: 1589  
+Vars:    13  
+Types:     0  
+Program name:    IRC_MSG  
+Comment:         Send Custom Mess
+Program size:    1589 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\RMCNSTD\IRC_MSG.PC
+Allocated size:  2443 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    5
+Ignore pause:    7
+Checksum:        39525
+
+IRC_STATUS    PC    
+Task: no   
+Size: 1671  
+Vars:    13  
+Types:     0  
+Program name:    IRC_STATUS  
+Comment:         Send Status Mess
+Program size:    1671 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\RMCNSTD\IRC_STATUS.PC
+Allocated size:  2525 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    5
+Ignore pause:    7
+Checksum:        4883
+
+IRC_STLABEL   PC    
+Task: no   
+Size: 2097  
+Vars:    13  
+Types:     0  
+Program name:    IRC_STLABEL  
+Comment:         Send Status Mess
+Program size:    2097 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\RMCNSTD\IRC_STLABEL.PC
+Allocated size:  2957 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    5
+Ignore pause:    7
+Checksum:        3143
+
+KLACTION      PC    
+Task: no   
+Size:  329  
+Vars:     6  
+Types:     0  
+Program name:    KLACTION  
+Comment:         Interface to exe
+Program size:    329 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\SMTPPLUS\KLACTION.PC
+Allocated size:  755 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       1
+Ignore abort:    3
+Ignore pause:    7
+Checksum:        35504
+
+MTPARAM       VR    
+Task: no   
+Size:    0  
+Vars:    45  
+Types:     0  
+Program name:    MTPARAM  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  244 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+NEW4          TP    
+Task: no   
+Size:  132  
+Lines:    0  
+Program name:    NEW4  
+Comment:         
+Program size:    132 bytes
+Created time:    15-MAR-22 16:56 
+Last modified:   15-MAR-22 16:56 
+Allocated size:  376 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+NEW6          TP    
+Task: yes  
+Size:  453  
+Lines:    1  
+Program name:    NEW6  
+Comment:         
+Program size:    453 bytes
+Created time:    15-MAR-22 17:33 
+Last modified:   15-MAR-22 17:33 
+Allocated size:  821 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+PROG_1        TP    
+Task: no   
+Size:  534  
+Lines:    3  
+Program name:    PROG_1  
+Comment:         
+Program size:    534 bytes
+Created time:    11-MAR-22 23:52 
+Last modified:   12-MAR-22 14:53 
+Allocated size:  894 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+PROG_2_ORIG   TP    
+Task: no   
+Size:  593  
+Lines:    4  
+Program name:    PROG_2_ORIG  
+Comment:         
+Program size:    593 bytes
+Created time:    11-MAR-22 21:01 
+Last modified:   11-MAR-22 21:01 
+Allocated size:  949 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+REQMENU       MACRO 
+Task: no   
+Size:  262  
+Lines:    2  
+Program name:    REQMENU  
+Comment:         Request PC Menu
+Program size:    262 bytes
+Created time:    14-OCT-10 11:46 
+Last modified:   01-JUN-99 14:22 
+Source file:     SENDDATA
+Allocated size:  634 bytes
+Protection:      ON
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+SENDDATA      MACRO 
+Task: no   
+Size:  288  
+Lines:    2  
+Program name:    SENDDATA  
+Comment:         Send PC Data
+Program size:    288 bytes
+Created time:    09-OCT-10 13:30 
+Last modified:   01-JUN-99 14:22 
+Source file:     SENDEVNT
+Allocated size:  660 bytes
+Protection:      ON
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+SENDEVNT      MACRO 
+Task: no   
+Size:  224  
+Lines:    2  
+Program name:    SENDEVNT  
+Comment:         Send PC Event
+Program size:    224 bytes
+Created time:    09-OCT-10 12:23 
+Last modified:   01-JUN-99 14:22 
+Allocated size:  596 bytes
+Protection:      ON
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+SENDSYSV      MACRO 
+Task: no   
+Size:  274  
+Lines:    2  
+Program name:    SENDSYSV  
+Comment:         Send PC SysVar
+Program size:    274 bytes
+Created time:    14-OCT-10 11:56 
+Last modified:   01-JUN-99 14:23 
+Source file:     SENDDATA
+Allocated size:  646 bytes
+Protection:      ON
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+SWIUPDT       VR    
+Task: no   
+Size:    0  
+Vars:     1  
+Types:     0  
+Program name:    SWIUPDT  
+Comment:         
+Program size:    0 bytes
+Created time:    00-0-80 00:00   
+Last modified:   00-0-80 00:00   
+Allocated size:  308 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        0
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+TPSNAP        PC    
+Task: no   
+Size: 1478  
+Vars:    23  
+Types:     0  
+Program name:    TPSNAP  
+Comment:         
+Program size:    1478 bytes
+Created time:    03-DEC-21 18:17 
+Last modified:   03-DEC-21 18:17 
+Source file:     PRODUCT\CMSHCORE\TPSNAP.PC
+Allocated size:  2123 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    7
+Checksum:        29587
+
+TUTORIAL      TP    
+Task: no   
+Size:  799  
+Lines:   17  
+Program name:    TUTORIAL  
+Comment:         Tutorial Program
+Program size:    799 bytes
+Created time:    09-MAR-22 16:51 
+Last modified:   09-MAR-22 17:02 
+Source file:     T_TUTORIAL
+Allocated size:  1103 bytes
+Protection:      OFF
+Stack size:      0 words
+Priority:        50
+Time slice:      0
+Busy lamp:       0
+Ignore abort:    0
+Ignore pause:    0
+
+VCMRINIT      PC    
+Task: no   
+Size: 1393  
+Vars:    13  
+Types:     0  
+Program name:    VCMRINIT  
+Comment:         
+Program size:    1393 bytes
+Created time:    03-DEC-21 18:16 
+Last modified:   03-DEC-21 18:16 
+Source file:     PRODUCT\CVIRCAL\VCMRINIT.PC
+Allocated size:  2460 bytes
+Protection:      OFF
+Stack size:      500 words
+Priority:        50
+Time slice:      256
+Busy lamp:       1
+Ignore abort:    0
+Ignore pause:    0
+Checksum:        26405
+

@@ -122,7 +122,7 @@
             // 
             // bindingSource
             // 
-            this.bindingSource.DataSource = typeof(UnderAutomation.Fanuc.MemoryAccess.Files.GenericField);
+            this.bindingSource.DataSource = typeof(UnderAutomation.Fanuc.MemoryAccess.Variables.GenericField);
             // 
             // panel3
             // 

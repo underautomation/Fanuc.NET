@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Equin.ApplicationFramework
 {
@@ -91,7 +90,7 @@ namespace Equin.ApplicationFramework
             get
             {
                 return ConvertAll<ObjectView<T>>(new Converter<KeyValuePair<ListItemPair<T>, int>, ObjectView<T>>(
-                    delegate(KeyValuePair<ListItemPair<T>, int> kvp)
+                    delegate (KeyValuePair<ListItemPair<T>, int> kvp)
                     { return kvp.Key.Item; }
                 )).ToArray();
             }

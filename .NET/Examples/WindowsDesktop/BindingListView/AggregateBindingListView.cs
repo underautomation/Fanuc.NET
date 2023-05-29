@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel;
 using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Diagnostics;
 
 namespace Equin.ApplicationFramework
 {
@@ -23,7 +22,7 @@ namespace Equin.ApplicationFramework
             _filter = IncludeAllItemFilter<T>.Instance;
             // Start with no sorts applied.
             _sorts = new ListSortDescriptionCollection();
-            _objectViewCache = new Dictionary<T,ObjectView<T>>();
+            _objectViewCache = new Dictionary<T, ObjectView<T>>();
         }
 
         public AggregateBindingListView(IContainer container)
@@ -90,7 +89,7 @@ namespace Equin.ApplicationFramework
         private Dictionary<T, ObjectView<T>> _objectViewCache;
 
         #endregion
-        
+
         /// <summary>
         /// Gets or sets the list of source lists used by this view.
         /// </summary>
@@ -108,7 +107,7 @@ namespace Equin.ApplicationFramework
                 {
                     throw new ArgumentNullException("SourceLists", UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.SourceListsNull);
                 }
-                
+
                 // Check that every item in each list is of type T.
                 foreach (object obj in value)
                 {
@@ -135,18 +134,22 @@ namespace Equin.ApplicationFramework
                         if (src.ContainsListCollection)
                         {
                             list = src.GetList()[0] as IList;
-                        } else {
+                        }
+                        else
+                        {
                             list = (obj as IListSource).GetList();
                         }
                     }
                     else if (!(obj is ICollection<T>))
                     {
                         list = obj as IList;
-                    } else {
+                    }
+                    else
+                    {
                         // We have a typed collection, so can skip the item-by-item check.
                         continue;
                     }
-                    
+
                     if (list == null)
                     {
                         throw new InvalidSourceListException();
@@ -177,7 +180,7 @@ namespace Equin.ApplicationFramework
                         bl.ListChanged -= new ListChangedEventHandler(SourceListChanged);
                     }
                 }
-                
+
                 _sourceLists = value;
 
                 bindingList = _sourceLists as IBindingList;
@@ -194,7 +197,7 @@ namespace Equin.ApplicationFramework
                         bl.ListChanged += new ListChangedEventHandler(SourceListChanged);
                     }
                 }
-                
+
                 // save new lists
                 BuildSavedList();
 
@@ -202,7 +205,7 @@ namespace Equin.ApplicationFramework
                 OnListChanged(ListChangedType.Reset, -1);
             }
         }
-        
+
         /// <summary>
         /// Gets the ObjectView&lt;T&gt; of the item at the given index in the view.
         /// </summary>
@@ -300,7 +303,7 @@ namespace Equin.ApplicationFramework
 
             // Create the ObjectView<T> wrapper for the item.
             ObjectView<T> objectView = new ObjectView<T>(item, this);
-            
+
             _objectViewCache[item] = objectView;
 
             HookPropertyChangedEvent(objectView);
@@ -313,7 +316,7 @@ namespace Equin.ApplicationFramework
             // Tell any data binders that we've added an item to the view.
             // Put it at the end of the list.
             OnListChanged(ListChangedType.ItemAdded, _sourceIndices.Count - 1);
-            
+
             return objectView;
         }
 
@@ -325,7 +328,7 @@ namespace Equin.ApplicationFramework
         public void CancelNew(int itemIndex)
         {
             // We must take special care that the item index does refer to the new item.
-            if (itemIndex > -1 && itemIndex < _sourceIndices.Count && 
+            if (itemIndex > -1 && itemIndex < _sourceIndices.Count &&
                 _newItem != null && _sourceIndices[itemIndex].Key.Item == _newItem)
             {
                 // We no longer need to listen to any events from the object.
@@ -400,7 +403,7 @@ namespace Equin.ApplicationFramework
         }
 
         #endregion
-        
+
         /// <summary>
         /// Re-applies any current filter and sorts to refresh the current view.
         /// </summary>
@@ -512,7 +515,7 @@ namespace Equin.ApplicationFramework
         /// </remarks>
         private void BegunItemEdit(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <remarks>
@@ -521,7 +524,7 @@ namespace Equin.ApplicationFramework
         /// </remarks>
         private void CancelledItemEdit(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -531,7 +534,7 @@ namespace Equin.ApplicationFramework
         private void EndedItemEdit(object sender, EventArgs e)
         {
             ObjectView<T> editableObject = (ObjectView<T>)sender;
-            
+
             // Check if filtering removed the item from view
             // by getting the index before and after
             int oldIndex = _sourceIndices.IndexOfItem(editableObject.Object);
@@ -1006,7 +1009,7 @@ namespace Equin.ApplicationFramework
                         direction = ListSortDirection.Ascending;
                     }
                 }
-                                
+
                 // Put the sort description into the collection.
                 col[i] = CreateListSortDescription(name, direction);
             }
@@ -1324,7 +1327,7 @@ namespace Equin.ApplicationFramework
                     else
                     {
                         Comparison<T> comp = BuildRefTypeComparison(pi, direction);
-                        return delegate(T o1, T o2)
+                        return delegate (T o1, T o2)
                         {
                             int result;
                             if (o1.Equals(default(T)) && o2.Equals(default(T)))
@@ -1354,7 +1357,7 @@ namespace Equin.ApplicationFramework
                 }
                 else
                 {
-                    return delegate(T o1, T o2)
+                    return delegate (T o1, T o2)
                     {
                         if (o1.Equals(o2))
                         {
@@ -1379,7 +1382,7 @@ namespace Equin.ApplicationFramework
                 // Get the value of the first object's property.
                 il.Emit(OpCodes.Ldarg_0);
                 il.EmitCall(OpCodes.Call, getMethod, null);
-                
+
                 // Get the value of the second object's property.
                 il.Emit(OpCodes.Ldarg_1);
                 il.EmitCall(OpCodes.Call, getMethod, null);
@@ -1417,7 +1420,7 @@ namespace Equin.ApplicationFramework
                 il.EmitCall(OpCodes.Call, getMethod, null);
                 // Box the value type
                 il.Emit(OpCodes.Box, pi.PropertyType);
-                
+
                 // Get the value of the second object's property.
                 il.Emit(OpCodes.Ldarg_1);
                 il.EmitCall(OpCodes.Call, getMethod, null);
@@ -1632,7 +1635,7 @@ namespace Equin.ApplicationFramework
         {
             throw new NotImplementedException();
         }
-        
+
         #endregion
 
         #region IRaiseItemChangedEvents Members
@@ -1643,7 +1646,7 @@ namespace Equin.ApplicationFramework
         [Browsable(false)]
         public bool RaisesItemChangedEvents
         {
-            get { return true;  }
+            get { return true; }
         }
 
         #endregion
@@ -1746,7 +1749,7 @@ namespace Equin.ApplicationFramework
                         {
                             return false;
                         }
-                    } 
+                    }
                     else
                     {
                         return false;
@@ -1893,7 +1896,7 @@ namespace Equin.ApplicationFramework
         PropertyDescriptorCollection ITypedList.GetItemProperties(PropertyDescriptor[] listAccessors)
         {
             PropertyDescriptorCollection originalProps;
-            
+
             IEnumerator<IList> lists = GetSourceLists().GetEnumerator();
 
             if (lists.MoveNext() && lists.Current is ITypedList)
@@ -1923,7 +1926,7 @@ namespace Equin.ApplicationFramework
             }
             foreach (PropertyDescriptor pd in GetProvidedViews(originalProps))
             {
-                newProps.Add(pd);                
+                newProps.Add(pd);
             }
             return new PropertyDescriptorCollection(newProps.ToArray());
         }
@@ -2091,7 +2094,9 @@ namespace Equin.ApplicationFramework
                         {
                             list = list[0] as IList;
                             yield return list;
-                        } else {
+                        }
+                        else
+                        {
                             yield return null;
                         }
                     }
@@ -2108,6 +2113,6 @@ namespace Equin.ApplicationFramework
         }
 
         #endregion
-        
+
     }
 }

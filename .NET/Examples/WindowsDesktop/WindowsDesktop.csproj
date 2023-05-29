@@ -94,12 +94,30 @@
     <Compile Include="Components\CueTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\CyclicReadingFileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CyclicReadingFileControl.Designer.cs">
+      <DependentUpon>CyclicReadingFileControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\IUserControl.cs" />
     <Compile Include="Components\FileHandlingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\FileHandlingControl.Designer.cs">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\DiagnosisControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\DiagnosisControl.Designer.cs">
+      <DependentUpon>DiagnosisControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CustomPropertyGrid.Designer.cs">
+      <DependentUpon>CustomPropertyGrid.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\SelectVariablesForm.cs">
       <SubType>Form</SubType>
@@ -154,8 +172,17 @@
     <EmbeddedResource Include="Components\ConnectControl.resx">
       <DependentUpon>ConnectControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\CyclicReadingFileControl.resx">
+      <DependentUpon>CyclicReadingFileControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\FileHandlingControl.resx">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\DiagnosisControl.resx">
+      <DependentUpon>DiagnosisControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomPropertyGrid.resx">
+      <DependentUpon>CustomPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SelectVariablesForm.resx">
       <DependentUpon>SelectVariablesForm.cs</DependentUpon>
@@ -184,6 +211,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Files\curpos.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\SUMMARY.DG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Files\system.va">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

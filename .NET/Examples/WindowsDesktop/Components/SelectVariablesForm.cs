@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 using UnderAutomation.Fanuc.MemoryAccess;
 
 public partial class SelectVariablesForm : Form
@@ -15,7 +15,7 @@ public partial class SelectVariablesForm : Form
 
         foreach (var item in items)
         {
-            lst.Items.Add(item.Name, CheckedVariableFiles.Contains(item.Name));            
+            lst.Items.Add(item.Name, CheckedVariableFiles.Contains(item.Name));
         }
     }
 

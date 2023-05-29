@@ -203,7 +203,7 @@ partial class MainForm
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MainForm";
-            this.Text = "UnderAutomation - Universal Robots communication SDK";
+            this.Text = "UnderAutomation - Fanuc communication SDK";
             this.horizontalSplitContainer.Panel1.ResumeLayout(false);
             this.horizontalSplitContainer.Panel2.ResumeLayout(false);
             this.horizontalSplitContainer.ResumeLayout(false);

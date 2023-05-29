@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.UniversalRobots.License;
+using UnderAutomation.Fanuc.License;
 
 public partial class LicenseControl : UserControl, IUserControl
 {

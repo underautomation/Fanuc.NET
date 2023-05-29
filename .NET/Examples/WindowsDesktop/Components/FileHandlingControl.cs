@@ -226,7 +226,7 @@ public partial class FileHandlingControl : UserControl, IUserControl
         Explorer.RevealFile(dlgSave.FileName);
     }
 
-    
+
     // Perform renaming or directory creation
     private void lstFolder_AfterLabelEdit(object sender, LabelEditEventArgs e)
     {
@@ -248,7 +248,7 @@ public partial class FileHandlingControl : UserControl, IUserControl
             SelectFile(e.Label);
         }
     }
-    
+
 
     private void btnNewFolder_Click(object sender, EventArgs e)
     {

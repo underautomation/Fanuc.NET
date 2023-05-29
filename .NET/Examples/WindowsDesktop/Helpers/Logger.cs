@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 
 public static class Logger
@@ -7,7 +6,7 @@ public static class Logger
     /// <summary>
     /// Add logs to Log directory
     /// </summary>
-    public static void Log(string title, string value, string suffix=".txt")
+    public static void Log(string title, string value, string suffix = ".txt")
     {
         var logDirectory = Path.Combine(Path.GetDirectoryName(typeof(Logger).Assembly.Location), "Logs");
         if (!Directory.Exists(logDirectory))

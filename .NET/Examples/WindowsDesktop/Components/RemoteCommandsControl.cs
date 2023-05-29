@@ -118,7 +118,7 @@ public partial class RemoteCommandsControl : UserControl, IUserControl
 
     private void btnGetCurrentPose_Click(object sender, EventArgs e)
     {
-         _robot.RemoteCommands.GetCurrentPose();
+        _robot.RemoteCommands.GetCurrentPose();
     }
 
     private void btnSetVariable_Click(object sender, EventArgs e)

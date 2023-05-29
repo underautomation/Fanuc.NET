@@ -42,7 +42,7 @@ public class Config
         catch { }
     }
 
-    public ConnectParameters ConnectParameters { get; set; } = new ConnectParameters();
+    public ConnectionParameters ConnectParameters { get; set; } = new ConnectionParameters();
 
     public string[] CheckedVariableFiles { get; set; }
 

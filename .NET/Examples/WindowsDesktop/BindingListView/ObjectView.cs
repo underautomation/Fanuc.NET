@@ -1,8 +1,7 @@
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Equin.ApplicationFramework
 {
@@ -130,7 +129,7 @@ namespace Equin.ApplicationFramework
         {
             return Object.ToString();
         }
-        
+
         private void ObjectPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Raise our own event

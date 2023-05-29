@@ -12,17 +12,17 @@ public partial class ConnectControl : UserControl, IUserControl
         _robot = Fanuc;
         InitializeComponent();
 
-        var parameters = Config.Current.ConnectParameters ?? new ConnectParameters();
+        var parameters = Config.Current.ConnectParameters ?? new ConnectionParameters();
 
         // Use stored information or set to default
         txtIP.Text = parameters?.Address ?? "192.168.0.1";
 
-        chkTelnet.Checked = parameters.TelnetKcl.Enable;
-        txtTelnetKclPassword.Text = parameters.TelnetKcl.TelnetKclPassword;
+        chkTelnet.Checked = parameters.RemoteCommands.Enable;
+        txtTelnetKclPassword.Text = parameters.RemoteCommands.TelnetKclPassword;
 
-        chkFtp.Checked = parameters.Ftp.Enable;
-        txtFtpUser.Text = parameters.Ftp.FtpUser;
-        txtFtpPassword.Text = parameters.Ftp.FtpPassword;
+        chkFtp.Checked = parameters.MemoryAccess.Enable;
+        txtFtpUser.Text = parameters.MemoryAccess.FtpUser;
+        txtFtpPassword.Text = parameters.MemoryAccess.FtpPassword;
     }
 
     #region IUserControl
@@ -48,14 +48,14 @@ public partial class ConnectControl : UserControl, IUserControl
     private void btnConnect_Click(object sender, EventArgs e)
     {
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
-        var parameters = new ConnectParameters();
+        var parameters = new ConnectionParameters();
         parameters.Address = txtIP.Text;
-        parameters.TelnetKcl.Enable = chkTelnet.Checked;
-        parameters.TelnetKcl.TelnetKclPassword = txtTelnetKclPassword.Text;
+        parameters.RemoteCommands.Enable = chkTelnet.Checked;
+        parameters.RemoteCommands.TelnetKclPassword = txtTelnetKclPassword.Text;
 
-        parameters.Ftp.Enable = chkFtp.Checked;
-        parameters.Ftp.FtpUser = txtFtpUser.Text;
-        parameters.Ftp.FtpPassword = txtFtpPassword.Text;
+        parameters.MemoryAccess.Enable = chkFtp.Checked;
+        parameters.MemoryAccess.FtpUser = txtFtpUser.Text;
+        parameters.MemoryAccess.FtpPassword = txtFtpPassword.Text;
 
         // Store information
         Config.Current.ConnectParameters = parameters;

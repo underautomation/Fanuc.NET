@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("UnderAutomation.Fanuc.Desktop")]
-[assembly: AssemblyDescription("UnderAutomation Universal Robots SDK Windows Desktop demo")]
+[assembly: AssemblyDescription("UnderAutomation Fanuc SDK Windows Desktop demo")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UnderAutomation")]
-[assembly: AssemblyProduct("UnderAutomation Universal Robots SDK Windows Desktop demo")]
+[assembly: AssemblyProduct("UnderAutomation Fanuc SDK Windows Desktop demo")]
 [assembly: AssemblyCopyright("Copyright © UnderAutomation 2021")]
 [assembly: AssemblyTrademark("UnderAutomation")]
 [assembly: AssemblyCulture("")]

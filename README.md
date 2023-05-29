@@ -1,6 +1,6 @@
 # Fanuc communication SDK
 
-Quickly create applications that communicate with an [Fanuc](https://www.universal-robots.com) industrial robot.
+Quickly create applications that communicate with a [Fanuc](https://www.fanuc.eu/robots) industrial robot.
 
 SDK : Software Development Kit
 

@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.MemoryAccess.Files;
+using UnderAutomation.Fanuc.MemoryAccess;
+using UnderAutomation.Fanuc.MemoryAccess.Variables;
 
 public partial class VariablesControl : UserControl, IUserControl
 {
@@ -14,22 +15,6 @@ public partial class VariablesControl : UserControl, IUserControl
         InitializeComponent();
         variableTable.SetRobot(robot);
     }
-
-    public void Init()
-    {
-        var variableFileList = new VariableFileList() { Name = "All files" };
-
-        foreach (var file in Directory.GetFiles(@"D:\System\UA\FanucDev\Fanuc\MemoryAccess\Tests\", "*.va"))
-        {
-            var fileContent = FanucFileReaders.VariableReader.ReadFile(file);
-            variableFileList.Add(fileContent);
-        }
-
-        variableTable.Show(variableFileList);
-    }
-
-
-
 
     #region IUserControl
     public string Title => "Variables";
@@ -104,7 +89,7 @@ public partial class VariablesControl : UserControl, IUserControl
     {
         var files = _robot.MemoryAccess.EnumerateVariableFiles();
         var frmSelct = new SelectVariablesForm(files);
-       if(frmSelct.ShowDialog() == DialogResult.OK)
+        if (frmSelct.ShowDialog() == DialogResult.OK)
         {
             var fileList = new VariableFileList() { Name = "Selected variables" };
             var frm = new LoadVariableProgressForm();

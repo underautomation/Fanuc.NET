@@ -36,9 +36,9 @@ public class ObjectConverter : ExpandableObjectConverter
         if (pDestinationType == typeof(string) && value is IList)
         {
             IList v = value as IList;
-            return (v == null) ? "" : $"({v.Count} Item{(v.Count>1 ? "s" : "")})";
+            return (v == null) ? "" : $"({v.Count} Item{(v.Count > 1 ? "s" : "")})";
         }
-        var defaultValue =  base.ConvertTo(pContext, pCulture, value, pDestinationType);
+        var defaultValue = base.ConvertTo(pContext, pCulture, value, pDestinationType);
 
         if (value is object && string.Equals(defaultValue, value.GetType().FullName)) return "";
 
@@ -145,8 +145,8 @@ public class CollectionEditorBase : CollectionEditor
         cf.FormClosing += delegate (object sender, FormClosingEventArgs e)
         {
             _PropertyGrid.Refresh();
-                //Because nothing changes which grid item is the selected one, expand as desired
-                if (_ExpandedBefore || _CountBefore == 0) _PropertyGrid.SelectedGridItem.Expanded = true;
+            //Because nothing changes which grid item is the selected one, expand as desired
+            if (_ExpandedBefore || _CountBefore == 0) _PropertyGrid.SelectedGridItem.Expanded = true;
         };
         return cf;
     }
