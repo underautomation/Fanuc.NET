@@ -94,6 +94,18 @@
     <Compile Include="Components\CueTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\SafetyStatusControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SafetyStatusControl.Designer.cs">
+      <DependentUpon>SafetyStatusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\IOStateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\IOStateControl.Designer.cs">
+      <DependentUpon>IOStateControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CyclicReadingFileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,11 +119,11 @@
     <Compile Include="Components\FileHandlingControl.Designer.cs">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\DiagnosisControl.cs">
+    <Compile Include="Components\CurrentPositionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\DiagnosisControl.Designer.cs">
-      <DependentUpon>DiagnosisControl.cs</DependentUpon>
+    <Compile Include="Components\CurrentPositionControl.Designer.cs">
+      <DependentUpon>CurrentPositionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\CustomPropertyGrid.cs">
       <SubType>UserControl</SubType>
@@ -172,14 +184,20 @@
     <EmbeddedResource Include="Components\ConnectControl.resx">
       <DependentUpon>ConnectControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\SafetyStatusControl.resx">
+      <DependentUpon>SafetyStatusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\IOStateControl.resx">
+      <DependentUpon>IOStateControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\CyclicReadingFileControl.resx">
       <DependentUpon>CyclicReadingFileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FileHandlingControl.resx">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\DiagnosisControl.resx">
-      <DependentUpon>DiagnosisControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\CurrentPositionControl.resx">
+      <DependentUpon>CurrentPositionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomPropertyGrid.resx">
       <DependentUpon>CustomPropertyGrid.cs</DependentUpon>
@@ -211,13 +229,34 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Files\axis.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Files\curpos.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\frame.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\ioconfig.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\iostate.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\prgstate.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\sftysig.dg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Files\SUMMARY.DG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Files\system.va">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\timers.dg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\DataSources\UnderAutomation.Fanuc.MemoryAccess.Files.GenericField.datasource" />

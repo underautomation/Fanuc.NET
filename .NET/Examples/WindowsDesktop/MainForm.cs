@@ -29,7 +29,9 @@ public partial class MainForm : Form
         AddNode(new ConnectControl(_robot));
         AddNode(new RemoteCommandsControl(_robot));
         AddNode(new VariablesControl(_robot));
-        AddNode(new DiagnosisControl(_robot));
+        AddNode(new CurrentPositionControl(_robot));
+        AddNode(new IOStateControl(_robot));
+        AddNode(new SafetyStatusControl(_robot));
         AddNode(new FileHandlingControl(_robot));
         AddNode(new LicenseControl());
 

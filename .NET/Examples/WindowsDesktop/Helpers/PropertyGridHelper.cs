@@ -18,6 +18,7 @@ public class ObjectConverter : ExpandableObjectConverter
 
     public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
     {
+        if (value is string) return null;
         IList list = value as IList;
         if (list == null || list.Count == 0)
             return base.GetProperties(context, value, attributes);

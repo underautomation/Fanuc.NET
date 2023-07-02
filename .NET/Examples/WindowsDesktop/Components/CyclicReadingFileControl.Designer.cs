@@ -68,6 +68,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             this.tsStart.Name = "tsStart";
             this.tsStart.Size = new System.Drawing.Size(127, 22);
             this.tsStart.Text = "Start cyclic reading";
+            this.tsStart.Click += new System.EventHandler(this.tsStart_Click);
             // 
             // tsStop
             // 
@@ -76,6 +77,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             this.tsStop.Name = "tsStop";
             this.tsStop.Size = new System.Drawing.Size(127, 22);
             this.tsStop.Text = "Stop cyclic reading";
+            this.tsStop.Click += new System.EventHandler(this.tsStop_Click);
             // 
             // tsBrowse
             // 
@@ -90,6 +92,8 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             // 
             this.bw.WorkerReportsProgress = true;
             this.bw.WorkerSupportsCancellation = true;
+            this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
+            this.bw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bw_ProgressChanged);
             // 
             // CyclicReadingFileControl
             // 

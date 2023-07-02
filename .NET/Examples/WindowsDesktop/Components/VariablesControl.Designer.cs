@@ -68,7 +68,7 @@
             // tsReadSelected
             // 
             this.tsReadSelected.Name = "tsReadSelected";
-            this.tsReadSelected.Size = new System.Drawing.Size(180, 22);
+            this.tsReadSelected.Size = new System.Drawing.Size(138, 22);
             this.tsReadSelected.Text = "Select files...";
             this.tsReadSelected.Click += new System.EventHandler(this.tsReadSelected_Click);
             // 
@@ -88,8 +88,8 @@
             this.tsOpenFolderFromDisc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsOpenFolderFromDisc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsOpenFolderFromDisc.Name = "tsOpenFolderFromDisc";
-            this.tsOpenFolderFromDisc.Size = new System.Drawing.Size(159, 28);
-            this.tsOpenFolderFromDisc.Text = "Open all files in folder...";
+            this.tsOpenFolderFromDisc.Size = new System.Drawing.Size(242, 28);
+            this.tsOpenFolderFromDisc.Text = "Open all variable files *.va from a folder";
             this.tsOpenFolderFromDisc.Click += new System.EventHandler(this.tsOpenFolderFromDisc_Click);
             // 
             // dlgOpenFile
