@@ -17,6 +17,7 @@ Alternative to the library supplied by Fanuc (PCDK or Robot Interface)
 - Reset alarms
 - Set port value
 - Get robot state (safety, position, alarm history, diagnosis)
+- Manipulate files
 
 ## Examples
 Pre-built example applications with source code are provided for Winforms, .NET console, LabVIEW and Python.
