@@ -8,6 +8,16 @@ More information : [https://underautomation.com](https://underautomation.com)
 
 ## Features
 
+Supervise and control your fanuc robot remotely, without having to install anything on the robot.
+
+Alternative to the library supplied by Fanuc (PCDK or Robot Interface)
+
+- Read / write variables
+- Run / abort programs
+- Reset alarms
+- Set port value
+- Get robot state (safety, position, alarm history, diagnosis)
+
 ## Examples
 Pre-built example applications with source code are provided for Winforms, .NET console, LabVIEW and Python.
 
