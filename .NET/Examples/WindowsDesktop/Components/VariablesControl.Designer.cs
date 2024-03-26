@@ -68,7 +68,7 @@
             // tsReadSelected
             // 
             this.tsReadSelected.Name = "tsReadSelected";
-            this.tsReadSelected.Size = new System.Drawing.Size(138, 22);
+            this.tsReadSelected.Size = new System.Drawing.Size(180, 22);
             this.tsReadSelected.Text = "Select files...";
             this.tsReadSelected.Click += new System.EventHandler(this.tsReadSelected_Click);
             // 

@@ -106,11 +106,11 @@
     <Compile Include="Components\IOStateControl.Designer.cs">
       <DependentUpon>IOStateControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\CyclicReadingFileControl.cs">
+    <Compile Include="Components\HeaderFileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\CyclicReadingFileControl.Designer.cs">
-      <DependentUpon>CyclicReadingFileControl.cs</DependentUpon>
+    <Compile Include="Components\HeaderFileControl.Designer.cs">
+      <DependentUpon>HeaderFileControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\IUserControl.cs" />
     <Compile Include="Components\FileHandlingControl.cs">
@@ -167,6 +167,31 @@
     <Compile Include="Components\VariableTableControl.Designer.cs">
       <DependentUpon>VariableTableControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperControl.designer.cs">
+      <DependentUpon>DataGridViewGrouperControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\GroupingInfo.cs" />
+    <Compile Include="DataGridViewGrouper\GroupingOptions.cs" />
+    <Compile Include="DataGridViewGrouper\GroupingSource.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\GroupList.cs" />
+    <Compile Include="DataGridViewGrouper\SearchBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\SearchBox.designer.cs">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\Support.cs" />
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Explorer.cs" />
@@ -190,8 +215,8 @@
     <EmbeddedResource Include="Components\IOStateControl.resx">
       <DependentUpon>IOStateControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\CyclicReadingFileControl.resx">
-      <DependentUpon>CyclicReadingFileControl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\HeaderFileControl.resx">
+      <DependentUpon>HeaderFileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FileHandlingControl.resx">
       <DependentUpon>FileHandlingControl.cs</DependentUpon>
@@ -219,6 +244,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\VariableTableControl.resx">
       <DependentUpon>VariableTableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewGrouper\DataGridViewGrouperControl.resx">
+      <DependentUpon>DataGridViewGrouperControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewGrouper\SearchBox.resx">
+      <DependentUpon>SearchBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -259,6 +290,7 @@
     <None Include="Files\timers.dg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\DataSources\UnderAutomation.Fanuc.Common.IOStatus.datasource" />
     <None Include="Properties\DataSources\UnderAutomation.Fanuc.MemoryAccess.Files.GenericField.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

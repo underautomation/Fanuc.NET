@@ -204,6 +204,7 @@ partial class MainForm
             this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "UnderAutomation - Fanuc communication SDK";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.horizontalSplitContainer.Panel1.ResumeLayout(false);
             this.horizontalSplitContainer.Panel2.ResumeLayout(false);
             this.horizontalSplitContainer.ResumeLayout(false);

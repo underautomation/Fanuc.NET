@@ -1,6 +1,5 @@
 ﻿using Equin.ApplicationFramework;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -53,17 +52,7 @@ public partial class VariableTableControl : UserControl
 
             if (element is object)
             {
-                var hierarchy = new List<IGenericVariableType>();
-
-                var current = element.Parent;
-
-                while (current is object)
-                {
-                    hierarchy.Add(current);
-                    current = current.Parent;
-                }
-
-                hierarchy.Reverse();
+                var hierarchy = element.GetAncestors();
 
                 foreach (var parent in hierarchy)
                 {
@@ -86,7 +75,9 @@ public partial class VariableTableControl : UserControl
 
     public void PeriodicUpdate()
     {
-        btnWrite.Enabled = _robot.RemoteCommands.Connected;
+        var connected = _robot.RemoteCommands.Connected;
+        btnWrite.Enabled = connected;
+        txtWriteInfo.Visible = !connected;
     }
 
     private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -140,10 +131,51 @@ public partial class VariableTableControl : UserControl
         txtValue.Text = genericValue?.Value;
         txtNewValue.Text = (genericValue?.IsUninitialized).GetValueOrDefault() ? "" : txtValue.Text;
         txtVariableName.Text = genericValue?.FullName;
+
     }
 
     private void btnWrite_Click(object sender, EventArgs e)
     {
-        _robot?.RemoteCommands.SetVariable(txtVariableName.Text, txtNewValue.Text);
+        var result = _robot?.RemoteCommands.SetVariable(txtVariableName.Text, txtNewValue.Text);
+
+        if (_current is null) return;
+
+        var ancestors = _current.GetAncestors();
+
+        GenericVariableFile updatedFile = null;
+
+        IGenericVariableType updatedElement = null;
+
+
+        foreach (var ancestor in ancestors.Concat(new[] { _current }))
+        {
+            if (ancestor is GenericVariableFile)
+            {
+                var formerFile = (GenericVariableFile)ancestor;
+                updatedFile = _robot.MemoryAccess.GetVariablesFromFile(formerFile.Name);
+
+                // replace former file with the new one
+                var fileList = formerFile.Parent as VariableFileList;
+                if (fileList is object)
+                {
+                    fileList.Remove(formerFile);
+                    fileList.Add(updatedFile);
+                }
+
+                updatedElement = updatedFile;
+            }
+            else if(updatedElement is object)
+            {
+                // once updatedFile has been set, continue hierarchy to find displayed value
+                updatedElement = updatedElement.GetField(ancestor.Name);
+            }
+        }
+
+        if(updatedElement is object)
+        {
+            InternalShow(updatedElement);
+        }
+
+
     }
 }

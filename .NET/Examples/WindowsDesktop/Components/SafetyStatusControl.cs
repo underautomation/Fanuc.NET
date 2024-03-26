@@ -28,7 +28,10 @@ public partial class SafetyStatusControl: UserControl, IUserControl
 
     public void OnClose() { }
 
-    public void OnOpen() { }
+    public void OnOpen()
+    {
+        if (FeatureEnabled) Header.OnOpen();
+    }
     #endregion
 
 

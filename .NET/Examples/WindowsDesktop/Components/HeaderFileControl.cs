@@ -7,9 +7,9 @@ using UnderAutomation.Fanuc.MemoryAccess.Internal;
 
 namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
 {
-    public partial class CyclicReadingFileControl : UserControl
+    public partial class HeaderFileControl : UserControl
     {
-        public CyclicReadingFileControl()
+        public HeaderFileControl()
         {
             InitializeComponent();
         }
@@ -26,6 +26,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             _onNewValue = onNewValue;
         }
 
+        internal void OnOpen() => RefreshFromRobot();
 
         private void tsBrowse_Click(object sender, System.EventArgs e)
         {
@@ -41,43 +42,17 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             }
         }
 
-        private class State
+        private void tsRefresh_Click(object sender, EventArgs e) => RefreshFromRobot();
+        
+
+        private void RefreshFromRobot()
         {
-            public IFanucContent Content;
-            public long ElapsedMilliseconds;
-        }
-
-        private void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (!e.Cancel)
-            {
-                var state = new State();
-                var sw = Stopwatch.StartNew();
-                state.Content = _readOnRobot();
-                sw.Stop();
-                state.ElapsedMilliseconds = sw.ElapsedMilliseconds;
-                bw.ReportProgress(0, state);
-            }
-        }
-
-        private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            var state = e.UserState as State;
-
-            if (state is null) return;
-
-            lblStatus.Text = $"{ state.ElapsedMilliseconds}ms)";
-            _onNewValue(state.Content);
-        }
-
-        private void tsStart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsStop_Click(object sender, EventArgs e)
-        {
-
+            var sw = Stopwatch.StartNew();
+            var content  = _readOnRobot();
+            sw.Stop();
+            var ms = sw.ElapsedMilliseconds;
+            lblStatus.Text = $"Time taken to read data from robot : {ms}ms";
+            _onNewValue(content);
         }
     }
 }

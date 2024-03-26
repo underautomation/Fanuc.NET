@@ -12,7 +12,7 @@ public partial class LoadVariableProgressForm : Form
     public void OnProgress(double progress)
     {
         if (_canceled) throw new Exception("Download canceled");
-        progressBar.Value = (int)progress;
+        progressBar.Value = progress < 0 ? 0 : (progress > 100 ? 100 : (int)progress);
     }
 
     private void btnCancel_Click(object sender, EventArgs e)

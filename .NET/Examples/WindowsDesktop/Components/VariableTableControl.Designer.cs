@@ -29,10 +29,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.txtSearch = new CueTextBox();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlWrite = new System.Windows.Forms.Panel();
@@ -41,21 +47,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtNewValue = new CueTextBox();
             this.btnWrite = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtNewValue = new CueTextBox();
-            this.txtSearch = new CueTextBox();
+            this.txtWriteInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.pnlNav.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlWrite.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
@@ -86,6 +87,43 @@
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
             this.grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_RowEnter);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.ActiveLinkColor = System.Drawing.Color.Blue;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.nameDataGridViewTextBoxColumn.VisitedLinkColor = System.Drawing.Color.Blue;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Kind
+            // 
+            this.Kind.DataPropertyName = "Kind";
+            this.Kind.HeaderText = "Kind";
+            this.Kind.Name = "Kind";
+            this.Kind.ReadOnly = true;
+            // 
+            // valueDataGridViewTextBoxColumn
+            // 
+            this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+            this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
+            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
+            this.valueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(UnderAutomation.Fanuc.MemoryAccess.Variables.GenericField);
             // 
             // panel3
             // 
@@ -126,6 +164,16 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "linkLabel1";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Cue = "Find...";
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.txtSearch.Location = new System.Drawing.Point(438, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(277, 20);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // propertyGrid
             // 
             this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -148,6 +196,7 @@
             // 
             this.pnlWrite.Controls.Add(this.txtValue);
             this.pnlWrite.Controls.Add(this.txtVariableName);
+            this.pnlWrite.Controls.Add(this.txtWriteInfo);
             this.pnlWrite.Controls.Add(this.label4);
             this.pnlWrite.Controls.Add(this.label3);
             this.pnlWrite.Controls.Add(this.label2);
@@ -205,6 +254,14 @@
             this.label2.Text = "Variable :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtNewValue
+            // 
+            this.txtNewValue.Cue = "New value to write...";
+            this.txtNewValue.Location = new System.Drawing.Point(109, 62);
+            this.txtNewValue.Name = "txtNewValue";
+            this.txtNewValue.Size = new System.Drawing.Size(155, 20);
+            this.txtNewValue.TabIndex = 2;
+            // 
             // btnWrite
             // 
             this.btnWrite.Location = new System.Drawing.Point(270, 61);
@@ -216,60 +273,15 @@
             this.btnWrite.UseVisualStyleBackColor = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
-            // nameDataGridViewTextBoxColumn
+            // txtWriteInfo
             // 
-            this.nameDataGridViewTextBoxColumn.ActiveLinkColor = System.Drawing.Color.Blue;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.nameDataGridViewTextBoxColumn.VisitedLinkColor = System.Drawing.Color.Blue;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Kind
-            // 
-            this.Kind.DataPropertyName = "Kind";
-            this.Kind.HeaderText = "Kind";
-            this.Kind.Name = "Kind";
-            this.Kind.ReadOnly = true;
-            // 
-            // valueDataGridViewTextBoxColumn
-            // 
-            this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
-            this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
-            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
-            this.valueDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(UnderAutomation.Fanuc.MemoryAccess.Variables.GenericField);
-            // 
-            // txtNewValue
-            // 
-            this.txtNewValue.Cue = "New value to write...";
-            this.txtNewValue.Location = new System.Drawing.Point(109, 62);
-            this.txtNewValue.Name = "txtNewValue";
-            this.txtNewValue.Size = new System.Drawing.Size(155, 20);
-            this.txtNewValue.TabIndex = 2;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Cue = "Find...";
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtSearch.Location = new System.Drawing.Point(438, 0);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(277, 20);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtWriteInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtWriteInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWriteInfo.Location = new System.Drawing.Point(106, 82);
+            this.txtWriteInfo.Name = "txtWriteInfo";
+            this.txtWriteInfo.Size = new System.Drawing.Size(306, 15);
+            this.txtWriteInfo.TabIndex = 3;
+            this.txtWriteInfo.Text = "Remote commands should be enable to allow writing";
             // 
             // VariableTableControl
             // 
@@ -282,6 +294,7 @@
             this.Name = "VariableTableControl";
             this.Size = new System.Drawing.Size(715, 500);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnlNav.ResumeLayout(false);
@@ -289,7 +302,6 @@
             this.panel1.ResumeLayout(false);
             this.pnlWrite.ResumeLayout(false);
             this.pnlWrite.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,4 +330,5 @@
     private System.Windows.Forms.Label label2;
     private CueTextBox txtNewValue;
     private System.Windows.Forms.ToolTip toolTip;
+    private System.Windows.Forms.Label txtWriteInfo;
 }

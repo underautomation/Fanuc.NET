@@ -33,7 +33,7 @@ DIN[ 117] OFF
 DIN[ 118] OFF  
 DIN[ 119] OFF  
 DIN[ 120] OFF  
-DOUT[  81] OFF  
+DOUT[  81] ON  
 DOUT[  82]  ON  
 DOUT[  83] OFF  
 DOUT[  84] OFF  

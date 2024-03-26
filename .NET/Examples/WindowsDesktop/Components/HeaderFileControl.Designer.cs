@@ -1,7 +1,7 @@
 ﻿
 namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
 {
-    partial class CyclicReadingFileControl
+    partial class HeaderFileControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,10 +31,8 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
         {
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsStart = new System.Windows.Forms.ToolStripButton();
-            this.tsStop = new System.Windows.Forms.ToolStripButton();
+            this.tsRefresh = new System.Windows.Forms.ToolStripButton();
             this.tsBrowse = new System.Windows.Forms.ToolStripButton();
-            this.bw = new System.ComponentModel.BackgroundWorker();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,8 +50,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsStart,
-            this.tsStop,
+            this.tsRefresh,
             this.tsBrowse});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -61,23 +58,14 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsStart
+            // tsRefresh
             // 
-            this.tsStart.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.play;
-            this.tsStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsStart.Name = "tsStart";
-            this.tsStart.Size = new System.Drawing.Size(127, 22);
-            this.tsStart.Text = "Start cyclic reading";
-            this.tsStart.Click += new System.EventHandler(this.tsStart_Click);
-            // 
-            // tsStop
-            // 
-            this.tsStop.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.pause;
-            this.tsStop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsStop.Name = "tsStop";
-            this.tsStop.Size = new System.Drawing.Size(127, 22);
-            this.tsStop.Text = "Stop cyclic reading";
-            this.tsStop.Click += new System.EventHandler(this.tsStop_Click);
+            this.tsRefresh.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.refresh_line;
+            this.tsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsRefresh.Name = "tsRefresh";
+            this.tsRefresh.Size = new System.Drawing.Size(66, 22);
+            this.tsRefresh.Text = "Refresh";
+            this.tsRefresh.Click += new System.EventHandler(this.tsRefresh_Click);
             // 
             // tsBrowse
             // 
@@ -87,13 +75,6 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             this.tsBrowse.Size = new System.Drawing.Size(118, 22);
             this.tsBrowse.Text = "Browse and open";
             this.tsBrowse.Click += new System.EventHandler(this.tsBrowse_Click);
-            // 
-            // bw
-            // 
-            this.bw.WorkerReportsProgress = true;
-            this.bw.WorkerSupportsCancellation = true;
-            this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
-            this.bw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bw_ProgressChanged);
             // 
             // CyclicReadingFileControl
             // 
@@ -114,10 +95,8 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
 
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsStart;
-        private System.Windows.Forms.ToolStripButton tsStop;
+        private System.Windows.Forms.ToolStripButton tsRefresh;
         private System.Windows.Forms.ToolStripButton tsBrowse;
-        private System.ComponentModel.BackgroundWorker bw;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
     }
 }

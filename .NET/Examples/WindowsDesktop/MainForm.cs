@@ -199,4 +199,13 @@ public partial class MainForm : Form
     {
         ScreenshotsGenerator.Generate(this);
     }
+
+    private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        try
+        {
+            _robot.Disconnect();
+        }
+        catch { }
+    }
 }

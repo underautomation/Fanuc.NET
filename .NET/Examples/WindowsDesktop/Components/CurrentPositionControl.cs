@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
 using UnderAutomation.Fanuc.MemoryAccess.Internal;
 
 public partial class CurrentPositionControl : UserControl, IUserControl
@@ -28,12 +27,15 @@ public partial class CurrentPositionControl : UserControl, IUserControl
 
     public void OnClose() { }
 
-    public void OnOpen() { }
+    public void OnOpen()
+    {
+        if (FeatureEnabled) Header.OnOpen();
+    }
     #endregion
 
 
     private void Show(IFanucContent content)
     {
-        positionGrid.SetSelectedObject(content );
+        positionGrid.SetSelectedObject(content);
     }
 }

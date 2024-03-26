@@ -111,10 +111,11 @@ partial class ConnectControl
             // txtIP
             // 
             this.txtIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.txtIP, 2);
             this.txtIP.Cursor = System.Windows.Forms.Cursors.Help;
             this.txtIP.Location = new System.Drawing.Point(179, 20);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(194, 20);
+            this.txtIP.Size = new System.Drawing.Size(356, 20);
             this.txtIP.TabIndex = 1;
             this.txtIP.Text = "192.168.0.1";
             this.addressTooltip.SetToolTip(this.txtIP, "192.168.0.1\r\nC:\\Fanuc\\MyCell\\MyRobot\r\n\\\\my-dev-machine\\MyCell\\MyRobot\r\n");
@@ -137,9 +138,9 @@ partial class ConnectControl
             this.tableLayoutPanel1.SetColumnSpan(this.chkTelnet, 2);
             this.chkTelnet.Location = new System.Drawing.Point(179, 79);
             this.chkTelnet.Name = "chkTelnet";
-            this.chkTelnet.Size = new System.Drawing.Size(115, 17);
+            this.chkTelnet.Size = new System.Drawing.Size(210, 17);
             this.chkTelnet.TabIndex = 4;
-            this.chkTelnet.Text = "Enable Telnet KCL";
+            this.chkTelnet.Text = "Enable remote commands (Telnet KCL)";
             this.chkTelnet.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -187,9 +188,9 @@ partial class ConnectControl
             this.chkFtp.AutoSize = true;
             this.chkFtp.Location = new System.Drawing.Point(179, 144);
             this.chkFtp.Name = "chkFtp";
-            this.chkFtp.Size = new System.Drawing.Size(82, 17);
+            this.chkFtp.Size = new System.Drawing.Size(164, 17);
             this.chkFtp.TabIndex = 4;
-            this.chkFtp.Text = "Enable FTP";
+            this.chkFtp.Text = "Enable memory access (FTP)";
             this.chkFtp.UseVisualStyleBackColor = true;
             // 
             // label2

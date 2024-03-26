@@ -19,7 +19,7 @@ public partial class VariablesControl : UserControl, IUserControl
     #region IUserControl
     public string Title => "Variables";
 
-    public bool FeatureEnabled => true;
+    public bool FeatureEnabled => _robot.MemoryAccess.Connected;
 
     public void PeriodicUpdate()
     {
@@ -81,8 +81,15 @@ public partial class VariablesControl : UserControl, IUserControl
     private void tsReadAll_ButtonClick(object sender, System.EventArgs e)
     {
         var frm = new LoadVariableProgressForm();
-        variableTable.Show(_robot.MemoryAccess.GetAllVariables(p => frm.OnProgress(p)));
-        frm.ShowDialog();
+        frm.Show(this);
+        try
+        {
+            variableTable.Show(_robot.MemoryAccess.GetAllVariables(p => frm.OnProgress(p)));
+        }
+        finally
+        {
+            frm.Close();
+        }
     }
 
     private void tsReadSelected_Click(object sender, System.EventArgs e)
@@ -93,13 +100,21 @@ public partial class VariablesControl : UserControl, IUserControl
         {
             var fileList = new VariableFileList() { Name = "Selected variables" };
             var frm = new LoadVariableProgressForm();
-            for (var i = 0; i < frmSelct.SelectedItems.Length; i++)
+            frm.Show(this);
+            try
             {
-                var baseProgress = i * 100.0 / frmSelct.SelectedItems.Length;
-                fileList.Add(_robot.MemoryAccess.GetVariablesFromFile(frmSelct.SelectedItems[i], x => frm.OnProgress(baseProgress + x / frmSelct.SelectedItems.Length)));
+                for (var i = 0; i < frmSelct.SelectedItems.Length; i++)
+                {
+                    var progress = i * 100.0 / frmSelct.SelectedItems.Length;
+                    frm.OnProgress(progress);
+                    fileList.Add(_robot.MemoryAccess.GetVariablesFromFile(frmSelct.SelectedItems[i]));
+                }
+                variableTable.Show(fileList);
             }
-            frm.ShowDialog();
-            variableTable.Show(fileList);
+            finally
+            {
+                frm.Close();
+            }
         }
 
     }
