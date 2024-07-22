@@ -26,8 +26,15 @@ public partial class LicenseControl : UserControl, IUserControl
 
     public bool FeatureEnabled => _licenseValid;
 
-    public void PeriodicUpdate() { }
-
+    public void PeriodicUpdate()
+    {
+        if (txtLicensee.Text != Config.Current.Licensee || txtKey.Text != Config.Current.Key)
+        {
+            txtLicensee.Text = Config.Current.Licensee;
+            txtKey.Text = Config.Current.Key;
+            UpdateLicenseControls();
+        }
+    }
     public void OnClose() { }
 
     public void OnOpen() { }

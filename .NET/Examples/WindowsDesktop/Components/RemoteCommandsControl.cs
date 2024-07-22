@@ -51,7 +51,7 @@ public partial class RemoteCommandsControl : UserControl, IUserControl
 
     private void btnRun_Click(object sender, System.EventArgs e)
     {
-        _robot.RemoteCommands.Run("MyPrg");
+        _robot.RemoteCommands.Run(cbPrograms.Text);
     }
 
     private void btnAbort_Click(object sender, System.EventArgs e)
