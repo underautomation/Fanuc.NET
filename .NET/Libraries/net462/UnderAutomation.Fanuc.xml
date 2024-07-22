@@ -41463,19 +41463,19 @@
         <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.#ctor(System.String,System.String)">
             <summary>
             Create a new LicenseInfo instance to retrieve informations about a pair of identifier/key
-            This class should not be used to register your product. Please use static function RegisterLicense to register a license.
+            This class should not be used to register your product.
             </summary>
             <param name="licenseIdentifier">The name of your organization (null for trial version)</param>
             <param name="licenseKey">The key, associated to the identifier, supplied by UnderAutomation (null for trial version)</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.AssertIsLicensed">
             <summary>
-            Throw a InvalidLicenseException if the license is Invalid, Expired or i maintenance is needed
+            Throw a InvalidLicenseException if the license is not valid
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseKey">
             <summary>
-            The license key supplied by UnderAutomation (null for automatic trial period)
+            The license key supplied by UnderAutomation (null for trial period)
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Product">
@@ -41486,11 +41486,6 @@
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationDaysLeft">
             <summary>
             Remaining days of the trial period. Null if the product is licensed. It could be negative if the trial period is ended since several days.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationStartDate">
-            <summary>
-            The date the trial period starts. If the product is licensed, the date of the library first use.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Licensee">
@@ -41543,12 +41538,12 @@
             The pair License Identifier and License Key are incompatible, you cannot use the library
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.NotSpecified">
             <summary>
-            The library is in a trial period, you can use the library
+            The license has not been provided
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.ExtraTrial">
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
             <summary>
             The library is in an extra trial period, you can use the library
             </summary>
