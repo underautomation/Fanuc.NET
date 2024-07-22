@@ -368,14 +368,15 @@
   <ItemGroup>
     <None Include="Resources\loading.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
-      <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
-      <Name>Fanuc</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
-    <When Condition="$(SolutionName.EndsWith(`Dev`))" />
+    <When Condition="$(SolutionName.EndsWith(`Dev`))" >
+      <ItemGroup>
+		<ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
+		  <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
+		  <Name>Fanuc</Name>
+		</ProjectReference>	
+      </ItemGroup>
+	</When>
     <Otherwise>
       <ItemGroup>
         <Reference Include="UnderAutomation.Fanuc">
@@ -387,9 +388,9 @@
   </Choose>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del $(TargetDir)*.config
-del $(TargetDir)*.snk
-del $(TargetDir)*.pdb
-del $(TargetDir)UnderAutomation.Fanuc.xml</PostBuildEvent>
+    <PostBuildEvent>if exist $(TargetDir)*.config del $(TargetDir)*.config
+if exist $(TargetDir)*.snk del $(TargetDir)*.snk
+if exist $(TargetDir)*.pdb del $(TargetDir)*.pdb
+if exist $(TargetDir)UnderAutomation.Fanuc.xml del $(TargetDir)UnderAutomation.Fanuc.xml</PostBuildEvent>
   </PropertyGroup>
 </Project>
