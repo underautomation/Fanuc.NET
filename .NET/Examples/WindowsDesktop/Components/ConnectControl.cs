@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
+
 public partial class ConnectControl : UserControl, IUserControl
 {
     FanucRobot _robot;
@@ -23,9 +23,6 @@ public partial class ConnectControl : UserControl, IUserControl
         chkFtp.Checked = parameters.MemoryAccess.Enable;
         txtFtpUser.Text = parameters.MemoryAccess.FtpUser;
         txtFtpPassword.Text = parameters.MemoryAccess.FtpPassword;
-
-        txtLicensee.Text = Config.Current.Licensee;
-        txtKey.Text = Config.Current.Key;
     }
 
     #region IUserControl
@@ -51,16 +48,6 @@ public partial class ConnectControl : UserControl, IUserControl
     private void btnConnect_Click(object sender, EventArgs e)
     {
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
-
-        // warning with localhost usage
-        if (string.Equals(txtIP.Text, "localhost", StringComparison.InvariantCultureIgnoreCase) || string.Equals(txtIP.Text, "127.0.0.1", StringComparison.InvariantCultureIgnoreCase) || string.Equals(txtIP.Text, "loopback", StringComparison.InvariantCultureIgnoreCase))
-        {
-            if (DialogResult.Yes != MessageBox.Show("To use the SDK with ROBOGUIDE, please do not use localhost but the path to your robot directory", "Use with ROBOGUIDE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-            {
-                return;
-            }
-        }
-
         var parameters = new ConnectionParameters();
         parameters.Address = txtIP.Text;
         parameters.RemoteCommands.Enable = chkTelnet.Checked;
@@ -72,11 +59,7 @@ public partial class ConnectControl : UserControl, IUserControl
 
         // Store information
         Config.Current.ConnectParameters = parameters;
-        Config.Current.Licensee = txtLicensee.Text;
-        Config.Current.Key = txtKey.Text;
         Config.Save();
-
-        FanucRobot.RegisterLicense(txtLicensee.Text, txtKey.Text);
 
         // Connect to the robot
         _robot.Connect(parameters);
@@ -86,10 +69,5 @@ public partial class ConnectControl : UserControl, IUserControl
     {
         // Disconnect all services
         _robot.Disconnect();
-    }
-
-    private void linkLicense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-    {
-        Process.Start("https://underautomation.com/license");
     }
 }
