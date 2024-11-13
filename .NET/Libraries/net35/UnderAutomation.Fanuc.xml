@@ -41488,6 +41488,11 @@
             Remaining days of the trial period. Null if the product is licensed. It could be negative if the trial period is ended since several days.
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationStartDate">
+            <summary>
+            The date the trial period starts. If the product is licensed, the date of the library first use.
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Licensee">
             <summary>
             Name of your organisation
@@ -41533,17 +41538,22 @@
             States that can take a license
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.None">
+            <summary>
+            No license has been provided
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.License.LicenseState.Invalid">
             <summary>
             The pair License Identifier and License Key are incompatible, you cannot use the library
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.NotSpecified">
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
             <summary>
-            The license has not been provided
+            The library is in a trial period, you can use the library
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.ExtraTrial">
             <summary>
             The library is in an extra trial period, you can use the library
             </summary>
