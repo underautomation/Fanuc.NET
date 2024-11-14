@@ -23,6 +23,8 @@ public partial class ConnectControl : UserControl, IUserControl
         chkFtp.Checked = parameters.MemoryAccess.Enable;
         txtFtpUser.Text = parameters.MemoryAccess.FtpUser;
         txtFtpPassword.Text = parameters.MemoryAccess.FtpPassword;
+
+        chkSnpx.Checked = parameters.Snpx.Enable;
     }
 
     #region IUserControl
@@ -56,6 +58,8 @@ public partial class ConnectControl : UserControl, IUserControl
         parameters.MemoryAccess.Enable = chkFtp.Checked;
         parameters.MemoryAccess.FtpUser = txtFtpUser.Text;
         parameters.MemoryAccess.FtpPassword = txtFtpPassword.Text;
+
+        parameters.Snpx.Enable = chkSnpx.Checked;
 
         // Store information
         Config.Current.ConnectParameters = parameters;

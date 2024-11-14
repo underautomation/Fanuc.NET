@@ -33,6 +33,7 @@ public partial class MainForm : Form
         AddNode(new IOStateControl(_robot));
         AddNode(new SafetyStatusControl(_robot));
         AddNode(new FileHandlingControl(_robot));
+        AddNode(new SnpxControl(_robot));
         AddNode(new LicenseControl());
 
         // Select first node at startup

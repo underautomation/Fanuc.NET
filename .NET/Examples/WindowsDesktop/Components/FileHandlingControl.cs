@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -12,6 +13,9 @@ public partial class FileHandlingControl : UserControl, IUserControl
 
     public FileHandlingControl(FanucRobot robot)
     {
+        TypeDescriptor.AddAttributes(typeof(FtpListItem), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(FtpListItem), new ReadOnlyAttribute(true));
+
         _robot = robot;
         InitializeComponent();
     }

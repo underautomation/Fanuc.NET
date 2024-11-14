@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.MemoryAccess;
 using UnderAutomation.Fanuc.MemoryAccess.Variables;
 
 public partial class VariableTableControl : UserControl
@@ -11,6 +12,9 @@ public partial class VariableTableControl : UserControl
 
     public VariableTableControl()
     {
+        TypeDescriptor.AddAttributes(typeof(IGenericVariableType), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(IGenericVariableType), new ReadOnlyAttribute(true));
+
         InitializeComponent();
         Show(null);
     }
@@ -18,8 +22,6 @@ public partial class VariableTableControl : UserControl
     private FanucRobot _robot;
     public void SetRobot(FanucRobot robot)
     {
-        TypeDescriptor.AddAttributes(typeof(object), new TypeConverterAttribute(typeof(ObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(object), new ReadOnlyAttribute(true));
         _robot = robot;
     }
 

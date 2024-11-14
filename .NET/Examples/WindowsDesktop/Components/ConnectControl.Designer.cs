@@ -44,6 +44,7 @@ partial class ConnectControl
             this.txtFtpUser = new System.Windows.Forms.TextBox();
             this.txtFtpPassword = new System.Windows.Forms.TextBox();
             this.addressTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.chkSnpx = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,21 +55,22 @@ partial class ConnectControl
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.lblConnected, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.lblConnected, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtIP, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.chkTelnet, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.txtTelnetKclPassword, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.chkFtp, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtFtpUser, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtFtpPassword, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.chkSnpx, 1, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 12;
+            this.tableLayoutPanel1.RowCount = 14;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -76,6 +78,8 @@ partial class ConnectControl
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -87,7 +91,7 @@ partial class ConnectControl
             // lblConnected
             // 
             this.lblConnected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblConnected.Location = new System.Drawing.Point(179, 265);
+            this.lblConnected.Location = new System.Drawing.Point(179, 305);
             this.lblConnected.Name = "lblConnected";
             this.lblConnected.Size = new System.Drawing.Size(194, 25);
             this.lblConnected.TabIndex = 19;
@@ -148,7 +152,7 @@ partial class ConnectControl
             this.panel1.Controls.Add(this.btnConnect);
             this.panel1.Controls.Add(this.btnDisconnect);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(179, 233);
+            this.panel1.Location = new System.Drawing.Point(179, 273);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 29);
             this.panel1.TabIndex = 12;
@@ -237,6 +241,17 @@ partial class ConnectControl
             this.addressTooltip.UseAnimation = false;
             this.addressTooltip.UseFading = false;
             // 
+            // chkSnpx
+            // 
+            this.chkSnpx.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chkSnpx.AutoSize = true;
+            this.chkSnpx.Location = new System.Drawing.Point(179, 234);
+            this.chkSnpx.Name = "chkSnpx";
+            this.chkSnpx.Size = new System.Drawing.Size(91, 17);
+            this.chkSnpx.TabIndex = 21;
+            this.chkSnpx.Text = "Enable SNPX";
+            this.chkSnpx.UseVisualStyleBackColor = true;
+            // 
             // ConnectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,4 +284,5 @@ partial class ConnectControl
     private System.Windows.Forms.TextBox txtFtpUser;
     private System.Windows.Forms.TextBox txtFtpPassword;
     private System.Windows.Forms.ToolTip addressTooltip;
+    private System.Windows.Forms.CheckBox chkSnpx;
 }

@@ -1,6 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.MemoryAccess;
+using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
 using UnderAutomation.Fanuc.MemoryAccess.Internal;
 
 public partial class CurrentPositionControl : UserControl, IUserControl
@@ -8,6 +11,13 @@ public partial class CurrentPositionControl : UserControl, IUserControl
     private FanucRobot _robot;
     public CurrentPositionControl(FanucRobot robot)
     {
+        TypeDescriptor.AddAttributes(typeof(GroupPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(JointsPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(UserFramePosition), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(ToolPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(IFanucContent), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(IFanucContent), new ReadOnlyAttribute(true));
+
         _robot = robot;
         InitializeComponent();
 

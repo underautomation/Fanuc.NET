@@ -143,6 +143,18 @@
     <Compile Include="Components\LoadVariableProgressForm.Designer.cs">
       <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\SnpxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SnpxControl.Designer.cs">
+      <DependentUpon>SnpxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SnpxSignalControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SnpxSignalControl.Designer.cs">
+      <DependentUpon>SnpxSignalControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\VariablesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,6 +244,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\LoadVariableProgressForm.resx">
       <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SnpxControl.resx">
+      <DependentUpon>SnpxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SnpxSignalControl.resx">
+      <DependentUpon>SnpxSignalControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\VariablesControl.resx">
       <DependentUpon>VariablesControl.cs</DependentUpon>
@@ -369,14 +387,14 @@
     <None Include="Resources\loading.gif" />
   </ItemGroup>
   <Choose>
-    <When Condition="$(SolutionName.EndsWith(`Dev`))" >
+    <When Condition="$(SolutionName.EndsWith(`Dev`))">
       <ItemGroup>
-		<ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
-		  <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
-		  <Name>Fanuc</Name>
-		</ProjectReference>	
+        <ProjectReference Include="..\..\..\..\..\Fanuc\Fanuc.csproj">
+          <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
+          <Name>Fanuc</Name>
+        </ProjectReference>
       </ItemGroup>
-	</When>
+    </When>
     <Otherwise>
       <ItemGroup>
         <Reference Include="UnderAutomation.Fanuc">
