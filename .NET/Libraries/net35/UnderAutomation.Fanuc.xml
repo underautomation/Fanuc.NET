@@ -41441,6 +41441,13 @@
             <param name="index">I/O port index to unsimulate</param>
             <returns></returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.GetTaskInformation(System.String)">
+            <summary>
+            Return the task control data for the specified task. If prog_name is not specified, the default program is used
+            </summary>
+            <param name="prog_name">the name of any KAREL or TP program which is a task</param>
+            <returns></returns>
+        </member>
         <member name="T:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientInternal">
             <summary>
             Internal implementation of KCL Client
@@ -41452,6 +41459,71 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskName">
+            <summary>
+            Gets the name of the task.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskNumber">
+            <summary>
+            Gets the task number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskStatusStr">
+            <summary>
+            Gets the task status as a string.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskStatus">
+            <summary>
+            Gets the task status.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.RoutineName">
+            <summary>
+            Gets the name of the routine.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.CurrentLine">
+            <summary>
+            Gets the current line number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.ProgramType">
+            <summary>
+            Gets the type of the program.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.HoldConditions">
+            <summary>
+            Gets the hold conditions.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.ParentTask">
+            <summary>
+            Gets the parent task number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.NumChildTasks">
+            <summary>
+            Gets the number of child tasks.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.InvisibleTask">
+            <summary>
+            Gets a value indicating whether the task is invisible.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.SystemTask">
+            <summary>
+            Gets a value indicating whether the task is a system task.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.Priority">
+            <summary>
+            Gets the priority of the task.
+            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.RemoteCommands.RemoteCommandsClient">
             <summary>
