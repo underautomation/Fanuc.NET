@@ -130,4 +130,9 @@ public partial class RemoteCommandsControl : UserControl, IUserControl
     {
         _robot.RemoteCommands.GetVariable(txtVariableName.Text, txtVariableProgram.Text);
     }
+
+    private void btnGetTask_Click(object sender, EventArgs e)
+    {
+        _robot.RemoteCommands.GetTaskInformation(cbPrograms.Text);
+    }
 }

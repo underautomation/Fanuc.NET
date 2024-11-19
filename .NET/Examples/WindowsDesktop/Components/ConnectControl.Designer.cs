@@ -43,8 +43,8 @@ partial class ConnectControl
             this.label3 = new System.Windows.Forms.Label();
             this.txtFtpUser = new System.Windows.Forms.TextBox();
             this.txtFtpPassword = new System.Windows.Forms.TextBox();
-            this.addressTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.chkSnpx = new System.Windows.Forms.CheckBox();
+            this.addressTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -233,14 +233,6 @@ partial class ConnectControl
             this.txtFtpPassword.Size = new System.Drawing.Size(100, 20);
             this.txtFtpPassword.TabIndex = 20;
             // 
-            // addressTooltip
-            // 
-            this.addressTooltip.AutomaticDelay = 0;
-            this.addressTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.addressTooltip.ToolTipTitle = "Examples :";
-            this.addressTooltip.UseAnimation = false;
-            this.addressTooltip.UseFading = false;
-            // 
             // chkSnpx
             // 
             this.chkSnpx.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -251,6 +243,14 @@ partial class ConnectControl
             this.chkSnpx.TabIndex = 21;
             this.chkSnpx.Text = "Enable SNPX";
             this.chkSnpx.UseVisualStyleBackColor = true;
+            // 
+            // addressTooltip
+            // 
+            this.addressTooltip.AutomaticDelay = 0;
+            this.addressTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.addressTooltip.ToolTipTitle = "Examples :";
+            this.addressTooltip.UseAnimation = false;
+            this.addressTooltip.UseFading = false;
             // 
             // ConnectControl
             // 

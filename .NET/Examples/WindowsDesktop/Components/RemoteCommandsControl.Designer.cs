@@ -37,15 +37,18 @@ partial class RemoteCommandsControl
             this.btnPause = new System.Windows.Forms.Button();
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
+            this.cbPrograms = new CueTextBox();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnGetCurrentPose = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetVariable = new System.Windows.Forms.Button();
             this.btnSetVariable = new System.Windows.Forms.Button();
             this.txtVariableNewValue = new System.Windows.Forms.TextBox();
             this.txtVariableName = new System.Windows.Forms.TextBox();
+            this.txtVariableProgram = new CueTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,9 +65,7 @@ partial class RemoteCommandsControl
             this.cbPorts = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnGetVariable = new System.Windows.Forms.Button();
-            this.txtVariableProgram = new CueTextBox();
-            this.cbPrograms = new CueTextBox();
+            this.btnGetTask = new System.Windows.Forms.Button();
             this.GroupBox3.SuspendLayout();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -80,7 +81,7 @@ partial class RemoteCommandsControl
             // 
             // btnAbortAll
             // 
-            this.btnAbortAll.Location = new System.Drawing.Point(6, 292);
+            this.btnAbortAll.Location = new System.Drawing.Point(6, 329);
             this.btnAbortAll.Name = "btnAbortAll";
             this.btnAbortAll.Size = new System.Drawing.Size(156, 23);
             this.btnAbortAll.TabIndex = 0;
@@ -92,6 +93,7 @@ partial class RemoteCommandsControl
             // 
             this.GroupBox3.Controls.Add(this.btnAbortAll);
             this.GroupBox3.Controls.Add(this.btnClearProgram);
+            this.GroupBox3.Controls.Add(this.btnGetTask);
             this.GroupBox3.Controls.Add(this.btnClearVariables);
             this.GroupBox3.Controls.Add(this.btnGetProgramInfo);
             this.GroupBox3.Controls.Add(this.btnHold);
@@ -109,7 +111,7 @@ partial class RemoteCommandsControl
             // 
             // btnClearProgram
             // 
-            this.btnClearProgram.Location = new System.Drawing.Point(33, 220);
+            this.btnClearProgram.Location = new System.Drawing.Point(33, 191);
             this.btnClearProgram.Name = "btnClearProgram";
             this.btnClearProgram.Size = new System.Drawing.Size(129, 23);
             this.btnClearProgram.TabIndex = 0;
@@ -119,7 +121,7 @@ partial class RemoteCommandsControl
             // 
             // btnClearVariables
             // 
-            this.btnClearVariables.Location = new System.Drawing.Point(33, 249);
+            this.btnClearVariables.Location = new System.Drawing.Point(33, 220);
             this.btnClearVariables.Name = "btnClearVariables";
             this.btnClearVariables.Size = new System.Drawing.Size(129, 23);
             this.btnClearVariables.TabIndex = 0;
@@ -129,11 +131,11 @@ partial class RemoteCommandsControl
             // 
             // btnGetProgramInfo
             // 
-            this.btnGetProgramInfo.Location = new System.Drawing.Point(33, 191);
+            this.btnGetProgramInfo.Location = new System.Drawing.Point(33, 261);
             this.btnGetProgramInfo.Name = "btnGetProgramInfo";
             this.btnGetProgramInfo.Size = new System.Drawing.Size(129, 23);
             this.btnGetProgramInfo.TabIndex = 0;
-            this.btnGetProgramInfo.Text = "Get info";
+            this.btnGetProgramInfo.Text = "Get program info";
             this.btnGetProgramInfo.UseVisualStyleBackColor = true;
             this.btnGetProgramInfo.Click += new System.EventHandler(this.btnGetProgramInfo_Click);
             // 
@@ -186,6 +188,14 @@ partial class RemoteCommandsControl
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // cbPrograms
+            // 
+            this.cbPrograms.Cue = "Program name";
+            this.cbPrograms.Location = new System.Drawing.Point(16, 20);
+            this.cbPrograms.Name = "cbPrograms";
+            this.cbPrograms.Size = new System.Drawing.Size(146, 20);
+            this.cbPrograms.TabIndex = 2;
             // 
             // splitMain
             // 
@@ -268,6 +278,16 @@ partial class RemoteCommandsControl
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Variables";
             // 
+            // btnGetVariable
+            // 
+            this.btnGetVariable.Location = new System.Drawing.Point(231, 33);
+            this.btnGetVariable.Name = "btnGetVariable";
+            this.btnGetVariable.Size = new System.Drawing.Size(156, 23);
+            this.btnGetVariable.TabIndex = 0;
+            this.btnGetVariable.Text = "Get variable value";
+            this.btnGetVariable.UseVisualStyleBackColor = true;
+            this.btnGetVariable.Click += new System.EventHandler(this.btnGetVariable_Click);
+            // 
             // btnSetVariable
             // 
             this.btnSetVariable.Location = new System.Drawing.Point(44, 100);
@@ -292,6 +312,14 @@ partial class RemoteCommandsControl
             this.txtVariableName.Size = new System.Drawing.Size(149, 20);
             this.txtVariableName.TabIndex = 2;
             this.txtVariableName.Text = "$RMT_MASTER";
+            // 
+            // txtVariableProgram
+            // 
+            this.txtVariableProgram.Cue = "Optional";
+            this.txtVariableProgram.Location = new System.Drawing.Point(76, 48);
+            this.txtVariableProgram.Name = "txtVariableProgram";
+            this.txtVariableProgram.Size = new System.Drawing.Size(149, 20);
+            this.txtVariableProgram.TabIndex = 1;
             // 
             // label7
             // 
@@ -473,38 +501,22 @@ partial class RemoteCommandsControl
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnGetVariable
+            // btnGetTask
             // 
-            this.btnGetVariable.Location = new System.Drawing.Point(231, 33);
-            this.btnGetVariable.Name = "btnGetVariable";
-            this.btnGetVariable.Size = new System.Drawing.Size(156, 23);
-            this.btnGetVariable.TabIndex = 0;
-            this.btnGetVariable.Text = "Get variable value";
-            this.btnGetVariable.UseVisualStyleBackColor = true;
-            this.btnGetVariable.Click += new System.EventHandler(this.btnGetVariable_Click);
+            this.btnGetTask.Location = new System.Drawing.Point(33, 290);
+            this.btnGetTask.Name = "btnGetTask";
+            this.btnGetTask.Size = new System.Drawing.Size(129, 23);
+            this.btnGetTask.TabIndex = 0;
+            this.btnGetTask.Text = "Get task info";
+            this.btnGetTask.UseVisualStyleBackColor = true;
+            this.btnGetTask.Click += new System.EventHandler(this.btnGetTask_Click);
             // 
-            // txtVariableProgram
-            // 
-            this.txtVariableProgram.Cue = "Optional";
-            this.txtVariableProgram.Location = new System.Drawing.Point(76, 48);
-            this.txtVariableProgram.Name = "txtVariableProgram";
-            this.txtVariableProgram.Size = new System.Drawing.Size(149, 20);
-            this.txtVariableProgram.TabIndex = 1;
-            // 
-            // cbPrograms
-            // 
-            this.cbPrograms.Cue = "Program name";
-            this.cbPrograms.Location = new System.Drawing.Point(16, 20);
-            this.cbPrograms.Name = "cbPrograms";
-            this.cbPrograms.Size = new System.Drawing.Size(146, 20);
-            this.cbPrograms.TabIndex = 2;
-            // 
-            // TelnetKclControl
+            // RemoteCommandsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitMain);
-            this.Name = "TelnetKclControl";
+            this.Name = "RemoteCommandsControl";
             this.Size = new System.Drawing.Size(820, 628);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();
@@ -562,4 +574,5 @@ partial class RemoteCommandsControl
     internal System.Windows.Forms.Button btnUnsimulatePort;
     private CueTextBox cbPrograms;
     internal System.Windows.Forms.Button btnGetVariable;
+    internal System.Windows.Forms.Button btnGetTask;
 }
