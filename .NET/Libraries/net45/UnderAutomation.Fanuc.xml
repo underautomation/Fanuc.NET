@@ -41324,6 +41324,36 @@
             Disconnect Telnet client from robot
             </summary>
         </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.RawDataReceived">
+            <summary>
+            Occurs when raw data is received.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.TpCoordinatesReceived">
+            <summary>
+            Occurs when TP coordinates are received.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.MessageReceived">
+            <summary>
+            Occurs when a message is received.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.ErrorOccured">
+            <summary>
+            Occurs when an error occurs in the KCL client.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.CommandSent">
+            <summary>
+            Occurs when a command is sent.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.CommandReceived">
+            <summary>
+            Occurs when a KCL command is received.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.Abort(System.String,System.Boolean)">
             <summary>
             Aborts the specified running or paused task. If prog_ name is not specified, the default program Is used.
@@ -41489,6 +41519,13 @@
             <param name="index">I/O port index to unsimulate</param>
             <returns></returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientBase.GetTaskInformation(System.String)">
+            <summary>
+            Return the task control data for the specified task. If prog_name is not specified, the default program is used
+            </summary>
+            <param name="prog_name">the name of any KAREL or TP program which is a task</param>
+            <returns></returns>
+        </member>
         <member name="T:UnderAutomation.Fanuc.RemoteCommands.Internal.RemoteCommandsClientInternal">
             <summary>
             Internal implementation of KCL Client
@@ -41500,6 +41537,213 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.RemoteCommands.TaskStatus">
+            <summary>
+            Represents the status of a task.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TaskStatus.Unknown">
+            <summary>
+            The task status is unknown.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TaskStatus.Running">
+            <summary>
+            The task is running.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TaskStatus.Paused">
+            <summary>
+            The task is paused.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TaskStatus.Aborted">
+            <summary>
+            The task is aborted.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.RemoteCommands.ProgramType">
+            <summary>
+            Represents the type of a program.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.ProgramType.Unknown">
+            <summary>
+            The program type is unknown.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.ProgramType.Karel">
+            <summary>
+            The program is a Karel program, also known as PC (Programmable Control).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.ProgramType.TP">
+            <summary>
+            The program is a TP (Teach Pendant) program.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskName">
+            <summary>
+            Gets the name of the task.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskNumber">
+            <summary>
+            Gets the task number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskStatusStr">
+            <summary>
+            Gets the task status as a string.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.TaskStatus">
+            <summary>
+            Gets the task status.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.RoutineName">
+            <summary>
+            Gets the name of the routine.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.CurrentLine">
+            <summary>
+            Gets the current line number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.ProgramType">
+            <summary>
+            Gets the type of the program.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.HoldConditions">
+            <summary>
+            Gets the hold conditions.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.InvisibleTask">
+            <summary>
+            Gets a value indicating whether the task is invisible.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.SystemTask">
+            <summary>
+            Gets a value indicating whether the task is a system task.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.RemoteCommands.TaskInformationResult.FromResult(System.String)">
+            <summary>
+            Parses the result data and populates the properties of the class.
+            </summary>
+            <param name="data">The result data as a string.</param>
+            <returns>True if parsing is successful; otherwise, false.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.RemoteCommands.KCLPorts">
+            <summary>
+            Enum representing the different KCL ports.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.DIN">
+            <summary>
+            Digital Input port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.DOUT">
+            <summary>
+            Digital Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.RDO">
+            <summary>
+            Robot Digital Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.OPOUT">
+            <summary>
+            Operator Panel Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.TPOUT">
+            <summary>
+            Teach Pendant Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.WDI">
+            <summary>
+            Weld Digital Input port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.WDO">
+            <summary>
+            Weld Digital Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.AIN">
+            <summary>
+            Analog Input port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.AOUT">
+            <summary>
+            Analog Output port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.GIN">
+            <summary>
+            General Input port.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.KCLPorts.GOUT">
+            <summary>
+            General Output port.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.RemoteCommands.RawDataReceivedEventArgs">
+            <summary>
+            Event arguments for raw data received events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.RawDataReceivedEventArgs.Data">
+            <summary>
+            Gets the raw data received.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates">
+            <summary>
+            Enumeration of TP (Teach Pendant) coordinate systems.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.Unknown">
+            <summary>
+            Unknown coordinate system.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.Tool">
+            <summary>
+            Tool coordinate system.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.User">
+            <summary>
+            User coordinate system.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.Joint">
+            <summary>
+            Joint coordinate system.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.JogFrame">
+            <summary>
+            Jog frame coordinate system.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.RemoteCommands.TpCoordinates.World">
+            <summary>
+            World coordinate system.
+            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.RemoteCommands.RemoteCommandsClient">
             <summary>
