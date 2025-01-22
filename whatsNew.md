@@ -1,1 +1,1 @@
-Add GetTaskInformation in Remote Commands
+Create a nuget package
