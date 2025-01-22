@@ -65,6 +65,11 @@ public partial class ConnectControl : UserControl, IUserControl
         Config.Current.ConnectParameters = parameters;
         Config.Save();
 
+        if (parameters.Address == "127.0.0.1" || string.Equals(parameters.Address, "localhost", StringComparison.InvariantCultureIgnoreCase) || string.Equals(parameters.Address, "loopback", StringComparison.InvariantCultureIgnoreCase))
+        {
+            if (MessageBox.Show("Please enter the path to your ROBOGUIDE folder instead of the localhost IP so that the SDK can read the services.txt and connect to the correct TCP ports. Go on anyway?", "Make sure you use localhost ?", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+        }
+
         // Connect to the robot
         _robot.Connect(parameters);
     }
