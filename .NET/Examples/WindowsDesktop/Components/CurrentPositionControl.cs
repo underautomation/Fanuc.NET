@@ -13,8 +13,8 @@ public partial class CurrentPositionControl : UserControl, IUserControl
     {
         TypeDescriptor.AddAttributes(typeof(GroupPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
         TypeDescriptor.AddAttributes(typeof(JointsPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(UserFramePosition), new TypeConverterAttribute(typeof(ObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(ToolPosition), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(CartesianPositionWithUserFrame), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(CartesianPositionWithTool), new TypeConverterAttribute(typeof(ObjectConverter)));
         TypeDescriptor.AddAttributes(typeof(IFanucContent), new TypeConverterAttribute(typeof(ObjectConverter)));
         TypeDescriptor.AddAttributes(typeof(IFanucContent), new ReadOnlyAttribute(true));
 

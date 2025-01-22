@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.Snpx.Internal;
 
 public partial class SnpxControl : UserControl, IUserControl
@@ -18,9 +19,9 @@ public partial class SnpxControl : UserControl, IUserControl
         InitializeComponent();
 
         TypeDescriptor.AddAttributes(typeof(Position), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(PositionCartesian), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(PositionJoint), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
-        gridPR.SelectedObject = new Position() { Cartesian = new PositionCartesian(), Joint = new PositionJoint() };
+        TypeDescriptor.AddAttributes(typeof(ExtendedCartesianPosition), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(JointsPosition), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
+        gridPR.SelectedObject = new Position() { CartesianPosition = new ExtendedCartesianPosition(), JointsPosition = new JointsPosition() };
         gridPR.ExpandAllGridItems();
 
         snpxSignalControlDigitals.InitializeForDigitalSignal(robot);
@@ -67,19 +68,19 @@ public partial class SnpxControl : UserControl, IUserControl
 
     private void btnResetPosition_Click(object sender, System.EventArgs e)
     {
-        gridPR.SelectedObject = new Position() { Cartesian = new PositionCartesian(), Joint = new PositionJoint() };
+        gridPR.SelectedObject = new Position() { CartesianPosition = new ExtendedCartesianPosition(), JointsPosition = new JointsPosition() };
         gridPR.ExpandAllGridItems();
     }
 
     private void btnResetPositionCartesian_Click(object sender, System.EventArgs e)
     {
-        gridPR.SelectedObject = new Position() { Cartesian = new PositionCartesian() };
+        gridPR.SelectedObject = new Position() { CartesianPosition = new ExtendedCartesianPosition() };
         gridPR.ExpandAllGridItems();
     }
 
     private void btnResetPositionJoint_Click(object sender, System.EventArgs e)
     {
-        gridPR.SelectedObject = new Position() { Joint = new PositionJoint() };
+        gridPR.SelectedObject = new Position() { JointsPosition = new JointsPosition() };
         gridPR.ExpandAllGridItems();
     }
 
