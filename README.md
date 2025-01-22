@@ -28,9 +28,10 @@ This library uses the native network protocols of Fanuc robots and cobots: Telne
 
 Pre-built example applications with source code are provided.
 
-![demo read write variables](https://github.com/underautomation/Fanuc/assets/22075796/518c2e0a-3223-4830-87f4-66de0a617463)
+![SNPX](https://github.com/user-attachments/assets/b39d54ab-4d7e-47ca-9b2c-230578d48563)
 
-![snpx](https://github.com/user-attachments/assets/9320c359-3724-45e3-9937-4e11acdefdd9)
+![Read and write variables](https://github.com/user-attachments/assets/935aa48e-63fc-4da2-b5a2-6d73e8a1bdba)
+
 
 ## License
 
