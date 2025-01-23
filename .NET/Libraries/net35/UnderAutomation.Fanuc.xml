@@ -29,32 +29,82 @@
             Position configuration
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Common.ArmFront">
+        <member name="T:UnderAutomation.Fanuc.Common.CartesianPositionWithTool">
+            <summary>
+            A cartesian position with a tool ID
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.Tool">
+            <summary>
+            Tool ID
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame">
+            <summary>
+            A cartesian tool position with a user frame ID
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.Frame">
+            <summary>
+            Frame ID in the controller
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.ArmFrontBack">
             <summary>
             Arm configuration
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Common.ArmFront.Front">
+        <member name="F:UnderAutomation.Fanuc.Common.ArmFrontBack.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ArmFrontBack.Front">
             <summary>
             Front : T
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Common.ArmFront.Back">
+        <member name="F:UnderAutomation.Fanuc.Common.ArmFrontBack.Back">
             <summary>
             Back : B
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Common.ArmUp">
+        <member name="T:UnderAutomation.Fanuc.Common.ArmLeftRight">
+            <summary>
+            Arm left right
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ArmLeftRight.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ArmLeftRight.Left">
+            <summary>
+            Left : L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ArmLeftRight.Right">
+            <summary>
+            Right : R
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.ArmUpDown">
             <summary>
             Arm configuration
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Common.ArmUp.Up">
+        <member name="F:UnderAutomation.Fanuc.Common.ArmUpDown.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ArmUpDown.Up">
             <summary>
             Up : U
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Common.ArmUp.Down">
+        <member name="F:UnderAutomation.Fanuc.Common.ArmUpDown.Down">
             <summary>
             Up : D
             </summary>
@@ -62,6 +112,11 @@
         <member name="T:UnderAutomation.Fanuc.Common.WristFlip">
             <summary>
             Wrist configuration
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.WristFlip.Unknown">
+            <summary>
+            Unknown
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Common.WristFlip.Flip">
@@ -84,39 +139,44 @@
             Wrist configuration
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.ArmUp">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.ArmUpDown">
             <summary>
             Arm up/down configuration
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.ArmFront">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.ArmLeftRight">
+            <summary>
+            Arm left/right configuration
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.ArmFrontBack">
             <summary>
             Arm back/front configuration
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.J4">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis1">
             <summary>
-            Joint 4 configuration
+            Turn number of axis 1 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.J5">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis2">
             <summary>
-            Joint 5 configuration
+            Turn number of axis 2 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.J6">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis3">
             <summary>
-            Joint 6 configuration
+            Turn number of axis 3 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.Configuration.ToString">
             <summary>
-            Conventionnal string representtaion for Fanuc configuration, like : F U T, 0, 0, 0
+            Conventionnal string representation for Fanuc configuration, like : "F U T, 0, 0, 0" or "R, 0, 0, 0"
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.Configuration.FromString(System.String)">
             <summary>
-            Parse a Fanuc configuration string representation, like : N U T, 0, 0, 0
+            Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.DigitalPorts">
@@ -262,26 +322,6 @@
         <member name="P:UnderAutomation.Fanuc.Common.SnpxConnectParameters.Enable">
             <summary>
             Should enable memory access for this connection
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.Common.ToolPosition">
-            <summary>
-            A cartesian position with a tool ID
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.Common.ToolPosition.Tool">
-            <summary>
-            Tool ID
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.Common.UserFramePosition">
-            <summary>
-            A cartesian tool position with a user frame ID
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.Common.UserFramePosition.Frame">
-            <summary>
-            Frame ID in the controller
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.XYZPosition">

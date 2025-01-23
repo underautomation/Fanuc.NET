@@ -1,1 +1,1 @@
-Create a nuget package
+Refactor and unify the position classes
