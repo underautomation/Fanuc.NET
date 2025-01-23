@@ -94,6 +94,12 @@
     <Compile Include="Components\CueTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\MoveRobotControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\MoveRobotControl.Designer.cs">
+      <DependentUpon>MoveRobotControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\SafetyStatusControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Components\ConnectControl.resx">
       <DependentUpon>ConnectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MoveRobotControl.resx">
+      <DependentUpon>MoveRobotControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SafetyStatusControl.resx">
       <DependentUpon>SafetyStatusControl.cs</DependentUpon>

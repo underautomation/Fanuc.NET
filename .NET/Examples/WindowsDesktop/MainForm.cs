@@ -20,6 +20,8 @@ public partial class MainForm : Form
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         Application.ThreadException += Application_ThreadException;
 
+        Control.CheckForIllegalCrossThreadCalls = false;
+
         // Load configuration file
         Config.Load();
 
@@ -33,6 +35,7 @@ public partial class MainForm : Form
         AddNode(new IOStateControl(_robot));
         AddNode(new SafetyStatusControl(_robot));
         AddNode(new FileHandlingControl(_robot));
+        AddNode(new MoveRobotControl(_robot));
         AddNode(new SnpxControl(_robot));
         AddNode(new LicenseControl());
 

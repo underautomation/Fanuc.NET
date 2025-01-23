@@ -26,9 +26,9 @@ public partial class RemoteCommandsControl : UserControl, IUserControl
 
     private void LogCommand(string text)
     {
-        if (this.InvokeRequired)
+        if (Application.OpenForms[0].InvokeRequired) // Invoke required on form because the component may never have been displayed
         {
-            this.Invoke(new Action(() => LogCommand(text)));
+            Application.OpenForms[0].Invoke(new Action(() => LogCommand(text)));
             return;
         }
         txtConsole.AppendText("\r\n");

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 // Advanced Property Grid thats displays a Primary Interface Package
@@ -28,7 +25,10 @@ public partial class CustomPropertyGrid : UserControl
         }
     }
 
-    public void SetSelectedObject(object value) 
+    public object SelectedObject => grid.SelectedObject;
+
+
+    public void SetSelectedObject(object value)
     {
         this.SuspendLayout();
 
