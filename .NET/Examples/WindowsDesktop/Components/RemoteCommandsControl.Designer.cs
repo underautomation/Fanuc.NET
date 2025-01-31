@@ -1,5 +1,5 @@
 ﻿
-partial class RemoteCommandsControl
+partial class TelnetControl
 {
     /// <summary> 
     /// Variable nécessaire au concepteur.
@@ -511,12 +511,12 @@ partial class RemoteCommandsControl
             this.btnGetTask.UseVisualStyleBackColor = true;
             this.btnGetTask.Click += new System.EventHandler(this.btnGetTask_Click);
             // 
-            // RemoteCommandsControl
+            // TelnetControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitMain);
-            this.Name = "RemoteCommandsControl";
+            this.Name = "TelnetControl";
             this.Size = new System.Drawing.Size(820, 628);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox3.PerformLayout();

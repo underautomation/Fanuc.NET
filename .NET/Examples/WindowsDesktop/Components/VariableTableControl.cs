@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Variables;
+using UnderAutomation.Fanuc.Ftp;
+using UnderAutomation.Fanuc.Ftp.Variables;
 
 public partial class VariableTableControl : UserControl
 {
@@ -77,7 +77,7 @@ public partial class VariableTableControl : UserControl
 
     public void PeriodicUpdate()
     {
-        var connected = _robot.RemoteCommands.Connected;
+        var connected = _robot.Telnet.Connected;
         btnWrite.Enabled = connected;
         txtWriteInfo.Visible = !connected;
     }
@@ -138,7 +138,7 @@ public partial class VariableTableControl : UserControl
 
     private void btnWrite_Click(object sender, EventArgs e)
     {
-        var result = _robot?.RemoteCommands.SetVariable(txtVariableName.Text, txtNewValue.Text);
+        var result = _robot?.Telnet.SetVariable(txtVariableName.Text, txtNewValue.Text);
 
         if (_current is null) return;
 
@@ -154,7 +154,7 @@ public partial class VariableTableControl : UserControl
             if (ancestor is GenericVariableFile)
             {
                 var formerFile = (GenericVariableFile)ancestor;
-                updatedFile = _robot.MemoryAccess.GetVariablesFromFile(formerFile.Name);
+                updatedFile = _robot.Ftp.GetVariablesFromFile(formerFile.Name);
 
                 // replace former file with the new one
                 var fileList = formerFile.Parent as VariableFileList;

@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
-using UnderAutomation.Fanuc.MemoryAccess.Internal;
+using UnderAutomation.Fanuc.Ftp;
+using UnderAutomation.Fanuc.Ftp.Diagnosis;
+using UnderAutomation.Fanuc.Ftp.Internal;
 
 public partial class IOStateControl : UserControl, IUserControl
 {
@@ -22,7 +22,7 @@ public partial class IOStateControl : UserControl, IUserControl
         Header.Initialize(
             "iostate.dg",
             FanucFileReaders.IOStateReader,
-            () => _robot.MemoryAccess.GetIOState(),
+            () => _robot.Ftp.GetIOState(),
             Show);
     }
 
@@ -35,7 +35,7 @@ public partial class IOStateControl : UserControl, IUserControl
     #region IUserControl
     public string Title => "IO State";
 
-    public bool FeatureEnabled => _robot.MemoryAccess.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected;
 
     public void PeriodicUpdate() { }
 
@@ -63,9 +63,9 @@ public partial class IOStateControl : UserControl, IUserControl
         var ioStatus = (grid.Rows[e.RowIndex].DataBoundItem as ObjectView<IOStatus>)?.Object;
         if (ioStatus is null) return;
 
-       if(_robot.RemoteCommands.Connected)
+       if(_robot.Telnet.Connected)
         {
-            //_robot.RemoteCommands.SetPort(ioStatus.Port, ioStatus.Id, !ioStatus.Value);
+            //_robot.Telnet.SetPort(ioStatus.Port, ioStatus.Id, !ioStatus.Value);
         }
         else
         {

@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Variables;
+using UnderAutomation.Fanuc.Ftp;
+using UnderAutomation.Fanuc.Ftp.Variables;
 
 public partial class VariablesControl : UserControl, IUserControl
 {
@@ -19,11 +19,11 @@ public partial class VariablesControl : UserControl, IUserControl
     #region IUserControl
     public string Title => "Variables";
 
-    public bool FeatureEnabled => _robot.MemoryAccess.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected;
 
     public void PeriodicUpdate()
     {
-        tsReadAll.Enabled = _robot.MemoryAccess.Connected;
+        tsReadAll.Enabled = _robot.Ftp.Connected;
         variableTable.PeriodicUpdate();
     }
 
@@ -84,7 +84,7 @@ public partial class VariablesControl : UserControl, IUserControl
         frm.Show(this);
         try
         {
-            variableTable.Show(_robot.MemoryAccess.GetAllVariables(p => frm.OnProgress(p)));
+            variableTable.Show(_robot.Ftp.GetAllVariables(p => frm.OnProgress(p)));
         }
         finally
         {
@@ -94,7 +94,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
     private void tsReadSelected_Click(object sender, System.EventArgs e)
     {
-        var files = _robot.MemoryAccess.EnumerateVariableFiles();
+        var files = _robot.Ftp.EnumerateVariableFiles();
         var frmSelct = new SelectVariablesForm(files);
         if (frmSelct.ShowDialog() == DialogResult.OK)
         {
@@ -107,7 +107,7 @@ public partial class VariablesControl : UserControl, IUserControl
                 {
                     var progress = i * 100.0 / frmSelct.SelectedItems.Length;
                     frm.OnProgress(progress);
-                    fileList.Add(_robot.MemoryAccess.GetVariablesFromFile(frmSelct.SelectedItems[i]));
+                    fileList.Add(_robot.Ftp.GetVariablesFromFile(frmSelct.SelectedItems[i]));
                 }
                 variableTable.Show(fileList);
             }

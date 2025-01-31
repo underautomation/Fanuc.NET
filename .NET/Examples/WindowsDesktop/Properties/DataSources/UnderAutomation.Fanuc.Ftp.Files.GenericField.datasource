@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="GenericField" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>UnderAutomation.Fanuc.MemoryAccess.Files.GenericField, UnderAutomation.Fanuc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a76e62f1cf6da199</TypeInfo>
+   <TypeInfo>UnderAutomation.Fanuc.Ftp.Files.GenericField, UnderAutomation.Fanuc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a76e62f1cf6da199</TypeInfo>
 </GenericObjectDataSource>

@@ -17,12 +17,12 @@ public partial class ConnectControl : UserControl, IUserControl
         // Use stored information or set to default
         txtIP.Text = parameters?.Address ?? "192.168.0.1";
 
-        chkTelnet.Checked = parameters.RemoteCommands.Enable;
-        txtTelnetKclPassword.Text = parameters.RemoteCommands.TelnetKclPassword;
+        chkTelnet.Checked = parameters.Telnet.Enable;
+        txtTelnetKclPassword.Text = parameters.Telnet.TelnetKclPassword;
 
-        chkFtp.Checked = parameters.MemoryAccess.Enable;
-        txtFtpUser.Text = parameters.MemoryAccess.FtpUser;
-        txtFtpPassword.Text = parameters.MemoryAccess.FtpPassword;
+        chkFtp.Checked = parameters.Ftp.Enable;
+        txtFtpUser.Text = parameters.Ftp.FtpUser;
+        txtFtpPassword.Text = parameters.Ftp.FtpPassword;
 
         chkSnpx.Checked = parameters.Snpx.Enable;
     }
@@ -52,12 +52,12 @@ public partial class ConnectControl : UserControl, IUserControl
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
         var parameters = new ConnectionParameters();
         parameters.Address = txtIP.Text;
-        parameters.RemoteCommands.Enable = chkTelnet.Checked;
-        parameters.RemoteCommands.TelnetKclPassword = txtTelnetKclPassword.Text;
+        parameters.Telnet.Enable = chkTelnet.Checked;
+        parameters.Telnet.TelnetKclPassword = txtTelnetKclPassword.Text;
 
-        parameters.MemoryAccess.Enable = chkFtp.Checked;
-        parameters.MemoryAccess.FtpUser = txtFtpUser.Text;
-        parameters.MemoryAccess.FtpPassword = txtFtpPassword.Text;
+        parameters.Ftp.Enable = chkFtp.Checked;
+        parameters.Ftp.FtpUser = txtFtpUser.Text;
+        parameters.Ftp.FtpPassword = txtFtpPassword.Text;
 
         parameters.Snpx.Enable = chkSnpx.Checked;
 

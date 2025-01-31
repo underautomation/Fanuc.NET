@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
-using UnderAutomation.Fanuc.MemoryAccess.Internal;
+using UnderAutomation.Fanuc.Ftp;
+using UnderAutomation.Fanuc.Ftp.Diagnosis;
+using UnderAutomation.Fanuc.Ftp.Internal;
 
 public partial class CurrentPositionControl : UserControl, IUserControl
 {
@@ -24,14 +24,14 @@ public partial class CurrentPositionControl : UserControl, IUserControl
         Header.Initialize(
             "curpos.dg",
             FanucFileReaders.CurrentPositionReader,
-            () => _robot.MemoryAccess.GetCurrentPosition(),
+            () => _robot.Ftp.GetCurrentPosition(),
             Show);
     }
 
     #region IUserControl
     public string Title => "Current position";
 
-    public bool FeatureEnabled => _robot.MemoryAccess.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected;
 
     public void PeriodicUpdate() { }
 

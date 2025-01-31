@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using UnderAutomation.Fanuc.MemoryAccess.Internal;
+using UnderAutomation.Fanuc.Ftp.Internal;
 
 namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
 {

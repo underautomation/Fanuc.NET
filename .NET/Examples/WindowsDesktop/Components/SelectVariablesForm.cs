@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using UnderAutomation.Fanuc.MemoryAccess;
+using UnderAutomation.Fanuc.Ftp;
 
 public partial class SelectVariablesForm : Form
 {

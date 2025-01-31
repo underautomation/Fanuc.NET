@@ -5,8 +5,8 @@ using System.Text;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
-using UnderAutomation.Fanuc.MemoryAccess.Internal;
+using UnderAutomation.Fanuc.Ftp.Diagnosis;
+using UnderAutomation.Fanuc.Ftp.Internal;
 
 public partial class MoveRobotControl : UserControl, IUserControl
 {
@@ -29,7 +29,7 @@ public partial class MoveRobotControl : UserControl, IUserControl
     #region IUserControl
     public string Title => "Move robot (FTP+TELNET)";
 
-    public bool FeatureEnabled => _robot.MemoryAccess.Connected && _robot.RemoteCommands.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected && _robot.Telnet.Connected;
 
     public void PeriodicUpdate()
     {
@@ -41,8 +41,8 @@ public partial class MoveRobotControl : UserControl, IUserControl
 
     public void OnOpen()
     {
-        if (!_robot.MemoryAccess.Connected) return;
-        var currentPosition = _robot.MemoryAccess.GetCurrentPosition();
+        if (!_robot.Ftp.Connected) return;
+        var currentPosition = _robot.Ftp.GetCurrentPosition();
 
         currentWorldPositionGrid.SetSelectedObject(currentPosition.GroupsPosition[0].WorldPositions[0]);
 
@@ -109,7 +109,7 @@ P[1]{{GP1:
 
         try
         {
-            _robot.MemoryAccess.DirectFileHandling.UploadFileToController(Encoding.UTF8.GetBytes(prg), "/md:/" + fileName);
+            _robot.Ftp.DirectFileHandling.UploadFileToController(Encoding.UTF8.GetBytes(prg), "/md:/" + fileName);
         }
         catch(Exception ex)
         {
@@ -120,7 +120,7 @@ P[1]{{GP1:
 
         }
 
-        _robot.RemoteCommands.Run(prgName);
+        _robot.Telnet.Run(prgName);
     }
 
     private void btnRefreshWorldPosition_Click(object sender, EventArgs e)

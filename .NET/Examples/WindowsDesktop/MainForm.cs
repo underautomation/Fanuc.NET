@@ -29,7 +29,7 @@ public partial class MainForm : Form
 
         // Add nodes in left menu and instanciate associated control 
         AddNode(new ConnectControl(_robot));
-        AddNode(new RemoteCommandsControl(_robot));
+        AddNode(new TelnetControl(_robot));
         AddNode(new VariablesControl(_robot));
         AddNode(new CurrentPositionControl(_robot));
         AddNode(new IOStateControl(_robot));
@@ -42,36 +42,36 @@ public partial class MainForm : Form
         // Select first node at startup
         SelectNode(leftTreeView.Nodes[0]);
 
-        _robot.RemoteCommands.CommandSent += TelnetKcl_CommandSent;
-        _robot.RemoteCommands.TpCoordinatesReceived += TelnetKcl_CoordReceived;
-        _robot.RemoteCommands.ErrorOccured += TelnetKcl_ErrorOccured;
-        _robot.RemoteCommands.MessageReceived += TelnetKcl_MessageReceived;
-        _robot.RemoteCommands.RawDataReceived += TelnetKcl_RawDataReceived;
+        _robot.Telnet.CommandSent += TelnetKcl_CommandSent;
+        _robot.Telnet.TpCoordinatesReceived += TelnetKcl_CoordReceived;
+        _robot.Telnet.ErrorOccured += TelnetKcl_ErrorOccured;
+        _robot.Telnet.MessageReceived += TelnetKcl_MessageReceived;
+        _robot.Telnet.RawDataReceived += TelnetKcl_RawDataReceived;
     }
 
-    private void TelnetKcl_RawDataReceived(object sender, UnderAutomation.Fanuc.RemoteCommands.RawDataReceivedEventArgs e)
+    private void TelnetKcl_RawDataReceived(object sender, UnderAutomation.Fanuc.Telnet.RawDataReceivedEventArgs e)
     {
-        Logger.Log($"Telnet KCL {nameof(_robot.RemoteCommands.RawDataReceived)}", e.Data);
+        Logger.Log($"Telnet KCL {nameof(_robot.Telnet.RawDataReceived)}", e.Data);
     }
 
-    private void TelnetKcl_MessageReceived(object sender, UnderAutomation.Fanuc.RemoteCommands.MessageReceivedEventArgs e)
+    private void TelnetKcl_MessageReceived(object sender, UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs e)
     {
-        Logger.Log($"Telnet KCL {nameof(_robot.RemoteCommands.MessageReceived)}", e.Message);
+        Logger.Log($"Telnet KCL {nameof(_robot.Telnet.MessageReceived)}", e.Message);
     }
 
-    private void TelnetKcl_ErrorOccured(object sender, UnderAutomation.Fanuc.RemoteCommands.KclClientErrorEventArgs e)
+    private void TelnetKcl_ErrorOccured(object sender, UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs e)
     {
-        Logger.Log($"Telnet KCL {nameof(_robot.RemoteCommands.ErrorOccured)}", e.Exception?.ToString());
+        Logger.Log($"Telnet KCL {nameof(_robot.Telnet.ErrorOccured)}", e.Exception?.ToString());
     }
 
-    private void TelnetKcl_CoordReceived(object sender, UnderAutomation.Fanuc.RemoteCommands.TpCoordinatesReceivedEventArgs e)
+    private void TelnetKcl_CoordReceived(object sender, UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs e)
     {
-        Logger.Log($"Telnet KCL {nameof(_robot.RemoteCommands.TpCoordinatesReceived)}", e.Coord.ToString());
+        Logger.Log($"Telnet KCL {nameof(_robot.Telnet.TpCoordinatesReceived)}", e.Coord.ToString());
     }
 
-    private void TelnetKcl_CommandSent(object sender, UnderAutomation.Fanuc.RemoteCommands.CommandSentEventArgs e)
+    private void TelnetKcl_CommandSent(object sender, UnderAutomation.Fanuc.Telnet.CommandSentEventArgs e)
     {
-        Logger.Log($"Telnet KCL {nameof(_robot.RemoteCommands.CommandSent)}", e.Command);
+        Logger.Log($"Telnet KCL {nameof(_robot.Telnet.CommandSent)}", e.Command);
     }
 
     private void AddNode(IUserControl control)

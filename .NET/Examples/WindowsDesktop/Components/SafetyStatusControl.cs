@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.MemoryAccess;
-using UnderAutomation.Fanuc.MemoryAccess.Diagnosis;
-using UnderAutomation.Fanuc.MemoryAccess.Internal;
+using UnderAutomation.Fanuc.Ftp;
+using UnderAutomation.Fanuc.Ftp.Diagnosis;
+using UnderAutomation.Fanuc.Ftp.Internal;
 
 public partial class SafetyStatusControl: UserControl, IUserControl
 {
@@ -15,14 +15,14 @@ public partial class SafetyStatusControl: UserControl, IUserControl
         Header.Initialize(
             "sftysig.dg",
             FanucFileReaders.SafetyStatusReader,
-            () => _robot.MemoryAccess.GetSafetyStatus(),
+            () => _robot.Ftp.GetSafetyStatus(),
             Show);
     }
 
     #region IUserControl
     public string Title => "Safety status";
 
-    public bool FeatureEnabled => _robot.MemoryAccess.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected;
 
     public void PeriodicUpdate() { }
 
