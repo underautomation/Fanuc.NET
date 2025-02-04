@@ -8,28 +8,23 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v1
     - uses: nuget/setup-nuget@v1
-    - name: Build Windows Desktop
-      run: |
-        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-        .\MSBuild.exe $Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\WindowsDesktop_VS2019.sln -p:Configuration=Release
-        rm $Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\obj -r -fo
     - name: zip libraries
       run: |
-        cd "$Env:GITHUB_WORKSPACE\.NET\Libraries\"
-        7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\FanucSDK.zip *
-    - name: zip full .NET\Examples
-      run: 7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\FanucSDK_Full.zip $Env:GITHUB_WORKSPACE\.NET\Examples $Env:GITHUB_WORKSPACE\.NET\Libraries
-    - name: zip desktop example
+        cd "$Env:GITHUB_WORKSPACE\Libraries\"
+        7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\UnderAutomation.Fanuc.zip *
+    - name: Build Windows Showcase Forms example
       run: |
-        cd "$Env:GITHUB_WORKSPACE\.NET\Examples\WindowsDesktop\bin\Release\"
-        7z a -tzip -mx=9 $Env:GITHUB_WORKSPACE\FanucSDK_DesktopExample.zip *
+        cd $Env:GITHUB_WORKSPACE\UnderAutomation.Fanuc.Showcase.Forms
+        dotnet publish -p:PublishProfile=FolderProfile
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "FanucSDK_Full.zip,FanucSDK_DesktopExample.zip,FanucSDK.zip"
+        artifacts: |
+          UnderAutomation.Fanuc.zip
+          **/publish/**/UnderAutomation.Fanuc.Showcase.*.exe"
         bodyFile: "whatsNew.md"
         token: ${{ secrets.GITHUB_TOKEN }}
