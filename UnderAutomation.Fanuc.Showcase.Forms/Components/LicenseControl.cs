@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Diagnostics;
+using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.License;
 
@@ -53,5 +54,19 @@ public partial class LicenseControl : UserControl, IUserControl
         Config.Current.Licensee = txtLicensee.Text;
         Config.Current.Key = txtKey.Text;
         Config.Save();
+    }
+
+    private void txtLicenseInfo_LinkClicked(object sender, LinkClickedEventArgs e)
+    {
+        try
+        {
+            var ps = new ProcessStartInfo(e.LinkText)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+        catch { }
     }
 }
