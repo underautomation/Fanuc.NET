@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SymotnFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SymotnFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CF_PARAMGP
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DbgErrlogVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DbgErrlogVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NUM_ERRORS
 		/// </summary>

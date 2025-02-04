@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CollectVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CollectVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MULTI_PROG
 		/// </summary>

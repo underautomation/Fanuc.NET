@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class IrcStatusFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public IrcStatusFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable ATTACH_FILES
 		/// </summary>

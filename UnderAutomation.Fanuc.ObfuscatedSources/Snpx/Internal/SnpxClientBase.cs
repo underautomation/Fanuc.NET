@@ -10,6 +10,37 @@ namespace Snpx.Internal {
 	public class SnpxClientBase {
 
 
+		protected void ConnectInternal(string ip, int port = 60008)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public void Disconnect()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public void ClearAlarms()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public void ClearAssignments()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public Assignment[] GetAssignments()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public string Ip { get; }
 
 		/// <summary>
@@ -144,36 +175,5 @@ namespace Snpx.Internal {
 
 
 		public bool Connected { get; }
-
-
-		protected void ConnectInternal(string ip, int port = 60008)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public void Disconnect()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public void ClearAlarms()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public void ClearAssignments()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public Assignment[] GetAssignments()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

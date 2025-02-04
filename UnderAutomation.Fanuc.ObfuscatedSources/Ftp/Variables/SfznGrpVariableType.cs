@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SfznGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public SfznGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MIN_OVRD
 		/// </summary>

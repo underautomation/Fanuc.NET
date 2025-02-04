@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpvwvarVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TpvwvarVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TPVIEW_ENB
 		/// </summary>

@@ -8,9 +8,6 @@ namespace Telnet {
 	public class DefaultResult : Result {
 
 
-		public string Data { get; protected set; }
-
-
 		protected override bool FromResult(string data)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -23,5 +20,14 @@ namespace Telnet {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		public DefaultResult()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public string Data { get; protected set; }
 	}
 }

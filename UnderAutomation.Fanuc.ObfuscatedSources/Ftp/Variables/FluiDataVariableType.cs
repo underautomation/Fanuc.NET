@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FluiDataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FluiDataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FUTURE1
 		/// </summary>

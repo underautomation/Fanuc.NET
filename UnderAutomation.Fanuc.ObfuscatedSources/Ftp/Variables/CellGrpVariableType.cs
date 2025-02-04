@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CellGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CellGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CELL_FRAME
 		/// </summary>

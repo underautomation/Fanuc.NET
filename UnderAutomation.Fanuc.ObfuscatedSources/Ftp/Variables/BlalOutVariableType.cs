@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class BlalOutVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public BlalOutVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DO_INDEX
 		/// </summary>

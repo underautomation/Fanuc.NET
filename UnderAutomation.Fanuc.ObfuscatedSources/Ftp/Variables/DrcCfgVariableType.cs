@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DrcCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DrcCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $HOST1
 		/// </summary>

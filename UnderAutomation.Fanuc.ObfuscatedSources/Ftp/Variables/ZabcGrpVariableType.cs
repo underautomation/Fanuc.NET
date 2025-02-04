@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ZabcGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ZabcGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ZABC_MODE
 		/// </summary>

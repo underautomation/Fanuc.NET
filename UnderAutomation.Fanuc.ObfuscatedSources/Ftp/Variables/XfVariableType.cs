@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class XfVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public XfVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $N
 		/// </summary>

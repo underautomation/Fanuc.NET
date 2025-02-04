@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpglConfVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TpglConfVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MOUNT
 		/// </summary>

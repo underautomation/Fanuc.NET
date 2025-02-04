@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SynosaveFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SynosaveFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $AAVM_GRP
 		/// </summary>

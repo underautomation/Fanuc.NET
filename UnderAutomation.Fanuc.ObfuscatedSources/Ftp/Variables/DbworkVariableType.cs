@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DbworkVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DbworkVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $INFO
 		/// </summary>

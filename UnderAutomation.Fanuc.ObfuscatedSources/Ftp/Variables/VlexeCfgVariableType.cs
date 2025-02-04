@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VlexeCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VlexeCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLED
 		/// </summary>

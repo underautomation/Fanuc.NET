@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ModaqCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ModaqCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ON_LINE
 		/// </summary>

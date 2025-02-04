@@ -11,6 +11,12 @@ namespace Snpx.Internal {
 		public const int DEFAULT_PORT = 60008;
 
 
+		public SnpxConnectParametersBase()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public int Port { get; set; }
 	}
 }

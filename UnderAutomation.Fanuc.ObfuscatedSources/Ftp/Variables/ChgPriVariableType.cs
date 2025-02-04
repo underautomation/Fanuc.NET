@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ChgPriVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ChgPriVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TASK_ID
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PulcoIdataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PulcoIdataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ADDRESS
 		/// </summary>

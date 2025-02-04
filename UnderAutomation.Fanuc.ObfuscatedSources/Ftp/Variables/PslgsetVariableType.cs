@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PslgsetVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PslgsetVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PS_SIZE
 		/// </summary>

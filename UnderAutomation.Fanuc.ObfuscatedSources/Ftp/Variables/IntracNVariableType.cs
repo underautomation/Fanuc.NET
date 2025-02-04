@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class IntracNVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public IntracNVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $INTRAC_NUM
 		/// </summary>

@@ -6,5 +6,11 @@
 namespace Telnet {
 
 	public class RunResult : DefaultResult {
+
+
+		public RunResult()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 	}
 }

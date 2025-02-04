@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PasswordVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PasswordVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TIME_OUT
 		/// </summary>

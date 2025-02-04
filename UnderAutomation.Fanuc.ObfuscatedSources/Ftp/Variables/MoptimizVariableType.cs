@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MoptimizVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MoptimizVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DATA_OUT
 		/// </summary>

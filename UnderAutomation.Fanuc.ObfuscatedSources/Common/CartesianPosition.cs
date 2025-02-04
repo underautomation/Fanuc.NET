@@ -9,6 +9,12 @@ namespace Common {
 	/// </summary>
 	public class CartesianPosition : XYZPosition {
 
+
+		public CartesianPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// W rotation in degrees
 		/// </summary>

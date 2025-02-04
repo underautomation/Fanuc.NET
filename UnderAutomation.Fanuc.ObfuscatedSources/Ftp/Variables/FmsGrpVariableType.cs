@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FmsGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FmsGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $REM_LIFE
 		/// </summary>

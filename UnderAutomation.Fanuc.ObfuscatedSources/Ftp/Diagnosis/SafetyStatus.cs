@@ -10,6 +10,12 @@ namespace Ftp.Diagnosis {
 	/// </summary>
 	public class SafetyStatus : IFanucContent {
 
+
+		public SafetyStatus()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// External emergency stop active
 		/// </summary>

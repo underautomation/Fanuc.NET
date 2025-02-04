@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CoMorgrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CoMorgrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FLEN
 		/// </summary>

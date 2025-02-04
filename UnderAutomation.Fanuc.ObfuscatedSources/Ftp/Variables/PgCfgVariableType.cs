@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PgCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PgCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SUBTASKNUM
 		/// </summary>

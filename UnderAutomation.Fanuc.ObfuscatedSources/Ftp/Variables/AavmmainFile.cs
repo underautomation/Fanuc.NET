@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AavmmainFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public AavmmainFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable I
 		/// </summary>

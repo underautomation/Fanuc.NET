@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class BinCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public BinCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENTRIES
 		/// </summary>

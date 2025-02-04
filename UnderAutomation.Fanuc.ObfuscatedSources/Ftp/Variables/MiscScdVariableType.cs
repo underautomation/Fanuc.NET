@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MiscScdVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MiscScdVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DSTB_MAX_A
 		/// </summary>

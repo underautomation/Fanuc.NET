@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PositionVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PositionVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $X
 		/// </summary>

@@ -10,6 +10,29 @@ namespace Common {
 	public class Configuration {
 
 		/// <summary>
+		/// Conventionnal string representation for Fanuc configuration, like : "F U T, 0, 0, 0" or "R, 0, 0, 0"
+		/// </summary>
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
+		/// </summary>
+		public void FromString(string value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public Configuration()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
 		/// Wrist configuration
 		/// </summary>
 		public WristFlip WristFlip { get; set; }
@@ -43,22 +66,5 @@ namespace Common {
 		/// Turn number of axis 3 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
 		/// </summary>
 		public int TurnAxis3 { get; set; }
-
-		/// <summary>
-		/// Conventionnal string representation for Fanuc configuration, like : "F U T, 0, 0, 0" or "R, 0, 0, 0"
-		/// </summary>
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
-
-		/// <summary>
-		/// Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
-		/// </summary>
-		public void FromString(string value)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
 	}
 }

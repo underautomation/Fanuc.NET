@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ZmposGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ZmposGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $M_POS_ENB
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class BackEditVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public BackEditVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PROGRAM
 		/// </summary>

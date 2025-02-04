@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UiUsrviewVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UiUsrviewVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MENU
 		/// </summary>

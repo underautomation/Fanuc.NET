@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class IoDefAsgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public IoDefAsgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $LOG_TYPE
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RefpsmskVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RefpsmskVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MAXREFPOSEN
 		/// </summary>

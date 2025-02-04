@@ -22,6 +22,15 @@ namespace License {
 		}
 
 		/// <summary>
+		/// A human description of the license
+		/// </summary>
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
 		/// The license key supplied by UnderAutomation (null for trial period)
 		/// </summary>
 		public string LicenseKey { get; }
@@ -75,14 +84,5 @@ namespace License {
 		/// The date your maintenance contract end and you no longer can use this license with newer versions.
 		/// </summary>
 		public DateTime? MaintenanceExpirationDate { get; }
-
-		/// <summary>
-		/// A human description of the license
-		/// </summary>
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

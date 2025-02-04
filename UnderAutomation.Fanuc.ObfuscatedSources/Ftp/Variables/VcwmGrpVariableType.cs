@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VcwmGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VcwmGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLED
 		/// </summary>

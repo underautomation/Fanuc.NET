@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SysframeFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SysframeFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CELL_FLOOR
 		/// </summary>

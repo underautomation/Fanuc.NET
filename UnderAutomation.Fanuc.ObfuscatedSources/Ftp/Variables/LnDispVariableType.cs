@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class LnDispVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public LnDispVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $HIDE_LINE_N
 		/// </summary>

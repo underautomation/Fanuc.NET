@@ -9,6 +9,12 @@ namespace Ftp.Internal {
 	/// </summary>
 	public class FtpConnectParametersBase {
 
+
+		public FtpConnectParametersBase()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// FTP user
 		/// </summary>

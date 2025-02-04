@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PgDefspdVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PgDefspdVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $AP_DEF_SPD
 		/// </summary>

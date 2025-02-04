@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VisGeCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VisGeCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MAX_IMG_SZ
 		/// </summary>

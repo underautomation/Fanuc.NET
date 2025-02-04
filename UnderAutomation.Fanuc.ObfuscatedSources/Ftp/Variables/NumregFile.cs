@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class NumregFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public NumregFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NUMREG
 		/// </summary>

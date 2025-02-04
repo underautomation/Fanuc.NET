@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SysfsacFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SysfsacFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FSAC_DEF_LV
 		/// </summary>

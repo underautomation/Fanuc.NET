@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class KlactionFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public KlactionFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable DATA_TYPE
 		/// </summary>

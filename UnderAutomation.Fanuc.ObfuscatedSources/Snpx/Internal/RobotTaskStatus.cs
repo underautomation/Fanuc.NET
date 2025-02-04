@@ -9,18 +9,6 @@ namespace Snpx.Internal {
 	public class RobotTaskStatus : IEquatable<RobotTaskStatus> {
 
 
-		public string ProgramName { get; set; }
-
-
-		public short LineNumber { get; set; }
-
-
-		public RobotTaskState State { get; set; }
-
-
-		public string Caller { get; set; }
-
-
 		public bool Equals(RobotTaskStatus other)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -33,5 +21,23 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		public RobotTaskStatus()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public string ProgramName { get; set; }
+
+
+		public short LineNumber { get; set; }
+
+
+		public RobotTaskState State { get; set; }
+
+
+		public string Caller { get; set; }
 	}
 }

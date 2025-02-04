@@ -10,6 +10,12 @@ namespace Ftp.Diagnosis {
 	/// </summary>
 	public class SummaryDiagnosis : IFanucContent {
 
+
+		public SummaryDiagnosis()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// File name : summary.dg
 		/// </summary>

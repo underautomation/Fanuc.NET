@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TvOutputVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TvOutputVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SELECTED
 		/// </summary>

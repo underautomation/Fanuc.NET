@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TraceChnlVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TraceChnlVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ITEM_NUM
 		/// </summary>

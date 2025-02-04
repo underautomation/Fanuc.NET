@@ -9,9 +9,6 @@ namespace Ftp.Diagnosis {
 	public class CurrentPositionReader : SectionParser<CurrentPosition> {
 
 
-		public override string SectionStart => default;
-
-
 		public override void AfterParse()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -22,5 +19,14 @@ namespace Ftp.Diagnosis {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public CurrentPositionReader()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public override string SectionStart => default;
 	}
 }

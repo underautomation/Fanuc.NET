@@ -11,6 +11,12 @@ namespace Telnet {
 		public string Message;
 
 
+		public MessageReceivedEventArgs()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public bool IsReset { get; }
 	}
 }

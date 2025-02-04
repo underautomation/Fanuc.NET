@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AsbnCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AsbnCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CNV_JNT_POS
 		/// </summary>

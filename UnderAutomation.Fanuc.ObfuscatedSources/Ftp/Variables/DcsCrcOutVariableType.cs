@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DcsCrcOutVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DcsCrcOutVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $START_GRP
 		/// </summary>

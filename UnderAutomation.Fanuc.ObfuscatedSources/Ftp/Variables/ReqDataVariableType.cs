@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ReqDataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ReqDataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ERR_TYPE
 		/// </summary>

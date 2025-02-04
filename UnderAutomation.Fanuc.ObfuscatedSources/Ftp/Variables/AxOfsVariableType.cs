@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AxOfsVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AxOfsVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $X
 		/// </summary>

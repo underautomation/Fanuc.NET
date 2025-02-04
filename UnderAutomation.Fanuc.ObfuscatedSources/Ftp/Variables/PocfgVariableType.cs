@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PocfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PocfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PODEBUG
 		/// </summary>

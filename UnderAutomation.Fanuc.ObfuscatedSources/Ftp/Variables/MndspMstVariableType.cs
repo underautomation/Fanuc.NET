@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MndspMstVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MndspMstVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DISP_ENABLE
 		/// </summary>

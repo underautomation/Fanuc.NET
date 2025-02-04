@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class JcrGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public JcrGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $JOG_WRSTJNT
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SmtpCtrlVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public SmtpCtrlVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLE
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DeflogicVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DeflogicVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FUNC_TITLE
 		/// </summary>

@@ -8,6 +8,12 @@ namespace Snpx.Internal {
 	public class ShortRequestPacket : ShortPacketBase, IRequestPacket, IPacket {
 
 
+		public ShortRequestPacket()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public ushort Index { get; set; }
 
 
@@ -18,11 +24,5 @@ namespace Snpx.Internal {
 
 
 		public override byte[] ActualPayload => default;
-
-
-		public ShortRequestPacket()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
 	}
 }

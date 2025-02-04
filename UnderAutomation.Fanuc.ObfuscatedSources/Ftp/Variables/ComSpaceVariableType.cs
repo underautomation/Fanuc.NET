@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ComSpaceVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ComSpaceVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $USE_MLT_CTN
 		/// </summary>

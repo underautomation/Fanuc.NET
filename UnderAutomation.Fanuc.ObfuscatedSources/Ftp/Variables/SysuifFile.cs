@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SysuifFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SysuifFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $UI_CONFIG
 		/// </summary>

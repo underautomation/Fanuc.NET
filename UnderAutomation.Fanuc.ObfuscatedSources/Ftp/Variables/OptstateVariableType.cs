@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class OptstateVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public OptstateVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $STATE
 		/// </summary>

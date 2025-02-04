@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FileBackVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FileBackVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FILE_NAME
 		/// </summary>

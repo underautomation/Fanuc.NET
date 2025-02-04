@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MaxPldCalVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MaxPldCalVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $AA
 		/// </summary>

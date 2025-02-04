@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class GpStatusVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public GpStatusVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $IN_USE
 		/// </summary>

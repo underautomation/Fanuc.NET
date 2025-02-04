@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FileconfigVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FileconfigVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DBGLVL
 		/// </summary>

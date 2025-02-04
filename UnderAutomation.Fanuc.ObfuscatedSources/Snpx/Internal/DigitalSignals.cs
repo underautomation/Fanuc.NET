@@ -9,15 +9,6 @@ namespace Snpx.Internal {
 	public class DigitalSignals : SnpxElements<bool, int> {
 
 
-		public SegmentSelector SegmentSelector { get; }
-
-
-		public SegmentOffset SegmentOffset { get; }
-
-
-		public SegmentName SegmentName { get; }
-
-
 		public override bool Read(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -42,5 +33,14 @@ namespace Snpx.Internal {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public SegmentSelector SegmentSelector { get; }
+
+
+		public SegmentOffset SegmentOffset { get; }
+
+
+		public SegmentName SegmentName { get; }
 	}
 }

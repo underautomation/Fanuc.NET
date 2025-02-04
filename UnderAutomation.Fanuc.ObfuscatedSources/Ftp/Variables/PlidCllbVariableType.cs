@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PlidCllbVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PlidCllbVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $BARECD_DONE
 		/// </summary>

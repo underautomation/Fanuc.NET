@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ArmloadPVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ArmloadPVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ARMLOAD_P
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UprVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UprVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MOTYPE
 		/// </summary>

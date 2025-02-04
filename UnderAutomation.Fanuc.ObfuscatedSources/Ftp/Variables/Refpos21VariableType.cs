@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class Refpos21VariableType : GenericVariableType, IGenericVariableType {
 
+
+		public Refpos21VariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $COMMENT
 		/// </summary>

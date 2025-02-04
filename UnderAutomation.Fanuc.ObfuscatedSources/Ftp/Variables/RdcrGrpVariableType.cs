@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RdcrGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RdcrGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $RMAX_TORQUE
 		/// </summary>

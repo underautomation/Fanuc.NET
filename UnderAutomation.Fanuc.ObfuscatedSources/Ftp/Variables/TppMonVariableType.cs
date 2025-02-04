@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TppMonVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TppMonVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GLOBAL_MT
 		/// </summary>

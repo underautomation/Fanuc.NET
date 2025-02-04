@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TscfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TscfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GRP_MASK
 		/// </summary>

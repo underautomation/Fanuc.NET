@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DiagGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DiagGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $VAL_SET
 		/// </summary>

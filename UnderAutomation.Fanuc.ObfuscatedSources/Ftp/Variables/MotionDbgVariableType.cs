@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MotionDbgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MotionDbgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $OUTPUT
 		/// </summary>

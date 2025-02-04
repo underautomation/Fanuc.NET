@@ -13,5 +13,11 @@ namespace Telnet {
 		/// Gets the raw data received.
 		/// </summary>
 		public string Data;
+
+
+		public RawDataReceivedEventArgs()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 	}
 }

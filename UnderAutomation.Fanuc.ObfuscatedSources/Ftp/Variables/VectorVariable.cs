@@ -8,6 +8,19 @@ namespace Ftp.Variables {
 	public class VectorVariable {
 
 
+		public static VectorVariable Parse(string value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public VectorVariable()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public double X { get; set; }
 
 
@@ -15,12 +28,5 @@ namespace Ftp.Variables {
 
 
 		public double Z { get; set; }
-
-
-		public static VectorVariable Parse(string value)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

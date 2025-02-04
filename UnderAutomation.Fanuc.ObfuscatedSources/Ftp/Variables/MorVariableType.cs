@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MorVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MorVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $BRK_STATUS
 		/// </summary>

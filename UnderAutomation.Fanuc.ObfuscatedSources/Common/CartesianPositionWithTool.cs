@@ -9,6 +9,12 @@ namespace Common {
 	/// </summary>
 	public class CartesianPositionWithTool : CartesianPosition {
 
+
+		public CartesianPositionWithTool()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Tool ID
 		/// </summary>

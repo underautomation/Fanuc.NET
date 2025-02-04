@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpsnapFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public TpsnapFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable DAY
 		/// </summary>

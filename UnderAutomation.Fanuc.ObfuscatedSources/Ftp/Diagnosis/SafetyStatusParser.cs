@@ -10,9 +10,6 @@ namespace Ftp.Diagnosis {
 	public class SafetyStatusParser : SectionParser<SafetyStatus> {
 
 
-		public override string SectionStart => default;
-
-
 		public void ParseLine(string line, string start, Action<bool> setValue)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -23,5 +20,14 @@ namespace Ftp.Diagnosis {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public SafetyStatusParser()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public override string SectionStart => default;
 	}
 }

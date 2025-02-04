@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MemoMemoVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MemoMemoVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TPE_AREA
 		/// </summary>

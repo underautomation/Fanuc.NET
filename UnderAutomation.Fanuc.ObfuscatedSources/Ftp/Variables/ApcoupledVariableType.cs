@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ApcoupledVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ApcoupledVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $APP_PROCES0
 		/// </summary>

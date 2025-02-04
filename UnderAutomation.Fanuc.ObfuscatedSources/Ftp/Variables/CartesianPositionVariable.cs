@@ -9,13 +9,19 @@ namespace Ftp.Variables {
 	public class CartesianPositionVariable : CartesianPosition {
 
 
-		public int Group { get; set; }
-
-
 		public static CartesianPositionVariable Parse(string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		public CartesianPositionVariable()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public int Group { get; set; }
 	}
 }

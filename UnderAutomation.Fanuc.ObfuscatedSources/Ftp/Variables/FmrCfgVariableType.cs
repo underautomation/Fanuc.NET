@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FmrCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FmrCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TROV_MAX
 		/// </summary>

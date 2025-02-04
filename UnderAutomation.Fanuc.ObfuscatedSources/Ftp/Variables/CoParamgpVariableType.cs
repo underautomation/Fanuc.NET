@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CoParamgpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CoParamgpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $OPT_TIME
 		/// </summary>

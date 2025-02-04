@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SnpxAsgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public SnpxAsgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ADDRESS
 		/// </summary>

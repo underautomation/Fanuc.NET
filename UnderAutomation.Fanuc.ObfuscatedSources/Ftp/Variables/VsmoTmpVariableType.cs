@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VsmoTmpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VsmoTmpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SNAP_STAT
 		/// </summary>

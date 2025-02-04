@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TvConfigVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TvConfigVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DBGLVL
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UsrEvCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UsrEvCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLE
 		/// </summary>

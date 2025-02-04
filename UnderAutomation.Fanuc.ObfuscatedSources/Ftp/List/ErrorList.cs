@@ -8,6 +8,12 @@ namespace Ftp.List {
 
 	public class ErrorList : IFanucContent {
 
+
+		public ErrorList()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// File name
 		/// </summary>

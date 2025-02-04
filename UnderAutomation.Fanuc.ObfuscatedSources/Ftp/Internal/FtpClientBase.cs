@@ -14,32 +14,12 @@ namespace Ftp.Internal {
 	public abstract class FtpClientBase {
 
 		/// <summary>
-		/// Connect robot IP address or host name
-		/// </summary>
-		public string IP { get; }
-
-		/// <summary>
-		/// Indicates that FTP connection is active
-		/// </summary>
-		public bool Connected { get; }
-
-		/// <summary>
 		/// Disconnects from FTP server
 		/// </summary>
 		public void Disconnect()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
-
-		/// <summary>
-		/// Contains methods to manipulate files and folders on the controller (upload, download, delete, ...)
-		/// </summary>
-		public FtpDirectFileHandling DirectFileHandling { get; }
-
-		/// <summary>
-		/// A list of method to read specific files
-		/// </summary>
-		public FtpKnownVariableFiles KnownVariableFiles { get; }
 
 		/// <summary>
 		/// Get controller status (position, safety, ios, ...)
@@ -112,5 +92,25 @@ namespace Ftp.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+		/// <summary>
+		/// Connect robot IP address or host name
+		/// </summary>
+		public string IP { get; }
+
+		/// <summary>
+		/// Indicates that FTP connection is active
+		/// </summary>
+		public bool Connected { get; }
+
+		/// <summary>
+		/// Contains methods to manipulate files and folders on the controller (upload, download, delete, ...)
+		/// </summary>
+		public FtpDirectFileHandling DirectFileHandling { get; }
+
+		/// <summary>
+		/// A list of method to read specific files
+		/// </summary>
+		public FtpKnownVariableFiles KnownVariableFiles { get; }
 	}
 }

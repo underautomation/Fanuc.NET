@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TcolLineVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TcolLineVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $LINE
 		/// </summary>

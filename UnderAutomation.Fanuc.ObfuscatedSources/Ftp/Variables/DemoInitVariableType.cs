@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DemoInitVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DemoInitVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DEMO_ENB
 		/// </summary>

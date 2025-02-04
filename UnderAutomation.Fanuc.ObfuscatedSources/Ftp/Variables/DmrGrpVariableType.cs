@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DmrGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DmrGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MASTER_DONE
 		/// </summary>

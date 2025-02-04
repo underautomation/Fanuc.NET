@@ -8,6 +8,12 @@ namespace Snpx.Internal {
 	public abstract class ExtendedPacketBase : PacketBase {
 
 
+		public ExtendedPacketBase() : base(default)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public override byte PacketNumber { get; set; }
 
 
@@ -24,11 +30,5 @@ namespace Snpx.Internal {
 
 
 		public override byte[] ActualPayload => default;
-
-
-		public ExtendedPacketBase() : base(default)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
 	}
 }

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PfPrefVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PfPrefVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GRIDLINES
 		/// </summary>

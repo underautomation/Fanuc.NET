@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DmswCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DmswCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $KEYIMAGE
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RcmcfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RcmcfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $RCM_ENABLE
 		/// </summary>

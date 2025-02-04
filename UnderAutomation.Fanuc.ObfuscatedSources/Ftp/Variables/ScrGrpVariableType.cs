@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ScrGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ScrGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ARM_TYPE
 		/// </summary>

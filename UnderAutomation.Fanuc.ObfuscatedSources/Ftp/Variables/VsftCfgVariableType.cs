@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VsftCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VsftCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $VISION_TYPE
 		/// </summary>

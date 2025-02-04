@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FluiCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FluiCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DBGLVL
 		/// </summary>

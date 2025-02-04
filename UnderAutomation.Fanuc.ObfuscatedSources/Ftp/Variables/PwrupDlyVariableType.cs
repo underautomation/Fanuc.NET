@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PwrupDlyVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PwrupDlyVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DELAY_TIME
 		/// </summary>

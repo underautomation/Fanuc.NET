@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CondetDataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CondetDataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $STYLE
 		/// </summary>

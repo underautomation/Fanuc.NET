@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class StopVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public StopVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TICK
 		/// </summary>

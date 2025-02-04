@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SscbkVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public SscbkVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FROMMX
 		/// </summary>

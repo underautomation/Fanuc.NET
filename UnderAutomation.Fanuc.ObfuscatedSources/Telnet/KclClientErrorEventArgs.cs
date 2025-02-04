@@ -9,5 +9,11 @@ namespace Telnet {
 
 
 		public Exception Exception;
+
+
+		public KclClientErrorEventArgs()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 	}
 }

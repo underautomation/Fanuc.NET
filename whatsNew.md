@@ -1,1 +1,2 @@
-Update project to new structure
+- Add support for .NET9
+- Remove support for .NET 7

@@ -10,6 +10,12 @@ namespace Common {
 	/// </summary>
 	public class TelnetConnectParameters : TelnetConnectParametersBase {
 
+
+		public TelnetConnectParameters()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Should use this service
 		/// </summary>

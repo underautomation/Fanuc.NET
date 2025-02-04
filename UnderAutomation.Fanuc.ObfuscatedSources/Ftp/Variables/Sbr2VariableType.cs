@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class Sbr2VariableType : GenericVariableType, IGenericVariableType {
 
+
+		public Sbr2VariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PARAM
 		/// </summary>

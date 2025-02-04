@@ -8,6 +8,19 @@ namespace Ftp.Variables {
 	public class GenericField : GenericValue, IGenericVariableType {
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public GenericField()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public virtual string Access { get; }
 
 
@@ -24,12 +37,5 @@ namespace Ftp.Variables {
 
 
 		public int Dimension2 { get; }
-
-
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

@@ -8,6 +8,12 @@ namespace Ftp.Variables {
 	public abstract class VariableFile {
 
 
+		protected VariableFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public string FileName { get; protected set; }
 	}
 }

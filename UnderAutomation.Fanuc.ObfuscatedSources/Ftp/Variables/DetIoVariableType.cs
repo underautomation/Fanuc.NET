@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DetIoVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DetIoVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $IO_TYPE
 		/// </summary>

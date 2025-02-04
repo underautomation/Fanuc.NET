@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UsrEvWrkVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UsrEvWrkVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $WORK_NAME
 		/// </summary>

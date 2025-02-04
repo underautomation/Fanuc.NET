@@ -8,15 +8,15 @@ namespace Snpx.Internal {
 	public class ExtendedRequestPacket : ExtendedPacketBase, IRequestPacket, IPacket {
 
 
-		public ushort Index { get; set; }
-
-
-		public ushort Count { get; set; }
-
-
 		public ExtendedRequestPacket()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public ushort Index { get; set; }
+
+
+		public ushort Count { get; set; }
 	}
 }

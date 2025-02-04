@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class EncStatVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public EncStatVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENC_COUNT
 		/// </summary>

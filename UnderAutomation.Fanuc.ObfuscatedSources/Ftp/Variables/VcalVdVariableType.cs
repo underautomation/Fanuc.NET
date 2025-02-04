@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VcalVdVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VcalVdVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable VPROG_NAME
 		/// </summary>

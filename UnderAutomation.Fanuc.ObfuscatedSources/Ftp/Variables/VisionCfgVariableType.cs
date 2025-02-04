@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VisionCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VisionCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DATA_PATH
 		/// </summary>

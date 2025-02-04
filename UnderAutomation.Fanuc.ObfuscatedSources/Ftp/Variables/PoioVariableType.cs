@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PoioVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PoioVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SLEQ_NUM
 		/// </summary>

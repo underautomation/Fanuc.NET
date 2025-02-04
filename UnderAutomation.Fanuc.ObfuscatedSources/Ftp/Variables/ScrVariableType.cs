@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ScrVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ScrVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ITP_TIME
 		/// </summary>

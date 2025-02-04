@@ -10,6 +10,12 @@ namespace Ftp.Diagnosis {
 	/// </summary>
 	public class CurrentPosition : IFanucContent {
 
+
+		public CurrentPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Position of each robots handled by this controller
 		/// </summary>

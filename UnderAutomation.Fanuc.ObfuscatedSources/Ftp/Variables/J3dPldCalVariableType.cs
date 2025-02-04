@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class J3dPldCalVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public J3dPldCalVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PDCK_RB_TYP
 		/// </summary>

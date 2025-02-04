@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RspacegVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RspacegVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $COM_SPACE
 		/// </summary>

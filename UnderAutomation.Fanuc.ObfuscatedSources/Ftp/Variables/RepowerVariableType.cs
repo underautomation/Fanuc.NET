@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RepowerVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RepowerVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FLAG
 		/// </summary>

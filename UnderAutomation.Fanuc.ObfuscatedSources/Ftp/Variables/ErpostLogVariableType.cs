@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ErpostLogVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ErpostLogVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $LOG_ENB
 		/// </summary>

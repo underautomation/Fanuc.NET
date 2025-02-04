@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SyshostFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SyshostFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $BIN_CFG
 		/// </summary>

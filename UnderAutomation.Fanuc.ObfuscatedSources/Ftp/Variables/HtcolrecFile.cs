@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class HtcolrecFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public HtcolrecFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable COL_REC
 		/// </summary>

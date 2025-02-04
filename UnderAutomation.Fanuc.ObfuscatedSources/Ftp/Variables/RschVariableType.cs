@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RschVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RschVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $OLD_SPEC_SW
 		/// </summary>

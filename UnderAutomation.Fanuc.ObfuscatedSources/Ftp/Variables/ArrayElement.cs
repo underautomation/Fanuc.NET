@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ArrayElement : GenericField, IGenericVariableType {
 
+
+		public ArrayElement()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Parent Access
 		/// </summary>

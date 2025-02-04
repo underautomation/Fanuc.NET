@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PrgnsGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PrgnsGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ELEM
 		/// </summary>

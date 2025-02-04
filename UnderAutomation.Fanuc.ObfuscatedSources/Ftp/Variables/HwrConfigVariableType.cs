@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class HwrConfigVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public HwrConfigVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MAINCPU
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpThrTableVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TpThrTableVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $THR_ENB
 		/// </summary>

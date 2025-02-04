@@ -9,5 +9,11 @@ namespace Telnet {
 
 
 		public TpCoordinates Coord;
+
+
+		public TpCoordinatesReceivedEventArgs()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 	}
 }

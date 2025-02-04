@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ZipCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ZipCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DBGLVL
 		/// </summary>

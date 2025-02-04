@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FssbCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FssbCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FSSB_LINE
 		/// </summary>

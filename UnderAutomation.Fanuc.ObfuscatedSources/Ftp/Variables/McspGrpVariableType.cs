@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class McspGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public McspGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $JOGLIM_OVR
 		/// </summary>

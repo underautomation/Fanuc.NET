@@ -8,6 +8,12 @@ namespace Common {
 	public class ExtendedCartesianPosition : CartesianPosition {
 
 
+		public ExtendedCartesianPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public double E1 { get; set; }
 
 

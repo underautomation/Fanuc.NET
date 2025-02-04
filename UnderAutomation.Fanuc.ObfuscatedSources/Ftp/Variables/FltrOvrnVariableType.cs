@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FltrOvrnVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FltrOvrnVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $LIMIT_TICK
 		/// </summary>

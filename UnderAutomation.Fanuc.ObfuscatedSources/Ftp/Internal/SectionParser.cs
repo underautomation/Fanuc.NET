@@ -8,9 +8,6 @@ namespace Ftp.Internal {
 	public abstract class SectionParser {
 
 
-		public virtual string SectionStart { get; }
-
-
 		public virtual bool CanHandleSection(string line)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -21,12 +18,21 @@ namespace Ftp.Internal {
 		public abstract void ParseLine(string line);
 
 
-		public virtual bool EndOfFile { get; set; }
-
-
 		public virtual void AfterParse()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		protected SectionParser()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public virtual string SectionStart { get; }
+
+
+		public virtual bool EndOfFile { get; set; }
 	}
 }

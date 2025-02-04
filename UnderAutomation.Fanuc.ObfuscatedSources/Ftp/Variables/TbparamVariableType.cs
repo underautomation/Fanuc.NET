@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TbparamVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TbparamVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MR_MAX_TRQ
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Common {
 	/// </summary>
 	public class CartesianPositionWithUserFrame : CartesianPositionWithTool {
 
+
+		public CartesianPositionWithUserFrame()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Frame ID in the controller
 		/// </summary>

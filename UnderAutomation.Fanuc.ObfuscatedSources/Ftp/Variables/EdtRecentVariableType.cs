@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class EdtRecentVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public EdtRecentVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PROG_NAME
 		/// </summary>

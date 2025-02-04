@@ -9,9 +9,6 @@ namespace Snpx.Internal {
 	public class CurrentTaskStatus : SnpxAssignableElements<RobotTaskStatus, int> {
 
 
-		protected override int AssignmentSize => default;
-
-
 		protected override string GetAssignmentName(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -31,5 +28,8 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		protected override int AssignmentSize => default;
 	}
 }

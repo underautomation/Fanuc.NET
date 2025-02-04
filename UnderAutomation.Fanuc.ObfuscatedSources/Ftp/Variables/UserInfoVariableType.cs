@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UserInfoVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UserInfoVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $USR_PROG
 		/// </summary>

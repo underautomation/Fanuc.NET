@@ -8,6 +8,12 @@ namespace Telnet.Internal {
 	public class TelnetConnectParametersBase {
 
 
+		public TelnetConnectParametersBase()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public string TelnetKclPassword { get; set; }
 	}
 }

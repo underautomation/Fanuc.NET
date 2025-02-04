@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SyspassFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SyspassFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PASSNAME
 		/// </summary>

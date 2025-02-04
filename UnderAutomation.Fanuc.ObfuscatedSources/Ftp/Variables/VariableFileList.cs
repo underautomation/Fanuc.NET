@@ -8,7 +8,19 @@ using System.Collections;
 
 namespace Ftp.Variables {
 
-	public class VariableFileList : Collection<GenericVariableFile>, IList<GenericVariableFile>, ICollection<GenericVariableFile>, IEnumerable<GenericVariableFile>, IList, ICollection, IEnumerable, IGenericVariableType {
+	public class VariableFileList : Collection<GenericVariableFile>, IList<GenericVariableFile>, ICollection<GenericVariableFile>, IList, ICollection, IReadOnlyList<GenericVariableFile>, IReadOnlyCollection<GenericVariableFile>, IEnumerable<GenericVariableFile>, IEnumerable, IGenericVariableType {
+
+
+		protected override void InsertItem(int index, GenericVariableFile item)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public VariableFileList()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 
 		/// <summary>
 		/// Name of the structure
@@ -19,12 +31,6 @@ namespace Ftp.Variables {
 		/// Parent of this structure
 		/// </summary>
 		public IGenericVariableType Parent { get; set; }
-
-
-		protected override void InsertItem(int index, GenericVariableFile item)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
 
 		IGenericVariableType[] IGenericVariableType.Fields { get; }
 	}

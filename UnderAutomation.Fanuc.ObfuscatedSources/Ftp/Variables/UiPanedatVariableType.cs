@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UiPanedatVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UiPanedatVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PAGEURL
 		/// </summary>

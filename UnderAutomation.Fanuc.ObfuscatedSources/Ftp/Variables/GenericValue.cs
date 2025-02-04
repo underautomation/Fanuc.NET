@@ -8,6 +8,19 @@ namespace Ftp.Variables {
 	public class GenericValue : IGenericVariableType {
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public GenericValue()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public GenericValue Parent { get; }
 
 
@@ -32,13 +45,6 @@ namespace Ftp.Variables {
 
 
 		public string FullName { get; }
-
-
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 
 		IGenericVariableType IGenericVariableType.Parent => Parent;
 

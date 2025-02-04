@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class McspVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public McspVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CLDPOP_ENB
 		/// </summary>

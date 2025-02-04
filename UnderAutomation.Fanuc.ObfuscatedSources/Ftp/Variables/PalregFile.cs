@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PalregFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public PalregFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PALREGNUM
 		/// </summary>

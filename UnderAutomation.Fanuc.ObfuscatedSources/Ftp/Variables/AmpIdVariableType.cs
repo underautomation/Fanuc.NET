@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AmpIdVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AmpIdVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ID_INF
 		/// </summary>

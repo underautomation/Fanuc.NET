@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SycldintFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SycldintFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ERSEVERITY
 		/// </summary>

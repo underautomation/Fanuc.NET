@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpCurscrnVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TpCurscrnVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NEST_TYPE
 		/// </summary>

@@ -8,6 +8,12 @@ namespace Snpx.Internal {
 	public class CurrentPositionRequest {
 
 
+		public CurrentPositionRequest()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public int Group { get; set; }
 
 

@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ComsetFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public ComsetFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable SEARCHCASE
 		/// </summary>

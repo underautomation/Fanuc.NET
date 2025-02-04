@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VtcpsetVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VtcpsetVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable MOVE_DIST_XY
 		/// </summary>

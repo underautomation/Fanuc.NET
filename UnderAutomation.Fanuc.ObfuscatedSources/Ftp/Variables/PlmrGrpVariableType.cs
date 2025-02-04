@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PlmrGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PlmrGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PYLD_ENB
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class RspacesrVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public RspacesrVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SR_ENB_TYP
 		/// </summary>

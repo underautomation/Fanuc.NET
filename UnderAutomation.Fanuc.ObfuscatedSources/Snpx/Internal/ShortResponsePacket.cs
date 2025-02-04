@@ -8,12 +8,12 @@ namespace Snpx.Internal {
 	public class ShortResponsePacket : ShortPacketBase, IResponsePacket, IPacket {
 
 
-		public override byte[] Payload { get; set; }
-
-
 		public ShortResponsePacket(byte[] buffer)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public override byte[] Payload { get; set; }
 	}
 }

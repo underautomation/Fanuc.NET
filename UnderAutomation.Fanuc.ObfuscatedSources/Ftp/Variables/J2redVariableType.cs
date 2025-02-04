@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class J2redVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public J2redVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $EXD_RTQ
 		/// </summary>

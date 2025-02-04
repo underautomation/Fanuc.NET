@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AioCnvVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AioCnvVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $RACK
 		/// </summary>

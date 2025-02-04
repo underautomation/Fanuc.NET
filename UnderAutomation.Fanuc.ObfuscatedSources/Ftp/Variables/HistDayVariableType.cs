@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class HistDayVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public HistDayVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DATE
 		/// </summary>

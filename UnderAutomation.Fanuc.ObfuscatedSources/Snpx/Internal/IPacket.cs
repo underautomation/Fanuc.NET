@@ -8,6 +8,13 @@ namespace Snpx.Internal {
 	public interface IPacket {
 
 
+		byte[] GetBytes()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		MessageType MessageType { get; }
 
 
@@ -15,12 +22,5 @@ namespace Snpx.Internal {
 
 
 		byte[] ExtraPayload { get; }
-
-
-		byte[] GetBytes()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AdjRtrqVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AdjRtrqVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $COR_TRQ
 		/// </summary>

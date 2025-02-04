@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TutorialVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TutorialVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CUSTOM
 		/// </summary>

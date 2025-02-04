@@ -10,9 +10,6 @@ namespace Snpx.Internal {
 	public class PositionRegisters : SnpxWritableAssignableElements<Position, int> {
 
 
-		protected override int AssignmentSize => default;
-
-
 		protected override string GetAssignmentName(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -38,5 +35,8 @@ namespace Snpx.Internal {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		protected override int AssignmentSize => default;
 	}
 }

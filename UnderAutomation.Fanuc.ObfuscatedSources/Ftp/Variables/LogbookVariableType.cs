@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class LogbookVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public LogbookVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NUM_ER_ITM
 		/// </summary>

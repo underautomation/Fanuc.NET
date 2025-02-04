@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ZdtActvsptVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ZdtActvsptVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ACTVSPT_ENB
 		/// </summary>

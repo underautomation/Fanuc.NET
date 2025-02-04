@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class EnetmodeVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public EnetmodeVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FULL_DUPLEX
 		/// </summary>

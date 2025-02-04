@@ -8,6 +8,23 @@ namespace Telnet {
 	public class TaskInformationResult : DefaultResult {
 
 		/// <summary>
+		/// Parses the result data and populates the properties of the class.
+		/// </summary>
+		/// <param name="data">The result data as a string.</param>
+		/// <returns>True if parsing is successful; otherwise, false.</returns>
+		protected override bool FromResult(string data)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public TaskInformationResult()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
 		/// Gets the name of the task.
 		/// </summary>
 		public string TaskName { get; }
@@ -56,16 +73,5 @@ namespace Telnet {
 		/// Gets a value indicating whether the task is a system task.
 		/// </summary>
 		public bool SystemTask { get; }
-
-		/// <summary>
-		/// Parses the result data and populates the properties of the class.
-		/// </summary>
-		/// <param name="data">The result data as a string.</param>
-		/// <returns>True if parsing is successful; otherwise, false.</returns>
-		protected override bool FromResult(string data)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

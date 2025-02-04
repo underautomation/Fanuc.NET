@@ -12,55 +12,12 @@ namespace Telnet.Internal {
 	public abstract class TelnetClientBase {
 
 		/// <summary>
-		/// Connect robot IP address or host name
-		/// </summary>
-		public string IP { get; }
-
-
-		public TpCoordinates TpCoordinates { get; }
-
-		/// <summary>
-		/// Is Telnet client connected
-		/// </summary>
-		public bool Connected { get; }
-
-		/// <summary>
 		/// Disconnect Telnet client from robot
 		/// </summary>
 		public void Disconnect()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
-
-		/// <summary>
-		/// Occurs when raw data is received.
-		/// </summary>
-		public event EventHandler<RawDataReceivedEventArgs> RawDataReceived;
-
-		/// <summary>
-		/// Occurs when TP coordinates are received.
-		/// </summary>
-		public event EventHandler<TpCoordinatesReceivedEventArgs> TpCoordinatesReceived;
-
-		/// <summary>
-		/// Occurs when a message is received.
-		/// </summary>
-		public event EventHandler<MessageReceivedEventArgs> MessageReceived;
-
-		/// <summary>
-		/// Occurs when an error occurs in the KCL client.
-		/// </summary>
-		public event EventHandler<KclClientErrorEventArgs> ErrorOccured;
-
-		/// <summary>
-		/// Occurs when a command is sent.
-		/// </summary>
-		public event EventHandler<CommandSentEventArgs> CommandSent;
-
-		/// <summary>
-		/// Occurs when a KCL command is received.
-		/// </summary>
-		public event EventHandler<KclCommandReceived> CommandReceived;
 
 		/// <summary>
 		/// Aborts the specified running or paused task. If prog_ name is not specified, the default program Is used.
@@ -319,5 +276,54 @@ namespace Telnet.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		protected TelnetClientBase()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Connect robot IP address or host name
+		/// </summary>
+		public string IP { get; }
+
+
+		public TpCoordinates TpCoordinates { get; }
+
+		/// <summary>
+		/// Is Telnet client connected
+		/// </summary>
+		public bool Connected { get; }
+
+		/// <summary>
+		/// Occurs when raw data is received.
+		/// </summary>
+		public event EventHandler<RawDataReceivedEventArgs> RawDataReceived;
+
+		/// <summary>
+		/// Occurs when TP coordinates are received.
+		/// </summary>
+		public event EventHandler<TpCoordinatesReceivedEventArgs> TpCoordinatesReceived;
+
+		/// <summary>
+		/// Occurs when a message is received.
+		/// </summary>
+		public event EventHandler<MessageReceivedEventArgs> MessageReceived;
+
+		/// <summary>
+		/// Occurs when an error occurs in the KCL client.
+		/// </summary>
+		public event EventHandler<KclClientErrorEventArgs> ErrorOccured;
+
+		/// <summary>
+		/// Occurs when a command is sent.
+		/// </summary>
+		public event EventHandler<CommandSentEventArgs> CommandSent;
+
+		/// <summary>
+		/// Occurs when a KCL command is received.
+		/// </summary>
+		public event EventHandler<KclCommandReceived> CommandReceived;
 	}
 }

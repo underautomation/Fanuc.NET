@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class WaitDataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public WaitDataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PROG_NAME
 		/// </summary>

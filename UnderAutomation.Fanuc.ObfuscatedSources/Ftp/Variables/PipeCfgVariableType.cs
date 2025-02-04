@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PipeCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PipeCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SECTORS
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UiTopmenuVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UiTopmenuVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PWD_ACCESS
 		/// </summary>

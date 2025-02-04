@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TracectlVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TracectlVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TASK_STATUS
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ProxyCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ProxyCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $LIST_PORT
 		/// </summary>

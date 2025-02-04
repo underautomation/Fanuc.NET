@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MnMcrUopVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MnMcrUopVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $UOP_ESTOP
 		/// </summary>

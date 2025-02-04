@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CameraVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CameraVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $VISION_TYPE
 		/// </summary>

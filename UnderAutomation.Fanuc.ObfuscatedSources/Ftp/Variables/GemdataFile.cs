@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class GemdataFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public GemdataFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable ANSWER_DELAY
 		/// </summary>

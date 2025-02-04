@@ -8,6 +8,13 @@ namespace Snpx.Internal {
 	public class Assignment {
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public int Offset { get; }
 
 
@@ -15,12 +22,5 @@ namespace Snpx.Internal {
 
 
 		public string Name { get; }
-
-
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

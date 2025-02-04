@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ErrMaskVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ErrMaskVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SSC_MASK1
 		/// </summary>

@@ -8,6 +8,9 @@ namespace Snpx.Internal {
 	public abstract class PacketBase {
 
 
+		public const int HEADER_LENGTH = 56;
+
+
 		protected static ushort _ToUInt16(byte b1, byte b0)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -47,7 +50,17 @@ namespace Snpx.Internal {
 		}
 
 
-		public const int HEADER_LENGTH = 56;
+		public PacketBase(byte[] buffer = null)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public byte[] GetBytes()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public byte[] Header { get; protected set; }
@@ -105,18 +118,5 @@ namespace Snpx.Internal {
 
 
 		public abstract byte[] ActualPayload { get; }
-
-
-		public PacketBase(byte[] buffer = null)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public byte[] GetBytes()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

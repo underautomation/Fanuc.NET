@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PrgadjVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PrgadjVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $X_LIMIT
 		/// </summary>

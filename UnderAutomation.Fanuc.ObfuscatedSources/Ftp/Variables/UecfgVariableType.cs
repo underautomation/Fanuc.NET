@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UecfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UecfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CHK_VERSION
 		/// </summary>

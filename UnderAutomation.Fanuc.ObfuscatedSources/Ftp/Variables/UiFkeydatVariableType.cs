@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class UiFkeydatVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public UiFkeydatVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENB_COLOR
 		/// </summary>

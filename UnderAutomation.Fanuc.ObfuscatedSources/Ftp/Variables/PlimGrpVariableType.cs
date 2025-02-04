@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PlimGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PlimGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MAX_PYLD
 		/// </summary>

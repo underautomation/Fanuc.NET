@@ -9,13 +9,19 @@ namespace Ftp.Variables {
 	public class JointPositionVariable : JointsPosition {
 
 
-		public int Group { get; set; }
-
-
 		public static JointPositionVariable Parse(string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		public JointPositionVariable()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public int Group { get; set; }
 	}
 }

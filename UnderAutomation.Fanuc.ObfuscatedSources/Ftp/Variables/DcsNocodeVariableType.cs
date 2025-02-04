@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DcsNocodeVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DcsNocodeVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Type Name on the robot
 		/// </summary>

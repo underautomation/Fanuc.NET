@@ -8,6 +8,12 @@ namespace Snpx.Internal {
 	public abstract class ShortPacketBase : PacketBase {
 
 
+		public ShortPacketBase() : base(default)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public ServiceRequestCode ServiceRequestCode { get; set; }
 
 
@@ -15,11 +21,5 @@ namespace Snpx.Internal {
 
 
 		public override byte[] ActualPayload => default;
-
-
-		public ShortPacketBase() : base(default)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
 	}
 }

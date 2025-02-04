@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VcmrinitFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public VcmrinitFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable VDETECT_VAR
 		/// </summary>

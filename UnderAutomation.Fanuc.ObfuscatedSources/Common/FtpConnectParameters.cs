@@ -10,6 +10,12 @@ namespace Common {
 	/// </summary>
 	public class FtpConnectParameters : FtpConnectParametersBase {
 
+
+		public FtpConnectParameters()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Should enable memory access for this connection
 		/// </summary>

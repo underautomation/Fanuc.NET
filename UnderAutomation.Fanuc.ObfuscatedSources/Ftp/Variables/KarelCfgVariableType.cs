@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class KarelCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public KarelCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CONV_ENABLE
 		/// </summary>

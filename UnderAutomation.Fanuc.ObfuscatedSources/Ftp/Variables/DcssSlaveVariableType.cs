@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DcssSlaveVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DcssSlaveVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $INPUT_BYTE
 		/// </summary>

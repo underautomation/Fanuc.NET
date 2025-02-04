@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MouseVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MouseVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ACTION
 		/// </summary>

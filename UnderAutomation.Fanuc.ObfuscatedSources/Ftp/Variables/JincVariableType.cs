@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class JincVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public JincVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $JINC_ENB
 		/// </summary>

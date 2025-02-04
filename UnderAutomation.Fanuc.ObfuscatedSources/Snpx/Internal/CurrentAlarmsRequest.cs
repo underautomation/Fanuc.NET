@@ -8,6 +8,12 @@ namespace Snpx.Internal {
 	public class CurrentAlarmsRequest {
 
 
+		public CurrentAlarmsRequest()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public bool IsHistory { get; set; }
 
 

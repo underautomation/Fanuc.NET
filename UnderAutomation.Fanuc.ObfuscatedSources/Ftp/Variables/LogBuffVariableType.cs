@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class LogBuffVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public LogBuffVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TITLE
 		/// </summary>

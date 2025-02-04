@@ -9,6 +9,12 @@ namespace Common {
 	/// </summary>
 	public class XYZPosition {
 
+
+		public XYZPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// X coordinate in meters
 		/// </summary>

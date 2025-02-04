@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ArgStrVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ArgStrVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TITLE
 		/// </summary>

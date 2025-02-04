@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FileSetup2VariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FileSetup2VariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $FILE_TDC_SC
 		/// </summary>

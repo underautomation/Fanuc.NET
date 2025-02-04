@@ -9,9 +9,6 @@ namespace Snpx.Internal {
 	public class StringSystemVariables : SnpxWritableAssignableElements<string, string> {
 
 
-		protected override int AssignmentSize => default;
-
-
 		protected override string GetAssignmentName(string index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -37,5 +34,8 @@ namespace Snpx.Internal {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		protected override int AssignmentSize => default;
 	}
 }

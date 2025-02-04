@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CpT1ModeVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CpT1ModeVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLE
 		/// </summary>

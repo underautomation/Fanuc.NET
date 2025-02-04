@@ -11,6 +11,12 @@ namespace Ftp.Diagnosis {
 	/// </summary>
 	public class IOState : IFanucContent {
 
+
+		public IOState()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Status of all controller inputs and outputs
 		/// </summary>

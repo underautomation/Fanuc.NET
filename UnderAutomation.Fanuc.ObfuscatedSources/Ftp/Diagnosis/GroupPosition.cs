@@ -10,6 +10,12 @@ namespace Ftp.Diagnosis {
 	/// </summary>
 	public class GroupPosition {
 
+
+		public GroupPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Group ID
 		/// </summary>

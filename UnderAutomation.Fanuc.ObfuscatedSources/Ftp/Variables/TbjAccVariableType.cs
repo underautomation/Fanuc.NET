@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TbjAccVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TbjAccVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ACC_LEN1
 		/// </summary>

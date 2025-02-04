@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VcmrTrgtVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VcmrTrgtVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TARGET_PNT
 		/// </summary>

@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class StrregFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public StrregFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $STRREG
 		/// </summary>

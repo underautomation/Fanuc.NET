@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MgdebugVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MgdebugVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DEBUGMASK
 		/// </summary>

@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SwiupdtFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public SwiupdtFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable RUN_ONCE
 		/// </summary>

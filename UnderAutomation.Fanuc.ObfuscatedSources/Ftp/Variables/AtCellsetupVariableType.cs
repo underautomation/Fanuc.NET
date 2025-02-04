@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class AtCellsetupVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public AtCellsetupVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $HOME_IO_PRG
 		/// </summary>

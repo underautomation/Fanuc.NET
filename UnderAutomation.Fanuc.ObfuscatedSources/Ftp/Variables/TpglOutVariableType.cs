@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TpglOutVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TpglOutVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $VIEWS
 		/// </summary>

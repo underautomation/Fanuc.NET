@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class BblNtWndVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public BblNtWndVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $WND_TOP
 		/// </summary>

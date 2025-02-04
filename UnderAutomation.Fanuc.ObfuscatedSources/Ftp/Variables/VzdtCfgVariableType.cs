@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VzdtCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VzdtCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ENABLED
 		/// </summary>

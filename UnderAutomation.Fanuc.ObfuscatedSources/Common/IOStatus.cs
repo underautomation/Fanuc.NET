@@ -10,6 +10,21 @@ namespace Common {
 	public class IOStatus {
 
 		/// <summary>
+		/// String representation like : DIN[1]=True
+		/// </summary>
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public IOStatus()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
 		/// Digital port type
 		/// </summary>
 		public DigitalPorts Port { get; }
@@ -28,14 +43,5 @@ namespace Common {
 		/// IO Name
 		/// </summary>
 		public string Name { get; }
-
-		/// <summary>
-		/// String representation like : DIN[1]=True
-		/// </summary>
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

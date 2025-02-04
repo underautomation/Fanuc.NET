@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TbccfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TbccfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GROUP_MASK
 		/// </summary>

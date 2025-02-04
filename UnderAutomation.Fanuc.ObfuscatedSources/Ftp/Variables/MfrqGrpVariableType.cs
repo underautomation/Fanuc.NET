@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MfrqGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MfrqGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ACT_AXIS
 		/// </summary>

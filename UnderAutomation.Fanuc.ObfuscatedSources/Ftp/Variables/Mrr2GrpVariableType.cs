@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class Mrr2GrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public Mrr2GrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ARM_PARAM
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class GlofattVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public GlofattVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DEVICE
 		/// </summary>

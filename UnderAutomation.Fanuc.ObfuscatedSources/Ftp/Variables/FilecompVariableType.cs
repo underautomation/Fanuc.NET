@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class FilecompVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public FilecompVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TPP
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class HscdGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public HscdGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $COL_DET_OFF
 		/// </summary>

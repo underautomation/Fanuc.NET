@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MnMcrSopVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MnMcrSopVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $SOP_EMGOP
 		/// </summary>

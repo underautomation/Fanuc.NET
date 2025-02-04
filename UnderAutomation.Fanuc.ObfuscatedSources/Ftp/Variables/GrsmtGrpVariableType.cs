@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class GrsmtGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public GrsmtGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GRV_SW
 		/// </summary>

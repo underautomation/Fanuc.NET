@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class EoatcfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public EoatcfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CURR_CNT
 		/// </summary>

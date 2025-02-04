@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CellioFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public CellioFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CELL_OPTION
 		/// </summary>

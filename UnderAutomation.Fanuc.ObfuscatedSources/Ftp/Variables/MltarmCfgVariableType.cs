@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MltarmCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MltarmCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NUM_ARMS
 		/// </summary>

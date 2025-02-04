@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MtparamFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public MtparamFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable DEF_ITM
 		/// </summary>

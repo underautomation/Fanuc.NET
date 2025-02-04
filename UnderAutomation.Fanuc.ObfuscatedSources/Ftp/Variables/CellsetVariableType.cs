@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CellsetVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CellsetVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $GI_STYSEL_P
 		/// </summary>

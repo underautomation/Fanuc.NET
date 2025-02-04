@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TracedtVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TracedtVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $EPT_INDEX
 		/// </summary>

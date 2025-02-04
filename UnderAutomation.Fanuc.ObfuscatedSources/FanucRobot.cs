@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
+using License;
 using Telnet.Internal;
 using Ftp.Internal;
-using License;
 
 namespace UnderAutomation.Fanuc {
 	/// <summary>
@@ -29,11 +29,6 @@ namespace UnderAutomation.Fanuc {
 		}
 
 		/// <summary>
-		/// IP or robot name
-		/// </summary>
-		public string Address { get; }
-
-		/// <summary>
 		/// Initialize a conenction to the robot with specified parameters
 		/// </summary>
 		public void Connect(ConnectionParameters parameters)
@@ -49,18 +44,6 @@ namespace UnderAutomation.Fanuc {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
-		public bool Enabled { get; }
-
-
-		public TelnetClientInternal Telnet { get; }
-
-
-		public FtpClientInternal Ftp { get; }
-
-
-		public SnpxClientInternal Snpx { get; }
-
 		/// <summary>
 		/// If you have a license And a key, please call this static method to register the product And exit the trial period
 		/// ou can register a product even if the trial period has ended
@@ -73,6 +56,23 @@ namespace UnderAutomation.Fanuc {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+		/// <summary>
+		/// IP or robot name
+		/// </summary>
+		public string Address { get; }
+
+
+		public bool Enabled { get; }
+
+
+		public TelnetClientInternal Telnet { get; }
+
+
+		public FtpClientInternal Ftp { get; }
+
+
+		public SnpxClientInternal Snpx { get; }
 
 		/// <summary>
 		/// Return information about your license

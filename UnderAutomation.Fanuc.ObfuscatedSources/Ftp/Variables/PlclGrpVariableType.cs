@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PlclGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PlclGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CALIB_STAT
 		/// </summary>

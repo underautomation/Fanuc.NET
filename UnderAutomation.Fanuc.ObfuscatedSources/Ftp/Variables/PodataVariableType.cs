@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PodataVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PodataVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $OVERRUN_CNT
 		/// </summary>

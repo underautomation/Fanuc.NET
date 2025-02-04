@@ -8,6 +8,12 @@ namespace Ftp.Variables {
 	public class GenericVariable : GenericField, IGenericVariableType {
 
 
+		public GenericVariable()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public string Scope { get; }
 
 

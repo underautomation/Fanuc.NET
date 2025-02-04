@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TxVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TxVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CONNECTED
 		/// </summary>

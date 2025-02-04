@@ -9,6 +9,19 @@ namespace Common {
 	/// </summary>
 	public class JointsPosition {
 
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public JointsPosition()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Numeric values for each joints
 		/// </summary>
@@ -58,12 +71,5 @@ namespace Common {
 		/// Joint 9 in degrees
 		/// </summary>
 		public double J9 { get; set; }
-
-
-		public override string ToString()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
 	}
 }

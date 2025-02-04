@@ -18,9 +18,6 @@ namespace Snpx.Internal {
 		}
 
 
-		protected abstract int AssignmentSize { get; }
-
-
 		protected abstract string GetAssignmentTarget(TIndex index);
 
 
@@ -32,5 +29,8 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		protected abstract int AssignmentSize { get; }
 	}
 }

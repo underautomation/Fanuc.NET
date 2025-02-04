@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DbtbCtrlVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DbtbCtrlVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ACRT_MODE
 		/// </summary>

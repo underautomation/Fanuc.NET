@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DiocfgsvFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public DiocfgsvFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable CFG_FILE_VER
 		/// </summary>

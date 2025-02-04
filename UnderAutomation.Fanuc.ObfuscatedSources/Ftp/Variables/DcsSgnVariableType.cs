@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DcsSgnVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DcsSgnVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CURR_SIGNAT
 		/// </summary>

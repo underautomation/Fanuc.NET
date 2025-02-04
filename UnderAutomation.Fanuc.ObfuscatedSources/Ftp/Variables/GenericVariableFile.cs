@@ -10,19 +10,6 @@ namespace Ftp.Variables {
 	public class GenericVariableFile : IGenericVariableType, IFanucContent {
 
 
-		public GenericVariable[] Variables { get; }
-
-		/// <summary>
-		/// Name of the structure
-		/// </summary>
-		public string Name { get; }
-
-		/// <summary>
-		/// Parent of this structure
-		/// </summary>
-		public IGenericVariableType Parent { get; set; }
-
-
 		public override string ToString()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -54,6 +41,25 @@ namespace Ftp.Variables {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		public GenericVariableFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public GenericVariable[] Variables { get; }
+
+		/// <summary>
+		/// Name of the structure
+		/// </summary>
+		public string Name { get; }
+
+		/// <summary>
+		/// Parent of this structure
+		/// </summary>
+		public IGenericVariableType Parent { get; set; }
 
 		IGenericVariableType[] IGenericVariableType.Fields => Variables;
 	}

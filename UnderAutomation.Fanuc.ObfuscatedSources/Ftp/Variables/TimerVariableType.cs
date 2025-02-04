@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TimerVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TimerVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $COMMENT
 		/// </summary>

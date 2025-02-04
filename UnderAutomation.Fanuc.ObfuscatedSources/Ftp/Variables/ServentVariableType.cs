@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ServentVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ServentVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $S_NAME
 		/// </summary>

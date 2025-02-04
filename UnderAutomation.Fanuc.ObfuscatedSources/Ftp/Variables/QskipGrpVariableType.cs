@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class QskipGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public QskipGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $ERROR_CNT2
 		/// </summary>

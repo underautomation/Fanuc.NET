@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class DryrunPortVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public DryrunPortVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TYPE
 		/// </summary>

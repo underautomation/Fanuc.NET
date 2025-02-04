@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class VcrsmCfgVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public VcrsmCfgVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $STEP_NUM
 		/// </summary>

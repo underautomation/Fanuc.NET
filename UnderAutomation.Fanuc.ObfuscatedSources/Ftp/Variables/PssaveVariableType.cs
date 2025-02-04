@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PssaveVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PssaveVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $MC_FOLDER
 		/// </summary>

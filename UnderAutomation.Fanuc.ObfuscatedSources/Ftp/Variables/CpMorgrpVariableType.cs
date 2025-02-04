@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CpMorgrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CpMorgrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $CHNS_EMPTY
 		/// </summary>

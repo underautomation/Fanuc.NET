@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PingVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PingVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TIMEOUT
 		/// </summary>

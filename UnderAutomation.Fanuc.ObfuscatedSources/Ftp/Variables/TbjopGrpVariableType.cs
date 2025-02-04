@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class TbjopGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public TbjopGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $F2MGN
 		/// </summary>

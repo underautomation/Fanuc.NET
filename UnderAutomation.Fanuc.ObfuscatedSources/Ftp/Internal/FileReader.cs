@@ -9,15 +9,15 @@ namespace Ftp.Internal {
 	/// </summary>
 	public abstract class FileReader : IFileReader {
 
-		/// <summary>
-		/// File name
-		/// </summary>
-		public string FileName { get; }
-
 
 		protected virtual void AfterParse()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+		/// <summary>
+		/// File name
+		/// </summary>
+		public string FileName { get; }
 	}
 }

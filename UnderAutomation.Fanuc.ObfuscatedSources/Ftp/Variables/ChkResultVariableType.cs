@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ChkResultVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ChkResultVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $EVALUE_IDX
 		/// </summary>

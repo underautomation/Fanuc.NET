@@ -11,12 +11,18 @@ namespace Telnet {
 		public string ErrorText;
 
 
-		public bool Succeed { get; }
-
-
 		public string KclCommand;
 
 
 		protected abstract bool FromResult(string data);
+
+
+		protected Result()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public bool Succeed { get; }
 	}
 }

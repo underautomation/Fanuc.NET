@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PlResGVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public PlResGVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $PAYLOAD
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ZpCylinderVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ZpCylinderVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $RADIUS
 		/// </summary>

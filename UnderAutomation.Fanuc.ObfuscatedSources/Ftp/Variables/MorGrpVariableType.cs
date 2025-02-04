@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class MorGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public MorGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $NILPOS
 		/// </summary>

@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class ItemBuffElVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public ItemBuffElVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $TIME_STAMP
 		/// </summary>

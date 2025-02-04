@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class CpParamgpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public CpParamgpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $WARNMESSENB
 		/// </summary>

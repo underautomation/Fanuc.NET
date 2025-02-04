@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class SvdtGrpVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public SvdtGrpVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $DATA00
 		/// </summary>

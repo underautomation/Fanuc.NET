@@ -10,6 +10,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class PosregFile : GenericVariableFile, IGenericVariableType, IFanucContent {
 
+
+		public PosregFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $POSREG
 		/// </summary>

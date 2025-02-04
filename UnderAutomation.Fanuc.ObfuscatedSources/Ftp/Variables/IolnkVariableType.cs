@@ -9,6 +9,12 @@ namespace Ftp.Variables {
 	/// </summary>
 	public class IolnkVariableType : GenericVariableType, IGenericVariableType {
 
+
+		public IolnkVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
 		/// <summary>
 		/// Value of variable $RACK
 		/// </summary>
