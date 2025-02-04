@@ -1,2 +1,1 @@
-- Add support for .NET9
-- Remove support for .NET 7
+- Setup license to work in a singe app publish

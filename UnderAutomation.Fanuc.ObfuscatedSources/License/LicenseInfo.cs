@@ -6,13 +6,13 @@ using System;
 
 namespace License {
 	/// <summary>
-	/// Information about a license number
+	/// Information about a license key
 	/// </summary>
 	public sealed class LicenseInfo {
 
 		/// <summary>
 		/// Create a new LicenseInfo instance to retrieve informations about a pair of identifier/key
-		/// This class should not be used to register your product.
+		/// This class should not be used to register your product. Please use static function RegisterLicense to specify your license.
 		/// </summary>
 		/// <param name="licenseIdentifier">The name of your organization (null for trial version)</param>
 		/// <param name="licenseKey">The key, associated to the identifier, supplied by UnderAutomation (null for trial version)</param>
