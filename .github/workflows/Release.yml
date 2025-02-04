@@ -25,6 +25,6 @@ jobs:
       with:
         artifacts: |
           UnderAutomation.Fanuc.zip
-          **/publish/**/UnderAutomation.Fanuc.Showcase.*.exe"
+          **/publish/**/UnderAutomation.Fanuc.Showcase.*.exe
         bodyFile: "whatsNew.md"
         token: ${{ secrets.GITHUB_TOKEN }}
