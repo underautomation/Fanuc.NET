@@ -1,1 +1,1 @@
-Refactor and unify the position classes
+Update project to new structure

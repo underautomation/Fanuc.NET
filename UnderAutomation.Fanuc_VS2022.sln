@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderAutomation.Fanuc.Showcase.Forms", "UnderAutomation.Fanuc.Showcase.Forms\UnderAutomation.Fanuc.Showcase.Forms.csproj", "{7EF7C07E-265E-469D-BCC6-260A6C757CB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderAutomation.Fanuc.ObfuscatedSources", "UnderAutomation.Fanuc.ObfuscatedSources\UnderAutomation.Fanuc.ObfuscatedSources.csproj", "{371530B0-EBC0-4712-8BE4-1F39D8BAD3DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EF7C07E-265E-469D-BCC6-260A6C757CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF7C07E-265E-469D-BCC6-260A6C757CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF7C07E-265E-469D-BCC6-260A6C757CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF7C07E-265E-469D-BCC6-260A6C757CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371530B0-EBC0-4712-8BE4-1F39D8BAD3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371530B0-EBC0-4712-8BE4-1F39D8BAD3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371530B0-EBC0-4712-8BE4-1F39D8BAD3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371530B0-EBC0-4712-8BE4-1F39D8BAD3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22BD8CA5-1868-44B0-803B-7EB90813FD95}
+	EndGlobalSection
+EndGlobal

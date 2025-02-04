@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7EF7C07E-265E-469D-BCC6-260A6C757CB0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UnderAutomation.Fanuc.Sample.WindowsDesktop</RootNamespace>
+    <AssemblyName>UnderAutomation.Fanuc.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>embedded</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\ua.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WindowsDesktop.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BindingListView\AggregateBindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\BindingListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BindingListView\CompositeItemFilter.cs" />
+    <Compile Include="BindingListView\IItemFilter.cs" />
+    <Compile Include="BindingListView\INotifyingEditableObject.cs" />
+    <Compile Include="BindingListView\InvalidSourceListException.cs" />
+    <Compile Include="BindingListView\MultiSourceIndexList.cs" />
+    <Compile Include="BindingListView\ObjectView.cs" />
+    <Compile Include="BindingListView\ProvidedViewPropertyDescriptor.cs" />
+    <Compile Include="Components\ConnectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ConnectControl.Designer.cs">
+      <DependentUpon>ConnectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CueTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\MoveRobotControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\MoveRobotControl.Designer.cs">
+      <DependentUpon>MoveRobotControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SafetyStatusControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SafetyStatusControl.Designer.cs">
+      <DependentUpon>SafetyStatusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\IOStateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\IOStateControl.Designer.cs">
+      <DependentUpon>IOStateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HeaderFileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\HeaderFileControl.Designer.cs">
+      <DependentUpon>HeaderFileControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\IUserControl.cs" />
+    <Compile Include="Components\FileHandlingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FileHandlingControl.Designer.cs">
+      <DependentUpon>FileHandlingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CurrentPositionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CurrentPositionControl.Designer.cs">
+      <DependentUpon>CurrentPositionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CustomPropertyGrid.Designer.cs">
+      <DependentUpon>CustomPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SelectVariablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\SelectVariablesForm.Designer.cs">
+      <DependentUpon>SelectVariablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LoadVariableProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\LoadVariableProgressForm.Designer.cs">
+      <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SnpxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SnpxControl.Designer.cs">
+      <DependentUpon>SnpxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SnpxSignalControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SnpxSignalControl.Designer.cs">
+      <DependentUpon>SnpxSignalControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\VariablesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\VariablesControl.Designer.cs">
+      <DependentUpon>VariablesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RemoteCommandsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\RemoteCommandsControl.Designer.cs">
+      <DependentUpon>RemoteCommandsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\LicenseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\LicenseControl.Designer.cs">
+      <DependentUpon>LicenseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\VariableTableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\VariableTableControl.Designer.cs">
+      <DependentUpon>VariableTableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\DataGridViewGrouperControl.designer.cs">
+      <DependentUpon>DataGridViewGrouperControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\GroupingInfo.cs" />
+    <Compile Include="DataGridViewGrouper\GroupingOptions.cs" />
+    <Compile Include="DataGridViewGrouper\GroupingSource.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\GroupList.cs" />
+    <Compile Include="DataGridViewGrouper\SearchBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\SearchBox.designer.cs">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewGrouper\Support.cs" />
+    <Compile Include="Helpers\Config.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\Explorer.cs" />
+    <Compile Include="Helpers\ListViewExtension.cs" />
+    <Compile Include="Helpers\PropertyGridHelper.cs" />
+    <Compile Include="Helpers\ScreenshotsGenerator.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\ConnectControl.resx">
+      <DependentUpon>ConnectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MoveRobotControl.resx">
+      <DependentUpon>MoveRobotControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SafetyStatusControl.resx">
+      <DependentUpon>SafetyStatusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\IOStateControl.resx">
+      <DependentUpon>IOStateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\HeaderFileControl.resx">
+      <DependentUpon>HeaderFileControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FileHandlingControl.resx">
+      <DependentUpon>FileHandlingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CurrentPositionControl.resx">
+      <DependentUpon>CurrentPositionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomPropertyGrid.resx">
+      <DependentUpon>CustomPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SelectVariablesForm.resx">
+      <DependentUpon>SelectVariablesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\LoadVariableProgressForm.resx">
+      <DependentUpon>LoadVariableProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SnpxControl.resx">
+      <DependentUpon>SnpxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SnpxSignalControl.resx">
+      <DependentUpon>SnpxSignalControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\VariablesControl.resx">
+      <DependentUpon>VariablesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\RemoteCommandsControl.resx">
+      <DependentUpon>RemoteCommandsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\LicenseControl.resx">
+      <DependentUpon>LicenseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\VariableTableControl.resx">
+      <DependentUpon>VariableTableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewGrouper\DataGridViewGrouperControl.resx">
+      <DependentUpon>DataGridViewGrouperControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewGrouper\SearchBox.resx">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Files\axis.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\curpos.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\frame.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\ioconfig.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\iostate.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\prgstate.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\sftysig.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\SUMMARY.DG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\system.va">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\timers.dg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\DataSources\UnderAutomation.Fanuc.Common.IOStatus.datasource" />
+    <None Include="Properties\DataSources\UnderAutomation.Fanuc.MemoryAccess.Files.GenericField.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ua.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnderAutomation132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-right-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-up-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-bin-5-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-2-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-edit-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-add-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-shared-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-3-fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tools-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload-2-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="$(SolutionName.EndsWith(`Dev`))">
+      <ItemGroup>
+        <ProjectReference Include="..\..\..\Fanuc\Fanuc.csproj">
+          <Project>{8153eaf6-f430-043c-0d67-9d784cbd1597}</Project>
+          <Name>Fanuc</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="UnderAutomation.Fanuc">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\Libraries\net35\UnderAutomation.Fanuc.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if exist $(TargetDir)*.config del $(TargetDir)*.config
+if exist $(TargetDir)*.snk del $(TargetDir)*.snk
+if exist $(TargetDir)*.pdb del $(TargetDir)*.pdb
+if exist $(TargetDir)UnderAutomation.Fanuc.xml del $(TargetDir)UnderAutomation.Fanuc.xml</PostBuildEvent>
+  </PropertyGroup>
+</Project>
