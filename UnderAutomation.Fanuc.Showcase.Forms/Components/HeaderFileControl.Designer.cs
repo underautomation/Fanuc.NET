@@ -1,5 +1,5 @@
 ﻿
-namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
+namespace UnderAutomation.Fanuc.Showcase.Forms.Components
 {
     partial class HeaderFileControl
     {
@@ -60,7 +60,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             // 
             // tsRefresh
             // 
-            this.tsRefresh.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.refresh_line;
+            this.tsRefresh.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.refresh_line;
             this.tsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsRefresh.Name = "tsRefresh";
             this.tsRefresh.Size = new System.Drawing.Size(66, 22);
@@ -69,7 +69,7 @@ namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
             // 
             // tsBrowse
             // 
-            this.tsBrowse.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.folder_line;
+            this.tsBrowse.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.folder_line;
             this.tsBrowse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBrowse.Name = "tsBrowse";
             this.tsBrowse.Size = new System.Drawing.Size(118, 22);

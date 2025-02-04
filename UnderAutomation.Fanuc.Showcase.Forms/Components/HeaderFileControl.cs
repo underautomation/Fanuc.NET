@@ -5,7 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc.Ftp.Internal;
 
-namespace UnderAutomation.Fanuc.Sample.WindowsDesktop.Components
+namespace UnderAutomation.Fanuc.Showcase.Forms.Components
 {
     public partial class HeaderFileControl : UserControl
     {

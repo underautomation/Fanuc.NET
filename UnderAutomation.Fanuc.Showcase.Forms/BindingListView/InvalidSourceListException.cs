@@ -6,7 +6,7 @@ namespace Equin.ApplicationFramework
     public class InvalidSourceListException : Exception
     {
         public InvalidSourceListException()
-            : base(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.InvalidSourceList)
+            : base(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.InvalidSourceList)
         {
 
         }

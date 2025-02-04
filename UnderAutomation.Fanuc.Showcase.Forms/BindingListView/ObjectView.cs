@@ -78,7 +78,7 @@ namespace Equin.ApplicationFramework
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException("Object", UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.ObjectCannotBeNull);
+                    throw new ArgumentNullException("Object", UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.ObjectCannotBeNull);
                 }
                 _object = value;
             }

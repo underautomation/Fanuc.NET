@@ -120,7 +120,7 @@ partial class MainForm
             // titlePictureBox
             // 
             this.titlePictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.titlePictureBox.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.UnderAutomation132;
+            this.titlePictureBox.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.UnderAutomation132;
             this.titlePictureBox.Location = new System.Drawing.Point(0, 0);
             this.titlePictureBox.Name = "titlePictureBox";
             this.titlePictureBox.Size = new System.Drawing.Size(113, 77);

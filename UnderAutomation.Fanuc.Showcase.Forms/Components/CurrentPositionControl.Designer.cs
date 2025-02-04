@@ -27,7 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Header = new UnderAutomation.Fanuc.Sample.WindowsDesktop.Components.HeaderFileControl();
+            this.Header = new UnderAutomation.Fanuc.Showcase.Forms.Components.HeaderFileControl();
             this.positionGrid = new CustomPropertyGrid();
             this.SuspendLayout();
             // 
@@ -65,6 +65,6 @@
 
     #endregion
 
-    private UnderAutomation.Fanuc.Sample.WindowsDesktop.Components.HeaderFileControl Header;
+    private UnderAutomation.Fanuc.Showcase.Forms.Components.HeaderFileControl Header;
     private CustomPropertyGrid positionGrid;
 }

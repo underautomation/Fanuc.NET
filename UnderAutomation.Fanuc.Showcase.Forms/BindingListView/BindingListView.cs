@@ -58,7 +58,7 @@ namespace Equin.ApplicationFramework
                     {
                         if (!(item is T))
                         {
-                            throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.InvalidListItemType, typeof(T).FullName), "DataSource");
+                            throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.InvalidListItemType, typeof(T).FullName), "DataSource");
                         }
                     }
                 }

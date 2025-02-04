@@ -31,7 +31,7 @@ namespace Equin.ApplicationFramework
 
         public override string ToString()
         {
-            return UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.NoFilter;
+            return UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.NoFilter;
         }
 
         #region Singleton Accessor
@@ -86,13 +86,13 @@ namespace Equin.ApplicationFramework
             }
             else
             {
-                throw new ArgumentNullException("includeDelegate", UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.IncludeDelegateCannotBeNull);
+                throw new ArgumentNullException("includeDelegate", UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.IncludeDelegateCannotBeNull);
             }
         }
 
         private Predicate<T> _includeDelegate;
         private string _name;
-        private readonly string defaultName = UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.PredicateFilter;
+        private readonly string defaultName = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.PredicateFilter;
 
         public bool Include(T item)
         {

@@ -56,7 +56,7 @@
             // 
             this.tsReadAll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsReadSelected});
-            this.tsReadAll.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.refresh_line;
+            this.tsReadAll.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.refresh_line;
             this.tsReadAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsReadAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsReadAll.Name = "tsReadAll";
@@ -74,7 +74,7 @@
             // 
             // tsOpenFileFromDisc
             // 
-            this.tsOpenFileFromDisc.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.file_line;
+            this.tsOpenFileFromDisc.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.file_line;
             this.tsOpenFileFromDisc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsOpenFileFromDisc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsOpenFileFromDisc.Name = "tsOpenFileFromDisc";
@@ -84,7 +84,7 @@
             // 
             // tsOpenFolderFromDisc
             // 
-            this.tsOpenFolderFromDisc.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.folder_line;
+            this.tsOpenFolderFromDisc.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.folder_line;
             this.tsOpenFolderFromDisc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsOpenFolderFromDisc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsOpenFolderFromDisc.Name = "tsOpenFolderFromDisc";

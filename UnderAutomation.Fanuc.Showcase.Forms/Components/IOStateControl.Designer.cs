@@ -34,7 +34,7 @@
             this.ValueColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NamleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iOStateBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Header = new UnderAutomation.Fanuc.Sample.WindowsDesktop.Components.HeaderFileControl();
+            this.Header = new UnderAutomation.Fanuc.Showcase.Forms.Components.HeaderFileControl();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iOStateBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +124,7 @@
 
     #endregion
 
-    private UnderAutomation.Fanuc.Sample.WindowsDesktop.Components.HeaderFileControl Header;
+    private UnderAutomation.Fanuc.Showcase.Forms.Components.HeaderFileControl Header;
     private System.Windows.Forms.DataGridView grid;
     private System.Windows.Forms.BindingSource iOStateBindingSource;
     private System.Windows.Forms.DataGridViewTextBoxColumn PortColumn;

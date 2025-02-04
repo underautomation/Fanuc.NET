@@ -112,7 +112,7 @@
             // btnPrevious
             // 
             this.btnPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPrevious.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.arrow_up_line;
+            this.btnPrevious.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.arrow_up_line;
             this.btnPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(23, 22);
@@ -129,7 +129,7 @@
             // btnOpenPath
             // 
             this.btnOpenPath.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnOpenPath.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.arrow_right_line;
+            this.btnOpenPath.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.arrow_right_line;
             this.btnOpenPath.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOpenPath.Name = "btnOpenPath";
             this.btnOpenPath.Size = new System.Drawing.Size(23, 22);
@@ -152,7 +152,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.refresh_line;
+            this.btnRefresh.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.refresh_line;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(66, 22);
@@ -161,7 +161,7 @@
             // 
             // btnDownload
             // 
-            this.btnDownload.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.save_3_fill;
+            this.btnDownload.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.save_3_fill;
             this.btnDownload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(102, 22);
@@ -170,7 +170,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.delete_bin_5_line;
+            this.btnDelete.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.delete_bin_5_line;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 22);
@@ -179,7 +179,7 @@
             // 
             // btnUpload
             // 
-            this.btnUpload.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.upload_2_line;
+            this.btnUpload.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.upload_2_line;
             this.btnUpload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(84, 22);
@@ -188,7 +188,7 @@
             // 
             // btnNewFolder
             // 
-            this.btnNewFolder.Image = global::UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.folder_add_line;
+            this.btnNewFolder.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.folder_add_line;
             this.btnNewFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewFolder.Name = "btnNewFolder";
             this.btnNewFolder.Size = new System.Drawing.Size(85, 22);

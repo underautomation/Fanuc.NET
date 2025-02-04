@@ -105,7 +105,7 @@ namespace Equin.ApplicationFramework
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException("SourceLists", UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.SourceListsNull);
+                    throw new ArgumentNullException("SourceLists", UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.SourceListsNull);
                 }
 
                 // Check that every item in each list is of type T.
@@ -159,7 +159,7 @@ namespace Equin.ApplicationFramework
                     {
                         if (!(item is T))
                         {
-                            throw new InvalidSourceListException(string.Format(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.InvalidListItemType, typeof(T).FullName));
+                            throw new InvalidSourceListException(string.Format(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.InvalidListItemType, typeof(T).FullName));
                         }
                     }
                 }
@@ -280,7 +280,7 @@ namespace Equin.ApplicationFramework
             }
             else
             {
-                throw new InvalidOperationException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.CannotAddNewItem);
+                throw new InvalidOperationException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.CannotAddNewItem);
             }
         }
 
@@ -396,7 +396,7 @@ namespace Equin.ApplicationFramework
             {
                 if (value != null && !_sourceLists.Contains(value))
                 {
-                    throw new ArgumentException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.SourceListNotFound);
+                    throw new ArgumentException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.SourceListNotFound);
                 }
                 _newItemsList = value;
             }
@@ -795,7 +795,7 @@ namespace Equin.ApplicationFramework
         {
             if (includeItem == null)
             {
-                throw new ArgumentNullException("includeItem", UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.IncludeDelegateCannotBeNull);
+                throw new ArgumentNullException("includeItem", UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.IncludeDelegateCannotBeNull);
             }
 
             Filter = AggregateBindingListView<T>.CreateItemFilter(includeItem);
@@ -1529,7 +1529,7 @@ namespace Equin.ApplicationFramework
             }
             else
             {
-                throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.PropertyNotFound, propertyName, typeof(T).FullName), "propertyName");
+                throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.PropertyNotFound, propertyName, typeof(T).FullName), "propertyName");
             }
         }
 
@@ -1667,7 +1667,7 @@ namespace Equin.ApplicationFramework
                 return Count - 1;
             }
 
-            throw new NotSupportedException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.CannotAddItem);
+            throw new NotSupportedException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.CannotAddItem);
         }
 
         /// <summary>
@@ -1678,7 +1678,7 @@ namespace Equin.ApplicationFramework
         /// </exception>
         void IList.Clear()
         {
-            throw new NotSupportedException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.CannotClearView);
+            throw new NotSupportedException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.CannotClearView);
         }
 
         /// <summary>
@@ -1730,7 +1730,7 @@ namespace Equin.ApplicationFramework
         /// </exception>
         void IList.Insert(int index, object value)
         {
-            throw new NotSupportedException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.CannotInsertItem);
+            throw new NotSupportedException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.CannotInsertItem);
         }
 
         /// <summary>
@@ -1826,7 +1826,7 @@ namespace Equin.ApplicationFramework
                 // The interface requires we supply a setter
                 // But we don't want external code modifying the view
                 // in this manner.
-                throw new NotSupportedException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.CannotSetItem);
+                throw new NotSupportedException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.CannotSetItem);
             }
         }
 
@@ -1857,7 +1857,7 @@ namespace Equin.ApplicationFramework
         /// </summary>
         object ICollection.SyncRoot
         {
-            get { throw new NotSupportedException(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.SyncAccessNotSupported); }
+            get { throw new NotSupportedException(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.SyncAccessNotSupported); }
         }
 
         /// <summary>
@@ -1997,7 +1997,7 @@ namespace Equin.ApplicationFramework
             PropertyDescriptor pd = GetPropertyDescriptor(propertyName);
             if (pd == null)
             {
-                throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Sample.WindowsDesktop.Properties.Resources.PropertyNotFound, propertyName, typeof(T).FullName), "propertyName");
+                throw new ArgumentException(string.Format(UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.PropertyNotFound, propertyName, typeof(T).FullName), "propertyName");
             }
             return new ListSortDescription(pd, direction);
         }
