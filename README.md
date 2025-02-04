@@ -49,10 +49,6 @@ A Windows Forms application demonstrating all the features of the library.
 📌 **Download:** [📥 UnderAutomation.Fanuc.Showcase.Forms.exe](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.Showcase.Forms.exe)
 
 <p align="center">
-<img src="/desktop.jpg" alt="UnderAutomation.Fanuc.Showcase.Console"/>
-</p>
-
-<p>
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif" >
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif" >
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif" >
@@ -252,7 +248,7 @@ robot.Connect(new ConnectParameters("192.168.0.1"));
 
 ## 🔍 Compatibility
 
-✅ **Supported Robots:** R-J3iB, R-30iA, R-30iB
+✅ **Supported Robots:** R-J3iB, R-30iA, R-30iB  
 ✅ **Operating Systems:** Windows, Linux, macOS  
 ✅ **.NET Versions:** .NET Framework (≥3.5), .NET Standard, .NET Core, .NET 5/6/8/9
 
