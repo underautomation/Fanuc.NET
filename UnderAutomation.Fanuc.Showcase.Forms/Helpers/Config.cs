@@ -12,7 +12,7 @@ public class Config
     private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Config));
 
     // Configuration file
-    private static string Path => $"{typeof(Config).Assembly.Location}.xml";
+    private static string Path => $"{Environment.ProcessPath}.xml";
 
     // Serialize configuration file
     public static void Save()

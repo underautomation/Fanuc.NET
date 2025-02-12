@@ -39,7 +39,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
     private void tsOpenFileFromDisc_Click(object sender, System.EventArgs e)
     {
-        dlgOpenFile.InitialDirectory = Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "Files");
+        dlgOpenFile.InitialDirectory = Path.Combine(Environment.ProcessPath, "Files");
 
         if (dlgOpenFile.ShowDialog() != DialogResult.OK || dlgOpenFile.FileNames.Length == 0) return;
 
@@ -63,7 +63,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
     private void tsOpenFolderFromDisc_Click(object sender, System.EventArgs e)
     {
-        dlgOpenFolder.SelectedPath = Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "Files");
+        dlgOpenFolder.SelectedPath = Path.Combine(Environment.ProcessPath, "Files");
 
         if (dlgOpenFolder.ShowDialog() != DialogResult.OK) return;
 

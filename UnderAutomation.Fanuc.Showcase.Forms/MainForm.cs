@@ -43,7 +43,7 @@ public partial class MainForm : Form
 
         // Select first node at startup
         SelectNode(leftTreeView.Nodes[0]);
-
+        
         _robot.Telnet.CommandSent += TelnetKcl_CommandSent;
         _robot.Telnet.TpCoordinatesReceived += TelnetKcl_CoordReceived;
         _robot.Telnet.ErrorOccured += TelnetKcl_ErrorOccured;
@@ -96,22 +96,26 @@ public partial class MainForm : Form
 
     private void CatchApplicationException(Exception e)
     {
-        if (this.InvokeRequired)
+        try
         {
-            this.Invoke(new Action(() => CatchApplicationException(e)));
-            return;
-        }
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => CatchApplicationException(e)));
+                return;
+            }
 
-        Logger.Log("ApplicationException", e.ToString());
+            Logger.Log("ApplicationException", e.ToString());
 
-        if (MessageBox.Show($"{e?.Message}\r\n\r\nWould you like to report this error?", "An error occurred", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) == DialogResult.Yes)
-        {
-            SelectNode<ContactControl>()?.SetMessage($@"Hi,
+            if (MessageBox.Show($"{e?.Message}\r\n\r\nWould you like to report this error?", "An error occurred", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                SelectNode<ContactControl>()?.SetMessage($@"Hi,
 
 I have this exception that prevents me from using the full capabilities of the SDK. Could you take a look at it and help me out?
 
 {e}");
+            }
         }
+        catch { }
     }
     #endregion
 

@@ -30,7 +30,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Components
 
         private void tsBrowse_Click(object sender, System.EventArgs e)
         {
-            dlgOpen.InitialDirectory = Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "Files");
+            dlgOpen.InitialDirectory = Path.Combine(Environment.ProcessPath, "Files");
 
             if (dlgOpen.ShowDialog() == DialogResult.OK)
             {

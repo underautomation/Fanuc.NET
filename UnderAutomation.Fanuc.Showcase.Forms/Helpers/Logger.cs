@@ -1,22 +1,24 @@
-﻿using System;
-using System.IO;
-
-public static class Logger
+﻿public static class Logger
 {
     /// <summary>
     /// Add logs to Log directory
     /// </summary>
     public static void Log(string title, string value, string suffix = ".txt")
     {
-        var logDirectory = Path.Combine(Path.GetDirectoryName(typeof(Logger).Assembly.Location), "Logs");
-        if (!Directory.Exists(logDirectory))
+        try
         {
-            Directory.CreateDirectory(logDirectory);
+            var logDirectory = Path.Combine(Environment.ProcessPath, "Logs");
+            if (!Directory.Exists(logDirectory))
+            {
+                Directory.CreateDirectory(logDirectory);
+            }
+
+            var fileName = $"{DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss-ffff")} {Environment.TickCount.ToString("0000000000")} {title}{suffix}";
+
+            File.WriteAllText(Path.Combine(logDirectory, fileName), value, System.Text.Encoding.ASCII);
         }
-
-        var fileName = $"{DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss-ffff")} {Environment.TickCount.ToString("0000000000")} {title}{suffix}";
-
-        File.WriteAllText(Path.Combine(logDirectory, fileName), value, System.Text.Encoding.ASCII);
+        catch
+        { }
     }
 
 }

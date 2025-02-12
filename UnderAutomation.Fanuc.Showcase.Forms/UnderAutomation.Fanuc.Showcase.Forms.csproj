@@ -18,7 +18,7 @@
   </ItemGroup>
   <ItemGroup Condition="!$(SolutionName.EndsWith(`Dev`))">
     <Reference Include="UnderAutomation.Fanuc">
-      <HintPath>..\Libraries\net8.0\UnderAutomation.Fanuc.dll</HintPath>
+      <HintPath>..\Libraries\netstandard2.1\UnderAutomation.Fanuc.dll</HintPath>
     </Reference>
   </ItemGroup>
 
