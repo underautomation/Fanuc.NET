@@ -11,17 +11,17 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.W">
             <summary>
-            W rotation in degrees
+            W rotation in degrees (Rx)
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.P">
             <summary>
-            P rotation in degrees
+            P rotation in degrees (Ry)
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.R">
             <summary>
-            R rotation in degrees
+            R rotation in degrees (Rz)
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.Configuration">
@@ -216,7 +216,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.FtpConnectParameters.Enable">
             <summary>
-            Should enable memory access for this connection
+            Should enable memory access for this connection (default: true)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.IOStatus">
@@ -311,7 +311,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.SnpxConnectParameters.Enable">
             <summary>
-            Should enable memory access for this connection
+            Should enable memory access for this connection (default: false)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.TelnetConnectParameters">
@@ -321,7 +321,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.TelnetConnectParameters.Enable">
             <summary>
-            Should use this service
+            Should use this service (default: true)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.XYZPosition">
@@ -42031,10 +42031,10 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Abort(System.String,System.Boolean)">
             <summary>
-            Aborts the specified running or paused task. If prog_ name is not specified, the default program Is used.
+            Aborts the specified running or paused task. If program is not specified, the default program Is used.
             Execution of the current program statement Is completed before the task aborts except for the current motion, DELAY, WAIT, Or READ statements, which are canceled.
             </summary>
-            <param name="program">The name of any KAREL or TP program which is a task</param>
+            <param name="program">The name of any KAREL or TP program without extension which is a task</param>
             <param name="force">Aborts all running or paused tasks</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.AbortAll(System.Boolean)">
@@ -42054,14 +42054,14 @@
             <summary>
             Clears the program data from memory for the specified or default program.
             </summary>
-            <param name="program">The name of any KAREL or teach pendant program in memory</param>
+            <param name="program">The name of any KAREL or teach pendant program in memory without extension</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.ClearVars(System.String)">
             <summary>
             Clears the variable and type data associated with the specified or default program from memory.
             Variables And types that are referenced by a loaded program are Not cleared.
             </summary>
-            <param name="program">The name of any KAREL or teach pendant program with variables</param>
+            <param name="program">The name of any KAREL or teach pendant program without extension</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Continue(System.String)">
             <summary>
@@ -42070,7 +42070,7 @@
             When a task Is paused, the CYCLE START button on the operator panel has the same effect as the Continue() command.
             Continue is a motion command; therefore, the device from which it Is issued must have motion control.
             </summary>
-            <param name="program">The name of any KAREL or teach pendant program which is a task. If null, it continues all paused tasks</param>
+            <param name="program">The name of any KAREL or teach pendant program without extension which is a task. If null, it continues all paused tasks</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Hold(System.String)">
             <summary>
@@ -42091,7 +42091,7 @@
             The Continue() command resumes execution of a paused task.
             When a task is paused, the CYCLE START button on the operator panel has the same effect as the KCL> CONTINUE command.
             </summary>
-            <param name="program">the name of any KAREL or TP program which is a task. If null, it pauses all running tasks.</param>
+            <param name="program">the name of any KAREL or TP program without extension which is a task. If null, it pauses all running tasks.</param>
             <param name="force">Pauses the task even if the NOPAUSE attribute is set</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Reset">
@@ -42108,7 +42108,7 @@
             Execution begins at the first executable line.
             RUN is a motion command; therefore, the device from which it is issued must have motion control. If a RUN command is issued in a command file, it is executed as a NOWAIT command.
             Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end.        ''' </summary>
-            <param name="program">The name of any KAREL or TP program.</param>
+            <param name="program">The name of any KAREL or TP program without extension</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.SetPort(UnderAutomation.Fanuc.Telnet.KCLPorts,System.Int32,System.Int32)">
             <summary>
@@ -42138,16 +42138,20 @@
             <param name="value">New value for variable or a program or system variable</param>
             <param name="program">The name of any KAREL or TP program.</param>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.SetVariable(System.String,System.Double,System.String)">
+            <summary>
+            Assigns the specified value to the specified variable. You can assign constant values or variable values, but the value must be of the data type that has been declared for the variable.
+            You can assign values to system variables with KCL write access, to program variables, or to standard and user-defined variables and fields. You can assign only one ARRAY element.
+            Use brackets ([]) after the variable name to specify an element.
+            Certain data types like positions and vectors might have more than one value specified.        ''' </summary>
+            <param name="name">A valid program variable</param>
+            <param name="value">New value for variable or a program or system variable</param>
+            <param name="program">The name of any KAREL or TP program.</param>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.GetCurrentPose">
             <summary>
             Returns the position of the TCP relative to the current user frame of reference with an x, y, and z location in millimeters; w, p, and r orientation in degrees; and the current configuration string. Be sure the robot is calibrated.
             </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.GetProgramInformation(System.String)">
-            <summary>
-            Returns the status information of the specified or default program being executed.
-            </summary>
-            <param name="name">The name of any KAREL or TP program in memory</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.GetVariable(System.String,System.String)">
             <summary>
@@ -42164,21 +42168,6 @@
             <param name="port">I/O port type</param>
             <param name="index">I/O port index</param>
             <param name="value">New value for the port</param>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Skip(System.String)">
-            <summary>
-            Skips execution of the current statement in the specified task.
-            If programm is not specified, the default program is used.
-            It has no effect when a task is running or when the system is in a READY state.
-            Entire motion statements are skipped with this command. You cannot skip single motion segments.
-            The Continue() command resumes execution of the paused task with the statement following the last skipped statement. END statements cannot be skipped.
-            If you skip the last RETURN statement in a function routine, there is no way to return the value of the function to the calling program. Therefore, when executing the END statement of the routine, the task will abort.
-            If you skip into a FOR loop, you have skipped the statement that initializes the loop counter. When the ENDFOR statement is executed the program will try to remove the loop counter from the stack. If the FOR loop was nested in another FOR loop, the loop counter for the previous FOR loop will be removed from the stack, causing potentially invalid results. If the FOR loop was not nested, a stack underflow error will occur, causing the task to abort.
-            READ, MOVE, DELAY, WAIT FOR, and PULSE statements can be paused after they have begun execution. In these cases, when the task is resumed, execution of the paused statement must be finished before subsequent statements are executed. Subsequent skipped statements will not be executed.
-            In particular, READ and WAIT FOR statements often require user intervention, such as entering data, before statement execution is completed.
-            Step mode operation and step mode type have no effect on the Skip() command.
-            </summary>
-            <param name="program">The name of any KAREL or TP program which is a task</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.UnsimulateAll">
             <summary>
@@ -42314,6 +42303,41 @@
             </summary>
             <param name="data">The result data as a string.</param>
             <returns>True if parsing is successful; otherwise, false.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.GetVariableResult.EndReceive">
+            <summary>
+            show variable termine toujours par une trame constitué uniquement de commande ANSI et d'espace. Cela arrête la réception des données. On décode donc à la fin les données accumulées
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Result.FromResult(System.String)">
+            <summary>
+            Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Result.EndReceive">
+            <summary>
+            Indique que les réponses ont été terminée d'être reçues
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.Group">
+            <summary>
+            Group number of the current pose.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.Position">
+            <summary>
+            Cartesian position value of the current pose.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.SetValueResult.FormerValue">
+            <summary>
+            Former value before the command
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.SetValueResult.NewValue">
+            New value after the command execution
         </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.KCLPorts">
             <summary>
