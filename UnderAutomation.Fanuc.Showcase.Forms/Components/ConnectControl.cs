@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Ftp.Variables;
 
 public partial class ConnectControl : UserControl, IUserControl
 {
@@ -15,7 +16,7 @@ public partial class ConnectControl : UserControl, IUserControl
         var parameters = Config.Current.ConnectParameters ?? new ConnectionParameters();
 
         // Use stored information or set to default
-        txtIP.Text = parameters?.Address ?? "192.168.0.1";
+        txtIP.Text = parameters.Address ?? "192.168.0.1";
 
         chkTelnet.Checked = parameters.Telnet.Enable;
         txtTelnetKclPassword.Text = parameters.Telnet.TelnetKclPassword;

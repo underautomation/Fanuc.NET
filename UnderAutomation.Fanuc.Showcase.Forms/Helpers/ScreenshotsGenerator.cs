@@ -8,7 +8,7 @@ public static class ScreenshotsGenerator
 {
     public static void Generate(MainForm frm)
     {
-        var dir = new DirectoryInfo(Path.Combine(Environment.ProcessPath, "WinformsScreenshots"));
+        var dir = new DirectoryInfo(Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), "WinformsScreenshots"));
 
         if (dir.Exists) dir.Delete(true);
         dir.Create();

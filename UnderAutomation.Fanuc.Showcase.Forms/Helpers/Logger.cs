@@ -7,7 +7,7 @@
     {
         try
         {
-            var logDirectory = Path.Combine(Environment.ProcessPath, "Logs");
+            var logDirectory = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), "Logs");
             if (!Directory.Exists(logDirectory))
             {
                 Directory.CreateDirectory(logDirectory);
