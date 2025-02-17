@@ -1,3 +1,2 @@
-- Temporarily remove netcoreapp3.0, net5.0, net6.0, net8.0 and net9.0 support while a fix is found for the obfuscation problem (which can still be used because NETStandard 2.1 remains)
-- Set Snpx disabled by default in ConnectionParameters
-- Improve Telnet returned commands with typed decoded data
+- Fix SNPX position writting issue
+- add SNPX current position reading

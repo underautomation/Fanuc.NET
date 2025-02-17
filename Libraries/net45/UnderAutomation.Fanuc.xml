@@ -41972,6 +41972,11 @@
             Curreznt active alarms
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`2.Write(`1,`0)">
+            <summary>
+            Write value at a certain index
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase">
             <summary>
             Base class for Telnet KCL client
