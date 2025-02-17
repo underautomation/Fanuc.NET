@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.Snpx.Internal;
@@ -93,7 +91,24 @@ public partial class SnpxControl : UserControl, IUserControl
 
     private void btnWritePR_Click(object sender, System.EventArgs e)
     {
-        _robot.Snpx.PositionRegisters.Write((int)udPositionRegister.Value, gridPR.SelectedObject as Position);
+        var position = gridPR.SelectedObject as Position;
+        int index = (int)udPositionRegister.Value;
+
+        var frm = new SnpxWritePosition(position?.CartesianPosition, position?.JointsPosition, $"Position register PR[{index}]");
+
+        if (frm.ShowDialog() == DialogResult.OK)
+        {
+
+            if (frm.ShouldWriteCartesian)
+            {
+                _robot.Snpx.PositionRegisters.Write(index, frm.CartesianPosition);
+            }
+            else
+            {
+                _robot.Snpx.PositionRegisters.Write(index, frm.JointsPosition);
+            }
+            btnReadPR.PerformClick();
+        }
     }
 
 
@@ -107,9 +122,38 @@ public partial class SnpxControl : UserControl, IUserControl
     private void btnWritePositionVariable_Click(object sender, System.EventArgs e)
     {
         _robot.Snpx.PositionSystemVariables.Write(txtPositionVariable.Text, gridPR.SelectedObject as Position);
+
+        var position = gridPR.SelectedObject as Position;
+
+        var frm = new SnpxWritePosition(position?.CartesianPosition, position?.JointsPosition, $"Variable : {txtPositionVariable.Text}");
+
+        if (frm.ShowDialog() == DialogResult.OK)
+        {
+
+            if (frm.ShouldWriteCartesian)
+            {
+                _robot.Snpx.PositionSystemVariables.Write(txtPositionVariable.Text, frm.CartesianPosition);
+            }
+            else
+            {
+                _robot.Snpx.PositionSystemVariables.Write(txtPositionVariable.Text, frm.JointsPosition);
+            }
+            btnReadPositionVariable.PerformClick();
+        }
+    }
+    private void btnPositionWorld_Click(object sender, EventArgs e)
+    {
+        Position position = _robot.Snpx.CurrentPosition.ReadWorldPosition();
+        gridPR.SelectedObject = position;
+        gridPR.ExpandAllGridItems();
     }
 
-
+    private void btnPositionUserFrame_Click(object sender, EventArgs e)
+    {
+        Position position = _robot.Snpx.CurrentPosition.ReadUserFramePosition((int)udFrame.Value);
+        gridPR.SelectedObject = position;
+        gridPR.ExpandAllGridItems();
+    }
 
     #endregion
 
@@ -161,11 +205,9 @@ public partial class SnpxControl : UserControl, IUserControl
     #endregion
 
     #region Alarms
-    private void btnClearAlarms_Click(object sender, System.EventArgs e)
+    private void btnClearAlarms_Click(object sender, EventArgs e)
     {
         _robot.Snpx.ClearAlarms();
     }
     #endregion
-
-
 }
