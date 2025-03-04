@@ -9,6 +9,16 @@
             Fanuc cartesian position and rotations 
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor with position and rotations
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.W">
             <summary>
             W rotation in degrees (Rx)
@@ -304,6 +314,26 @@
             Joint 9 in degrees
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.ProgramType">
+            <summary>
+            Represents the type of a program.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ProgramType.Unknown">
+            <summary>
+            The program type is unknown.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ProgramType.Karel">
+            <summary>
+            The program is a Karel program, also known as PC (Programmable Control).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.ProgramType.TP">
+            <summary>
+            The program is a TP (Teach Pendant) program.
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.SnpxConnectParameters">
             <summary>
             Memory access parameters
@@ -312,6 +342,31 @@
         <member name="P:UnderAutomation.Fanuc.Common.SnpxConnectParameters.Enable">
             <summary>
             Should enable memory access for this connection (default: false)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.TaskStatus">
+            <summary>
+            Represents the status of a task.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.TaskStatus.Unknown">
+            <summary>
+            The task status is unknown.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.TaskStatus.Running">
+            <summary>
+            The task is running.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.TaskStatus.Paused">
+            <summary>
+            The task is paused.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.TaskStatus.Aborted">
+            <summary>
+            The task is aborted.
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.TelnetConnectParameters">
@@ -696,6 +751,11 @@
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.GetSafetyStatus">
             <summary>
             Get controller safety status
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.GetProgramStates">
+            <summary>
+            Get controller program states
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.GetVariablesFromFile(System.String)">
@@ -36633,6 +36693,27 @@
             File name : iostate.dg
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates">
+            <summary>
+            Implements IFanucContent to hold a collection of task states.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState">
+            <summary>
+            Represents a single task's state.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData">
+            <summary>
+            Represents one frame in the task's call stack.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStatesParser">
+            <summary>
+            Parser for the "TASK STATES" section, renamed from ProgramStatesReader to ProgramStatesParser.
+            Uses compiled Regex for efficiency.
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus">
             <summary>
             Safety status informations
@@ -36693,6 +36774,11 @@
             Controller IO status
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis.ProgramStates">
+            <summary>
+            Controller program states
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosisReader">
             <summary>
             Read and parse the file summary.dg
@@ -36736,6 +36822,11 @@
         <member name="F:UnderAutomation.Fanuc.Ftp.FanucFileReaders.SafetyStatusReader">
             <summary>
             Decode IO Status file iostate.dg
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ProgramStates">
+            <summary>
+            Decode task and program states prgstate.dg
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ReadFile(System.String)">
@@ -42158,51 +42249,6 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.Telnet.TaskStatus">
-            <summary>
-            Represents the status of a task.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.TaskStatus.Unknown">
-            <summary>
-            The task status is unknown.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.TaskStatus.Running">
-            <summary>
-            The task is running.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.TaskStatus.Paused">
-            <summary>
-            The task is paused.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.TaskStatus.Aborted">
-            <summary>
-            The task is aborted.
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.Telnet.ProgramType">
-            <summary>
-            Represents the type of a program.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.ProgramType.Unknown">
-            <summary>
-            The program type is unknown.
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.ProgramType.Karel">
-            <summary>
-            The program is a Karel program, also known as PC (Programmable Control).
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Telnet.ProgramType.TP">
-            <summary>
-            The program is a TP (Teach Pendant) program.
-            </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.TaskInformationResult.TaskName">
             <summary>
