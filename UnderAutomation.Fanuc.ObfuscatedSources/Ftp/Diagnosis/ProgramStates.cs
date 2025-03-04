@@ -2,23 +2,26 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Telnet.Internal;
+using Ftp.Internal;
 
-namespace Common {
+namespace Ftp.Diagnosis {
 	/// <summary>
-	/// Connect parameters for remote command
+	/// Implements IFanucContent to hold a collection of task states.
 	/// </summary>
-	public class TelnetConnectParameters : TelnetConnectParametersBase {
+	public class ProgramStates : IFanucContent {
 
 
-		public TelnetConnectParameters()
+		public ProgramStates()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+
+		public TaskState[] TaskStates { get; set; }
+
 		/// <summary>
-		/// Should use this service (default: true)
+		/// File name
 		/// </summary>
-		public bool Enable { get; set; }
+		public string Name { get; }
 	}
 }

@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace Ftp.Variables {
 
-	public class VariableFileList : Collection<GenericVariableFile>, IList<GenericVariableFile>, ICollection<GenericVariableFile>, IList, ICollection, IReadOnlyList<GenericVariableFile>, IReadOnlyCollection<GenericVariableFile>, IEnumerable<GenericVariableFile>, IEnumerable, IGenericVariableType {
+	public class VariableFileList : Collection<GenericVariableFile>, IList<GenericVariableFile>, ICollection<GenericVariableFile>, IEnumerable<GenericVariableFile>, IList, ICollection, IEnumerable, IGenericVariableType {
 
 
 		protected override void InsertItem(int index, GenericVariableFile item)

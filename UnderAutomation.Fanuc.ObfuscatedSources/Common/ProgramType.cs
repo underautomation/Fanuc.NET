@@ -3,30 +3,25 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Telnet {
+namespace Common {
 	/// <summary>
-	/// Represents the status of a task.
+	/// Represents the type of a program.
 	/// </summary>
-	public enum TaskStatus {
+	public enum ProgramType {
 
 		/// <summary>
-		/// The task status is unknown.
+		/// The program type is unknown.
 		/// </summary>
 		Unknown = 0,
 
 		/// <summary>
-		/// The task is running.
+		/// The program is a Karel program, also known as PC (Programmable Control).
 		/// </summary>
-		Running = 1,
+		Karel = 1,
 
 		/// <summary>
-		/// The task is paused.
+		/// The program is a TP (Teach Pendant) program.
 		/// </summary>
-		Paused = 2,
-
-		/// <summary>
-		/// The task is aborted.
-		/// </summary>
-		Aborted = 3,
+		TP = 2,
 	}
 }

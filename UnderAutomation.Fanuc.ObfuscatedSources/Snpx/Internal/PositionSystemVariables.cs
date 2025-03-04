@@ -37,6 +37,24 @@ namespace Snpx.Internal {
 		}
 
 
+		public void Write(string variable, JointsPosition jointsPosition)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public void Write(string variable, ExtendedCartesianPosition extendedCartesianPosition)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public void Write(string variable, CartesianPosition cartesianPosition)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		protected override int AssignmentSize => default;
 	}
 }

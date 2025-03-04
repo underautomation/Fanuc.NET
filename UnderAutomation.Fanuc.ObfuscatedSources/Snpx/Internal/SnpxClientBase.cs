@@ -173,6 +173,11 @@ namespace Snpx.Internal {
 		/// </summary>
 		public NumericIO PMC_D { get; }
 
+		/// <summary>
+		/// Current position in world or user frame
+		/// </summary>
+		public CurrentPosition CurrentPosition { get; }
+
 
 		public bool Connected { get; }
 	}

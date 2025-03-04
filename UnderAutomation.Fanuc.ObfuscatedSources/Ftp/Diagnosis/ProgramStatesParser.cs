@@ -2,35 +2,34 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
+using Ftp.Internal;
 
-namespace Common {
+namespace Ftp.Diagnosis {
 	/// <summary>
-	/// A cartesian tool position with a user frame ID
+	/// Parser for the "TASK STATES" section, renamed from ProgramStatesReader to ProgramStatesParser.
+	/// Uses compiled Regex for efficiency.
 	/// </summary>
-	public class CartesianPositionWithUserFrame : CartesianPositionWithTool {
+	public class ProgramStatesParser : SectionParser<ProgramStates> {
 
 
-		public CartesianPositionWithUserFrame()
+		public override void ParseLine(string line)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 
-		public CartesianPositionWithUserFrame(double x, double y, double z, double w, double p, double r, int tool, int frame)
+		public override void AfterParse()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 
-		public override string ToString()
+		public ProgramStatesParser()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
 		}
 
-		/// <summary>
-		/// Frame ID in the controller
-		/// </summary>
-		public int Frame { get; }
+
+		public override string SectionStart => default;
 	}
 }

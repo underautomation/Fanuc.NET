@@ -14,6 +14,12 @@ namespace Common {
 		}
 
 
+		public Position(short userFrame, short userTool, JointsPosition jointsPosition, ExtendedCartesianPosition cartesianPosition)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public short UserFrame { get; set; }
 
 

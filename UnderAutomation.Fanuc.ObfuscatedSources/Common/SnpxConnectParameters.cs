@@ -17,7 +17,7 @@ namespace Common {
 		}
 
 		/// <summary>
-		/// Should enable memory access for this connection
+		/// Should enable memory access for this connection (default: false)
 		/// </summary>
 		public bool Enable { get; set; }
 	}

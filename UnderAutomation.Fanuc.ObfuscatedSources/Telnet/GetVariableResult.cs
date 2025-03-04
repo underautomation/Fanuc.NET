@@ -5,10 +5,27 @@
 
 namespace Telnet {
 
-	public class GetVariableResult : DefaultResult {
+	public class GetVariableResult : Result {
 
-
+		/// <summary>
+		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// </summary>
 		protected override bool FromResult(string data)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// show variable termine toujours par une trame constitué uniquement de commande ANSI et d'espace. Cela arrête la réception des données. On décode donc à la fin les données accumulées
+		/// </summary>
+		protected override void EndReceive()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public override string ToString()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -19,5 +36,8 @@ namespace Telnet {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public string RawValue { get; }
 	}
 }

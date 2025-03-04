@@ -5,7 +5,7 @@
 
 namespace Telnet {
 
-	public class RunResult : ProgramCommandResult {
+	public class ProgramCommandResult : Result {
 
 		/// <summary>
 		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
@@ -16,8 +16,16 @@ namespace Telnet {
 			return default;
 		}
 
+		/// <summary>
+		/// Indique que les réponses ont été terminée d'être reçues
+		/// </summary>
+		protected override void EndReceive()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 
-		public RunResult()
+
+		public ProgramCommandResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

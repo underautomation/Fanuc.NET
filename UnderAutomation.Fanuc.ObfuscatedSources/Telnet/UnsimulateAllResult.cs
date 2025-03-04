@@ -5,10 +5,10 @@
 
 namespace Telnet {
 
-	public class SetPortResult : SetValueResult {
+	public class UnsimulateAllResult : BaseResult {
 
 
-		public SetPortResult()
+		public UnsimulateAllResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

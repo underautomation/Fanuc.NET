@@ -5,7 +5,7 @@
 
 namespace Telnet {
 
-	public class RunResult : ProgramCommandResult {
+	public abstract class BaseResult : Result {
 
 		/// <summary>
 		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
@@ -17,7 +17,7 @@ namespace Telnet {
 		}
 
 
-		public RunResult()
+		protected BaseResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

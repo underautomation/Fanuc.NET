@@ -45,6 +45,11 @@ namespace Ftp {
 		public static readonly DiagnosisReader<SafetyStatus, SafetyStatusParser> SafetyStatusReader;
 
 		/// <summary>
+		/// Decode task and program states prgstate.dg
+		/// </summary>
+		public static readonly DiagnosisReader<ProgramStates, ProgramStatesParser> ProgramStates;
+
+		/// <summary>
 		/// Read any file by path on disc, recognize it by name and decode it
 		/// </summary>
 		public static IFanucContent ReadFile(string fileName)

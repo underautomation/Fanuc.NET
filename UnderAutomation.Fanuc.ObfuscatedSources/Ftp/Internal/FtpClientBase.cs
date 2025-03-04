@@ -67,6 +67,15 @@ namespace Ftp.Internal {
 		}
 
 		/// <summary>
+		/// Get controller program states
+		/// </summary>
+		public ProgramStates GetProgramStates()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
 		/// Get and parse a variable file from its name
 		/// </summary>
 		public GenericVariableFile GetVariablesFromFile(string variableFileName)

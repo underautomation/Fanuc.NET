@@ -14,6 +14,12 @@ namespace Common {
 		}
 
 
+		public ExtendedCartesianPosition(double x, double y, double z, double w, double p, double r, double e1, double e2, double e3, short t4, short t5, short t6)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public double E1 { get; set; }
 
 

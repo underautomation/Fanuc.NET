@@ -5,7 +5,7 @@
 
 namespace Telnet {
 
-	public class RunResult : ProgramCommandResult {
+	public class UnsimulateResult : BaseResult {
 
 		/// <summary>
 		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
@@ -17,7 +17,7 @@ namespace Telnet {
 		}
 
 
-		public RunResult()
+		public UnsimulateResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

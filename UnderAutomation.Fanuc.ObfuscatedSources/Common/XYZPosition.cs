@@ -15,6 +15,19 @@ namespace Common {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+
+		public XYZPosition(double x, double y, double z)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 		/// <summary>
 		/// X coordinate in meters
 		/// </summary>

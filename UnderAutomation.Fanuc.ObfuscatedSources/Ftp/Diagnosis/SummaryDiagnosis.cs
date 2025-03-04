@@ -35,5 +35,10 @@ namespace Ftp.Diagnosis {
 		/// Controller IO status
 		/// </summary>
 		public IOState IOs { get; }
+
+		/// <summary>
+		/// Controller program states
+		/// </summary>
+		public ProgramStates ProgramStates { get; }
 	}
 }

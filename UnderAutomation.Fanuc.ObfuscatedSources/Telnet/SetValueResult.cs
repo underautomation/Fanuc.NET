@@ -5,9 +5,11 @@
 
 namespace Telnet {
 
-	public class DefaultResult : Result {
+	public abstract class SetValueResult : Result {
 
-
+		/// <summary>
+		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// </summary>
 		protected override bool FromResult(string data)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -22,12 +24,17 @@ namespace Telnet {
 		}
 
 
-		public DefaultResult()
+		protected SetValueResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+		/// <summary>
+		/// Former value before the command
+		/// </summary>
+		public string FormerValue { get; }
 
-		public string Data { get; protected set; }
+
+		public string NewValue { get; }
 	}
 }

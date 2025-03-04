@@ -10,7 +10,9 @@ namespace Snpx.Internal {
 
 		protected abstract void WriteInClient(int offset, TValue value);
 
-
+		/// <summary>
+		/// Write value at a certain index
+		/// </summary>
 		public void Write(TIndex index, TValue value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
