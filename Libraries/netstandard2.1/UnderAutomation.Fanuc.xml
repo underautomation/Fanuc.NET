@@ -42238,6 +42238,26 @@
             <param name="prog_name">the name of any KAREL or TP program which is a task</param>
             <returns></returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.AddBreakpoint(System.String,System.Int32)">
+            <summary>
+            Add a breakpoint to a specified task
+            </summary>
+            <param name="taskName">Name of a KAREL or TP program without estension</param>
+            <param name="line">Line number for breakpoint</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.RemoveBreakpoint(System.String,System.Int32)">
+            <summary>
+            Clear a breakpoint of a task at a specified line
+            </summary>
+            <param name="taskName">Name of a KAREL or TP program without estension</param>
+            <param name="line">Line number for breakpoint</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.RemoveAllBreakpoints(System.String)">
+            <summary>
+            Clear all breakpoints of a specified task
+            </summary>
+            <param name="taskName">Name of a KAREL or TP program without estension</param>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientInternal">
             <summary>
             Internal implementation of KCL Client

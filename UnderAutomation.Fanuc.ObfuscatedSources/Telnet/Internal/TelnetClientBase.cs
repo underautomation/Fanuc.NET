@@ -263,6 +263,59 @@ namespace Telnet.Internal {
 			return default;
 		}
 
+		/// <summary>
+		/// Add a breakpoint to a specified task
+		/// </summary>
+		/// <param name="taskName">Name of a KAREL or TP program without estension</param>
+		/// <param name="line">Line number for breakpoint</param>
+		public AddBreakpointResult AddBreakpoint(string taskName, int line)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Clear a breakpoint of a task at a specified line
+		/// </summary>
+		/// <param name="taskName">Name of a KAREL or TP program without estension</param>
+		/// <param name="line">Line number for breakpoint</param>
+		public RemoveBreakpointResult RemoveBreakpoint(string taskName, int line)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Clear all breakpoints of a specified task
+		/// </summary>
+		/// <param name="taskName">Name of a KAREL or TP program without estension</param>
+		public RemoveBreakpointResult RemoveAllBreakpoints(string taskName)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public BreakpointsResult GetBreakpoints(string taskName)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public StepOnResult StepOn(string taskName)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public StepOffResult StepOff()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 
 		protected TelnetClientBase()
 		{
