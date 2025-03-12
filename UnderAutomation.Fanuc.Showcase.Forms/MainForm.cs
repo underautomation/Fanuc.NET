@@ -35,8 +35,10 @@ public partial class MainForm : Form
         AddNode(new CurrentPositionControl(_robot));
         AddNode(new IOStateControl(_robot));
         AddNode(new SafetyStatusControl(_robot));
+        AddNode(new ProgramStatesControl(_robot));
         AddNode(new FileHandlingControl(_robot));
         AddNode(new MoveRobotControl(_robot));
+        AddNode(new TPEditorControl(_robot));
         AddNode(new SnpxControl(_robot));
         AddNode(new ContactControl());
         AddNode(new LicenseControl());
