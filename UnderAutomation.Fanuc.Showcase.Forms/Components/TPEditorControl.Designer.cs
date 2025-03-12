@@ -27,16 +27,22 @@
     /// </summary>
     private void InitializeComponent()
     {
+        components = new System.ComponentModel.Container();
         editor = new UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor.BreakpointEditor();
         splitContainer1 = new SplitContainer();
-        treeFile = new TreeView();
-        menuStrip1 = new MenuStrip();
+        treeFile = new TpTreeView();
         mnu = new MenuStrip();
+        btnSave = new ToolStripMenuItem();
+        btnStart = new ToolStripMenuItem();
+        btnPause = new ToolStripMenuItem();
+        btnAbort = new ToolStripMenuItem();
+        btnStep = new ToolStripMenuItem();
         bw = new System.ComponentModel.BackgroundWorker();
         ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
         splitContainer1.Panel1.SuspendLayout();
         splitContainer1.Panel2.SuspendLayout();
         splitContainer1.SuspendLayout();
+        mnu.SuspendLayout();
         SuspendLayout();
         // 
         // editor
@@ -46,6 +52,8 @@
         editor.Name = "editor";
         editor.Size = new Size(787, 570);
         editor.TabIndex = 0;
+        editor.BreakpointAdded += editor_BreakpointAdded;
+        editor.BreakpointRemoved += editor_BreakpointRemoved;
         // 
         // splitContainer1
         // 
@@ -56,7 +64,6 @@
         // splitContainer1.Panel1
         // 
         splitContainer1.Panel1.Controls.Add(treeFile);
-        splitContainer1.Panel1.Controls.Add(menuStrip1);
         // 
         // splitContainer1.Panel2
         // 
@@ -69,26 +76,64 @@
         // treeFile
         // 
         treeFile.Dock = DockStyle.Fill;
-        treeFile.Location = new Point(0, 24);
+        treeFile.ImageIndex = 0;
+        treeFile.LabelEdit = true;
+        treeFile.Location = new Point(0, 0);
         treeFile.Name = "treeFile";
-        treeFile.Size = new Size(199, 570);
+        treeFile.SelectedImageIndex = 0;
+        treeFile.Size = new Size(199, 594);
         treeFile.TabIndex = 0;
-        // 
-        // menuStrip1
-        // 
-        menuStrip1.Location = new Point(0, 0);
-        menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new Size(199, 24);
-        menuStrip1.TabIndex = 2;
-        menuStrip1.Text = "menuStrip1";
+        treeFile.ItemRenamed += treeFile_ItemRenamed;
+        treeFile.ItemSelected += treeFile_ItemSelected;
         // 
         // mnu
         // 
+        mnu.Items.AddRange(new ToolStripItem[] { btnSave, btnStart, btnPause, btnAbort, btnStep });
         mnu.Location = new Point(0, 0);
         mnu.Name = "mnu";
         mnu.Size = new Size(787, 24);
         mnu.TabIndex = 1;
         mnu.Text = "menuStrip1";
+        // 
+        // btnSave
+        // 
+        btnSave.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.save_3_fill;
+        btnSave.Name = "btnSave";
+        btnSave.Size = new Size(59, 20);
+        btnSave.Text = "Save";
+        btnSave.Click += btnSave_Click;
+        // 
+        // btnStart
+        // 
+        btnStart.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.play;
+        btnStart.Name = "btnStart";
+        btnStart.Size = new Size(59, 20);
+        btnStart.Text = "Start";
+        btnStart.Click += btnStart_Click;
+        // 
+        // btnPause
+        // 
+        btnPause.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.pause;
+        btnPause.Name = "btnPause";
+        btnPause.Size = new Size(66, 20);
+        btnPause.Text = "Pause";
+        btnPause.Click += btnPause_Click;
+        // 
+        // btnAbort
+        // 
+        btnAbort.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.stop_fill;
+        btnAbort.Name = "btnAbort";
+        btnAbort.Size = new Size(65, 20);
+        btnAbort.Text = "Abort";
+        btnAbort.Click += btnAbort_Click;
+        // 
+        // btnStep
+        // 
+        btnStep.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.corner_down_right_line;
+        btnStep.Name = "btnStep";
+        btnStep.Size = new Size(58, 20);
+        btnStep.Text = "Step";
+        btnStep.Click += btnStep_Click;
         // 
         // bw
         // 
@@ -107,11 +152,12 @@
         Name = "TPEditorControl";
         Size = new Size(990, 594);
         splitContainer1.Panel1.ResumeLayout(false);
-        splitContainer1.Panel1.PerformLayout();
         splitContainer1.Panel2.ResumeLayout(false);
         splitContainer1.Panel2.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
         splitContainer1.ResumeLayout(false);
+        mnu.ResumeLayout(false);
+        mnu.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -119,8 +165,12 @@
 
     private UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor.BreakpointEditor editor;
     private SplitContainer splitContainer1;
-    private TreeView treeFile;
     private MenuStrip mnu;
-    private MenuStrip menuStrip1;
     private System.ComponentModel.BackgroundWorker bw;
+    private TpTreeView treeFile;
+    private ToolStripMenuItem btnStart;
+    private ToolStripMenuItem btnPause;
+    private ToolStripMenuItem btnAbort;
+    private ToolStripMenuItem btnStep;
+    private ToolStripMenuItem btnSave;
 }

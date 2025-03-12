@@ -1,7 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Ftp.Diagnosis;
 using UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor;
+using UnderAutomation.Fanuc.Telnet;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 public partial class TPEditorControl : UserControl, IUserControl
 {
@@ -14,132 +17,135 @@ public partial class TPEditorControl : UserControl, IUserControl
 
         var syntaxHighlighter = new SyntaxHighlighter(editor.Editor);
 
-        // 1. support.class : colorer uniquement "/PROG" suivi d'un reste jusqu'au saut de ligne
+        // Exemple de patterns inspirés du JSON VSCode pour Fanuc TP
+
+        // 1) support.class => /PROG sur toute la ligne
         syntaxHighlighter.AddPattern(
-            new PatternDefinition(new Regex(@"(\/PROG).*\n", RegexOptions.Multiline | RegexOptions.Compiled)),
-            new SyntaxStyle(Color.Orange, false, false));
+            new PatternDefinition(
+                new Regex(@"/PROG.*", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Blue)
+        );
 
-        // 2. support.variable : P?V?A?S?R[...] (aucun groupe, tout est coloré)
+        // 2) support.variable => P?V?A?S?R[...] , D?R?A?G?U?S?(I|O)[...] , P?F?[...]
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("P?V?A?S?R\\[.*?\\]\\]*"),
-            new SyntaxStyle(Color.Brown, false, false));
-
-        // 3. support.variable : D?R?A?G?U?S?(I|O)[...] 
-        // Ici, seul le (I|O) sera coloré – si l'intention est de colorer tout, il faudrait englober tout le motif
+            new PatternDefinition(
+                new Regex(@"P?V?A?S?R\[.*?\]\]*", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.SteelBlue)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("D?R?A?G?U?S?(I|O)\\[.*?\\]\\]*"),
-            new SyntaxStyle(Color.Brown, false, false));
-
-        // 4. support.variable : P?F?[...]
+            new PatternDefinition(
+                new Regex(@"D?R?A?G?U?S?(I|O)\[.*?\]\]*", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.SteelBlue)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("P?F?\\[.*?\\]\\]*"),
-            new SyntaxStyle(Color.Brown, false, false));
+            new PatternDefinition(
+                new Regex(@"P?F?\[.*?\]\]*", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.SteelBlue)
+        );
 
-        // 5. keyword.control : (TIMER)[...]
-        // Seul "TIMER" (premier groupe) sera coloré
+        // 3) keyword.control => TIMER[...] et divers IF, FOR, ELSE...
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(TIMER)\\[.*?\\]\\]*"),
-            new SyntaxStyle(Color.Blue, false, false));
-
-        // 6. constant.numeric : on souhaite colorer le nombre entierement, 
-        // donc on convertit les groupes internes en groupes non capturants.
+            new PatternDefinition(
+                new Regex(@"TIMER\[.*?\]\]*", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Navy, true, false)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("\\d+(?:\\s)*(?:\\.)?(?:\\s)*(?:(?:%|mm|deg|cm|m|mm|sec))?(?:\\/(?:min|sec))?"),
-            new SyntaxStyle(Color.Purple, false, false));
-
-        // 7. constant.language : (?<=\=)\s*(ON|OFF) => seul le mot ON/OFF (premier groupe) sera coloré
+            new PatternDefinition(
+                new Regex(@"(?<=:) * (IF|FOR|ELSE|ENDIF|ENDFOR|END|ABORT|THEN) (?=(\s|;|\())", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Navy, true, false)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=\\=)\\s*(ON|OFF)"),
-            new SyntaxStyle(Color.Red, false, false));
-
-        // 8. invalid.illegal : (?<=:)\s*(J|L|C|A)\s
+            new PatternDefinition(
+                new Regex(@"\b(TO)\b", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Navy, true, false)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)\\s*(J|L|C|A)\\s"),
-            new SyntaxStyle(Color.DarkRed, true, false));
+            new PatternDefinition(
+                new Regex(@"(JMP\s*)?LBL\[.+\](?=;)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Navy, true, false)
+        );
 
-        // 9. invalid.illegal : Pour colorer l'intégralité, on remplace les groupes capturants par des groupes non capturants.
+        // 4) constant.numeric => nombre + éventuellement unité (mm, deg, etc.)
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?:FINE|CNT\\d*)\\s*(?:INC)?(?=;)"),
-            new SyntaxStyle(Color.DarkRed, true, false));
+            new PatternDefinition(
+                new Regex(@"\d(\s)*(\.)?(\s)*(%|mm|deg|cm|m|sec)?(\/(min|sec))?", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Purple)
+        );
 
-        // 10. invalid.illegal : Idem, conversion en groupes non capturants
+        // 5) constant.language => ON / OFF après un '='
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?:FINE|CNT\\d*(?:\\s*INC)?)\\s*(?:(?:OFFSET|VOFFSET|TOOL_OFFSET))?\\s*(?=,)"),
-            new SyntaxStyle(Color.DarkRed, true, false));
+            new PatternDefinition(
+                new Regex(@"(?<=\=)\s*(ON|OFF)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.OrangeRed)
+        );
 
-        // 11. comment.line : tout le motif est coloré (pas de groupe)
+        // 6) invalid.illegal => (J|L|C|A) après un ':', FINE/CNT..., etc.
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("\\s*:\\s*!.*;"),
-            new SyntaxStyle(Color.Green, false, true));
-
-        // 12. comment.block : fusion du début et de la fin en une seule regex multiline sans groupe capturant
+            new PatternDefinition(
+                new Regex(@"(?<=:) * (J|L|C|A)\s", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Red)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition(new Regex("\\s*:\\s*--[\\s\\S]*?;", RegexOptions.Multiline | RegexOptions.Compiled)),
-            new SyntaxStyle(Color.Green, false, true));
-
-        // 13. string.quoted (apostrophes) : tout est coloré
+            new PatternDefinition(
+                new Regex(@"(FINE|CNT\d*)\s*(INC)?(?=;)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Red)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("\\'.*?\\'"),
-            new SyntaxStyle(Color.Salmon, false, false));
+            new PatternDefinition(
+                new Regex(@"(FINE|CNT\d*\s*(INC)?)\s*(OFFSET|VOFFSET|TOOL_OFFSET)?\s*(?=,)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Red)
+        );
 
-        // 14. string.quoted (guillemets) : tout est coloré
+        // 7) comment.line => : ! ... ;
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("\".*?\""),
-            new SyntaxStyle(Color.Red, false, false));
+            new PatternDefinition(
+                new Regex(@"\s*:\s*!.*;", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Green)
+        );
 
-        // 15. constant.other : lignes commençant par ':'
+        // 8) comment.block => : -- ... ;
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("^\\s*:"),
-            new SyntaxStyle(Color.Magenta, false, false));
+            new PatternDefinition(
+                new Regex(@"\s*:\s*--.*?;", RegexOptions.Singleline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Green)
+        );
 
-        // 16. keyword.control : (?<=:)\s*(IF|FOR)(?=(\s|\())
-        // Seul le groupe (IF|FOR) sera coloré
+        // 9) string.quoted => '...' et "..."
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)\\s*(IF|FOR)(?=(\\s|\\())"),
-            new SyntaxStyle(Color.Blue, false, false));
-
-        // 17. keyword.control : \b(TO)\b
+            new PatternDefinition(
+                new Regex(@"'.*?'", RegexOptions.Singleline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Brown)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("\\b(TO)\\b"),
-            new SyntaxStyle(Color.Blue, false, false));
+            new PatternDefinition(
+                new Regex(@"""(.*?)""", RegexOptions.Singleline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.Brown)
+        );
 
-        // 18. keyword.control : (?<=:)\s*(ELSE|ENDIF|ENDFOR|END|ABORT)(?=;)
+        // 10) constant.other => ^\s*:
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)\\s*(ELSE|ENDIF|ENDFOR|END|ABORT)\\s*(?=;)"),
-            new SyntaxStyle(Color.Blue, false, false));
+            new PatternDefinition(
+                new Regex(@"^[\t ]*:", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.DarkCyan)
+        );
 
-        // 19. keyword.control : THEN avant ';'
+        // 11) support.function => WAIT, VISION, FORCE, CALL, RUN, MESSAGE, UALM...
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("THEN\\s*(?=;)"),
-            new SyntaxStyle(Color.Blue, false, false));
-
-        // 20. keyword.control : (JMP\s*)?LBL[.+](?=;)
-        // Pour colorer l'intégralité, on remplace le groupe optionnel par un groupe non capturant.
+            new PatternDefinition(
+                new Regex(@"(?<=:) * (WAIT|VISION\s+\S+|FORCE\s+\S+)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.DarkMagenta)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)(JMP\\s*)?LBL[.+](?=;)"),
-            new SyntaxStyle(Color.Blue, false, false));
-
-        // 21. support.function : (?<=:)\s*(WAIT|VISION(\s*)(\S*)|FORCE(\s*)(\S*))
-        // Pour colorer l'ensemble de l'instruction, conversion en non-capturant
+            new PatternDefinition(
+                new Regex(@"(CALL|RUN)\s+[a-zA-Z0-9_]*\(?", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.DarkMagenta)
+        );
         syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)\\s*(?:(?:WAIT)|(?:VISION(?:\\s*\\S*)?)|(?:FORCE(?:\\s*\\S*)?))"),
-            new SyntaxStyle(Color.Teal, false, false));
+            new PatternDefinition(
+                new Regex(@"(?<=:) * (MESSAGE|UALM)\[.*?\]\s*(?=;)", RegexOptions.Multiline | RegexOptions.Compiled)),
+            new SyntaxStyle(Color.DarkMagenta)
+        );
 
-        // 22. support.function : (CALL|RUN)\s+[a-zA-Z0-9_]*\(?
-        // Seul le mot CALL ou RUN sera coloré (premier groupe)
-        syntaxHighlighter.AddPattern(
-            new PatternDefinition("(CALL|RUN)\\s+[a-zA-Z0-9_]*\\(?"),
-            new SyntaxStyle(Color.Teal, false, false));
-
-        // 23. support.function : (?<=:)\s*(MESSAGE|UALM)\[.*\](?=;)
-        // Seul le groupe MESSAGE ou UALM sera coloré
-        syntaxHighlighter.AddPattern(
-            new PatternDefinition("(?<=:)\\s*(MESSAGE|UALM)\\[.*\\]\\s*(?=;)"),
-            new SyntaxStyle(Color.Teal, false, false));
-
-
-
-        editor.SetCurrentExecutionLine(3);
 
     }
 
@@ -181,12 +187,20 @@ public partial class TPEditorControl : UserControl, IUserControl
 
         bw.RunWorkerAsync();
 
-        var list = _robot.Ftp.DirectFileHandling.GetListing("/md:/");
+        var files = _robot.Ftp.DirectFileHandling.GetListing("/md:/");
 
+        var tpItems = files.Where(x => files.Any(y => y.Name.Equals($"{Path.GetFileNameWithoutExtension(x.Name)}.tp", StringComparison.InvariantCultureIgnoreCase)) && Path.GetExtension(x.Name).Equals(".ls", StringComparison.InvariantCultureIgnoreCase)).Select(x => x.Name).ToArray();
+
+        treeFile.SetItems(tpItems);
     }
     #endregion
 
-
+    private string GetSelectedProgramName()
+    {
+        var name = treeFile.SelectedNode?.Text;
+        if (name is null) return null;
+        return Path.GetFileNameWithoutExtension(name);
+    }
     private void bw_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
     {
         while (!bw.CancellationPending)
@@ -210,7 +224,115 @@ public partial class TPEditorControl : UserControl, IUserControl
     {
         var states = e.UserState as ProgramStates;
 
-        if(states is null) return;
-      
+        if (states is null) return;
+
+
+        foreach (var item in states.TaskStates)
+        {
+            treeFile.SetProgramState($"{item.Name}.ls", item.Status);
+        }
+
+        var selected = treeFile.SelectedNode?.Text;
+
+        TaskHistoryData? data = null;
+
+        if (selected != null)
+        {
+            data = states.TaskStates.Where(x => x.Status != UnderAutomation.Fanuc.Common.TaskStatus.Aborted).SelectMany(x => x.History).FirstOrDefault(x => x.ProgramName.Equals(Path.GetFileNameWithoutExtension(selected), StringComparison.InvariantCultureIgnoreCase));
+            if (data != null)
+            {
+                editor.SetCurrentExecutionLineNumber(data.LineNumber);
+            }
+        }
+
+        if (data is null)
+        {
+            editor.SetCurrentExecutionLineNumber(-1);
+        }
+    }
+
+    private void treeFile_ItemRenamed(object sender, ItemRenamedEventArgs e)
+    {
+        _robot.Ftp.DirectFileHandling.Rename($"/md:/{e.OldName}", $"/md:/{e.NewName}");
+    }
+
+    private void treeFile_ItemSelected(object sender, ItemSelectedEventArgs e)
+    {
+        byte[] content;
+        _robot.Ftp.DirectFileHandling.DownloadFileFromController(out content, $"/md:/{e.SelectedItem}");
+
+        var fileContent = Encoding.ASCII.GetString(content);
+
+        editor.Editor.Text = fileContent;
+
+        var breakpoints = _robot.Telnet.GetBreakpoints(GetSelectedProgramName());
+
+        editor.InitializeBreakpoints(breakpoints.Breakpoints.Select(x=>x.Line));
+    }
+
+    private void btnStart_Click(object sender, EventArgs e)
+    {
+        _robot.Telnet.SetVariable("$RMT_MASTER", 1); // Set master device to KCL
+        _robot.Telnet.StepOff();
+        var selected = GetSelectedProgramName();
+        var result = _robot.Telnet.Run(selected);
+        HandleCommandResult(result);
+    }
+
+    private void btnPause_Click(object sender, EventArgs e)
+    {
+        var selected = GetSelectedProgramName();
+        var result = _robot.Telnet.Pause(selected);
+        HandleCommandResult(result);
+    }
+
+    private void btnAbort_Click(object sender, EventArgs e)
+    {
+        var selected = GetSelectedProgramName();
+        var result = _robot.Telnet.Abort(selected);
+        HandleCommandResult(result);
+    }
+
+    private void HandleCommandResult(Result result)
+    {
+        if (result.Succeed) return;
+
+        MessageBox.Show(result.ErrorText, "Error occured while sending command", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    private void btnStep_Click(object sender, EventArgs e)
+    {
+        var selected = GetSelectedProgramName();
+        _robot.Telnet.RemoveAllBreakpoints(selected);
+        editor.InitializeBreakpoints(new int[0]);
+        _robot.Telnet.StepOn(selected);
+        _robot.Telnet.Continue(selected);
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+        _robot.Ftp.DirectFileHandling.UploadFileToController(Encoding.ASCII.GetBytes(editor.Editor.Text), $"/md:/{GetSelectedProgramName()}.ls");
+
+
+        byte[] content;
+        _robot.Ftp.DirectFileHandling.DownloadFileFromController(out content, $"/md:/{GetSelectedProgramName()}.ls");
+
+        var fileContent = Encoding.ASCII.GetString(content);
+
+        editor.Editor.Text = fileContent;
+    
+    }
+
+    private void editor_BreakpointAdded(object sender, int e)
+    {
+        var selected = GetSelectedProgramName();
+        _robot.Telnet.Pause(selected);
+        _robot.Telnet.AddBreakpoint(selected, e);
+    }
+
+    private void editor_BreakpointRemoved(object sender, int e)
+    {
+        _robot.Telnet.RemoveBreakpoint(GetSelectedProgramName(), e);
     }
 }
+

@@ -137,6 +137,16 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap corner_down_right_line {
+            get {
+                object obj = ResourceManager.GetObject("corner-down-right-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_bin_5_line {
             get {
                 object obj = ResourceManager.GetObject("delete-bin-5-line", resourceCulture);
@@ -319,6 +329,46 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap running_0 {
+            get {
+                object obj = ResourceManager.GetObject("running-0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap running_1 {
+            get {
+                object obj = ResourceManager.GetObject("running-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap running_2 {
+            get {
+                object obj = ResourceManager.GetObject("running-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap running_3 {
+            get {
+                object obj = ResourceManager.GetObject("running-3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_3_fill {
             get {
                 object obj = ResourceManager.GetObject("save-3-fill", resourceCulture);
@@ -350,6 +400,16 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         internal static string SourceListsNull {
             get {
                 return ResourceManager.GetString("SourceListsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stop_fill {
+            get {
+                object obj = ResourceManager.GetObject("stop-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
