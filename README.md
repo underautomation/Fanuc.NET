@@ -12,6 +12,8 @@
 
 The **Fanuc SDK** enables seamless integration with Fanuc robots for automation, data exchange, and remote control. Ideal for industrial automation, research, and advanced robotics applications.
 
+It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
+
 🔗 **More Information:** [https://underautomation.com/fanuc](https://underautomation.com/fanuc)  
 🔗 Also available for **[🟨 LabVIEW](https://github.com/underautomation/Fanuc.vi)** & **[🐍 Python](https://github.com/underautomation/Fanuc.py)**
 
