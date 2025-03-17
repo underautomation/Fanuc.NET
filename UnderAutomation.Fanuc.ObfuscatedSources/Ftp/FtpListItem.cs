@@ -5,7 +5,7 @@
 
 namespace Ftp {
 	/// <summary>
-	/// Represents a file system object on the server
+	/// Represents a file system object on the controller
 	/// </summary>
 	public class FtpListItem {
 

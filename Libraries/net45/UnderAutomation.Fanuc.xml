@@ -806,39 +806,50 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.IO.Stream,System.String,System.Boolean,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
-            Uploads the specified stream as a file onto the server.
+            Uploads the specified stream as a file onto the controller.
             High-level API that takes care of various edge cases internally.
             Supports very large files since it uploads data in chunks.
             It overwrites file if it already exists.
             </summary>
             <param name="fileStream">The full data of the file, as a stream</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.Byte[],System.String,System.Boolean,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
-            Uploads the specified byte array as a file onto the server.
+            Uploads the specified byte array as a file onto the controller.
             High-level API that takes care of various edge cases internally.
             Supports very large files since it uploads data in chunks.
             It overwrites file if it already exists.
             </summary>
             <param name="fileData">The full data of the file, as a byte array</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.String,System.String,System.Boolean,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
-            Uploads the specified file directly onto the server.
+            Uploads the specified file directly onto the controller.
             High-level API that takes care of various edge cases internally.
             Supports very large files since it uploads data in chunks.
             </summary>
             <param name="localPath">The full or relative path to the file on the local file system</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was uploaded, false otherwise.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFilesToController(System.String[],System.String)">
+            <summary>
+            Uploads the given file paths to a single folder on the controller.
+            All files are placed directly into the given folder regardless of their path on the local filesystem.
+            High-level API that takes care of various edge cases internally.
+            Supports very large files since it uploads data in chunks.
+            </summary>
+            <param name="localPaths">The full or relative paths to the files on the local file system. Files can be from multiple folders.</param>
+            <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the controller</param>
+            <returns>The list of files that were uploaded successfully</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DownloadFileFromController(System.Byte[]@,System.String,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
@@ -847,7 +858,7 @@
             Supports very large files since it downloads data in chunks.
             </summary>
             <param name="outBytes">The variable that will receive the bytes.</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was downloaded, false otherwise.</returns>
         </member>
@@ -858,7 +869,7 @@
             Supports very large files since it downloads data in chunks.
             </summary>
             <param name="outStream">The stream that the file will be written to. Provide a new MemoryStream if you only want to read the file into memory.</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was downloaded, false otherwise.</returns>
         </member>
@@ -870,20 +881,30 @@
             It overwrites the file if it already exists.
             </summary>
             <param name="localPath">The full or relative path to the file on the local file system</param>
-            <param name="remotePath">The full or relative path to the file on the server</param>
+            <param name="remotePath">The full or relative path to the file on the controller</param>
             <param name="progress">Provide an implementation of IProgress to track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was downloaded, false otherwise.</returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DownloadFilesFromController(System.String,System.String[])">
+            <summary>
+            Downloads the specified files into a local single directory.
+            High-level API that takes care of various edge cases internally.
+            Supports very large files since it downloads data in chunks.
+            </summary>
+            <param name="localDir">The full or relative path to the directory that files will be downloaded into.</param>
+            <param name="remotePaths">The full paths to the files on the controller</param>
+            <returns>The list of all local files downloaded</returns>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.FileExists(System.String)">
             <summary>
-            Checks if a file exists on the server.
+            Checks if a file exists on the controller.
             </summary>
             <param name="path">The full or relative path to the file</param>
             <returns>True if the file exists</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DirectoryExists(System.String)">
             <summary>
-            Tests if the specified directory exists on the server. This
+            Tests if the specified directory exists on the controller. This
             method works by trying to change the working directory to
             the path specified. If it succeeds, the directory is changed
             back to the old working directory and true is returned. False
@@ -895,7 +916,7 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.CreateDirectory(System.String)">
             <summary>
-            Creates a directory on the server. If the preceding
+            Creates a directory on the controller. If the preceding
             directories do not exist, then they are created.
             </summary>
             <param name="path">The full or relative path to the new remote directory</param>
@@ -908,13 +929,13 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DeleteFile(System.String)">
             <summary>
-            Deletes a file on the server
+            Deletes a file on the controller
             </summary>
             <param name="path">The full or relative path to the file</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.GetListing(System.String)">
             <summary>
-            Gets a file listing from the server. Each <see cref="T:UnderAutomation.Fanuc.Ftp.FtpListItem"/> object returned
+            Gets a file listing from the controller. Each <see cref="T:UnderAutomation.Fanuc.Ftp.FtpListItem"/> object returned
             contains information about the file that was able to be retrieved. 
             </summary>
             <param name="path">The path of the directory to list</param>
@@ -922,8 +943,8 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.GetObjectInfo(System.String)">
             <summary>
-            Returns information about a file system object. Returns null if the server response can't
-            be parsed or the server returns a failure completion code. The error for a failure
+            Returns information about a file system object. Returns null if the controller response can't
+            be parsed or the controller returns a failure completion code. The error for a failure
             is logged with FtpTrace. No exception is thrown on error because that would negate
             the usefulness of this method for checking for the existence of an object.
             </summary>
@@ -38150,29 +38171,6 @@
             to propagate from this method.
             </remarks>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.UploadFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},System.String,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpExists,System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError)">
-            <summary>
-            Uploads the given file paths to a single folder on the server.
-            All files are placed directly into the given folder regardless of their path on the local filesystem.
-            High-level API that takes care of various edge cases internally.
-            Supports very large files since it uploads data in chunks.
-            Faster than uploading single files with <see cref="o:UploadFile"/> since it performs a single "file exists" check rather than one check per file.
-            </summary>
-            <param name="localFiles">Files to be uploaded</param>
-            <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the server</param>
-            <param name="existsMode">What to do if the file already exists? Skip, overwrite or append? Set this to FtpExists.None for fastest performance but only if you are SURE that the files do not exist on the server.</param>
-            <param name="createRemoteDir">Create the remote directory if it does not exist.</param>
-            <param name="verifyOptions">Sets if checksum verification is required for a successful download and what to do if it fails verification (See Remarks)</param>
-            <param name="errorHandling">Used to determine how errors are handled</param>
-            <returns>The count of how many files were downloaded successfully. When existing files are skipped, they are not counted.</returns>
-            <remarks>
-            If verification is enabled (All options other than <see cref="F:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify.None"/>) the hash will be checked against the server.  If the server does not support
-            any hash algorithm, then verification is ignored.  If only <see cref="F:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify.OnlyChecksum"/> is set then the return of this method depends on both a successful 
-            upload &amp; verification.  Additionally, if any verify option is set and a retry is attempted the existsMode will automatically be set to <see cref="F:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpExists.Overwrite"/>.
-            If <see cref="F:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify.Throw"/> is set and <see cref="F:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError.Throw"/> is <i>not set</i>, then individual verification errors will not cause an exception
-            to propagate from this method.
-            </remarks>
-        </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.DownloadFiles(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError)">
             <summary>
             Downloads the specified files into a local single directory.
@@ -41370,7 +41368,7 @@
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.FtpListItem">
             <summary>
-            Represents a file system object on the server
+            Represents a file system object on the controller
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.FtpListItem.Size">

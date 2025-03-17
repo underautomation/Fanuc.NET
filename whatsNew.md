@@ -1,1 +1,1 @@
-- add breakpoints and step on/off support in Telnet
+- Add methods `Ftp.DirectFileHandling.DownloadFilesFromController` and `Ftp.DirectFileHandling.UploadFilesToController` to download and upload multiple files. It supports very large files since it downloads data in chunks
