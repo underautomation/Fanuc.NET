@@ -167,6 +167,16 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fanuc {
+            get {
+                object obj = ResourceManager.GetObject("fanuc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap file_edit_line {
             get {
                 object obj = ResourceManager.GetObject("file-edit-line", resourceCulture);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Ftp;
 
@@ -188,14 +183,31 @@ public partial class FileHandlingControl : UserControl, IUserControl
 
         if (dlgOpen.ShowDialog() != DialogResult.OK) return;
 
-        using (var selectedFile = File.OpenRead(dlgOpen.FileName))
+        try
         {
-            _robot.Ftp.DirectFileHandling.UploadFileToController(selectedFile, GetPath() + Path.GetFileName(dlgOpen.FileName).Replace(@"\", "/"));
-        }
+            Cursor = Cursors.WaitCursor;
 
-        Thread.Sleep(500);
-        ReloadList();
-        SelectFile(Path.GetFileName(dlgOpen.FileName));
+            if (dlgOpen.FileNames.Length > 1)
+            {
+                _robot.Ftp.DirectFileHandling.UploadFilesToController(dlgOpen.FileNames, GetPath());
+
+            }
+            else
+            {
+                using (var selectedFile = File.OpenRead(dlgOpen.FileName))
+                {
+                    _robot.Ftp.DirectFileHandling.UploadFileToController(selectedFile, GetPath() + Path.GetFileName(dlgOpen.FileName).Replace(@"\", "/"));
+                }
+            }
+
+            Thread.Sleep(500);
+            ReloadList();
+            SelectFile(Path.GetFileName(dlgOpen.FileName));
+        }
+        finally
+        {
+            Cursor = Cursors.Default;
+        }
     }
 
     // Get current directory path
@@ -217,19 +229,40 @@ public partial class FileHandlingControl : UserControl, IUserControl
     {
         if (!_robot.Ftp.Connected) return;
 
-        var file = lstFolder.SelectedItems.OfType<ListViewItem>()?.FirstOrDefault()?.Tag as FtpListItem;
+        var files = lstFolder.SelectedItems.OfType<ListViewItem>()?.Select(x => x.Tag).OfType<FtpListItem>();
 
-        if (file == null) return;
+        if (files is null || files.Count() == 0) return;
 
-        dlgSave.FileName = Path.GetFileName(file.FullName).Replace(@"\", "/");
+        try
+        {
 
-        if (dlgSave.ShowDialog() != DialogResult.OK) return;
+            if (files.Count() == 1)
+            {
+                var file = files.First();
+                dlgSave.FileName = Path.GetFileName(file.FullName).Replace(@"\", "/");
 
-        _robot.Ftp.DirectFileHandling.DownloadFileFromController(dlgSave.FileName, file.FullName);
+                if (dlgSave.ShowDialog() != DialogResult.OK) return;
+                Cursor = Cursors.WaitCursor;
 
-        Explorer.RevealFile(dlgSave.FileName);
+                _robot.Ftp.DirectFileHandling.DownloadFileFromController(dlgSave.FileName, file.FullName);
+
+                Explorer.RevealFile(dlgSave.FileName);
+            }
+            else
+            {
+                if (dlgFolder.ShowDialog() != DialogResult.OK) return;
+                Cursor = Cursors.WaitCursor;
+
+                _robot.Ftp.DirectFileHandling.DownloadFilesFromController(dlgFolder.SelectedPath, files.Select(file => file.FullName).ToArray());
+
+                Explorer.OpenDirectory(dlgFolder.SelectedPath);
+            }
+        }
+        finally
+        {
+            Cursor = Cursors.Default;
+        }
     }
-
 
     // Perform renaming or directory creation
     private void lstFolder_AfterLabelEdit(object sender, LabelEditEventArgs e)

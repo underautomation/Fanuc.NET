@@ -121,8 +121,14 @@
   <data name="arrow-up-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-up-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SourceListNotFound" xml:space="preserve">
+    <value>Source list is not in the view.</value>
+  </data>
   <data name="running-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectCannotBeNull" xml:space="preserve">
+    <value>Object cannot be null.</value>
   </data>
   <data name="arrow-right-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-right-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +142,8 @@
   <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stop-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stop-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="corner-down-right-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corner-down-right-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save-3-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-3-fill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,9 +160,6 @@
   <data name="CannotAddWhenNewItemsListNull" xml:space="preserve">
     <value>Cannot add a new item when NewItemsList is null.</value>
   </data>
-  <data name="upload-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\upload-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pause.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,14 +169,8 @@
   <data name="ItemTypeIncorrect" xml:space="preserve">
     <value>Item was not of type {0}.</value>
   </data>
-  <data name="folder-shared-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-shared-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="running-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="running-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,17 +178,20 @@
   <data name="CannotInsertItem" xml:space="preserve">
     <value>Cannot insert an external item into this collection.</value>
   </data>
-  <data name="UnderAutomation132" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UnderAutomation132.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SourceListAlreadyAdded" xml:space="preserve">
     <value>Source list already added to the view.</value>
+  </data>
+  <data name="CannotSetItem" xml:space="preserve">
+    <value>Cannot set an item in the view.</value>
   </data>
   <data name="IncludeDelegateCannotBeNull" xml:space="preserve">
     <value>includeDelegate cannot be null.</value>
   </data>
   <data name="PredicateFilter" xml:space="preserve">
     <value>(predicate filter)</value>
+  </data>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CannotAddItem" xml:space="preserve">
     <value>Cannot add an external item to the view. Use AddNew() or add to source list instead.</value>
@@ -205,8 +205,8 @@
   <data name="tools-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tools-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectCannotBeNull" xml:space="preserve">
-    <value>Object cannot be null.</value>
+  <data name="file-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete-bin-5-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-bin-5-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,25 +223,28 @@
   <data name="running-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="upload-2-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upload-2-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="file-edit-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file-edit-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SourceListNotFound" xml:space="preserve">
-    <value>Source list is not in the view.</value>
-  </data>
-  <data name="CannotSetItem" xml:space="preserve">
-    <value>Cannot set an item in the view.</value>
-  </data>
-  <data name="CannotClearView" xml:space="preserve">
-    <value>Cannot clear this view.</value>
+  <data name="UnderAutomation132" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UnderAutomation132.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ua" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ua.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="corner-down-right-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\corner-down-right-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder-shared-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-shared-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CannotClearView" xml:space="preserve">
+    <value>Cannot clear this view.</value>
+  </data>
+  <data name="stop-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stop-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fanuc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fanuc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
