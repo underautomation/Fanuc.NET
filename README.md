@@ -125,16 +125,6 @@ double value = robot.Snpx.Registers.Read(1);
 robot.Snpx.Registers.Write(2, 123.45);
 ```
 
-#### 🔹 Get alarm history
-
-```csharp
-var alarms = robot.Snpx.Alarms.GetActiveAlarms();
-foreach (var alarm in alarms)
-{
-    Console.WriteLine($"Alarm {alarm.Code}: {alarm.Message}");
-}
-```
-
 #### 🔹 Read and control robot signals (UI, UO, GI, GO)
 
 ```csharp
@@ -145,6 +135,21 @@ bool UI1 = robot.Snpx.UI.Read(1);
 robot.Snpx.UO.Write(3, true);
 ```
 
+#### Clear alarms
+
+```csharp
+// Clear alarms
+robot.Snpx.ClearAlarms();
+```
+
+#### Get current position
+```csharp
+// Read current joint and cartesian position
+Position position = robot.Snpx.CurrentPosition.ReadWorldPosition();
+
+// Read User frame cartesian position
+robot.Snpx.CurrentPosition.ReadUserFramePosition(1);
+```
 ---
 
 ### 📂 **3. File & Variable Management via FTP Memory Access**
