@@ -840,7 +840,7 @@
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was uploaded, false otherwise.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFilesToController(System.String[],System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFilesToController(System.String[],System.String,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
             Uploads the given file paths to a single folder on the controller.
             All files are placed directly into the given folder regardless of their path on the local filesystem.
@@ -849,6 +849,7 @@
             </summary>
             <param name="localPaths">The full or relative paths to the files on the local file system. Files can be from multiple folders.</param>
             <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the controller</param>
+            <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>The list of files that were uploaded successfully</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DownloadFileFromController(System.Byte[]@,System.String,UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
@@ -885,7 +886,7 @@
             <param name="progress">Provide an implementation of IProgress to track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>If true then the file was downloaded, false otherwise.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DownloadFilesFromController(System.String,System.String[])">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.DownloadFilesFromController(System.String,System.String[],UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.OnProgressDelegate)">
             <summary>
             Downloads the specified files into a local single directory.
             High-level API that takes care of various edge cases internally.
@@ -893,6 +894,7 @@
             </summary>
             <param name="localDir">The full or relative path to the directory that files will be downloaded into.</param>
             <param name="remotePaths">The full paths to the files on the controller</param>
+            <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <returns>The list of all local files downloaded</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.FileExists(System.String)">
@@ -38147,7 +38149,7 @@
             Controls if the high-level API downloads files in Binary or ASCII mode.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.UploadFiles(System.Collections.Generic.IEnumerable{System.String},System.String,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpExists,System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.UploadFiles(System.Collections.Generic.IEnumerable{System.String},System.String,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpExists,System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError,IProgress{System.Double})">
             <summary>
             Uploads the given file paths to a single folder on the server.
             All files are placed directly into the given folder regardless of their path on the local filesystem.
@@ -38171,7 +38173,7 @@
             to propagate from this method.
             </remarks>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.DownloadFiles(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient.DownloadFiles(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpVerify,UnderAutomation.Fanuc.Ftp.FluentFTP.FtpError,IProgress{System.Double})">
             <summary>
             Downloads the specified files into a local single directory.
             High-level API that takes care of various edge cases internally.

@@ -73,8 +73,9 @@ namespace Ftp.Internal {
 		/// </summary>
 		/// <param name="localPaths">The full or relative paths to the files on the local file system. Files can be from multiple folders.</param>
 		/// <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the controller</param>
+		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>The list of files that were uploaded successfully</returns>
-		public string[] UploadFilesToController(string[] localPaths, string remoteDir)
+		public string[] UploadFilesToController(string[] localPaths, string remoteDir, FtpDirectFileHandling.OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -134,8 +135,9 @@ namespace Ftp.Internal {
 		/// </summary>
 		/// <param name="localDir">The full or relative path to the directory that files will be downloaded into.</param>
 		/// <param name="remotePaths">The full paths to the files on the controller</param>
+		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>The list of all local files downloaded</returns>
-		public string[] DownloadFilesFromController(string localDir, string[] remotePaths)
+		public string[] DownloadFilesFromController(string localDir, string[] remotePaths, FtpDirectFileHandling.OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
