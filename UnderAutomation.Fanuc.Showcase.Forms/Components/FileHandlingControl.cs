@@ -183,13 +183,15 @@ public partial class FileHandlingControl : UserControl, IUserControl
 
         if (dlgOpen.ShowDialog() != DialogResult.OK) return;
 
+
+        var btnUploadText = btnUpload.Text;
         try
         {
             Cursor = Cursors.WaitCursor;
 
             if (dlgOpen.FileNames.Length > 1)
             {
-                _robot.Ftp.DirectFileHandling.UploadFilesToController(dlgOpen.FileNames, GetPath());
+                _robot.Ftp.DirectFileHandling.UploadFilesToController(dlgOpen.FileNames, GetPath(), progress: progress => OnProgress(progress, btnUploadText, btnUpload));
 
             }
             else
@@ -207,6 +209,7 @@ public partial class FileHandlingControl : UserControl, IUserControl
         finally
         {
             Cursor = Cursors.Default;
+            btnUpload.Text = btnUploadText;
         }
     }
 
@@ -233,6 +236,8 @@ public partial class FileHandlingControl : UserControl, IUserControl
 
         if (files is null || files.Count() == 0) return;
 
+        var btnDownloadText = btnDownload.Text; ;
+
         try
         {
 
@@ -253,7 +258,7 @@ public partial class FileHandlingControl : UserControl, IUserControl
                 if (dlgFolder.ShowDialog() != DialogResult.OK) return;
                 Cursor = Cursors.WaitCursor;
 
-                _robot.Ftp.DirectFileHandling.DownloadFilesFromController(dlgFolder.SelectedPath, files.Select(file => file.FullName).ToArray());
+                _robot.Ftp.DirectFileHandling.DownloadFilesFromController(dlgFolder.SelectedPath, files.Select(file => file.FullName).ToArray(), progress => OnProgress(progress, btnDownloadText, btnDownload));
 
                 Explorer.OpenDirectory(dlgFolder.SelectedPath);
             }
@@ -261,8 +266,16 @@ public partial class FileHandlingControl : UserControl, IUserControl
         finally
         {
             Cursor = Cursors.Default;
+            btnDownload.Text = btnDownloadText;
         }
     }
+
+    private void OnProgress(double progress, string? text, ToolStripButton button)
+    {
+        button.Text = $"{text} ({(int)progress}%)";
+        Application.DoEvents();
+    }
+
 
     // Perform renaming or directory creation
     private void lstFolder_AfterLabelEdit(object sender, LabelEditEventArgs e)
