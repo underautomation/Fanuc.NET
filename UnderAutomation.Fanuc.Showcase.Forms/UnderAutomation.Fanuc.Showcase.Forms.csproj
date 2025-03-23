@@ -27,6 +27,9 @@
     <Compile Update="Components\ProgramStatesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Components\DpmControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Components\TPEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -39,6 +39,7 @@ public partial class MainForm : Form
         AddNode(new FileHandlingControl(_robot));
         AddNode(new MoveRobotControl(_robot));
         AddNode(new TPEditorControl(_robot));
+        AddNode(new DpmControl(_robot));
         AddNode(new SnpxControl(_robot));
         AddNode(new ContactControl());
         AddNode(new LicenseControl());
