@@ -54,6 +54,7 @@ A Windows Forms application demonstrating all the features of the library.
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif" >
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif" >
     <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif" >
+    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif" >
 </p>
 
 ---
@@ -143,6 +144,7 @@ robot.Snpx.ClearAlarms();
 ```
 
 #### Get current position
+
 ```csharp
 // Read current joint and cartesian position
 Position position = robot.Snpx.CurrentPosition.ReadWorldPosition();
@@ -150,6 +152,7 @@ Position position = robot.Snpx.CurrentPosition.ReadWorldPosition();
 // Read User frame cartesian position
 robot.Snpx.CurrentPosition.ReadUserFramePosition(1);
 ```
+
 ---
 
 ### 📂 **3. File & Variable Management via FTP Memory Access**
