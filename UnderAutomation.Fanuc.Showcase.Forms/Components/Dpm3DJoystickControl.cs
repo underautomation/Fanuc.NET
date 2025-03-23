@@ -9,7 +9,17 @@ public class Dpm3DJoystickControl : Control
     private string _activeAxis = null;
     private string _activeSquare = null;
 
-   public bool GetXYZ(out float x, out float y, out float z)
+    public Dpm3DJoystickControl()
+    {
+        this.DoubleBuffered = true;
+        this.ResizeRedraw = true;
+        this.MouseDown += OnMouseDown;
+        this.MouseMove += OnMouseMove;
+        this.MouseUp += OnMouseUp;
+    }
+
+
+    public bool GetXYZ(out float x, out float y, out float z)
     {
         // thread safe
         var xValue = _xValue;
@@ -21,13 +31,13 @@ public class Dpm3DJoystickControl : Control
         var activeAxis = _activeAxis;
         var activeSquare = _activeSquare;
 
-        if(activeAxis != null)
+        if (activeAxis != null)
         {
             x = (xValue - 0.5f) * 2;
             y = (yValue - 0.5f) * 2;
             z = (zValue - 0.5f) * 2;
         }
-        else if(activeSquare != null)
+        else if (activeSquare != null)
         {
             if (activeSquare == "XY")
             {
@@ -56,15 +66,6 @@ public class Dpm3DJoystickControl : Control
         return true;
     }
 
-    public Dpm3DJoystickControl()
-    {
-        this.DoubleBuffered = true;
-        this.ResizeRedraw = true;
-        this.MouseDown += OnMouseDown;
-        this.MouseMove += OnMouseMove;
-        this.MouseUp += OnMouseUp;
-    }
-
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
@@ -78,8 +79,8 @@ public class Dpm3DJoystickControl : Control
         float margin = 20f;
         float unitScale = (Math.Min(Width, Height) - margin * 2) / 2.4f;
 
-        PointF xAxis = TransformVector(-1, 1, 0, unitScale);
-        PointF yAxis = TransformVector(1, 0, 0, unitScale);
+        PointF xAxis = TransformVector(1, 0, 0, unitScale);
+        PointF yAxis = TransformVector(-1, 1, 0, unitScale);
         PointF zAxis = TransformVector(0, 0, 1, unitScale);
 
         Pen axisPen = new Pen(Color.White, 2);
@@ -90,9 +91,9 @@ public class Dpm3DJoystickControl : Control
         DrawAxis(g, origin, yAxis, "Y", _yValue, axisPen, unitScale);
         DrawAxis(g, origin, zAxis, "Z", _zValue, axisPen, unitScale);
 
-        DrawDottedSquareWithCursor(g, origin, xAxis, yAxis, dashedPen, _xyCursor);
-        DrawDottedSquareWithCursor(g, origin, xAxis, zAxis, dashedPen, _xzCursor);
+        DrawDottedSquareWithCursor(g, origin, yAxis, xAxis, dashedPen, _xyCursor);
         DrawDottedSquareWithCursor(g, origin, yAxis, zAxis, dashedPen, _yzCursor);
+        DrawDottedSquareWithCursor(g, origin, xAxis, zAxis, dashedPen, _xzCursor);
     }
 
     private void DrawAxis(Graphics g, PointF origin, PointF axis, string label, float value, Pen pen, float scale)
@@ -100,6 +101,9 @@ public class Dpm3DJoystickControl : Control
         PointF end = Add(origin, Scale(axis, 1.2f));
         g.DrawLine(pen, origin, end);
         g.DrawString(label, Font, Brushes.White, end);
+
+        PointF fix = Add(origin, Scale(axis, 0.5f));
+        g.FillEllipse(Brushes.Pink, fix.X - 4, fix.Y - 4, 8, 8);
 
         PointF cursor = Add(origin, Scale(axis, value));
         g.FillEllipse(Brushes.Red, cursor.X - 4, cursor.Y - 4, 8, 8);
@@ -116,6 +120,9 @@ public class Dpm3DJoystickControl : Control
         g.DrawLine(pen, p1, p2);
         g.DrawLine(pen, p2, p3);
         g.DrawLine(pen, p3, p0);
+
+        PointF fix = Add(origin, Add(Scale(v1, 0.5f), Scale(v2, 0.5f)));
+        g.FillRectangle(Brushes.Pink, fix.X - 4, fix.Y - 4, 8, 8);
 
         PointF cursor = Add(origin, Add(Scale(v1, cursorValue.X), Scale(v2, cursorValue.Y)));
         g.FillRectangle(Brushes.Red, cursor.X - 4, cursor.Y - 4, 8, 8);
@@ -224,9 +231,9 @@ public class Dpm3DJoystickControl : Control
         PointF origin = new PointF(Width / 2f, Height / 2f);
         float margin = 20f;
         float unitScale = (Math.Min(Width, Height) - margin * 2) / 2.4f;
-        PointF dir = axis == "X" ? TransformVector(-1, 1, 0, unitScale) :
-                     axis == "Y" ? TransformVector(1, 0, 0, unitScale) :
-                                   TransformVector(0, 0, 1, unitScale);
+        PointF dir = axis == "X" ? TransformVector(1, 0, 0, unitScale) :
+                    axis == "Y" ? TransformVector(-1, 1, 0, unitScale) :
+                                  TransformVector(0, 0, 1, unitScale);
 
         float dot = ((location.X - origin.X) * dir.X + (location.Y - origin.Y) * dir.Y) / (dir.X * dir.X + dir.Y * dir.Y);
         dot = Math.Max(0, Math.Min(1, dot));
@@ -243,9 +250,21 @@ public class Dpm3DJoystickControl : Control
         float unitScale = (Math.Min(Width, Height) - margin * 2) / 2.4f;
 
         PointF v1, v2;
-        if (square == "XY") { v1 = TransformVector(-1, 1, 0, unitScale); v2 = TransformVector(1, 0, 0, unitScale); }
-        else if (square == "XZ") { v1 = TransformVector(-1, 1, 0, unitScale); v2 = TransformVector(0, 0, 1, unitScale); }
-        else { v1 = TransformVector(1, 0, 0, unitScale); v2 = TransformVector(0, 0, 1, unitScale); }
+        if (square == "XY")
+        {
+            v1 = TransformVector(-1, 1, 0, unitScale); // Y
+            v2 = TransformVector(1, 0, 0, unitScale);  // X
+        }
+        else if (square == "XZ")
+        {
+            v1 = TransformVector(1, 0, 0, unitScale);
+            v2 = TransformVector(0, 0, 1, unitScale);
+        }
+        else
+        {
+            v1 = TransformVector(-1, 1, 0, unitScale); // Y
+            v2 = TransformVector(0, 0, 1, unitScale);
+        }
 
         PointF offset = new PointF(location.X - origin.X, location.Y - origin.Y);
 
@@ -272,8 +291,8 @@ public class Dpm3DJoystickControl : Control
 
         (string axis, PointF dir, float value)[] axes = new[]
         {
-            ("X", TransformVector(-1, 1, 0, unitScale), _xValue),
-            ("Y", TransformVector(1, 0, 0, unitScale), _yValue),
+            ("X", TransformVector(1,0, 0, unitScale), _xValue),
+            ("Y", TransformVector(-1,1, 0, unitScale), _yValue),
             ("Z", TransformVector(0, 0, 1, unitScale), _zValue),
         };
 
@@ -296,8 +315,8 @@ public class Dpm3DJoystickControl : Control
 
         (string axis, PointF dir)[] axes = new[]
         {
-            ("X", TransformVector(-1, 1, 0, unitScale)),
-            ("Y", TransformVector(1, 0, 0, unitScale)),
+            ("X", TransformVector(1, 0, 0, unitScale)),
+            ("Y", TransformVector(-1, 1, 0, unitScale)),
             ("Z", TransformVector(0, 0, 1, unitScale)),
         };
 
@@ -322,9 +341,9 @@ public class Dpm3DJoystickControl : Control
 
         (string name, PointF v1, PointF v2, PointF val)[] squares = new[]
         {
-            ("XY", TransformVector(-1, 1, 0, unitScale), TransformVector(1, 0, 0, unitScale), _xyCursor),
-            ("XZ", TransformVector(-1, 1, 0, unitScale), TransformVector(0, 0, 1, unitScale), _xzCursor),
-            ("YZ", TransformVector(1, 0, 0, unitScale), TransformVector(0, 0, 1, unitScale), _yzCursor),
+            ("XY", TransformVector(-1, 1, 0, unitScale), TransformVector(1, 0, 0, unitScale), _xyCursor), // YX
+            ("XZ", TransformVector(1, 0, 0, unitScale), TransformVector(0, 0, 1, unitScale), _xzCursor),
+            ("YZ", TransformVector(-1, 1, 0, unitScale), TransformVector(0, 0, 1, unitScale), _yzCursor),
         };
 
         foreach (var (name, v1, v2, val) in squares)
@@ -338,8 +357,8 @@ public class Dpm3DJoystickControl : Control
 
     private void SetCursorForAxis(string axis)
     {
-        if (axis == "X") Cursor = Cursors.SizeWE;
-        else if (axis == "Y") Cursor = Cursors.SizeNESW;
+        if (axis == "Y") Cursor = Cursors.SizeWE;
+        else if (axis == "X") Cursor = Cursors.SizeNESW;
         else if (axis == "Z") Cursor = Cursors.SizeNS;
     }
 }
