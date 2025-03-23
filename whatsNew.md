@@ -1,1 +1,1 @@
-- Report progress when uploading or downloading multiple files
+- Add remote control with mouse and DPM
