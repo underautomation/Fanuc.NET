@@ -50,13 +50,29 @@ A Windows Forms application demonstrating all the features of the library.
 
 📌 **Download:** [📥 UnderAutomation.Fanuc.Showcase.Forms.exe](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.Showcase.Forms.exe)
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif" >
-    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif" >
-    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif" >
-    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif" >
-    <img src="https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/tp-editor-breakpoints.gif" >
-</p>
+---
+**Read variables :**
+
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif)
+
+---
+**Move the robot :**
+
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif)
+
+---
+**High speed Read & Write registers :**
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif)
+
+---
+**Live remote control with Jostick or 3D Mouse:**
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif)
+
+---
+**TP Editor with breakpoints:**
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/tp-editor-breakpoints.gif)
+
+
 
 ---
 
