@@ -7,6 +7,15 @@ namespace Telnet {
 
 	public class SetPortResult : SetValueResult {
 
+		/// <summary>
+		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// </summary>
+		protected override bool FromResult(string data)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 
 		public SetPortResult()
 		{

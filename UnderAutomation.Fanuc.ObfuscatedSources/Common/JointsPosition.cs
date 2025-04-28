@@ -22,6 +22,12 @@ namespace Common {
 		}
 
 
+		public JointsPosition(double j1, double j2, double j3, double j4, double j5, double j6)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
 		public JointsPosition(double[] values)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

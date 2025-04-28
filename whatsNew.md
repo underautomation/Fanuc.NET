@@ -1,1 +1,1 @@
-- Add remote control with mouse and DPM
+- Fix issue when writting long variable name by telnet, like $REMOTE_CFG.$REMOTE_TYPE
