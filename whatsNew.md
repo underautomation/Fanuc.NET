@@ -1,1 +1,1 @@
-- Add remote control with mouse and DPM
+- Update Telnet error message when the run command failed because $REMOTE_CFG.$REMOTE_TYPE is not set to 1
