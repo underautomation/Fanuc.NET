@@ -1,1 +1,1 @@
-- Report progress when uploading or downloading multiple files
+- Increase the FTP timeout. This will make listing many files work.
