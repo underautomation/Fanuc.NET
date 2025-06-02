@@ -31,12 +31,16 @@
         groupBox3 = new GroupBox();
         udNumericValue = new NumericUpDown();
         udNumericRegister = new NumericUpDown();
+        txtRealVariable = new TextBox();
         txtIntegerVariable = new TextBox();
         btnWriteNumericRegister = new Button();
         label5 = new Label();
+        label11 = new Label();
         label7 = new Label();
+        btnWriteRealVariable = new Button();
         label6 = new Label();
         btnWriteIntegerVariable = new Button();
+        btnReadRealVariable = new Button();
         btnReadNumericRegister = new Button();
         btnReadIntegerVariable = new Button();
         groupBox2 = new GroupBox();
@@ -73,8 +77,10 @@
         columnHeader1 = new ColumnHeader();
         columnHeader2 = new ColumnHeader();
         panel1 = new Panel();
-        btnClearAssignments = new Button();
         btnClearAlarms = new Button();
+        btnClearAssignments = new Button();
+        groupBox4 = new GroupBox();
+        textBox1 = new TextBox();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
         groupBox3.SuspendLayout();
@@ -88,6 +94,7 @@
         tabSignals.SuspendLayout();
         tabAssignments.SuspendLayout();
         panel1.SuspendLayout();
+        groupBox4.SuspendLayout();
         SuspendLayout();
         // 
         // tabControl1
@@ -105,6 +112,7 @@
         // 
         // tabVariablesRegisters
         // 
+        tabVariablesRegisters.Controls.Add(groupBox4);
         tabVariablesRegisters.Controls.Add(groupBox3);
         tabVariablesRegisters.Controls.Add(groupBox2);
         tabVariablesRegisters.Controls.Add(groupBox1);
@@ -121,31 +129,36 @@
         // 
         groupBox3.Controls.Add(udNumericValue);
         groupBox3.Controls.Add(udNumericRegister);
+        groupBox3.Controls.Add(txtRealVariable);
         groupBox3.Controls.Add(txtIntegerVariable);
         groupBox3.Controls.Add(btnWriteNumericRegister);
         groupBox3.Controls.Add(label5);
+        groupBox3.Controls.Add(label11);
         groupBox3.Controls.Add(label7);
+        groupBox3.Controls.Add(btnWriteRealVariable);
         groupBox3.Controls.Add(label6);
         groupBox3.Controls.Add(btnWriteIntegerVariable);
+        groupBox3.Controls.Add(btnReadRealVariable);
         groupBox3.Controls.Add(btnReadNumericRegister);
         groupBox3.Controls.Add(btnReadIntegerVariable);
         groupBox3.Location = new Point(425, 246);
         groupBox3.Margin = new Padding(4, 3, 4, 3);
         groupBox3.Name = "groupBox3";
         groupBox3.Padding = new Padding(4, 3, 4, 3);
-        groupBox3.Size = new Size(402, 207);
+        groupBox3.Size = new Size(496, 207);
         groupBox3.TabIndex = 6;
         groupBox3.TabStop = false;
         groupBox3.Text = "Numerics";
         // 
         // udNumericValue
         // 
+        udNumericValue.DecimalPlaces = 3;
         udNumericValue.Location = new Point(7, 159);
         udNumericValue.Margin = new Padding(4, 3, 4, 3);
         udNumericValue.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
         udNumericValue.Minimum = new decimal(new int[] { 1661992959, 1808227885, 5, int.MinValue });
         udNumericValue.Name = "udNumericValue";
-        udNumericValue.Size = new Size(386, 23);
+        udNumericValue.Size = new Size(479, 23);
         udNumericValue.TabIndex = 0;
         udNumericValue.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
@@ -159,12 +172,21 @@
         udNumericRegister.TabIndex = 0;
         udNumericRegister.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
+        // txtRealVariable
+        // 
+        txtRealVariable.Location = new Point(346, 39);
+        txtRealVariable.Margin = new Padding(4, 3, 4, 3);
+        txtRealVariable.Name = "txtRealVariable";
+        txtRealVariable.Size = new Size(140, 23);
+        txtRealVariable.TabIndex = 4;
+        txtRealVariable.Text = "$ARGDISPMMCK";
+        // 
         // txtIntegerVariable
         // 
         txtIntegerVariable.Location = new Point(178, 39);
         txtIntegerVariable.Margin = new Padding(4, 3, 4, 3);
         txtIntegerVariable.Name = "txtIntegerVariable";
-        txtIntegerVariable.Size = new Size(214, 23);
+        txtIntegerVariable.Size = new Size(140, 23);
         txtIntegerVariable.TabIndex = 4;
         txtIntegerVariable.Text = "$RMT_MASTER";
         // 
@@ -189,6 +211,16 @@
         label5.TabIndex = 1;
         label5.Text = "Registers";
         // 
+        // label11
+        // 
+        label11.AutoSize = true;
+        label11.Location = new Point(346, 21);
+        label11.Margin = new Padding(4, 0, 4, 0);
+        label11.Name = "label11";
+        label11.Size = new Size(73, 15);
+        label11.TabIndex = 1;
+        label11.Text = "Real variable";
+        // 
         // label7
         // 
         label7.AutoSize = true;
@@ -198,6 +230,17 @@
         label7.Size = new Size(41, 15);
         label7.TabIndex = 1;
         label7.Text = "Value :";
+        // 
+        // btnWriteRealVariable
+        // 
+        btnWriteRealVariable.Location = new Point(346, 103);
+        btnWriteRealVariable.Margin = new Padding(4, 3, 4, 3);
+        btnWriteRealVariable.Name = "btnWriteRealVariable";
+        btnWriteRealVariable.Size = new Size(140, 27);
+        btnWriteRealVariable.TabIndex = 2;
+        btnWriteRealVariable.Text = "Write";
+        btnWriteRealVariable.UseVisualStyleBackColor = true;
+        btnWriteRealVariable.Click += btnWriteRealVariable_Click;
         // 
         // label6
         // 
@@ -219,6 +262,17 @@
         btnWriteIntegerVariable.Text = "Write";
         btnWriteIntegerVariable.UseVisualStyleBackColor = true;
         btnWriteIntegerVariable.Click += btnWriteIntegerVariable_Click;
+        // 
+        // btnReadRealVariable
+        // 
+        btnReadRealVariable.Location = new Point(346, 69);
+        btnReadRealVariable.Margin = new Padding(4, 3, 4, 3);
+        btnReadRealVariable.Name = "btnReadRealVariable";
+        btnReadRealVariable.Size = new Size(140, 27);
+        btnReadRealVariable.TabIndex = 2;
+        btnReadRealVariable.Text = "Read";
+        btnReadRealVariable.UseVisualStyleBackColor = true;
+        btnReadRealVariable.Click += btnReadRealVariable_Click;
         // 
         // btnReadNumericRegister
         // 
@@ -258,7 +312,7 @@
         groupBox2.Margin = new Padding(4, 3, 4, 3);
         groupBox2.Name = "groupBox2";
         groupBox2.Padding = new Padding(4, 3, 4, 3);
-        groupBox2.Size = new Size(402, 232);
+        groupBox2.Size = new Size(496, 232);
         groupBox2.TabIndex = 6;
         groupBox2.TabStop = false;
         groupBox2.Text = "Strings";
@@ -612,6 +666,16 @@
         panel1.Size = new Size(993, 42);
         panel1.TabIndex = 1;
         // 
+        // btnClearAlarms
+        // 
+        btnClearAlarms.Location = new Point(218, 8);
+        btnClearAlarms.Name = "btnClearAlarms";
+        btnClearAlarms.Size = new Size(154, 27);
+        btnClearAlarms.TabIndex = 1;
+        btnClearAlarms.Text = "Clear alarms";
+        btnClearAlarms.UseVisualStyleBackColor = true;
+        btnClearAlarms.Click += btnClearAlarms_Click;
+        // 
         // btnClearAssignments
         // 
         btnClearAssignments.Location = new Point(4, 8);
@@ -623,15 +687,26 @@
         btnClearAssignments.UseVisualStyleBackColor = true;
         btnClearAssignments.Click += btnClearAssignments_Click;
         // 
-        // btnClearAlarms
+        // groupBox4
         // 
-        btnClearAlarms.Location = new Point(218, 8);
-        btnClearAlarms.Name = "btnClearAlarms";
-        btnClearAlarms.Size = new Size(154, 27);
-        btnClearAlarms.TabIndex = 1;
-        btnClearAlarms.Text = "Clear alarms";
-        btnClearAlarms.UseVisualStyleBackColor = true;
-        btnClearAlarms.Click += btnClearAlarms_Click;
+        groupBox4.Controls.Add(textBox1);
+        groupBox4.Location = new Point(425, 461);
+        groupBox4.Name = "groupBox4";
+        groupBox4.Size = new Size(496, 68);
+        groupBox4.TabIndex = 7;
+        groupBox4.TabStop = false;
+        groupBox4.Text = "Karel program variables";
+        // 
+        // textBox1
+        // 
+        textBox1.Dock = DockStyle.Fill;
+        textBox1.Location = new Point(3, 19);
+        textBox1.Multiline = true;
+        textBox1.Name = "textBox1";
+        textBox1.ReadOnly = true;
+        textBox1.Size = new Size(490, 46);
+        textBox1.TabIndex = 0;
+        textBox1.Text = "To read & write karel variables, just use the variable name : $[KarelProgram]KarelVariable";
         // 
         // SnpxControl
         // 
@@ -657,6 +732,8 @@
         tabSignals.ResumeLayout(false);
         tabAssignments.ResumeLayout(false);
         panel1.ResumeLayout(false);
+        groupBox4.ResumeLayout(false);
+        groupBox4.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -710,4 +787,10 @@
     private NumericUpDown udFrame;
     private Label label10;
     private Button btnClearAlarms;
+    private TextBox txtRealVariable;
+    private Label label11;
+    private Button btnWriteRealVariable;
+    private Button btnReadRealVariable;
+    private GroupBox groupBox4;
+    private TextBox textBox1;
 }

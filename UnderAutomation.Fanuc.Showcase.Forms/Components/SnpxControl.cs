@@ -202,6 +202,18 @@ public partial class SnpxControl : UserControl, IUserControl
     {
         _robot.Snpx.IntegerSystemVariables.Write(txtIntegerVariable.Text, (int)udNumericValue.Value);
     }
+
+
+    private void btnReadRealVariable_Click(object sender, EventArgs e)
+    {
+        float value = _robot.Snpx.RealSystemVariables.Read(txtRealVariable.Text);
+        udNumericValue.Value = (decimal)value;
+    }
+
+    private void btnWriteRealVariable_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.RealSystemVariables.Write(txtRealVariable.Text, (float)udNumericValue.Value);
+    }
     #endregion
 
     #region Alarms
