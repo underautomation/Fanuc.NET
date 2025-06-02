@@ -64,6 +64,11 @@ namespace Snpx.Internal {
 		public IntegerSystemVariables IntegerSystemVariables { get; }
 
 		/// <summary>
+		/// Real variables
+		/// </summary>
+		public RealSystemVariables RealSystemVariables { get; }
+
+		/// <summary>
 		/// Position variables
 		/// </summary>
 		public PositionSystemVariables PositionSystemVariables { get; }
