@@ -153,6 +153,18 @@ bool UI1 = robot.Snpx.UI.Read(1);
 robot.Snpx.UO.Write(3, true);
 ```
 
+#### 🔹 Read & write variables
+
+```csharp
+// Write a system variable
+robot.Snpx.IntegerSystemVariables.Write("$RMT_MASTER", 1);
+robot.Snpx.StringSystemVariables.Write("$ALM_IF.$LAST_ALM", "No alarms");
+robot.Snpx.PositionSystemVariables.Write("$CELL_FLOOR", cellFloor);
+
+// Write a Karel program variable
+robot.Snpx.IntegerSystemVariables.Write("$[KarelProgram]KarelVariable", 1);
+```
+
 #### Clear alarms
 
 ```csharp
