@@ -41890,6 +41890,11 @@
             Integer variables
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.RealSystemVariables">
+            <summary>
+            Real variables
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.PositionSystemVariables">
             <summary>
             Position variables
