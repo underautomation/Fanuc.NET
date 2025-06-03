@@ -36,6 +36,7 @@ public partial class MainForm : Form
         AddNode(new IOStateControl(_robot));
         AddNode(new SafetyStatusControl(_robot));
         AddNode(new ProgramStatesControl(_robot));
+        AddNode(new ErrorListControl(_robot));
         AddNode(new FileHandlingControl(_robot));
         AddNode(new MoveRobotControl(_robot));
         AddNode(new TPEditorControl(_robot));
