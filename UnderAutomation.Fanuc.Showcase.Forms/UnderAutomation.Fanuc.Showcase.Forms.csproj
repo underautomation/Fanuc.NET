@@ -24,6 +24,9 @@
 
 
   <ItemGroup>
+    <Compile Update="Components\FeaturesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Components\ErrorListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
