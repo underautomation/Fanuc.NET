@@ -36646,6 +36646,21 @@
             File name : curpos.dg
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.FeaturesList">
+            <summary>
+            List of features
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.Name">
+            <summary>
+            Name of the feature
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.OrderNo">
+            <summary>
+            Order number of the feature (set of 4 alphanumeric characters)
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.GroupPosition">
             <summary>
             Complete position information of a group
@@ -36795,6 +36810,11 @@
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis.IOs">
             <summary>
             Controller IO status
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis.Features">
+            <summary>
+            Controller features status
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis.ProgramStates">

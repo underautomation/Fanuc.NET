@@ -1,1 +1,1 @@
-- Implements reading and writing of REAL variables by SNPX
+- Implements reading of Fanuc Features and Order No by FTP
