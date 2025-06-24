@@ -18,10 +18,19 @@ namespace Ftp.Diagnosis {
 		/// </summary>
 		public Feature[] FeaturesList { get; }
 
-
+		/// <summary>
+		/// Indicates if the robot has the TELNET feature enabled (TELN).
+		/// </summary>
 		public bool HasTelnet { get; }
 
-
+		/// <summary>
+		/// Indicates if the robot has the SNPX feature enabled (R553 or R651).
+		/// </summary>
 		public bool HasSnpx { get; }
+
+		/// <summary>
+		/// Indicates if the robot has the ASCII upload feature enabled : R507 ("ASCII Upload" on older controllers) or R796 ("ASCII Program Loader" on most recent controllers).
+		/// </summary>
+		public bool HasAsciiUpload { get; }
 	}
 }

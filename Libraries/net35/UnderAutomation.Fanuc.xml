@@ -36651,6 +36651,21 @@
             List of features
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.HasTelnet">
+            <summary>
+            Indicates if the robot has the TELNET feature enabled (TELN).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.HasSnpx">
+            <summary>
+            Indicates if the robot has the SNPX feature enabled (R553 or R651).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.HasAsciiUpload">
+            <summary>
+            Indicates if the robot has the ASCII upload feature enabled : R507 ("ASCII Upload" on older controllers) or R796 ("ASCII Program Loader" on most recent controllers).
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.Name">
             <summary>
             Name of the feature
