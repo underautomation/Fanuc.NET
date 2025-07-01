@@ -3,10 +3,11 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System;
+using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class StringSystemVariables : SnpxWritableAssignableElements<string, string> {
+	public class StringSystemVariables : SnpxWritableAssignableElements<string, string, StringSystemVariablesBatchAssignment> {
 
 
 		protected override string GetAssignmentName(string index)

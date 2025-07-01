@@ -41463,6 +41463,12 @@
             A symbolic link
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment.Read">
+            <summary>
+            Read all numeric registers assigned in this batch assignment.
+            </summary>
+            <returns>Returns an array of float values representing the numeric registers</returns>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ACAL">
             <summary>
             AccuCal II Error Code
@@ -42103,7 +42109,7 @@
             Curreznt active alarms
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`2.Write(`1,`0)">
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.Write(`1,`0)">
             <summary>
             Write value at a certain index
             </summary>

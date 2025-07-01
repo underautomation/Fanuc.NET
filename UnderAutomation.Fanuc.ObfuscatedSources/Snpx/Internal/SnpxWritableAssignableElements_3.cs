@@ -5,7 +5,7 @@
 
 namespace Snpx.Internal {
 
-	public abstract class SnpxWritableAssignableElements<TValue, TIndex> : SnpxAssignableElements<TValue, TIndex> {
+	public abstract class SnpxWritableAssignableElements<TValue, TIndex, TAssignment> : SnpxAssignableElements<TValue, TIndex> where TAssignment : BatchAssignment<TValue, TIndex>, new() {
 
 
 		protected abstract void WriteInClient(int offset, TValue value);
@@ -16,6 +16,13 @@ namespace Snpx.Internal {
 		public void Write(TIndex index, TValue value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public TAssignment CreateBatchAssignment(TIndex[] indexes)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
 		}
 	}
 }

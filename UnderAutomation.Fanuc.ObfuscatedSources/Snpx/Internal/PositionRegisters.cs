@@ -4,10 +4,11 @@
 
 using Common;
 using System;
+using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class PositionRegisters : SnpxWritableAssignableElements<Position, int> {
+	public class PositionRegisters : SnpxWritableAssignableElements<Position, int, PositionRegistersBatchAssignment> {
 
 
 		protected override string GetAssignmentName(int index)
@@ -52,6 +53,13 @@ namespace Snpx.Internal {
 		public void Write(int index, CartesianPosition cartesianPosition)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public PositionRegistersBatchAssignment CreateBatchAssignment(int startIndex, int count)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
 		}
 
 

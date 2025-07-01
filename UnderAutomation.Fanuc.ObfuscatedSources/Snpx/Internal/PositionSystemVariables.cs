@@ -4,10 +4,11 @@
 
 using Common;
 using System;
+using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class PositionSystemVariables : SnpxWritableAssignableElements<Position, string> {
+	public class PositionSystemVariables : SnpxWritableAssignableElements<Position, string, PositionSystemVariablesBatchAssignment> {
 
 
 		protected override string GetAssignmentName(string index)
