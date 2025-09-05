@@ -1199,33 +1199,13 @@ namespace Equin.ApplicationFramework
 
             private ListSortDescriptionCollection _sorts;
 
-            /// <summary>
-            /// Compares two items according to the defined sorts.
-            /// </summary>
-            /// <remarks>
-            /// Use of light-weight code generation comparison delegates gives ~10x speed up
-            /// compared to the pure reflection based implementation.
-            /// </remarks>
-            /// <param name="x">The first item to compare.</param>
-            /// <param name="y">The second item to compare.</param>
-            /// <returns>-1 if x &lt; y, 0 if x = y and 1 if x &gt; y.</returns>
-            public int Compare(KeyValuePair<ListItemPair<T>, int> x, KeyValuePair<ListItemPair<T>, int> y)
-            {
-                foreach (ListSortDescription sort in _sorts)
-                {
-                    int result = _comparisons[sort](x.Key.Item.Object, y.Key.Item.Object);
-                    if (result != 0)
-                    {
-                        return result;
-                    }
-                }
-                return 0;
-            }
-
-            // Old SLOW version of Compare method
             ///// <summary>
             ///// Compares two items according to the defined sorts.
             ///// </summary>
+            ///// <remarks>
+            ///// Use of light-weight code generation comparison delegates gives ~10x speed up
+            ///// compared to the pure reflection based implementation.
+            ///// </remarks>
             ///// <param name="x">The first item to compare.</param>
             ///// <param name="y">The second item to compare.</param>
             ///// <returns>-1 if x &lt; y, 0 if x = y and 1 if x &gt; y.</returns>
@@ -1233,85 +1213,105 @@ namespace Equin.ApplicationFramework
             //{
             //    foreach (ListSortDescription sort in _sorts)
             //    {
-            //        // Get the two values to compare.
-            //        object valueX = sort.PropertyDescriptor.GetValue(x.Key.Item);
-            //        object valueY = sort.PropertyDescriptor.GetValue(y.Key.Item);
-
-            //        // Special treatment of nulls
-            //        if (valueX == null && valueY == null)
+            //        int result = _comparisons[sort](x.Key.Item.Object, y.Key.Item.Object);
+            //        if (result != 0)
             //        {
-            //            // null && null are equal, so no sorting applied here
-            //            continue;
-            //        }
-            //        if (valueX == null && valueY != null)
-            //        {
-            //            // null < object
-            //            if (sort.SortDirection == ListSortDirection.Ascending)
-            //            {
-            //                return -1;
-            //            }
-            //            else
-            //            {
-            //                return 1;
-            //            }
-            //        }
-            //        if (valueX != null && valueY == null)
-            //        {
-            //            // object > null
-            //            if (sort.SortDirection == ListSortDirection.Ascending)
-            //            {
-            //                return 1;
-            //            }
-            //            else
-            //            {
-            //                return -1;
-            //            }
-            //        }
-
-            //        // valueX and valueY are of the same type so if valueX is comparable then so is valueY.
-            //        if (valueX is IComparable)
-            //        {
-            //            int compare = ((IComparable)valueX).CompareTo(valueY);
-            //            if (compare < 0)
-            //            {
-            //                if (sort.SortDirection == ListSortDirection.Ascending)
-            //                {
-            //                    return -1;
-            //                }
-            //                else
-            //                {
-            //                    return 1;
-            //                }
-            //            }
-            //            else if (compare > 0)
-            //            {
-            //                if (sort.SortDirection == ListSortDirection.Ascending)
-            //                {
-            //                    return 1;
-            //                }
-            //                else
-            //                {
-            //                    return -1;
-            //                }
-            //            }
-            //        }
-            //        else
-            //        {
-            //            if (valueX.Equals(valueY))
-            //            {
-            //                return 0;
-            //            }
-            //            else
-            //            {
-            //                // Last resort.
-            //                // Try to compare their string representations
-            //                return valueX.ToString().CompareTo(valueY.ToString());
-            //            }
+            //            return result;
             //        }
             //    }
-            //    // Exhausted all sort criteria, so objects must be equal (under this sort).
             //    return 0;
             //}
+
+            //Old SLOW version of Compare method
+            /// <summary>
+            /// Compares two items according to the defined sorts.
+            /// </summary>
+            /// <param name="x">The first item to compare.</param>
+            /// <param name="y">The second item to compare.</param>
+            /// <returns>-1 if x &lt; y, 0 if x = y and 1 if x &gt; y.</returns>
+            public int Compare(KeyValuePair<ListItemPair<T>, int> x, KeyValuePair<ListItemPair<T>, int> y)
+            {
+                foreach (ListSortDescription sort in _sorts)
+                {
+                    // Get the two values to compare.
+                    object valueX = sort.PropertyDescriptor.GetValue(x.Key.Item);
+                    object valueY = sort.PropertyDescriptor.GetValue(y.Key.Item);
+
+                    // Special treatment of nulls
+                    if (valueX == null && valueY == null)
+                    {
+                        // null && null are equal, so no sorting applied here
+                        continue;
+                    }
+                    if (valueX == null && valueY != null)
+                    {
+                        // null < object
+                        if (sort.SortDirection == ListSortDirection.Ascending)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                    if (valueX != null && valueY == null)
+                    {
+                        // object > null
+                        if (sort.SortDirection == ListSortDirection.Ascending)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+
+                    // valueX and valueY are of the same type so if valueX is comparable then so is valueY.
+                    if (valueX is IComparable)
+                    {
+                        int compare = ((IComparable)valueX).CompareTo(valueY);
+                        if (compare < 0)
+                        {
+                            if (sort.SortDirection == ListSortDirection.Ascending)
+                            {
+                                return -1;
+                            }
+                            else
+                            {
+                                return 1;
+                            }
+                        }
+                        else if (compare > 0)
+                        {
+                            if (sort.SortDirection == ListSortDirection.Ascending)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (valueX.Equals(valueY))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            // Last resort.
+                            // Try to compare their string representations
+                            return valueX.ToString().CompareTo(valueY.ToString());
+                        }
+                    }
+                }
+                // Exhausted all sort criteria, so objects must be equal (under this sort).
+                return 0;
+            }
 
             private static Comparison<T> BuildComparison(string propertyName, ListSortDirection direction)
             {
