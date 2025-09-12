@@ -35,22 +35,49 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+		/// <summary>
+		/// Alarm Category
+		/// </summary>
+		public AlarmId Id { get; set; }
 
-		public AlarmCategory Category { get; set; }
-
-
+		/// <summary>
+		/// Alarm Number
+		/// </summary>
 		public short Number { get; set; }
 
+		/// <summary>
+		/// Cause Category
+		/// </summary>
+		public AlarmId CauseId { get; set; }
 
-		public AlarmCategory CauseCategory { get; set; }
-
-
+		/// <summary>
+		/// Cause Number
+		/// </summary>
 		public short CauseNumber { get; set; }
 
-
+		/// <summary>
+		/// Alarm Severity
+		/// </summary>
 		public AlarmSeverity Severity { get; set; }
 
-
+		/// <summary>
+		/// Occurrence Time
+		/// </summary>
 		public DateTime Time { get; set; }
+
+		/// <summary>
+		/// Error Message
+		/// </summary>
+		public string Message { get; set; }
+
+		/// <summary>
+		/// Cause message
+		/// </summary>
+		public string CauseMessage { get; set; }
+
+		/// <summary>
+		/// Severity message
+		/// </summary>
+		public string SeverityMessage { get; set; }
 	}
 }

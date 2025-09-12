@@ -183,6 +183,16 @@ namespace Snpx.Internal {
 		/// </summary>
 		public CurrentPosition CurrentPosition { get; }
 
+		/// <summary>
+		/// Current active alarms
+		/// </summary>
+		public AlarmAccess ActiveAlarm { get; }
+
+		/// <summary>
+		/// Alarm history
+		/// </summary>
+		public AlarmAccess AlarmHistory { get; }
+
 
 		public bool Connected { get; }
 	}

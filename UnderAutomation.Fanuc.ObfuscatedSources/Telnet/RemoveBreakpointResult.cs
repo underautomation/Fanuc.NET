@@ -8,7 +8,7 @@ namespace Telnet {
 	public class RemoveBreakpointResult : Result {
 
 		/// <summary>
-		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// During implementation, return true if it is assumed that the frame has finished being received.
 		/// </summary>
 		protected override bool FromResult(string data)
 		{

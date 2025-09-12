@@ -8,7 +8,7 @@ namespace Telnet {
 	public class ProgramCommandResult : Result {
 
 		/// <summary>
-		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// During implementation, return true if it is assumed that the frame has finished being received.
 		/// </summary>
 		protected override bool FromResult(string data)
 		{
@@ -17,7 +17,7 @@ namespace Telnet {
 		}
 
 		/// <summary>
-		/// Indique que les réponses ont été terminée d'être reçues
+		/// Indicates that responses have been completed and received
 		/// </summary>
 		protected override void EndReceive()
 		{
