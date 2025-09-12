@@ -4,7 +4,6 @@ using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.Snpx.Assignment;
 using UnderAutomation.Fanuc.Snpx.Internal;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 public partial class SnpxControl : UserControl, IUserControl
 {
@@ -29,11 +28,11 @@ public partial class SnpxControl : UserControl, IUserControl
         snpxSignalControlNumericIOs.InitializeForNumericIO(robot);
 
         gridIntegerVariablesAssignment.Rows.Add("$RMT_MASTER");
-        gridIntegerVariablesAssignment.Rows.Add( "$REMOTE_CFG.$REMOTE_TYPE");
+        gridIntegerVariablesAssignment.Rows.Add("$REMOTE_CFG.$REMOTE_TYPE");
 
         gridStringVariablesAssignment.Rows.Add("$ROBOT_NAME");
-        gridStringVariablesAssignment.Rows.Add( "$ROB_ORD_NUM[1]");
-        gridStringVariablesAssignment.Rows.Add( "$SERV_DEV");
+        gridStringVariablesAssignment.Rows.Add("$ROB_ORD_NUM[1]");
+        gridStringVariablesAssignment.Rows.Add("$SERV_DEV");
         gridStringVariablesAssignment.Rows.Add("$TP_DEFPROG");
         gridStringVariablesAssignment.Rows.Add("$TP_SCREEN");
 
@@ -264,14 +263,6 @@ public partial class SnpxControl : UserControl, IUserControl
     }
     #endregion
 
-    #region Alarms
-    private void btnClearAlarms_Click(object sender, EventArgs e)
-    {
-        _robot.Snpx.ClearAlarms();
-    }
-    #endregion
-
-
     #region Batch
 
     private NumericRegistersBatchAssignment _numericRegistersBatchAssignment;
@@ -413,4 +404,24 @@ public partial class SnpxControl : UserControl, IUserControl
 
     #endregion
 
+    #region Alarm
+    private void btnClearAlarms_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.ClearAlarms();
+    }   
+    
+    private void btnReadActiveAlarm_Click(object sender, EventArgs e)
+    {
+        RobotAlarm value = _robot.Snpx.ActiveAlarm.Read((int)udActiveAlarm.Value);
+        gridActiveAlarm.SelectedObject = value;
+        gridActiveAlarm.ExpandAllGridItems();
+    }
+
+    private void btnReadAlarmHistory_Click(object sender, EventArgs e)
+    {
+        RobotAlarm value = _robot.Snpx.AlarmHistory.Read((int)udAlarmHistory.Value);
+        gridAlarmHistory.SelectedObject = value;
+        gridAlarmHistory.ExpandAllGridItems();
+    }
+    #endregion
 }

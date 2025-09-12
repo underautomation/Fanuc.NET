@@ -110,12 +110,21 @@
         udBatchCount = new NumericUpDown();
         udBatchStart = new NumericUpDown();
         gridBatchValue = new PropertyGrid();
+        tabAlarms = new TabPage();
+        btnClearAlarms = new Button();
+        label15 = new Label();
+        label14 = new Label();
+        btnReadAlarmHistory = new Button();
+        btnReadActiveAlarm = new Button();
+        gridAlarmHistory = new PropertyGrid();
+        udAlarmHistory = new NumericUpDown();
+        gridActiveAlarm = new PropertyGrid();
+        udActiveAlarm = new NumericUpDown();
         tabAssignments = new TabPage();
         lstAssignments = new ListView();
         columnHeader1 = new ColumnHeader();
         columnHeader2 = new ColumnHeader();
         panel1 = new Panel();
-        btnClearAlarms = new Button();
         btnClearAssignments = new Button();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
@@ -143,6 +152,9 @@
         groupBox5.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udBatchCount).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udBatchStart).BeginInit();
+        tabAlarms.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udAlarmHistory).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)udActiveAlarm).BeginInit();
         tabAssignments.SuspendLayout();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -152,6 +164,7 @@
         tabControl1.Controls.Add(tabVariablesRegisters);
         tabControl1.Controls.Add(tabSignals);
         tabControl1.Controls.Add(tabBatch);
+        tabControl1.Controls.Add(tabAlarms);
         tabControl1.Controls.Add(tabAssignments);
         tabControl1.Dock = DockStyle.Fill;
         tabControl1.Location = new Point(0, 0);
@@ -1062,6 +1075,113 @@
         gridBatchValue.TabIndex = 4;
         gridBatchValue.ToolbarVisible = false;
         // 
+        // tabAlarms
+        // 
+        tabAlarms.Controls.Add(btnClearAlarms);
+        tabAlarms.Controls.Add(label15);
+        tabAlarms.Controls.Add(label14);
+        tabAlarms.Controls.Add(btnReadAlarmHistory);
+        tabAlarms.Controls.Add(btnReadActiveAlarm);
+        tabAlarms.Controls.Add(gridAlarmHistory);
+        tabAlarms.Controls.Add(udAlarmHistory);
+        tabAlarms.Controls.Add(gridActiveAlarm);
+        tabAlarms.Controls.Add(udActiveAlarm);
+        tabAlarms.Location = new Point(4, 24);
+        tabAlarms.Name = "tabAlarms";
+        tabAlarms.Padding = new Padding(3);
+        tabAlarms.Size = new Size(1175, 549);
+        tabAlarms.TabIndex = 5;
+        tabAlarms.Text = "Alarms";
+        tabAlarms.UseVisualStyleBackColor = true;
+        // 
+        // btnClearAlarms
+        // 
+        btnClearAlarms.Location = new Point(34, 36);
+        btnClearAlarms.Name = "btnClearAlarms";
+        btnClearAlarms.Size = new Size(207, 27);
+        btnClearAlarms.TabIndex = 4;
+        btnClearAlarms.Text = "Clear alarms";
+        btnClearAlarms.UseVisualStyleBackColor = true;
+        btnClearAlarms.Click += btnClearAlarms_Click;
+        // 
+        // label15
+        // 
+        label15.AutoSize = true;
+        label15.Location = new Point(345, 34);
+        label15.Name = "label15";
+        label15.Size = new Size(84, 15);
+        label15.TabIndex = 3;
+        label15.Text = "Alarm history :";
+        // 
+        // label14
+        // 
+        label14.AutoSize = true;
+        label14.Location = new Point(34, 118);
+        label14.Name = "label14";
+        label14.Size = new Size(81, 15);
+        label14.TabIndex = 3;
+        label14.Text = "Active Alarm :";
+        // 
+        // btnReadAlarmHistory
+        // 
+        btnReadAlarmHistory.Location = new Point(435, 61);
+        btnReadAlarmHistory.Name = "btnReadAlarmHistory";
+        btnReadAlarmHistory.Size = new Size(120, 23);
+        btnReadAlarmHistory.TabIndex = 2;
+        btnReadAlarmHistory.Text = "Read";
+        btnReadAlarmHistory.UseVisualStyleBackColor = true;
+        btnReadAlarmHistory.Click += btnReadAlarmHistory_Click;
+        // 
+        // btnReadActiveAlarm
+        // 
+        btnReadActiveAlarm.Location = new Point(121, 145);
+        btnReadActiveAlarm.Name = "btnReadActiveAlarm";
+        btnReadActiveAlarm.Size = new Size(120, 23);
+        btnReadActiveAlarm.TabIndex = 2;
+        btnReadActiveAlarm.Text = "Read";
+        btnReadActiveAlarm.UseVisualStyleBackColor = true;
+        btnReadActiveAlarm.Click += btnReadActiveAlarm_Click;
+        // 
+        // gridAlarmHistory
+        // 
+        gridAlarmHistory.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridAlarmHistory.HelpVisible = false;
+        gridAlarmHistory.Location = new Point(341, 90);
+        gridAlarmHistory.Name = "gridAlarmHistory";
+        gridAlarmHistory.Size = new Size(214, 453);
+        gridAlarmHistory.TabIndex = 1;
+        gridAlarmHistory.ToolbarVisible = false;
+        // 
+        // udAlarmHistory
+        // 
+        udAlarmHistory.Location = new Point(435, 32);
+        udAlarmHistory.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+        udAlarmHistory.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+        udAlarmHistory.Name = "udAlarmHistory";
+        udAlarmHistory.Size = new Size(120, 23);
+        udAlarmHistory.TabIndex = 0;
+        udAlarmHistory.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // gridActiveAlarm
+        // 
+        gridActiveAlarm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridActiveAlarm.HelpVisible = false;
+        gridActiveAlarm.Location = new Point(27, 174);
+        gridActiveAlarm.Name = "gridActiveAlarm";
+        gridActiveAlarm.Size = new Size(214, 369);
+        gridActiveAlarm.TabIndex = 1;
+        gridActiveAlarm.ToolbarVisible = false;
+        // 
+        // udActiveAlarm
+        // 
+        udActiveAlarm.Location = new Point(121, 116);
+        udActiveAlarm.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+        udActiveAlarm.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+        udActiveAlarm.Name = "udActiveAlarm";
+        udActiveAlarm.Size = new Size(120, 23);
+        udActiveAlarm.TabIndex = 0;
+        udActiveAlarm.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
         // tabAssignments
         // 
         tabAssignments.Controls.Add(lstAssignments);
@@ -1098,7 +1218,6 @@
         // 
         // panel1
         // 
-        panel1.Controls.Add(btnClearAlarms);
         panel1.Controls.Add(btnClearAssignments);
         panel1.Dock = DockStyle.Top;
         panel1.Location = new Point(0, 0);
@@ -1106,16 +1225,6 @@
         panel1.Name = "panel1";
         panel1.Size = new Size(1175, 42);
         panel1.TabIndex = 1;
-        // 
-        // btnClearAlarms
-        // 
-        btnClearAlarms.Location = new Point(218, 8);
-        btnClearAlarms.Name = "btnClearAlarms";
-        btnClearAlarms.Size = new Size(154, 27);
-        btnClearAlarms.TabIndex = 1;
-        btnClearAlarms.Text = "Clear alarms";
-        btnClearAlarms.UseVisualStyleBackColor = true;
-        btnClearAlarms.Click += btnClearAlarms_Click;
         // 
         // btnClearAssignments
         // 
@@ -1167,6 +1276,10 @@
         groupBox5.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)udBatchCount).EndInit();
         ((System.ComponentModel.ISupportInitialize)udBatchStart).EndInit();
+        tabAlarms.ResumeLayout(false);
+        tabAlarms.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udAlarmHistory).EndInit();
+        ((System.ComponentModel.ISupportInitialize)udActiveAlarm).EndInit();
         tabAssignments.ResumeLayout(false);
         panel1.ResumeLayout(false);
         ResumeLayout(false);
@@ -1221,7 +1334,6 @@
     private Button btnPositionUserFrame;
     private NumericUpDown udFrame;
     private Label label10;
-    private Button btnClearAlarms;
     private TextBox txtRealVariable;
     private Label label11;
     private Button btnWriteRealVariable;
@@ -1264,4 +1376,14 @@
     private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     private DataGridView gridPositionVariablesAssignment;
     private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+    private TabPage tabAlarms;
+    private Label label14;
+    private Button btnReadActiveAlarm;
+    private PropertyGrid gridActiveAlarm;
+    private NumericUpDown udActiveAlarm;
+    private Label label15;
+    private Button btnReadAlarmHistory;
+    private PropertyGrid gridAlarmHistory;
+    private NumericUpDown udAlarmHistory;
+    private Button btnClearAlarms;
 }
