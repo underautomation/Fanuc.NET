@@ -65,6 +65,10 @@ partial class TelnetControl
         cbPorts = new ComboBox();
         groupBox1 = new GroupBox();
         btnReset = new Button();
+        groupBox6 = new GroupBox();
+        btnSendCommand = new Button();
+        label4 = new Label();
+        txtCommand = new TextBox();
         GroupBox3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)splitMain).BeginInit();
         splitMain.Panel1.SuspendLayout();
@@ -77,6 +81,7 @@ partial class TelnetControl
         ((System.ComponentModel.ISupportInitialize)udNewValue).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udIndex).BeginInit();
         groupBox1.SuspendLayout();
+        groupBox6.SuspendLayout();
         SuspendLayout();
         // 
         // btnAbortAll
@@ -245,6 +250,7 @@ partial class TelnetControl
         // 
         // pnlMain
         // 
+        pnlMain.Controls.Add(groupBox6);
         pnlMain.Controls.Add(groupBox5);
         pnlMain.Controls.Add(groupBox4);
         pnlMain.Controls.Add(groupBox2);
@@ -524,6 +530,49 @@ partial class TelnetControl
         btnReset.UseVisualStyleBackColor = true;
         btnReset.Click += btnReset_Click;
         // 
+        // groupBox6
+        // 
+        groupBox6.Controls.Add(btnSendCommand);
+        groupBox6.Controls.Add(txtCommand);
+        groupBox6.Controls.Add(label4);
+        groupBox6.Location = new Point(217, 385);
+        groupBox6.Margin = new Padding(4, 3, 4, 3);
+        groupBox6.Name = "groupBox6";
+        groupBox6.Padding = new Padding(4, 3, 4, 3);
+        groupBox6.Size = new Size(276, 91);
+        groupBox6.TabIndex = 8;
+        groupBox6.TabStop = false;
+        groupBox6.Text = "Custom KCL command";
+        // 
+        // btnSendCommand
+        // 
+        btnSendCommand.Location = new Point(54, 51);
+        btnSendCommand.Margin = new Padding(4, 3, 4, 3);
+        btnSendCommand.Name = "btnSendCommand";
+        btnSendCommand.Size = new Size(182, 27);
+        btnSendCommand.TabIndex = 0;
+        btnSendCommand.Text = "Send Command";
+        btnSendCommand.UseVisualStyleBackColor = true;
+        btnSendCommand.Click += btnSendCommand_Click;
+        // 
+        // label4
+        // 
+        label4.Location = new Point(7, 26);
+        label4.Margin = new Padding(4, 0, 4, 0);
+        label4.Name = "label4";
+        label4.Size = new Size(75, 15);
+        label4.TabIndex = 2;
+        label4.Text = "Command :";
+        label4.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txtCommand
+        // 
+        txtCommand.Location = new Point(89, 22);
+        txtCommand.Margin = new Padding(4, 3, 4, 3);
+        txtCommand.Name = "txtCommand";
+        txtCommand.Size = new Size(173, 23);
+        txtCommand.TabIndex = 2;
+        // 
         // TelnetControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -546,6 +595,8 @@ partial class TelnetControl
         ((System.ComponentModel.ISupportInitialize)udNewValue).EndInit();
         ((System.ComponentModel.ISupportInitialize)udIndex).EndInit();
         groupBox1.ResumeLayout(false);
+        groupBox6.ResumeLayout(false);
+        groupBox6.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -588,4 +639,8 @@ partial class TelnetControl
     private CueTextBox cbPrograms;
     internal System.Windows.Forms.Button btnGetVariable;
     internal System.Windows.Forms.Button btnGetTask;
+    private GroupBox groupBox6;
+    internal Button btnSendCommand;
+    private TextBox txtCommand;
+    private Label label4;
 }

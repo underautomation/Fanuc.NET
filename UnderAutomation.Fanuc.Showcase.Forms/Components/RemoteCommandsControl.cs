@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using UnderAutomation.Fanuc;
+﻿using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Telnet;
 
 public partial class TelnetControl : UserControl, IUserControl
@@ -168,5 +165,26 @@ public partial class TelnetControl : UserControl, IUserControl
     {
         var result = _robot.Telnet.GetTaskInformation(cbPrograms.Text);
         LogCommand(nameof(_robot.Telnet.GetTaskInformation), result);
+    }
+
+    private void btnSendCommand_Click(object sender, EventArgs e)
+    {
+        var result = _robot.Telnet.SendCustomCommand<TelnetControl.CustomCommandResult>(txtCommand.Text);
+        LogCommand(nameof(_robot.Telnet.SendCustomCommand), result);
+    }
+
+    public class CustomCommandResult : BaseResult
+    {
+        public string Data { get; private set; }
+        protected override bool FromResult(string data)
+        {
+            Data = data;
+            return true;
+        }
+
+        public override string ToString()
+        {
+            return $"{KclCommand} :\r\n{Data}\r\n{ErrorText}";
+        }
     }
 }
