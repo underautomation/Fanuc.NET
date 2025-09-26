@@ -5,7 +5,7 @@
 
 namespace Telnet {
 
-	public class AddBreakpointResult : Result {
+	public class CustomCommandResult : Result {
 
 		/// <summary>
 		/// During implementation, return true if it is assumed that the frame has finished being received.
@@ -17,9 +17,12 @@ namespace Telnet {
 		}
 
 
-		public AddBreakpointResult()
+		public CustomCommandResult()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public string Data { get; }
 	}
 }

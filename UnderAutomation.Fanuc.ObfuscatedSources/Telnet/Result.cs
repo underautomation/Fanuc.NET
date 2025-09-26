@@ -8,7 +8,7 @@ namespace Telnet {
 	public abstract class Result {
 
 		/// <summary>
-		/// Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+		/// During implementation, return true if it is assumed that the frame has finished being received.
 		/// </summary>
 		protected abstract bool FromResult(string data);
 
@@ -20,7 +20,7 @@ namespace Telnet {
 		}
 
 		/// <summary>
-		/// Indique que les réponses ont été terminée d'être reçues
+		/// Indicates that responses have been completed and received
 		/// </summary>
 		protected virtual void EndReceive()
 		{
@@ -33,13 +33,19 @@ namespace Telnet {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Error text if any error occured during command execution
+		/// </summary>
 		public string ErrorText { get; }
 
-
+		/// <summary>
+		/// Command succeeded if no error text is present
+		/// </summary>
 		public bool Succeed { get; }
 
-
+		/// <summary>
+		/// The KCL command that was sent to the controller
+		/// </summary>
 		public string KclCommand { get; }
 	}
 }

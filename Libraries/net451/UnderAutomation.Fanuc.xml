@@ -41421,484 +41421,529 @@
             </summary>
             <returns>Returns an array of float values representing the numeric registers</returns>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ACAL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ACAL">
             <summary>
             AccuCal II Error Code
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.APPL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.APPL">
             <summary>
             Application Shell Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.APSH">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.APSH">
             <summary>
             Application Shell Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ARC">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ARC">
             <summary>
             Arc Welding Application
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ASBN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ASBN">
             <summary>
             Mnemonic Editor
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ATZN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ATZN">
             <summary>
             AutoZone Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.BBOX">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.BBOX">
             <summary>
             Position Bumpbox Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.BRCH">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.BRCH">
             <summary>
             Brake Check Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CALM">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CALM">
             <summary>
             CalMate Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CD">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CD">
             <summary>
             Coordinated Motion Softpart
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CMND">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CMND">
             <summary>
             Command Processor Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CNTR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CNTR">
             <summary>
             Continuous Turn Softpart
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.COMP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.COMP">
             <summary>
             Compensator Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.COND">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.COND">
             <summary>
             Condition Handler Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.COPT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.COPT">
             <summary>
             Common Options Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CPMO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CPMO">
             <summary>
             Constant Path Error Code
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CUST">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CUST">
             <summary>
             Customer-Specific Errors
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.CVIS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.CVIS">
             <summary>
             Integrated Vision (Controller Vision)
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DIAG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DIAG">
             <summary>
             IRDiagnostics
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DICT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DICT">
             <summary>
             Dictionary Processor
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DMDR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DMDR">
             <summary>
             Dual Motion Drive Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DMER">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DMER">
             <summary>
             Data Monitor Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DNET">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DNET">
             <summary>
             DeviceNet Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DTBR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DTBR">
             <summary>
             Data Transfer Between Robots
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.DX">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.DX">
             <summary>
             Delta Tool/Frame Softpart
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ELOG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ELOG">
             <summary>
             Error Logger
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.FILE">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.FILE">
             <summary>
             File System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.FLPY">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.FLPY">
             <summary>
             Serial Floppy Disk System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.FORC">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.FORC">
             <summary>
             Impedance Control (Force Control)
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.FRSY">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.FRSY">
             <summary>
             Flash File System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.FXTL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.FXTL">
             <summary>
             C-Flex Tool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.HOST">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.HOST">
             <summary>
             Host Communications General Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.HRTL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.HRTL">
             <summary>
             Host Communications Runtime Library Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.IBS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.IBS">
             <summary>
             InterBus-S Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ICRZ">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ICRZ">
             <summary>
             IC Railzone Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.IFPN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.IFPN">
             <summary>
             Interface Panel Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.INTP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.INTP">
             <summary>
             Interpreter Internal Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.IRPK">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.IRPK">
             <summary>
             IRPickTool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ISD">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ISD">
             <summary>
             Integral Servo Dispenser Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ISDT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ISDT">
             <summary>
             Integral Servo Driven Tool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.JOG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.JOG">
             <summary>
             Manual Jog Task Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.KALM">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.KALM">
             <summary>
             KAREL Alarm Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.LANG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.LANG">
             <summary>
             Language Utility Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.LECO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.LECO">
             <summary>
             Arc Errors from Lincoln Electric
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.LNTK">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.LNTK">
             <summary>
             Line Tracking Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.LSTP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.LSTP">
             <summary>
             Local Stop Error Codes
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MACR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MACR">
             <summary>
             Macro Option Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MARL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MARL">
             <summary>
             Material Removal Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MASI">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MASI">
             <summary>
             Multi-Arm Sync Instructions Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MCTL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MCTL">
             <summary>
             Motion Control Manager Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MEMO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MEMO">
             <summary>
             Memory Manager Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MOTN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MOTN">
             <summary>
             Motion Subsystem Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.MUPS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.MUPS">
             <summary>
             Multi-Pass Motion Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.OPTN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.OPTN">
             <summary>
             Option Installation Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.OS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.OS">
             <summary>
             Operating System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PALL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PALL">
             <summary>
             PalletTool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PALT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PALT">
             <summary>
             Palletizing Application Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PICK">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PICK">
             <summary>
             PickTool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PMON">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PMON">
             <summary>
             PC Monitor Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PNT1">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PNT1">
             <summary>
             Paint Application Errors (Post V6.31)
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PNT2">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PNT2">
             <summary>
             PaintTool Application Errors #2
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PRIO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PRIO">
             <summary>
             Digital I/O Subsystem Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PROF">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PROF">
             <summary>
             Profibus DP Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PROG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PROG">
             <summary>
             Program Interpreter Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.PWD">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.PWD">
             <summary>
             Password Logging Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.QMGR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.QMGR">
             <summary>
             KAREL Queue Manager Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.RIPE">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.RIPE">
             <summary>
             ROS IP Errors
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.ROUT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ROUT">
             <summary>
             SoftPart Built-in Routine for Interpreter Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.RPC">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.RPC">
             <summary>
             RPC Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.RPM">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.RPM">
             <summary>
             Root Pass Memorization Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.RTCP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.RTCP">
             <summary>
             Remote TCP Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SCIO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SCIO">
             <summary>
             Syntax Checking for Teach Pendant Programs Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SDTL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SDTL">
             <summary>
             System Design Tool Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SEAL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SEAL">
             <summary>
             Sealing Application Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SENS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SENS">
             <summary>
             Sensor Interface Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SHAP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SHAP">
             <summary>
             Shape Generation Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SPOT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SPOT">
             <summary>
             Spot Welding Application Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SPRM">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SPRM">
             <summary>
             Ramp Motion SoftPart Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SRIO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SRIO">
             <summary>
             Serial Driver Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SRVO">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SRVO">
             <summary>
             Servo in Motion Sub-System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SSPC">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SSPC">
             <summary>
             Special Space Checking Function Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SVGN">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SVGN">
             <summary>
             Servo Weld Gun Application Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.SYST">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.SYST">
             <summary>
             System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TAST">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TAST">
             <summary>
             Through-Arc Seam Tracking Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TCPP">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TCPP">
             <summary>
             TCP Speed Prediction Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TG">
             <summary>
             Triggering Accuracy Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.THSR">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.THSR">
             <summary>
             Touch Sensing SoftPart Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TJOG">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TJOG">
             <summary>
             Tracking Jog Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TMAT">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TMAT">
             <summary>
             Torch Mate Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TOOL">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TOOL">
             <summary>
             Servo Tool Change Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TPIF">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TPIF">
             <summary>
             Teach Pendant User Interface Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.TRAK">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.TRAK">
             <summary>
             Tracking SoftPart Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.VARS">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.VARS">
             <summary>
             Variable Manager Subsystem Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.WEAV">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.WEAV">
             <summary>
             Weaving Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.WNDW">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.WNDW">
             <summary>
             Window I/O Manager Sub-System Error
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmCategory.XMLF">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.XMLF">
             <summary>
             XML Errors
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Id">
+            <summary>
+            Alarm Category
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Number">
+            <summary>
+            Alarm Number
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.CauseId">
+            <summary>
+            Cause Category
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.CauseNumber">
+            <summary>
+            Cause Number
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Severity">
+            <summary>
+            Alarm Severity
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Time">
+            <summary>
+            Occurrence Time
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Message">
+            <summary>
+            Error Message
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.CauseMessage">
+            <summary>
+            Cause message
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.SeverityMessage">
+            <summary>
+            Severity message
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase">
@@ -42056,9 +42101,14 @@
             Current program tasks status
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.CurrentAlarms">
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ActiveAlarm">
             <summary>
-            Curreznt active alarms
+            Current active alarms
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.AlarmHistory">
+            <summary>
+            Alarm history
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.Write(`1,`0)">
@@ -42277,6 +42327,8 @@
             <param name="index">I/O port index to unsimulate</param>
             <returns></returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.SendCustomCommand(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.SendCustomCommand``1(System.String)" -->
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.GetTaskInformation(System.String)">
             <summary>
             Return the task control data for the specified task. If prog_name is not specified, the default program is used
@@ -42378,16 +42430,29 @@
             show variable termine toujours par une trame constitué uniquement de commande ANSI et d'espace. Cela arrête la réception des données. On décode donc à la fin les données accumulées
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Result.ErrorText">
+            <summary>
+            Error text if any error occured during command execution
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Result.Succeed">
+            <summary>
+            Command succeeded if no error text is present
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Result.KclCommand">
+            <summary>
+            The KCL command that was sent to the controller
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Result.FromResult(System.String)">
             <summary>
-            Lors de l'implémentation, retourner true si la trame est supposée terminé d'être reçue
+            During implementation, return true if it is assumed that the frame has finished being received.
             </summary>
-            <param name="data"></param>
-            <returns></returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Result.EndReceive">
             <summary>
-            Indique que les réponses ont été terminée d'être reçues
+            Indicates that responses have been completed and received
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.Group">

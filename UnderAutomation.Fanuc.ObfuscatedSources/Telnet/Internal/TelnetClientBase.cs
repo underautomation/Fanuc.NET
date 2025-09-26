@@ -253,6 +253,20 @@ namespace Telnet.Internal {
 			return default;
 		}
 
+
+		public CustomCommandResult SendCustomCommand(string command)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public T SendCustomCommand<T>(string command) where T : BaseResult
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 		/// <summary>
 		/// Return the task control data for the specified task. If prog_name is not specified, the default program is used
 		/// </summary>

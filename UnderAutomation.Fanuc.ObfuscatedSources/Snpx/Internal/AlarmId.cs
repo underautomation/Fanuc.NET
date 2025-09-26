@@ -5,7 +5,7 @@
 
 namespace Snpx.Internal {
 
-	public enum AlarmCategory : short {
+	public enum AlarmId : short {
 
 		/// <summary>
 		/// AccuCal II Error Code

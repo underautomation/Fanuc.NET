@@ -1,7 +1,12 @@
-- SNPX : Enable batch reading of registers and variables
+- Telnet : add capability to send a custom KCL command
 
-```C#
-NumericRegistersBatchAssignment assignment = _robot.Snpx.NumericRegisters.CreateBatchAssignment(1, 40);
+```cs
+robot.Telnet.SendCustomCommand("My KCL Command");
+```
 
-float[] values = assignment.Read();
+- SNPX : Add active alarm and alarm history access
+
+```cs
+RobotAlarm firstActiveAlarm = robot.Snpx.ActiveAlarm.Read(1);
+RobotAlarm secondAlarmInHistory = robot.Snpx.AlarmHistory.Read(1);
 ```
