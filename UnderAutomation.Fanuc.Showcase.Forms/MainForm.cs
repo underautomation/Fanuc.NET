@@ -39,6 +39,7 @@ public partial class MainForm : Form
         AddNode(new ErrorListControl(_robot));
         AddNode(new FeaturesControl(_robot));
         AddNode(new FileHandlingControl(_robot));
+        AddNode(new RmiControl(_robot));
         AddNode(new MoveRobotControl(_robot));
         AddNode(new TPEditorControl(_robot));
         AddNode(new DpmControl(_robot));

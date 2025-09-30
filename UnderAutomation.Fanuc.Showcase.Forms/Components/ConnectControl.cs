@@ -26,6 +26,8 @@ public partial class ConnectControl : UserControl, IUserControl
         txtFtpPassword.Text = parameters.Ftp.FtpPassword;
 
         chkSnpx.Checked = parameters.Snpx.Enable;
+
+        chkRmi.Checked = parameters.Rmi.Enable;
     }
 
     #region IUserControl
@@ -61,6 +63,8 @@ public partial class ConnectControl : UserControl, IUserControl
         parameters.Ftp.FtpPassword = txtFtpPassword.Text;
 
         parameters.Snpx.Enable = chkSnpx.Checked;
+
+        parameters.Rmi.Enable = chkRmi.Checked;
 
         // Store information
         Config.Current.ConnectParameters = parameters;
