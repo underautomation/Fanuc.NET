@@ -334,14 +334,24 @@
             The program is a TP (Teach Pendant) program.
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.RmiConnectParameters">
+            <summary>
+            RMI parameters
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.RmiConnectParameters.Enable">
+            <summary>
+            Should enable RMI for this connection (default: false)
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.SnpxConnectParameters">
             <summary>
-            Memory access parameters
+            SNPX parameters
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.SnpxConnectParameters.Enable">
             <summary>
-            Should enable memory access for this connection (default: false)
+            Should enable SNPX for this connection (default: false)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.TaskStatus">
@@ -437,6 +447,11 @@
         <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Snpx">
             <summary>
             Read and write IOs, read and clear alarms, read current program tasks
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Rmi">
+            <summary>
+            Parameters for RMI (Remote Motion Interface)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.FanucRobot">
@@ -41461,6 +41476,647 @@
         <member name="F:UnderAutomation.Fanuc.Ftp.FtpFileSystemObjectType.Link">
             <summary>
             A symbolic link
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase">
+            <summary>
+            Base class for RMI responses that return an error id from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId">
+            <summary>Error identifier. 0 means success; non-zero indicates a controller error.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse">
+            <summary>
+            Base class for responses that include a sequence identifier.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse.SequenceId">
+            <summary>Echoed SequenceID of the instruction that completed.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse">
+            <summary>
+            Base class for responses with a controller <see cref="P:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag"/> value.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag">
+            <summary>Controller time tick for the data sample.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus">
+            <summary>
+            Status snapshot returned by FRC_GetStatus.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.ServoReady">
+            <summary>Servo ready state (1 = ready).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.TPMode">
+            <summary>Teach pendant mode (0 = disabled/AUTO, 1 = enabled/TEACH).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.RMIMotionStatus">
+            <summary>RMI motion runtime state (1 = running).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.ProgramStatus">
+            <summary>RMI_MOVE program status (1 = aborted).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.SingleStepMode">
+            <summary>Single step mode flag (1 = on).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.NumberUTool">
+            <summary>Number of UTOOLs configured.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.NextSequenceId">
+            <summary>Next valid SequenceID when sequence checking is enabled.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.NumberUFrame">
+            <summary>Number of UFRAMEs configured.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers">
+            <summary>
+            Current UFRAME and UTOOL numbers.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.UFrameNumber">
+            <summary>Current user frame number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.UToolNumber">
+            <summary>Current user tool number.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue">
+            <summary>
+            Result of reading a digital input.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.PortNumber">
+            <summary>Port number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.PortValue">
+            <summary>Port value (0 = OFF, 1 = ON).</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition">
+            <summary>
+            Result of reading cartesian position.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.Configuration">
+            <summary>Active configuration at sampling time.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.Position">
+            <summary>Cartesian TCP position.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample">
+            <summary>
+            Result of reading joint angles.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample.JointAngle">
+            <summary>Joint angle set.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText">
+            <summary>
+            Result of reading the most recent error text.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText.ErrorData">
+            <summary>Controller error text in the form XXXX-NNN.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed">
+            <summary>
+            Result of reading TCP speed.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed.Speed">
+            <summary>Current tool center point speed.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame">
+            <summary>
+            Frame data paired with an index (UFRAME or UTOOL).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.Index">
+            <summary>Index (UFRAME or UTOOL number).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.Frame">
+            <summary>Frame data.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData">
+            <summary>
+            Position register data paired with its register number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.RegisterNumber">
+            <summary>Register number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.Configuration">
+            <summary>Configuration saved in the position register.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.Position">
+            <summary>Position saved in the position register.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiMessageKind">
+            <summary>
+            Identifies the top-level message kind sent to the controller.
+            Must be the first key according to the RMI protocol.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.RmiMessageKind.Communication">
+            <summary>Communication packet (FRC_Connect / FRC_Disconnect).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.RmiMessageKind.Command">
+            <summary>Administrative command (e.g., FRC_Initialize, FRC_Reset).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.RmiMessageKind.Instruction">
+            <summary>Instruction that appends a new TP line to the RMI_MOVE program.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.CommunicationVerb">
+            <summary>
+            RMI communication verbs.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommunicationVerb.FRC_Connect">
+            <summary>Request permission and the working data port from the controller.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommunicationVerb.FRC_Disconnect">
+            <summary>Gracefully end an RMI session on the working data port.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommunicationVerb.FRC_Terminate">
+            <summary>Sent by controller on idle timeout to close the session.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommunicationVerb.FRC_SystemFault">
+            <summary>Sent by controller when a system fault pauses TP program.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.CommandVerb">
+            <summary>
+            RMI command verbs that do not add TP instructions.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_Initialize">
+            <summary>Initialize and start the RMI_MOVE program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_Abort">
+            <summary>Abort the running RMI_MOVE program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_Pause">
+            <summary>Pause the running RMI_MOVE program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_Continue">
+            <summary>Resume a paused RMI_MOVE program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_Reset">
+            <summary>Reset controller errors and recover from HOLD / faults.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadError">
+            <summary>Read most recent controller error text.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_SetUFrameUTool">
+            <summary>Set current UFRAME and UTOOL numbers.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_GetStatus">
+            <summary>Get controller status and RMI state.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadUFrameData">
+            <summary>Read a user frame definition.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_WriteUFrameData">
+            <summary>Write a user frame definition.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadUToolData">
+            <summary>Read a user tool definition.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_WriteUToolData">
+            <summary>Write a user tool definition.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadDIN">
+            <summary>Read a digital input port.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_WriteDOUT">
+            <summary>Write a digital output port.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadCartesianPosition">
+            <summary>Read current Cartesian position.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadJointAngles">
+            <summary>Read current joint angles.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_SetOverRide">
+            <summary>Set program override (1-100%).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_GetUFrameUTool">
+            <summary>Get current UFRAME/UTOOL numbers.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadPositionRegister">
+            <summary>Read a position register.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_WritePositionRegister">
+            <summary>Write a position register.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.CommandVerb.FRC_ReadTCPSpeed">
+            <summary>Read current TCP speed.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb">
+            <summary>
+            Instruction verbs that append to the TP program.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_WaitDin">
+            <summary>WAIT DI[x] = ON/OFF.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_SetUFrame">
+            <summary>UFRAME_NUM = n.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_SetUTool">
+            <summary>UTOOL_NUM = n.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_Wait">
+            <summary>WAIT t (sec).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_PayLoad">
+            <summary>PAYLOAD[n].</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_LinearMotion">
+            <summary>Linear motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_LinearRelative">
+            <summary>Linear incremental motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_JointMotion">
+            <summary>Joint motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_JointRelative">
+            <summary>Joint incremental motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_CircularMotion">
+            <summary>Circular motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_CircularRelative">
+            <summary>Circular incremental motion in Cartesian representation.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_JointMotionJRep">
+            <summary>Joint motion specified by joint angles.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_JointRelativeJRep">
+            <summary>Joint incremental motion specified by joint angles.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_LinearMotionJRep">
+            <summary>Linear motion specified by joint angles.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.InstructionVerb.FRC_LinearRelativeJRep">
+            <summary>Linear incremental motion specified by joint angles.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.SpeedType">
+            <summary>
+            Speed type selector for motion commands.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.SpeedType.MmSec">
+            <summary>Linear speed in millimeters per second.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.SpeedType.InchMin">
+            <summary>Linear speed in inches per minute.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.SpeedType.Time">
+            <summary>Duration-based speed (0.1 seconds unit for Linear/Circular, milliseconds for Joint).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.SpeedType.Percent">
+            <summary>Joint speed as percentage of maximum.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.TerminationType">
+            <summary>Termination type for motion.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.TerminationType.Fine">
+            <summary>FINE termination; precise stop.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.TerminationType.Cnt">
+            <summary>Continuous termination; blend motions (1-100).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.TerminationType.Cr">
+            <summary>Constant path mode (requires option).</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.OnOff">
+            <summary>Generic ON/OFF string values used by RMI.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.OnOff.OFF">
+            <summary>OFF state.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.OnOff.ON">
+            <summary>ON state.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.PortType">
+            <summary>Digital port type used with Local Condition Block (LCB).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.PortType.DOUT">
+            <summary>Digital Output (DO/DOUT).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Data.PortType.ROUT">
+            <summary>Robot Output (RO/ROUT).</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.Frame">
+            <summary>
+            Cartesian frame representation: position (X/Y/Z in mm) and orientation (W/P/R in degrees).
+            Extended axes Ext1..Ext3 are optional and default to 0.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.X">
+            <summary>X coordinate in millimeters.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Y">
+            <summary>Y coordinate in millimeters.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Z">
+            <summary>Z coordinate in millimeters.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.W">
+            <summary>W (Yaw) in degrees.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.P">
+            <summary>P (Pitch) in degrees.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.R">
+            <summary>R (Roll) in degrees.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Ext1">
+            <summary>Extended axis 1 (optional).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Ext2">
+            <summary>Extended axis 2 (optional).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Ext3">
+            <summary>Extended axis 3 (optional).</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration">
+            <summary>
+            Motion configuration including frame/tool numbers and turn/flip bits.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.UToolNumber">
+            <summary>Active UTOOL number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.UFrameNumber">
+            <summary>Active UFRAME number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Front">
+            <summary>FRONT bit (0/1).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Up">
+            <summary>UP bit (0/1).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Left">
+            <summary>LEFT bit (0/1).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Flip">
+            <summary>FLIP bit (0/1).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Turn4">
+            <summary>Turn 4.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Turn5">
+            <summary>Turn 5.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Turn6">
+            <summary>Turn 6.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Data.JointAngles">
+            <summary>
+            Joint angle set. Unused joints default to 0 if the robot has fewer than 9 axes.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J1">
+            <summary>Joint 1 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J2">
+            <summary>Joint 2 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J3">
+            <summary>Joint 3 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J4">
+            <summary>Joint 4 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J5">
+            <summary>Joint 5 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J6">
+            <summary>Joint 6 angle.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J7">
+            <summary>Joint 7 angle (optional extended axis).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J8">
+            <summary>Joint 8 angle (optional extended axis).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J9">
+            <summary>Joint 9 angle (optional extended axis).</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase">
+            <summary>
+            High level Remote Motion Interface (RMI) client for FANUC controllers.
+            This client speaks the ASCII JSON-like protocol over TCP as described in the RMI Operator's Manual.
+            Supports connection bootstrap on port 16001 and all documented admin commands and TP instruction packets.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.#ctor">
+            <summary>
+            Creates a new instance of the RMI client.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadTimeoutMs">
+            <summary>
+            Gets or sets the read timeout for TCP operations (milliseconds).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WriteTimeoutMs">
+            <summary>
+            Gets or sets the write timeout for TCP operations (milliseconds).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Connected">
+            <summary>
+            Indicates that the client is currently connected to the controller working port.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.MajorVersion">
+            <summary>
+            Controller protocol major version reported during FRC_Connect.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.MinorVersion">
+            <summary>
+            Controller protocol minor version reported during FRC_Connect.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WorkingPort">
+            <summary>
+            Working port returned by the controller; all commands use this port after connection.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ConnectInternal(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Connect to the controller on the bootstrap port (16001), request the working port, then switch to it.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Disconnect">
+            <summary>
+            Disconnect from the controller by sending FRC_Disconnect on the working port.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize">
+            <summary>
+            Send the initialize command to create and start RMI_MOVE. Must be called before sending instruction packets.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Abort">
+            <summary>Abort RMI_MOVE.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Pause">
+            <summary>Pause RMI_MOVE.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Continue">
+            <summary>Resume RMI_MOVE.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset">
+            <summary>Reset controller errors and exit HOLD state.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadError">
+            <summary>Read the most recent error text.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetUFrameUTool(System.Byte,System.Byte)">
+            <summary>Set current UFRAME and UTOOL numbers.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.GetStatus">
+            <summary>Get controller status and RMI state.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadUFrame(System.Byte)">
+            <summary>Read a UFRAME.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WriteUFrame(System.Byte,UnderAutomation.Fanuc.Rmi.Data.Frame)">
+            <summary>Write a UFRAME.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadUTool(System.Byte)">
+            <summary>Read a UTOOL.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WriteUTool(System.Byte,UnderAutomation.Fanuc.Rmi.Data.Frame)">
+            <summary>Write a UTOOL.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadDIN(System.Int16)">
+            <summary>Read a digital input port value.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WriteDOUT(System.Int16,UnderAutomation.Fanuc.Rmi.Data.OnOff)">
+            <summary>Write a digital output port value.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadCartesianPosition">
+            <summary>Read current Cartesian position.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadJointAngles">
+            <summary>Read current joint angles.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetOverride(System.Byte)">
+            <summary>Set program override (1-100).</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.GetUFrameUTool">
+            <summary>Get current UFRAME/UTOOL numbers.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadPositionRegister(System.Int16)">
+            <summary>Read a position register.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WritePositionRegister(System.Int16,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame)">
+            <summary>Write a position register.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.ReadTcpSpeed">
+            <summary>Read current TCP speed.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WaitDin(System.Int32,System.Int16,UnderAutomation.Fanuc.Rmi.Data.OnOff)">
+            <summary>Add WAIT DI[x] = ON/OFF.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetUFrameInstruction(System.Int32,System.Byte)">
+            <summary>Add UFRAME_NUM = n.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetUToolInstruction(System.Int32,System.Byte)">
+            <summary>Add UTOOL_NUM = n.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.WaitTime(System.Int32,System.Double)">
+            <summary>Add WAIT t (sec).</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetPayload(System.Int32,System.Byte)">
+            <summary>Add PAYLOAD[n].</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LinearMotion(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add a linear motion.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LinearRelative(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add an incremental linear motion.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.JointMotion(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add a joint motion.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.JointRelative(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add an incremental joint motion.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.CircularMotion(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add a circular motion (via and destination).</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.CircularRelative(System.Int32,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration,UnderAutomation.Fanuc.Rmi.Data.Frame,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add an incremental circular motion.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.JointMotionJRep(System.Int32,UnderAutomation.Fanuc.Rmi.Data.JointAngles,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add a joint-motion with joint representation.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.JointRelativeJRep(System.Int32,UnderAutomation.Fanuc.Rmi.Data.JointAngles,UnderAutomation.Fanuc.Rmi.Data.SpeedType,System.Int16,UnderAutomation.Fanuc.Rmi.Data.TerminationType,System.Byte,System.Nullable{System.Byte},System.Nullable{System.Int16},System.Nullable{System.Int16},System.Boolean,System.String,System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.PortType},System.Nullable{System.Int16},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.OnOff})">
+            <summary>Add an incremental joint-motion with joint representation.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Dispose">
+            <summary>
+            Dispose and disconnect
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiNameAttribute">
+            <summary>
+            Marks a property or field with the RMI key name to be used during serialization.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiIgnoreAttribute">
+            <summary>
+            Marks a property to be ignored by the RMI serializer.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiEnumMemberAttribute">
+            <summary>
+            Maps an enum member to a specific string literal required by RMI.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiSerializer">
+            <summary>
+            Extremely small JSON-like serializer/deserializer covering exactly what RMI needs.
+            Supports: objects, nested objects, numeric/boolean/string values. Arrays are not required by RMI and thus not implemented.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiSocket">
+            <summary>
+            Small TCP socket wrapper to exchange CRLF-terminated payloads with the controller.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.RmiException">
+            <summary>
+            Represents an error reported by the FANUC RMI controller or thrown by the client runtime.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.RmiException.#ctor(System.String)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Rmi.RmiException"/> with a message.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.RmiException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Rmi.RmiException"/> with a message and an inner exception.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.RmiException.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Rmi.RmiException"/> with an error id coming from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.RmiException.ErrorId">
+            <summary>
+            Gets the controller error id when available (0 means no error id was attached).
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment.Read">

@@ -6,7 +6,7 @@ using Snpx.Internal;
 
 namespace Common {
 	/// <summary>
-	/// Memory access parameters
+	/// SNPX parameters
 	/// </summary>
 	public class SnpxConnectParameters : SnpxConnectParametersBase {
 
@@ -17,7 +17,7 @@ namespace Common {
 		}
 
 		/// <summary>
-		/// Should enable memory access for this connection (default: false)
+		/// Should enable SNPX for this connection (default: false)
 		/// </summary>
 		public bool Enable { get; set; }
 	}

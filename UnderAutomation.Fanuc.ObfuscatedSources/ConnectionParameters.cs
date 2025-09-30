@@ -50,5 +50,10 @@ namespace UnderAutomation.Fanuc {
 		/// Read and write IOs, read and clear alarms, read current program tasks
 		/// </summary>
 		public SnpxConnectParameters Snpx { get; set; }
+
+		/// <summary>
+		/// Parameters for RMI (Remote Motion Interface)
+		/// </summary>
+		public RmiConnectParameters Rmi { get; set; }
 	}
 }
