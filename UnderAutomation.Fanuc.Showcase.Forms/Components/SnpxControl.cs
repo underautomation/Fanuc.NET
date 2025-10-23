@@ -408,8 +408,8 @@ public partial class SnpxControl : UserControl, IUserControl
     private void btnClearAlarms_Click(object sender, EventArgs e)
     {
         _robot.Snpx.ClearAlarms();
-    }   
-    
+    }
+
     private void btnReadActiveAlarm_Click(object sender, EventArgs e)
     {
         RobotAlarm value = _robot.Snpx.ActiveAlarm.Read((int)udActiveAlarm.Value);
@@ -424,4 +424,9 @@ public partial class SnpxControl : UserControl, IUserControl
         gridAlarmHistory.ExpandAllGridItems();
     }
     #endregion
+
+    private void btnWriteVariable_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.SetVariable(txtVariableName.Text, txtVariableValue.Text);
+    }
 }

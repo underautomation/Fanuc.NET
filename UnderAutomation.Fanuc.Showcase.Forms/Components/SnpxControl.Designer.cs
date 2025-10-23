@@ -126,6 +126,12 @@
         columnHeader2 = new ColumnHeader();
         panel1 = new Panel();
         btnClearAssignments = new Button();
+        tabPage1 = new TabPage();
+        label16 = new Label();
+        txtVariableName = new TextBox();
+        label17 = new Label();
+        txtVariableValue = new TextBox();
+        btnWriteVariable = new Button();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
         groupBox4.SuspendLayout();
@@ -157,6 +163,7 @@
         ((System.ComponentModel.ISupportInitialize)udActiveAlarm).BeginInit();
         tabAssignments.SuspendLayout();
         panel1.SuspendLayout();
+        tabPage1.SuspendLayout();
         SuspendLayout();
         // 
         // tabControl1
@@ -166,6 +173,7 @@
         tabControl1.Controls.Add(tabBatch);
         tabControl1.Controls.Add(tabAlarms);
         tabControl1.Controls.Add(tabAssignments);
+        tabControl1.Controls.Add(tabPage1);
         tabControl1.Dock = DockStyle.Fill;
         tabControl1.Location = new Point(0, 0);
         tabControl1.Margin = new Padding(4, 3, 4, 3);
@@ -1237,6 +1245,65 @@
         btnClearAssignments.UseVisualStyleBackColor = true;
         btnClearAssignments.Click += btnClearAssignments_Click;
         // 
+        // tabPage1
+        // 
+        tabPage1.Controls.Add(btnWriteVariable);
+        tabPage1.Controls.Add(txtVariableValue);
+        tabPage1.Controls.Add(txtVariableName);
+        tabPage1.Controls.Add(label17);
+        tabPage1.Controls.Add(label16);
+        tabPage1.Location = new Point(4, 24);
+        tabPage1.Name = "tabPage1";
+        tabPage1.Padding = new Padding(3);
+        tabPage1.Size = new Size(1175, 549);
+        tabPage1.TabIndex = 6;
+        tabPage1.Text = "Variables without assignment";
+        tabPage1.UseVisualStyleBackColor = true;
+        // 
+        // label16
+        // 
+        label16.AutoSize = true;
+        label16.Location = new Point(18, 35);
+        label16.Margin = new Padding(4, 0, 4, 0);
+        label16.Name = "label16";
+        label16.Size = new Size(87, 15);
+        label16.TabIndex = 2;
+        label16.Text = "Variable name :";
+        // 
+        // txtVariableName
+        // 
+        txtVariableName.Location = new Point(112, 32);
+        txtVariableName.Name = "txtVariableName";
+        txtVariableName.Size = new Size(240, 23);
+        txtVariableName.TabIndex = 3;
+        // 
+        // label17
+        // 
+        label17.AutoSize = true;
+        label17.Location = new Point(18, 77);
+        label17.Margin = new Padding(4, 0, 4, 0);
+        label17.Name = "label17";
+        label17.Size = new Size(68, 15);
+        label17.TabIndex = 2;
+        label17.Text = "New value :";
+        // 
+        // txtVariableValue
+        // 
+        txtVariableValue.Location = new Point(112, 74);
+        txtVariableValue.Name = "txtVariableValue";
+        txtVariableValue.Size = new Size(240, 23);
+        txtVariableValue.TabIndex = 3;
+        // 
+        // btnWriteVariable
+        // 
+        btnWriteVariable.Location = new Point(188, 125);
+        btnWriteVariable.Name = "btnWriteVariable";
+        btnWriteVariable.Size = new Size(75, 23);
+        btnWriteVariable.TabIndex = 4;
+        btnWriteVariable.Text = "Write";
+        btnWriteVariable.UseVisualStyleBackColor = true;
+        btnWriteVariable.Click += btnWriteVariable_Click;
+        // 
         // SnpxControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1282,6 +1349,8 @@
         ((System.ComponentModel.ISupportInitialize)udActiveAlarm).EndInit();
         tabAssignments.ResumeLayout(false);
         panel1.ResumeLayout(false);
+        tabPage1.ResumeLayout(false);
+        tabPage1.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -1386,4 +1455,10 @@
     private PropertyGrid gridAlarmHistory;
     private NumericUpDown udAlarmHistory;
     private Button btnClearAlarms;
+    private TabPage tabPage1;
+    private Button btnWriteVariable;
+    private TextBox txtVariableValue;
+    private TextBox txtVariableName;
+    private Label label17;
+    private Label label16;
 }
