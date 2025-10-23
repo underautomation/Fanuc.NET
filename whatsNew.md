@@ -1,1 +1,5 @@
-- Experimental support for RMI (Remote Motion Interface)
+- SNPX : implement direct writing of variables without assignment
+
+```csharp
+_robot.Snpx.SetVariable("SYSTEM_VARIABLE_NAME", NewValue);
+```

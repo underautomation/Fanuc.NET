@@ -42767,6 +42767,41 @@
             Alarm history
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Disconnect">
+            <summary>
+            Disconnect from the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ClearAlarms">
+            <summary>
+            Clear all active alarms
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.String)">
+            <summary>
+            Set string variable without assignments
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Boolean)">
+            <summary>
+            Set boolean variable without assignments
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Int32)">
+            <summary>
+            Set integer variable without assignments
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Double)">
+            <summary>
+            Set double variable without assignments
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ClearAssignments">
+            <summary>
+            Clear all assignments
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.Write(`1,`0)">
             <summary>
             Write value at a certain index

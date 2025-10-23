@@ -15,19 +15,57 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Disconnect from the robot
+		/// </summary>
 		public void Disconnect()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Clear all active alarms
+		/// </summary>
 		public void ClearAlarms()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+		/// <summary>
+		/// Set string variable without assignments
+		/// </summary>
+		public void SetVariable(string name, string value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
 
+		/// <summary>
+		/// Set boolean variable without assignments
+		/// </summary>
+		public void SetVariable(string name, bool value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Set integer variable without assignments
+		/// </summary>
+		public void SetVariable(string name, int value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Set double variable without assignments
+		/// </summary>
+		public void SetVariable(string name, double value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Clear all assignments
+		/// </summary>
 		public void ClearAssignments()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
