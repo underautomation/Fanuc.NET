@@ -157,7 +157,7 @@ namespace Telnet.Internal {
 		/// Assigns the specified value to the specified variable. You can assign constant values or variable values, but the value must be of the data type that has been declared for the variable.
 		/// You can assign values to system variables with KCL write access, to program variables, or to standard and user-defined variables and fields. You can assign only one ARRAY element.
 		/// Use brackets ([]) after the variable name to specify an element.
-		/// Certain data types like positions and vectors might have more than one value specified.        '''
+		/// Certain data types like positions and vectors might have more than one value specified.
 		/// </summary>
 		/// <param name="name">A valid program variable</param>
 		/// <param name="value">New value for variable or a program or system variable</param>
@@ -172,7 +172,7 @@ namespace Telnet.Internal {
 		/// Assigns the specified value to the specified variable. You can assign constant values or variable values, but the value must be of the data type that has been declared for the variable.
 		/// You can assign values to system variables with KCL write access, to program variables, or to standard and user-defined variables and fields. You can assign only one ARRAY element.
 		/// Use brackets ([]) after the variable name to specify an element.
-		/// Certain data types like positions and vectors might have more than one value specified.        '''
+		/// Certain data types like positions and vectors might have more than one value specified.
 		/// </summary>
 		/// <param name="name">A valid program variable</param>
 		/// <param name="value">New value for variable or a program or system variable</param>
@@ -187,7 +187,7 @@ namespace Telnet.Internal {
 		/// Assigns the specified value to the specified variable. You can assign constant values or variable values, but the value must be of the data type that has been declared for the variable.
 		/// You can assign values to system variables with KCL write access, to program variables, or to standard and user-defined variables and fields. You can assign only one ARRAY element.
 		/// Use brackets ([]) after the variable name to specify an element.
-		/// Certain data types like positions and vectors might have more than one value specified.        '''
+		/// Certain data types like positions and vectors might have more than one value specified.
 		/// </summary>
 		/// <param name="name">A valid program variable</param>
 		/// <param name="value">New value for variable or a program or system variable</param>
