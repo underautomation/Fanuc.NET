@@ -8,12 +8,6 @@ namespace Ftp.List {
 	public class ErrallSectionItem {
 
 
-		public int Id;
-
-
-		public string Text;
-
-
 		public override string ToString()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -25,6 +19,21 @@ namespace Ftp.List {
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
+
+
+		public int Id { get; }
+
+
+		public string Text { get; }
+
+
+		public string ErrorCode { get; }
+
+
+		public string Message { get; }
+
+
+		public DateTime OccurringTime { get; }
 
 
 		public bool IsReset { get; }

@@ -36917,6 +36917,21 @@
             Get the collection of all parsers
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrorList.Name">
+            <summary>
+            File name (ERRALL.LS)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrorList.Items">
+            <summary>
+            List of all error items (active and history)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrorList.FilterActiveAlarms">
+            <summary>
+            Return active alarms among the list of all error items
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient">
             <summary>
             FTP Control Connection. Speaks the FTP protocol with the server and

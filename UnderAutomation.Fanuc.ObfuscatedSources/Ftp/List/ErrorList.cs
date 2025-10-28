@@ -8,6 +8,15 @@ namespace Ftp.List {
 
 	public class ErrorList : IFanucContent {
 
+		/// <summary>
+		/// Return active alarms among the list of all error items
+		/// </summary>
+		public ErrallSectionItem[] FilterActiveAlarms()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 
 		public ErrorList()
 		{
@@ -15,11 +24,13 @@ namespace Ftp.List {
 		}
 
 		/// <summary>
-		/// File name
+		/// File name (ERRALL.LS)
 		/// </summary>
 		public string Name { get; }
 
-
+		/// <summary>
+		/// List of all error items (active and history)
+		/// </summary>
 		public ErrallSectionItem[] Items { get; }
 	}
 }

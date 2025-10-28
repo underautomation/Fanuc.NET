@@ -1,1 +1,1 @@
-- SNPX / TELNET : Allow writing empty string variables
+- FTP Error List : add occuring time and parse error code
