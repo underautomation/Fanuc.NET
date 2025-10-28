@@ -12,6 +12,7 @@ public partial class ErrorListControl : UserControl, IUserControl
     public ErrorListControl(FanucRobot robot)
     {
         TypeDescriptor.AddAttributes(typeof(ErrorList), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(ErrallSectionItem), new TypeConverterAttribute(typeof(ObjectConverter)));
 
         _robot = robot;
         InitializeComponent();
@@ -42,5 +43,7 @@ public partial class ErrorListControl : UserControl, IUserControl
     private void Show(IFanucContent content)
     {
         gridErrorList.SetSelectedObject(content );
+
+        gridActiveAlarms.SetSelectedObject((content as ErrorList)?.FilterActiveAlarms());
     }
 }

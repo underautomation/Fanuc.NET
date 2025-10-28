@@ -45,14 +45,14 @@
         gridErrorList.BackColor = SystemColors.Window;
         gridErrorList.BorderStyle = BorderStyle.FixedSingle;
         gridErrorList.Dock = DockStyle.Left;
-        gridErrorList.LabelText = "Error list";
+        gridErrorList.LabelText = "Features";
         gridErrorList.Location = new Point(0, 78);
         gridErrorList.Margin = new Padding(5, 3, 5, 3);
         gridErrorList.Name = "gridErrorList";
         gridErrorList.Size = new Size(311, 414);
         gridErrorList.TabIndex = 1;
         // 
-        // ErrorListControl
+        // FeaturesControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -60,7 +60,7 @@
         Controls.Add(gridErrorList);
         Controls.Add(Header);
         Margin = new Padding(4, 3, 4, 3);
-        Name = "ErrorListControl";
+        Name = "FeaturesControl";
         Size = new Size(990, 492);
         ResumeLayout(false);
     }
