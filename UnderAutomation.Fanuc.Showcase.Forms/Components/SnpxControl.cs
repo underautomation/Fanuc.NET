@@ -224,7 +224,7 @@ public partial class SnpxControl : UserControl, IUserControl
 
     private void btnWriteStringVariable_Click(object sender, System.EventArgs e)
     {
-        _robot.Snpx.StringSystemVariables.Write(txtStringValue.Text, txtStringValue.Text);
+        _robot.Snpx.StringSystemVariables.Write(txtStringVariable.Text, txtStringValue.Text);
     }
     #endregion
 
