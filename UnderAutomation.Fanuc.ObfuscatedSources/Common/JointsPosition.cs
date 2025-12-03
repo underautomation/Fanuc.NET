@@ -50,12 +50,23 @@ namespace Common {
 		}
 
 
-		public double this[int i] { get; set; }
+		public double this[int i]
+		{
+			get
+			{
+				// Source is hidden, a Source licence is needed to access internal code...
+				return default;
+			}
+			set
+			{
+				// Source is hidden, a Source licence is needed to access internal code...
+			}
+		}
 
-		/// <summary>
-		/// Numeric values for each joints
-		/// </summary>
-		public double[] Values { get; }
+        /// <summary>
+        /// Numeric values for each joints
+        /// </summary>
+        public double[] Values { get; }
 
 		/// <summary>
 		/// Joint 1 in degrees
