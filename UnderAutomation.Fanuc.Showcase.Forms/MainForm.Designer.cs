@@ -30,8 +30,10 @@ partial class MainForm
         components = new System.ComponentModel.Container();
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         horizontalSplitContainer = new SplitContainer();
+        pictureBox1 = new PictureBox();
         panel1 = new Panel();
         label1 = new Label();
+        lblGithub = new LinkLabel();
         lblLink = new LinkLabel();
         lblTitle = new Label();
         titlePictureBox = new PictureBox();
@@ -39,20 +41,22 @@ partial class MainForm
         leftTreeView = new TreeView();
         imgLst = new ImageList(components);
         mainPanel = new Panel();
+        panel2 = new Panel();
         panelTitle = new Label();
+        lnkSource = new LinkLabel();
         tmrPeriodicUpdate = new System.Windows.Forms.Timer(components);
-        pictureBox1 = new PictureBox();
         ((System.ComponentModel.ISupportInitialize)horizontalSplitContainer).BeginInit();
         horizontalSplitContainer.Panel1.SuspendLayout();
         horizontalSplitContainer.Panel2.SuspendLayout();
         horizontalSplitContainer.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)titlePictureBox).BeginInit();
         ((System.ComponentModel.ISupportInitialize)verticalSplitContainer).BeginInit();
         verticalSplitContainer.Panel1.SuspendLayout();
         verticalSplitContainer.Panel2.SuspendLayout();
         verticalSplitContainer.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        panel2.SuspendLayout();
         SuspendLayout();
         // 
         // horizontalSplitContainer
@@ -80,9 +84,22 @@ partial class MainForm
         horizontalSplitContainer.SplitterWidth = 5;
         horizontalSplitContainer.TabIndex = 0;
         // 
+        // pictureBox1
+        // 
+        pictureBox1.Dock = DockStyle.Left;
+        pictureBox1.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.fanuc;
+        pictureBox1.Location = new Point(428, 0);
+        pictureBox1.Margin = new Padding(4, 3, 4, 3);
+        pictureBox1.Name = "pictureBox1";
+        pictureBox1.Size = new Size(185, 89);
+        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        pictureBox1.TabIndex = 4;
+        pictureBox1.TabStop = false;
+        // 
         // panel1
         // 
         panel1.Controls.Add(label1);
+        panel1.Controls.Add(lblGithub);
         panel1.Controls.Add(lblLink);
         panel1.Dock = DockStyle.Right;
         panel1.Location = new Point(780, 0);
@@ -98,10 +115,23 @@ partial class MainForm
         label1.Location = new Point(0, 0);
         label1.Margin = new Padding(4, 0, 4, 0);
         label1.Name = "label1";
-        label1.Size = new Size(449, 66);
+        label1.Size = new Size(449, 43);
         label1.TabIndex = 3;
         label1.Text = "Fanuc Robot Communication SDK Library demo software";
         label1.TextAlign = ContentAlignment.MiddleCenter;
+        // 
+        // lblGithub
+        // 
+        lblGithub.Dock = DockStyle.Bottom;
+        lblGithub.Location = new Point(0, 43);
+        lblGithub.Margin = new Padding(4, 0, 4, 0);
+        lblGithub.Name = "lblGithub";
+        lblGithub.Size = new Size(449, 23);
+        lblGithub.TabIndex = 4;
+        lblGithub.TabStop = true;
+        lblGithub.Text = "https://github.com/underautomation/Fanuc.NET";
+        lblGithub.TextAlign = ContentAlignment.MiddleCenter;
+        lblGithub.LinkClicked += lblLink_LinkClicked;
         // 
         // lblLink
         // 
@@ -112,7 +142,7 @@ partial class MainForm
         lblLink.Size = new Size(449, 23);
         lblLink.TabIndex = 2;
         lblLink.TabStop = true;
-        lblLink.Text = "https://underautomation.com/Fanuc/documentation";
+        lblLink.Text = "https://underautomation.com/fanuc/documentation";
         lblLink.TextAlign = ContentAlignment.MiddleCenter;
         lblLink.LinkClicked += lblLink_LinkClicked;
         // 
@@ -157,7 +187,7 @@ partial class MainForm
         // verticalSplitContainer.Panel2
         // 
         verticalSplitContainer.Panel2.Controls.Add(mainPanel);
-        verticalSplitContainer.Panel2.Controls.Add(panelTitle);
+        verticalSplitContainer.Panel2.Controls.Add(panel2);
         verticalSplitContainer.Size = new Size(1231, 762);
         verticalSplitContainer.SplitterDistance = 328;
         verticalSplitContainer.SplitterWidth = 5;
@@ -188,40 +218,52 @@ partial class MainForm
         // mainPanel
         // 
         mainPanel.Dock = DockStyle.Fill;
-        mainPanel.Location = new Point(0, 36);
+        mainPanel.Location = new Point(0, 59);
         mainPanel.Margin = new Padding(4, 3, 4, 3);
         mainPanel.Name = "mainPanel";
-        mainPanel.Size = new Size(896, 724);
+        mainPanel.Size = new Size(896, 701);
         mainPanel.TabIndex = 1;
+        // 
+        // panel2
+        // 
+        panel2.Controls.Add(panelTitle);
+        panel2.Controls.Add(lnkSource);
+        panel2.Dock = DockStyle.Top;
+        panel2.Location = new Point(0, 0);
+        panel2.Name = "panel2";
+        panel2.Size = new Size(896, 59);
+        panel2.TabIndex = 3;
         // 
         // panelTitle
         // 
-        panelTitle.Dock = DockStyle.Top;
+        panelTitle.Dock = DockStyle.Fill;
         panelTitle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
         panelTitle.Location = new Point(0, 0);
         panelTitle.Margin = new Padding(4, 0, 4, 0);
         panelTitle.Name = "panelTitle";
-        panelTitle.Size = new Size(896, 36);
+        panelTitle.Size = new Size(766, 59);
         panelTitle.TabIndex = 0;
+        panelTitle.Text = "...";
         panelTitle.TextAlign = ContentAlignment.MiddleCenter;
+        // 
+        // lnkSource
+        // 
+        lnkSource.Cursor = Cursors.Hand;
+        lnkSource.Dock = DockStyle.Right;
+        lnkSource.Location = new Point(766, 0);
+        lnkSource.Name = "lnkSource";
+        lnkSource.Size = new Size(130, 59);
+        lnkSource.TabIndex = 2;
+        lnkSource.TabStop = true;
+        lnkSource.Text = "View C# page source\r\naaa.cs";
+        lnkSource.TextAlign = ContentAlignment.MiddleCenter;
+        lnkSource.LinkClicked += lnkSource_LinkClicked;
         // 
         // tmrPeriodicUpdate
         // 
         tmrPeriodicUpdate.Enabled = true;
         tmrPeriodicUpdate.Interval = 200;
         tmrPeriodicUpdate.Tick += tmrPeriodicUpdate_Tick;
-        // 
-        // pictureBox1
-        // 
-        pictureBox1.Dock = DockStyle.Left;
-        pictureBox1.Image = UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.fanuc;
-        pictureBox1.Location = new Point(428, 0);
-        pictureBox1.Margin = new Padding(4, 3, 4, 3);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(185, 89);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 4;
-        pictureBox1.TabStop = false;
         // 
         // MainForm
         // 
@@ -240,13 +282,14 @@ partial class MainForm
         horizontalSplitContainer.Panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)horizontalSplitContainer).EndInit();
         horizontalSplitContainer.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         panel1.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)titlePictureBox).EndInit();
         verticalSplitContainer.Panel1.ResumeLayout(false);
         verticalSplitContainer.Panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)verticalSplitContainer).EndInit();
         verticalSplitContainer.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        panel2.ResumeLayout(false);
         ResumeLayout(false);
     }
 
@@ -265,5 +308,8 @@ partial class MainForm
     private System.Windows.Forms.Label label1;
     internal System.Windows.Forms.TreeView leftTreeView;
     private PictureBox pictureBox1;
+    private LinkLabel lblGithub;
+    private Panel panel2;
+    private LinkLabel lnkSource;
 }
 

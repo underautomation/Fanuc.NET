@@ -35,6 +35,7 @@ It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
 - ⚡ **I/O Control:** Manage ports and I/O values (UI, UO, GI, GO, etc.).
 - 🔍 **State Monitoring:** Get safety status, position, diagnostics, and more.
 - 📂 **File Management:** Easily manipulate files.
+- 📐 **Kinematics Calculations:** Perform forward and inverse kinematics offline.
 
 No additional installations or Fanuc options are required to use this SDK.
 
@@ -51,28 +52,36 @@ A Windows Forms application demonstrating all the features of the library.
 📌 **Download:** [📥 UnderAutomation.Fanuc.Showcase.Forms.exe](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.Showcase.Forms.exe)
 
 ---
+
 **Read variables :**
 
 ![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif)
 
 ---
+
 **Move the robot :**
 
 ![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif)
 
 ---
+
 **High speed Read & Write registers :**
 ![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif)
 
 ---
+
 **Live remote control with Jostick or 3D Mouse:**
 ![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif)
 
 ---
+
 **TP Editor with breakpoints:**
 ![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/tp-editor-breakpoints.gif)
 
+---
 
+**Forward and Inverse Kinematics:**
+![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/forward-inverse-kinematics.png)
 
 ---
 
@@ -256,6 +265,37 @@ Console.WriteLine($"Cartesian Position: X={currentPosition.Cartesian.X}, Y={curr
 
 - If Your Robot Uses "FANUC Ltd." Parameters (R651 FRL):
   No additional option is required—SNPX is included by default.
+
+---
+
+## 📐 **Kinematics Calculations:**
+
+The SDK includes tools for performing forward and inverse kinematics calculations offline, allowing you to compute the robot's end-effector position based on joint angles and vice versa, from DH parameters.
+
+```csharp
+using UnderAutomation.Fanuc.Kinematics;
+
+JointsPosition position = new JointsPosition(10, 20, 120, 0, 0, 25);
+
+// ---- Get DH parameters ----
+// Example: CRX-10iA/L
+DhParameters dh = new DhParameters(-540, 150, -160, 0, 710, 0);
+
+// From a known arm model
+dh = DhParameters.FromArmKinematicModel(ArmKinematicModels.CRX10iA);
+
+// From OPW parameters: M10iA/7L
+dh = DhParameters.FromOpwParameters(0.15, -0.20, 0.60, 0.86, 0.10);
+
+// From an online robot (SYSMOTN file)
+dh = DhParameters.FromSymotnFile(_robot.Ftp.KnownVariableFiles.GetSymotnFile())[0];
+
+// ---- Forward kinematics ----
+CartesianPosition pose = KinematicsUtils.ForwardKinematics(position, dh);
+
+// ---- Inverse kinematics with multiple solutions ----
+JointsPosition[] positions = KinematicsUtils.InverseKinematics(pose, dh);
+```
 
 ---
 

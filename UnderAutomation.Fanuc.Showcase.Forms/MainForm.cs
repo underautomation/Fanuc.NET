@@ -44,6 +44,7 @@ public partial class MainForm : Form
         AddNode(new TPEditorControl(_robot));
         AddNode(new DpmControl(_robot));
         AddNode(new SnpxControl(_robot));
+        AddNode(new KinematicsControl(_robot));
         AddNode(new ContactControl());
         AddNode(new LicenseControl());
 
@@ -125,7 +126,6 @@ I have this exception that prevents me from using the full capabilities of the S
     }
     #endregion
 
-    #region User interaction
     private void leftTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
     {
         SelectNode(e.Node);
@@ -160,6 +160,8 @@ I have this exception that prevents me from using the full capabilities of the S
             return;
         }
 
+        lnkSource.Text = $"View C# page source\n{control.GetType().Name}.cs";
+
         panelTitle.Text = (node.Tag as IUserControl)?.Title;
 
         mainPanel.Controls.Add(control);
@@ -183,18 +185,10 @@ I have this exception that prevents me from using the full capabilities of the S
     // Open browser to documentation page
     private void lblLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
-        try
-        {
-            var ps = new ProcessStartInfo("https://underautomation.com/fanuc")
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            };
-            Process.Start(ps);
-        }
-        catch { }
+            var url = (sender as Label)?.Text;
+            if (url is null) return;
+            OpenUrl(url);
     }
-    #endregion
 
     // Timer callback to refresh the control on the right and the left menu
     private void tmrPeriodicUpdate_Tick(object sender, EventArgs e)
@@ -247,5 +241,25 @@ I have this exception that prevents me from using the full capabilities of the S
             _robot.Disconnect();
         }
         catch { }
+    }
+
+    private void OpenUrl(string url)
+    {
+        try
+        {
+            var ps = new ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
+        catch { }
+    }
+
+    private void lnkSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        var name = mainPanel.Controls.OfType<IUserControl>().FirstOrDefault().GetType().Name;
+        OpenUrl($"https://github.com/underautomation/Fanuc.NET/blob/main/UnderAutomation.Fanuc.Showcase.Forms/Components/{name}.cs");
     }
 }
