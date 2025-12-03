@@ -70,32 +70,6 @@ namespace Kinematics.Opw {
 	public static class OpwKinematicsUtils {
 
 		/// <summary>
-		/// Compute forward kinematics using the OPW model plus Fanuc specific
-		/// transformations.
-		/// 
-		/// Input:
-		///   jointAnglesRad - array of 6 joint angles in radians, in Fanuc
-		///                    controller convention (including the q2-q3
-		///                    interaction as separate joints).
-		///   dhParameters   - container that provides the OPW geometric values
-		///                    (here reconstructed from DH for this robot).
-		/// 
-		/// Output:
-		///   CartesianPosition (X, Y, Z, W, P, R) where W, P, R are Euler
-		///   angles (XYpZpp convention, i.e. intrinsic rotations about X, Y,
-		///   second Y and final Z, like in many industrial controllers).
-		/// 
-		/// This method follows the same structure as Section III.B
-		/// "3R Ortho-Parallel Substructure" for the position part and III.C
-		/// "3R Wrist Substructure" for the orientation part of the paper.
-		/// </summary>
-		public static CartesianPosition ForwardKinematics(double[] jointAnglesRad, DhParameters dhParameters)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
-
-		/// <summary>
 		/// Compute all inverse kinematics solutions for a desired end effector
 		/// pose using the OPW model and the closed form from the paper.
 		/// 
