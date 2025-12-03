@@ -39,6 +39,11 @@ namespace Common {
 		}
 
 		/// <summary>
+		/// Indicates if the configuration is unknown
+		/// </summary>
+		public bool IsUnknown { get; }
+
+		/// <summary>
 		/// Wrist configuration
 		/// </summary>
 		public WristFlip WristFlip { get; set; }
@@ -59,18 +64,18 @@ namespace Common {
 		public ArmFrontBack ArmFrontBack { get; set; }
 
 		/// <summary>
-		/// Turn number of axis 1 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+		/// Turn number of axis J4 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
 		/// </summary>
-		public int TurnAxis1 { get; set; }
+		public int TurnAxis4 { get; set; }
 
 		/// <summary>
-		/// Turn number of axis 2 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+		/// Turn number of axis J5 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
 		/// </summary>
-		public int TurnAxis2 { get; set; }
+		public int TurnAxis5 { get; set; }
 
 		/// <summary>
-		/// Turn number of axis 3 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+		/// Turn number of axis J6 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
 		/// </summary>
-		public int TurnAxis3 { get; set; }
+		public int TurnAxis6 { get; set; }
 	}
 }

@@ -29,17 +29,17 @@ namespace Common {
 		}
 
 		/// <summary>
-		/// X coordinate in meters
+		/// X coordinate in millimeters
 		/// </summary>
 		public double X { get; set; }
 
 		/// <summary>
-		/// Y coordinate in meters
+		/// Y coordinate in millimeters
 		/// </summary>
 		public double Y { get; set; }
 
 		/// <summary>
-		/// Z coordinate in meters
+		/// Z coordinate in millimeters
 		/// </summary>
 		public double Z { get; set; }
 	}

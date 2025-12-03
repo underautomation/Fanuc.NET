@@ -5,7 +5,7 @@
 
 namespace Common {
 	/// <summary>
-	/// Joint position in degrees
+	/// Joints position in degrees
 	/// </summary>
 	public class JointsPosition {
 
@@ -16,13 +16,13 @@ namespace Common {
 		}
 
 
-		public JointsPosition(double j1, double j2, double j3, double j4, double j5, double j6, double j7, double j8, double j9)
+		public JointsPosition(double j1Deg, double j2Deg, double j3Deg, double j4Deg, double j5Deg, double j6Deg, double j7Deg, double j8Deg, double j9Deg)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 
-		public JointsPosition(double j1, double j2, double j3, double j4, double j5, double j6)
+		public JointsPosition(double j1Deg, double j2Deg, double j3Deg, double j4Deg, double j5Deg, double j6Deg)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
@@ -39,6 +39,18 @@ namespace Common {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+		/// <summary>
+		/// Check if joints position is near to expected joints position with a tolerance value
+		/// </summary>
+		public static bool IsNear(JointsPosition j1, JointsPosition j2, double degreesTolerance)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public double this[int i] { get; set; }
 
 		/// <summary>
 		/// Numeric values for each joints

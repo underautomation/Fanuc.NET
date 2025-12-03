@@ -39,6 +39,34 @@
             Position configuration
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.ToHomogeneousMatrix">
+            <summary>
+            Convert position to a homogeneous rotation and translation 4x4 matrix
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.FromHomogeneousMatrix(System.Double[0:,0:])">
+            <summary>
+            Create a CartesianPosition with unknow configuration from a homogeneous rotation and translation 4x4 matrix
+            </summary>
+            <param name="R">Homogeneous 4x4 matrix</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.NormalizeAngle(System.Double)">
+            <summary>
+            Normalize an angle to the range ]-180, 180]
+            </summary>
+            <param name="angle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.NormalizeAngles(UnderAutomation.Fanuc.Common.CartesianPosition)">
+            <summary>
+            Normalize the W, P, R angles to the range ]-180, 180]
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.IsNear(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Common.CartesianPosition,System.Double,System.Double)">
+            <summary>
+            Check if two Cartesian positions are near each other within specified tolerances
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.CartesianPositionWithTool">
             <summary>
             A cartesian position with a tool ID
@@ -144,6 +172,11 @@
             Fanuc arm configuration
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.IsUnknown">
+            <summary>
+            Indicates if the configuration is unknown 
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.Configuration.WristFlip">
             <summary>
             Wrist configuration
@@ -164,19 +197,19 @@
             Arm back/front configuration
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis1">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis4">
             <summary>
-            Turn number of axis 1 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+            Turn number of axis J4 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis2">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis5">
             <summary>
-            Turn number of axis 2 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+            Turn number of axis J5 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis3">
+        <member name="P:UnderAutomation.Fanuc.Common.Configuration.TurnAxis6">
             <summary>
-            Turn number of axis 3 (1:180° to 539°, 0:-179° to 179°, -1:-539° to 180°)
+            Turn number of axis J6 (1:180° to 539°, 0:-179° to 179°, -1:-539° to -180°)
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.Configuration.ToString">
@@ -261,7 +294,7 @@
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.JointsPosition">
             <summary>
-            Joint position in degrees
+            Joints position in degrees
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.JointsPosition.Values">
@@ -312,6 +345,11 @@
         <member name="P:UnderAutomation.Fanuc.Common.JointsPosition.J9">
             <summary>
             Joint 9 in degrees
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.IsNear(UnderAutomation.Fanuc.Common.JointsPosition,UnderAutomation.Fanuc.Common.JointsPosition,System.Double)">
+            <summary>
+            Check if joints position is near to expected joints position with a tolerance value
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.ProgramType">
@@ -396,17 +434,17 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.XYZPosition.X">
             <summary>
-            X coordinate in meters
+            X coordinate in millimeters
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.XYZPosition.Y">
             <summary>
-            Y coordinate in meters
+            Y coordinate in millimeters
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.XYZPosition.Z">
             <summary>
-            Z coordinate in meters
+            Z coordinate in millimeters
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.ConnectionParameters">
@@ -41492,6 +41530,692 @@
             <summary>
             A symbolic link
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels">
+            <summary>
+            Fanuc Robot Known Arm Models
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate0iA">
+            <summary>
+            ARC Mate 0iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate0iB">
+            <summary>
+            ARC Mate 0iB
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate0iB_2">
+            <summary>
+            ARC Mate 0iB
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD">
+            <summary>
+            ARCMate100iD
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD10L">
+            <summary>
+            ARCMate100iD/10L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD16S">
+            <summary>
+            ARCMate100iD/16S
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD8L">
+            <summary>
+            ARCMate100iD/8L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iD">
+            <summary>
+            ARCMate120iD
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iD12L">
+            <summary>
+            ARCMate120iD/12L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iD35">
+            <summary>
+            ARCMate120iD/35
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR14iAL">
+            <summary>
+            CR-14iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR15iA">
+            <summary>
+            CR-15iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR35iA">
+            <summary>
+            CR-35iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR7iA">
+            <summary>
+            CR-7iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR7iAL">
+            <summary>
+            CR-7iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX10iA">
+            <summary>
+            CRX-10iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX10iAL">
+            <summary>
+            CRX-10iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD">
+            <summary>
+            LRMate200iD
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD7C">
+            <summary>
+            LRMate200iD/7C
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD7L">
+            <summary>
+            LRMate200iD/7L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD7LC">
+            <summary>
+            LRMate200iD/7LC
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LaserRobotHA">
+            <summary>
+            Laser Robot HA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA10M">
+            <summary>
+            M-10iA 10M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA10MS">
+            <summary>
+            M-10iA 10MS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA12">
+            <summary>
+            M-10iA 12
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA12S">
+            <summary>
+            M-10iA 12S
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA7L">
+            <summary>
+            M-10iA 7L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA8L">
+            <summary>
+            M-10iA 8L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M2000iA1700L">
+            <summary>
+            M-2000iA 1700L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M2000iA2300">
+            <summary>
+            M-2000iA 2300
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M2000iA1200">
+            <summary>
+            M-2000iA/1200
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M2000iA900L">
+            <summary>
+            M-2000iA/900L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iA">
+            <summary>
+            M-20iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iA12L">
+            <summary>
+            M-20iA 12L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iA20M">
+            <summary>
+            M-20iA 20M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iA35M">
+            <summary>
+            M-20iA 35M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iB25C">
+            <summary>
+            M-20iB/25C
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC110">
+            <summary>
+            M-410iC 110
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185_2">
+            <summary>
+            M-410iC 185
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185">
+            <summary>
+            M-410iC 185
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC500">
+            <summary>
+            M-410iC 500
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC500_2">
+            <summary>
+            M-410iC 500
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M800iA60">
+            <summary>
+            M-800iA/60
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB280L">
+            <summary>
+            M-900iB 280L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB330L">
+            <summary>
+            M-900iB 330L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB360">
+            <summary>
+            M-900iB 360
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB400L">
+            <summary>
+            M-900iB 400L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB700">
+            <summary>
+            M-900iB 700
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iBKAI">
+            <summary>
+            M-900iB KAI
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iB25">
+            <summary>
+            M20iB 25
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iB35S">
+            <summary>
+            M20iB 35S
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC12L">
+            <summary>
+            M710iC 12L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC20M">
+            <summary>
+            M710iC 20M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC45M">
+            <summary>
+            M710iC 45M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC50">
+            <summary>
+            M710iC 50
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.P700iANewRightyArmRightOffset">
+            <summary>
+            P-700iA-New Righty Arm Right Offset
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.P350iA45LeftHand">
+            <summary>
+            P350iA 45 Left Hand
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.P350iA45RightHand">
+            <summary>
+            P350iA 45 Right Hand
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA100F">
+            <summary>
+            R-1000iA/100F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA130F">
+            <summary>
+            R-1000iA/130F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA80F">
+            <summary>
+            R-1000iA/80F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB125L">
+            <summary>
+            R-2000iB/125L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB175L">
+            <summary>
+            R-2000iB/175L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC100S">
+            <summary>
+            R-2000iC 100S
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC270F">
+            <summary>
+            R-2000iC 270F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iD100FH">
+            <summary>
+            R-2000iD/100FH
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA100F7">
+            <summary>
+            R1000iA 100F 7
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_3">
+            <summary>
+            R1000iA 120F 7B
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_2">
+            <summary>
+            R1000iA 120F 7B
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B">
+            <summary>
+            R1000iA 120F 7B
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS">
+            <summary>
+            R1000iA 120F 7BS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS_3">
+            <summary>
+            R1000iA 120F 7BS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS_2">
+            <summary>
+            R1000iA 120F 7BS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB210FS">
+            <summary>
+            R2000iB 210FS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB220US">
+            <summary>
+            R2000iB 220US
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC125L">
+            <summary>
+            R2000iC 125L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC190U">
+            <summary>
+            R2000iC 190U
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC210F">
+            <summary>
+            R2000iC 210F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC210L">
+            <summary>
+            R2000iC 210L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC210WE">
+            <summary>
+            R2000iC 210WE
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC210WEProto">
+            <summary>
+            R2000iC 210WE proto
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC220U">
+            <summary>
+            R2000iC 220U
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.Crx.ICrxDhmParameters">
+            <summary>
+            Denavit–Hartenberg Modified (DHm) parameters for Fanuc CRX with only the relevant parameters
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.NormalizeDeg(System.Double)">
+            <summary>
+            Normalize to (-180,180]; near-zero rounded to 0 to avoid noisy output.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.Mul(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            4×4 matrix multiply (no-alloc, tight loop).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.DHm(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            DHm transform i-1Ti per paper Eq. (1): Rx(α_{i-1}) · Tx(a_{i-1}) · Rz(θ_i) · Tz(r_i).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters,System.Boolean,System.Double[])">
+            <summary>
+            Solve IK for a desired tool pose (WPR). Returns up to 16 solutions (including duals, Eq. (23)).
+            This implements Steps 1..7 from paper §2.6 with references to Eqs. (13–23).
+            </summary>
+            <param name="pose">Target pose in WPR (deg) and XYZ (mm).</param>
+            <param name="parameters">DH Parameters</param>
+            <param name="includeDuals">Whether to add dual solutions per Eq. (23).</param>
+            <param name="seedJoints">Optional seed [J1..J6] (deg) to bias q-search near source.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.Dedup(System.Collections.Generic.List{UnderAutomation.Fanuc.Common.JointsPosition},System.Double)">
+            <summary>
+            Remove near-duplicate joint tuples (within epsDeg per joint and same dual flag).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.Mul3(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            3×3 multiply (rotation blocks).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.Transpose3(System.Double[0:,0:])">
+            <summary>
+            3×3 transpose.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromArmKinematicModel(System.String)">
+            <summary>
+            Returns DH parameters from a known Arm Kinematic Model name. Returns null if not found in enum ArmKinematicModels.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromArmKinematicModel(UnderAutomation.Fanuc.Kinematics.ArmKinematicModels)">
+            <summary>
+            Returns DH parameters from a known Arm Kinematic Model.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromOpwParameters(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates DH parameters from OPW parameters (in meters)
+            C1 and B are ignored because B is always 0 and C1 is not used in the DH representation.
+            </summary>
+            <param name="a1">OPW A1 parameter in meters</param>
+            <param name="a2">OPW A2 parameter in meters</param>
+            <param name="c2">OPW C2 parameter in meters</param>
+            <param name="c3">OPW C3 parameter in meters</param>
+            <param name="c4">OPW C4 parameter in meters</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromDefFile(System.String)">
+            <summary>
+            Loads DH parameters of each robots described in a ROBOGUIDE definition file (*.def). By default, this file is located in "C:\ProgramData\FANUC\ROBOGUIDE\Robot Library".
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromDefFile(System.Xml.Linq.XDocument)">
+            <summary>
+            Loads DH parameters of each robots described in a ROBOGUIDE definition file (*.def). By default, this file is located in "C:\ProgramData\FANUC\ROBOGUIDE\Robot Library".
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromSymotnFile(UnderAutomation.Fanuc.Ftp.Variables.SymotnFile)">
+            <summary>
+            Loads DH parameters of each group from a parsed symotn.va file.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromMrrGrp(UnderAutomation.Fanuc.Ftp.Variables.MrrGrpVariableType)">
+            <summary>
+            Loads DH parameters from parsed variable $MRR_GRP located in symotn.va.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.KinematicsUtils">
+            <summary>
+            Kinematics utilities
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.ForwardKinematics(UnderAutomation.Fanuc.Common.JointsPosition,UnderAutomation.Fanuc.Kinematics.DhParameters)">
+            <summary>
+            Compute FK for given joint angles (deg) and DH parameters
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.ForwardKinematics(System.Double[],UnderAutomation.Fanuc.Kinematics.DhParameters)">
+            <summary>
+            Compute FK for given joint angles (rad) and DH parameters
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.DHm(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            DH matrix with convention: Rx(alpha) * TransX(a) * Rz(theta) * TransZ(d)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils">
+             <summary>
+             Utility methods implementing OPW kinematics for a 6R industrial robot
+             with ortho-parallel base and spherical wrist (so called 3-2-1 structure).
+            
+             This class is a C# implementation of the analytical solution described in:
+               M. Brandstötter et al., "An Analytical Solution of the Inverse Kinematics
+               Problem of Industrial Serial Manipulators with an Ortho-parallel Basis
+               and a Spherical Wrist", ARW 2014.
+            
+             Key ideas:
+             - The robot is parametrized by OPW geometric parameters (a1, a2, b, c1..c4)
+               instead of Denavit-Hartenberg parameters. See Section II.A and Table I
+               in the paper for the meaning of these parameters.
+             - The structure is decoupled: the first three joints move the wrist center C
+               (positioning part), the last three joints form a spherical wrist that
+               controls the orientation (orientation part). See Section III and Figure 5.
+             - Forward kinematics:
+                 input  - 6 joint angles in Fanuc convention (radians)
+                 output - CartesianPosition (XYZ + Euler angles W P R)
+               Internally, we:
+                 * adjust joint 3 for Fanuc coupling (q3 += q2)
+                 * convert Fanuc joint angles to OPW convention using Signs/Offsets
+                 * compute wrist center position C using the formulas analogous to
+                   equations (2)-(7) in Section III.B (side view and base frame)
+                 * compute rotation R0c (basis to wrist center) and Rce (wrist to TCP)
+                   based on the symbolic rotation matrices for the torso and wrist
+                   given in Section III.C
+                 * combine them (R0e = R0c * Rce) and convert to Euler angles XYpZpp
+            
+             - Inverse kinematics:
+                 input  - desired CartesianPosition (XYZ + orientation)
+                 output - up to 8 JointsPosition solutions (Fanuc joint angles in deg)
+               Internally, we:
+                 * extract R0e from pose.ToHomogeneousMatrix()
+                 * compute wrist center C by moving along -ze by c4 (Equation at top
+                   of page 6: [cx; cy; cz] = [ux; uy; uz] - c4 * R0e * [0; 0; 1])
+                 * solve for the first three joints (3R ortho-parallel structure) using
+                   the closed form given in the "Positioning Part" summary on page 6:
+                     - two shoulder configurations (front / back) for θ1
+                     - two elbow configurations (up / down) for θ2, θ3
+                   which yields up to 4 combinations for joints 1-3.
+                 * for each of these 4 base solutions, compute 2 possible wrist
+                   configurations (θ4..θ6) using the formulas for Rc^e in Section III.C
+                   and the "Orientation Part" formulas on page 6 (θ4, θ5, θ6, pairs p/q),
+                   resulting in up to 8 full 6-DoF solutions.
+                 * convert OPW joint angles back to Fanuc using Signs/Offsets, undo
+                   the q2-q3 coupling (q3_fanuc = q3_opw - q2_opw) and normalize all
+                   joint angles to the interval (-180, 180] using Math.IEEERemainder.
+            
+             The mapping between Fanuc joints and OPW joints:
+               q_opw[i] = q_fanuc[i] * Signs[i] - Offsets[i]
+               q_fanuc[i] = (q_opw[i] + Offsets[i]) * Signs[i]
+            
+             Note:
+             - This implementation assumes a Fanuc like robot where joint 3 is
+               mechanically coupled with joint 2 (q3_total = q3 + q2).
+             - DhParameters is used here as a container to reconstruct the OPW
+               parameters for one specific Fanuc model.
+             - The OPW notation itself is described in detail in Section II and Table I
+               of the paper; this class only uses the subset needed for the math.
+             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.Clamp(System.Double,System.Double,System.Double)">
+            <summary>
+            Clamp scalar v to the closed interval [min, max].
+            Used to protect trigonometric calls (like Asin) from small
+            numerical overshoots outside [-1, 1].
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.Multiply3x3(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Multiply two 3x3 matrices A and B.
+            Result is A * B.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.MultiplyMatrixTransposeVector3(System.Double[0:,0:],System.Double[])">
+             <summary>
+             Multiply the transpose of a 3x3 matrix M with a 3D vector v.
+            
+             Computes r = M^T * v without explicitly forming the transpose.
+             Used when we switch between frames by rotating a vector by a
+             precomputed rotation matrix.
+             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.CrossProduct(System.Double[],System.Double[])">
+            <summary>
+            Standard 3D cross product r = a x b.
+            Used to construct orthonormal frames when θ5 is close to zero
+            (wrist singularity) and explicit formulas for θ4, θ6 become
+            numerically unstable. See Section III.C for the wrist derivation.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.SetColumn(System.Double[0:,0:],System.Int32,System.Double[])">
+            <summary>
+            Helper to set one column of a 3x3 matrix M from a 3D vector v.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.GetColumn(System.Double[0:,0:],System.Int32)">
+            <summary>
+            Helper to extract one column of a 3x3 matrix M as a 3D vector.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.ClampAngle180_IEEE(System.Double)">
+             <summary>
+             Normalize an angle in degrees into the interval (-180, 180].
+            
+             Math.IEEERemainder returns an angle in [-180, 180]. This helper
+             maps exactly -180 to +180 so that the final range is:
+            
+               (-180, 180]   (exclusive -180, inclusive +180)
+            
+             This is useful for consistent joint limits and when comparing
+             angles modulo 360 degrees.
+             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.ForwardKinematics(System.Double[],UnderAutomation.Fanuc.Kinematics.DhParameters)">
+             <summary>
+             Compute forward kinematics using the OPW model plus Fanuc specific
+             transformations.
+            
+             Input:
+               jointAnglesRad - array of 6 joint angles in radians, in Fanuc
+                                controller convention (including the q2-q3
+                                interaction as separate joints).
+               dhParameters   - container that provides the OPW geometric values
+                                (here reconstructed from DH for this robot).
+            
+             Output:
+               CartesianPosition (X, Y, Z, W, P, R) where W, P, R are Euler
+               angles (XYpZpp convention, i.e. intrinsic rotations about X, Y,
+               second Y and final Z, like in many industrial controllers).
+            
+             This method follows the same structure as Section III.B
+             "3R Ortho-Parallel Substructure" for the position part and III.C
+             "3R Wrist Substructure" for the orientation part of the paper.
+             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters)">
+             <summary>
+             Compute all inverse kinematics solutions for a desired end effector
+             pose using the OPW model and the closed form from the paper.
+            
+             This method is a direct implementation of the "Positioning Part"
+             and "Orientation Part" formulas summarized on page 6 (Table II) of
+             the paper.
+            
+             Steps:
+             1) Compute wrist center C in base frame:
+                  C = u0 - c4 * R0e * [0; 0; 1]
+                where R0e is taken from pose.ToHomogeneousMatrix().
+            
+             2) Compute the four possible position solutions for joints 1..3
+                (shoulder front/back, elbow up/down) using equations for θ1, θ2,
+                θ3 and the auxiliary quantities n_x1, s1, s2, k, ψ2, ψ3.
+            
+             3) For each of these four solutions, compute two possible wrist
+                configurations for joints 4..6 using Rc^e = R0c^T * R0e and the
+                formulas for θ4, θ5, θ6 (Section III.C).
+            
+             4) Convert all OPW joint angles back to Fanuc angles in degrees,
+                fix the q2-q3 coupling, normalize to (-180, 180] and filter
+                out invalid solutions (NaNs).
+             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase">
             <summary>
