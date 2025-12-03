@@ -41,6 +41,7 @@ License is the acquisition of (and payment for) the particular non-exclusive rig
 3.4. Nothing in this Agreement is a commitment to you of compatibility between the Software and any future versions of the Software.
 
 3.5. There are 2 types of Licenses issued for the Software:
+
 Company Site License :
 This License is granted to the company, which name is specified in registration data of the License. This License can be granted also to an individual.
 This License can be used by any Developer from one Development Office of the registered company.
@@ -138,7 +139,7 @@ IN NO EVENT SHALL UNDERAUTOMATION BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIREC
 
 
 ## 10. COPYRIGHT NOTICE.
-Copyright (C) 2019-2020 UnderAutomation All rights reserved.
+Copyright (C) 2019 UnderAutomation All rights reserved.
 Any rights not expressly granted herein are reserved.
 
 
