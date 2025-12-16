@@ -4,6 +4,7 @@
 
 using Ftp.Internal;
 using System.IO;
+using Common;
 
 namespace Ftp.Diagnosis {
 	/// <summary>
@@ -14,7 +15,7 @@ namespace Ftp.Diagnosis {
 		/// <summary>
 		/// Read and parse the file
 		/// </summary>
-		public override SummaryDiagnosis ReadFile(Stream fileStream, string fileName)
+		public override SummaryDiagnosis ReadFile(Stream fileStream, Languages language, string fileName)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

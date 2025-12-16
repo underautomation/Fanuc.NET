@@ -37,6 +37,11 @@ namespace UnderAutomation.Fanuc {
 		public bool PingBeforeConnect { get; set; }
 
 		/// <summary>
+		/// Controller language (default: English)
+		/// </summary>
+		public Languages Language { get; set; }
+
+		/// <summary>
 		/// Sends commands to the robot for remote control
 		/// </summary>
 		public TelnetConnectParameters Telnet { get; set; }

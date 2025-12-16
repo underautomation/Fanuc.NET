@@ -27,6 +27,6 @@ namespace Ftp.Diagnosis {
 		}
 
 
-		public override string SectionStart => default;
+		public override string[] SectionStart => default;
 	}
 }

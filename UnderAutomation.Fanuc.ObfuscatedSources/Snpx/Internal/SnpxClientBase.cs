@@ -2,6 +2,7 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
+using Common;
 
 namespace Snpx.Internal {
 	/// <summary>
@@ -231,7 +232,14 @@ namespace Snpx.Internal {
 		/// </summary>
 		public AlarmAccess AlarmHistory { get; }
 
+		/// <summary>
+		/// Controller language (default is English)
+		/// </summary>
+		public Languages Language { get; set; }
 
+		/// <summary>
+		/// Indicates if the SNPX underlying TCP client is connected to the robot
+		/// </summary>
 		public bool Connected { get; }
 	}
 }

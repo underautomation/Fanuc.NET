@@ -4,6 +4,7 @@
 
 using Ftp.Internal;
 using System.IO;
+using Common;
 
 namespace Ftp.Variables {
 
@@ -117,28 +118,28 @@ namespace Ftp.Variables {
 		/// <summary>
 		/// Read and decode the file stream
 		/// </summary>
-		public override GenericVariableFile ReadFile(Stream fileStream, string fileName)
+		public override GenericVariableFile ReadFile(Stream fileStream, Languages language, string fileName)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
 
-		public static GenericVariableFile ReadVariableFile(string fileName)
+		public static GenericVariableFile ReadVariableFile(string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
 
-		public static GenericVariableFile ReadVariableFile(Stream fileStream, string fileName)
+		public static GenericVariableFile ReadVariableFile(Stream fileStream, string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
 
-		public static GenericVariable[] ParseVariableFile(Stream stream)
+		public static GenericVariable[] ParseVariableFile(Stream stream, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

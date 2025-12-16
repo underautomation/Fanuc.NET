@@ -5,6 +5,7 @@
 using Ftp.Variables;
 using Ftp.List;
 using Ftp.Diagnosis;
+using Common;
 using Ftp.Internal;
 using System.IO;
 
@@ -52,7 +53,7 @@ namespace Ftp {
 		/// <summary>
 		/// Read any file by path on disc, recognize it by name and decode it
 		/// </summary>
-		public static IFanucContent ReadFile(string fileName)
+		public static IFanucContent ReadFile(string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -61,7 +62,7 @@ namespace Ftp {
 		/// <summary>
 		/// Read any file by path on disc, recognize it by name and decode it
 		/// </summary>
-		public static IFanucContent ReadFile(Stream fileStream, string fileName)
+		public static IFanucContent ReadFile(Stream fileStream, string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

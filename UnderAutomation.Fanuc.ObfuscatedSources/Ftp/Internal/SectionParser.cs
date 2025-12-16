@@ -30,7 +30,7 @@ namespace Ftp.Internal {
 		}
 
 
-		public virtual string SectionStart { get; }
+		public virtual string[] SectionStart { get; }
 
 
 		public virtual bool EndOfFile { get; set; }

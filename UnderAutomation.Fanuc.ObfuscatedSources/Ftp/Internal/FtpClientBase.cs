@@ -6,6 +6,7 @@ using Ftp.Diagnosis;
 using Ftp.List;
 using Ftp.Variables;
 using Ftp;
+using Common;
 
 namespace Ftp.Internal {
 	/// <summary>
@@ -106,6 +107,11 @@ namespace Ftp.Internal {
 		/// Connect robot IP address or host name
 		/// </summary>
 		public string IP { get; }
+
+		/// <summary>
+		/// Controller language (default is English)
+		/// </summary>
+		public Languages Language { get; set; }
 
 		/// <summary>
 		/// Indicates that FTP connection is active

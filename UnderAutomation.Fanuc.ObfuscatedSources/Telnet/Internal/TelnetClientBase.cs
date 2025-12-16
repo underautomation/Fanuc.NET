@@ -3,6 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using Telnet;
+using Common;
 using System;
 
 namespace Telnet.Internal {
@@ -340,6 +341,11 @@ namespace Telnet.Internal {
 		/// Connect robot IP address or host name
 		/// </summary>
 		public string IP { get; }
+
+		/// <summary>
+		/// Controller language (default is English)
+		/// </summary>
+		public Languages Language { get; set; }
 
 
 		public TpCoordinates TpCoordinates { get; }

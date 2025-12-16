@@ -222,6 +222,11 @@
             Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.ConnectException">
+            <summary>
+            Exception thrown when connection to the robot fails
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.DigitalPorts">
             <summary>
             Fanuc digital port types
@@ -352,6 +357,26 @@
             Check if joints position is near to expected joints position with a tolerance value
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.Languages">
+            <summary>
+            Languages supported by the Fanuc robots
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.Languages.English">
+            <summary>
+            For robots set to English language
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.Languages.Japanese">
+            <summary>
+            For robots set to Japanese language
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.Languages.Chinese">
+            <summary>
+            For robots set to Chinese language
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.ProgramType">
             <summary>
             Represents the type of a program.
@@ -470,6 +495,11 @@
         <member name="P:UnderAutomation.Fanuc.ConnectionParameters.PingBeforeConnect">
             <summary>
             Send a ping command before initializing any connections
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Language">
+            <summary>
+            Controller language (default: English)
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Telnet">
@@ -722,12 +752,12 @@
             File reader for specific files
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FileReader`1.ReadFile(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FileReader`1.ReadFile(System.String,UnderAutomation.Fanuc.Common.Languages)">
             <summary>
             Read and decode the file on disc
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FileReader`1.ReadFile(System.IO.Stream,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FileReader`1.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
             <summary>
             Read and decode the file stream
             </summary>
@@ -750,6 +780,11 @@
         <member name="P:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.IP">
             <summary>
             Connect robot IP address or host name
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.Language">
+            <summary>
+            Controller language (default is English)
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.ConnectInternal(System.String,System.String,System.String,System.Int32)">
@@ -1039,12 +1074,12 @@
             Interface for Fanuc file readers
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.IFileReader`1.ReadFile(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.IFileReader`1.ReadFile(System.String,UnderAutomation.Fanuc.Common.Languages)">
             <summary>
             Reads file by path and decodes it
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.IFileReader`1.ReadFile(System.IO.Stream,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.IFileReader`1.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
             <summary>
             Reads file stream and decodes it
             </summary>
@@ -36895,7 +36930,7 @@
             Read and parse the file summary.dg
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosisReader.ReadFile(System.IO.Stream,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosisReader.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
             <summary>
             Read and parse the file
             </summary>
@@ -36940,12 +36975,12 @@
             Decode task and program states prgstate.dg
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ReadFile(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ReadFile(System.String,UnderAutomation.Fanuc.Common.Languages)">
             <summary>
             Read any file by path on disc, recognize it by name and decode it
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ReadFile(System.IO.Stream,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.FanucFileReaders.ReadFile(System.IO.Stream,System.String,UnderAutomation.Fanuc.Common.Languages)">
             <summary>
             Read any file by path on disc, recognize it by name and decode it
             </summary>
@@ -41898,11 +41933,6 @@
             R2000iC 220U
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Kinematics.Crx.ICrxDhmParameters">
-            <summary>
-            Denavit–Hartenberg Modified (DHm) parameters for Fanuc CRX with only the relevant parameters
-            </summary>
-        </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.NormalizeDeg(System.Double)">
             <summary>
             Normalize to (-180,180]; near-zero rounded to 0 to avoid noisy output.
@@ -42067,19 +42097,6 @@
                of the paper; this class only uses the subset needed for the math.
              </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.Clamp(System.Double,System.Double,System.Double)">
-            <summary>
-            Clamp scalar v to the closed interval [min, max].
-            Used to protect trigonometric calls (like Asin) from small
-            numerical overshoots outside [-1, 1].
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.Multiply3x3(System.Double[0:,0:],System.Double[0:,0:])">
-            <summary>
-            Multiply two 3x3 matrices A and B.
-            Result is A * B.
-            </summary>
-        </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.MultiplyMatrixTransposeVector3(System.Double[0:,0:],System.Double[])">
              <summary>
              Multiply the transpose of a 3x3 matrix M with a 3D vector v.
@@ -42118,28 +42135,6 @@
             
              This is useful for consistent joint limits and when comparing
              angles modulo 360 degrees.
-             </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.ForwardKinematics(System.Double[],UnderAutomation.Fanuc.Kinematics.DhParameters)">
-             <summary>
-             Compute forward kinematics using the OPW model plus Fanuc specific
-             transformations.
-            
-             Input:
-               jointAnglesRad - array of 6 joint angles in radians, in Fanuc
-                                controller convention (including the q2-q3
-                                interaction as separate joints).
-               dhParameters   - container that provides the OPW geometric values
-                                (here reconstructed from DH for this robot).
-            
-             Output:
-               CartesianPosition (X, Y, Z, W, P, R) where W, P, R are Euler
-               angles (XYpZpp convention, i.e. intrinsic rotations about X, Y,
-               second Y and final Z, like in many industrial controllers).
-            
-             This method follows the same structure as Section III.B
-             "3R Ortho-Parallel Substructure" for the position part and III.C
-             "3R Wrist Substructure" for the orientation part of the paper.
              </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.Opw.OpwKinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters)">
@@ -43506,6 +43501,16 @@
             Alarm history
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Language">
+            <summary>
+            Controller language (default is English)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Connected">
+            <summary>
+            Indicates if the SNPX underlying TCP client is connected to the robot
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Disconnect">
             <summary>
             Disconnect from the robot
@@ -43554,6 +43559,11 @@
         <member name="P:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.IP">
             <summary>
             Connect robot IP address or host name
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Language">
+            <summary>
+            Controller language (default is English)
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.ConnectInternal(System.String,System.String,System.Int32)">

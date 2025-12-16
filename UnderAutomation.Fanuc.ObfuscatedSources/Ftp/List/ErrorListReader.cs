@@ -4,6 +4,7 @@
 
 using Ftp.Internal;
 using System.IO;
+using Common;
 
 namespace Ftp.List {
 
@@ -18,7 +19,7 @@ namespace Ftp.List {
 		/// <summary>
 		/// Read and decode the file stream
 		/// </summary>
-		public override ErrorList ReadFile(Stream fileStream, string fileName = null)
+		public override ErrorList ReadFile(Stream fileStream, Languages language, string fileName = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
