@@ -1,15 +1,17 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp.Variables;
+﻿using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
 
 public partial class ConnectControl : UserControl, IUserControl
 {
     FanucRobot _robot;
 
+    private static ConnectControl Instance;
+
+
     public ConnectControl(FanucRobot Fanuc)
     {
+        Instance = this;
+
         _robot = Fanuc;
         InitializeComponent();
 
@@ -28,6 +30,17 @@ public partial class ConnectControl : UserControl, IUserControl
         chkSnpx.Checked = parameters.Snpx.Enable;
 
         chkRmi.Checked = parameters.Rmi.Enable;
+
+        foreach (Languages language in Enum.GetValues<Languages>())
+        {
+            cbLanguage.Items.Add(language.ToString());
+        }
+        cbLanguage.SelectedItem = parameters.Language.ToString();
+    }
+
+    public static Languages GetSelectedLanguage()
+    {
+        return Enum.Parse<Languages>(Instance.cbLanguage.SelectedItem.ToString());
     }
 
     #region IUserControl
@@ -55,6 +68,8 @@ public partial class ConnectControl : UserControl, IUserControl
         if (e is KeyEventArgs && ((KeyEventArgs)e).KeyCode != Keys.Enter) return;
         var parameters = new ConnectionParameters();
         parameters.Address = txtIP.Text;
+        parameters.Language = GetSelectedLanguage();
+
         parameters.Telnet.Enable = chkTelnet.Checked;
         parameters.Telnet.TelnetKclPassword = txtTelnetKclPassword.Text;
 

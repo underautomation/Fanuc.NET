@@ -45,7 +45,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
         if (dlgOpenFile.FileNames.Length == 1)
         {
-            variableTable.Show(FanucFileReaders.VariableReader.ReadFile(dlgOpenFile.FileNames[0]));
+            variableTable.Show(FanucFileReaders.VariableReader.ReadFile(dlgOpenFile.FileNames[0], ConnectControl.GetSelectedLanguage()));
         }
         else
         {
@@ -53,7 +53,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
             foreach (var file in dlgOpenFile.FileNames)
             {
-                var fileContent = FanucFileReaders.VariableReader.ReadFile(file);
+                var fileContent = FanucFileReaders.VariableReader.ReadFile(file, ConnectControl.GetSelectedLanguage());
                 variableFileList.Add(fileContent);
             }
 
@@ -71,7 +71,7 @@ public partial class VariablesControl : UserControl, IUserControl
 
         foreach (var file in Directory.GetFiles(dlgOpenFolder.SelectedPath, "*.va"))
         {
-            var fileContent = FanucFileReaders.VariableReader.ReadFile(file);
+            var fileContent = FanucFileReaders.VariableReader.ReadFile(file, ConnectControl.GetSelectedLanguage());
             variableFileList.Add(fileContent);
         }
 

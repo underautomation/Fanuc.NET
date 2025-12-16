@@ -35,7 +35,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Components
             if (dlgOpen.ShowDialog() == DialogResult.OK)
             {
                 var sw = Stopwatch.StartNew();
-                var content = _reader.ReadFile(dlgOpen.FileName);
+                var content = _reader.ReadFile(dlgOpen.FileName, ConnectControl.GetSelectedLanguage());
                 sw.Stop();
                 _onNewValue(content);
                 lblStatus.Text = $"{dlgOpen.FileName} ({ sw.ElapsedMilliseconds}ms)";

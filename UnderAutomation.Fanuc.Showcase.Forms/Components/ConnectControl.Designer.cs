@@ -45,6 +45,8 @@ partial class ConnectControl
         txtFtpPassword = new TextBox();
         chkSnpx = new CheckBox();
         chkRmi = new CheckBox();
+        label4 = new Label();
+        cbLanguage = new ComboBox();
         addressTooltip = new ToolTip(components);
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
@@ -56,25 +58,29 @@ partial class ConnectControl
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 205F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanel1.Controls.Add(lblConnected, 1, 14);
+        tableLayoutPanel1.Controls.Add(lblConnected, 1, 16);
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
-        tableLayoutPanel1.Controls.Add(label5, 0, 3);
-        tableLayoutPanel1.Controls.Add(chkTelnet, 1, 2);
-        tableLayoutPanel1.Controls.Add(panel1, 1, 13);
-        tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 3);
-        tableLayoutPanel1.Controls.Add(chkFtp, 1, 5);
-        tableLayoutPanel1.Controls.Add(label2, 0, 6);
-        tableLayoutPanel1.Controls.Add(label3, 0, 7);
-        tableLayoutPanel1.Controls.Add(txtFtpUser, 1, 6);
-        tableLayoutPanel1.Controls.Add(txtFtpPassword, 1, 7);
-        tableLayoutPanel1.Controls.Add(chkSnpx, 1, 9);
-        tableLayoutPanel1.Controls.Add(chkRmi, 1, 11);
+        tableLayoutPanel1.Controls.Add(label5, 0, 5);
+        tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
+        tableLayoutPanel1.Controls.Add(panel1, 1, 15);
+        tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
+        tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
+        tableLayoutPanel1.Controls.Add(label2, 0, 8);
+        tableLayoutPanel1.Controls.Add(label3, 0, 9);
+        tableLayoutPanel1.Controls.Add(txtFtpUser, 1, 8);
+        tableLayoutPanel1.Controls.Add(txtFtpPassword, 1, 9);
+        tableLayoutPanel1.Controls.Add(chkSnpx, 1, 11);
+        tableLayoutPanel1.Controls.Add(chkRmi, 1, 13);
+        tableLayoutPanel1.Controls.Add(label4, 0, 2);
+        tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
-        tableLayoutPanel1.RowCount = 16;
+        tableLayoutPanel1.RowCount = 18;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -90,13 +96,13 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
-        tableLayoutPanel1.Size = new Size(628, 397);
+        tableLayoutPanel1.Size = new Size(628, 585);
         tableLayoutPanel1.TabIndex = 10;
         // 
         // lblConnected
         // 
         lblConnected.Dock = DockStyle.Fill;
-        lblConnected.Location = new Point(209, 397);
+        lblConnected.Location = new Point(209, 443);
         lblConnected.Margin = new Padding(4, 0, 4, 0);
         lblConnected.Name = "lblConnected";
         lblConnected.Size = new Size(242, 29);
@@ -135,7 +141,7 @@ partial class ConnectControl
         // 
         label5.Anchor = AnchorStyles.Right;
         label5.AutoSize = true;
-        label5.Location = new Point(119, 122);
+        label5.Location = new Point(119, 168);
         label5.Margin = new Padding(0);
         label5.Name = "label5";
         label5.Size = new Size(86, 15);
@@ -147,7 +153,7 @@ partial class ConnectControl
         chkTelnet.Anchor = AnchorStyles.Left;
         chkTelnet.AutoSize = true;
         tableLayoutPanel1.SetColumnSpan(chkTelnet, 2);
-        chkTelnet.Location = new Point(209, 91);
+        chkTelnet.Location = new Point(209, 137);
         chkTelnet.Margin = new Padding(4, 3, 4, 3);
         chkTelnet.Name = "chkTelnet";
         chkTelnet.Size = new Size(231, 19);
@@ -160,7 +166,7 @@ partial class ConnectControl
         panel1.Controls.Add(btnConnect);
         panel1.Controls.Add(btnDisconnect);
         panel1.Dock = DockStyle.Fill;
-        panel1.Location = new Point(209, 360);
+        panel1.Location = new Point(209, 406);
         panel1.Margin = new Padding(4, 3, 4, 3);
         panel1.Name = "panel1";
         panel1.Size = new Size(242, 34);
@@ -192,7 +198,7 @@ partial class ConnectControl
         // 
         // txtTelnetKclPassword
         // 
-        txtTelnetKclPassword.Location = new Point(209, 118);
+        txtTelnetKclPassword.Location = new Point(209, 164);
         txtTelnetKclPassword.Margin = new Padding(4, 3, 4, 3);
         txtTelnetKclPassword.Name = "txtTelnetKclPassword";
         txtTelnetKclPassword.Size = new Size(116, 23);
@@ -202,7 +208,7 @@ partial class ConnectControl
         // 
         chkFtp.Anchor = AnchorStyles.Left;
         chkFtp.AutoSize = true;
-        chkFtp.Location = new Point(209, 166);
+        chkFtp.Location = new Point(209, 212);
         chkFtp.Margin = new Padding(4, 3, 4, 3);
         chkFtp.Name = "chkFtp";
         chkFtp.Size = new Size(177, 19);
@@ -214,7 +220,7 @@ partial class ConnectControl
         // 
         label2.Anchor = AnchorStyles.Right;
         label2.AutoSize = true;
-        label2.Location = new Point(147, 197);
+        label2.Location = new Point(147, 243);
         label2.Margin = new Padding(0);
         label2.Name = "label2";
         label2.Size = new Size(58, 15);
@@ -225,7 +231,7 @@ partial class ConnectControl
         // 
         label3.Anchor = AnchorStyles.Right;
         label3.AutoSize = true;
-        label3.Location = new Point(119, 226);
+        label3.Location = new Point(119, 272);
         label3.Margin = new Padding(0);
         label3.Name = "label3";
         label3.Size = new Size(86, 15);
@@ -234,7 +240,7 @@ partial class ConnectControl
         // 
         // txtFtpUser
         // 
-        txtFtpUser.Location = new Point(209, 193);
+        txtFtpUser.Location = new Point(209, 239);
         txtFtpUser.Margin = new Padding(4, 3, 4, 3);
         txtFtpUser.Name = "txtFtpUser";
         txtFtpUser.Size = new Size(116, 23);
@@ -242,7 +248,7 @@ partial class ConnectControl
         // 
         // txtFtpPassword
         // 
-        txtFtpPassword.Location = new Point(209, 222);
+        txtFtpPassword.Location = new Point(209, 268);
         txtFtpPassword.Margin = new Padding(4, 3, 4, 3);
         txtFtpPassword.Name = "txtFtpPassword";
         txtFtpPassword.Size = new Size(116, 23);
@@ -252,7 +258,7 @@ partial class ConnectControl
         // 
         chkSnpx.Anchor = AnchorStyles.Left;
         chkSnpx.AutoSize = true;
-        chkSnpx.Location = new Point(209, 270);
+        chkSnpx.Location = new Point(209, 316);
         chkSnpx.Margin = new Padding(4, 3, 4, 3);
         chkSnpx.Name = "chkSnpx";
         chkSnpx.Size = new Size(93, 19);
@@ -264,13 +270,33 @@ partial class ConnectControl
         // 
         chkRmi.Anchor = AnchorStyles.Left;
         chkRmi.AutoSize = true;
-        chkRmi.Location = new Point(209, 316);
+        chkRmi.Location = new Point(209, 362);
         chkRmi.Margin = new Padding(4, 3, 4, 3);
         chkRmi.Name = "chkRmi";
         chkRmi.Size = new Size(228, 19);
         chkRmi.TabIndex = 21;
         chkRmi.Text = "Enable RMI (Remote Motion Interface)";
         chkRmi.UseVisualStyleBackColor = true;
+        // 
+        // label4
+        // 
+        label4.Anchor = AnchorStyles.Right;
+        label4.AutoSize = true;
+        label4.Location = new Point(90, 93);
+        label4.Margin = new Padding(0);
+        label4.Name = "label4";
+        label4.Size = new Size(115, 15);
+        label4.TabIndex = 22;
+        label4.Text = "Controller Language";
+        // 
+        // cbLanguage
+        // 
+        cbLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbLanguage.FormattingEnabled = true;
+        cbLanguage.Location = new Point(208, 89);
+        cbLanguage.Name = "cbLanguage";
+        cbLanguage.Size = new Size(121, 23);
+        cbLanguage.TabIndex = 23;
         // 
         // addressTooltip
         // 
@@ -314,4 +340,6 @@ partial class ConnectControl
     private System.Windows.Forms.ToolTip addressTooltip;
     private System.Windows.Forms.CheckBox chkSnpx;
     private CheckBox chkRmi;
+    private Label label4;
+    private ComboBox cbLanguage;
 }

@@ -320,7 +320,21 @@ using UnderAutomation.Fanuc;
 
 ```csharp
 var robot = new FanucRobot();
-robot.Connect(new ConnectParameters("192.168.0.1"));
+var parameters = new ConnectParameters("192.168.0.1");
+parameters.Language = Languages.English; // Japanese and Chinese controllers are also supported
+
+parameters.Telnet.Enable = true;
+parameters.Telnet.TelnetKclPassword = "your_telnet_password";
+
+parameters.Ftp.Enable = true;
+parameters.Ftp.FtpUser = "";
+parameters.Ftp.FtpPassword = "";
+
+parameters.Snpx.Enable = true;
+
+parameters.Rmi.Enable = true;
+
+robot.Connect(parameters);
 ```
 
 ---
