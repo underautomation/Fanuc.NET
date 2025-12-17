@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.Ftp.Diagnosis;
 using UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor;
 using UnderAutomation.Fanuc.Telnet;
@@ -145,8 +146,6 @@ public partial class TPEditorControl : UserControl, IUserControl
                 new Regex(@"(?<=:) * (MESSAGE|UALM)\[.*?\]\s*(?=;)", RegexOptions.Multiline | RegexOptions.Compiled)),
             new SyntaxStyle(Color.DarkMagenta)
         );
-
-
     }
 
     #region IUserControl
@@ -261,7 +260,7 @@ public partial class TPEditorControl : UserControl, IUserControl
         byte[] content;
         _robot.Ftp.DirectFileHandling.DownloadFileFromController(out content, $"/md:/{e.SelectedItem}");
 
-        var fileContent = Encoding.ASCII.GetString(content);
+        var fileContent = StringUtils.GetEncoding(_robot.Ftp.Language).GetString(content);
 
         editor.Editor.Text = fileContent;
 
@@ -311,13 +310,13 @@ public partial class TPEditorControl : UserControl, IUserControl
 
     private void btnSave_Click(object sender, EventArgs e)
     {
-        _robot.Ftp.DirectFileHandling.UploadFileToController(Encoding.ASCII.GetBytes(editor.Editor.Text), $"/md:/{GetSelectedProgramName()}.ls");
+        _robot.Ftp.DirectFileHandling.UploadFileToController(StringUtils.GetEncoding(_robot.Ftp.Language).GetBytes(editor.Editor.Text), $"/md:/{GetSelectedProgramName()}.ls");
 
 
         byte[] content;
         _robot.Ftp.DirectFileHandling.DownloadFileFromController(out content, $"/md:/{GetSelectedProgramName()}.ls");
 
-        var fileContent = Encoding.ASCII.GetString(content);
+        var fileContent = StringUtils.GetEncoding(_robot.Ftp.Language).GetString(content);
 
         editor.Editor.Text = fileContent;
     

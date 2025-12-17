@@ -287,7 +287,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
                     }
                     else
                     {
-                        string content = exp.Content.Replace("\\", "\\\\").Replace("{", @"\{").Replace("}", @"\}");
+                        string content = EscapeToRtf(exp.Content);
 
                         var styleGroups = GetStyleGroupPairs();
 
@@ -354,6 +354,31 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
         private string RTFHeader()
         {
             return String.Concat(@"{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 ", _fontName, @";}}");
+        }
+
+        private string EscapeToRtf(string text)
+        {
+            var sb = new StringBuilder();
+            foreach (char c in text)
+            {
+                // Échappement des caractères spéciaux RTF
+                if (c == '\\' || c == '{' || c == '}')
+                {
+                    sb.Append(@"\" + c);
+                }
+                // Caractères ASCII standard (0-127) : on les garde tels quels
+                else if (c <= 0x7f)
+                {
+                    sb.Append(c);
+                }
+                // Tout le reste (Japonais, Accents, etc.) : on encode en Unicode RTF
+                else
+                {
+                    // \uN? où N est la valeur short signée du char
+                    sb.Append(@"\u" + (short)c + "?");
+                }
+            }
+            return sb.ToString();
         }
 
         #endregion
