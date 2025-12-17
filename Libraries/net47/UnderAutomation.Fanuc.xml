@@ -417,6 +417,16 @@
             Should enable SNPX for this connection (default: false)
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.StringUtils">
+            <summary>
+            Contains string related utility methods
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.StringUtils.GetEncoding(UnderAutomation.Fanuc.Common.Languages)">
+            <summary>
+            Gets the encoding for the specified controller language
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.TaskStatus">
             <summary>
             Represents the status of a task.

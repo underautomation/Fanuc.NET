@@ -1,3 +1,13 @@
-- Added support for Japanese and Chinese languages. You can now set the language in the Connect Parameters.
-- The SDK now supports Shift-JIS and GB2312 encodings for Japanese and Chinese string data.
-- Throws a `ConnectException` when the connection fails instead of a generic exception. It now includes more details about the failure and the protocol that caused it.
+- Add `GetEncoding` method to `StringUtils` for retrieving encoding by controller language
+
+```csharp
+namespace UnderAutomation.Fanuc.Common;
+
+public static class StringUtils {
+    public static Encoding GetEncoding(Languages language);
+}
+```
+
+- Fix Telnet program Breakpoint commands for Japanese and Chinese controllers
+
+- Set FTP encoding according to robot controller language
