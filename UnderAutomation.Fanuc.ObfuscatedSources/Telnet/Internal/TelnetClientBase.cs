@@ -13,6 +13,16 @@ namespace Telnet.Internal {
 	public abstract class TelnetClientBase {
 
 		/// <summary>
+		/// Checks the actual connection status via an active socket polling
+		/// </summary>
+		/// <returns>True if the connection is still open after checking via polling</returns>
+		public bool PollAndGetUpdatedConnectedState()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
 		/// Disconnect Telnet client from robot
 		/// </summary>
 		public void Disconnect()

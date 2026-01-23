@@ -1,13 +1,3 @@
-- Add `GetEncoding` method to `StringUtils` for retrieving encoding by controller language
-
-```csharp
-namespace UnderAutomation.Fanuc.Common;
-
-public static class StringUtils {
-    public static Encoding GetEncoding(Languages language);
-}
-```
-
-- Fix Telnet program Breakpoint commands for Japanese and Chinese controllers
-
-- Set FTP encoding according to robot controller language
+- Add method `PollAndGetUpdatedConnectedState` for SNPX and Telnet to poll and get the updated connected state of the controller.
+- Fix issue where Telnet raises a StackOverflowException after closing ROBOGUIDE
+- Updated License information after the introduction of the Pro License

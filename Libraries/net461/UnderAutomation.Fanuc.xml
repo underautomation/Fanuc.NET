@@ -43521,6 +43521,12 @@
             Indicates if the SNPX underlying TCP client is connected to the robot
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.PollAndGetUpdatedConnectedState">
+            <summary>
+            Checks the actual connection status via an active socket polling
+            </summary>
+            <returns>True if the connection is still open after checking via polling</returns>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Disconnect">
             <summary>
             Disconnect from the robot
@@ -43587,6 +43593,12 @@
             <summary>
             Is Telnet client connected
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.PollAndGetUpdatedConnectedState">
+            <summary>
+            Checks the actual connection status via an active socket polling
+            </summary>
+            <returns>True if the connection is still open after checking via polling</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Disconnect">
             <summary>
