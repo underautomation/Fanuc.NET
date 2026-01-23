@@ -11,7 +11,7 @@ public partial class SnpxControl : UserControl, IUserControl
 
     public string Title => "SNPX";
 
-    public bool FeatureEnabled => _robot.Snpx.Connected;
+    public bool FeatureEnabled => _robot.Snpx.PollAndGetUpdatedConnectedState();
 
     public SnpxControl(FanucRobot robot)
     {
