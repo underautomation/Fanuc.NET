@@ -1,3 +1,1 @@
-- Add method `PollAndGetUpdatedConnectedState` for SNPX and Telnet to poll and get the updated connected state of the controller.
-- Fix issue where Telnet raises a StackOverflowException after closing ROBOGUIDE
-- Updated License information after the introduction of the Pro License
+Minor fix : Telnet can now properly write boolean variables.
