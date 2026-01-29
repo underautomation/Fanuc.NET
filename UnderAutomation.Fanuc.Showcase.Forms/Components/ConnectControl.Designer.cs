@@ -48,6 +48,7 @@ partial class ConnectControl
         label4 = new Label();
         cbLanguage = new ComboBox();
         addressTooltip = new ToolTip(components);
+        chkStreamMotion = new CheckBox();
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -58,12 +59,12 @@ partial class ConnectControl
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 205F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanel1.Controls.Add(lblConnected, 1, 16);
+        tableLayoutPanel1.Controls.Add(lblConnected, 1, 18);
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
         tableLayoutPanel1.Controls.Add(label5, 0, 5);
         tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
-        tableLayoutPanel1.Controls.Add(panel1, 1, 15);
+        tableLayoutPanel1.Controls.Add(panel1, 1, 17);
         tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
         tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
         tableLayoutPanel1.Controls.Add(label2, 0, 8);
@@ -74,10 +75,11 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(chkRmi, 1, 13);
         tableLayoutPanel1.Controls.Add(label4, 0, 2);
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
+        tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
-        tableLayoutPanel1.RowCount = 18;
+        tableLayoutPanel1.RowCount = 20;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -93,6 +95,8 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
@@ -102,7 +106,7 @@ partial class ConnectControl
         // lblConnected
         // 
         lblConnected.Dock = DockStyle.Fill;
-        lblConnected.Location = new Point(209, 443);
+        lblConnected.Location = new Point(209, 489);
         lblConnected.Margin = new Padding(4, 0, 4, 0);
         lblConnected.Name = "lblConnected";
         lblConnected.Size = new Size(242, 29);
@@ -166,7 +170,7 @@ partial class ConnectControl
         panel1.Controls.Add(btnConnect);
         panel1.Controls.Add(btnDisconnect);
         panel1.Dock = DockStyle.Fill;
-        panel1.Location = new Point(209, 406);
+        panel1.Location = new Point(209, 452);
         panel1.Margin = new Padding(4, 3, 4, 3);
         panel1.Name = "panel1";
         panel1.Size = new Size(242, 34);
@@ -306,6 +310,18 @@ partial class ConnectControl
         addressTooltip.UseAnimation = false;
         addressTooltip.UseFading = false;
         // 
+        // chkStreamMotion
+        // 
+        chkStreamMotion.Anchor = AnchorStyles.Left;
+        chkStreamMotion.AutoSize = true;
+        chkStreamMotion.Location = new Point(209, 408);
+        chkStreamMotion.Margin = new Padding(4, 3, 4, 3);
+        chkStreamMotion.Name = "chkStreamMotion";
+        chkStreamMotion.Size = new Size(176, 19);
+        chkStreamMotion.TabIndex = 24;
+        chkStreamMotion.Text = "Enable Stream Motion (J519)";
+        chkStreamMotion.UseVisualStyleBackColor = true;
+        // 
         // ConnectControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -342,4 +358,5 @@ partial class ConnectControl
     private CheckBox chkRmi;
     private Label label4;
     private ComboBox cbLanguage;
+    private CheckBox chkStreamMotion;
 }

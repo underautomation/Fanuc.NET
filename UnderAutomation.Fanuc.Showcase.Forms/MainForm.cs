@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Diagnostics;
 using UnderAutomation.Fanuc;
 
 public partial class MainForm : Form
@@ -44,13 +40,14 @@ public partial class MainForm : Form
         AddNode(new TPEditorControl(_robot));
         AddNode(new DpmControl(_robot));
         AddNode(new SnpxControl(_robot));
+        AddNode(new StreamMotionControl(_robot));
         AddNode(new KinematicsControl(_robot));
         AddNode(new ContactControl());
         AddNode(new LicenseControl());
 
         // Select first node at startup
         SelectNode(leftTreeView.Nodes[0]);
-        
+
         _robot.Telnet.CommandSent += TelnetKcl_CommandSent;
         _robot.Telnet.TpCoordinatesReceived += TelnetKcl_CoordReceived;
         _robot.Telnet.ErrorOccured += TelnetKcl_ErrorOccured;
@@ -185,9 +182,9 @@ I have this exception that prevents me from using the full capabilities of the S
     // Open browser to documentation page
     private void lblLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
-            var url = (sender as Label)?.Text;
-            if (url is null) return;
-            OpenUrl(url);
+        var url = (sender as Label)?.Text;
+        if (url is null) return;
+        OpenUrl(url);
     }
 
     // Timer callback to refresh the control on the right and the left menu
