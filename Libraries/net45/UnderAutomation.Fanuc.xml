@@ -417,6 +417,21 @@
             Should enable SNPX for this connection (default: false)
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.StreamMotionConnectParameters">
+            <summary>
+            Stream Motion connection parameters (J519 option)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.StreamMotionConnectParameters.Enable">
+            <summary>
+            Should enable Stream Motion for this connection (default: false)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.StreamMotionConnectParameters.Ip">
+            <summary>
+            IP address of the robot for standalone Stream Motion connections
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.StringUtils">
             <summary>
             Contains string related utility methods
@@ -530,6 +545,11 @@
         <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Rmi">
             <summary>
             Parameters for RMI (Remote Motion Interface)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.ConnectionParameters.StreamMotion">
+            <summary>
+            Parameters for Stream Motion (J519 option) - real-time streaming motion control over UDP
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.FanucRobot">
@@ -43394,6 +43414,61 @@
             Severity message
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.SDIO">
+            <summary>
+            Digital I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.RDIO">
+            <summary>
+            Robot I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.UOP">
+            <summary>
+            UI and UO
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.SOP">
+            <summary>
+            SI and SO
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.WIO">
+            <summary>
+            Weld I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.WSI">
+            <summary>
+            Wire Stick I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.PMC_K">
+            <summary>
+            PMC Keep Relay
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.PMC_R">
+            <summary>
+            PMC Internal Relay
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.GIO">
+            <summary>
+            Group I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.AIO">
+            <summary>
+            Analog I/O
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.PMC_D">
+            <summary>
+            PMC Data table
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase">
             <summary>
             Base class for Snpx internal and public client
@@ -43614,6 +43689,860 @@
             <summary>
             Write value at a certain index
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket">
+            <summary>
+            Acknowledgment packet received from the robot in response to a Request packet
+            Contains threshold data for motion limits
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.PacketType">
+            <summary>
+            Packet type (always Ack=3)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.VersionNumber">
+            <summary>
+            Protocol version number
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.AxisNumber">
+            <summary>
+            Axis number (1-9)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdType">
+            <summary>
+            Type of threshold data
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.MaxCartesianSpeed">
+            <summary>
+            Maximum Cartesian program speed of the robot (mm/s)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.Unknown0">
+            <summary>
+            Unknown field (reserved for future use)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdsNoLoad">
+            <summary>
+            Threshold values at various velocity percentages (no load)
+            Index 0 = 5% of Vmax, Index 1 = 10%, ..., Index 19 = 100%
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdsMaxLoad">
+            <summary>
+            Threshold values at various velocity percentages (maximum load)
+            Index 0 = 5% of Vmax, Index 1 = 10%, ..., Index 19 = 100%
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ToString">
+            <summary>
+            Returns a string representation
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket">
+            <summary>
+            Command packet to send motion commands to the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.#ctor(UnderAutomation.Fanuc.StreamMotion.Data.DataStyle,UnderAutomation.Fanuc.StreamMotion.Data.MotionData)">
+            <summary>
+            Constructor with motion data
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.IsLastData">
+            <summary>
+            Whether this is the last command data packet
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOType">
+            <summary>
+            Type of I/O to read
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOIndex">
+            <summary>
+            Index of I/O to read
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOMask">
+            <summary>
+            Mask for I/O read operation
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.DataStyle">
+            <summary>
+            Data style (Cartesian or Joint)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOType">
+            <summary>
+            Type of I/O to write
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOIndex">
+            <summary>
+            Index of I/O to write
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOMask">
+            <summary>
+            Mask for I/O write operation
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOValue">
+            <summary>
+            Value to write to I/O
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.MotionData">
+            <summary>
+            Motion data (position values)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle">
+            <summary>
+            Data style for motion commands
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle.Cartesian">
+            <summary>
+            Cartesian coordinate system (X, Y, Z, W, P, R)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle.Joint">
+            <summary>
+            Joint coordinate system (J1-J9)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult">
+            <summary>
+            Result of an I/O read operation
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Type">
+            <summary>
+            Type of I/O that was read
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Index">
+            <summary>
+            Index of the I/O
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Mask">
+            <summary>
+            Mask applied to the read
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Value">
+            <summary>
+            Value read from the I/O
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.ToString">
+            <summary>
+            Returns a string representation
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOType">
+            <summary>
+            I/O types supported by Stream Motion protocol
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.None">
+            <summary>
+            No I/O operation
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.DI">
+            <summary>
+            Digital Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.DO">
+            <summary>
+            Digital Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.RI">
+            <summary>
+            Robot Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.RO">
+            <summary>
+            Robot Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.SI">
+            <summary>
+            System Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.SO">
+            <summary>
+            System Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.WI">
+            <summary>
+            Weld Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.WO">
+            <summary>
+            Weld Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.UI">
+            <summary>
+            User Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.UO">
+            <summary>
+            User Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.WSI">
+            <summary>
+            Weld System Input
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.WSO">
+            <summary>
+            Weld System Output
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.F">
+            <summary>
+            Flag
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOType.M">
+            <summary>
+            Marker
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.MotionData">
+            <summary>
+            Motion data containing 9 axis values (joint or cartesian + extended axes)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.#ctor(System.Single[])">
+            <summary>
+            Constructor with initial values
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Values">
+            <summary>
+            Raw axis values (9 values: J1-J6 or X,Y,Z,W,P,R + E1,E2,E3)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis1">
+            <summary>
+            First axis (J1 or X)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis2">
+            <summary>
+            Second axis (J2 or Y)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis3">
+            <summary>
+            Third axis (J3 or Z)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis4">
+            <summary>
+            Fourth axis (J4 or W)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis5">
+            <summary>
+            Fifth axis (J5 or P)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis6">
+            <summary>
+            Sixth axis (J6 or R)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis1">
+            <summary>
+            Extended axis 1
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis2">
+            <summary>
+            Extended axis 2
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis3">
+            <summary>
+            Extended axis 3
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J1">
+            <summary>J1 (same as Axis1)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J2">
+            <summary>J2 (same as Axis2)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J3">
+            <summary>J3 (same as Axis3)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J4">
+            <summary>J4 (same as Axis4)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J5">
+            <summary>J5 (same as Axis5)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J6">
+            <summary>J6 (same as Axis6)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J7">
+            <summary>J7 (same as ExtAxis1)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J8">
+            <summary>J8 (same as ExtAxis2)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J9">
+            <summary>J9 (same as ExtAxis3)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.X">
+            <summary>X (same as Axis1) in mm</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Y">
+            <summary>Y (same as Axis2) in mm</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Z">
+            <summary>Z (same as Axis3) in mm</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.W">
+            <summary>W (same as Axis4) in degrees</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.P">
+            <summary>P (same as Axis5) in degrees</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.R">
+            <summary>R (same as Axis6) in degrees</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E1">
+            <summary>E1 (same as ExtAxis1)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E2">
+            <summary>E2 (same as ExtAxis2)</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E3">
+            <summary>E3 (same as ExtAxis3)</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ToString">
+            <summary>
+            Returns a string representation
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot">
+            <summary>
+            Stream Motion packet types for PC to Robot communication
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Start">
+            <summary>
+            Start streaming motion
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Command">
+            <summary>
+            Motion command packet
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Stop">
+            <summary>
+            Stop streaming motion
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Request">
+            <summary>
+            Request threshold information
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot">
+            <summary>
+            Stream Motion packet types for Robot to PC communication
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot.State">
+            <summary>
+            Robot state/status packet
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot.Ack">
+            <summary>
+            Acknowledgment packet (response to Request)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs">
+            <summary>
+            Event arguments for receive error events
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.Exception">
+            <summary>
+            The exception that occurred during receiving
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.IsStreaming">
+            <summary>
+            Indicates whether streaming is still active after the error
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.#ctor(System.Exception,System.Boolean)">
+            <summary>
+            Creates a new instance of ReceiveErrorEventArgs
+            </summary>
+            <param name="exception">The exception that occurred</param>
+            <param name="isStreaming">Whether streaming is still active</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags">
+            <summary>
+            Robot status flags from state packet
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.None">
+            <summary>
+            No flags set
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.ReadyForCommands">
+            <summary>
+            Robot is ready to receive command packets
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.CommandReceived">
+            <summary>
+            Robot has received at least one command packet
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.SystemReady">
+            <summary>
+            System ready (SYSRDY)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.InMotion">
+            <summary>
+            Robot is in motion
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus">
+            <summary>
+            Robot status from state packet
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.RawValue">
+            <summary>
+            Raw status byte
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.Flags">
+            <summary>
+            Status flags
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.ReadyForCommands">
+            <summary>
+            Robot is ready to receive command packets
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.CommandReceived">
+            <summary>
+            Robot has received at least one command packet
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.SystemReady">
+            <summary>
+            System ready (SYSRDY)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.InMotion">
+            <summary>
+            Robot is in motion
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.ToString">
+            <summary>
+            Returns a string representation of the status
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket">
+            <summary>
+            State packet received from the robot containing current position, status, and motor currents
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ReceivedAtTicks">
+            <summary>
+            Time when this packet was received on the PC (UTC ticks)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ReceivedAt">
+            <summary>
+            Time when this packet was received on the PC
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.PacketType">
+            <summary>
+            Packet type (always State=0)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.VersionNumber">
+            <summary>
+            Protocol version number
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.SequenceNumber">
+            <summary>
+            Sequence number for packet tracking
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.Status">
+            <summary>
+            Robot status flags
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.IORead">
+            <summary>
+            Result of I/O read operation
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.TimeStamp">
+            <summary>
+            Time stamp when position data and motor current are recorded (ms, resolution 2ms)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.CartesianPosition">
+            <summary>
+            Current Cartesian position (world to tool0)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.JointPosition">
+            <summary>
+            Current joint position
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.MotorCurrents">
+            <summary>
+            Current motor currents (Amperes)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ToString">
+            <summary>
+            Returns a string representation
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs">
+            <summary>
+            Event arguments for state received events
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.State">
+            <summary>
+            The state packet received from the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.#ctor(UnderAutomation.Fanuc.StreamMotion.Data.StatePacket)">
+            <summary>
+            Creates a new instance of StateReceivedEventArgs
+            </summary>
+            <param name="state">The state packet received from the robot</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType">
+            <summary>
+            Threshold types for request packets
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Velocity">
+            <summary>
+            Velocity threshold (deg/s)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Acceleration">
+            <summary>
+            Acceleration threshold (deg/s²)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Jerk">
+            <summary>
+            Jerk threshold (deg/s³)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase">
+            <summary>
+            Base class for Stream Motion client (J519 option)
+            Provides UDP-based real-time streaming motion control.
+            The robot sends state packets continuously at high frequency (~500Hz).
+            Commands should be sent in response to StateReceived events using the sequence number from the received state.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.#ctor">
+            <summary>
+            Creates a new instance of the Stream Motion client
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Ip">
+            <summary>
+            IP address of the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Port">
+            <summary>
+            UDP port used for communication
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Connected">
+            <summary>
+            Indicates whether the client is connected
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsConnected">
+            <summary>
+            Indicates whether the client is connected (alias for Connected)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsStreaming">
+            <summary>
+            Indicates whether streaming is currently active
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.LastState">
+            <summary>
+            Last received state packet
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendTimeoutMs">
+            <summary>
+            Send timeout in milliseconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReceiveTimeoutMs">
+            <summary>
+            Receive timeout in milliseconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.RobotFrequency">
+            <summary>
+            Frequency based on robot timestamp (Hz). Calculated from consecutive packet timestamps.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.MeasuredFrequency">
+            <summary>
+            Measured frequency based on PC receive time (Hz). Actual rate at which packets arrive.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.PacketCount">
+            <summary>
+            Total number of state packets received since streaming started
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StateReceived">
+            <summary>
+            Event raised when a state packet is received from the robot.
+            This event is raised on a background thread at high frequency (~500Hz).
+            It is recommended to call SendCommand() within this handler to maintain proper timing.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReceiveError">
+            <summary>
+            Event raised when an error occurs during packet receiving
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ConnectInternal(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Connect to the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Disconnect">
+            <summary>
+            Disconnect from the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Start">
+            <summary>
+            Start streaming motion. This starts a background thread that continuously receives state packets
+            and raises the StateReceived event for each packet.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Stop">
+            <summary>
+            Stop streaming motion
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendCommand(UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket)">
+            <summary>
+            Queue a motion command to be sent with the next state packet's sequence number.
+            The command will be sent automatically when the next state packet is received.
+            It is recommended to call this method within the StateReceived event handler.
+            </summary>
+            <param name="command">Command packet to send</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendJointCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,System.Boolean)">
+            <summary>
+            Queue a joint motion command
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendJointCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.UInt16,System.UInt16,System.Boolean)">
+            <summary>
+            Queue a joint motion command with I/O read
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendCartesianCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,System.Boolean)">
+            <summary>
+            Queue a Cartesian motion command
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.RequestThreshold(System.UInt32,UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType)">
+            <summary>
+            Request threshold data for an axis.
+            Note: This is a synchronous blocking call that should not be called during active streaming.
+            </summary>
+            <param name="axisNumber">Axis number (1-9)</param>
+            <param name="thresholdType">Type of threshold to request</param>
+            <returns>Acknowledgment packet with threshold data</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Dispose">
+            <summary>
+            Dispose the client
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Dispose(System.Boolean)">
+            <summary>
+            Dispose the client
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finalize">
+            <summary>
+            Finalizer
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientInternal">
+            <summary>
+            Internal Stream Motion client for use within FanucRobot
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase">
+            <summary>
+            Base connection parameters for Stream Motion (J519)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_PORT">
+            <summary>
+            Default UDP port for Stream Motion (J519)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_SEND_TIMEOUT_MS">
+            <summary>
+            Default send timeout in milliseconds
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_RECEIVE_TIMEOUT_MS">
+            <summary>
+            Default receive timeout in milliseconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.Port">
+            <summary>
+            UDP port for Stream Motion communication
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.SendTimeoutMs">
+            <summary>
+            Send timeout in milliseconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.ReceiveTimeoutMs">
+            <summary>
+            Receive timeout in milliseconds
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer">
+            <summary>
+            Binary serialization utilities for Stream Motion protocol (Big Endian)
+            Compatible with .NET 3.5+
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.PROTOCOL_VERSION">
+            <summary>
+            Protocol version
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.HEADER_SIZE">
+            <summary>
+            Header size (packet type + version)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.START_PACKET_SIZE">
+            <summary>
+            Start packet size (header only)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.STOP_PACKET_SIZE">
+            <summary>
+            Stop packet size (header only)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.COMMAND_PACKET_SIZE">
+            <summary>
+            Command packet size: header(8) + seq(4) + lastData(1) + readIO(5) + dataStyle(1) + writeIO(7) + unused(2) + motionData(36) = 64
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.REQUEST_PACKET_SIZE">
+            <summary>
+            Request packet size: header(8) + axisNo(4) + threshType(4) = 16
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.STATE_PACKET_SIZE">
+            <summary>
+            State packet size: header(8) + seq(4) + status(1) + readIO(7) + timestamp(4) + cartesian(36) + joint(36) + motorCurrent(36) = 132
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.ACK_PACKET_SIZE">
+            <summary>
+            Ack packet size: header(8) + axisNo(4) + threshType(4) + maxCartSpd(4) + unknown(4) + noLoad(80) + maxLoad(80) = 184
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient">
+            <summary>
+            Stream Motion client for standalone use (J519 option)
+            Provides UDP-based real-time streaming motion control for Fanuc robots
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient.#ctor">
+            <summary>
+            Creates a new instance of the Stream Motion client
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient.Connect(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Connect to the robot using Stream Motion protocol
+            </summary>
+            <param name="ip">IP address of the robot</param>
+            <param name="port">UDP port (default: 60015)</param>
+            <param name="sendTimeoutMs">Send timeout in milliseconds</param>
+            <param name="receiveTimeoutMs">Receive timeout in milliseconds</param>
         </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase">
             <summary>

@@ -60,5 +60,10 @@ namespace UnderAutomation.Fanuc {
 		/// Parameters for RMI (Remote Motion Interface)
 		/// </summary>
 		public RmiConnectParameters Rmi { get; set; }
+
+		/// <summary>
+		/// Parameters for Stream Motion (J519 option) - real-time streaming motion control over UDP
+		/// </summary>
+		public StreamMotionConnectParameters StreamMotion { get; set; }
 	}
 }

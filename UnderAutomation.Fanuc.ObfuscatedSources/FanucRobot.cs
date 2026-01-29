@@ -7,6 +7,7 @@ using Telnet.Internal;
 using Ftp.Internal;
 using Snpx.Internal;
 using Rmi.Internal;
+using StreamMotion.Internal;
 
 namespace UnderAutomation.Fanuc {
 	/// <summary>
@@ -78,6 +79,9 @@ namespace UnderAutomation.Fanuc {
 
 
 		public RmiClientInternal Rmi { get; }
+
+
+		public StreamMotionClientInternal StreamMotion { get; }
 
 		/// <summary>
 		/// Return information about your license
