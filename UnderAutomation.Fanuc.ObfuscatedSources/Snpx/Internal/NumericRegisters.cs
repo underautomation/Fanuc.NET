@@ -7,7 +7,7 @@ using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class NumericRegisters : SnpxWritableAssignableElements<float, int, NumericRegistersBatchAssignment> {
+	public class NumericRegisters : SnpxWritableAssignableIndexableElements<float, NumericRegistersBatchAssignment> {
 
 
 		protected override string GetAssignmentName(int index)

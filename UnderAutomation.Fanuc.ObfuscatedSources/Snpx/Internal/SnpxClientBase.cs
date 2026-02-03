@@ -228,6 +228,11 @@ namespace Snpx.Internal {
 		public NumericIO PMC_D { get; }
 
 		/// <summary>
+		/// Flags
+		/// </summary>
+		public Flags Flags { get; }
+
+		/// <summary>
 		/// Current position in world or user frame
 		/// </summary>
 		public CurrentPosition CurrentPosition { get; }

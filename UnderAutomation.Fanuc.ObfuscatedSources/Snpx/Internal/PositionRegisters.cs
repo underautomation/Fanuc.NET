@@ -3,12 +3,11 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using Common;
-using System;
 using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class PositionRegisters : SnpxWritableAssignableElements<Position, int, PositionRegistersBatchAssignment> {
+	public class PositionRegisters : SnpxWritableAssignableIndexableElements<Position, PositionRegistersBatchAssignment> {
 
 
 		protected override string GetAssignmentName(int index)

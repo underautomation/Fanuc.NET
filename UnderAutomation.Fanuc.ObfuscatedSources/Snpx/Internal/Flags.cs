@@ -7,7 +7,7 @@ using Snpx.Assignment;
 
 namespace Snpx.Internal {
 
-	public class StringRegisters : SnpxWritableAssignableIndexableElements<string, StringRegistersBatchAssignment> {
+	public class Flags : SnpxWritableAssignableIndexableElements<bool, FlagBatchAssignment> {
 
 
 		protected override string GetAssignmentName(int index)
@@ -24,23 +24,16 @@ namespace Snpx.Internal {
 		}
 
 
-		protected override string ReadFromClient(int offset)
+		protected override bool ReadFromClient(int offset)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
 
-		protected override void WriteInClient(int offset, string value)
+		protected override void WriteInClient(int offset, bool value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-
-		public StringRegistersBatchAssignment CreateBatchAssignment(int startIndex, int count)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
 		}
 
 

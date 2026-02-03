@@ -43566,6 +43566,11 @@
             Programmable Machine Controller Data
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Flags">
+            <summary>
+            Flags 
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.CurrentPosition">
             <summary>
             Current position in world or user frame
