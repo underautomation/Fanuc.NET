@@ -425,8 +425,23 @@ public partial class SnpxControl : UserControl, IUserControl
     }
     #endregion
 
+    #region Variable
     private void btnWriteVariable_Click(object sender, EventArgs e)
     {
         _robot.Snpx.SetVariable(txtVariableName.Text, txtVariableValue.Text);
     }
+    #endregion
+
+    #region Flags
+    private void btnReadFlag_Click(object sender, EventArgs e)
+    {
+        radioFlagOn.Checked = _robot.Snpx.Flags.Read((int)udFlag.Value);
+        radioFlagOff.Checked = !radioFlagOn.Checked;
+    }
+
+    private void btnWriteFlag_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.Flags.Write((int)udFlag.Value, radioFlagOn.Checked);
+    }
+    #endregion  
 }

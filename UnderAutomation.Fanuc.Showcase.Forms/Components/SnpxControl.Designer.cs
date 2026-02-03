@@ -72,6 +72,13 @@
         label2 = new Label();
         btnWritePR = new Button();
         tabSignals = new TabPage();
+        groupBox12 = new GroupBox();
+        radioFlagOff = new RadioButton();
+        radioFlagOn = new RadioButton();
+        btnWriteFlag = new Button();
+        btnReadFlag = new Button();
+        udFlag = new NumericUpDown();
+        label18 = new Label();
         snpxSignalControlNumericIOs = new SnpxSignalControl();
         snpxSignalControlDigitals = new SnpxSignalControl();
         tabBatch = new TabPage();
@@ -127,11 +134,11 @@
         panel1 = new Panel();
         btnClearAssignments = new Button();
         tabPage1 = new TabPage();
-        label16 = new Label();
+        btnWriteVariable = new Button();
+        txtVariableValue = new TextBox();
         txtVariableName = new TextBox();
         label17 = new Label();
-        txtVariableValue = new TextBox();
-        btnWriteVariable = new Button();
+        label16 = new Label();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
         groupBox4.SuspendLayout();
@@ -144,6 +151,8 @@
         ((System.ComponentModel.ISupportInitialize)udFrame).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udPositionRegister).BeginInit();
         tabSignals.SuspendLayout();
+        groupBox12.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udFlag).BeginInit();
         tabBatch.SuspendLayout();
         groupBox11.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)gridFloatVariablesAssignment).BeginInit();
@@ -685,6 +694,7 @@
         // 
         // tabSignals
         // 
+        tabSignals.Controls.Add(groupBox12);
         tabSignals.Controls.Add(snpxSignalControlNumericIOs);
         tabSignals.Controls.Add(snpxSignalControlDigitals);
         tabSignals.Location = new Point(4, 24);
@@ -695,6 +705,86 @@
         tabSignals.TabIndex = 3;
         tabSignals.Text = "Signals";
         tabSignals.UseVisualStyleBackColor = true;
+        // 
+        // groupBox12
+        // 
+        groupBox12.Controls.Add(radioFlagOff);
+        groupBox12.Controls.Add(radioFlagOn);
+        groupBox12.Controls.Add(btnWriteFlag);
+        groupBox12.Controls.Add(btnReadFlag);
+        groupBox12.Controls.Add(udFlag);
+        groupBox12.Controls.Add(label18);
+        groupBox12.Dock = DockStyle.Left;
+        groupBox12.Location = new Point(532, 3);
+        groupBox12.Name = "groupBox12";
+        groupBox12.Size = new Size(264, 543);
+        groupBox12.TabIndex = 2;
+        groupBox12.TabStop = false;
+        groupBox12.Text = "Flags";
+        // 
+        // radioFlagOff
+        // 
+        radioFlagOff.AutoSize = true;
+        radioFlagOff.Checked = true;
+        radioFlagOff.Location = new Point(90, 114);
+        radioFlagOff.Name = "radioFlagOff";
+        radioFlagOff.Size = new Size(46, 19);
+        radioFlagOff.TabIndex = 7;
+        radioFlagOff.TabStop = true;
+        radioFlagOff.Text = "OFF";
+        radioFlagOff.UseVisualStyleBackColor = true;
+        // 
+        // radioFlagOn
+        // 
+        radioFlagOn.AutoSize = true;
+        radioFlagOn.Location = new Point(158, 114);
+        radioFlagOn.Name = "radioFlagOn";
+        radioFlagOn.Size = new Size(43, 19);
+        radioFlagOn.TabIndex = 7;
+        radioFlagOn.Text = "ON";
+        radioFlagOn.UseVisualStyleBackColor = true;
+        // 
+        // btnWriteFlag
+        // 
+        btnWriteFlag.Anchor = AnchorStyles.Top;
+        btnWriteFlag.Location = new Point(149, 63);
+        btnWriteFlag.Margin = new Padding(4, 3, 4, 3);
+        btnWriteFlag.Name = "btnWriteFlag";
+        btnWriteFlag.Size = new Size(83, 27);
+        btnWriteFlag.TabIndex = 5;
+        btnWriteFlag.Text = "Write";
+        btnWriteFlag.UseVisualStyleBackColor = true;
+        btnWriteFlag.Click += btnWriteFlag_Click;
+        // 
+        // btnReadFlag
+        // 
+        btnReadFlag.Anchor = AnchorStyles.Top;
+        btnReadFlag.Location = new Point(53, 63);
+        btnReadFlag.Margin = new Padding(4, 3, 4, 3);
+        btnReadFlag.Name = "btnReadFlag";
+        btnReadFlag.Size = new Size(83, 27);
+        btnReadFlag.TabIndex = 6;
+        btnReadFlag.Text = "Read";
+        btnReadFlag.UseVisualStyleBackColor = true;
+        btnReadFlag.Click += btnReadFlag_Click;
+        // 
+        // udFlag
+        // 
+        udFlag.Location = new Point(53, 24);
+        udFlag.Maximum = new decimal(new int[] { 1569325055, 23283064, 0, 0 });
+        udFlag.Name = "udFlag";
+        udFlag.Size = new Size(205, 23);
+        udFlag.TabIndex = 2;
+        udFlag.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // label18
+        // 
+        label18.AutoSize = true;
+        label18.Location = new Point(12, 26);
+        label18.Name = "label18";
+        label18.Size = new Size(35, 15);
+        label18.TabIndex = 1;
+        label18.Text = "Flag :";
         // 
         // snpxSignalControlNumericIOs
         // 
@@ -1260,15 +1350,22 @@
         tabPage1.Text = "Variables without assignment";
         tabPage1.UseVisualStyleBackColor = true;
         // 
-        // label16
+        // btnWriteVariable
         // 
-        label16.AutoSize = true;
-        label16.Location = new Point(18, 35);
-        label16.Margin = new Padding(4, 0, 4, 0);
-        label16.Name = "label16";
-        label16.Size = new Size(87, 15);
-        label16.TabIndex = 2;
-        label16.Text = "Variable name :";
+        btnWriteVariable.Location = new Point(188, 125);
+        btnWriteVariable.Name = "btnWriteVariable";
+        btnWriteVariable.Size = new Size(75, 23);
+        btnWriteVariable.TabIndex = 4;
+        btnWriteVariable.Text = "Write";
+        btnWriteVariable.UseVisualStyleBackColor = true;
+        btnWriteVariable.Click += btnWriteVariable_Click;
+        // 
+        // txtVariableValue
+        // 
+        txtVariableValue.Location = new Point(112, 74);
+        txtVariableValue.Name = "txtVariableValue";
+        txtVariableValue.Size = new Size(240, 23);
+        txtVariableValue.TabIndex = 3;
         // 
         // txtVariableName
         // 
@@ -1287,22 +1384,15 @@
         label17.TabIndex = 2;
         label17.Text = "New value :";
         // 
-        // txtVariableValue
+        // label16
         // 
-        txtVariableValue.Location = new Point(112, 74);
-        txtVariableValue.Name = "txtVariableValue";
-        txtVariableValue.Size = new Size(240, 23);
-        txtVariableValue.TabIndex = 3;
-        // 
-        // btnWriteVariable
-        // 
-        btnWriteVariable.Location = new Point(188, 125);
-        btnWriteVariable.Name = "btnWriteVariable";
-        btnWriteVariable.Size = new Size(75, 23);
-        btnWriteVariable.TabIndex = 4;
-        btnWriteVariable.Text = "Write";
-        btnWriteVariable.UseVisualStyleBackColor = true;
-        btnWriteVariable.Click += btnWriteVariable_Click;
+        label16.AutoSize = true;
+        label16.Location = new Point(18, 35);
+        label16.Margin = new Padding(4, 0, 4, 0);
+        label16.Name = "label16";
+        label16.Size = new Size(87, 15);
+        label16.TabIndex = 2;
+        label16.Text = "Variable name :";
         // 
         // SnpxControl
         // 
@@ -1328,6 +1418,9 @@
         ((System.ComponentModel.ISupportInitialize)udFrame).EndInit();
         ((System.ComponentModel.ISupportInitialize)udPositionRegister).EndInit();
         tabSignals.ResumeLayout(false);
+        groupBox12.ResumeLayout(false);
+        groupBox12.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udFlag).EndInit();
         tabBatch.ResumeLayout(false);
         tabBatch.PerformLayout();
         groupBox11.ResumeLayout(false);
@@ -1461,4 +1554,11 @@
     private TextBox txtVariableName;
     private Label label17;
     private Label label16;
+    private GroupBox groupBox12;
+    private NumericUpDown udFlag;
+    private Label label18;
+    private RadioButton radioFlagOff;
+    private RadioButton radioFlagOn;
+    private Button btnWriteFlag;
+    private Button btnReadFlag;
 }
