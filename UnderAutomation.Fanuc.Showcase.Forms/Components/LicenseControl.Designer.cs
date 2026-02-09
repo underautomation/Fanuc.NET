@@ -35,13 +35,19 @@
         label1 = new Label();
         txtKey = new TextBox();
         txtLicensee = new TextBox();
+        groupBox2 = new GroupBox();
+        lnkOrder = new LinkLabel();
+        lnkLicense = new LinkLabel();
+        label5 = new Label();
+        label4 = new Label();
         groupBox1.SuspendLayout();
+        groupBox2.SuspendLayout();
         SuspendLayout();
         // 
         // txtLicenseInfo
         // 
         txtLicenseInfo.BackColor = SystemColors.ControlLight;
-        txtLicenseInfo.Location = new Point(42, 162);
+        txtLicenseInfo.Location = new Point(46, 243);
         txtLicenseInfo.Margin = new Padding(4, 3, 4, 3);
         txtLicenseInfo.Name = "txtLicenseInfo";
         txtLicenseInfo.ReadOnly = true;
@@ -53,7 +59,7 @@
         // gridLicense
         // 
         gridLicense.HelpVisible = false;
-        gridLicense.Location = new Point(42, 294);
+        gridLicense.Location = new Point(46, 375);
         gridLicense.Margin = new Padding(4, 3, 4, 3);
         gridLicense.Name = "gridLicense";
         gridLicense.Size = new Size(536, 231);
@@ -67,14 +73,14 @@
         groupBox1.Controls.Add(label1);
         groupBox1.Controls.Add(txtKey);
         groupBox1.Controls.Add(txtLicensee);
-        groupBox1.Location = new Point(42, 3);
+        groupBox1.Location = new Point(46, 97);
         groupBox1.Margin = new Padding(4, 3, 4, 3);
         groupBox1.Name = "groupBox1";
         groupBox1.Padding = new Padding(4, 3, 4, 3);
         groupBox1.Size = new Size(536, 140);
         groupBox1.TabIndex = 8;
         groupBox1.TabStop = false;
-        groupBox1.Text = "Add your license key";
+        groupBox1.Text = "Enter your license key";
         // 
         // btnSetLicense
         // 
@@ -124,10 +130,64 @@
         txtLicensee.Size = new Size(443, 23);
         txtLicensee.TabIndex = 0;
         // 
+        // groupBox2
+        // 
+        groupBox2.Controls.Add(lnkOrder);
+        groupBox2.Controls.Add(lnkLicense);
+        groupBox2.Controls.Add(label5);
+        groupBox2.Controls.Add(label4);
+        groupBox2.Location = new Point(46, 3);
+        groupBox2.Name = "groupBox2";
+        groupBox2.Size = new Size(536, 88);
+        groupBox2.TabIndex = 9;
+        groupBox2.TabStop = false;
+        groupBox2.Text = "Get a license";
+        // 
+        // lnkOrder
+        // 
+        lnkOrder.AutoSize = true;
+        lnkOrder.Location = new Point(220, 54);
+        lnkOrder.Name = "lnkOrder";
+        lnkOrder.Size = new Size(200, 15);
+        lnkOrder.TabIndex = 1;
+        lnkOrder.TabStop = true;
+        lnkOrder.Text = "https://underautomation.com/order";
+        lnkOrder.LinkClicked += lnkOrder_LinkClicked;
+        // 
+        // lnkLicense
+        // 
+        lnkLicense.AutoSize = true;
+        lnkLicense.Location = new Point(220, 28);
+        lnkLicense.Name = "lnkLicense";
+        lnkLicense.Size = new Size(208, 15);
+        lnkLicense.TabIndex = 1;
+        lnkLicense.TabStop = true;
+        lnkLicense.Text = "https://underautomation.com/license";
+        lnkLicense.LinkClicked += lnkOrder_LinkClicked;
+        // 
+        // label5
+        // 
+        label5.AutoSize = true;
+        label5.Location = new Point(6, 54);
+        label5.Name = "label5";
+        label5.Size = new Size(215, 15);
+        label5.TabIndex = 0;
+        label5.Text = "To get a quote or a lifetime license key :";
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Location = new Point(6, 28);
+        label4.Name = "label4";
+        label4.Size = new Size(208, 15);
+        label4.TabIndex = 0;
+        label4.Text = "Get your trial licence key immediately:";
+        // 
         // LicenseControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        Controls.Add(groupBox2);
         Controls.Add(groupBox1);
         Controls.Add(gridLicense);
         Controls.Add(txtLicenseInfo);
@@ -136,6 +196,8 @@
         Size = new Size(957, 680);
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
+        groupBox2.ResumeLayout(false);
+        groupBox2.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -149,4 +211,9 @@
     private System.Windows.Forms.Button btnSetLicense;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label1;
+    private GroupBox groupBox2;
+    private Label label5;
+    private Label label4;
+    private LinkLabel lnkOrder;
+    private LinkLabel lnkLicense;
 }

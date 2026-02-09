@@ -73,7 +73,7 @@ License Types: There are 3 types of Licenses issued for the Software:
 
 4.5. If you have purchased a License, you can use source codes of demo Applications, which are included in the distributive package of the Software, in your Applications.
 
-4.6. If you have purchased a license, you can distribute the file "UnderAutomation.UniversalRobots.dll" with your Application.
+4.6. If you have purchased a license, you can distribute the file "UnderAutomation.Fanuc.dll" with your Application.
 
 4.7. You cannot include into your Application any file of Software except for the files referred to in paragraph 4.6.
 

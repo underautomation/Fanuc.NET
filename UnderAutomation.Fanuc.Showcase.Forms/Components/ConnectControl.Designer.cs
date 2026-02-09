@@ -47,8 +47,9 @@ partial class ConnectControl
         chkRmi = new CheckBox();
         label4 = new Label();
         cbLanguage = new ComboBox();
-        addressTooltip = new ToolTip(components);
         chkStreamMotion = new CheckBox();
+        addressTooltip = new ToolTip(components);
+        lblLicense = new Label();
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -76,6 +77,7 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(label4, 0, 2);
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
         tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
+        tableLayoutPanel1.Controls.Add(lblLicense, 2, 17);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -302,14 +304,6 @@ partial class ConnectControl
         cbLanguage.Size = new Size(121, 23);
         cbLanguage.TabIndex = 23;
         // 
-        // addressTooltip
-        // 
-        addressTooltip.AutomaticDelay = 0;
-        addressTooltip.ToolTipIcon = ToolTipIcon.Info;
-        addressTooltip.ToolTipTitle = "Examples :";
-        addressTooltip.UseAnimation = false;
-        addressTooltip.UseFading = false;
-        // 
         // chkStreamMotion
         // 
         chkStreamMotion.Anchor = AnchorStyles.Left;
@@ -321,6 +315,25 @@ partial class ConnectControl
         chkStreamMotion.TabIndex = 24;
         chkStreamMotion.Text = "Enable Stream Motion (J519)";
         chkStreamMotion.UseVisualStyleBackColor = true;
+        // 
+        // addressTooltip
+        // 
+        addressTooltip.AutomaticDelay = 0;
+        addressTooltip.ToolTipIcon = ToolTipIcon.Info;
+        addressTooltip.ToolTipTitle = "Examples :";
+        addressTooltip.UseAnimation = false;
+        addressTooltip.UseFading = false;
+        // 
+        // lblLicense
+        // 
+        lblLicense.Anchor = AnchorStyles.Left;
+        lblLicense.AutoSize = true;
+        lblLicense.Location = new Point(455, 461);
+        lblLicense.Margin = new Padding(0);
+        lblLicense.Name = "lblLicense";
+        lblLicense.Size = new Size(13, 15);
+        lblLicense.TabIndex = 25;
+        lblLicense.Text = "..";
         // 
         // ConnectControl
         // 
@@ -359,4 +372,5 @@ partial class ConnectControl
     private Label label4;
     private ComboBox cbLanguage;
     private CheckBox chkStreamMotion;
+    private Label lblLicense;
 }

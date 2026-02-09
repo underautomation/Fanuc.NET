@@ -1,5 +1,6 @@
 ﻿using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.License;
 
 public partial class ConnectControl : UserControl, IUserControl
 {
@@ -52,7 +53,7 @@ public partial class ConnectControl : UserControl, IUserControl
 
     public void OnClose() { }
 
-    public void OnOpen() { }
+    public void OnOpen() { ValidateLicense(); }
 
     public void PeriodicUpdate()
     {
@@ -64,6 +65,15 @@ public partial class ConnectControl : UserControl, IUserControl
 
     }
     #endregion
+
+    public void ValidateLicense()
+    {
+        var licenseInfo = FanucRobot.LicenseInfo;
+        var isActiveLicense = licenseInfo.State == LicenseState.Licensed || licenseInfo.State == LicenseState.Trial || licenseInfo.State == LicenseState.ExtraTrial;
+
+        lblLicense.Text = "License state : " + FanucRobot.LicenseInfo.State;
+        lblLicense.ForeColor = isActiveLicense ? Color.Green : Color.Black;
+    }
 
     private void btnConnect_Click(object sender, EventArgs e)
     {
@@ -94,8 +104,16 @@ public partial class ConnectControl : UserControl, IUserControl
             if (MessageBox.Show("Please enter the path to your ROBOGUIDE folder instead of the localhost IP so that the SDK can read the services.txt and connect to the correct TCP ports. Go on anyway?", "Make sure you use localhost ?", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
         }
 
-        // Connect to the robot
-        _robot.Connect(parameters);
+        try
+        {
+            // Connect to the robot
+            _robot.Connect(parameters);
+        }
+        catch (InvalidLicenseException)
+        {
+            MessageBox.Show("Your licence is invalid. Please obtain a Trial Licence or enter the licence key you receive after purchasing the SDK", "License error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MainForm.Instance.SelectNode<LicenseControl>();
+        }
     }
 
     private void btnDisconnect_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@ public partial class MainForm : Form
     // Fanuc instance that handles connection to the robot
     private readonly FanucRobot _robot = new FanucRobot();
 
-    private static MainForm Instance;
+    internal static MainForm Instance;
 
     #region Initialisation
     public MainForm()
@@ -240,7 +240,7 @@ I have this exception that prevents me from using the full capabilities of the S
         catch { }
     }
 
-    private void OpenUrl(string url)
+    internal void OpenUrl(string url)
     {
         try
         {
