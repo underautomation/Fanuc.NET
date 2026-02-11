@@ -41495,7 +41495,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.FtpListItem.Size">
             <summary>
-            Gets the size of the object.
+            Gets the size of the object. Only a few files (like *.tp or *.df) have a size that can be retrieved, for most files this is 0 even if they are not empty. For directories this is always 0.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.FtpListItem.Chmod">
@@ -42193,6 +42193,134 @@
                 fix the q2-q3 coupling, normalize to (-180, 180] and filter
                 out invalid solutions (NaNs).
              </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.License.LicenseInfo">
+            <summary>
+            Information about a license key
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.#ctor(System.String,System.String)">
+            <summary>
+            Create a new LicenseInfo instance to retrieve informations about a pair of identifier/key
+            This class should not be used to register your product. Please use static function RegisterLicense to specify your license.
+            </summary>
+            <param name="licenseIdentifier">The name of your organization (null for trial version)</param>
+            <param name="licenseKey">The key, associated to the identifier, supplied by UnderAutomation (null for trial version)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.AssertIsLicensed">
+            <summary>
+            Throw a InvalidLicenseException if the license is not valid
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseKey">
+            <summary>
+            The license key supplied by UnderAutomation (null for trial period)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Product">
+            <summary>
+            Commercial name of this .NET Software library
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationDaysLeft">
+            <summary>
+            Remaining days of the trial period. Null if the product is licensed. It could be negative if the trial period is ended since several days.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationStartDate">
+            <summary>
+            The date the trial period starts. If the product is licensed, the date of the library first use.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Licensee">
+            <summary>
+            Name of your organisation
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.TrialPeriodExpirationDate">
+            <summary>
+            The date the product will expire. Null if the product is licensed.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.State">
+            <summary>
+            The current license state
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.ProductReleaseDate">
+            <summary>
+            The date this version of the product was released.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.MaintenanceYears">
+            <summary>
+            Number of maintenance years included in your license
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseIssuedDate">
+            <summary>
+            The date you get the license
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.MaintenanceExpirationDate">
+            <summary>
+            The date your maintenance contract end and you no longer can use this license with newer versions.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.ToString">
+            <summary>
+            A human description of the license
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.License.LicenseState">
+            <summary>
+            States that can take a license
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.None">
+            <summary>
+            No license has been provided
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Invalid">
+            <summary>
+            The pair License Identifier and License Key are incompatible, you cannot use the library
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
+            <summary>
+            The library is in a trial period, you can use the library
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.ExtraTrial">
+            <summary>
+            The library is in an extra trial period, you can use the library
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Expired">
+            <summary>
+            The trial period as expired, you no more can use the library
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.MaintenanceNeeded">
+            <summary>
+            Your license does not allow you to use such a recent release. Please buy maintenance to use this version
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Licensed">
+            <summary>
+            Congratulations, the library is licensed.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.License.InvalidLicenseException">
+            <summary>
+            Exception thrown while using the product if the license is not valid.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.License.InvalidLicenseException.LicenseInfo">
+            <summary>
+            The license that causes this exception
+            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase">
             <summary>
@@ -43617,11 +43745,6 @@
             Clear all active alarms
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.String)">
-            <summary>
-            Set string variable without assignments
-            </summary>
-        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Boolean)">
             <summary>
             Set boolean variable without assignments
@@ -43635,6 +43758,11 @@
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Double)">
             <summary>
             Set double variable without assignments
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.String)">
+            <summary>
+            Set string variable without assignments
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ClearAssignments">
@@ -44993,134 +45121,6 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.License.LicenseInfo">
-            <summary>
-            Information about a license key
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.#ctor(System.String,System.String)">
-            <summary>
-            Create a new LicenseInfo instance to retrieve informations about a pair of identifier/key
-            This class should not be used to register your product. Please use static function RegisterLicense to specify your license.
-            </summary>
-            <param name="licenseIdentifier">The name of your organization (null for trial version)</param>
-            <param name="licenseKey">The key, associated to the identifier, supplied by UnderAutomation (null for trial version)</param>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.AssertIsLicensed">
-            <summary>
-            Throw a InvalidLicenseException if the license is not valid
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseKey">
-            <summary>
-            The license key supplied by UnderAutomation (null for trial period)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Product">
-            <summary>
-            Commercial name of this .NET Software library
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationDaysLeft">
-            <summary>
-            Remaining days of the trial period. Null if the product is licensed. It could be negative if the trial period is ended since several days.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.EvaluationStartDate">
-            <summary>
-            The date the trial period starts. If the product is licensed, the date of the library first use.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.Licensee">
-            <summary>
-            Name of your organisation
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.TrialPeriodExpirationDate">
-            <summary>
-            The date the product will expire. Null if the product is licensed.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.State">
-            <summary>
-            The current license state
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.ProductReleaseDate">
-            <summary>
-            The date this version of the product was released.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.MaintenanceYears">
-            <summary>
-            Number of maintenance years included in your license
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseIssuedDate">
-            <summary>
-            The date you get the license
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.MaintenanceExpirationDate">
-            <summary>
-            The date your maintenance contract end and you no longer can use this license with newer versions.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.License.LicenseInfo.ToString">
-            <summary>
-            A human description of the license
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.License.LicenseState">
-            <summary>
-            States that can take a license
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.None">
-            <summary>
-            No license has been provided
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Invalid">
-            <summary>
-            The pair License Identifier and License Key are incompatible, you cannot use the library
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Trial">
-            <summary>
-            The library is in a trial period, you can use the library
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.ExtraTrial">
-            <summary>
-            The library is in an extra trial period, you can use the library
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Expired">
-            <summary>
-            The trial period as expired, you no more can use the library
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.MaintenanceNeeded">
-            <summary>
-            Your license does not allow you to use such a recent release. Please buy maintenance to use this version
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.License.LicenseState.Licensed">
-            <summary>
-            Congratulations, the library is licensed.
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.License.InvalidLicenseException">
-            <summary>
-            Exception thrown while using the product if the license is not valid.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.License.InvalidLicenseException.LicenseInfo">
-            <summary>
-            The license that causes this exception
-            </summary>
         </member>
     </members>
 </doc>

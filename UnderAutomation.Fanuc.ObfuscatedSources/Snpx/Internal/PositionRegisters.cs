@@ -62,6 +62,13 @@ namespace Snpx.Internal {
 		}
 
 
+		public Position Read(int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override int AssignmentSize => default;
 	}
 }

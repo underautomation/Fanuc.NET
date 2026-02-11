@@ -10,7 +10,7 @@ namespace Ftp {
 	public class FtpListItem {
 
 		/// <summary>
-		/// Gets the size of the object.
+		/// Gets the size of the object. Only a few files (like *.tp or *.df) have a size that can be retrieved, for most files this is 0 even if they are not empty. For directories this is always 0.
 		/// </summary>
 		public long Size { get; }
 

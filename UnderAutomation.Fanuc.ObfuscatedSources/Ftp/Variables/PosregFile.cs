@@ -19,7 +19,7 @@ namespace Ftp.Variables {
 		/// <summary>
 		/// Value of variable $POSREG
 		/// </summary>
-		public CartesianPositionVariable[,] Posreg { get; }
+		public PositionRegister[,] Posreg { get; }
 
 		/// <summary>
 		/// Value of variable $MAXPREGNUM

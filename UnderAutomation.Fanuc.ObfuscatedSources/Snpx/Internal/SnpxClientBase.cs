@@ -43,14 +43,6 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Set string variable without assignments
-		/// </summary>
-		public void SetVariable(string name, string value)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-		/// <summary>
 		/// Set boolean variable without assignments
 		/// </summary>
 		public void SetVariable(string name, bool value)
@@ -70,6 +62,14 @@ namespace Snpx.Internal {
 		/// Set double variable without assignments
 		/// </summary>
 		public void SetVariable(string name, double value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Set string variable without assignments
+		/// </summary>
+		public void SetVariable(string name, string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

@@ -37,6 +37,13 @@ namespace Snpx.Internal {
 		}
 
 
+		public FlagBatchAssignment CreateBatchAssignment(int startIndex, int count)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override int AssignmentSize => default;
 	}
 }
