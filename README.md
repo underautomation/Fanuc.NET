@@ -35,6 +35,7 @@ It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
 - ⚡ **I/O Control:** Manage ports and I/O values (UI, UO, GI, GO, etc.).
 - 🔍 **State Monitoring:** Get safety status, position, diagnostics, and more.
 - 📂 **File Management:** Easily manipulate files.
+- 🏎️ **Remote motion:** Remote move the robot
 - 📐 **Kinematics Calculations:** Perform forward and inverse kinematics offline.
 
 No additional installations or Fanuc options are required to use this SDK.
