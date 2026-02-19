@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a program command (abort, continue, hold, pause, run, etc.).
+	/// </summary>
 	public class ProgramCommandResult : Result {
 
 		/// <summary>

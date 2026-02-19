@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of an abort command.
+	/// </summary>
 	public class AbortResult : Result {
 
 		/// <summary>

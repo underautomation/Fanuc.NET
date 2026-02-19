@@ -6,10 +6,14 @@ using Snpx.Internal;
 using System;
 
 namespace Snpx.Assignment {
-
+	/// <summary>
+	/// Batch assignment for reading multiple numeric registers at once.
+	/// </summary>
 	public class NumericRegistersBatchAssignment : BatchAssignment<float, int> {
 
-
+		/// <summary>
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// </summary>
 		public NumericRegistersBatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

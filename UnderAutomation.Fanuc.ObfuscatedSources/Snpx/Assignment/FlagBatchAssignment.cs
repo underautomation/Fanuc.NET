@@ -6,16 +6,23 @@ using Snpx.Internal;
 using System;
 
 namespace Snpx.Assignment {
-
+	/// <summary>
+	/// Batch assignment for reading multiple flag values at once.
+	/// </summary>
 	public class FlagBatchAssignment : BatchAssignment<bool, int> {
 
-
+		/// <summary>
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.FlagBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// </summary>
 		public FlagBatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Reads all flag values assigned in this batch.
+		/// </summary>
+		/// <returns>An array of boolean flag values.</returns>
 		public override bool[] Read()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a show variable command.
+	/// </summary>
 	public class VariableResult : Result {
 
 		/// <summary>

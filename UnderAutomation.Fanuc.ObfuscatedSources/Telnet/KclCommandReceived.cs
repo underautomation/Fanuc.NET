@@ -4,11 +4,36 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Event arguments for KCL command received events.
+	/// </summary>
 	public class KclCommandReceived : EventArgs {
 
-
+		/// <summary>
+		/// Gets the result of the received command.
+		/// </summary>
 		public Result Result;
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public KclCommandReceived()

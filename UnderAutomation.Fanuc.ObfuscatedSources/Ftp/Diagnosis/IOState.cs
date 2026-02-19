@@ -12,6 +12,13 @@ namespace Ftp.Diagnosis {
 	public class IOState : IFanucContent {
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public IOState()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

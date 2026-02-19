@@ -5,13 +5,22 @@
 using Ftp.Internal;
 
 namespace Ftp.List {
-
+	/// <summary>
+	/// Represents the parsed content of the ERRALL.LS error log file
+	/// </summary>
 	public class ErrorList : IFanucContent {
 
 		/// <summary>
 		/// Return active alarms among the list of all error items
 		/// </summary>
 		public ErrallSectionItem[] FilterActiveAlarms()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override string ToString()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

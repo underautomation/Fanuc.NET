@@ -320,21 +320,29 @@ namespace Telnet.Internal {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Returns the breakpoints set on the specified task.
+		/// </summary>
+		/// <param name="taskName">Name of a KAREL or TP program without extension</param>
 		public BreakpointsResult GetBreakpoints(string taskName)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Enables step mode for the specified task.
+		/// </summary>
+		/// <param name="taskName">Name of a KAREL or TP program without extension</param>
 		public StepOnResult StepOn(string taskName)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Disables step mode.
+		/// </summary>
 		public StepOffResult StepOff()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -357,7 +365,9 @@ namespace Telnet.Internal {
 		/// </summary>
 		public Languages Language { get; set; }
 
-
+		/// <summary>
+		/// Gets the current Teach Pendant coordinate system.
+		/// </summary>
 		public TpCoordinates TpCoordinates { get; }
 
 		/// <summary>

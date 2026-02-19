@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result containing the breakpoints of a task.
+	/// </summary>
 	public class BreakpointsResult : Result {
 
 		/// <summary>
@@ -30,7 +32,9 @@ namespace Telnet {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets the breakpoints set on the task.
+		/// </summary>
 		public Breakpoint[] Breakpoints { get; }
 	}
 }

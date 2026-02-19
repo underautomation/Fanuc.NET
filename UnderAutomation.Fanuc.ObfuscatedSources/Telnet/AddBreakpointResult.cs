@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of adding a breakpoint.
+	/// </summary>
 	public class AddBreakpointResult : Result {
 
 		/// <summary>

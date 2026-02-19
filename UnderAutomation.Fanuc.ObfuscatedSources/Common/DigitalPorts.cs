@@ -29,16 +29,24 @@ namespace Common {
 		/// </summary>
 		UO = 3,
 
-
+		/// <summary>
+		/// SI
+		/// </summary>
 		SI = 4,
 
-
+		/// <summary>
+		/// SO
+		/// </summary>
 		SO = 5,
 
-
+		/// <summary>
+		/// Robot inputs
+		/// </summary>
 		RI = 6,
 
-
+		/// <summary>
+		/// Robot outputs
+		/// </summary>
 		RO = 7,
 
 		/// <summary>

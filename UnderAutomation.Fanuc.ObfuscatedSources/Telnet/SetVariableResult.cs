@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a set variable command.
+	/// </summary>
 	public class SetVariableResult : SetValueResult {
 
 		/// <summary>

@@ -6,16 +6,23 @@ using Snpx.Internal;
 using System;
 
 namespace Snpx.Assignment {
-
+	/// <summary>
+	/// Batch assignment for reading multiple integer system variables at once.
+	/// </summary>
 	public class IntegerSystemVariablesBatchAssignment : BatchAssignment<int, string> {
 
-
+		/// <summary>
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// </summary>
 		public IntegerSystemVariablesBatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Reads all integer system variables assigned in this batch.
+		/// </summary>
+		/// <returns>An array of integer values.</returns>
 		public override int[] Read()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

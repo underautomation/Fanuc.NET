@@ -28,14 +28,24 @@ namespace Kinematics {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Compute all inverse kinematics solutions for a desired end effector pose.
+		/// </summary>
+		/// <param name="position">Target Cartesian position.</param>
+		/// <param name="parameters">DH parameters of the robot.</param>
+		/// <returns>An array of joint angle solutions.</returns>
 		public static JointsPosition[] InverseKinematics(CartesianPosition position, DhParameters parameters)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Multiply two 4x4 homogeneous transformation matrices.
+		/// </summary>
+		/// <param name="A">Left matrix.</param>
+		/// <param name="B">Right matrix.</param>
+		/// <returns>The product matrix A * B.</returns>
 		public static double[,] Mul(double[,] A, double[,] B)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

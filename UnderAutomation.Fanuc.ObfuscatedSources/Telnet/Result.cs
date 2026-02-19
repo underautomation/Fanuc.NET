@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Abstract base class for all KCL command results.
+	/// </summary>
 	public abstract class Result {
 
 		/// <summary>

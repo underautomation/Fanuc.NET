@@ -6,7 +6,9 @@ using System;
 using Snpx.Assignment;
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Provides access to integer system variables on the robot via SNPX.
+	/// </summary>
 	public class IntegerSystemVariables : SnpxWritableAssignableElements<int, string, IntegerSystemVariablesBatchAssignment> {
 
 
@@ -23,14 +25,18 @@ namespace Snpx.Internal {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Reads a value from the client at the specified memory offset.
+		/// </summary>
 		protected override int ReadFromClient(int offset)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Writes a value to the robot at the specified offset.
+		/// </summary>
 		protected override void WriteInClient(int offset, int value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

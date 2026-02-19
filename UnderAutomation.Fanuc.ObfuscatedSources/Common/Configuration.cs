@@ -9,13 +9,17 @@ namespace Common {
 	/// </summary>
 	public class Configuration {
 
-
+		/// <summary>
+		/// Default constructor
+		/// </summary>
 		public Configuration()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with all configuration parameters
+		/// </summary>
 		public Configuration(WristFlip wristFlip, ArmUpDown armUpDown, ArmLeftRight armLeftRight, ArmFrontBack armFrontBack, int turnAxis1, int turnAxis2, int turnAxis3)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -36,6 +40,20 @@ namespace Common {
 		public void FromString(string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
 		}
 
 		/// <summary>

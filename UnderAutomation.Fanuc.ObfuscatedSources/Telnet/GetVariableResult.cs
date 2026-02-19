@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a get variable command containing the raw value.
+	/// </summary>
 	public class GetVariableResult : Result {
 
 		/// <summary>
@@ -37,7 +39,9 @@ namespace Telnet {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets the raw value of the variable as a string.
+		/// </summary>
 		public string RawValue { get; }
 	}
 }

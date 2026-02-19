@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of the step on command.
+	/// </summary>
 	public class StepOnResult : Result {
 
 		/// <summary>

@@ -5,11 +5,36 @@
 using Common;
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Represents a joint position variable parsed from a Fanuc variable file
+	/// </summary>
 	public class JointPositionVariable : JointsPosition {
 
-
+		/// <summary>
+		/// Parses a joint position from its string representation
+		/// </summary>
 		public static JointPositionVariable Parse(string value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -21,7 +46,9 @@ namespace Ftp.Variables {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Motion group number
+		/// </summary>
 		public int Group { get; set; }
 	}
 }

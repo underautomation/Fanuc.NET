@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a reset command.
+	/// </summary>
 	public class ResetResult : Result {
 
 		/// <summary>

@@ -65,22 +65,34 @@ namespace UnderAutomation.Fanuc {
 		/// </summary>
 		public string Address { get; }
 
-
+		/// <summary>
+		/// Indicates whether any service is currently connected to the robot
+		/// </summary>
 		public bool Enabled { get; }
 
-
+		/// <summary>
+		/// Telnet client for remote command execution
+		/// </summary>
 		public TelnetClientInternal Telnet { get; }
 
-
+		/// <summary>
+		/// FTP client for memory and file access
+		/// </summary>
 		public FtpClientInternal Ftp { get; }
 
-
+		/// <summary>
+		/// SNPX client for IO, alarms and task reading
+		/// </summary>
 		public SnpxClientInternal Snpx { get; }
 
-
+		/// <summary>
+		/// RMI client for remote motion interface
+		/// </summary>
 		public RmiClientInternal Rmi { get; }
 
-
+		/// <summary>
+		/// Stream Motion client for real-time motion control
+		/// </summary>
 		public StreamMotionClientInternal StreamMotion { get; }
 
 		/// <summary>

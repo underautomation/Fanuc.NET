@@ -4,11 +4,36 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Event arguments for TP coordinates received events.
+	/// </summary>
 	public class TpCoordinatesReceivedEventArgs : EventArgs {
 
-
+		/// <summary>
+		/// Gets the TP coordinate system received.
+		/// </summary>
 		public TpCoordinates Coord;
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public TpCoordinatesReceivedEventArgs()

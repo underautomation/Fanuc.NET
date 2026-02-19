@@ -19,6 +19,21 @@
             Constructor with position and rotations
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,UnderAutomation.Fanuc.Common.Configuration)">
+            <summary>
+            Constructor with position, rotations and configuration
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.#ctor(UnderAutomation.Fanuc.Common.XYZPosition,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor from an XYZ position with rotations
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.#ctor(UnderAutomation.Fanuc.Common.CartesianPosition)">
+            <summary>
+            Copy constructor
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPosition.W">
             <summary>
             W rotation in degrees (Rx)
@@ -38,6 +53,15 @@
             <summary>
             Position configuration
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.ToHomogeneousMatrix">
             <summary>
@@ -72,20 +96,58 @@
             A cartesian position with a tool ID
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Constructor with position, rotations and tool ID
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.Tool">
             <summary>
             Tool ID
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithTool.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame">
             <summary>
             A cartesian tool position with a user frame ID
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Constructor with position, rotations, tool and frame IDs
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.Frame">
             <summary>
             Frame ID in the controller
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.ArmFrontBack">
             <summary>
@@ -144,7 +206,7 @@
         </member>
         <member name="F:UnderAutomation.Fanuc.Common.ArmUpDown.Down">
             <summary>
-            Up : D
+            Down : D
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.WristFlip">
@@ -170,6 +232,16 @@
         <member name="T:UnderAutomation.Fanuc.Common.Configuration">
             <summary>
             Fanuc arm configuration
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Configuration.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Configuration.#ctor(UnderAutomation.Fanuc.Common.WristFlip,UnderAutomation.Fanuc.Common.ArmUpDown,UnderAutomation.Fanuc.Common.ArmLeftRight,UnderAutomation.Fanuc.Common.ArmFrontBack,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor with all configuration parameters
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.Configuration.IsUnknown">
@@ -222,9 +294,25 @@
             Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Configuration.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Configuration.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.ConnectException">
             <summary>
             Exception thrown when connection to the robot fails
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.ConnectException.Service">
+            <summary>
+            Name of the service that failed to connect
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.ConnectException.RobotIp">
+            <summary>
+            IP address of the robot
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.DigitalPorts">
@@ -252,10 +340,69 @@
             User outputs
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Common.DigitalPorts.SI">
+            <summary>
+            SI
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.DigitalPorts.SO">
+            <summary>
+            SO
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.DigitalPorts.RI">
+            <summary>
+            Robot inputs
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Common.DigitalPorts.RO">
+            <summary>
+            Robot outputs
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Common.DigitalPorts.FLG">
             <summary>
             Flags
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition">
+            <summary>
+            Cartesian position with extended axes (E1, E2, E3)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor with position, rotations, and extended axes
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.E1">
+            <summary>
+            Extended axis 1 value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.E2">
+            <summary>
+            Extended axis 2 value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.E3">
+            <summary>
+            Extended axis 3 value
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.FtpConnectParameters">
             <summary>
@@ -296,10 +443,42 @@
             <summary>
             String representation like : DIN[1]=True
             </summary>
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.IOStatus.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.IOStatus.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.JointsPosition">
             <summary>
             Joints position in degrees
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor with 9 joint values in degrees
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor with 6 joint values in degrees
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.#ctor(System.Double[])">
+            <summary>
+            Constructor from an array of joint values in degrees
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.JointsPosition.Item(System.Int32)">
+            <summary>
+            Gets or sets the joint value at the specified index
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.JointsPosition.Values">
@@ -352,6 +531,15 @@
             Joint 9 in degrees
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="M:UnderAutomation.Fanuc.Common.JointsPosition.IsNear(UnderAutomation.Fanuc.Common.JointsPosition,UnderAutomation.Fanuc.Common.JointsPosition,System.Double)">
             <summary>
             Check if joints position is near to expected joints position with a tolerance value
@@ -376,6 +564,50 @@
             <summary>
             For robots set to Chinese language
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.Position">
+            <summary>
+            Robot position with joints and cartesian representations
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Position.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Position.#ctor(System.Int16,System.Int16,UnderAutomation.Fanuc.Common.JointsPosition,UnderAutomation.Fanuc.Common.ExtendedCartesianPosition)">
+            <summary>
+            Constructor with user frame, tool, joints and cartesian position
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Position.UserFrame">
+            <summary>
+            User frame index
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Position.UserTool">
+            <summary>
+            User tool index
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Position.JointsPosition">
+            <summary>
+            Joint values in degrees
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Position.CartesianPosition">
+            <summary>
+            Cartesian position with extended axes
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Position.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Position.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Position.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.ProgramType">
             <summary>
@@ -482,6 +714,16 @@
             Cartesian position X, Y, Z
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZPosition.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZPosition.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor with X, Y, Z coordinates in millimeters
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Common.XYZPosition.X">
             <summary>
             X coordinate in millimeters
@@ -496,6 +738,15 @@
             <summary>
             Z coordinate in millimeters
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZPosition.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.ConnectionParameters">
             <summary>
@@ -581,6 +832,36 @@
         <member name="M:UnderAutomation.Fanuc.FanucRobot.Disconnect">
             <summary>
             Disconnect all services connected to the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Enabled">
+            <summary>
+            Indicates whether any service is currently connected to the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Telnet">
+            <summary>
+            Telnet client for remote command execution
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Ftp">
+            <summary>
+            FTP client for memory and file access
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Snpx">
+            <summary>
+            SNPX client for IO, alarms and task reading
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Rmi">
+            <summary>
+            RMI client for remote motion interface
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.StreamMotion">
+            <summary>
+            Stream Motion client for real-time motion control
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.FanucRobot.RegisterLicense(System.String,System.String)">
@@ -775,6 +1056,55 @@
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpKnownVariableFiles.GetVcmrinitFile">
             <summary>
             Reads and parse aavmmain.va variable file via FTP
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Internal.SectionParser`1">
+            <summary>
+            Abstract generic section parser that creates and populates a section of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of section to parse into.</typeparam>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.Internal.SectionParser`1.Section">
+            <summary>
+            The parsed section instance.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.SectionParser`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Ftp.Internal.SectionParser`1"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Internal.SectionParser">
+            <summary>
+            Abstract base class for parsing sections of diagnostic files.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Internal.SectionParser.SectionStart">
+            <summary>
+            Gets the possible section header strings that indicate the start of this section.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.SectionParser.CanHandleSection(System.String)">
+            <summary>
+            Determines whether this parser can handle the given section header line.
+            </summary>
+            <param name="line">The header line to check.</param>
+            <returns><c>true</c> if this parser handles the section; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.SectionParser.ParseLine(System.String)">
+            <summary>
+            Parses a single line from the section content.
+            </summary>
+            <param name="line">The line to parse.</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Internal.SectionParser.EndOfFile">
+            <summary>
+            Gets or sets a value indicating whether the end of the file or section has been reached.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.SectionParser.AfterParse">
+            <summary>
+            Called after all lines have been parsed. Override to perform final processing.
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Internal.FileReader`1">
@@ -1112,6 +1442,29 @@
         <member name="M:UnderAutomation.Fanuc.Ftp.Internal.IFileReader`1.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
             <summary>
             Reads file stream and decodes it
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.VariableReader">
+            <summary>
+            Reader for Fanuc variable files (*.va)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableReader.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableReader.ReadVariableFile(System.String,UnderAutomation.Fanuc.Common.Languages)">
+            <summary>
+            Reads and parses a variable file from a file path
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableReader.ReadVariableFile(System.IO.Stream,System.String,UnderAutomation.Fanuc.Common.Languages)">
+            <summary>
+            Reads and parses a variable file from a stream
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableReader.ParseVariableFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages)">
+            <summary>
+            Parses all variables from a stream
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Variables.AavmmainFile">
@@ -36714,6 +37067,256 @@
             Element index, example : [1] or [2,1]
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.ArrayElement.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.ArrayElement.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable">
+            <summary>
+            Represents a Cartesian position variable parsed from a Fanuc variable file
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable.Group">
+            <summary>
+            Motion group number
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable.Parse(System.String)">
+            <summary>
+            Parses a Cartesian position from its string representation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.GenericField">
+            <summary>
+            Represents a named field within a variable structure
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.Access">
+            <summary>
+            Access modifier of the field (e.g. RW, RO)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.Type">
+            <summary>
+            Data type name of the field
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.IsRegister">
+            <summary>
+            Indicates whether this field is a register
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.StringLength">
+            <summary>
+            Maximum string length if the field type is STRING
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.Dimension1">
+            <summary>
+            First dimension size of the array, or first index of an array element
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericField.Dimension2">
+            <summary>
+            Second dimension size of the array, or second index of an array element
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericField.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericField.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericField.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.GenericValue">
+            <summary>
+            Represents a generic variable value with optional child fields
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Parent">
+            <summary>
+            Parent value that contains this value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Kind">
+            <summary>
+            Kind of value (scalar, array, structure, or file)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Fields">
+            <summary>
+            Child fields of this value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Name">
+            <summary>
+            Name of this value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Parent">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Fields">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.IsUninitialized">
+            <summary>
+            Indicates whether this value is uninitialized
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Value">
+            <summary>
+            String representation of the value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.RegisterName">
+            <summary>
+            Register name associated with this value
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.FullName">
+            <summary>
+            Fully qualified name including all parent names
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericValue.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable">
+            <summary>
+            Represents a top-level variable declaration with scope and storage information
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.Scope">
+            <summary>
+            Variable scope (e.g. PROG, SYS)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.Storage">
+            <summary>
+            Storage type of the variable (e.g. CMOS, DRAM)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.Parent">
+            <summary>
+            Parent container of this variable
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Parent">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariable.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile">
+            <summary>
+            Represents a parsed Fanuc variable file containing one or more variables
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.Variables">
+            <summary>
+            Variables declared in this file
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Fields">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.Name">
+            <summary>
+            File name
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.Parent">
+            <summary>
+            Parent container
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.GetField(System.String)">
+            <summary>
+            Gets a variable by name (case-insensitive)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.GenerateVa(System.String)">
+            <summary>
+            Generates a .va file and writes it to the specified path
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.GenerateVa(System.IO.Stream)">
+            <summary>
+            Generates a .va file and writes it to the specified stream
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType">
+            <summary>
+            Abstract base class for typed variable structures
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.Fields">
+            <summary>
+            Fields contained in this type
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.FanucInternalTypeName">
+            <summary>
+            Internal Fanuc type name
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.Parent">
+            <summary>
+            Parent container
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Name">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Fields">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.GetField(System.String)">
+            <summary>
+            Gets a field by name (case-insensitive)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.GenericVariableType.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Variables.IGenericVariableType">
             <summary>
             Interface for a structure that contains variables
@@ -36749,6 +37352,173 @@
             Get a field by its name (case insensitive)
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable">
+            <summary>
+            Represents a joint position variable parsed from a Fanuc variable file
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable.Group">
+            <summary>
+            Motion group number
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable.Parse(System.String)">
+            <summary>
+            Parses a joint position from its string representation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister">
+            <summary>
+            Represents a position register that can hold either a Cartesian or joint position
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.#ctor(UnderAutomation.Fanuc.Ftp.Variables.JointPositionVariable,UnderAutomation.Fanuc.Ftp.Variables.CartesianPositionVariable)">
+            <summary>
+            Creates a position register from joint and Cartesian position values
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.JointsPosition">
+            <summary>
+            Joint position value, if available
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.CartesianPosition">
+            <summary>
+            Cartesian position value, if available
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.Parse(System.String)">
+            <summary>
+            Parses a position register from its string representation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.PositionRegister.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.ValueKind">
+            <summary>
+            Describes the kind of a variable value
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.Variables.ValueKind.Value">
+            <summary>
+            A single scalar value
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.Variables.ValueKind.Array">
+            <summary>
+            An array of values
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.Variables.ValueKind.Structure">
+            <summary>
+            A structured type with named fields
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.Variables.ValueKind.File">
+            <summary>
+            A file-level container
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.VariableFile">
+            <summary>
+            Abstract base class for typed variable file readers
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VariableFile.FileName">
+            <summary>
+            Name of the variable file
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableFile.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList">
+            <summary>
+            Collection of variable files that aggregates all variables from the controller
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList.Name">
+            <summary>
+            Name of this variable file list
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList.Parent">
+            <summary>
+            Parent container
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList.InsertItem(System.Int32,UnderAutomation.Fanuc.Ftp.Variables.GenericVariableFile)">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList.UnderAutomation#Fanuc#Ftp#Variables#IGenericVariableType#Fields">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableFileList.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.VariableReader`1">
+            <summary>
+            Typed variable file reader for specific variable file types
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VariableReader`1.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable">
+            <summary>
+            Represents a 3D vector variable with X, Y, Z components
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.X">
+            <summary>
+            X component of the vector
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.Y">
+            <summary>
+            Y component of the vector
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.Z">
+            <summary>
+            Z component of the vector
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.Parse(System.String)">
+            <summary>
+            Parses a vector variable from its string representation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Variables.VectorVariable.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPosition">
             <summary>
             Contains the position for each robots
@@ -36762,6 +37532,38 @@
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPosition.Name">
             <summary>
             File name : curpos.dg
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPositionReader">
+            <summary>
+            Parser for reading and interpreting current robot position data from diagnostic files.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPositionReader.SectionStart">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPositionReader.AfterParse">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.CurrentPositionReader.ParseLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.DiagnosisReader`2">
+            <summary>
+            Generic diagnosis file reader that parses a specific section from a diagnostic stream.
+            </summary>
+            <typeparam name="T">The content type implementing <see cref="T:UnderAutomation.Fanuc.Ftp.Internal.IFanucContent"/>.</typeparam>
+            <typeparam name="U">The section parser type.</typeparam>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.DiagnosisReader`2.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.Features">
+            <summary>
+            Represents the collection of features available on the controller.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.FeaturesList">
@@ -36784,6 +37586,15 @@
             Indicates if the robot has the ASCII upload feature enabled : R507 ("ASCII Upload" on older controllers) or R796 ("ASCII Program Loader" on most recent controllers).
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Features.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.Name">
             <summary>
             Name of the feature
@@ -36793,6 +37604,29 @@
             <summary>
             Order number of the feature (set of 4 alphanumeric characters)
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.Feature.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.FeaturesParser">
+            <summary>
+            Parser for reading and interpreting controller feature data from diagnostic files.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.FeaturesParser.SectionStart">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.FeaturesParser.ParseLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.FeaturesParser.AfterParse">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.GroupPosition">
             <summary>
@@ -36819,6 +37653,15 @@
             Position of each tools in world coordinates
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.GroupPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.GroupPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.GroupPosition.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection">
             <summary>
             Header information of a diagnostic file
@@ -36831,7 +37674,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.Version">
             <summary>
-            COntroller version
+            Controller version
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.VersionFirmware">
@@ -36841,13 +37684,22 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.VersionDate">
             <summary>
-            Firmawre release date
+            Firmware release date
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.Date">
             <summary>
             Current controller time
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.HeaderSection.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.IOState">
             <summary>
@@ -36864,26 +37716,134 @@
             File name : iostate.dg
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.IOState.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.IOStateParser">
+            <summary>
+            Parser for reading and interpreting IO state data from diagnostic files.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.IOStateParser.SectionStart">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.IOStateParser.ParseLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.IOStateParser.AfterParse">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates">
             <summary>
             Implements IFanucContent to hold a collection of task states.
             </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates.TaskStates">
+            <summary>
+            Array of task states currently on the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates.Name">
+            <summary>
+            File name: prgstate.dg
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStates.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState">
             <summary>
             Represents a single task's state.
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.Number">
+            <summary>
+            Task number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.Name">
+            <summary>
+            Task name.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.Status">
+            <summary>
+            Current execution status of the task.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.History">
+            <summary>
+            Call stack history frames for the task.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskState.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData">
             <summary>
             Represents one frame in the task's call stack.
             </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.RoutineDepth">
+            <summary>
+            Depth of the routine in the call stack.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.RoutineName">
+            <summary>
+            Name of the routine.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.LineNumber">
+            <summary>
+            Line number currently being executed.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.ProgramName">
+            <summary>
+            Name of the program containing the routine.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.ProgramType">
+            <summary>
+            Type of the program (TP, Karel, etc.).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.TaskHistoryData.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStatesParser">
             <summary>
             Parser for the "TASK STATES" section, renamed from ProgramStatesReader to ProgramStatesParser.
             Uses compiled Regex for efficiency.
             </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStatesParser.SectionStart">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStatesParser.ParseLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.ProgramStatesParser.AfterParse">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus">
             <summary>
@@ -36905,6 +37865,31 @@
             Emergency stop active on teach peandant
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.HandBroken">
+            <summary>
+            Hand broken signal is active
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.OverTravel">
+            <summary>
+            Over travel limit is active
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.LowAirAlarm">
+            <summary>
+            Low air pressure alarm is active
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.FenceOpen">
+            <summary>
+            Safety fence is open
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.BeltBroken">
+            <summary>
+            Belt broken signal is active
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.TPEnable">
             <summary>
             Teach pendant is enabled
@@ -36915,10 +37900,48 @@
             The deadman switch of the teach pendant is active
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.SVOFFDetect">
+            <summary>
+            Servo off detection is active
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.NonTeacherEnb">
+            <summary>
+            Non-teacher enable signal is active
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.Name">
             <summary>
             File name : sftysig.dg
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatus.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatusParser">
+            <summary>
+            Parser for reading and interpreting safety status signals from diagnostic files.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatusParser.SectionStart">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatusParser.ParseLine(System.String,System.String,System.Action{System.Boolean})">
+            <summary>
+            Parses a single line, checking if it starts with the specified prefix and extracting a boolean value.
+            </summary>
+            <param name="line">The line to parse.</param>
+            <param name="start">The expected line prefix.</param>
+            <param name="setValue">Action to set the parsed boolean value.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SafetyStatusParser.ParseLine(System.String)">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis">
             <summary>
@@ -36954,6 +37977,9 @@
             <summary>
             Controller program states
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosis.ToString">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Diagnosis.SummaryDiagnosisReader">
             <summary>
@@ -37020,6 +38046,55 @@
             Get the collection of all parsers
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem">
+            <summary>
+            Represents a single error item from the ERRALL error log
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.Id">
+            <summary>
+            Error entry identifier
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.Text">
+            <summary>
+            Raw text of the error entry
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.ErrorCode">
+            <summary>
+            Parsed error code (e.g. "SRVO-001")
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.Message">
+            <summary>
+            Error message description
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.OccurringTime">
+            <summary>
+            Date and time when the error occurred
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.IsReset">
+            <summary>
+            Indicates whether this entry is a RESET marker
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrallSectionItem.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.List.ErrorList">
+            <summary>
+            Represents the parsed content of the ERRALL.LS error log file
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.List.ErrorList.Name">
             <summary>
             File name (ERRALL.LS)
@@ -37034,6 +38109,22 @@
             <summary>
             Return active alarms among the list of all error items
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrorList.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.List.ErrorListReader">
+            <summary>
+            Reader for the ERRALL.LS error log file
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrorListReader.#ctor">
+            <summary>
+            Creates a new instance of the error list reader
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Ftp.List.ErrorListReader.ReadFile(System.IO.Stream,UnderAutomation.Fanuc.Common.Languages,System.String)">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.FluentFTP.FtpClient">
             <summary>
@@ -42011,6 +43102,11 @@
             R2000iC 220U
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils">
+            <summary>
+            Utility methods implementing CRX collaborative robot inverse kinematics using a geometric approach.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.NormalizeDeg(System.Double)">
             <summary>
             Normalize to (-180,180]; near-zero rounded to 0 to avoid noisy output.
@@ -42050,6 +43146,137 @@
             <summary>
             3×3 transpose.
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.IDhParameters">
+            <summary>
+            Interface defining the Denavit-Hartenberg parameters for a 6-axis robot arm.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.D4">
+            <summary>
+            DH parameter D4 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.D5">
+            <summary>
+            DH parameter D5 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.D6">
+            <summary>
+            DH parameter D6 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.A1">
+            <summary>
+            DH parameter A1 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.A2">
+            <summary>
+            DH parameter A2 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.IDhParameters.A3">
+            <summary>
+            DH parameter A3 (mm).
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.KinematicsCategory">
+            <summary>
+            Category of kinematics model for a robot arm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.KinematicsCategory.Invalid">
+            <summary>
+            Invalid or unsupported kinematics configuration.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.KinematicsCategory.Crx">
+            <summary>
+            CRX collaborative robot kinematics.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.KinematicsCategory.Opw">
+            <summary>
+            OPW (ortho-parallel wrist) kinematics for standard industrial robots.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.DhParameters">
+            <summary>
+            Denavit-Hartenberg parameters for a 6-axis robot arm.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.#ctor">
+            <summary>
+            Initializes a new empty instance of <see cref="T:UnderAutomation.Fanuc.Kinematics.DhParameters"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of <see cref="T:UnderAutomation.Fanuc.Kinematics.DhParameters"/> with the specified values.
+            </summary>
+            <param name="d4">DH parameter D4 (mm).</param>
+            <param name="d5">DH parameter D5 (mm).</param>
+            <param name="d6">DH parameter D6 (mm).</param>
+            <param name="a1">DH parameter A1 (mm).</param>
+            <param name="a2">DH parameter A2 (mm).</param>
+            <param name="a3">DH parameter A3 (mm).</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.#ctor(UnderAutomation.Fanuc.Kinematics.IDhParameters)">
+            <summary>
+            Initializes a new instance of <see cref="T:UnderAutomation.Fanuc.Kinematics.DhParameters"/> by copying from an existing <see cref="T:UnderAutomation.Fanuc.Kinematics.IDhParameters"/>.
+            </summary>
+            <param name="parameters">The source parameters to copy.</param>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.DhParameters.Tag">
+            <summary>
+            User-defined tag for associating additional data with this instance.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.D4">
+            <summary>
+            DH parameter D4 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.D5">
+            <summary>
+            DH parameter D5 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.D6">
+            <summary>
+            DH parameter D6 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.A1">
+            <summary>
+            DH parameter A1 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.A2">
+            <summary>
+            DH parameter A2 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.A3">
+            <summary>
+            DH parameter A3 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.DhParameters.KinematicsCategory">
+            <summary>
+            Gets the kinematics category determined from the DH parameter values.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.DhParameters.FromArmKinematicModel(System.String)">
             <summary>
@@ -42092,6 +43319,62 @@
             Loads DH parameters from parsed variable $MRR_GRP located in symotn.va.
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute">
+            <summary>
+            Attribute that associates DH parameters with an arm kinematic model enum value.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.#ctor(System.String,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of <see cref="T:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute"/> with the specified description and DH parameters.
+            </summary>
+            <param name="description">The human-readable model name.</param>
+            <param name="d4">DH parameter D4 (mm).</param>
+            <param name="d5">DH parameter D5 (mm).</param>
+            <param name="d6">DH parameter D6 (mm).</param>
+            <param name="a1">DH parameter A1 (mm).</param>
+            <param name="a2">DH parameter A2 (mm).</param>
+            <param name="a3">DH parameter A3 (mm).</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.D4">
+            <summary>
+            DH parameter D4 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.D5">
+            <summary>
+            DH parameter D5 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.D6">
+            <summary>
+            DH parameter D6 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.A1">
+            <summary>
+            DH parameter A1 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.A2">
+            <summary>
+            DH parameter A2 (mm).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.A3">
+            <summary>
+            DH parameter A3 (mm).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Kinematics.KinematicsUtils">
             <summary>
             Kinematics utilities
@@ -42106,6 +43389,22 @@
             <summary>
             Compute FK for given joint angles (rad) and DH parameters
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters)">
+            <summary>
+            Compute all inverse kinematics solutions for a desired end effector pose.
+            </summary>
+            <param name="position">Target Cartesian position.</param>
+            <param name="parameters">DH parameters of the robot.</param>
+            <returns>An array of joint angle solutions.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.Mul(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Multiply two 4x4 homogeneous transformation matrices.
+            </summary>
+            <param name="A">Left matrix.</param>
+            <param name="B">Right matrix.</param>
+            <returns>The product matrix A * B.</returns>
         </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.KinematicsUtils.DHm(System.Double,System.Double,System.Double,System.Double,System.Double)">
             <summary>
@@ -42260,6 +43559,11 @@
             Throw a InvalidLicenseException if the license is not valid
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.IsLicensed">
+            <summary>
+            True if the license state is Licensed, Trial or ExtraTrial ; false otherwise
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.License.LicenseInfo.LicenseKey">
             <summary>
             The license key supplied by UnderAutomation (null for trial period)
@@ -42378,6 +43682,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId">
             <summary>Error identifier. 0 means success; non-zero indicates a controller error.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse">
             <summary>
             Base class for responses that include a sequence identifier.
@@ -42386,6 +43699,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse.SequenceId">
             <summary>Echoed SequenceID of the instruction that completed.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiSequenceResponse.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse">
             <summary>
             Base class for responses with a controller <see cref="P:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag"/> value.
@@ -42393,6 +43715,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag">
             <summary>Controller time tick for the data sample.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus">
             <summary>
@@ -42423,6 +43754,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.NumberUFrame">
             <summary>Number of UFRAMEs configured.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerStatus.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers">
             <summary>
             Current UFRAME and UTOOL numbers.
@@ -42433,6 +43773,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.UToolNumber">
             <summary>Current user tool number.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.UFrameUToolNumbers.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue">
             <summary>
@@ -42445,6 +43794,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.PortValue">
             <summary>Port value (0 = OFF, 1 = ON).</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.DigitalInputValue.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition">
             <summary>
             Result of reading cartesian position.
@@ -42456,6 +43814,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.Position">
             <summary>Cartesian TCP position.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.CartesianPosition.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample">
             <summary>
             Result of reading joint angles.
@@ -42463,6 +43830,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample.JointAngle">
             <summary>Joint angle set.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAnglesSample.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText">
             <summary>
@@ -42472,6 +43848,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText.ErrorData">
             <summary>Controller error text in the form XXXX-NNN.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.ControllerErrorText.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed">
             <summary>
             Result of reading TCP speed.
@@ -42479,6 +43864,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed.Speed">
             <summary>Current tool center point speed.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.TcpSpeed.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame">
             <summary>
@@ -42490,6 +43884,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.Frame">
             <summary>Frame data.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.IndexedFrame.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData">
             <summary>
@@ -42504,6 +43907,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.Position">
             <summary>Position saved in the position register.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.PositionRegisterData.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiMessageKind">
             <summary>
@@ -42735,6 +44147,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.Frame.Ext3">
             <summary>Extended axis 3 (optional).</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.Frame.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.Frame.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.Frame.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration">
             <summary>
             Motion configuration including frame/tool numbers and turn/flip bits.
@@ -42767,6 +44188,15 @@
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Turn6">
             <summary>Turn 6.</summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.MotionConfiguration.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.JointAngles">
             <summary>
             Joint angle set. Unused joints default to 0 if the robot has fewer than 9 axes.
@@ -42798,6 +44228,15 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Rmi.Data.JointAngles.J9">
             <summary>Joint 9 angle (optional extended axis).</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAngles.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAngles.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.Data.JointAngles.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase">
             <summary>
@@ -42960,6 +44399,34 @@
             Dispose and disconnect
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiClientInternal">
+            <summary>
+            Internal RMI client used by the library infrastructure.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase">
+            <summary>
+            Base class for RMI connection parameters.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.DEFAULT_PORT">
+            <summary>Default RMI bootstrap port (16001).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.DEFAULT_READ_TIMEOUT_MS">
+            <summary>Default read timeout in milliseconds (3000).</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.DEFAULT_WRITE_TIMEOUT_MS">
+            <summary>Default write timeout in milliseconds (3000).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.Port">
+            <summary>RMI bootstrap port number.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.ReadTimeoutMs">
+            <summary>Read timeout in milliseconds.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Rmi.Internal.RmiConnectParametersBase.WriteTimeoutMs">
+            <summary>Write timeout in milliseconds.</summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Internal.RmiNameAttribute">
             <summary>
             Marks a property or field with the RMI key name to be used during serialization.
@@ -42986,6 +44453,25 @@
             Small TCP socket wrapper to exchange CRLF-terminated payloads with the controller.
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Rmi.RmiClient">
+            <summary>
+            RMI client for connecting to and controlling FANUC robots via the Remote Motion Interface protocol.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.RmiClient.#ctor">
+            <summary>
+            Creates a new instance of the RMI client.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Rmi.RmiClient.Connect(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Connect to the FANUC controller using the RMI protocol.
+            </summary>
+            <param name="ip">Controller IP address or hostname.</param>
+            <param name="port">Bootstrap port number.</param>
+            <param name="readTimeoutMs">Read timeout in milliseconds.</param>
+            <param name="writeTimeoutMs">Write timeout in milliseconds.</param>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.RmiException">
             <summary>
             Represents an error reported by the FANUC RMI controller or thrown by the client runtime.
@@ -43011,11 +44497,462 @@
             Gets the controller error id when available (0 means no error id was attached).
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple integer system variables at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment.Read">
+            <summary>
+            Reads all integer system variables assigned in this batch.
+            </summary>
+            <returns>An array of integer values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.FlagBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple flag values at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.FlagBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.FlagBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.FlagBatchAssignment.Read">
+            <summary>
+            Reads all flag values assigned in this batch.
+            </summary>
+            <returns>An array of boolean flag values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple numeric registers at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment"/> class.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment.Read">
             <summary>
             Read all numeric registers assigned in this batch assignment.
             </summary>
             <returns>Returns an array of float values representing the numeric registers</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple position registers at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment.Read">
+            <summary>
+            Reads all position registers assigned in this batch.
+            </summary>
+            <returns>An array of <see cref="T:UnderAutomation.Fanuc.Common.Position"/> values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.PositionSystemVariablesBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple position system variables at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.PositionSystemVariablesBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.PositionSystemVariablesBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.PositionSystemVariablesBatchAssignment.Read">
+            <summary>
+            Reads all position system variables assigned in this batch.
+            </summary>
+            <returns>An array of <see cref="T:UnderAutomation.Fanuc.Common.Position"/> values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.RealSystemVariablesBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple real (float) system variables at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.RealSystemVariablesBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.RealSystemVariablesBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.RealSystemVariablesBatchAssignment.Read">
+            <summary>
+            Reads all real system variables assigned in this batch.
+            </summary>
+            <returns>An array of float values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple string registers at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment.Read">
+            <summary>
+            Reads all string registers assigned in this batch.
+            </summary>
+            <returns>An array of string values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple string system variables at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment.Read">
+            <summary>
+            Reads all string system variables assigned in this batch.
+            </summary>
+            <returns>An array of string values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase">
+            <summary>
+            Base class for extended (long) SNPX packets.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.PacketNumber">
+            <summary>
+            Gets or sets the packet number within a multi-packet sequence.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.TotalPacketNumber">
+            <summary>
+            Gets or sets the total number of packets in the sequence.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.ServiceRequestCode">
+            <summary>
+            Gets or sets the service request code for this packet.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.SegmentSelector">
+            <summary>
+            Gets or sets the segment selector for memory access.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.Payload">
+            <summary>
+            Gets or sets the payload data.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.ActualPayload">
+            <summary>
+            Gets the actual payload data.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedPacketBase"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedRequestPacket">
+            <summary>
+            Represents an extended (long) SNPX request packet.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedRequestPacket.Index">
+            <summary>
+            Gets or sets the starting index for the memory operation.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ExtendedRequestPacket.Count">
+            <summary>
+            Gets or sets the number of elements to read or write.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ExtendedRequestPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedRequestPacket"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedResponsePacket">
+            <summary>
+            Represents an extended (long) SNPX response packet.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ExtendedResponsePacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ExtendedResponsePacket"/> class from a raw buffer.
+            </summary>
+            <param name="buffer">The raw byte buffer received from the robot.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.IPacket">
+            <summary>
+            Defines the common interface for all SNPX packets.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.IPacket.MessageType">
+            <summary>
+            Gets the message type of this packet.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.IPacket.Header">
+            <summary>
+            Gets the header bytes of this packet.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.IPacket.ExtraPayload">
+            <summary>
+            Gets the extra payload bytes beyond the header.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.IPacket.GetBytes">
+            <summary>
+            Serializes the packet to a byte array for transmission.
+            </summary>
+            <returns>The complete packet as a byte array.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.IRequestPacket">
+            <summary>
+            Defines the interface for SNPX request packets sent to the robot.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.IResponsePacket">
+            <summary>
+            Defines the interface for SNPX response packets received from the robot.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.IResponsePacket.ActualPayload">
+            <summary>
+            Gets the actual payload data from the response.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.MessageType">
+            <summary>
+            Defines the types of SNPX messages.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.MessageType.SHORT">
+            <summary>
+            Short request message.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.MessageType.SHORT_ACK">
+            <summary>
+            Short acknowledgement message.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.MessageType.LONG">
+            <summary>
+            Long (extended) request message.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.MessageType.LONG_ACK">
+            <summary>
+            Long (extended) acknowledgement message.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.MessageType.SHORT_FAILED">
+            <summary>
+            Short failure response message.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.PacketBase">
+            <summary>
+            Abstract base class for all SNPX protocol packets.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._ToUInt16(System.Byte,System.Byte)">
+            <summary>
+            Converts two bytes to a 16-bit unsigned integer.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._ToUInt32(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Converts four bytes to a 32-bit unsigned integer.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._ToBytes(System.UInt16,System.Byte@,System.Byte@)">
+            <summary>
+            Converts a 16-bit unsigned integer to two bytes.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._ToBytes(System.UInt32,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <summary>
+            Converts a 32-bit unsigned integer to four bytes.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.ExtraLengthFromHeaderBuffer(System.Byte[])">
+            <summary>
+            Extracts the extra payload length from a header byte buffer.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.HEADER_LENGTH">
+            <summary>
+            The fixed length of the SNPX packet header in bytes.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Header">
+            <summary>
+            Gets the raw header byte array.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.PacketType">
+            <summary>
+            Gets or sets the packet type.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._SequenceNumber">
+            <summary>
+            Gets or sets the sequence number for packet tracking.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.ExtraLength">
+            <summary>
+            Gets or sets the length of the extra payload.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Unknown_8">
+            <summary>
+            Gets or sets unknown field at offset 8.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Unknown_16">
+            <summary>
+            Gets or sets unknown field at offset 16.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Second">
+            <summary>
+            Gets or sets the seconds component of the timestamp.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Minute">
+            <summary>
+            Gets or sets the minutes component of the timestamp.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Hour">
+            <summary>
+            Gets or sets the hours component of the timestamp.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase._SequenceNumber2">
+            <summary>
+            Gets or sets the second sequence number field.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.MessageType">
+            <summary>
+            Gets or sets the message type.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.MailboxSource">
+            <summary>
+            Gets or sets the source mailbox address.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.MailboxDestination">
+            <summary>
+            Gets or sets the destination mailbox address.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.PacketNumber">
+            <summary>
+            Gets or sets the packet number within a multi-packet sequence.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.TotalPacketNumber">
+            <summary>
+            Gets or sets the total number of packets in the sequence.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.SequenceNumber">
+            <summary>
+            Gets or sets the sequence number, updating both sequence number fields.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.ExtraPayload">
+            <summary>
+            Gets or sets the extra payload data beyond the header.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.Payload">
+            <summary>
+            Gets or sets the payload data.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.ActualPayload">
+            <summary>
+            Gets the actual payload data for processing.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.PacketBase"/> class.
+            </summary>
+            <param name="buffer">Optional raw buffer to initialize the header from.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PacketBase.GetBytes">
+            <summary>
+            Serializes the packet to a byte array.
+            </summary>
+            <returns>The complete packet as a byte array.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.PacketType">
+            <summary>
+            Defines the SNPX packet types.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.INIT">
+            <summary>
+            Initialization packet.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.REQUEST">
+            <summary>
+            Request packet.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.ACK">
+            <summary>
+            Acknowledgement packet.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.UNKNOWN_8">
+            <summary>
+            Unknown packet type used during initialization.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.PositionConverter">
+            <summary>
+            Provides methods to convert between byte arrays and <see cref="T:UnderAutomation.Fanuc.Common.Position"/> objects for the SNPX protocol.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionConverter.ToPosition(System.Byte[],System.Int32)">
+            <summary>
+            Converts a byte array to a <see cref="T:UnderAutomation.Fanuc.Common.Position"/> object.
+            </summary>
+            <param name="bytes">The byte array containing position data.</param>
+            <param name="start">The starting offset in the byte array.</param>
+            <returns>A <see cref="T:UnderAutomation.Fanuc.Common.Position"/> parsed from the byte data.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionConverter.GetBytes(UnderAutomation.Fanuc.Common.Position)">
+            <summary>
+            Converts a <see cref="T:UnderAutomation.Fanuc.Common.Position"/> object to a byte array for transmission.
+            </summary>
+            <param name="pos">The position to convert.</param>
+            <returns>A byte array representing the position data.</returns>
         </member>
         <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmId.ACAL">
             <summary>
@@ -43497,6 +45434,86 @@
             XML Errors
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity">
+            <summary>
+            Represents the severity level of a robot alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.NONE">
+            <summary>
+            No severity.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.WARN">
+            <summary>
+            Warning level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.PAUSE_L">
+            <summary>
+            Local pause level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.PAUSE_G">
+            <summary>
+            Global pause level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.STOP_L">
+            <summary>
+            Local stop level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.STOP_G">
+            <summary>
+            Global stop level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.SERVO">
+            <summary>
+            Servo error alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.ABORT_L">
+            <summary>
+            Local abort level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.ABORT_G">
+            <summary>
+            Global abort level alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.SERVO2">
+            <summary>
+            Servo error level 2 alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmSeverity.SYSTEM">
+            <summary>
+            System level alarm.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.AlarmType">
+            <summary>
+            Defines whether an alarm is active or historical.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmType.Active">
+            <summary>
+            Currently active alarm.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.AlarmType.History">
+            <summary>
+            Historical alarm from the alarm log.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm">
+            <summary>
+            Represents a robot alarm with its category, severity, time, and message.
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Id">
             <summary>
             Alarm Category
@@ -43540,6 +45557,106 @@
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.SeverityMessage">
             <summary>
             Severity message
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.FromBytes(System.Byte[],UnderAutomation.Fanuc.Common.Languages,System.Int32)">
+            <summary>
+            Creates a <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm"/> from a byte array.
+            </summary>
+            <param name="bytes">The byte array containing alarm data.</param>
+            <param name="language">The controller language for string decoding.</param>
+            <param name="start">The starting offset in the byte array.</param>
+            <returns>A <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm"/> parsed from the byte data, or null if bytes is null.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Equals(UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm)">
+            <summary>
+            Determines whether the specified <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm"/> is equal to this instance.
+            </summary>
+            <param name="other">The alarm to compare with.</param>
+            <returns>true if the alarms are equal; otherwise, false.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotAlarm.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskState">
+            <summary>
+            Represents the execution state of a robot task.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskState.Stopped">
+            <summary>
+            Task is stopped.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskState.Paused">
+            <summary>
+            Task is paused.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskState.Running">
+            <summary>
+            Task is running.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus">
+            <summary>
+            Represents the status of a running task on the robot controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.ProgramName">
+            <summary>
+            Gets or sets the name of the program being executed.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.LineNumber">
+            <summary>
+            Gets or sets the current line number in the program.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.State">
+            <summary>
+            Gets or sets the current execution state of the task.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.Caller">
+            <summary>
+            Gets or sets the name of the calling program.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.Equals(UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus)">
+            <summary>
+            Determines whether the specified <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> is equal to this instance.
+            </summary>
+            <param name="other">The task status to compare with.</param>
+            <returns>true if the task statuses are equal; otherwise, false.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus.FromBytes(System.Byte[],UnderAutomation.Fanuc.Common.Languages,System.Int32)">
+            <summary>
+            Creates a <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> from a byte array.
+            </summary>
+            <param name="bytes">The byte array containing task status data.</param>
+            <param name="language">The controller language for string decoding.</param>
+            <param name="start">The starting offset in the byte array.</param>
+            <returns>A <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> parsed from the byte data, or null if bytes is null.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset">
+            <summary>
+            Defines the base offset values for different I/O segment types.
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset.SDIO">
@@ -43597,6 +45714,297 @@
             PMC Data table
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector">
+            <summary>
+            Defines segment selector codes for SNPX memory access operations.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_I">
+            <summary>
+            Bit-level input segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_Q">
+            <summary>
+            Bit-level output segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_T">
+            <summary>
+            Bit-level T segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_M">
+            <summary>
+            Bit-level M segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_SA">
+            <summary>
+            Bit-level SA segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_SB">
+            <summary>
+            Bit-level SB segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_SC">
+            <summary>
+            Bit-level SC segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_S">
+            <summary>
+            Bit-level S segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BIT_G">
+            <summary>
+            Bit-level G segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_I">
+            <summary>
+            Byte-level input segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_Q">
+            <summary>
+            Byte-level output segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_T">
+            <summary>
+            Byte-level T segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_M">
+            <summary>
+            Byte-level M segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_SA">
+            <summary>
+            Byte-level SA segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_SB">
+            <summary>
+            Byte-level SB segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_SC">
+            <summary>
+            Byte-level SC segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.BYTE_G">
+            <summary>
+            Byte-level G segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.WORD_R">
+            <summary>
+            Word-level R segment for register access.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.WORD_AI">
+            <summary>
+            Word-level AI segment for analog input.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.WORD_AQ">
+            <summary>
+            Word-level AQ segment for analog output.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector.INIT">
+            <summary>
+            Selector used during connection initialization.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode">
+            <summary>
+            Defines the service request codes used in the SNPX protocol.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.PLC_SHORT_STATUS">
+            <summary>
+            PLC short status request.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.GET_PROGNAME">
+            <summary>
+            Get control program names.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.READ_SYS_MEM">
+            <summary>
+            Read system memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.READ_TASK_MEM">
+            <summary>
+            Read task memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.READ_PROG_MEM">
+            <summary>
+            Read program memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.WRITE_SYS_MEM">
+            <summary>
+            Write system memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.WRITE_TASK_MEM">
+            <summary>
+            Write task memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.WRITE_PROG_MEM">
+            <summary>
+            Write program block memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.PROG_LOGON">
+            <summary>
+            Programmer logon.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.CHANGE_PRIV">
+            <summary>
+            Change PLC CPU privilege level.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.SET_CPU_ID">
+            <summary>
+            Set control ID (CPU ID).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.SET_PLC_RUN">
+            <summary>
+            Set PLC run or stop state.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.SET_PLC_TIME">
+            <summary>
+            Set PLC time and date.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.GET_PKC_TIME">
+            <summary>
+            Get PLC time and date.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.GET_FAULT">
+            <summary>
+            Get fault table.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.CLR_FAULT">
+            <summary>
+            Clear fault table.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.PROG_STORE">
+            <summary>
+            Program store (upload from PLC).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.PROG_LOAD">
+            <summary>
+            Program load (download to PLC).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.GET_INFO">
+            <summary>
+            Get controller type and ID information.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.TOGGLE_FORCE_SYS_MEM">
+            <summary>
+            Toggle force system memory.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.ServiceRequestCode.INIT">
+            <summary>
+            Unknown request used during initialization.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase">
+            <summary>
+            Base class for short SNPX packets where payload fits within the header.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase.ServiceRequestCode">
+            <summary>
+            Gets or sets the service request code for this packet.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase.SegmentSelector">
+            <summary>
+            Gets or sets the segment selector for memory access.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase.ActualPayload">
+            <summary>
+            Gets the actual payload data.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ShortPacketBase"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket">
+            <summary>
+            Represents a short SNPX request packet where payload fits within the header.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket.Index">
+            <summary>
+            Gets or sets the starting index for the memory operation.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket.Count">
+            <summary>
+            Gets or sets the number of elements to read or write.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket.Payload">
+            <summary>
+            Gets or sets the payload data stored within the header bytes.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket.ActualPayload">
+            <summary>
+            Gets the actual payload data.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ShortRequestPacket"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ShortResponsePacket">
+            <summary>
+            Represents a short SNPX response packet received from the robot.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.ShortResponsePacket.Payload">
+            <summary>
+            Gets or sets the payload data stored within the header bytes.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ShortResponsePacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.ShortResponsePacket"/> class from a raw buffer.
+            </summary>
+            <param name="buffer">The raw byte buffer received from the robot.</param>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase">
             <summary>
             Base class for Snpx internal and public client
@@ -43604,7 +46012,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Ip">
             <summary>
-            
+            IP address of the connected robot.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.NumericRegisters">
@@ -43783,6 +46191,11 @@
             </summary>
             <returns>True if the connection is still open after checking via polling</returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.GetSnpxAssignableElements">
+            <summary>
+            Returns all SNPX assignable elements.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Disconnect">
             <summary>
             Disconnect from the robot
@@ -43795,33 +46208,712 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Boolean)">
             <summary>
-            Set boolean variable without assignments
+            Set boolean variable without assignments.
             </summary>
+            <param name="name">Variable name.</param>
+            <param name="value">Boolean value to set.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Int32)">
             <summary>
-            Set integer variable without assignments
+            Set integer variable without assignments.
             </summary>
+            <param name="name">Variable name.</param>
+            <param name="value">Integer value to set.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.Double)">
             <summary>
-            Set double variable without assignments
+            Set double variable without assignments.
             </summary>
+            <param name="name">Variable name.</param>
+            <param name="value">Double value to set.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SetVariable(System.String,System.String)">
             <summary>
-            Set string variable without assignments
+            Set string variable without assignments.
             </summary>
+            <param name="name">Variable name.</param>
+            <param name="value">String value to set.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ClearAssignments">
             <summary>
             Clear all assignments
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.GetAssignments">
+            <summary>
+            Gets all current assignments.
+            </summary>
+            <returns>An array of all active assignments.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientInternal">
+            <summary>
+            Internal SNPX client used by the framework for establishing connections.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientInternal.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientInternal"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientInternal.Connect(System.String)">
+            <summary>
+            Connects to the robot at the specified IP address.
+            </summary>
+            <param name="ip">The IP address of the robot.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase">
+            <summary>
+            Base class for SNPX connection parameters.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.DEFAULT_PORT">
+            <summary>
+            The default SNPX port number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.Port">
+            <summary>
+            Gets or sets the port number for the SNPX connection.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters">
+            <summary>
+            Provides access to numeric registers (R[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple numeric registers.
+            </summary>
+            <param name="startIndex">The starting register index.</param>
+            <param name="count">The number of consecutive registers.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters">
+            <summary>
+            Provides access to position registers (PR[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.Write(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition)">
+            <summary>
+            Writes a joints position to the specified position register.
+            </summary>
+            <param name="index">The register index.</param>
+            <param name="jointsPosition">The joints position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.Write(System.Int32,UnderAutomation.Fanuc.Common.ExtendedCartesianPosition)">
+            <summary>
+            Writes an extended Cartesian position to the specified position register.
+            </summary>
+            <param name="index">The register index.</param>
+            <param name="extendedCartesianPosition">The extended Cartesian position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.Write(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition)">
+            <summary>
+            Writes a Cartesian position to the specified position register.
+            </summary>
+            <param name="index">The register index.</param>
+            <param name="cartesianPosition">The Cartesian position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple position registers.
+            </summary>
+            <param name="startIndex">The starting register index.</param>
+            <param name="count">The number of consecutive registers.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionRegisters.Read(System.Int32)">
+            <summary>
+            Reads the position at the specified register index.
+            </summary>
+            <param name="index">The register index.</param>
+            <returns>The position value.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters">
+            <summary>
+            Provides access to string registers (SR[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple string registers.
+            </summary>
+            <param name="startIndex">The starting register index.</param>
+            <param name="count">The number of consecutive registers.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.Flags">
+            <summary>
+            Provides access to flag registers (F[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Flags.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.Flags"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Flags.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple flags.
+            </summary>
+            <param name="startIndex">The starting flag index.</param>
+            <param name="count">The number of consecutive flags.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.IntegerSystemVariables">
+            <summary>
+            Provides access to integer system variables on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.IntegerSystemVariables.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.IntegerSystemVariables"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.RealSystemVariables">
+            <summary>
+            Provides access to real (float) system variables on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.RealSystemVariables.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.RealSystemVariables"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables">
+            <summary>
+            Provides access to position system variables on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables.Write(System.String,UnderAutomation.Fanuc.Common.JointsPosition)">
+            <summary>
+            Writes a joints position to the specified system variable.
+            </summary>
+            <param name="variable">The system variable name.</param>
+            <param name="jointsPosition">The joints position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables.Write(System.String,UnderAutomation.Fanuc.Common.ExtendedCartesianPosition)">
+            <summary>
+            Writes an extended Cartesian position to the specified system variable.
+            </summary>
+            <param name="variable">The system variable name.</param>
+            <param name="extendedCartesianPosition">The extended Cartesian position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables.Write(System.String,UnderAutomation.Fanuc.Common.CartesianPosition)">
+            <summary>
+            Writes a Cartesian position to the specified system variable.
+            </summary>
+            <param name="variable">The system variable name.</param>
+            <param name="cartesianPosition">The Cartesian position to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.PositionSystemVariables.Read(System.String)">
+            <summary>
+            Reads the position at the specified system variable.
+            </summary>
+            <param name="index">The system variable name.</param>
+            <returns>The position value.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringSystemVariables">
+            <summary>
+            Provides access to string system variables on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringSystemVariables.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringSystemVariables"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SegmentName">
+            <summary>
+            Identifies the type of I/O segment.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.SDI">
+            <summary>Safety Digital Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.SDO">
+            <summary>Safety Digital Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.RDI">
+            <summary>Remote Digital Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.RDO">
+            <summary>Remote Digital Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.UI">
+            <summary>User Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.UO">
+            <summary>User Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.SI">
+            <summary>System Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.SO">
+            <summary>System Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.WI">
+            <summary>Weld Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.WO">
+            <summary>Weld Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.WSI">
+            <summary>Wire Stick Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.PMC_K">
+            <summary>PMC Keep Relay.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.PMC_R">
+            <summary>PMC Internal Relay.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.AI">
+            <summary>Analog Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.AO">
+            <summary>Analog Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.GI">
+            <summary>Group Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.GO">
+            <summary>Group Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SegmentName.PMC_D">
+            <summary>PMC Data Table.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals">
+            <summary>
+            Provides read/write access to digital I/O signals on the robot.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.SegmentSelector">
+            <summary>
+            Gets the segment selector for this signal group.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.SegmentOffset">
+            <summary>
+            Gets the segment offset for this signal group.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.SegmentName">
+            <summary>
+            Gets the segment name identifying this signal group.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase,UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector,UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset,UnderAutomation.Fanuc.Snpx.Internal.SegmentName)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.Read(System.Int32)">
+            <summary>
+            Reads the digital signal at the specified index.
+            </summary>
+            <param name="index">The signal index (1-based).</param>
+            <returns>The boolean state of the signal.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.Read(System.Int32,System.UInt16)">
+            <summary>
+            Reads a range of digital signals.
+            </summary>
+            <param name="firstIndex">The first signal index (1-based).</param>
+            <param name="count">The number of signals to read.</param>
+            <returns>An array of boolean signal states.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.Write(System.Int32,System.Boolean)">
+            <summary>
+            Writes a value to the digital signal at the specified index.
+            </summary>
+            <param name="index">The signal index (1-based).</param>
+            <param name="value">The boolean value to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.DigitalSignals.Write(System.Int32,System.Boolean[])">
+            <summary>
+            Writes values to consecutive digital signals.
+            </summary>
+            <param name="firstIndex">The first signal index (1-based).</param>
+            <param name="values">The boolean values to write.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericIO">
+            <summary>
+            Provides read/write access to numeric (group/analog) I/O on the robot.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.SegmentSelector">
+            <summary>
+            Gets the segment selector for this I/O group.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.SegmentOffset">
+            <summary>
+            Gets the segment offset for this I/O group.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.SegmentName">
+            <summary>
+            Gets the segment name identifying this I/O group.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase,UnderAutomation.Fanuc.Snpx.Internal.SegmentSelector,UnderAutomation.Fanuc.Snpx.Internal.SegmentOffset,UnderAutomation.Fanuc.Snpx.Internal.SegmentName)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.NumericIO"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.Read(System.Int32)">
+            <summary>
+            Reads the numeric I/O value at the specified index.
+            </summary>
+            <param name="index">The I/O index (1-based).</param>
+            <returns>The numeric I/O value.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.Read(System.Int32,System.UInt16)">
+            <summary>
+            Reads a range of numeric I/O values.
+            </summary>
+            <param name="firstIndex">The first I/O index (1-based).</param>
+            <param name="count">The number of values to read.</param>
+            <returns>An array of numeric I/O values.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.Write(System.Int32,System.UInt16)">
+            <summary>
+            Writes a value to the numeric I/O at the specified index.
+            </summary>
+            <param name="index">The I/O index (1-based).</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericIO.Write(System.Int32,System.UInt16[])">
+            <summary>
+            Writes values to consecutive numeric I/O.
+            </summary>
+            <param name="firstIndex">The first I/O index (1-based).</param>
+            <param name="values">The values to write.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest">
+            <summary>
+            Specifies the motion group and user frame for reading the current robot position.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.Group">
+            <summary>
+            Gets or sets the motion group number.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.UserFrame">
+            <summary>
+            Gets or sets the user frame number.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition">
+            <summary>
+            Provides access to the current robot position via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition.ReadWorldPosition">
+            <summary>
+            Reads the current world position of the robot.
+            </summary>
+            <returns>The current position in world coordinates.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition.ReadWorldPosition(System.Int32)">
+            <summary>
+            Reads the current world position of the specified motion group.
+            </summary>
+            <param name="group">The motion group number.</param>
+            <returns>The current position in world coordinates.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition.ReadUserFramePosition(System.Int32)">
+            <summary>
+            Reads the current position in the specified user frame.
+            </summary>
+            <param name="userFrame">The user frame number.</param>
+            <returns>The current position in the user frame.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPosition.ReadUserFramePosition(System.Int32,System.Int32)">
+            <summary>
+            Reads the current position in the specified user frame and motion group.
+            </summary>
+            <param name="userFrame">The user frame number.</param>
+            <param name="group">The motion group number.</param>
+            <returns>The current position in the user frame.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.AlarmAccess">
+            <summary>
+            Provides access to robot alarms (active or historical) via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.AlarmAccess.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.AlarmAccess"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentTaskStatus">
+            <summary>
+            Provides access to the current task (program) status on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentTaskStatus.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentTaskStatus"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxElements`2">
+            <summary>
+            Abstract base class for accessing SNPX elements by index.
+            </summary>
+            <typeparam name="TValue">The type of value read from the element.</typeparam>
+            <typeparam name="TIndex">The type of index used to access the element.</typeparam>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SnpxElements`2._client">
+            <summary>
+            The underlying SNPX client.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxElements`2.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxElements`2"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxElements`2.Read(`1)">
+            <summary>
+            Reads the value at the specified index.
+            </summary>
+            <param name="index">The index to read from.</param>
+            <returns>The value at the index.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2">
+            <summary>
+            Abstract base class for batch assignment operations that read multiple values at once.
+            </summary>
+            <typeparam name="TValue">The type of values to read.</typeparam>
+            <typeparam name="TIndex">The type of index used for assignments.</typeparam>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2.Assignments">
+            <summary>
+            The assignments included in this batch.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2.Client">
+            <summary>
+            The SNPX client used for communication.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.BatchAssignment`2.Read">
+            <summary>
+            Reads all values from the batch assignment.
+            </summary>
+            <returns>An array of values read from the robot.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableIndexableElements`2">
+            <summary>
+            Abstract base class for writable assignable elements accessed by integer index.
+            </summary>
+            <typeparam name="TValue">The type of value.</typeparam>
+            <typeparam name="TAssignment">The batch assignment type.</typeparam>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableIndexableElements`2.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableIndexableElements`2"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableIndexableElements`2.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for a range of consecutive indices.
+            </summary>
+            <param name="startIndex">The starting index.</param>
+            <param name="count">The number of consecutive elements.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3">
+            <summary>
+            Abstract base class for writable assignable SNPX elements.
+            </summary>
+            <typeparam name="TValue">The type of value.</typeparam>
+            <typeparam name="TIndex">The type of index.</typeparam>
+            <typeparam name="TAssignment">The batch assignment type.</typeparam>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.WriteInClient(System.Int32,`0)">
+            <summary>
+            Writes a value to the robot at the specified offset.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.Write(`1,`0)">
             <summary>
-            Write value at a certain index
+            Write value at a certain index.
             </summary>
+            <param name="index">The element index.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.CreateBatchAssignment(`1[])">
+            <summary>
+            Creates a batch assignment for the specified indices.
+            </summary>
+            <param name="indexes">The indices to include in the batch.</param>
+            <returns>A batch assignment for the specified indices.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.ISnpxAssignableElements">
+            <summary>
+            Internal interface for managing SNPX element assignments.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ISnpxAssignableElements.ClearAssignments">
+            <summary>
+            Clears all assignments.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.ISnpxAssignableElements.GetAssignments">
+            <summary>
+            Gets all current assignments.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2">
+            <summary>
+            Abstract base class for SNPX elements that support memory assignment for efficient access.
+            </summary>
+            <typeparam name="TValue">The type of value.</typeparam>
+            <typeparam name="TIndex">The type of index.</typeparam>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.ReadFromClient(System.Int32)">
+            <summary>
+            Reads a value from the client at the specified memory offset.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.Read(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.GetOrCreateAssignment(`1)">
+            <summary>
+            Gets or creates an assignment for the specified index.
+            </summary>
+            <param name="index">The index to get or create an assignment for.</param>
+            <returns>The existing or newly created assignment.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.Assignment`1">
+            <summary>
+            Represents a typed SNPX memory assignment with an index.
+            </summary>
+            <typeparam name="TIndex">The type of index.</typeparam>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Assignment`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.Assignment`1"/> class.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.Assignment`1.Index">
+            <summary>
+            Gets the index of this assignment.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.Assignment">
+            <summary>
+            Represents an SNPX memory assignment mapping a named element to a memory offset.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Assignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.Assignment"/> class.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.Assignment.Offset">
+            <summary>
+            Gets the memory offset for this assignment. Negative if cleared.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.Assignment.IsAssignmentCleared">
+            <summary>
+            Gets a value indicating whether this assignment has been cleared.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.Assignment.Name">
+            <summary>
+            Gets the display name of this assignment.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Assignment.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Assignment.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Assignment.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.SnpxClient">
+            <summary>
+            SNPX protocol client for communicating with Fanuc robots.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.SnpxClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.SnpxClient"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.SnpxClient.Connect(System.String,System.Int32)">
+            <summary>
+            Connects to a Fanuc robot using the SNPX protocol.
+            </summary>
+            <param name="ip">The IP address of the robot.</param>
+            <param name="port">The port number to connect to.</param>
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket">
             <summary>
@@ -43875,6 +46967,12 @@
             <summary>
             Returns a string representation
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket">
             <summary>
@@ -43941,6 +47039,15 @@
             Motion data (position values)
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle">
             <summary>
             Data style for motion commands
@@ -43985,6 +47092,12 @@
             <summary>
             Returns a string representation
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOType">
             <summary>
@@ -44190,6 +47303,12 @@
             Returns a string representation
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot">
             <summary>
             Stream Motion packet types for PC to Robot communication
@@ -44251,6 +47370,9 @@
             </summary>
             <param name="exception">The exception that occurred</param>
             <param name="isStreaming">Whether streaming is still active</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.ToString">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags">
             <summary>
@@ -44321,6 +47443,12 @@
             <summary>
             Returns a string representation of the status
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket">
             <summary>
@@ -44402,6 +47530,9 @@
             Creates a new instance of StateReceivedEventArgs
             </summary>
             <param name="state">The state packet received from the robot</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.ToString">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType">
             <summary>
@@ -44611,6 +47742,15 @@
             Receive timeout in milliseconds
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer">
             <summary>
             Binary serialization utilities for Stream Motion protocol (Big Endian)
@@ -44698,6 +47838,11 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.TpCoordinates">
+            <summary>
+            Gets the current Teach Pendant coordinate system.
+            </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Connected">
             <summary>
@@ -44931,6 +48076,23 @@
             </summary>
             <param name="taskName">Name of a KAREL or TP program without estension</param>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.GetBreakpoints(System.String)">
+            <summary>
+            Returns the breakpoints set on the specified task.
+            </summary>
+            <param name="taskName">Name of a KAREL or TP program without extension</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.StepOn(System.String)">
+            <summary>
+            Enables step mode for the specified task.
+            </summary>
+            <param name="taskName">Name of a KAREL or TP program without extension</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.StepOff">
+            <summary>
+            Disables step mode.
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientInternal">
             <summary>
             Internal implementation of KCL Client
@@ -44942,6 +48104,108 @@
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="telnetKclPassword">Telnet password associated with KCL user</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetConnectParametersBase">
+            <summary>
+            Base class for Telnet connection parameters.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Internal.TelnetConnectParametersBase.TelnetKclPassword">
+            <summary>
+            Gets or sets the Telnet KCL password used for authentication.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetConnectParametersBase.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetConnectParametersBase.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetConnectParametersBase.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.CustomCommandResult">
+            <summary>
+            Result of a custom KCL command.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.CustomCommandResult.Data">
+            <summary>
+            Gets the raw data returned by the custom command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.CustomCommandResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.CustomCommandResult.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.StepOnResult">
+            <summary>
+            Result of the step on command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.StepOnResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.StepOffResult">
+            <summary>
+            Result of the step off command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.StepOffResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.AddBreakpointResult">
+            <summary>
+            Result of adding a breakpoint.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.AddBreakpointResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.RemoveBreakpointResult">
+            <summary>
+            Result of removing a breakpoint.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.RemoveBreakpointResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.Breakpoint">
+            <summary>
+            Represents a breakpoint set on a task line.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.Breakpoint.Line">
+            <summary>
+            Gets the line number where the breakpoint is set.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Breakpoint.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Breakpoint.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Breakpoint.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.BreakpointsResult">
+            <summary>
+            Result containing the breakpoints of a task.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.BreakpointsResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.BreakpointsResult.Breakpoints">
+            <summary>
+            Gets the breakpoints set on the task.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.BreakpointsResult.EndReceive">
+            <inheritdoc />
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.TaskInformationResult.TaskName">
             <summary>
@@ -45000,9 +48264,122 @@
             <param name="data">The result data as a string.</param>
             <returns>True if parsing is successful; otherwise, false.</returns>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.SimulateResult">
+            <summary>
+            Result of a simulate port command.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.UnsimulateResult">
+            <summary>
+            Result of an unsimulate port command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.UnsimulateResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.UnsimulateAllResult">
+            <summary>
+            Result of an unsimulate all command.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.VariableResult">
+            <summary>
+            Result of a show variable command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.VariableResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.VariablesResult">
+            <summary>
+            Result of a show variables command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.VariablesResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.ContinueResult">
+            <summary>
+            Result of a continue command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.ContinueResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.PauseResult">
+            <summary>
+            Result of a pause command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.PauseResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.AbortResult">
+            <summary>
+            Result of an abort command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.AbortResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.SetVariableResult">
+            <summary>
+            Result of a set variable command.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.GetVariableResult">
+            <summary>
+            Result of a get variable command containing the raw value.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.GetVariableResult.RawValue">
+            <summary>
+            Gets the raw value of the variable as a string.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.GetVariableResult.EndReceive">
             <summary>
             show variable termine toujours par une trame constitué uniquement de commande ANSI et d'espace. Cela arrête la réception des données. On décode donc à la fin les données accumulées
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.ResetResult">
+            <summary>
+            Result of a reset command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.ResetResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.ProgramCommandResult">
+            <summary>
+            Result of a program command (abort, continue, hold, pause, run, etc.).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.ProgramCommandResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.ProgramCommandResult.EndReceive">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.RunResult">
+            <summary>
+            Result of a run command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.RunResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.BaseResult">
+            <summary>
+            Base class for simple results that store error text from the response.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.BaseResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.Result">
+            <summary>
+            Abstract base class for all KCL command results.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.Result.ErrorText">
@@ -45025,9 +48402,17 @@
             During implementation, return true if it is assumed that the frame has finished being received.
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Result.ToString">
+            <inheritdoc />
+        </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Result.EndReceive">
             <summary>
             Indicates that responses have been completed and received
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult">
+            <summary>
+            Result of a get current pose command.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.Group">
@@ -45040,13 +48425,42 @@
             Cartesian position value of the current pose.
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.FromResult(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.GetCurrentPoseResult.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.SetValueResult">
+            <summary>
+            Base class for results that contain a former and new value.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.SetValueResult.ValueRegex">
+            <summary>
+            Regex used to parse former and new values from the response.
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.SetValueResult.FormerValue">
             <summary>
             Former value before the command
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.SetValueResult.NewValue">
+            <summary>
             New value after the command execution
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.SetValueResult.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.SetPortResult">
+            <summary>
+            Result of a set port command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.SetPortResult.FromResult(System.String)">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.KCLPorts">
             <summary>
@@ -45152,6 +48566,106 @@
             <summary>
             World coordinate system.
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs">
+            <summary>
+            Event arguments for TP coordinates received events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs.Coord">
+            <summary>
+            Gets the TP coordinate system received.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.TpCoordinatesReceivedEventArgs.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs">
+            <summary>
+            Event arguments for message received events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs.Message">
+            <summary>
+            Gets the message received from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs.IsReset">
+            <summary>
+            Gets a value indicating whether the message is a reset (empty message).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.MessageReceivedEventArgs.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs">
+            <summary>
+            Event arguments for KCL client error events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs.Exception">
+            <summary>
+            Gets the exception that occurred.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclClientErrorEventArgs.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.CommandSentEventArgs">
+            <summary>
+            Event arguments for command sent events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.CommandSentEventArgs.Command">
+            <summary>
+            Gets the command that was sent.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.CommandSentEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.CommandSentEventArgs.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.CommandSentEventArgs.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Telnet.KclCommandReceived">
+            <summary>
+            Event arguments for KCL command received events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Telnet.KclCommandReceived.Result">
+            <summary>
+            Gets the result of the received command.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclCommandReceived.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclCommandReceived.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.KclCommandReceived.GetHashCode">
+            <inheritdoc />
         </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.TelnetClient">
             <summary>

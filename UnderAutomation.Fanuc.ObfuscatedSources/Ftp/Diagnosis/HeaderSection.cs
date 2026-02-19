@@ -10,6 +10,27 @@ namespace Ftp.Diagnosis {
 	public class HeaderSection {
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public HeaderSection()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -21,7 +42,7 @@ namespace Ftp.Diagnosis {
 		public string FNumber { get; }
 
 		/// <summary>
-		/// COntroller version
+		/// Controller version
 		/// </summary>
 		public string Version { get; }
 
@@ -31,7 +52,7 @@ namespace Ftp.Diagnosis {
 		public string VersionFirmware { get; }
 
 		/// <summary>
-		/// Firmawre release date
+		/// Firmware release date
 		/// </summary>
 		public DateTime VersionDate { get; }
 

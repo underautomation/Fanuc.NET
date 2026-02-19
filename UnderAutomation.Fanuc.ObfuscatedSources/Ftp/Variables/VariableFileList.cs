@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Collections;
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Collection of variable files that aggregates all variables from the controller
+	/// </summary>
 	public class VariableFileList : Collection<GenericVariableFile>, IList<GenericVariableFile>, ICollection<GenericVariableFile>, IEnumerable<GenericVariableFile>, IList, ICollection, IEnumerable, IGenericVariableType {
 
 
@@ -17,18 +19,25 @@ namespace Ftp.Variables {
 		}
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public VariableFileList()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Name of the structure
+		/// Name of this variable file list
 		/// </summary>
 		public string Name { get; set; }
 
 		/// <summary>
-		/// Parent of this structure
+		/// Parent container
 		/// </summary>
 		public IGenericVariableType Parent { get; set; }
 

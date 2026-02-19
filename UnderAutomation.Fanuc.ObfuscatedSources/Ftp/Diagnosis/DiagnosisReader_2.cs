@@ -7,7 +7,9 @@ using System.IO;
 using Common;
 
 namespace Ftp.Diagnosis {
-
+	/// <summary>
+	/// Generic diagnosis file reader that parses a specific section from a diagnostic stream.
+	/// </summary>
 	public class DiagnosisReader<T, U> : FileReader<T>, IFileReader<T>, IFileReader where T : IFanucContent, new() where U : SectionParser<T>, new() {
 
 		/// <summary>

@@ -6,7 +6,9 @@ using System;
 using Snpx.Assignment;
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Provides access to flag registers (F[]) on the robot via SNPX.
+	/// </summary>
 	public class Flags : SnpxWritableAssignableIndexableElements<bool, FlagBatchAssignment> {
 
 
@@ -23,20 +25,29 @@ namespace Snpx.Internal {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Reads a value from the client at the specified memory offset.
+		/// </summary>
 		protected override bool ReadFromClient(int offset)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Writes a value to the robot at the specified offset.
+		/// </summary>
 		protected override void WriteInClient(int offset, bool value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Creates a batch assignment for reading multiple flags.
+		/// </summary>
+		/// <param name="startIndex">The starting flag index.</param>
+		/// <param name="count">The number of consecutive flags.</param>
+		/// <returns>A batch assignment for the specified range.</returns>
 		public FlagBatchAssignment CreateBatchAssignment(int startIndex, int count)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

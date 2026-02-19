@@ -4,8 +4,17 @@
 
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Abstract base class for typed variable file readers
+	/// </summary>
 	public abstract class VariableFile {
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		protected VariableFile()
@@ -13,7 +22,9 @@ namespace Ftp.Variables {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Name of the variable file
+		/// </summary>
 		public string FileName { get; protected set; }
 	}
 }

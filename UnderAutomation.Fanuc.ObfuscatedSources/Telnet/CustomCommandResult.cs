@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a custom KCL command.
+	/// </summary>
 	public class CustomCommandResult : Result {
 
 		/// <summary>
@@ -29,7 +31,9 @@ namespace Telnet {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets the raw data returned by the custom command.
+		/// </summary>
 		public string Data { get; }
 	}
 }

@@ -4,8 +4,31 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Specifies the motion group and user frame for reading the current robot position.
+	/// </summary>
 	public class CurrentPositionRequest {
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public CurrentPositionRequest()
@@ -13,10 +36,14 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets or sets the motion group number.
+		/// </summary>
 		public int Group { get; set; }
 
-
+		/// <summary>
+		/// Gets or sets the user frame number.
+		/// </summary>
 		public int UserFrame { get; set; }
 	}
 }

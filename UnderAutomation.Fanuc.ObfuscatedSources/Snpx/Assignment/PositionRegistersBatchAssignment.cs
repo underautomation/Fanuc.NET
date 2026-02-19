@@ -7,16 +7,23 @@ using Common;
 using System;
 
 namespace Snpx.Assignment {
-
+	/// <summary>
+	/// Batch assignment for reading multiple position registers at once.
+	/// </summary>
 	public class PositionRegistersBatchAssignment : BatchAssignment<Position, int> {
 
-
+		/// <summary>
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// </summary>
 		public PositionRegistersBatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Reads all position registers assigned in this batch.
+		/// </summary>
+		/// <returns>An array of <xref href="UnderAutomation.Fanuc.Common.Position" data-throw-if-not-resolved="false"></xref> values.</returns>
 		public override Position[] Read()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

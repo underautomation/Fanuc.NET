@@ -4,10 +4,14 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Represents a typed SNPX memory assignment with an index.
+	/// </summary>
 	public class Assignment<TIndex> : Assignment {
 
-
+		/// <summary>
+		/// Gets the index of this assignment.
+		/// </summary>
 		public TIndex Index { get; }
 	}
 }

@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of the step off command.
+	/// </summary>
 	public class StepOffResult : Result {
 
 		/// <summary>

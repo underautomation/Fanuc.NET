@@ -5,10 +5,14 @@
 using System.Text.RegularExpressions;
 
 namespace Telnet {
-
+	/// <summary>
+	/// Base class for results that contain a former and new value.
+	/// </summary>
 	public abstract class SetValueResult : Result {
 
-
+		/// <summary>
+		/// Regex used to parse former and new values from the response.
+		/// </summary>
 		protected static Regex ValueRegex;
 
 
@@ -29,7 +33,9 @@ namespace Telnet {
 		/// </summary>
 		public string FormerValue { get; protected set; }
 
-
+		/// <summary>
+		/// New value after the command execution
+		/// </summary>
 		public string NewValue { get; protected set; }
 	}
 }

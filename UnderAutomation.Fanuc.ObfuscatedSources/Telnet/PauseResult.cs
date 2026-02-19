@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a pause command.
+	/// </summary>
 	public class PauseResult : Result {
 
 		/// <summary>

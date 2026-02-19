@@ -4,11 +4,36 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Base class for SNPX connection parameters.
+	/// </summary>
 	public class SnpxConnectParametersBase {
 
-
+		/// <summary>
+		/// The default SNPX port number.
+		/// </summary>
 		public const int DEFAULT_PORT = 60008;
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public SnpxConnectParametersBase()
@@ -16,7 +41,9 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets or sets the port number for the SNPX connection.
+		/// </summary>
 		public int Port { get; set; }
 	}
 }

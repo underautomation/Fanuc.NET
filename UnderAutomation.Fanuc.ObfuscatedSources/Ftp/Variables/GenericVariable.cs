@@ -4,8 +4,24 @@
 
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Represents a top-level variable declaration with scope and storage information
+	/// </summary>
 	public class GenericVariable : GenericField, IGenericVariableType {
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
 
 
 		public GenericVariable()
@@ -13,13 +29,19 @@ namespace Ftp.Variables {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Variable scope (e.g. PROG, SYS)
+		/// </summary>
 		public string Scope { get; }
 
-
+		/// <summary>
+		/// Storage type of the variable (e.g. CMOS, DRAM)
+		/// </summary>
 		public string Storage { get; }
 
-
+		/// <summary>
+		/// Parent container of this variable
+		/// </summary>
 		public IGenericVariableType Parent { get; }
 	}
 }

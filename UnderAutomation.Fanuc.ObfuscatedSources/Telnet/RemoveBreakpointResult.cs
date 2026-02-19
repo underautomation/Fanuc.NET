@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of removing a breakpoint.
+	/// </summary>
 	public class RemoveBreakpointResult : Result {
 
 		/// <summary>

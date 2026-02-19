@@ -7,7 +7,9 @@ using System.IO;
 using Common;
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Typed variable file reader for specific variable file types
+	/// </summary>
 	public class VariableReader<T> : FileReader<T>, IFileReader<T>, IFileReader where T : GenericVariableFile, new() {
 
 		/// <summary>

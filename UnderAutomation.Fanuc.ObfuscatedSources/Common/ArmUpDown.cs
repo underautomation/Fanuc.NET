@@ -20,7 +20,7 @@ namespace Common {
 		Up = 1,
 
 		/// <summary>
-		/// Up : D
+		/// Down : D
 		/// </summary>
 		Down = 2,
 	}

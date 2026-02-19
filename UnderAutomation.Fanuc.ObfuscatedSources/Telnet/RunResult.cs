@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a run command.
+	/// </summary>
 	public class RunResult : ProgramCommandResult {
 
 		/// <summary>

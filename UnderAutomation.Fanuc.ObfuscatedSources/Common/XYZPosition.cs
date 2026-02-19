@@ -9,13 +9,17 @@ namespace Common {
 	/// </summary>
 	public class XYZPosition {
 
-
+		/// <summary>
+		/// Default constructor
+		/// </summary>
 		public XYZPosition()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with X, Y, Z coordinates in millimeters
+		/// </summary>
 		public XYZPosition(double x, double y, double z)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -23,6 +27,20 @@ namespace Common {
 
 
 		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

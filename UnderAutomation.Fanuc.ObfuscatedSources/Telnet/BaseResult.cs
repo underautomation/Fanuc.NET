@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Base class for simple results that store error text from the response.
+	/// </summary>
 	public abstract class BaseResult : Result {
 
 		/// <summary>

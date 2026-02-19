@@ -5,7 +5,9 @@
 using Common;
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a get current pose command.
+	/// </summary>
 	public class GetCurrentPoseResult : Result {
 
 		/// <summary>

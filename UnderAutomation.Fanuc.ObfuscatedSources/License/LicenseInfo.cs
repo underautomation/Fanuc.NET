@@ -31,6 +31,11 @@ namespace License {
 		}
 
 		/// <summary>
+		/// True if the license state is Licensed, Trial or ExtraTrial ; false otherwise
+		/// </summary>
+		public bool IsLicensed { get; }
+
+		/// <summary>
 		/// The license key supplied by UnderAutomation (null for trial period)
 		/// </summary>
 		public string LicenseKey { get; }

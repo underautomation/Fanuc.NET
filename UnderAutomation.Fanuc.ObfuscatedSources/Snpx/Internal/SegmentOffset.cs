@@ -4,7 +4,9 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Defines the base offset values for different I/O segment types.
+	/// </summary>
 	public enum SegmentOffset {
 
 		/// <summary>

@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of an unsimulate all command.
+	/// </summary>
 	public class UnsimulateAllResult : BaseResult {
 
 

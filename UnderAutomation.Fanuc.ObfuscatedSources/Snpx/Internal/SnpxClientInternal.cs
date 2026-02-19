@@ -4,7 +4,9 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Internal SNPX client used by the framework for establishing connections.
+	/// </summary>
 	public class SnpxClientInternal : SnpxClientBase {
 	}
 }

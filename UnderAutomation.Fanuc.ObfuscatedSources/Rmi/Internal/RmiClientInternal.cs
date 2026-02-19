@@ -4,7 +4,9 @@
 
 
 namespace Rmi.Internal {
-
+	/// <summary>
+	/// Internal RMI client used by the library infrastructure.
+	/// </summary>
 	public class RmiClientInternal : RmiClientBase, IDisposable {
 	}
 }

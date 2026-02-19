@@ -7,10 +7,14 @@ using System.IO;
 using Common;
 
 namespace Ftp.List {
-
+	/// <summary>
+	/// Reader for the ERRALL.LS error log file
+	/// </summary>
 	public class ErrorListReader : FileReader<ErrorList>, IFileReader<ErrorList>, IFileReader {
 
-
+		/// <summary>
+		/// Creates a new instance of the error list reader
+		/// </summary>
 		public ErrorListReader()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

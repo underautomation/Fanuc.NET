@@ -4,16 +4,24 @@
 
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Represents the execution state of a robot task.
+	/// </summary>
 	public enum RobotTaskState {
 
-
+		/// <summary>
+		/// Task is stopped.
+		/// </summary>
 		Stopped = 0,
 
-
+		/// <summary>
+		/// Task is paused.
+		/// </summary>
 		Paused = 1,
 
-
+		/// <summary>
+		/// Task is running.
+		/// </summary>
 		Running = 2,
 	}
 }

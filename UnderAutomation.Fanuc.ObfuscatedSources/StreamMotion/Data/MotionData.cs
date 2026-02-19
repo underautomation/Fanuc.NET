@@ -34,6 +34,20 @@ namespace StreamMotion.Data {
 			return default;
 		}
 
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 		/// <summary>
 		/// Raw axis values (9 values: J1-J6 or X,Y,Z,W,P,R + E1,E2,E3)
 		/// </summary>

@@ -7,7 +7,9 @@ using System.IO;
 using Common;
 
 namespace Ftp.Variables {
-
+	/// <summary>
+	/// Reader for Fanuc variable files (*.va)
+	/// </summary>
 	public class VariableReader : FileReader<GenericVariableFile>, IFileReader<GenericVariableFile>, IFileReader {
 
 
@@ -124,21 +126,27 @@ namespace Ftp.Variables {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Reads and parses a variable file from a file path
+		/// </summary>
 		public static GenericVariableFile ReadVariableFile(string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Reads and parses a variable file from a stream
+		/// </summary>
 		public static GenericVariableFile ReadVariableFile(Stream fileStream, string fileName, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// Parses all variables from a stream
+		/// </summary>
 		public static GenericVariable[] ParseVariableFile(Stream stream, Languages language)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

@@ -43,32 +43,40 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Set boolean variable without assignments
+		/// Set boolean variable without assignments.
 		/// </summary>
+		/// <param name="name">Variable name.</param>
+		/// <param name="value">Boolean value to set.</param>
 		public void SetVariable(string name, bool value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Set integer variable without assignments
+		/// Set integer variable without assignments.
 		/// </summary>
+		/// <param name="name">Variable name.</param>
+		/// <param name="value">Integer value to set.</param>
 		public void SetVariable(string name, int value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Set double variable without assignments
+		/// Set double variable without assignments.
 		/// </summary>
+		/// <param name="name">Variable name.</param>
+		/// <param name="value">Double value to set.</param>
 		public void SetVariable(string name, double value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Set string variable without assignments
+		/// Set string variable without assignments.
 		/// </summary>
+		/// <param name="name">Variable name.</param>
+		/// <param name="value">String value to set.</param>
 		public void SetVariable(string name, string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -82,14 +90,19 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Gets all current assignments.
+		/// </summary>
+		/// <returns>An array of all active assignments.</returns>
 		public Assignment[] GetAssignments()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
-
+		/// <summary>
+		/// IP address of the connected robot.
+		/// </summary>
 		public string Ip { get; }
 
 		/// <summary>

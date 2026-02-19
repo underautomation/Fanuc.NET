@@ -18,6 +18,13 @@ namespace StreamMotion.Data {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
 		/// <summary>
 		/// The state packet received from the robot
 		/// </summary>

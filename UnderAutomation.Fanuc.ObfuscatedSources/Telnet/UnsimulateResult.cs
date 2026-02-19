@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of an unsimulate port command.
+	/// </summary>
 	public class UnsimulateResult : BaseResult {
 
 		/// <summary>

@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a continue command.
+	/// </summary>
 	public class ContinueResult : Result {
 
 		/// <summary>

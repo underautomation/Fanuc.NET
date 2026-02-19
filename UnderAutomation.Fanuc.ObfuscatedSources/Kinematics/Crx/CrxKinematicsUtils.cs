@@ -6,7 +6,9 @@ using Common;
 using Kinematics;
 
 namespace Kinematics.Crx {
-
+	/// <summary>
+	/// Utility methods implementing CRX collaborative robot inverse kinematics using a geometric approach.
+	/// </summary>
 	public static class CrxKinematicsUtils {
 
 		/// <summary>

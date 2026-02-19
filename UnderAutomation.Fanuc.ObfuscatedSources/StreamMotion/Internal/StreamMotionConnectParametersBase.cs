@@ -25,6 +25,27 @@ namespace StreamMotion.Internal {
 		public const int DEFAULT_RECEIVE_TIMEOUT_MS = 1000;
 
 
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		public StreamMotionConnectParametersBase()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

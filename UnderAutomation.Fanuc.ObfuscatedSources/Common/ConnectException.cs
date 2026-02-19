@@ -11,10 +11,14 @@ namespace Common {
 	/// </summary>
 	public class ConnectException : Exception, ISerializable {
 
-
+		/// <summary>
+		/// Name of the service that failed to connect
+		/// </summary>
 		public string Service { get; }
 
-
+		/// <summary>
+		/// IP address of the robot
+		/// </summary>
 		public string RobotIp { get; }
 	}
 }

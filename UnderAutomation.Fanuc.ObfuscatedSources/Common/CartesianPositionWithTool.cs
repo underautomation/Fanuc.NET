@@ -9,13 +9,17 @@ namespace Common {
 	/// </summary>
 	public class CartesianPositionWithTool : CartesianPosition {
 
-
+		/// <summary>
+		/// Default constructor
+		/// </summary>
 		public CartesianPositionWithTool()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with position, rotations and tool ID
+		/// </summary>
 		public CartesianPositionWithTool(double x, double y, double z, double w, double p, double r, int tool)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -23,6 +27,20 @@ namespace Common {
 
 
 		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

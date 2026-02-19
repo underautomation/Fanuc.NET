@@ -6,16 +6,23 @@ using Snpx.Internal;
 using System;
 
 namespace Snpx.Assignment {
-
+	/// <summary>
+	/// Batch assignment for reading multiple string system variables at once.
+	/// </summary>
 	public class StringSystemVariablesBatchAssignment : BatchAssignment<string, string> {
 
-
+		/// <summary>
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// </summary>
 		public StringSystemVariablesBatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Reads all string system variables assigned in this batch.
+		/// </summary>
+		/// <returns>An array of string values.</returns>
 		public override string[] Read()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

@@ -25,19 +25,25 @@ namespace Common {
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with position, rotations and configuration
+		/// </summary>
 		public CartesianPosition(double x, double y, double z, double w, double p, double r, Configuration configuration)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor from an XYZ position with rotations
+		/// </summary>
 		public CartesianPosition(XYZPosition position, double w, double p, double r)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Copy constructor
+		/// </summary>
 		public CartesianPosition(CartesianPosition position)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -45,6 +51,20 @@ namespace Common {
 
 
 		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

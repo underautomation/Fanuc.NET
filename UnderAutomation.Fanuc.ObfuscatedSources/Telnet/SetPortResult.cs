@@ -4,7 +4,9 @@
 
 
 namespace Telnet {
-
+	/// <summary>
+	/// Result of a set port command.
+	/// </summary>
 	public class SetPortResult : SetValueResult {
 
 		/// <summary>

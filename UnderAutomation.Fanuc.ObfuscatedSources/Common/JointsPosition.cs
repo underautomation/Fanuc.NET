@@ -9,25 +9,33 @@ namespace Common {
 	/// </summary>
 	public class JointsPosition {
 
-
+		/// <summary>
+		/// Default constructor
+		/// </summary>
 		public JointsPosition()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with 9 joint values in degrees
+		/// </summary>
 		public JointsPosition(double j1Deg, double j2Deg, double j3Deg, double j4Deg, double j5Deg, double j6Deg, double j7Deg, double j8Deg, double j9Deg)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor with 6 joint values in degrees
+		/// </summary>
 		public JointsPosition(double j1Deg, double j2Deg, double j3Deg, double j4Deg, double j5Deg, double j6Deg)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
-
+		/// <summary>
+		/// Constructor from an array of joint values in degrees
+		/// </summary>
 		public JointsPosition(double[] values)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -35,6 +43,20 @@ namespace Common {
 
 
 		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -49,7 +71,9 @@ namespace Common {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Gets or sets the joint value at the specified index
+		/// </summary>
 		public double this[int i] { get; set; }
 
 		/// <summary>

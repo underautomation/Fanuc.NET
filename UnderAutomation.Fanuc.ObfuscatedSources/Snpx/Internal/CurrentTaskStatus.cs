@@ -5,7 +5,9 @@
 using System;
 
 namespace Snpx.Internal {
-
+	/// <summary>
+	/// Provides access to the current task (program) status on the robot via SNPX.
+	/// </summary>
 	public class CurrentTaskStatus : SnpxAssignableElements<RobotTaskStatus, int> {
 
 
@@ -22,7 +24,9 @@ namespace Snpx.Internal {
 			return default;
 		}
 
-
+		/// <summary>
+		/// Reads a value from the client at the specified memory offset.
+		/// </summary>
 		protected override RobotTaskStatus ReadFromClient(int offset)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
