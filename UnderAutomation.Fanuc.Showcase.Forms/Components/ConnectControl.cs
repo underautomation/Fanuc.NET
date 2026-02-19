@@ -121,4 +121,9 @@ public partial class ConnectControl : UserControl, IUserControl
         // Disconnect all services
         _robot.Disconnect();
     }
+
+    private void lnkConfigureTelnet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        MainForm.Instance.OpenUrl("https://underautomation.com/fanuc/documentation/enable-telnet");
+    }
 }

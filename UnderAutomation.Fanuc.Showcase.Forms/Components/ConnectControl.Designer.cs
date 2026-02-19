@@ -48,8 +48,9 @@ partial class ConnectControl
         label4 = new Label();
         cbLanguage = new ComboBox();
         chkStreamMotion = new CheckBox();
-        addressTooltip = new ToolTip(components);
         lblLicense = new Label();
+        lnkConfigureTelnet = new LinkLabel();
+        addressTooltip = new ToolTip(components);
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -64,7 +65,6 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
         tableLayoutPanel1.Controls.Add(label5, 0, 5);
-        tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
         tableLayoutPanel1.Controls.Add(panel1, 1, 17);
         tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
         tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
@@ -78,6 +78,8 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
         tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
         tableLayoutPanel1.Controls.Add(lblLicense, 2, 17);
+        tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
+        tableLayoutPanel1.Controls.Add(lnkConfigureTelnet, 2, 4);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -102,7 +104,7 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
-        tableLayoutPanel1.Size = new Size(628, 585);
+        tableLayoutPanel1.Size = new Size(800, 585);
         tableLayoutPanel1.TabIndex = 10;
         // 
         // lblConnected
@@ -138,7 +140,7 @@ partial class ConnectControl
         txtIP.Location = new Point(209, 23);
         txtIP.Margin = new Padding(4, 3, 4, 3);
         txtIP.Name = "txtIP";
-        txtIP.Size = new Size(415, 23);
+        txtIP.Size = new Size(587, 23);
         txtIP.TabIndex = 1;
         txtIP.Text = "192.168.0.1";
         addressTooltip.SetToolTip(txtIP, "192.168.0.1\r\nC:\\Fanuc\\MyCell\\MyRobot\r\n\\\\my-dev-machine\\MyCell\\MyRobot\r\n");
@@ -158,7 +160,6 @@ partial class ConnectControl
         // 
         chkTelnet.Anchor = AnchorStyles.Left;
         chkTelnet.AutoSize = true;
-        tableLayoutPanel1.SetColumnSpan(chkTelnet, 2);
         chkTelnet.Location = new Point(209, 137);
         chkTelnet.Margin = new Padding(4, 3, 4, 3);
         chkTelnet.Name = "chkTelnet";
@@ -316,14 +317,6 @@ partial class ConnectControl
         chkStreamMotion.Text = "Enable Stream Motion (J519)";
         chkStreamMotion.UseVisualStyleBackColor = true;
         // 
-        // addressTooltip
-        // 
-        addressTooltip.AutomaticDelay = 0;
-        addressTooltip.ToolTipIcon = ToolTipIcon.Info;
-        addressTooltip.ToolTipTitle = "Examples :";
-        addressTooltip.UseAnimation = false;
-        addressTooltip.UseFading = false;
-        // 
         // lblLicense
         // 
         lblLicense.Anchor = AnchorStyles.Left;
@@ -334,6 +327,26 @@ partial class ConnectControl
         lblLicense.Size = new Size(13, 15);
         lblLicense.TabIndex = 25;
         lblLicense.Text = "..";
+        // 
+        // lnkConfigureTelnet
+        // 
+        lnkConfigureTelnet.Anchor = AnchorStyles.Left;
+        lnkConfigureTelnet.AutoSize = true;
+        lnkConfigureTelnet.Location = new Point(458, 139);
+        lnkConfigureTelnet.Name = "lnkConfigureTelnet";
+        lnkConfigureTelnet.Size = new Size(214, 15);
+        lnkConfigureTelnet.TabIndex = 11;
+        lnkConfigureTelnet.TabStop = true;
+        lnkConfigureTelnet.Text = "See how to enable Telnet on your robot";
+        lnkConfigureTelnet.LinkClicked += lnkConfigureTelnet_LinkClicked;
+        // 
+        // addressTooltip
+        // 
+        addressTooltip.AutomaticDelay = 0;
+        addressTooltip.ToolTipIcon = ToolTipIcon.Info;
+        addressTooltip.ToolTipTitle = "Examples :";
+        addressTooltip.UseAnimation = false;
+        addressTooltip.UseFading = false;
         // 
         // ConnectControl
         // 
@@ -373,4 +386,5 @@ partial class ConnectControl
     private ComboBox cbLanguage;
     private CheckBox chkStreamMotion;
     private Label lblLicense;
+    private LinkLabel lnkConfigureTelnet;
 }
