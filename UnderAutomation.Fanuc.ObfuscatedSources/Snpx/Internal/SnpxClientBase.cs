@@ -106,9 +106,19 @@ namespace Snpx.Internal {
 		public string Ip { get; }
 
 		/// <summary>
-		/// Number registers
+		/// Number registers R[] as floating point values
 		/// </summary>
 		public NumericRegisters NumericRegisters { get; }
+
+		/// <summary>
+		/// Number registers R[] as 32-bit integer values
+		/// </summary>
+		public NumericRegistersInt32 NumericRegistersInt32 { get; }
+
+		/// <summary>
+		/// Number registers R[] as 16-bit integer values
+		/// </summary>
+		public NumericRegistersInt16 NumericRegistersInt16 { get; }
 
 		/// <summary>
 		/// Position registers

@@ -7,14 +7,14 @@ using System;
 
 namespace Snpx.Assignment {
 	/// <summary>
-	/// Batch assignment for reading multiple numeric registers at once as float
+	/// Batch assignment for reading multiple numeric registers at once as 16-bit integers.
 	/// </summary>
-	public class NumericRegistersBatchAssignment : BatchAssignment<float, int> {
+	public class NumericRegistersInt16BatchAssignment : BatchAssignment<short, int> {
 
 		/// <summary>
-		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt16BatchAssignment" data-throw-if-not-resolved="false"></xref> class.
 		/// </summary>
-		public NumericRegistersBatchAssignment()
+		public NumericRegistersInt16BatchAssignment()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
@@ -22,8 +22,8 @@ namespace Snpx.Assignment {
 		/// <summary>
 		/// Read all numeric registers assigned in this batch assignment.
 		/// </summary>
-		/// <returns>Returns an array of float values representing the numeric registers</returns>
-		public override float[] Read()
+		/// <returns>Returns an array of Int16 values representing the numeric registers</returns>
+		public override short[] Read()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

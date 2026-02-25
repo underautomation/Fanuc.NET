@@ -7,14 +7,14 @@ using Snpx.Assignment;
 
 namespace Snpx.Internal {
 	/// <summary>
-	/// Provides access to numeric registers as float (R[]) on the robot via SNPX.
+	/// Provides access to numeric registers as 16 bits integer (R[]) on the robot via SNPX.
 	/// </summary>
-	public class NumericRegisters : NumericRegistersBase<float, NumericRegistersBatchAssignment> {
+	public class NumericRegistersInt16 : NumericRegistersBase<short, NumericRegistersInt16BatchAssignment> {
 
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override float ReadFromClient(int offset)
+		protected override short ReadFromClient(int offset)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -23,7 +23,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Writes a value to the robot at the specified offset.
 		/// </summary>
-		protected override void WriteInClient(int offset, float value)
+		protected override void WriteInClient(int offset, short value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
@@ -34,7 +34,7 @@ namespace Snpx.Internal {
 		/// <param name="startIndex">The starting register index.</param>
 		/// <param name="count">The number of consecutive registers.</param>
 		/// <returns>A batch assignment for the specified range.</returns>
-		public NumericRegistersBatchAssignment CreateBatchAssignment(int startIndex, int count)
+		public NumericRegistersInt16BatchAssignment CreateBatchAssignment(int startIndex, int count)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

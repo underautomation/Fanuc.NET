@@ -44531,7 +44531,7 @@
         </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment">
             <summary>
-            Batch assignment for reading multiple numeric registers at once.
+            Batch assignment for reading multiple numeric registers at once as float
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersBatchAssignment.#ctor">
@@ -44544,6 +44544,38 @@
             Read all numeric registers assigned in this batch assignment.
             </summary>
             <returns>Returns an array of float values representing the numeric registers</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment">
+            <summary>
+            Batch assignment for reading multiple numeric registers at once as 32-bit integers.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment.Read">
+            <summary>
+            Read all numeric registers assigned in this batch assignment.
+            </summary>
+            <returns>Returns an array of Int32 values representing the numeric registers</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt16BatchAssignment">
+            <summary>
+            Batch assignment for reading multiple numeric registers at once as 16-bit integers.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt16BatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt16BatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt16BatchAssignment.Read">
+            <summary>
+            Read all numeric registers assigned in this batch assignment.
+            </summary>
+            <returns>Returns an array of Int16 values representing the numeric registers</returns>
         </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.PositionRegistersBatchAssignment">
             <summary>
@@ -46017,7 +46049,17 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.NumericRegisters">
             <summary>
-            Number registers
+            Number registers R[] as floating point values
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.NumericRegistersInt32">
+            <summary>
+            Number registers R[] as 32-bit integer values
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.NumericRegistersInt16">
+            <summary>
+            Number registers R[] as 16-bit integer values
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.PositionRegisters">
@@ -46285,17 +46327,48 @@
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxConnectParametersBase.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters">
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersBase`2">
             <summary>
             Provides access to numeric registers (R[]) on the robot via SNPX.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersBase`2.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase,System.Int32,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters"/> class.
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersBase`2"/> class.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters">
+            <summary>
+            Provides access to numeric registers as float (R[]) on the robot via SNPX.
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegisters.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple numeric registers.
+            </summary>
+            <param name="startIndex">The starting register index.</param>
+            <param name="count">The number of consecutive registers.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersInt16">
+            <summary>
+            Provides access to numeric registers as 16 bits integer (R[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersInt16.CreateBatchAssignment(System.Int32,System.Int32)">
+            <summary>
+            Creates a batch assignment for reading multiple numeric registers.
+            </summary>
+            <param name="startIndex">The starting register index.</param>
+            <param name="count">The number of consecutive registers.</param>
+            <returns>A batch assignment for the specified range.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersInt32">
+            <summary>
+            Provides access to numeric registers as 32 bits integer (R[]) on the robot via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.NumericRegistersInt32.CreateBatchAssignment(System.Int32,System.Int32)">
             <summary>
             Creates a batch assignment for reading multiple numeric registers.
             </summary>
@@ -46627,12 +46700,13 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.Group">
             <summary>
-            Gets or sets the motion group number.
+            Gets or sets the motion group number. Starts from 1.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.UserFrame">
             <summary>
             Gets or sets the user frame number.
+            Use 0 for World Frame
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentPositionRequest.ToString">

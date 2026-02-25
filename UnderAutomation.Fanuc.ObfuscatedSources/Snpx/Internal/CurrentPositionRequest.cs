@@ -37,12 +37,13 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets or sets the motion group number.
+		/// Gets or sets the motion group number. Starts from 1.
 		/// </summary>
 		public int Group { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user frame number.
+		/// Use 0 for World Frame
 		/// </summary>
 		public int UserFrame { get; set; }
 	}
