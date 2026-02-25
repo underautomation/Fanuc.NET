@@ -238,8 +238,24 @@ public partial class SnpxControl : UserControl, IUserControl
     {
         _robot.Snpx.NumericRegisters.Write((int)udNumericRegister.Value, (float)udNumericValue.Value);
     }
-
-
+    private void btnReadNumericRegisterInt32_Click(object sender, EventArgs e)
+    {
+        Int32 value = _robot.Snpx.NumericRegistersInt32.Read((int)udNumericRegister.Value);
+        udNumericValue.Value = (decimal)value;
+    }
+    private void btnWriteNumericRegisterInt32_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.NumericRegistersInt32.Write((int)udNumericRegister.Value, (Int32)udNumericValue.Value);
+    }
+    private void btnReadNumericRegisterInt16_Click(object sender, EventArgs e)
+    {
+        Int16 value = _robot.Snpx.NumericRegistersInt16.Read((int)udNumericRegister.Value);
+        udNumericValue.Value = (decimal)value;
+    }
+    private void btnWriteNumericRegisterInt16_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.NumericRegistersInt16.Write((int)udNumericRegister.Value, (Int16)udNumericValue.Value);
+    }
     private void btnReadIntegerVariable_Click(object sender, System.EventArgs e)
     {
         int value = _robot.Snpx.IntegerSystemVariables.Read(txtIntegerVariable.Text);
@@ -443,5 +459,7 @@ public partial class SnpxControl : UserControl, IUserControl
     {
         _robot.Snpx.Flags.Write((int)udFlag.Value, radioFlagOn.Checked);
     }
-    #endregion  
+    #endregion
+
+
 }

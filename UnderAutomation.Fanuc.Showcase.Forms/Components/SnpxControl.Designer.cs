@@ -139,6 +139,10 @@
         txtVariableName = new TextBox();
         label17 = new Label();
         label16 = new Label();
+        btnReadNumericRegisterInt32 = new Button();
+        btnReadNumericRegisterInt16 = new Button();
+        btnWriteNumericRegisterInt32 = new Button();
+        btnWriteNumericRegisterInt16 = new Button();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
         groupBox4.SuspendLayout();
@@ -241,6 +245,10 @@
         groupBox3.Controls.Add(label6);
         groupBox3.Controls.Add(btnWriteIntegerVariable);
         groupBox3.Controls.Add(btnReadRealVariable);
+        groupBox3.Controls.Add(btnWriteNumericRegisterInt16);
+        groupBox3.Controls.Add(btnReadNumericRegisterInt16);
+        groupBox3.Controls.Add(btnWriteNumericRegisterInt32);
+        groupBox3.Controls.Add(btnReadNumericRegisterInt32);
         groupBox3.Controls.Add(btnReadNumericRegister);
         groupBox3.Controls.Add(btnReadIntegerVariable);
         groupBox3.Location = new Point(425, 246);
@@ -255,7 +263,7 @@
         // udNumericValue
         // 
         udNumericValue.DecimalPlaces = 3;
-        udNumericValue.Location = new Point(7, 159);
+        udNumericValue.Location = new Point(10, 169);
         udNumericValue.Margin = new Padding(4, 3, 4, 3);
         udNumericValue.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
         udNumericValue.Minimum = new decimal(new int[] { 1661992959, 1808227885, 5, int.MinValue });
@@ -270,7 +278,7 @@
         udNumericRegister.Margin = new Padding(4, 3, 4, 3);
         udNumericRegister.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
         udNumericRegister.Name = "udNumericRegister";
-        udNumericRegister.Size = new Size(140, 23);
+        udNumericRegister.Size = new Size(151, 23);
         udNumericRegister.TabIndex = 0;
         udNumericRegister.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
@@ -285,7 +293,7 @@
         // 
         // txtIntegerVariable
         // 
-        txtIntegerVariable.Location = new Point(178, 39);
+        txtIntegerVariable.Location = new Point(191, 39);
         txtIntegerVariable.Margin = new Padding(4, 3, 4, 3);
         txtIntegerVariable.Name = "txtIntegerVariable";
         txtIntegerVariable.Size = new Size(140, 23);
@@ -294,12 +302,13 @@
         // 
         // btnWriteNumericRegister
         // 
-        btnWriteNumericRegister.Location = new Point(7, 103);
+        btnWriteNumericRegister.Font = new Font("Segoe UI", 8.25F);
+        btnWriteNumericRegister.Location = new Point(1, 103);
         btnWriteNumericRegister.Margin = new Padding(4, 3, 4, 3);
         btnWriteNumericRegister.Name = "btnWriteNumericRegister";
-        btnWriteNumericRegister.Size = new Size(140, 27);
+        btnWriteNumericRegister.Size = new Size(57, 39);
         btnWriteNumericRegister.TabIndex = 2;
-        btnWriteNumericRegister.Text = "Write";
+        btnWriteNumericRegister.Text = "Write as float";
         btnWriteNumericRegister.UseVisualStyleBackColor = true;
         btnWriteNumericRegister.Click += btnWriteNumericRegister_Click;
         // 
@@ -326,7 +335,7 @@
         // label7
         // 
         label7.AutoSize = true;
-        label7.Location = new Point(7, 141);
+        label7.Location = new Point(6, 151);
         label7.Margin = new Padding(4, 0, 4, 0);
         label7.Name = "label7";
         label7.Size = new Size(41, 15);
@@ -347,7 +356,7 @@
         // label6
         // 
         label6.AutoSize = true;
-        label6.Location = new Point(178, 21);
+        label6.Location = new Point(191, 21);
         label6.Margin = new Padding(4, 0, 4, 0);
         label6.Name = "label6";
         label6.Size = new Size(88, 15);
@@ -356,7 +365,7 @@
         // 
         // btnWriteIntegerVariable
         // 
-        btnWriteIntegerVariable.Location = new Point(178, 103);
+        btnWriteIntegerVariable.Location = new Point(191, 103);
         btnWriteIntegerVariable.Margin = new Padding(4, 3, 4, 3);
         btnWriteIntegerVariable.Name = "btnWriteIntegerVariable";
         btnWriteIntegerVariable.Size = new Size(140, 27);
@@ -378,18 +387,19 @@
         // 
         // btnReadNumericRegister
         // 
-        btnReadNumericRegister.Location = new Point(7, 69);
+        btnReadNumericRegister.Font = new Font("Segoe UI", 8.25F);
+        btnReadNumericRegister.Location = new Point(1, 63);
         btnReadNumericRegister.Margin = new Padding(4, 3, 4, 3);
         btnReadNumericRegister.Name = "btnReadNumericRegister";
-        btnReadNumericRegister.Size = new Size(140, 27);
+        btnReadNumericRegister.Size = new Size(57, 38);
         btnReadNumericRegister.TabIndex = 2;
-        btnReadNumericRegister.Text = "Read";
+        btnReadNumericRegister.Text = "Read as float";
         btnReadNumericRegister.UseVisualStyleBackColor = true;
         btnReadNumericRegister.Click += btnReadNumericRegister_Click;
         // 
         // btnReadIntegerVariable
         // 
-        btnReadIntegerVariable.Location = new Point(178, 69);
+        btnReadIntegerVariable.Location = new Point(191, 69);
         btnReadIntegerVariable.Margin = new Padding(4, 3, 4, 3);
         btnReadIntegerVariable.Name = "btnReadIntegerVariable";
         btnReadIntegerVariable.Size = new Size(140, 27);
@@ -1394,6 +1404,54 @@
         label16.TabIndex = 2;
         label16.Text = "Variable name :";
         // 
+        // btnReadNumericRegisterInt32
+        // 
+        btnReadNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
+        btnReadNumericRegisterInt32.Location = new Point(57, 63);
+        btnReadNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
+        btnReadNumericRegisterInt32.Name = "btnReadNumericRegisterInt32";
+        btnReadNumericRegisterInt32.Size = new Size(57, 38);
+        btnReadNumericRegisterInt32.TabIndex = 2;
+        btnReadNumericRegisterInt32.Text = "Read as Int32";
+        btnReadNumericRegisterInt32.UseVisualStyleBackColor = true;
+        btnReadNumericRegisterInt32.Click += btnReadNumericRegisterInt32_Click;
+        // 
+        // btnReadNumericRegisterInt16
+        // 
+        btnReadNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
+        btnReadNumericRegisterInt16.Location = new Point(113, 63);
+        btnReadNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
+        btnReadNumericRegisterInt16.Name = "btnReadNumericRegisterInt16";
+        btnReadNumericRegisterInt16.Size = new Size(57, 38);
+        btnReadNumericRegisterInt16.TabIndex = 2;
+        btnReadNumericRegisterInt16.Text = "Read as Int16";
+        btnReadNumericRegisterInt16.UseVisualStyleBackColor = true;
+        btnReadNumericRegisterInt16.Click += btnReadNumericRegisterInt16_Click;
+        // 
+        // btnWriteNumericRegisterInt32
+        // 
+        btnWriteNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
+        btnWriteNumericRegisterInt32.Location = new Point(57, 104);
+        btnWriteNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
+        btnWriteNumericRegisterInt32.Name = "btnWriteNumericRegisterInt32";
+        btnWriteNumericRegisterInt32.Size = new Size(57, 38);
+        btnWriteNumericRegisterInt32.TabIndex = 2;
+        btnWriteNumericRegisterInt32.Text = "Write as Int32";
+        btnWriteNumericRegisterInt32.UseVisualStyleBackColor = true;
+        btnWriteNumericRegisterInt32.Click += btnWriteNumericRegisterInt32_Click;
+        // 
+        // btnWriteNumericRegisterInt16
+        // 
+        btnWriteNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
+        btnWriteNumericRegisterInt16.Location = new Point(113, 104);
+        btnWriteNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
+        btnWriteNumericRegisterInt16.Name = "btnWriteNumericRegisterInt16";
+        btnWriteNumericRegisterInt16.Size = new Size(57, 38);
+        btnWriteNumericRegisterInt16.TabIndex = 2;
+        btnWriteNumericRegisterInt16.Text = "Write as Int16";
+        btnWriteNumericRegisterInt16.UseVisualStyleBackColor = true;
+        btnWriteNumericRegisterInt16.Click += btnWriteNumericRegisterInt16_Click;
+        // 
         // SnpxControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1561,4 +1619,8 @@
     private RadioButton radioFlagOn;
     private Button btnWriteFlag;
     private Button btnReadFlag;
+    private Button btnReadNumericRegisterInt16;
+    private Button btnWriteNumericRegisterInt32;
+    private Button btnReadNumericRegisterInt32;
+    private Button btnWriteNumericRegisterInt16;
 }
