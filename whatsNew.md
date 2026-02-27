@@ -1,61 +1,60 @@
-## Bug fix : Current position always read wrong motion group
+## New Feature: Current Task Status Reading via SNPX
 
-`ReadWorldPosition()` and `ReadUserFramePosition()` were silently targeting motion group 0, which does not exist on Fanuc controllers, causing the robot to return wrong position data. Both methods now correctly default to **group 1** (the first motion group).
+The SDK now provides the ability to read the current task status from the robot controller via the SNPX protocol. This allows you to monitor the execution state of programs running on different tasks.
 
-Multi-group robots can still target a specific group explicitly:
+### Property Added
 
-```csharp
-// Read world position : group 1 (default, fixed)
-Position pos = robot.Snpx.CurrentPosition.ReadWorldPosition();
+- **`CurrentTaskStatus`**: Provides access to the status of running tasks on the robot controller (now public, previously private)
 
-// Read in user frame 3 : group 1 (default, fixed)
-Position pos = robot.Snpx.CurrentPosition.ReadUserFramePosition(3);
+### What You Can Read
 
-// Read world position on group 2 (multi-group robots)
-Position pos = robot.Snpx.CurrentPosition.ReadWorldPosition(2);
+For each task, you can access:
 
-// Read in user frame 3 on group 2
-Position pos = robot.Snpx.CurrentPosition.ReadUserFramePosition(3, 2);
-```
+- **`ProgramName`**: Name of the currently executing program
+- **`LineNumber`**: Current line number being executed
+- **`State`**: Execution state (Stopped, Paused, or Running)
+- **`Caller`**: Name of the calling program
 
----
-
-## SNPX Numeric Registers : Int16 and Int32 support
-
-Numeric registers (`R[]`) can now be read and written as **16-bit** or **32-bit integers** in addition to the existing float format. Two new accessors are available on the SNPX client: `NumericRegistersInt32` and `NumericRegistersInt16`.
-
-This is useful when a Fanuc program stores integer values in numeric registers and you want to avoid float conversion artifacts.
-
-### Single register read / write
+### Quick Example
 
 ```csharp
-// Float (existing)
-float  f = robot.Snpx.NumericRegisters.Read(1);
-robot.Snpx.NumericRegisters.Write(1, 3.14f);
+using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Snpx.Internal;
 
-// 32-bit integer
-int   i32 = robot.Snpx.NumericRegistersInt32.Read(1);
-robot.Snpx.NumericRegistersInt32.Write(1, 1234567);
+// Create and connect to robot
+FanucRobot robot = new FanucRobot();
+ConnectionParameters parameters = new ConnectionParameters("192.168.0.1");
+parameters.Snpx.Enable = true;
+robot.Connect(parameters);
 
-// 16-bit integer
-short i16 = robot.Snpx.NumericRegistersInt16.Read(1);
-robot.Snpx.NumericRegistersInt16.Write(1, 42);
-```
+// Read task status for task 1 (index starts from 1)
+RobotTaskStatus task1Status = robot.Snpx.CurrentTaskStatus.Read(1);
 
-### Batch read / write
+// Display task information
+Console.WriteLine($"Program: {task1Status.ProgramName}");
+Console.WriteLine($"Line: {task1Status.LineNumber}");
+Console.WriteLine($"State: {task1Status.State}");
+Console.WriteLine($"Caller: {task1Status.Caller}");
 
-Batch assignments let you read a contiguous range of registers in a single network round-trip.
+// Check task state
+switch (task1Status.State)
+{
+    case RobotTaskState.Running:
+        Console.WriteLine($"Task 1 is running {task1Status.ProgramName} at line {task1Status.LineNumber}");
+        break;
+    case RobotTaskState.Paused:
+        Console.WriteLine("Task 1 is paused");
+        break;
+    case RobotTaskState.Stopped:
+        Console.WriteLine("Task 1 is stopped");
+        break;
+}
 
-```csharp
-// Float (existing)
-var batchF = robot.Snpx.NumericRegisters.CreateBatchAssignment(1, 10);
-float[] floats = batchF.Read();
-
-// 32-bit integer
-var batchI32 = robot.Snpx.NumericRegistersInt32.CreateBatchAssignment(1, 10);
-int[] ints = batchI32.Read();
-
-// 16-bit integer
-var batchI16 = robot.Snpx.NumericRegistersInt16.CreateBatchAssignment(1, 10);
-short[] shorts = batchI16.Read();
+// Monitor multiple tasks
+for (int i = 1; i <= 4; i++)
+{
+    var taskStatus = robot.Snpx.CurrentTaskStatus.Read(i);
+    Console.WriteLine($"Task {i}: {taskStatus}");
+}
 ```

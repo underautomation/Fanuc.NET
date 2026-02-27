@@ -261,6 +261,11 @@ namespace Snpx.Internal {
 		public CurrentPosition CurrentPosition { get; }
 
 		/// <summary>
+		/// Current program tasks status. Index starts from 1.
+		/// </summary>
+		public CurrentTaskStatus CurrentTaskStatus { get; }
+
+		/// <summary>
 		/// Current active alarms
 		/// </summary>
 		public AlarmAccess ActiveAlarm { get; }

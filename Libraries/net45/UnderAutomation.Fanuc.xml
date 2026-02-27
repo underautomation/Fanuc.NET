@@ -46204,7 +46204,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.CurrentTaskStatus">
             <summary>
-            Current program tasks status
+            Current program tasks status. Index starts from 1.
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.ActiveAlarm">
@@ -46769,6 +46769,7 @@
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CurrentTaskStatus">
             <summary>
             Provides access to the current task (program) status on the robot via SNPX.
+            Index starts from 1.
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CurrentTaskStatus.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">

@@ -7,6 +7,7 @@ using System;
 namespace Snpx.Internal {
 	/// <summary>
 	/// Provides access to the current task (program) status on the robot via SNPX.
+	/// Index starts from 1.
 	/// </summary>
 	public class CurrentTaskStatus : SnpxAssignableElements<RobotTaskStatus, int> {
 
