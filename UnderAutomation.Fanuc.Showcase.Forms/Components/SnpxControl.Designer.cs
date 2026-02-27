@@ -43,6 +43,10 @@
         label6 = new Label();
         btnWriteIntegerVariable = new Button();
         btnReadRealVariable = new Button();
+        btnWriteNumericRegisterInt16 = new Button();
+        btnReadNumericRegisterInt16 = new Button();
+        btnWriteNumericRegisterInt32 = new Button();
+        btnReadNumericRegisterInt32 = new Button();
         btnReadNumericRegister = new Button();
         btnReadIntegerVariable = new Button();
         groupBox2 = new GroupBox();
@@ -127,6 +131,12 @@
         udAlarmHistory = new NumericUpDown();
         gridActiveAlarm = new PropertyGrid();
         udActiveAlarm = new NumericUpDown();
+        tabTasks = new TabPage();
+        gridTaskStatus = new PropertyGrid();
+        label20 = new Label();
+        label19 = new Label();
+        udTaskIndex = new NumericUpDown();
+        btnReadTaskStatus = new Button();
         tabAssignments = new TabPage();
         lstAssignments = new ListView();
         columnHeader1 = new ColumnHeader();
@@ -139,10 +149,6 @@
         txtVariableName = new TextBox();
         label17 = new Label();
         label16 = new Label();
-        btnReadNumericRegisterInt32 = new Button();
-        btnReadNumericRegisterInt16 = new Button();
-        btnWriteNumericRegisterInt32 = new Button();
-        btnWriteNumericRegisterInt16 = new Button();
         tabControl1.SuspendLayout();
         tabVariablesRegisters.SuspendLayout();
         groupBox4.SuspendLayout();
@@ -174,6 +180,8 @@
         tabAlarms.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udAlarmHistory).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udActiveAlarm).BeginInit();
+        tabTasks.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udTaskIndex).BeginInit();
         tabAssignments.SuspendLayout();
         panel1.SuspendLayout();
         tabPage1.SuspendLayout();
@@ -185,6 +193,7 @@
         tabControl1.Controls.Add(tabSignals);
         tabControl1.Controls.Add(tabBatch);
         tabControl1.Controls.Add(tabAlarms);
+        tabControl1.Controls.Add(tabTasks);
         tabControl1.Controls.Add(tabAssignments);
         tabControl1.Controls.Add(tabPage1);
         tabControl1.Dock = DockStyle.Fill;
@@ -384,6 +393,54 @@
         btnReadRealVariable.Text = "Read";
         btnReadRealVariable.UseVisualStyleBackColor = true;
         btnReadRealVariable.Click += btnReadRealVariable_Click;
+        // 
+        // btnWriteNumericRegisterInt16
+        // 
+        btnWriteNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
+        btnWriteNumericRegisterInt16.Location = new Point(113, 104);
+        btnWriteNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
+        btnWriteNumericRegisterInt16.Name = "btnWriteNumericRegisterInt16";
+        btnWriteNumericRegisterInt16.Size = new Size(57, 38);
+        btnWriteNumericRegisterInt16.TabIndex = 2;
+        btnWriteNumericRegisterInt16.Text = "Write as Int16";
+        btnWriteNumericRegisterInt16.UseVisualStyleBackColor = true;
+        btnWriteNumericRegisterInt16.Click += btnWriteNumericRegisterInt16_Click;
+        // 
+        // btnReadNumericRegisterInt16
+        // 
+        btnReadNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
+        btnReadNumericRegisterInt16.Location = new Point(113, 63);
+        btnReadNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
+        btnReadNumericRegisterInt16.Name = "btnReadNumericRegisterInt16";
+        btnReadNumericRegisterInt16.Size = new Size(57, 38);
+        btnReadNumericRegisterInt16.TabIndex = 2;
+        btnReadNumericRegisterInt16.Text = "Read as Int16";
+        btnReadNumericRegisterInt16.UseVisualStyleBackColor = true;
+        btnReadNumericRegisterInt16.Click += btnReadNumericRegisterInt16_Click;
+        // 
+        // btnWriteNumericRegisterInt32
+        // 
+        btnWriteNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
+        btnWriteNumericRegisterInt32.Location = new Point(57, 104);
+        btnWriteNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
+        btnWriteNumericRegisterInt32.Name = "btnWriteNumericRegisterInt32";
+        btnWriteNumericRegisterInt32.Size = new Size(57, 38);
+        btnWriteNumericRegisterInt32.TabIndex = 2;
+        btnWriteNumericRegisterInt32.Text = "Write as Int32";
+        btnWriteNumericRegisterInt32.UseVisualStyleBackColor = true;
+        btnWriteNumericRegisterInt32.Click += btnWriteNumericRegisterInt32_Click;
+        // 
+        // btnReadNumericRegisterInt32
+        // 
+        btnReadNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
+        btnReadNumericRegisterInt32.Location = new Point(57, 63);
+        btnReadNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
+        btnReadNumericRegisterInt32.Name = "btnReadNumericRegisterInt32";
+        btnReadNumericRegisterInt32.Size = new Size(57, 38);
+        btnReadNumericRegisterInt32.TabIndex = 2;
+        btnReadNumericRegisterInt32.Text = "Read as Int32";
+        btnReadNumericRegisterInt32.UseVisualStyleBackColor = true;
+        btnReadNumericRegisterInt32.Click += btnReadNumericRegisterInt32_Click;
         // 
         // btnReadNumericRegister
         // 
@@ -1290,6 +1347,69 @@
         udActiveAlarm.TabIndex = 0;
         udActiveAlarm.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
+        // tabTasks
+        // 
+        tabTasks.Controls.Add(gridTaskStatus);
+        tabTasks.Controls.Add(label20);
+        tabTasks.Controls.Add(label19);
+        tabTasks.Controls.Add(udTaskIndex);
+        tabTasks.Controls.Add(btnReadTaskStatus);
+        tabTasks.Location = new Point(4, 24);
+        tabTasks.Name = "tabTasks";
+        tabTasks.Size = new Size(1175, 549);
+        tabTasks.TabIndex = 7;
+        tabTasks.Text = "Tasks";
+        tabTasks.UseVisualStyleBackColor = true;
+        // 
+        // gridTaskStatus
+        // 
+        gridTaskStatus.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridTaskStatus.HelpVisible = false;
+        gridTaskStatus.Location = new Point(36, 143);
+        gridTaskStatus.Margin = new Padding(4, 3, 4, 3);
+        gridTaskStatus.Name = "gridTaskStatus";
+        gridTaskStatus.PropertySort = PropertySort.NoSort;
+        gridTaskStatus.Size = new Size(368, 366);
+        gridTaskStatus.TabIndex = 5;
+        gridTaskStatus.ToolbarVisible = false;
+        // 
+        // label20
+        // 
+        label20.AutoSize = true;
+        label20.Location = new Point(36, 125);
+        label20.Margin = new Padding(4, 0, 4, 0);
+        label20.Name = "label20";
+        label20.Size = new Size(45, 15);
+        label20.TabIndex = 4;
+        label20.Text = "Status :";
+        // 
+        // label19
+        // 
+        label19.AutoSize = true;
+        label19.Location = new Point(36, 34);
+        label19.Name = "label19";
+        label19.Size = new Size(67, 15);
+        label19.TabIndex = 2;
+        label19.Text = "Task index :";
+        // 
+        // udTaskIndex
+        // 
+        udTaskIndex.Location = new Point(68, 52);
+        udTaskIndex.Name = "udTaskIndex";
+        udTaskIndex.Size = new Size(125, 23);
+        udTaskIndex.TabIndex = 1;
+        udTaskIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // btnReadTaskStatus
+        // 
+        btnReadTaskStatus.Location = new Point(68, 81);
+        btnReadTaskStatus.Name = "btnReadTaskStatus";
+        btnReadTaskStatus.Size = new Size(125, 23);
+        btnReadTaskStatus.TabIndex = 0;
+        btnReadTaskStatus.Text = "Read Task Status";
+        btnReadTaskStatus.UseVisualStyleBackColor = true;
+        btnReadTaskStatus.Click += btnReadTaskStatus_Click;
+        // 
         // tabAssignments
         // 
         tabAssignments.Controls.Add(lstAssignments);
@@ -1404,54 +1524,6 @@
         label16.TabIndex = 2;
         label16.Text = "Variable name :";
         // 
-        // btnReadNumericRegisterInt32
-        // 
-        btnReadNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
-        btnReadNumericRegisterInt32.Location = new Point(57, 63);
-        btnReadNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
-        btnReadNumericRegisterInt32.Name = "btnReadNumericRegisterInt32";
-        btnReadNumericRegisterInt32.Size = new Size(57, 38);
-        btnReadNumericRegisterInt32.TabIndex = 2;
-        btnReadNumericRegisterInt32.Text = "Read as Int32";
-        btnReadNumericRegisterInt32.UseVisualStyleBackColor = true;
-        btnReadNumericRegisterInt32.Click += btnReadNumericRegisterInt32_Click;
-        // 
-        // btnReadNumericRegisterInt16
-        // 
-        btnReadNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
-        btnReadNumericRegisterInt16.Location = new Point(113, 63);
-        btnReadNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
-        btnReadNumericRegisterInt16.Name = "btnReadNumericRegisterInt16";
-        btnReadNumericRegisterInt16.Size = new Size(57, 38);
-        btnReadNumericRegisterInt16.TabIndex = 2;
-        btnReadNumericRegisterInt16.Text = "Read as Int16";
-        btnReadNumericRegisterInt16.UseVisualStyleBackColor = true;
-        btnReadNumericRegisterInt16.Click += btnReadNumericRegisterInt16_Click;
-        // 
-        // btnWriteNumericRegisterInt32
-        // 
-        btnWriteNumericRegisterInt32.Font = new Font("Segoe UI", 8.25F);
-        btnWriteNumericRegisterInt32.Location = new Point(57, 104);
-        btnWriteNumericRegisterInt32.Margin = new Padding(4, 3, 4, 3);
-        btnWriteNumericRegisterInt32.Name = "btnWriteNumericRegisterInt32";
-        btnWriteNumericRegisterInt32.Size = new Size(57, 38);
-        btnWriteNumericRegisterInt32.TabIndex = 2;
-        btnWriteNumericRegisterInt32.Text = "Write as Int32";
-        btnWriteNumericRegisterInt32.UseVisualStyleBackColor = true;
-        btnWriteNumericRegisterInt32.Click += btnWriteNumericRegisterInt32_Click;
-        // 
-        // btnWriteNumericRegisterInt16
-        // 
-        btnWriteNumericRegisterInt16.Font = new Font("Segoe UI", 8.25F);
-        btnWriteNumericRegisterInt16.Location = new Point(113, 104);
-        btnWriteNumericRegisterInt16.Margin = new Padding(4, 3, 4, 3);
-        btnWriteNumericRegisterInt16.Name = "btnWriteNumericRegisterInt16";
-        btnWriteNumericRegisterInt16.Size = new Size(57, 38);
-        btnWriteNumericRegisterInt16.TabIndex = 2;
-        btnWriteNumericRegisterInt16.Text = "Write as Int16";
-        btnWriteNumericRegisterInt16.UseVisualStyleBackColor = true;
-        btnWriteNumericRegisterInt16.Click += btnWriteNumericRegisterInt16_Click;
-        // 
         // SnpxControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1498,6 +1570,9 @@
         tabAlarms.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udAlarmHistory).EndInit();
         ((System.ComponentModel.ISupportInitialize)udActiveAlarm).EndInit();
+        tabTasks.ResumeLayout(false);
+        tabTasks.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udTaskIndex).EndInit();
         tabAssignments.ResumeLayout(false);
         panel1.ResumeLayout(false);
         tabPage1.ResumeLayout(false);
@@ -1623,4 +1698,10 @@
     private Button btnWriteNumericRegisterInt32;
     private Button btnReadNumericRegisterInt32;
     private Button btnWriteNumericRegisterInt16;
+    private TabPage tabTasks;
+    private Button btnReadTaskStatus;
+    private Label label19;
+    private NumericUpDown udTaskIndex;
+    private PropertyGrid gridTaskStatus;
+    private Label label20;
 }

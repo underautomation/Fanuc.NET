@@ -21,6 +21,7 @@ public partial class SnpxControl : UserControl, IUserControl
         TypeDescriptor.AddAttributes(typeof(Position), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
         TypeDescriptor.AddAttributes(typeof(ExtendedCartesianPosition), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
         TypeDescriptor.AddAttributes(typeof(JointsPosition), new TypeConverterAttribute(typeof(ExpandableObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(RobotTaskStatus), new ReadOnlyAttribute(true));
         gridPR.SelectedObject = new Position() { CartesianPosition = new ExtendedCartesianPosition(), JointsPosition = new JointsPosition() };
         gridPR.ExpandAllGridItems();
 
@@ -41,6 +42,8 @@ public partial class SnpxControl : UserControl, IUserControl
         gridPositionVariablesAssignment.Rows.Add("$ZMP_GRP[1].$P_ACT");
 
         gridFloatVariablesAssignment.Rows.Add("$DB_MINDIST");
+
+        gridTaskStatus.SelectedObject = new RobotTaskStatus();
     }
 
     #region Assignments
@@ -462,4 +465,12 @@ public partial class SnpxControl : UserControl, IUserControl
     #endregion
 
 
+    #region Tasks
+    private void btnReadTaskStatus_Click(object sender, EventArgs e)
+    {
+        RobotTaskStatus taskStatus = _robot.Snpx.CurrentTaskStatus.Read((int)udTaskIndex.Value);
+        gridTaskStatus.SelectedObject = taskStatus;
+        gridTaskStatus.ExpandAllGridItems();
+    }
+    #endregion
 }
