@@ -44,6 +44,20 @@ public partial class SnpxControl : UserControl, IUserControl
         gridFloatVariablesAssignment.Rows.Add("$DB_MINDIST");
 
         gridTaskStatus.SelectedObject = new RobotTaskStatus();
+
+        foreach (var value in Enum.GetValues(typeof(CommentType)))
+        {
+            cbCommentType.Items.Add(value);
+        }
+        cbCommentType.SelectedIndex = 0;
+
+        foreach (var value in Enum.GetValues(typeof(SimulationType)))
+        {
+            cbSimulationType.Items.Add(value);
+        }
+        cbSimulationType.SelectedIndex = 0;
+
+
     }
 
     #region Assignments
@@ -217,6 +231,18 @@ public partial class SnpxControl : UserControl, IUserControl
     private void btnWriteStringRegister_Click(object sender, System.EventArgs e)
     {
         _robot.Snpx.StringRegisters.Write((int)udStringRegister.Value, txtStringValue.Text);
+    }
+
+
+    private void btnReadStringRegisterSpan_Click(object sender, EventArgs e)
+    {
+        string value = _robot.Snpx.StringRegistersSpan.Read((int)udStringRegister.Value, (int)udStringRegisterLength.Value, (int)udStringRegisterStart.Value);
+        txtStringValue.Text = value;
+    }
+
+    private void btnWriteStringRegisterSpan_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.StringRegistersSpan.Write((int)udStringRegister.Value, txtStringValue.Text, (int)udStringRegisterLength.Value, (int)udStringRegisterStart.Value);
     }
 
     private void btnReadStringVariable_Click(object sender, System.EventArgs e)
@@ -472,5 +498,40 @@ public partial class SnpxControl : UserControl, IUserControl
         gridTaskStatus.SelectedObject = taskStatus;
         gridTaskStatus.ExpandAllGridItems();
     }
+
     #endregion
+
+    #region Comment
+    private void btnReadComment_Click(object sender, EventArgs e)
+    {
+        txtComment.Text = _robot.Snpx.Comments.Read((CommentType)cbCommentType.SelectedItem, (int)udCommentIndex.Value);
+    }
+
+    private void btnWriteComment_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.Comments.Write((CommentType)cbCommentType.SelectedItem, (int)udCommentIndex.Value, txtComment.Text);
+    }
+    #endregion
+
+    private void btnReadSimulation_Click(object sender, EventArgs e)
+    {
+        var type = (SimulationType)cbSimulationType.SelectedItem;
+        var index = (int)udSimulationIndex.Value;
+        bool isSimulated = _robot.Snpx.SimulationStatus.Read(type, index);
+
+        txtSimulationStatus.Text = $"{type}[{index}] : {(isSimulated ? "" : "NOT ")}SIMULATED";
+        txtSimulationStatus.BackColor = isSimulated ? Color.Yellow : Color.LightGray;
+    }
+
+    private void btnSimulate_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.SimulationStatus.Write((SimulationType)cbSimulationType.SelectedItem, (int)udSimulationIndex.Value, true);
+        btnReadSimulation_Click(sender, e);
+    }
+
+    private void btnUnsimulate_Click(object sender, EventArgs e)
+    {
+        _robot.Snpx.SimulationStatus.Write((SimulationType)cbSimulationType.SelectedItem, (int)udSimulationIndex.Value, false);
+        btnReadSimulation_Click(sender, e);
+    }
 }

@@ -50,16 +50,27 @@
         btnReadNumericRegister = new Button();
         btnReadIntegerVariable = new Button();
         groupBox2 = new GroupBox();
+        panel3 = new Panel();
         udStringRegister = new NumericUpDown();
-        txtStringValue = new TextBox();
-        txtStringVariable = new TextBox();
+        tabControl2 = new TabControl();
+        tabPage2 = new TabPage();
+        btnReadStringRegister = new Button();
         btnWriteStringRegister = new Button();
+        tabPage3 = new TabPage();
+        udStringRegisterLength = new NumericUpDown();
+        udStringRegisterStart = new NumericUpDown();
+        label22 = new Label();
+        btnReadStringRegisterSpan = new Button();
+        label21 = new Label();
+        btnWriteStringRegisterSpan = new Button();
         label4 = new Label();
-        label8 = new Label();
+        panel2 = new Panel();
+        txtStringVariable = new TextBox();
         label3 = new Label();
         btnWriteStringVariable = new Button();
-        btnReadStringRegister = new Button();
         btnReadStringVariable = new Button();
+        txtStringValue = new TextBox();
+        label8 = new Label();
         groupBox1 = new GroupBox();
         btnPositionUserFrame = new Button();
         btnPositionWorld = new Button();
@@ -85,6 +96,15 @@
         label18 = new Label();
         snpxSignalControlNumericIOs = new SnpxSignalControl();
         snpxSignalControlDigitals = new SnpxSignalControl();
+        tabSimulation = new TabPage();
+        txtSimulationStatus = new TextBox();
+        udSimulationIndex = new NumericUpDown();
+        cbSimulationType = new ComboBox();
+        label26 = new Label();
+        label27 = new Label();
+        btnUnsimulate = new Button();
+        btnSimulate = new Button();
+        btnReadSimulation = new Button();
         tabBatch = new TabPage();
         groupBox11 = new GroupBox();
         gridFloatVariablesAssignment = new DataGridView();
@@ -137,13 +157,22 @@
         label19 = new Label();
         udTaskIndex = new NumericUpDown();
         btnReadTaskStatus = new Button();
+        tabComments = new TabPage();
+        udCommentIndex = new NumericUpDown();
+        cbCommentType = new ComboBox();
+        label25 = new Label();
+        label24 = new Label();
+        label23 = new Label();
+        btnWriteComment = new Button();
+        btnReadComment = new Button();
+        txtComment = new TextBox();
         tabAssignments = new TabPage();
         lstAssignments = new ListView();
         columnHeader1 = new ColumnHeader();
         columnHeader2 = new ColumnHeader();
         panel1 = new Panel();
         btnClearAssignments = new Button();
-        tabPage1 = new TabPage();
+        tabVariablesWithoutAssignments = new TabPage();
         btnWriteVariable = new Button();
         txtVariableValue = new TextBox();
         txtVariableName = new TextBox();
@@ -156,13 +185,22 @@
         ((System.ComponentModel.ISupportInitialize)udNumericValue).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udNumericRegister).BeginInit();
         groupBox2.SuspendLayout();
+        panel3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udStringRegister).BeginInit();
+        tabControl2.SuspendLayout();
+        tabPage2.SuspendLayout();
+        tabPage3.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udStringRegisterLength).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)udStringRegisterStart).BeginInit();
+        panel2.SuspendLayout();
         groupBox1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udFrame).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udPositionRegister).BeginInit();
         tabSignals.SuspendLayout();
         groupBox12.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udFlag).BeginInit();
+        tabSimulation.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udSimulationIndex).BeginInit();
         tabBatch.SuspendLayout();
         groupBox11.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)gridFloatVariablesAssignment).BeginInit();
@@ -182,20 +220,24 @@
         ((System.ComponentModel.ISupportInitialize)udActiveAlarm).BeginInit();
         tabTasks.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udTaskIndex).BeginInit();
+        tabComments.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udCommentIndex).BeginInit();
         tabAssignments.SuspendLayout();
         panel1.SuspendLayout();
-        tabPage1.SuspendLayout();
+        tabVariablesWithoutAssignments.SuspendLayout();
         SuspendLayout();
         // 
         // tabControl1
         // 
         tabControl1.Controls.Add(tabVariablesRegisters);
         tabControl1.Controls.Add(tabSignals);
+        tabControl1.Controls.Add(tabSimulation);
         tabControl1.Controls.Add(tabBatch);
         tabControl1.Controls.Add(tabAlarms);
         tabControl1.Controls.Add(tabTasks);
+        tabControl1.Controls.Add(tabComments);
         tabControl1.Controls.Add(tabAssignments);
-        tabControl1.Controls.Add(tabPage1);
+        tabControl1.Controls.Add(tabVariablesWithoutAssignments);
         tabControl1.Dock = DockStyle.Fill;
         tabControl1.Location = new Point(0, 0);
         tabControl1.Margin = new Padding(4, 3, 4, 3);
@@ -467,16 +509,10 @@
         // 
         // groupBox2
         // 
-        groupBox2.Controls.Add(udStringRegister);
+        groupBox2.Controls.Add(panel3);
+        groupBox2.Controls.Add(panel2);
         groupBox2.Controls.Add(txtStringValue);
-        groupBox2.Controls.Add(txtStringVariable);
-        groupBox2.Controls.Add(btnWriteStringRegister);
-        groupBox2.Controls.Add(label4);
         groupBox2.Controls.Add(label8);
-        groupBox2.Controls.Add(label3);
-        groupBox2.Controls.Add(btnWriteStringVariable);
-        groupBox2.Controls.Add(btnReadStringRegister);
-        groupBox2.Controls.Add(btnReadStringVariable);
         groupBox2.Location = new Point(425, 7);
         groupBox2.Margin = new Padding(4, 3, 4, 3);
         groupBox2.Name = "groupBox2";
@@ -486,89 +522,52 @@
         groupBox2.TabStop = false;
         groupBox2.Text = "Strings";
         // 
+        // panel3
+        // 
+        panel3.BorderStyle = BorderStyle.FixedSingle;
+        panel3.Controls.Add(udStringRegister);
+        panel3.Controls.Add(tabControl2);
+        panel3.Controls.Add(label4);
+        panel3.Location = new Point(6, 23);
+        panel3.Name = "panel3";
+        panel3.Size = new Size(255, 137);
+        panel3.TabIndex = 7;
+        // 
         // udStringRegister
         // 
-        udStringRegister.Location = new Point(7, 39);
+        udStringRegister.Location = new Point(101, 3);
         udStringRegister.Margin = new Padding(4, 3, 4, 3);
         udStringRegister.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
         udStringRegister.Name = "udStringRegister";
-        udStringRegister.Size = new Size(140, 23);
+        udStringRegister.Size = new Size(138, 23);
         udStringRegister.TabIndex = 0;
         udStringRegister.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
-        // txtStringValue
+        // tabControl2
         // 
-        txtStringValue.Location = new Point(10, 155);
-        txtStringValue.Margin = new Padding(4, 3, 4, 3);
-        txtStringValue.Multiline = true;
-        txtStringValue.Name = "txtStringValue";
-        txtStringValue.Size = new Size(382, 70);
-        txtStringValue.TabIndex = 4;
+        tabControl2.Controls.Add(tabPage2);
+        tabControl2.Controls.Add(tabPage3);
+        tabControl2.Location = new Point(10, 32);
+        tabControl2.Name = "tabControl2";
+        tabControl2.SelectedIndex = 0;
+        tabControl2.Size = new Size(239, 102);
+        tabControl2.TabIndex = 5;
         // 
-        // txtStringVariable
+        // tabPage2
         // 
-        txtStringVariable.Location = new Point(178, 39);
-        txtStringVariable.Margin = new Padding(4, 3, 4, 3);
-        txtStringVariable.Name = "txtStringVariable";
-        txtStringVariable.Size = new Size(214, 23);
-        txtStringVariable.TabIndex = 4;
-        txtStringVariable.Text = "$BACKUP_NAME";
-        // 
-        // btnWriteStringRegister
-        // 
-        btnWriteStringRegister.Location = new Point(7, 103);
-        btnWriteStringRegister.Margin = new Padding(4, 3, 4, 3);
-        btnWriteStringRegister.Name = "btnWriteStringRegister";
-        btnWriteStringRegister.Size = new Size(140, 27);
-        btnWriteStringRegister.TabIndex = 2;
-        btnWriteStringRegister.Text = "Write";
-        btnWriteStringRegister.UseVisualStyleBackColor = true;
-        btnWriteStringRegister.Click += btnWriteStringRegister_Click;
-        // 
-        // label4
-        // 
-        label4.AutoSize = true;
-        label4.Location = new Point(7, 21);
-        label4.Margin = new Padding(4, 0, 4, 0);
-        label4.Name = "label4";
-        label4.Size = new Size(80, 15);
-        label4.TabIndex = 1;
-        label4.Text = "String register";
-        // 
-        // label8
-        // 
-        label8.AutoSize = true;
-        label8.Location = new Point(7, 136);
-        label8.Margin = new Padding(4, 0, 4, 0);
-        label8.Name = "label8";
-        label8.Size = new Size(41, 15);
-        label8.TabIndex = 1;
-        label8.Text = "Value :";
-        // 
-        // label3
-        // 
-        label3.AutoSize = true;
-        label3.Location = new Point(178, 21);
-        label3.Margin = new Padding(4, 0, 4, 0);
-        label3.Name = "label3";
-        label3.Size = new Size(82, 15);
-        label3.TabIndex = 1;
-        label3.Text = "String variable";
-        // 
-        // btnWriteStringVariable
-        // 
-        btnWriteStringVariable.Location = new Point(178, 103);
-        btnWriteStringVariable.Margin = new Padding(4, 3, 4, 3);
-        btnWriteStringVariable.Name = "btnWriteStringVariable";
-        btnWriteStringVariable.Size = new Size(140, 27);
-        btnWriteStringVariable.TabIndex = 2;
-        btnWriteStringVariable.Text = "Write";
-        btnWriteStringVariable.UseVisualStyleBackColor = true;
-        btnWriteStringVariable.Click += btnWriteStringVariable_Click;
+        tabPage2.Controls.Add(btnReadStringRegister);
+        tabPage2.Controls.Add(btnWriteStringRegister);
+        tabPage2.Location = new Point(4, 24);
+        tabPage2.Name = "tabPage2";
+        tabPage2.Padding = new Padding(3);
+        tabPage2.Size = new Size(231, 74);
+        tabPage2.TabIndex = 0;
+        tabPage2.Text = "String register";
+        tabPage2.UseVisualStyleBackColor = true;
         // 
         // btnReadStringRegister
         // 
-        btnReadStringRegister.Location = new Point(7, 69);
+        btnReadStringRegister.Location = new Point(37, 6);
         btnReadStringRegister.Margin = new Padding(4, 3, 4, 3);
         btnReadStringRegister.Name = "btnReadStringRegister";
         btnReadStringRegister.Size = new Size(140, 27);
@@ -577,9 +576,151 @@
         btnReadStringRegister.UseVisualStyleBackColor = true;
         btnReadStringRegister.Click += btnReadStringRegister_Click;
         // 
+        // btnWriteStringRegister
+        // 
+        btnWriteStringRegister.Location = new Point(37, 40);
+        btnWriteStringRegister.Margin = new Padding(4, 3, 4, 3);
+        btnWriteStringRegister.Name = "btnWriteStringRegister";
+        btnWriteStringRegister.Size = new Size(140, 27);
+        btnWriteStringRegister.TabIndex = 2;
+        btnWriteStringRegister.Text = "Write";
+        btnWriteStringRegister.UseVisualStyleBackColor = true;
+        btnWriteStringRegister.Click += btnWriteStringRegister_Click;
+        // 
+        // tabPage3
+        // 
+        tabPage3.Controls.Add(udStringRegisterLength);
+        tabPage3.Controls.Add(udStringRegisterStart);
+        tabPage3.Controls.Add(label22);
+        tabPage3.Controls.Add(btnReadStringRegisterSpan);
+        tabPage3.Controls.Add(label21);
+        tabPage3.Controls.Add(btnWriteStringRegisterSpan);
+        tabPage3.Location = new Point(4, 24);
+        tabPage3.Name = "tabPage3";
+        tabPage3.Padding = new Padding(3);
+        tabPage3.Size = new Size(231, 74);
+        tabPage3.TabIndex = 1;
+        tabPage3.Text = "String register (length)";
+        tabPage3.UseVisualStyleBackColor = true;
+        // 
+        // udStringRegisterLength
+        // 
+        udStringRegisterLength.Increment = new decimal(new int[] { 2, 0, 0, 0 });
+        udStringRegisterLength.Location = new Point(164, 9);
+        udStringRegisterLength.Margin = new Padding(4, 3, 4, 3);
+        udStringRegisterLength.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udStringRegisterLength.Name = "udStringRegisterLength";
+        udStringRegisterLength.Size = new Size(60, 23);
+        udStringRegisterLength.TabIndex = 0;
+        udStringRegisterLength.Value = new decimal(new int[] { 100, 0, 0, 0 });
+        // 
+        // udStringRegisterStart
+        // 
+        udStringRegisterStart.Increment = new decimal(new int[] { 2, 0, 0, 0 });
+        udStringRegisterStart.Location = new Point(45, 9);
+        udStringRegisterStart.Margin = new Padding(4, 3, 4, 3);
+        udStringRegisterStart.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udStringRegisterStart.Name = "udStringRegisterStart";
+        udStringRegisterStart.Size = new Size(60, 23);
+        udStringRegisterStart.TabIndex = 0;
+        // 
+        // label22
+        // 
+        label22.AutoSize = true;
+        label22.Location = new Point(115, 12);
+        label22.Margin = new Padding(4, 0, 4, 0);
+        label22.Name = "label22";
+        label22.Size = new Size(47, 15);
+        label22.TabIndex = 1;
+        label22.Text = "Length:";
+        // 
+        // btnReadStringRegisterSpan
+        // 
+        btnReadStringRegisterSpan.Location = new Point(7, 40);
+        btnReadStringRegisterSpan.Margin = new Padding(4, 3, 4, 3);
+        btnReadStringRegisterSpan.Name = "btnReadStringRegisterSpan";
+        btnReadStringRegisterSpan.Size = new Size(103, 27);
+        btnReadStringRegisterSpan.TabIndex = 3;
+        btnReadStringRegisterSpan.Text = "Read";
+        btnReadStringRegisterSpan.UseVisualStyleBackColor = true;
+        btnReadStringRegisterSpan.Click += btnReadStringRegisterSpan_Click;
+        // 
+        // label21
+        // 
+        label21.AutoSize = true;
+        label21.Location = new Point(7, 12);
+        label21.Margin = new Padding(4, 0, 4, 0);
+        label21.Name = "label21";
+        label21.Size = new Size(34, 15);
+        label21.TabIndex = 1;
+        label21.Text = "Start:";
+        // 
+        // btnWriteStringRegisterSpan
+        // 
+        btnWriteStringRegisterSpan.Location = new Point(121, 41);
+        btnWriteStringRegisterSpan.Margin = new Padding(4, 3, 4, 3);
+        btnWriteStringRegisterSpan.Name = "btnWriteStringRegisterSpan";
+        btnWriteStringRegisterSpan.Size = new Size(103, 27);
+        btnWriteStringRegisterSpan.TabIndex = 4;
+        btnWriteStringRegisterSpan.Text = "Write";
+        btnWriteStringRegisterSpan.UseVisualStyleBackColor = true;
+        btnWriteStringRegisterSpan.Click += btnWriteStringRegisterSpan_Click;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Location = new Point(10, 8);
+        label4.Margin = new Padding(4, 0, 4, 0);
+        label4.Name = "label4";
+        label4.Size = new Size(83, 15);
+        label4.TabIndex = 1;
+        label4.Text = "String register:";
+        // 
+        // panel2
+        // 
+        panel2.BorderStyle = BorderStyle.FixedSingle;
+        panel2.Controls.Add(txtStringVariable);
+        panel2.Controls.Add(label3);
+        panel2.Controls.Add(btnWriteStringVariable);
+        panel2.Controls.Add(btnReadStringVariable);
+        panel2.Location = new Point(270, 23);
+        panel2.Name = "panel2";
+        panel2.Size = new Size(223, 137);
+        panel2.TabIndex = 6;
+        // 
+        // txtStringVariable
+        // 
+        txtStringVariable.Location = new Point(4, 26);
+        txtStringVariable.Margin = new Padding(4, 3, 4, 3);
+        txtStringVariable.Name = "txtStringVariable";
+        txtStringVariable.Size = new Size(214, 23);
+        txtStringVariable.TabIndex = 4;
+        txtStringVariable.Text = "$BACKUP_NAME";
+        // 
+        // label3
+        // 
+        label3.AutoSize = true;
+        label3.Location = new Point(66, 8);
+        label3.Margin = new Padding(4, 0, 4, 0);
+        label3.Name = "label3";
+        label3.Size = new Size(82, 15);
+        label3.TabIndex = 1;
+        label3.Text = "String variable";
+        // 
+        // btnWriteStringVariable
+        // 
+        btnWriteStringVariable.Location = new Point(41, 96);
+        btnWriteStringVariable.Margin = new Padding(4, 3, 4, 3);
+        btnWriteStringVariable.Name = "btnWriteStringVariable";
+        btnWriteStringVariable.Size = new Size(140, 27);
+        btnWriteStringVariable.TabIndex = 2;
+        btnWriteStringVariable.Text = "Write";
+        btnWriteStringVariable.UseVisualStyleBackColor = true;
+        btnWriteStringVariable.Click += btnWriteStringVariable_Click;
+        // 
         // btnReadStringVariable
         // 
-        btnReadStringVariable.Location = new Point(178, 69);
+        btnReadStringVariable.Location = new Point(41, 62);
         btnReadStringVariable.Margin = new Padding(4, 3, 4, 3);
         btnReadStringVariable.Name = "btnReadStringVariable";
         btnReadStringVariable.Size = new Size(140, 27);
@@ -587,6 +728,25 @@
         btnReadStringVariable.Text = "Read";
         btnReadStringVariable.UseVisualStyleBackColor = true;
         btnReadStringVariable.Click += btnReadStringVariable_Click;
+        // 
+        // txtStringValue
+        // 
+        txtStringValue.Location = new Point(10, 184);
+        txtStringValue.Margin = new Padding(4, 3, 4, 3);
+        txtStringValue.Multiline = true;
+        txtStringValue.Name = "txtStringValue";
+        txtStringValue.Size = new Size(478, 41);
+        txtStringValue.TabIndex = 4;
+        // 
+        // label8
+        // 
+        label8.AutoSize = true;
+        label8.Location = new Point(10, 163);
+        label8.Margin = new Padding(4, 0, 4, 0);
+        label8.Name = "label8";
+        label8.Size = new Size(41, 15);
+        label8.TabIndex = 1;
+        label8.Text = "Value :";
         // 
         // groupBox1
         // 
@@ -770,7 +930,7 @@
         tabSignals.Padding = new Padding(4, 3, 4, 3);
         tabSignals.Size = new Size(1175, 549);
         tabSignals.TabIndex = 3;
-        tabSignals.Text = "Signals";
+        tabSignals.Text = "Signals value";
         tabSignals.UseVisualStyleBackColor = true;
         // 
         // groupBox12
@@ -870,6 +1030,104 @@
         snpxSignalControlDigitals.Name = "snpxSignalControlDigitals";
         snpxSignalControlDigitals.Size = new Size(264, 543);
         snpxSignalControlDigitals.TabIndex = 0;
+        // 
+        // tabSimulation
+        // 
+        tabSimulation.Controls.Add(txtSimulationStatus);
+        tabSimulation.Controls.Add(udSimulationIndex);
+        tabSimulation.Controls.Add(cbSimulationType);
+        tabSimulation.Controls.Add(label26);
+        tabSimulation.Controls.Add(label27);
+        tabSimulation.Controls.Add(btnUnsimulate);
+        tabSimulation.Controls.Add(btnSimulate);
+        tabSimulation.Controls.Add(btnReadSimulation);
+        tabSimulation.Location = new Point(4, 24);
+        tabSimulation.Name = "tabSimulation";
+        tabSimulation.Size = new Size(1175, 549);
+        tabSimulation.TabIndex = 9;
+        tabSimulation.Text = "Signals simulation";
+        tabSimulation.UseVisualStyleBackColor = true;
+        // 
+        // txtSimulationStatus
+        // 
+        txtSimulationStatus.BackColor = SystemColors.Control;
+        txtSimulationStatus.Location = new Point(24, 212);
+        txtSimulationStatus.Name = "txtSimulationStatus";
+        txtSimulationStatus.ReadOnly = true;
+        txtSimulationStatus.Size = new Size(167, 23);
+        txtSimulationStatus.TabIndex = 17;
+        // 
+        // udSimulationIndex
+        // 
+        udSimulationIndex.Location = new Point(169, 137);
+        udSimulationIndex.Margin = new Padding(4, 3, 4, 3);
+        udSimulationIndex.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udSimulationIndex.Name = "udSimulationIndex";
+        udSimulationIndex.Size = new Size(167, 23);
+        udSimulationIndex.TabIndex = 16;
+        udSimulationIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // cbSimulationType
+        // 
+        cbSimulationType.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbSimulationType.FormattingEnabled = true;
+        cbSimulationType.Location = new Point(169, 76);
+        cbSimulationType.Name = "cbSimulationType";
+        cbSimulationType.Size = new Size(167, 23);
+        cbSimulationType.TabIndex = 15;
+        // 
+        // label26
+        // 
+        label26.AutoSize = true;
+        label26.Location = new Point(155, 119);
+        label26.Margin = new Padding(4, 0, 4, 0);
+        label26.Name = "label26";
+        label26.Size = new Size(38, 15);
+        label26.TabIndex = 12;
+        label26.Text = "Index:";
+        // 
+        // label27
+        // 
+        label27.AutoSize = true;
+        label27.Location = new Point(155, 58);
+        label27.Margin = new Padding(4, 0, 4, 0);
+        label27.Name = "label27";
+        label27.Size = new Size(35, 15);
+        label27.TabIndex = 13;
+        label27.Text = "Type:";
+        // 
+        // btnUnsimulate
+        // 
+        btnUnsimulate.Location = new Point(296, 179);
+        btnUnsimulate.Margin = new Padding(4, 3, 4, 3);
+        btnUnsimulate.Name = "btnUnsimulate";
+        btnUnsimulate.Size = new Size(89, 27);
+        btnUnsimulate.TabIndex = 14;
+        btnUnsimulate.Text = "Unsimulate";
+        btnUnsimulate.UseVisualStyleBackColor = true;
+        btnUnsimulate.Click += btnUnsimulate_Click;
+        // 
+        // btnSimulate
+        // 
+        btnSimulate.Location = new Point(199, 179);
+        btnSimulate.Margin = new Padding(4, 3, 4, 3);
+        btnSimulate.Name = "btnSimulate";
+        btnSimulate.Size = new Size(89, 27);
+        btnSimulate.TabIndex = 14;
+        btnSimulate.Text = "Simulate";
+        btnSimulate.UseVisualStyleBackColor = true;
+        btnSimulate.Click += btnSimulate_Click;
+        // 
+        // btnReadSimulation
+        // 
+        btnReadSimulation.Location = new Point(24, 179);
+        btnReadSimulation.Margin = new Padding(4, 3, 4, 3);
+        btnReadSimulation.Name = "btnReadSimulation";
+        btnReadSimulation.Size = new Size(167, 27);
+        btnReadSimulation.TabIndex = 14;
+        btnReadSimulation.Text = "Read simulation status";
+        btnReadSimulation.UseVisualStyleBackColor = true;
+        btnReadSimulation.Click += btnReadSimulation_Click;
         // 
         // tabBatch
         // 
@@ -1410,6 +1668,101 @@
         btnReadTaskStatus.UseVisualStyleBackColor = true;
         btnReadTaskStatus.Click += btnReadTaskStatus_Click;
         // 
+        // tabComments
+        // 
+        tabComments.Controls.Add(udCommentIndex);
+        tabComments.Controls.Add(cbCommentType);
+        tabComments.Controls.Add(label25);
+        tabComments.Controls.Add(label24);
+        tabComments.Controls.Add(label23);
+        tabComments.Controls.Add(btnWriteComment);
+        tabComments.Controls.Add(btnReadComment);
+        tabComments.Controls.Add(txtComment);
+        tabComments.Location = new Point(4, 24);
+        tabComments.Name = "tabComments";
+        tabComments.Size = new Size(1175, 549);
+        tabComments.TabIndex = 8;
+        tabComments.Text = "Comments";
+        tabComments.UseVisualStyleBackColor = true;
+        // 
+        // udCommentIndex
+        // 
+        udCommentIndex.Location = new Point(67, 129);
+        udCommentIndex.Margin = new Padding(4, 3, 4, 3);
+        udCommentIndex.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udCommentIndex.Name = "udCommentIndex";
+        udCommentIndex.Size = new Size(167, 23);
+        udCommentIndex.TabIndex = 11;
+        udCommentIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // cbCommentType
+        // 
+        cbCommentType.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbCommentType.FormattingEnabled = true;
+        cbCommentType.Location = new Point(67, 68);
+        cbCommentType.Name = "cbCommentType";
+        cbCommentType.Size = new Size(167, 23);
+        cbCommentType.TabIndex = 10;
+        // 
+        // label25
+        // 
+        label25.AutoSize = true;
+        label25.Location = new Point(53, 226);
+        label25.Margin = new Padding(4, 0, 4, 0);
+        label25.Name = "label25";
+        label25.Size = new Size(38, 15);
+        label25.TabIndex = 5;
+        label25.Text = "Value:";
+        // 
+        // label24
+        // 
+        label24.AutoSize = true;
+        label24.Location = new Point(53, 111);
+        label24.Margin = new Padding(4, 0, 4, 0);
+        label24.Name = "label24";
+        label24.Size = new Size(38, 15);
+        label24.TabIndex = 5;
+        label24.Text = "Index:";
+        // 
+        // label23
+        // 
+        label23.AutoSize = true;
+        label23.Location = new Point(53, 50);
+        label23.Margin = new Padding(4, 0, 4, 0);
+        label23.Name = "label23";
+        label23.Size = new Size(35, 15);
+        label23.TabIndex = 5;
+        label23.Text = "Type:";
+        // 
+        // btnWriteComment
+        // 
+        btnWriteComment.Location = new Point(67, 287);
+        btnWriteComment.Margin = new Padding(4, 3, 4, 3);
+        btnWriteComment.Name = "btnWriteComment";
+        btnWriteComment.Size = new Size(167, 27);
+        btnWriteComment.TabIndex = 6;
+        btnWriteComment.Text = "Write";
+        btnWriteComment.UseVisualStyleBackColor = true;
+        btnWriteComment.Click += btnWriteComment_Click;
+        // 
+        // btnReadComment
+        // 
+        btnReadComment.Location = new Point(65, 173);
+        btnReadComment.Margin = new Padding(4, 3, 4, 3);
+        btnReadComment.Name = "btnReadComment";
+        btnReadComment.Size = new Size(167, 27);
+        btnReadComment.TabIndex = 7;
+        btnReadComment.Text = "Read";
+        btnReadComment.UseVisualStyleBackColor = true;
+        btnReadComment.Click += btnReadComment_Click;
+        // 
+        // txtComment
+        // 
+        txtComment.Location = new Point(65, 244);
+        txtComment.Name = "txtComment";
+        txtComment.Size = new Size(169, 23);
+        txtComment.TabIndex = 0;
+        // 
         // tabAssignments
         // 
         tabAssignments.Controls.Add(lstAssignments);
@@ -1465,20 +1818,20 @@
         btnClearAssignments.UseVisualStyleBackColor = true;
         btnClearAssignments.Click += btnClearAssignments_Click;
         // 
-        // tabPage1
+        // tabVariablesWithoutAssignments
         // 
-        tabPage1.Controls.Add(btnWriteVariable);
-        tabPage1.Controls.Add(txtVariableValue);
-        tabPage1.Controls.Add(txtVariableName);
-        tabPage1.Controls.Add(label17);
-        tabPage1.Controls.Add(label16);
-        tabPage1.Location = new Point(4, 24);
-        tabPage1.Name = "tabPage1";
-        tabPage1.Padding = new Padding(3);
-        tabPage1.Size = new Size(1175, 549);
-        tabPage1.TabIndex = 6;
-        tabPage1.Text = "Variables without assignment";
-        tabPage1.UseVisualStyleBackColor = true;
+        tabVariablesWithoutAssignments.Controls.Add(btnWriteVariable);
+        tabVariablesWithoutAssignments.Controls.Add(txtVariableValue);
+        tabVariablesWithoutAssignments.Controls.Add(txtVariableName);
+        tabVariablesWithoutAssignments.Controls.Add(label17);
+        tabVariablesWithoutAssignments.Controls.Add(label16);
+        tabVariablesWithoutAssignments.Location = new Point(4, 24);
+        tabVariablesWithoutAssignments.Name = "tabVariablesWithoutAssignments";
+        tabVariablesWithoutAssignments.Padding = new Padding(3);
+        tabVariablesWithoutAssignments.Size = new Size(1175, 549);
+        tabVariablesWithoutAssignments.TabIndex = 6;
+        tabVariablesWithoutAssignments.Text = "Variables without assignment";
+        tabVariablesWithoutAssignments.UseVisualStyleBackColor = true;
         // 
         // btnWriteVariable
         // 
@@ -1542,7 +1895,17 @@
         ((System.ComponentModel.ISupportInitialize)udNumericRegister).EndInit();
         groupBox2.ResumeLayout(false);
         groupBox2.PerformLayout();
+        panel3.ResumeLayout(false);
+        panel3.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udStringRegister).EndInit();
+        tabControl2.ResumeLayout(false);
+        tabPage2.ResumeLayout(false);
+        tabPage3.ResumeLayout(false);
+        tabPage3.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udStringRegisterLength).EndInit();
+        ((System.ComponentModel.ISupportInitialize)udStringRegisterStart).EndInit();
+        panel2.ResumeLayout(false);
+        panel2.PerformLayout();
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udFrame).EndInit();
@@ -1551,6 +1914,9 @@
         groupBox12.ResumeLayout(false);
         groupBox12.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udFlag).EndInit();
+        tabSimulation.ResumeLayout(false);
+        tabSimulation.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udSimulationIndex).EndInit();
         tabBatch.ResumeLayout(false);
         tabBatch.PerformLayout();
         groupBox11.ResumeLayout(false);
@@ -1573,10 +1939,13 @@
         tabTasks.ResumeLayout(false);
         tabTasks.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udTaskIndex).EndInit();
+        tabComments.ResumeLayout(false);
+        tabComments.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udCommentIndex).EndInit();
         tabAssignments.ResumeLayout(false);
         panel1.ResumeLayout(false);
-        tabPage1.ResumeLayout(false);
-        tabPage1.PerformLayout();
+        tabVariablesWithoutAssignments.ResumeLayout(false);
+        tabVariablesWithoutAssignments.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -1602,7 +1971,6 @@
     private System.Windows.Forms.TextBox txtStringValue;
     private System.Windows.Forms.TextBox txtStringVariable;
     private System.Windows.Forms.Button btnWriteStringRegister;
-    private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Button btnWriteStringVariable;
     private System.Windows.Forms.Button btnReadStringRegister;
@@ -1681,7 +2049,7 @@
     private PropertyGrid gridAlarmHistory;
     private NumericUpDown udAlarmHistory;
     private Button btnClearAlarms;
-    private TabPage tabPage1;
+    private TabPage tabVariablesWithoutAssignments;
     private Button btnWriteVariable;
     private TextBox txtVariableValue;
     private TextBox txtVariableName;
@@ -1704,4 +2072,35 @@
     private NumericUpDown udTaskIndex;
     private PropertyGrid gridTaskStatus;
     private Label label20;
+    private TabControl tabControl2;
+    private TabPage tabPage2;
+    private TabPage tabPage3;
+    private Panel panel3;
+    private Label label4;
+    private Panel panel2;
+    private NumericUpDown udStringRegisterStart;
+    private Button btnReadStringRegisterSpan;
+    private Button btnWriteStringRegisterSpan;
+    private NumericUpDown udStringRegisterLength;
+    private Label label22;
+    private Label label21;
+    private TabPage tabComments;
+    private Label label23;
+    private Button btnWriteComment;
+    private Button btnReadComment;
+    private TextBox textBox3;
+    private TextBox txtComment;
+    private ComboBox cbCommentType;
+    private NumericUpDown udCommentIndex;
+    private Label label25;
+    private Label label24;
+    private TabPage tabSimulation;
+    private NumericUpDown udSimulationIndex;
+    private ComboBox cbSimulationType;
+    private Label label26;
+    private Label label27;
+    private Button btnReadSimulation;
+    private TextBox txtSimulationStatus;
+    private Button btnUnsimulate;
+    private Button btnSimulate;
 }
