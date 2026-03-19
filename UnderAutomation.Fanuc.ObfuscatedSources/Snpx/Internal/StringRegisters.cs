@@ -12,6 +12,13 @@ namespace Snpx.Internal {
 	public class StringRegisters : SnpxWritableAssignableIndexableElements<string, StringRegistersBatchAssignment> {
 
 
+		protected override int GetAssignmentSize(int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override string GetAssignmentName(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -28,7 +35,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override string ReadFromClient(int offset)
+		protected override string ReadFromClient(int offset, int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -37,7 +44,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Writes a value to the robot at the specified offset.
 		/// </summary>
-		protected override void WriteInClient(int offset, string value)
+		protected override void WriteInClient(int offset, int index, string value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
@@ -53,8 +60,5 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected override int AssignmentSize => default;
 	}
 }

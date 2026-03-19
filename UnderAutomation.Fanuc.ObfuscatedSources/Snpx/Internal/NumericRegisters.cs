@@ -14,7 +14,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override float ReadFromClient(int offset)
+		protected override float ReadFromClient(int offset, int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -23,7 +23,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Writes a value to the robot at the specified offset.
 		/// </summary>
-		protected override void WriteInClient(int offset, float value)
+		protected override void WriteInClient(int offset, int index, float value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

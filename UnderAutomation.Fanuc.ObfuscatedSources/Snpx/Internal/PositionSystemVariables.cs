@@ -13,6 +13,13 @@ namespace Snpx.Internal {
 	public class PositionSystemVariables : SnpxWritableAssignableElements<Position, string, PositionSystemVariablesBatchAssignment> {
 
 
+		protected override int GetAssignmentSize(string index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override string GetAssignmentName(string index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -29,7 +36,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override Position ReadFromClient(int offset)
+		protected override Position ReadFromClient(int offset, string index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -38,7 +45,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Writes a value to the robot at the specified offset.
 		/// </summary>
-		protected override void WriteInClient(int offset, Position value)
+		protected override void WriteInClient(int offset, string index, Position value)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
@@ -83,8 +90,5 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected override int AssignmentSize => default;
 	}
 }

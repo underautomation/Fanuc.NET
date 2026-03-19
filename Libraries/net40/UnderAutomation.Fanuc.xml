@@ -674,6 +674,11 @@
             Gets the encoding for the specified controller language
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Common.StringUtils.GetBytes(UnderAutomation.Fanuc.Common.Languages,System.String,System.Int32)">
+            <summary>
+            Encodes a string into a fixed-length byte array, padding with zeros or truncating as needed.
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.TaskStatus">
             <summary>
             Represents the status of a task.
@@ -44449,6 +44454,22 @@
             Gets the controller error id when available (0 means no error id was attached).
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.CommentBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple comments at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.CommentBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.CommentBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.CommentBatchAssignment.Read">
+            <summary>
+            Reads all comments assigned in this batch.
+            </summary>
+            <returns>An array of comment strings.</returns>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.IntegerSystemVariablesBatchAssignment">
             <summary>
             Batch assignment for reading multiple integer system variables at once.
@@ -44577,6 +44598,22 @@
             </summary>
             <returns>An array of float values.</returns>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.SimulationStatusBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple I/O simulation statuses at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.SimulationStatusBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.SimulationStatusBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.SimulationStatusBatchAssignment.Read">
+            <summary>
+            Reads all simulation statuses assigned in this batch.
+            </summary>
+            <returns>An array of boolean values indicating simulation state.</returns>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment">
             <summary>
             Batch assignment for reading multiple string registers at once.
@@ -44588,6 +44625,22 @@
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment.Read">
+            <summary>
+            Reads all string registers assigned in this batch.
+            </summary>
+            <returns>An array of string values.</returns>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment">
+            <summary>
+            Batch assignment for reading multiple string registers at once.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment.Read">
             <summary>
             Reads all string registers assigned in this batch.
             </summary>
@@ -46024,6 +46077,11 @@
             String registers
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.StringRegistersSpan">
+            <summary>
+            String registers with control over start index and length
+            </summary>
+        </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.IntegerSystemVariables">
             <summary>
             Integer variables
@@ -46167,6 +46225,16 @@
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.AlarmHistory">
             <summary>
             Alarm history
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Comments">
+            <summary>
+            Comments of registers, I/O signals and other data
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.SimulationStatus">
+            <summary>
+            I/O simulation status
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.Language">
@@ -46374,6 +46442,82 @@
             <param name="index">The register index.</param>
             <returns>The position value.</returns>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan">
+            <summary>
+            Defines a span within a string register, specifying the register index, start position, and length.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.#ctor">
+            <summary>
+            Creates a new instance with default values.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance with the specified register index, string length, and optional start index.
+            </summary>
+            <param name="registerIndex">The register index (1-based).</param>
+            <param name="stringLength">The number of characters (must be even, >= 2).</param>
+            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.RegisterIndex">
+            <summary>
+            Register index, starts from 1
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.StringStartIndex">
+            <summary>
+            String start index of the string to manipulate. Default : 0 (beginning of the string). Must be even and non-negative.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.StringLength">
+            <summary>
+            Number of characters to return, should be an even number. Default : 80. Must be even, >= 2.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan">
+            <summary>
+            Provides access to string registers (SR[]) with control over start index and length via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentSize(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentName(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentTarget(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.ReadFromClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.WriteInClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.Read(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Reads a substring from the specified string register.
+            </summary>
+            <param name="registerIndex">The register index (1-based).</param>
+            <param name="stringLength">The number of characters to read (must be even, >= 2).</param>
+            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
+            <returns>The string value read from the register.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.Write(System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Writes a string value to the specified string register span.
+            </summary>
+            <param name="registerIndex">The register index (1-based).</param>
+            <param name="value">The string value to write.</param>
+            <param name="stringLength">The number of characters to write (must be even, >= 2).</param>
+            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters">
             <summary>
             Provides access to string registers (SR[]) on the robot via SNPX.
@@ -46477,6 +46621,276 @@
             <summary>
             Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringSystemVariables"/> class.
             </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CommentType">
+            <summary>
+            Identifies the type of data for which a comment can be read or written.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.Register">
+            <summary>Numeric register R[].</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.PositionRegister">
+            <summary>Position register PR[].</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.StringRegister">
+            <summary>String register SR[].</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.DI">
+            <summary>Digital Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.DO">
+            <summary>Digital Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.RI">
+            <summary>Remote Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.RO">
+            <summary>Remote Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.UI">
+            <summary>User Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.UO">
+            <summary>User Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.SI">
+            <summary>System Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.SO">
+            <summary>System Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.WI">
+            <summary>Weld Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.WO">
+            <summary>Weld Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.WSI">
+            <summary>Wire Stick Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.WSO">
+            <summary>Wire Stick Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.GI">
+            <summary>Group Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.GO">
+            <summary>Group Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.AI">
+            <summary>Analog Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.AO">
+            <summary>Analog Output.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SimulationType">
+            <summary>
+            Identifies the type of I/O for which simulation status can be read or written.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.DI">
+            <summary>Digital Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.DO">
+            <summary>Digital Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.RI">
+            <summary>Remote Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.RO">
+            <summary>Remote Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.WI">
+            <summary>Weld Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.WO">
+            <summary>Weld Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.WSI">
+            <summary>Wire Stick Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.WSO">
+            <summary>Wire Stick Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.GI">
+            <summary>Group Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.GO">
+            <summary>Group Output.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.AI">
+            <summary>Analog Input.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.SimulationType.AO">
+            <summary>Analog Output.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.CommentData">
+            <summary>
+            Specifies the data type, index, and string length for reading or writing a comment via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.#ctor">
+            <summary>
+            Creates a new instance with default values.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.#ctor(UnderAutomation.Fanuc.Snpx.Internal.CommentType,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance with the specified type, index, and optional string length.
+            </summary>
+            <param name="type">The type of data to read the comment for.</param>
+            <param name="index">The 1-based index of the element.</param>
+            <param name="stringLength">The number of characters (must be even, >= 2). Default is 16.</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CommentData.Type">
+            <summary>
+            The type of data to read the comment for.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CommentData.Index">
+            <summary>
+            The 1-based index of the element. Must be >= 1.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.CommentData.StringLength">
+            <summary>
+            Number of characters to read/write. Must be even, >= 2. Default is 16.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.GetPrefix">
+            <summary>
+            Returns the SNPX variable prefix for this comment type.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.CommentData.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SimulationData">
+            <summary>
+            Specifies the I/O type and index for reading or writing simulation status via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.#ctor">
+            <summary>
+            Creates a new instance with default values.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SimulationType,System.Int32)">
+            <summary>
+            Creates a new instance with the specified type and index.
+            </summary>
+            <param name="type">The type of I/O.</param>
+            <param name="index">The 1-based index of the I/O.</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.Type">
+            <summary>
+            The type of I/O.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.Index">
+            <summary>
+            The 1-based index of the I/O. Must be >= 1.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationData.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.Comments">
+            <summary>
+            Provides read/write access to comments of registers, I/O signals and other data via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.Comments"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.GetAssignmentSize(UnderAutomation.Fanuc.Snpx.Internal.CommentData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.GetAssignmentName(UnderAutomation.Fanuc.Snpx.Internal.CommentData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.GetAssignmentTarget(UnderAutomation.Fanuc.Snpx.Internal.CommentData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.ReadFromClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.CommentData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.WriteInClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.CommentData,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.Read(UnderAutomation.Fanuc.Snpx.Internal.CommentType,System.Int32,System.Int32)">
+            <summary>
+            Reads the comment for the specified data type and index.
+            </summary>
+            <param name="type">The type of data.</param>
+            <param name="index">The 1-based element index.</param>
+            <param name="stringLength">The number of characters to read (must be even, >= 2). Default is 16.</param>
+            <returns>The comment string.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.Comments.Write(UnderAutomation.Fanuc.Snpx.Internal.CommentType,System.Int32,System.String,System.Int32)">
+            <summary>
+            Writes a comment for the specified data type and index.
+            </summary>
+            <param name="type">The type of data.</param>
+            <param name="index">The 1-based element index.</param>
+            <param name="value">The comment string to write.</param>
+            <param name="stringLength">The number of characters to write (must be even, >= 2). Default is 16.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus">
+            <summary>
+            Provides read/write access to I/O simulation status via SNPX.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus"/> class.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.GetAssignmentSize(UnderAutomation.Fanuc.Snpx.Internal.SimulationData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.GetAssignmentName(UnderAutomation.Fanuc.Snpx.Internal.SimulationData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.GetAssignmentTarget(UnderAutomation.Fanuc.Snpx.Internal.SimulationData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.ReadFromClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.SimulationData)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.WriteInClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.SimulationData,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.Read(UnderAutomation.Fanuc.Snpx.Internal.SimulationType,System.Int32)">
+            <summary>
+            Reads the simulation status for the specified I/O type and index.
+            </summary>
+            <param name="type">The type of I/O.</param>
+            <param name="index">The 1-based I/O index.</param>
+            <returns>True if the I/O is simulated, false otherwise.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SimulationStatus.Write(UnderAutomation.Fanuc.Snpx.Internal.SimulationType,System.Int32,System.Boolean)">
+            <summary>
+            Sets the simulation status for the specified I/O type and index.
+            </summary>
+            <param name="type">The type of I/O.</param>
+            <param name="index">The 1-based I/O index.</param>
+            <param name="value">True to enable simulation, false to disable.</param>
         </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SegmentName">
             <summary>
@@ -46814,7 +47228,7 @@
             Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3"/> class.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.WriteInClient(System.Int32,`0)">
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxWritableAssignableElements`3.WriteInClient(System.Int32,`1,`0)">
             <summary>
             Writes a value to the robot at the specified offset.
             </summary>
@@ -46860,7 +47274,7 @@
             Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2"/> class.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.ReadFromClient(System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.SnpxAssignableElements`2.ReadFromClient(System.Int32,`1)">
             <summary>
             Reads a value from the client at the specified memory offset.
             </summary>
@@ -48226,6 +48640,9 @@
         <member name="M:UnderAutomation.Fanuc.Telnet.BreakpointsResult.FromResult(System.String)">
             <inheritdoc />
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.BreakpointsResult.ShouldCompleteOnEmptyAnswer">
+            <inheritdoc />
+        </member>
         <member name="P:UnderAutomation.Fanuc.Telnet.BreakpointsResult.Breakpoints">
             <summary>
             Gets the breakpoints set on the task.
@@ -48354,6 +48771,9 @@
             Result of a set variable command.
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.SetVariableResult.ShouldCompleteOnEmptyAnswer">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.GetVariableResult">
             <summary>
             Result of a get variable command containing the raw value.
@@ -48363,6 +48783,9 @@
             <summary>
             Gets the raw value of the variable as a string.
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.GetVariableResult.ShouldCompleteOnEmptyAnswer">
+            <inheritdoc />
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.GetVariableResult.EndReceive">
             <summary>
@@ -48427,6 +48850,13 @@
         <member name="M:UnderAutomation.Fanuc.Telnet.Result.FromResult(System.String)">
             <summary>
             During implementation, return true if it is assumed that the frame has finished being received.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Telnet.Result.ShouldCompleteOnEmptyAnswer">
+            <summary>
+            Controls whether the result should be finalized when an empty answer is received (i.e. a frame consisting only of VT100 escape sequences and whitespace).
+            Override and return false until meaningful data has been accumulated, to prevent premature finalization caused by intermediate display-update frames.
+            Default is true (backward compatible: finalize immediately on empty answer).
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Result.ToString">

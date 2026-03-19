@@ -11,6 +11,13 @@ namespace Snpx.Internal {
 	public class CurrentPosition : SnpxAssignableElements<Position, CurrentPositionRequest> {
 
 
+		protected override int GetAssignmentSize(CurrentPositionRequest index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override string GetAssignmentName(CurrentPositionRequest index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -27,7 +34,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override Position ReadFromClient(int offset)
+		protected override Position ReadFromClient(int offset, CurrentPositionRequest index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -76,8 +83,5 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected override int AssignmentSize => default;
 	}
 }

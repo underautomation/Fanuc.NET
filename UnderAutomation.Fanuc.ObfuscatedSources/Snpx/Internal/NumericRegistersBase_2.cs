@@ -10,6 +10,13 @@ namespace Snpx.Internal {
 	public abstract class NumericRegistersBase<TValue, TAssignment> : SnpxWritableAssignableIndexableElements<TValue, TAssignment> where TAssignment : BatchAssignment<TValue, int>, new() {
 
 
+		protected override int GetAssignmentSize(int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override string GetAssignmentName(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -22,8 +29,5 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected override int AssignmentSize => default;
 	}
 }

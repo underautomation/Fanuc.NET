@@ -131,6 +131,11 @@ namespace Snpx.Internal {
 		public StringRegisters StringRegisters { get; }
 
 		/// <summary>
+		/// String registers with control over start index and length
+		/// </summary>
+		public StringRegistersSpan StringRegistersSpan { get; }
+
+		/// <summary>
 		/// Integer variables
 		/// </summary>
 		public IntegerSystemVariables IntegerSystemVariables { get; }
@@ -274,6 +279,16 @@ namespace Snpx.Internal {
 		/// Alarm history
 		/// </summary>
 		public AlarmAccess AlarmHistory { get; }
+
+		/// <summary>
+		/// Comments of registers, I/O signals and other data
+		/// </summary>
+		public Comments Comments { get; }
+
+		/// <summary>
+		/// I/O simulation status
+		/// </summary>
+		public SimulationStatus SimulationStatus { get; }
 
 		/// <summary>
 		/// Controller language (default is English)

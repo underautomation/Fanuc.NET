@@ -12,7 +12,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected abstract TValue ReadFromClient(int offset);
+		protected abstract TValue ReadFromClient(int offset, TIndex index);
 
 		/// <summary>
 		/// Reads the value at the specified index.
@@ -24,6 +24,9 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+
+		protected abstract int GetAssignmentSize(TIndex index);
 
 
 		protected abstract string GetAssignmentTarget(TIndex index);
@@ -41,8 +44,5 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected abstract int AssignmentSize { get; }
 	}
 }

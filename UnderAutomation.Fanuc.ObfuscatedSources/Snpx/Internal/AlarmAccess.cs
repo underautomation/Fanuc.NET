@@ -11,6 +11,13 @@ namespace Snpx.Internal {
 	public class AlarmAccess : SnpxAssignableElements<RobotAlarm, int> {
 
 
+		protected override int GetAssignmentSize(int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
 		protected override string GetAssignmentName(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -27,13 +34,10 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
-		protected override RobotAlarm ReadFromClient(int offset)
+		protected override RobotAlarm ReadFromClient(int offset, int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
-
-
-		protected override int AssignmentSize => default;
 	}
 }

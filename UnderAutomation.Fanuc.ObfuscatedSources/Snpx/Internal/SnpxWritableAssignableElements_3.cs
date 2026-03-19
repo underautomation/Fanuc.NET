@@ -12,7 +12,7 @@ namespace Snpx.Internal {
 		/// <summary>
 		/// Writes a value to the robot at the specified offset.
 		/// </summary>
-		protected abstract void WriteInClient(int offset, TValue value);
+		protected abstract void WriteInClient(int offset, TIndex index, TValue value);
 
 		/// <summary>
 		/// Write value at a certain index.
