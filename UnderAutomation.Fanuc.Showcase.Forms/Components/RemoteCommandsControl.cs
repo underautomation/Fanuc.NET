@@ -56,7 +56,7 @@ public partial class TelnetControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Remote control";
+    public string Title => "Telnet";
 
     public bool FeatureEnabled => _robot.Telnet.PollAndGetUpdatedConnectedState();
 

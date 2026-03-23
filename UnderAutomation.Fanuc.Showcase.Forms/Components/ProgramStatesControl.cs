@@ -24,7 +24,7 @@ public partial class ProgramStatesControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Program states";
+    public string Title => "Program states (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

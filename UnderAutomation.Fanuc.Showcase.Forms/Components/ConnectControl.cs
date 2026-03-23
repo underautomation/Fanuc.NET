@@ -34,6 +34,8 @@ public partial class ConnectControl : UserControl, IUserControl
 
         chkStreamMotion.Checked = parameters.StreamMotion.Enable;
 
+        chkCgtp.Checked = parameters.Cgtp.Enable;
+
         foreach (Languages language in Enum.GetValues<Languages>())
         {
             cbLanguage.Items.Add(language.ToString());
@@ -94,6 +96,8 @@ public partial class ConnectControl : UserControl, IUserControl
         parameters.Rmi.Enable = chkRmi.Checked;
 
         parameters.StreamMotion.Enable = chkStreamMotion.Checked;
+
+        parameters.Cgtp.Enable = chkCgtp.Checked;
 
         // Store information
         Config.Current.ConnectParameters = parameters;

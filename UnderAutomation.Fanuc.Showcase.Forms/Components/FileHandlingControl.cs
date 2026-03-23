@@ -16,7 +16,7 @@ public partial class FileHandlingControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "File handling";
+    public string Title => "File handling (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

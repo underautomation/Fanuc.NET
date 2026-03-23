@@ -33,7 +33,7 @@ public partial class IOStateControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "IO State";
+    public string Title => "IO State (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

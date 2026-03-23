@@ -13,7 +13,7 @@ public partial class DpmControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "DPM (Mouse Control)";
+    public string Title => "DPM (R739)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected && _robot.Snpx.Connected;
 

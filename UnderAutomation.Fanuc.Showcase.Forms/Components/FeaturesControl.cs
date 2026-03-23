@@ -26,7 +26,7 @@ public partial class FeaturesControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Features / Order No";
+    public string Title => "Features / Order No (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

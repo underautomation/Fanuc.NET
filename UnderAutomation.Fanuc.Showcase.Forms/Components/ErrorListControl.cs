@@ -25,7 +25,7 @@ public partial class ErrorListControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Error list";
+    public string Title => "Error list (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

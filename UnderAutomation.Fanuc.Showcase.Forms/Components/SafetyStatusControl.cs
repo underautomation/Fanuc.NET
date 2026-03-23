@@ -20,7 +20,7 @@ public partial class SafetyStatusControl: UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Safety status";
+    public string Title => "Safety status (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

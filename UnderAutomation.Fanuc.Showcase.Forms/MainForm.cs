@@ -26,6 +26,8 @@ public partial class MainForm : Form
 
         // Add nodes in left menu and instanciate associated control 
         AddNode(new ConnectControl(_robot));
+        AddNode(new CgtpControl(_robot));
+        AddNode(new SnpxControl(_robot));
         AddNode(new TelnetControl(_robot));
         AddNode(new VariablesControl(_robot));
         AddNode(new CurrentPositionControl(_robot));
@@ -35,12 +37,11 @@ public partial class MainForm : Form
         AddNode(new ErrorListControl(_robot));
         AddNode(new FeaturesControl(_robot));
         AddNode(new FileHandlingControl(_robot));
-        AddNode(new RmiControl(_robot));
         AddNode(new MoveRobotControl(_robot));
         AddNode(new TPEditorControl(_robot));
         AddNode(new DpmControl(_robot));
-        AddNode(new SnpxControl(_robot));
         AddNode(new StreamMotionControl(_robot));
+        AddNode(new RmiControl(_robot));
         AddNode(new KinematicsControl(_robot));
         AddNode(new ContactControl());
         AddNode(new LicenseControl());

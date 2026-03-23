@@ -55,7 +55,7 @@ public partial class RmiControl : UserControl, IUserControl
     #region IUserControl  
     public string Title
     {
-        get { return "RMI"; }
+        get { return "RMI (R912)"; }
     }
 
     public bool FeatureEnabled

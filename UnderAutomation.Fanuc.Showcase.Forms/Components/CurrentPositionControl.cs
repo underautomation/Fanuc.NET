@@ -29,7 +29,7 @@ public partial class CurrentPositionControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Current position";
+    public string Title => "Current position (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 

@@ -29,11 +29,11 @@ partial class ConnectControl
     {
         components = new System.ComponentModel.Container();
         tableLayoutPanel1 = new TableLayoutPanel();
+        chkCgtp = new CheckBox();
         lblConnected = new Label();
         label1 = new Label();
         txtIP = new TextBox();
         label5 = new Label();
-        chkTelnet = new CheckBox();
         panel1 = new Panel();
         btnConnect = new Button();
         btnDisconnect = new Button();
@@ -49,6 +49,7 @@ partial class ConnectControl
         cbLanguage = new ComboBox();
         chkStreamMotion = new CheckBox();
         lblLicense = new Label();
+        chkTelnet = new CheckBox();
         lnkConfigureTelnet = new LinkLabel();
         addressTooltip = new ToolTip(components);
         tableLayoutPanel1.SuspendLayout();
@@ -61,11 +62,12 @@ partial class ConnectControl
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 205F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanel1.Controls.Add(lblConnected, 1, 18);
+        tableLayoutPanel1.Controls.Add(chkCgtp, 1, 17);
+        tableLayoutPanel1.Controls.Add(lblConnected, 1, 20);
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
         tableLayoutPanel1.Controls.Add(label5, 0, 5);
-        tableLayoutPanel1.Controls.Add(panel1, 1, 17);
+        tableLayoutPanel1.Controls.Add(panel1, 1, 19);
         tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
         tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
         tableLayoutPanel1.Controls.Add(label2, 0, 8);
@@ -77,13 +79,13 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(label4, 0, 2);
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
         tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
-        tableLayoutPanel1.Controls.Add(lblLicense, 2, 17);
+        tableLayoutPanel1.Controls.Add(lblLicense, 2, 19);
         tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
         tableLayoutPanel1.Controls.Add(lnkConfigureTelnet, 2, 4);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
-        tableLayoutPanel1.RowCount = 20;
+        tableLayoutPanel1.RowCount = 22;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -101,16 +103,30 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
         tableLayoutPanel1.Size = new Size(800, 585);
         tableLayoutPanel1.TabIndex = 10;
         // 
+        // chkCgtp
+        // 
+        chkCgtp.Anchor = AnchorStyles.Left;
+        chkCgtp.AutoSize = true;
+        chkCgtp.Location = new Point(209, 454);
+        chkCgtp.Margin = new Padding(4, 3, 4, 3);
+        chkCgtp.Name = "chkCgtp";
+        chkCgtp.Size = new Size(213, 19);
+        chkCgtp.TabIndex = 25;
+        chkCgtp.Text = "CGTP Web Server (Firmware ≥ 8.40)";
+        chkCgtp.UseVisualStyleBackColor = true;
+        // 
         // lblConnected
         // 
         lblConnected.Dock = DockStyle.Fill;
-        lblConnected.Location = new Point(209, 489);
+        lblConnected.Location = new Point(209, 535);
         lblConnected.Margin = new Padding(4, 0, 4, 0);
         lblConnected.Name = "lblConnected";
         lblConnected.Size = new Size(242, 29);
@@ -156,24 +172,12 @@ partial class ConnectControl
         label5.TabIndex = 0;
         label5.Text = "KCL Password :";
         // 
-        // chkTelnet
-        // 
-        chkTelnet.Anchor = AnchorStyles.Left;
-        chkTelnet.AutoSize = true;
-        chkTelnet.Location = new Point(209, 137);
-        chkTelnet.Margin = new Padding(4, 3, 4, 3);
-        chkTelnet.Name = "chkTelnet";
-        chkTelnet.Size = new Size(231, 19);
-        chkTelnet.TabIndex = 4;
-        chkTelnet.Text = "Enable remote commands (Telnet KCL)";
-        chkTelnet.UseVisualStyleBackColor = true;
-        // 
         // panel1
         // 
         panel1.Controls.Add(btnConnect);
         panel1.Controls.Add(btnDisconnect);
         panel1.Dock = DockStyle.Fill;
-        panel1.Location = new Point(209, 452);
+        panel1.Location = new Point(209, 498);
         panel1.Margin = new Padding(4, 3, 4, 3);
         panel1.Name = "panel1";
         panel1.Size = new Size(242, 34);
@@ -321,12 +325,24 @@ partial class ConnectControl
         // 
         lblLicense.Anchor = AnchorStyles.Left;
         lblLicense.AutoSize = true;
-        lblLicense.Location = new Point(455, 461);
+        lblLicense.Location = new Point(455, 507);
         lblLicense.Margin = new Padding(0);
         lblLicense.Name = "lblLicense";
         lblLicense.Size = new Size(13, 15);
         lblLicense.TabIndex = 25;
         lblLicense.Text = "..";
+        // 
+        // chkTelnet
+        // 
+        chkTelnet.Anchor = AnchorStyles.Left;
+        chkTelnet.AutoSize = true;
+        chkTelnet.Location = new Point(209, 137);
+        chkTelnet.Margin = new Padding(4, 3, 4, 3);
+        chkTelnet.Name = "chkTelnet";
+        chkTelnet.Size = new Size(231, 19);
+        chkTelnet.TabIndex = 4;
+        chkTelnet.Text = "Enable remote commands (Telnet KCL)";
+        chkTelnet.UseVisualStyleBackColor = true;
         // 
         // lnkConfigureTelnet
         // 
@@ -387,4 +403,5 @@ partial class ConnectControl
     private CheckBox chkStreamMotion;
     private Label lblLicense;
     private LinkLabel lnkConfigureTelnet;
+    private CheckBox chkCgtp;
 }

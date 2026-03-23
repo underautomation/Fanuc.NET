@@ -17,7 +17,7 @@ public partial class VariablesControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "Variables";
+    public string Title => "Variables (FTP)";
 
     public bool FeatureEnabled => _robot.Ftp.Connected;
 
