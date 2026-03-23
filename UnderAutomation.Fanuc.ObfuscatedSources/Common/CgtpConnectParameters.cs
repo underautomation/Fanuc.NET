@@ -2,22 +2,22 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Telnet.Internal;
+using Cgtp.Internal;
 
 namespace Common {
 	/// <summary>
-	/// Connect parameters for remote command
+	/// CGTP Web Server connection parameters
 	/// </summary>
-	public class TelnetConnectParameters : TelnetConnectParametersBase {
+	public class CgtpConnectParameters : CgtpConnectParametersBase {
 
 
-		public TelnetConnectParameters()
+		public CgtpConnectParameters()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Should use this service (default: false)
+		/// Should enable CGTP Web Server for this connection (default: true)
 		/// </summary>
 		public bool Enable { get; set; }
 	}

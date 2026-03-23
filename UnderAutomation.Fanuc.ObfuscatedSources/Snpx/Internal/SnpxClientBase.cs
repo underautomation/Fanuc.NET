@@ -131,11 +131,6 @@ namespace Snpx.Internal {
 		public StringRegisters StringRegisters { get; }
 
 		/// <summary>
-		/// String registers with control over start index and length
-		/// </summary>
-		public StringRegistersSpan StringRegistersSpan { get; }
-
-		/// <summary>
 		/// Integer variables
 		/// </summary>
 		public IntegerSystemVariables IntegerSystemVariables { get; }

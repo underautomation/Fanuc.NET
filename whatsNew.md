@@ -1,65 +1,59 @@
-# SNPX : Comments and Simulation Status
+# What's New
 
-## New feature : Comments
+## New CGTP Protocol Support
 
-New `Comments` accessor allows reading and writing comments of registers, position registers, string registers and I/O signals via SNPX.
+A new **CGTP Web Server** client has been added, providing access to the HTTP-based RPC interface available on FANUC controllers (default port: 3080).
 
-```csharp
-// Read the comment of R[1] (default 16 characters)
-string comment = robot.Snpx.Comments.Read(CommentType.Register, 1);
+This lightweight, firewall-friendly protocol complements the existing SNPX, RMI, Telnet, and FTP connections and is **enabled by default** when connecting.
 
-// Read the comment of DI[3] with a custom length
-string diComment = robot.Snpx.Comments.Read(CommentType.DI, 3);
+Feature:
 
-// Write a comment to PR[5]
-robot.Snpx.Comments.Write(CommentType.PositionRegister, 5, "My position");
-```
+- Create, delete, rename programs
+- Read and write program attributes: comment, owner, stack size, write-protection, ignore-pause flag, and sub-type
+- Run, abort, and pause programs
+- Select a program and set the cursor to a specific line
+- Change the active TP program
+- Read and write system and program variables by name
+- List files on the controller (`MD:` or other devices)
+- Read file contents as text
 
-Supported types: `Register`, `PositionRegister`, `StringRegister`, `DI`, `DO`, `RI`, `RO`, `UI`, `UO`, `SI`, `SO`, `WI`, `WO`, `WSI`, `WSO`, `GI`, `GO`, `AI`, `AO`.
+A `CgtpClient` class is available for direct use without a `FanucRobot` instance.
 
-## New feature : Simulation Status
+---
 
-New `SimulationStatus` accessor allows reading and writing the simulation state of I/O signals via SNPX.
+## Connection Parameters Changes
 
-```csharp
-// Check if DI[1] is simulated
-bool isSimulated = robot.Snpx.SimulationStatus.Read(SimulationType.DI, 1);
+- **Telnet** and **FTP** are now **disabled by default**, enable them explicitly via `ConnectionParameters.Telnet.Enable` and `ConnectionParameters.Ftp.Enable`
+- **CGTP** is **enabled by default**, disable via `ConnectionParameters.Cgtp.Enable = false`
 
-// Enable simulation on RO[2]
-robot.Snpx.SimulationStatus.Write(SimulationType.RO, 2, true);
+---
 
-// Disable simulation on GI[5]
-robot.Snpx.SimulationStatus.Write(SimulationType.GI, 5, false);
-```
+## SNPX Fixes
 
-Supported types: `DI`, `DO`, `RI`, `RO`, `WI`, `WO`, `WSI`, `WSO`, `GI`, `GO`, `AI`, `AO`.
+- Null terminators (`\0`) are now correctly trimmed from string values returned when reading string registers and string variables
 
-# Telnet : Fix premature response finalization on non-English controllers
+---
 
-Fixed an issue where Telnet KCL commands (e.g. `GetVariable`, `SetVariable`) could fail on non-English controllers (Chinese, Japanese...) due to intermediate VT100 display-update frames being incorrectly interpreted as the end of a response.
+## SNPX String Registers Simplification
 
-On some controllers, status bar refresh frames (containing only ANSI escape sequences) arrive before the actual command response data. These empty frames were causing the result to be finalized prematurely, leading to missing or empty values.
+- `StringRegistersSpan` has been removed from the public SDK API because it made SNPX usage harder to understand.
+- Use `StringRegisters` for string register read/write.
+- Important: `StringRegisters.StringLength` is static. Set it once before any string register read/write, and do not change it while the SDK is running.
+- Default value remains `80`.
 
-A new mechanism now allows multi-frame results (`GetVariableResult`, `SetVariableResult`, `BreakpointsResult`) to defer finalization until meaningful data has actually been received.
-
-# SNPX : String registers span and fixes
-
-## New feature : String registers span
-
-New `StringRegistersSpan` accessor allows reading and writing substrings of string registers (SR[]) with control over start index and length.
+Examples:
 
 ```csharp
-// Read 10 characters starting at position 4 from SR[1]
-string value = robot.Snpx.StringRegistersSpan.Read(registerIndex: 1, stringLength: 10, stringStartIndex: 4);
+using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Snpx.Internal;
 
-// Write a substring into SR[2]
-robot.Snpx.StringRegistersSpan.Write(registerIndex: 2, value: "Hello", stringLength: 10, stringStartIndex: 0);
+var robot = new FanucRobot();
+robot.Connect("192.168.0.10");
+
+// Configure once before any SR[] read/write.
+StringRegisters.StringLength = 100; // default size is 80
+
+// Write and read a string register.
+robot.Snpx.StringRegisters.Write(1, "HELLO FANUC");
+string value = robot.Snpx.StringRegisters.Read(1);
 ```
-
-## Fix for writing empty strings
-
-Allow SNPX to write empty strings to string variables and string registers. String encoding now uses fixed-length byte buffers, preventing issues with empty or odd-length strings.
-
-## Fix missing assignable elements
-
-`NumericRegistersInt16`, `NumericRegistersInt32`, `StringRegistersSpan` and `Flags` are now correctly included in SNPX assignable elements, ensuring `ClearAssignments()` and `GetAssignments()` cover all element types.

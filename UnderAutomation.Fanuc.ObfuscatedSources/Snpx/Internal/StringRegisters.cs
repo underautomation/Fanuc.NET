@@ -60,5 +60,13 @@ namespace Snpx.Internal {
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
+
+		/// <summary>
+		/// Number of characters for string register reads/writes.
+		/// Must be even, greater than 2, and less than ushort.MaxValue.
+		/// Warning: this static value must be set before any string register read/write and must not be changed while the SDK is running.
+		/// Default: 80.
+		/// </summary>
+		public static int StringLength { get; set; }
 	}
 }

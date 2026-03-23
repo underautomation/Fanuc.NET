@@ -65,5 +65,10 @@ namespace UnderAutomation.Fanuc {
 		/// Parameters for Stream Motion (J519 option) - real-time streaming motion control over UDP
 		/// </summary>
 		public StreamMotionConnectParameters StreamMotion { get; set; }
+
+		/// <summary>
+		/// Parameters for CGTP Web Server (HTTP-based COMET RPC interface)
+		/// </summary>
+		public CgtpConnectParameters Cgtp { get; set; }
 	}
 }

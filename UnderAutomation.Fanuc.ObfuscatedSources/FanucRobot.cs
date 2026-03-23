@@ -8,6 +8,7 @@ using Ftp.Internal;
 using Snpx.Internal;
 using Rmi.Internal;
 using StreamMotion.Internal;
+using Cgtp.Internal;
 
 namespace UnderAutomation.Fanuc {
 	/// <summary>
@@ -94,6 +95,11 @@ namespace UnderAutomation.Fanuc {
 		/// Stream Motion client for real-time motion control
 		/// </summary>
 		public StreamMotionClientInternal StreamMotion { get; }
+
+		/// <summary>
+		/// CGTP Web Server client for HTTP-based COMET RPC interface
+		/// </summary>
+		public CgtpClientInternal Cgtp { get; }
 
 		/// <summary>
 		/// Return information about your license

@@ -4,6 +4,319 @@
         <name>UnderAutomation.Fanuc</name>
     </assembly>
     <members>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpClient">
+            <summary>
+            Standalone CGTP Web Server client for direct use without <see cref="T:UnderAutomation.Fanuc.FanucRobot"/>.
+            Provides access to the COMET RPC sub-protocol.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClient.#ctor">
+            <summary>
+            Creates a new instance of the CGTP Web Server client.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClient.Connect(System.String,System.Int32,System.Int32)">
+            <summary>
+            Connect to the CGTP Web Server on the controller.
+            </summary>
+            <param name="ip">Controller IP address or hostname.</param>
+            <param name="port">HTTP port number (default: 3080).</param>
+            <param name="requestTimeoutMs">Request timeout in milliseconds (default: 3000).</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpException">
+            <summary>
+            Represents an error returned by the FANUC COMET RPC interface.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpException.#ctor(System.String)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Cgtp.CgtpException"/> with a message.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Cgtp.CgtpException"/> with a message and inner exception.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpException.#ctor(System.Int32)">
+            <summary>
+            Constructs a new <see cref="T:UnderAutomation.Fanuc.Cgtp.CgtpException"/> with the RPC status code.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpException.Status">
+            <summary>
+            The RPC status code returned by the controller when available.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CometPositionRegisterValue">
+            <summary>
+            Value returned when reading a position register (PR[]) from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometPositionRegisterValue.Type">
+            <summary>Position type (e.g. 9 = joint position).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometPositionRegisterValue.Value">
+            <summary>String representation of the position data.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometPositionRegisterValue.Comment">
+            <summary>Position register comment.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CometRegisterValue">
+            <summary>
+            Value returned when reading a numeric register (R[]) from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometRegisterValue.Type">
+            <summary>Register data type (0x10 = integer, 0x11 = float).</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometRegisterValue.Value">
+            <summary>String representation of the register value.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometRegisterValue.Comment">
+            <summary>Register comment.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CometVariableValue">
+            <summary>
+            Value returned when reading a variable from the controller.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometVariableValue.TypeCode">
+            <summary>Variable type code.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CometVariableValue.Value">
+            <summary>String representation of the variable value.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpClientBase">
+            <summary>
+            Base implementation for the CGTP Web Server client.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Language">
+            <summary>
+            Controller language (default is English)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Enabled">
+            <summary>
+            Indicates whether the client is currently connected to the CGTP Web Server.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Disconnect">
+            <summary>
+            Disconnect from the CGTP Web Server. After calling this method, the client must be reconnected before it can be used again.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.AbortTask(System.String)">
+            <summary>
+            Abort the task specified by <paramref name="progName"/>.
+            Set to null to abort all user tasks.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SelectProgram(System.String,System.Int32)">
+            <summary>
+            Open the TP program <paramref name="progName"/> and move cursor to <paramref name="lineNum"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.DeleteProgram(System.String)">
+            <summary>
+            Delete the program <paramref name="progName"/> from the controller.
+            </summary>
+            <param name="progName">Program name</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramComment(System.String)">
+            <summary>
+            Get the comment of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramComment(System.String,System.String)">
+            <summary>
+            Set the comment of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramOwner(System.String)">
+            <summary>
+            Get the owner of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramOwner(System.String,System.String)">
+            <summary>
+            Set the owner of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramStackSize(System.String)">
+            <summary>
+            Get the stack size of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramStackSize(System.String,System.Int32)">
+            <summary>
+            Set the stack size of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramIgnorePause(System.String)">
+            <summary>
+            Get whether program <paramref name="progName"/> ignores pause requests.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramIgnorePause(System.String,System.Boolean)">
+            <summary>
+            Set whether program <paramref name="progName"/> ignores pause requests.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramWriteProtect(System.String)">
+            <summary>
+            Get whether program <paramref name="progName"/> is write-protected.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramWriteProtect(System.String,System.Boolean)">
+            <summary>
+            Set whether program <paramref name="progName"/> is write-protected.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramSubType(System.String)">
+            <summary>
+            Get the sub-type of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramSubType(System.String,UnderAutomation.Fanuc.Cgtp.ProgramSubType)">
+            <summary>
+            Set the sub-type of program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.CreateProgram(System.String,System.String,System.String,System.Int32,UnderAutomation.Fanuc.Cgtp.ProgramSubType)">
+            <summary>
+            Create a new TP program on the controller.
+            </summary>
+            <param name="progName">New program name</param>
+            <param name="owner">Owner name (optional)</param>
+            <param name="comment">Comment (optional)</param>
+            <param name="defaultGroup">Default motion group (0 = omit)</param>
+            <param name="subType">Program sub-type (default: None)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.RenameProgram(System.String,System.String)">
+            <summary>
+            Rename program <paramref name="sourceName"/> to <paramref name="newName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.RunProgram(System.String,System.Int32)">
+            <summary>
+            Run the specified program starting at <paramref name="lineNum"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ChangeActiveProgram(System.String)">
+            <summary>
+            Change the active TP program to <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.PauseAllPrograms">
+            <summary>
+            Pause program execution on the controller.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadVariableAsString(System.String,System.String)">
+            <summary>
+            Read the value of variable <paramref name="varName"/> in program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteVariable(System.String,System.String,System.String)">
+            <summary>
+            Write <paramref name="value"/> to variable <paramref name="varName"/> in program <paramref name="progName"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ListFiles(System.String)">
+            <summary>
+            List files at the specified path on the controller.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientInternal">
+            <summary>
+            Internal CGTP Web Server client used by the library infrastructure.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CgtpConnectParametersBase">
+            <summary>
+            Base class for CGTP Web Server connection parameters.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.Internal.CgtpConnectParametersBase.DEFAULT_PORT">
+            <summary>Default HTTP port for CGTP Web Server.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.Internal.CgtpConnectParametersBase.DEFAULT_REQUEST_TIMEOUT_MS">
+            <summary>Default request timeout in milliseconds.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpConnectParametersBase.Port">
+            <summary>HTTP port number of the CGTP Web Server.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpConnectParametersBase.RequestTimeoutMs">
+            <summary>HTTP request timeout in milliseconds.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometJsonParser">
+            <summary>
+            Lightweight JSON parser for COMET RPC responses.
+            Supports objects, arrays, strings, numbers, booleans and null.
+            Returns Dictionary&lt;string, object&gt; for objects and List&lt;object&gt; for arrays.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcId">
+            <summary>
+            COMET RPC function identifiers.
+            The Name is used as the "func" query parameter, the Value is the integer ID returned in the response.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcElement">
+            <summary>
+            Represents the parsed RPC element from a COMET JSON response.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcElement.Rpc">
+            <summary>RPC function ID returned by the controller.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcElement.Status">
+            <summary>Status code (0 = success). Parsed from hex string (e.g. "0x0").</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcElement.RawFields">
+            <summary>All raw key/value pairs from the RPC element for command-specific fields.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcResponse">
+            <summary>
+            Represents the top-level parsed COMET JSON response: {"FANUC":{"name":"...","fastclock":N,"RPC":[{...}]}}
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcResponse.Name">
+            <summary>Controller hostname.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcResponse.FastClock">
+            <summary>Controller fast clock value.</summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcResponse.RPC">
+            <summary>List of RPC response elements.</summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.IoPortType">
+            <summary>
+            Type of I/O port on the controller.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.ProgramSubType">
+            <summary>
+            Sub-type of a TP program on the controller.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.ProgramSubType.None">
+            <summary>No specific sub-type.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.ProgramSubType.Job">
+            <summary>Job program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.ProgramSubType.Process">
+            <summary>Process program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.ProgramSubType.Macro">
+            <summary>Macro program.</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.ProgramSubType.Condition">
+            <summary>Condition handler program.</summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.CartesianPosition">
             <summary>
             Fanuc cartesian position and rotations 
@@ -148,6 +461,16 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.CartesianPositionWithUserFrame.GetHashCode">
             <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.Common.CgtpConnectParameters">
+            <summary>
+            CGTP Web Server connection parameters
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.CgtpConnectParameters.Enable">
+            <summary>
+            Should enable CGTP Web Server for this connection (default: true)
+            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.ArmFrontBack">
             <summary>
@@ -711,7 +1034,7 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.Common.TelnetConnectParameters.Enable">
             <summary>
-            Should use this service (default: true)
+            Should use this service (default: false)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Common.XYZPosition">
@@ -808,6 +1131,11 @@
             Parameters for Stream Motion (J519 option) - real-time streaming motion control over UDP
             </summary>
         </member>
+        <member name="P:UnderAutomation.Fanuc.ConnectionParameters.Cgtp">
+            <summary>
+            Parameters for CGTP Web Server (HTTP-based COMET RPC interface)
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.FanucRobot">
             <summary>
             Main class of the SDK that represents a connection to a Fanuc robot
@@ -867,6 +1195,11 @@
         <member name="P:UnderAutomation.Fanuc.FanucRobot.StreamMotion">
             <summary>
             Stream Motion client for real-time motion control
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.FanucRobot.Cgtp">
+            <summary>
+            CGTP Web Server client for HTTP-based COMET RPC interface
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.FanucRobot.RegisterLicense(System.String,System.String)">
@@ -44630,22 +44963,6 @@
             </summary>
             <returns>An array of string values.</returns>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment">
-            <summary>
-            Batch assignment for reading multiple string registers at once.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersBatchAssignment"/> class.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Assignment.StringRegistersSpanBatchAssignment.Read">
-            <summary>
-            Reads all string registers assigned in this batch.
-            </summary>
-            <returns>An array of string values.</returns>
-        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Assignment.StringSystemVariablesBatchAssignment">
             <summary>
             Batch assignment for reading multiple string system variables at once.
@@ -46077,11 +46394,6 @@
             String registers
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.StringRegistersSpan">
-            <summary>
-            String registers with control over start index and length
-            </summary>
-        </member>
         <member name="P:UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase.IntegerSystemVariables">
             <summary>
             Integer variables
@@ -46442,82 +46754,6 @@
             <param name="index">The register index.</param>
             <returns>The position value.</returns>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan">
-            <summary>
-            Defines a span within a string register, specifying the register index, start position, and length.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.#ctor">
-            <summary>
-            Creates a new instance with default values.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.#ctor(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a new instance with the specified register index, string length, and optional start index.
-            </summary>
-            <param name="registerIndex">The register index (1-based).</param>
-            <param name="stringLength">The number of characters (must be even, >= 2).</param>
-            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.RegisterIndex">
-            <summary>
-            Register index, starts from 1
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.StringStartIndex">
-            <summary>
-            String start index of the string to manipulate. Default : 0 (beginning of the string). Must be even and non-negative.
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan.StringLength">
-            <summary>
-            Number of characters to return, should be an even number. Default : 80. Must be even, >= 2.
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan">
-            <summary>
-            Provides access to string registers (SR[]) with control over start index and length via SNPX.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
-            <summary>
-            Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan"/> class.
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentSize(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentName(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.GetAssignmentTarget(UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.ReadFromClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.WriteInClient(System.Int32,UnderAutomation.Fanuc.Snpx.Internal.StringRegisterSpan,System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.Read(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Reads a substring from the specified string register.
-            </summary>
-            <param name="registerIndex">The register index (1-based).</param>
-            <param name="stringLength">The number of characters to read (must be even, >= 2).</param>
-            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
-            <returns>The string value read from the register.</returns>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegistersSpan.Write(System.Int32,System.String,System.Int32,System.Int32)">
-            <summary>
-            Writes a string value to the specified string register span.
-            </summary>
-            <param name="registerIndex">The register index (1-based).</param>
-            <param name="value">The string value to write.</param>
-            <param name="stringLength">The number of characters to write (must be even, >= 2).</param>
-            <param name="stringStartIndex">The start index within the string (must be even, >= 0).</param>
-        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters">
             <summary>
             Provides access to string registers (SR[]) on the robot via SNPX.
@@ -46526,6 +46762,14 @@
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters.#ctor(UnderAutomation.Fanuc.Snpx.Internal.SnpxClientBase)">
             <summary>
             Initializes a new instance of the <see cref="T:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters"/> class.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters.StringLength">
+            <summary>
+            Number of characters for string register reads/writes.
+            Must be even, greater than 2, and less than ushort.MaxValue.
+            Warning: this static value must be set before any string register read/write and must not be changed while the SDK is running.
+            Default: 80.
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Snpx.Internal.StringRegisters.CreateBatchAssignment(System.Int32,System.Int32)">
