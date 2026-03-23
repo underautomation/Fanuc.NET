@@ -1,5 +1,3 @@
-# What's New
-
 ## New CGTP Protocol Support
 
 A new **CGTP Web Server** client has been added, providing access to the HTTP-based RPC interface available on FANUC controllers (default port: 3080).

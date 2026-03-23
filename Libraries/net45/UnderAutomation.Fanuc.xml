@@ -258,12 +258,6 @@
             Returns Dictionary&lt;string, object&gt; for objects and List&lt;object&gt; for arrays.
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcId">
-            <summary>
-            COMET RPC function identifiers.
-            The Name is used as the "func" query parameter, the Value is the integer ID returned in the response.
-            </summary>
-        </member>
         <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcElement">
             <summary>
             Represents the parsed RPC element from a COMET JSON response.
@@ -292,6 +286,7 @@
         <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CometRpcResponse.RPC">
             <summary>List of RPC response elements.</summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:UnderAutomation.Fanuc.Cgtp.Internal.RpcId" -->
         <member name="T:UnderAutomation.Fanuc.Cgtp.IoPortType">
             <summary>
             Type of I/O port on the controller.
