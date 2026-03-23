@@ -33,7 +33,7 @@
         udProgramLine = new NumericUpDown();
         label3 = new Label();
         btnStartProgram = new Button();
-        tabControl1 = new TabControl();
+        TabIo = new TabControl();
         tabProgram = new TabPage();
         groupBox5 = new GroupBox();
         cbNewProgramType = new ComboBox();
@@ -92,8 +92,28 @@
         txtVariableName = new TextBox();
         btnWriteVariable = new Button();
         btnReadVariable = new Button();
+        tabPage1 = new TabPage();
+        txtSimulationStatus = new TextBox();
+        udIoValue = new NumericUpDown();
+        udIoIndex = new NumericUpDown();
+        cbIoTypes = new ComboBox();
+        label13 = new Label();
+        label26 = new Label();
+        label27 = new Label();
+        btnWriteIo = new Button();
+        btnUnsimulate = new Button();
+        btnReadIo = new Button();
+        btnSimulate = new Button();
+        btnReadSimulation = new Button();
+        tabPosition = new TabPage();
+        gridCartesianPosition = new PropertyGrid();
+        label14 = new Label();
+        udGroup = new NumericUpDown();
+        btnReadCartesian = new Button();
+        btnReadJointsPosition = new Button();
+        gridJointPosition = new PropertyGrid();
         ((System.ComponentModel.ISupportInitialize)udProgramLine).BeginInit();
-        tabControl1.SuspendLayout();
+        TabIo.SuspendLayout();
         tabProgram.SuspendLayout();
         groupBox5.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udNEwProgramGroup).BeginInit();
@@ -104,6 +124,11 @@
         ((System.ComponentModel.ISupportInitialize)udProgramStackSize).BeginInit();
         tabFiles.SuspendLayout();
         tabVariables.SuspendLayout();
+        tabPage1.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udIoValue).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)udIoIndex).BeginInit();
+        tabPosition.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udGroup).BeginInit();
         SuspendLayout();
         // 
         // txtProgram
@@ -161,17 +186,19 @@
         btnStartProgram.UseVisualStyleBackColor = true;
         btnStartProgram.Click += btnStartProgram_Click;
         // 
-        // tabControl1
+        // TabIo
         // 
-        tabControl1.Controls.Add(tabProgram);
-        tabControl1.Controls.Add(tabFiles);
-        tabControl1.Controls.Add(tabVariables);
-        tabControl1.Dock = DockStyle.Fill;
-        tabControl1.Location = new Point(0, 0);
-        tabControl1.Name = "tabControl1";
-        tabControl1.SelectedIndex = 0;
-        tabControl1.Size = new Size(847, 603);
-        tabControl1.TabIndex = 4;
+        TabIo.Controls.Add(tabProgram);
+        TabIo.Controls.Add(tabFiles);
+        TabIo.Controls.Add(tabVariables);
+        TabIo.Controls.Add(tabPage1);
+        TabIo.Controls.Add(tabPosition);
+        TabIo.Dock = DockStyle.Fill;
+        TabIo.Location = new Point(0, 0);
+        TabIo.Name = "TabIo";
+        TabIo.SelectedIndex = 0;
+        TabIo.Size = new Size(847, 603);
+        TabIo.TabIndex = 4;
         // 
         // tabProgram
         // 
@@ -766,17 +793,238 @@
         btnReadVariable.UseVisualStyleBackColor = true;
         btnReadVariable.Click += btnReadVariable_Click;
         // 
+        // tabPage1
+        // 
+        tabPage1.Controls.Add(txtSimulationStatus);
+        tabPage1.Controls.Add(udIoValue);
+        tabPage1.Controls.Add(udIoIndex);
+        tabPage1.Controls.Add(cbIoTypes);
+        tabPage1.Controls.Add(label13);
+        tabPage1.Controls.Add(label26);
+        tabPage1.Controls.Add(label27);
+        tabPage1.Controls.Add(btnWriteIo);
+        tabPage1.Controls.Add(btnUnsimulate);
+        tabPage1.Controls.Add(btnReadIo);
+        tabPage1.Controls.Add(btnSimulate);
+        tabPage1.Controls.Add(btnReadSimulation);
+        tabPage1.Location = new Point(4, 24);
+        tabPage1.Name = "tabPage1";
+        tabPage1.Padding = new Padding(3);
+        tabPage1.Size = new Size(839, 575);
+        tabPage1.TabIndex = 3;
+        tabPage1.Text = "I/O";
+        tabPage1.UseVisualStyleBackColor = true;
+        // 
+        // txtSimulationStatus
+        // 
+        txtSimulationStatus.BackColor = SystemColors.Control;
+        txtSimulationStatus.Location = new Point(28, 287);
+        txtSimulationStatus.Name = "txtSimulationStatus";
+        txtSimulationStatus.ReadOnly = true;
+        txtSimulationStatus.Size = new Size(167, 23);
+        txtSimulationStatus.TabIndex = 25;
+        // 
+        // udIoValue
+        // 
+        udIoValue.Location = new Point(292, 213);
+        udIoValue.Margin = new Padding(4, 3, 4, 3);
+        udIoValue.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udIoValue.Minimum = new decimal(new int[] { 1874919423, 2328306, 0, int.MinValue });
+        udIoValue.Name = "udIoValue";
+        udIoValue.Size = new Size(121, 23);
+        udIoValue.TabIndex = 24;
+        // 
+        // udIoIndex
+        // 
+        udIoIndex.Location = new Point(174, 131);
+        udIoIndex.Margin = new Padding(4, 3, 4, 3);
+        udIoIndex.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
+        udIoIndex.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+        udIoIndex.Name = "udIoIndex";
+        udIoIndex.Size = new Size(167, 23);
+        udIoIndex.TabIndex = 24;
+        udIoIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // cbIoTypes
+        // 
+        cbIoTypes.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbIoTypes.FormattingEnabled = true;
+        cbIoTypes.Location = new Point(174, 70);
+        cbIoTypes.Name = "cbIoTypes";
+        cbIoTypes.Size = new Size(167, 23);
+        cbIoTypes.TabIndex = 23;
+        // 
+        // label13
+        // 
+        label13.AutoSize = true;
+        label13.Location = new Point(246, 215);
+        label13.Margin = new Padding(4, 0, 4, 0);
+        label13.Name = "label13";
+        label13.Size = new Size(38, 15);
+        label13.TabIndex = 19;
+        label13.Text = "Value:";
+        // 
+        // label26
+        // 
+        label26.AutoSize = true;
+        label26.Location = new Point(160, 113);
+        label26.Margin = new Padding(4, 0, 4, 0);
+        label26.Name = "label26";
+        label26.Size = new Size(38, 15);
+        label26.TabIndex = 18;
+        label26.Text = "Index:";
+        // 
+        // label27
+        // 
+        label27.AutoSize = true;
+        label27.Location = new Point(160, 52);
+        label27.Margin = new Padding(4, 0, 4, 0);
+        label27.Name = "label27";
+        label27.Size = new Size(35, 15);
+        label27.TabIndex = 19;
+        label27.Text = "Type:";
+        // 
+        // btnWriteIo
+        // 
+        btnWriteIo.Location = new Point(246, 254);
+        btnWriteIo.Margin = new Padding(4, 3, 4, 3);
+        btnWriteIo.Name = "btnWriteIo";
+        btnWriteIo.Size = new Size(167, 27);
+        btnWriteIo.TabIndex = 20;
+        btnWriteIo.Text = "Write";
+        btnWriteIo.UseVisualStyleBackColor = true;
+        btnWriteIo.Click += btnWriteIo_Click;
+        // 
+        // btnUnsimulate
+        // 
+        btnUnsimulate.Location = new Point(28, 206);
+        btnUnsimulate.Margin = new Padding(4, 3, 4, 3);
+        btnUnsimulate.Name = "btnUnsimulate";
+        btnUnsimulate.Size = new Size(167, 27);
+        btnUnsimulate.TabIndex = 20;
+        btnUnsimulate.Text = "Unsimulate";
+        btnUnsimulate.UseVisualStyleBackColor = true;
+        btnUnsimulate.Click += btnUnsimulate_Click;
+        // 
+        // btnReadIo
+        // 
+        btnReadIo.Location = new Point(246, 173);
+        btnReadIo.Margin = new Padding(4, 3, 4, 3);
+        btnReadIo.Name = "btnReadIo";
+        btnReadIo.Size = new Size(167, 27);
+        btnReadIo.TabIndex = 21;
+        btnReadIo.Text = "Read";
+        btnReadIo.UseVisualStyleBackColor = true;
+        btnReadIo.Click += btnReadIo_Click;
+        // 
+        // btnSimulate
+        // 
+        btnSimulate.Location = new Point(28, 173);
+        btnSimulate.Margin = new Padding(4, 3, 4, 3);
+        btnSimulate.Name = "btnSimulate";
+        btnSimulate.Size = new Size(167, 27);
+        btnSimulate.TabIndex = 21;
+        btnSimulate.Text = "Simulate";
+        btnSimulate.UseVisualStyleBackColor = true;
+        btnSimulate.Click += btnSimulate_Click;
+        // 
+        // btnReadSimulation
+        // 
+        btnReadSimulation.Location = new Point(28, 254);
+        btnReadSimulation.Margin = new Padding(4, 3, 4, 3);
+        btnReadSimulation.Name = "btnReadSimulation";
+        btnReadSimulation.Size = new Size(167, 27);
+        btnReadSimulation.TabIndex = 22;
+        btnReadSimulation.Text = "Read simulation status";
+        btnReadSimulation.UseVisualStyleBackColor = true;
+        btnReadSimulation.Click += btnReadSimulation_Click;
+        // 
+        // tabPosition
+        // 
+        tabPosition.Controls.Add(gridJointPosition);
+        tabPosition.Controls.Add(gridCartesianPosition);
+        tabPosition.Controls.Add(label14);
+        tabPosition.Controls.Add(btnReadJointsPosition);
+        tabPosition.Controls.Add(udGroup);
+        tabPosition.Controls.Add(btnReadCartesian);
+        tabPosition.Location = new Point(4, 24);
+        tabPosition.Name = "tabPosition";
+        tabPosition.Padding = new Padding(3);
+        tabPosition.Size = new Size(839, 575);
+        tabPosition.TabIndex = 4;
+        tabPosition.Text = "Position";
+        tabPosition.UseVisualStyleBackColor = true;
+        // 
+        // gridCartesianPosition
+        // 
+        gridCartesianPosition.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridCartesianPosition.HelpVisible = false;
+        gridCartesianPosition.Location = new Point(48, 184);
+        gridCartesianPosition.Name = "gridCartesianPosition";
+        gridCartesianPosition.PropertySort = PropertySort.NoSort;
+        gridCartesianPosition.Size = new Size(307, 385);
+        gridCartesianPosition.TabIndex = 3;
+        gridCartesianPosition.ToolbarVisible = false;
+        // 
+        // label14
+        // 
+        label14.AutoSize = true;
+        label14.Location = new Point(141, 55);
+        label14.Name = "label14";
+        label14.Size = new Size(43, 15);
+        label14.TabIndex = 2;
+        label14.Text = "Group:";
+        // 
+        // udGroup
+        // 
+        udGroup.Location = new Point(191, 53);
+        udGroup.Name = "udGroup";
+        udGroup.Size = new Size(120, 23);
+        udGroup.TabIndex = 1;
+        udGroup.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // btnReadCartesian
+        // 
+        btnReadCartesian.Location = new Point(48, 134);
+        btnReadCartesian.Name = "btnReadCartesian";
+        btnReadCartesian.Size = new Size(307, 23);
+        btnReadCartesian.TabIndex = 0;
+        btnReadCartesian.Text = "Read current cartesian position";
+        btnReadCartesian.UseVisualStyleBackColor = true;
+        btnReadCartesian.Click += btnReadCartesian_Click;
+        // 
+        // btnReadJointsPosition
+        // 
+        btnReadJointsPosition.Location = new Point(431, 134);
+        btnReadJointsPosition.Name = "btnReadJointsPosition";
+        btnReadJointsPosition.Size = new Size(307, 23);
+        btnReadJointsPosition.TabIndex = 0;
+        btnReadJointsPosition.Text = "Read current joint position";
+        btnReadJointsPosition.UseVisualStyleBackColor = true;
+        btnReadJointsPosition.Click += btnReadJointsPosition_Click;
+        // 
+        // gridJointPosition
+        // 
+        gridJointPosition.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridJointPosition.HelpVisible = false;
+        gridJointPosition.Location = new Point(431, 184);
+        gridJointPosition.Name = "gridJointPosition";
+        gridJointPosition.PropertySort = PropertySort.NoSort;
+        gridJointPosition.Size = new Size(307, 385);
+        gridJointPosition.TabIndex = 3;
+        gridJointPosition.ToolbarVisible = false;
+        // 
         // CgtpControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         AutoScroll = true;
-        Controls.Add(tabControl1);
+        Controls.Add(TabIo);
         Margin = new Padding(4, 3, 4, 3);
         Name = "CgtpControl";
         Size = new Size(847, 603);
         ((System.ComponentModel.ISupportInitialize)udProgramLine).EndInit();
-        tabControl1.ResumeLayout(false);
+        TabIo.ResumeLayout(false);
         tabProgram.ResumeLayout(false);
         tabProgram.PerformLayout();
         groupBox5.ResumeLayout(false);
@@ -794,6 +1042,13 @@
         tabFiles.PerformLayout();
         tabVariables.ResumeLayout(false);
         tabVariables.PerformLayout();
+        tabPage1.ResumeLayout(false);
+        tabPage1.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udIoValue).EndInit();
+        ((System.ComponentModel.ISupportInitialize)udIoIndex).EndInit();
+        tabPosition.ResumeLayout(false);
+        tabPosition.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udGroup).EndInit();
         ResumeLayout(false);
     }
 
@@ -804,7 +1059,7 @@
     private NumericUpDown udProgramLine;
     private Label label3;
     private Button btnStartProgram;
-    private TabControl tabControl1;
+    private TabControl TabIo;
     private TabPage tabFiles;
     private TabPage tabProgram;
     private Button btnDeleteProgram;
@@ -863,4 +1118,24 @@
     private Label label12;
     private TextBox txtVariableValue;
     private Button btnWriteVariable;
+    private TabPage tabPage1;
+    private TextBox txtSimulationStatus;
+    private NumericUpDown udIoIndex;
+    private ComboBox cbIoTypes;
+    private Label label13;
+    private Label label26;
+    private Label label27;
+    private Button btnWriteIo;
+    private Button btnUnsimulate;
+    private Button btnReadIo;
+    private Button btnSimulate;
+    private Button btnReadSimulation;
+    private NumericUpDown udIoValue;
+    private TabPage tabPosition;
+    private PropertyGrid gridCartesianPosition;
+    private Label label14;
+    private NumericUpDown udGroup;
+    private Button btnReadCartesian;
+    private PropertyGrid gridJointPosition;
+    private Button btnReadJointsPosition;
 }

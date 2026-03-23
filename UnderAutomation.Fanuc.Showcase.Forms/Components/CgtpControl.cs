@@ -16,6 +16,12 @@ public partial class CgtpControl : UserControl, IUserControl
         cbNewProgramType.Items.Add(ProgramSubType.Macro);
         cbNewProgramType.SelectedIndex = 0;
 
+        foreach (IoPortType type in Enum.GetValues(typeof(IoPortType)))
+        {
+            cbIoTypes.Items.Add(type);
+        }
+        cbIoTypes.SelectedIndex = 1;
+
     }
 
     #region IUserControl
@@ -143,6 +149,7 @@ public partial class CgtpControl : UserControl, IUserControl
 
     #endregion
 
+    #region Files
     private void btnListFiles_Click(object sender, EventArgs e)
     {
         string[] files = _robot.Cgtp.ListFiles(txtPath.Text);
@@ -181,4 +188,51 @@ public partial class CgtpControl : UserControl, IUserControl
     {
         _robot.Cgtp.WriteVariable(txtVariableName.Text, txtVariableValue.Text);
     }
+    #endregion
+
+    #region I/O
+    private void btnSimulate_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.SimulateIo((IoPortType)cbIoTypes.SelectedItem, (int)udIoIndex.Value);
+        btnReadSimulation_Click(sender, e);
+    }
+
+    private void btnUnsimulate_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.UnsimulateIo((IoPortType)cbIoTypes.SelectedItem, (int)udIoIndex.Value);
+        btnReadSimulation_Click(sender, e);
+    }
+
+    private void btnReadSimulation_Click(object sender, EventArgs e)
+    {
+        var type = (IoPortType)cbIoTypes.SelectedItem;
+        var index = (int)udIoIndex.Value;
+        bool isSimulated = _robot.Cgtp.GetIoSimulationStatus(type, index);
+
+        txtSimulationStatus.Text = $"{type}[{index}] : {(isSimulated ? "" : "NOT ")}SIMULATED";
+        txtSimulationStatus.BackColor = isSimulated ? Color.Yellow : Color.LightGray;
+    }
+
+    private void btnReadIo_Click(object sender, EventArgs e)
+    {
+        udIoValue.Value = _robot.Cgtp.ReadIo((IoPortType)cbIoTypes.SelectedItem, (int)udIoIndex.Value);
+    }
+
+    private void btnWriteIo_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.WriteIo((IoPortType)cbIoTypes.SelectedItem, (int)udIoIndex.Value, (int)udIoValue.Value);
+    }
+    #endregion
+
+    #region Current position
+    private void btnReadCartesian_Click(object sender, EventArgs e)
+    {
+        gridCartesianPosition.SelectedObject = _robot.Cgtp.ReadCartesianPosition((int)udGroup.Value);
+    }
+
+    private void btnReadJointsPosition_Click(object sender, EventArgs e)
+    {
+        gridJointPosition.SelectedObject = _robot.Cgtp.ReadJointPosition((int)udGroup.Value);
+    }
+    #endregion
 }
