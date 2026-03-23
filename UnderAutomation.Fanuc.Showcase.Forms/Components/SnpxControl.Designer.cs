@@ -52,17 +52,8 @@
         groupBox2 = new GroupBox();
         panel3 = new Panel();
         udStringRegister = new NumericUpDown();
-        tabControl2 = new TabControl();
-        tabPage2 = new TabPage();
         btnReadStringRegister = new Button();
         btnWriteStringRegister = new Button();
-        tabPage3 = new TabPage();
-        udStringRegisterLength = new NumericUpDown();
-        udStringRegisterStart = new NumericUpDown();
-        label22 = new Label();
-        btnReadStringRegisterSpan = new Button();
-        label21 = new Label();
-        btnWriteStringRegisterSpan = new Button();
         label4 = new Label();
         panel2 = new Panel();
         txtStringVariable = new TextBox();
@@ -94,8 +85,6 @@
         btnReadFlag = new Button();
         udFlag = new NumericUpDown();
         label18 = new Label();
-        snpxSignalControlNumericIOs = new SnpxSignalControl();
-        snpxSignalControlDigitals = new SnpxSignalControl();
         tabSimulation = new TabPage();
         txtSimulationStatus = new TextBox();
         udSimulationIndex = new NumericUpDown();
@@ -187,11 +176,6 @@
         groupBox2.SuspendLayout();
         panel3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udStringRegister).BeginInit();
-        tabControl2.SuspendLayout();
-        tabPage2.SuspendLayout();
-        tabPage3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)udStringRegisterLength).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)udStringRegisterStart).BeginInit();
         panel2.SuspendLayout();
         groupBox1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udFrame).BeginInit();
@@ -525,8 +509,9 @@
         // panel3
         // 
         panel3.BorderStyle = BorderStyle.FixedSingle;
+        panel3.Controls.Add(btnReadStringRegister);
         panel3.Controls.Add(udStringRegister);
-        panel3.Controls.Add(tabControl2);
+        panel3.Controls.Add(btnWriteStringRegister);
         panel3.Controls.Add(label4);
         panel3.Location = new Point(6, 23);
         panel3.Name = "panel3";
@@ -535,7 +520,7 @@
         // 
         // udStringRegister
         // 
-        udStringRegister.Location = new Point(101, 3);
+        udStringRegister.Location = new Point(52, 33);
         udStringRegister.Margin = new Padding(4, 3, 4, 3);
         udStringRegister.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
         udStringRegister.Name = "udStringRegister";
@@ -543,31 +528,9 @@
         udStringRegister.TabIndex = 0;
         udStringRegister.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
-        // tabControl2
-        // 
-        tabControl2.Controls.Add(tabPage2);
-        tabControl2.Controls.Add(tabPage3);
-        tabControl2.Location = new Point(10, 32);
-        tabControl2.Name = "tabControl2";
-        tabControl2.SelectedIndex = 0;
-        tabControl2.Size = new Size(239, 102);
-        tabControl2.TabIndex = 5;
-        // 
-        // tabPage2
-        // 
-        tabPage2.Controls.Add(btnReadStringRegister);
-        tabPage2.Controls.Add(btnWriteStringRegister);
-        tabPage2.Location = new Point(4, 24);
-        tabPage2.Name = "tabPage2";
-        tabPage2.Padding = new Padding(3);
-        tabPage2.Size = new Size(231, 74);
-        tabPage2.TabIndex = 0;
-        tabPage2.Text = "String register";
-        tabPage2.UseVisualStyleBackColor = true;
-        // 
         // btnReadStringRegister
         // 
-        btnReadStringRegister.Location = new Point(37, 6);
+        btnReadStringRegister.Location = new Point(50, 62);
         btnReadStringRegister.Margin = new Padding(4, 3, 4, 3);
         btnReadStringRegister.Name = "btnReadStringRegister";
         btnReadStringRegister.Size = new Size(140, 27);
@@ -578,7 +541,7 @@
         // 
         // btnWriteStringRegister
         // 
-        btnWriteStringRegister.Location = new Point(37, 40);
+        btnWriteStringRegister.Location = new Point(50, 96);
         btnWriteStringRegister.Margin = new Padding(4, 3, 4, 3);
         btnWriteStringRegister.Name = "btnWriteStringRegister";
         btnWriteStringRegister.Size = new Size(140, 27);
@@ -587,89 +550,10 @@
         btnWriteStringRegister.UseVisualStyleBackColor = true;
         btnWriteStringRegister.Click += btnWriteStringRegister_Click;
         // 
-        // tabPage3
-        // 
-        tabPage3.Controls.Add(udStringRegisterLength);
-        tabPage3.Controls.Add(udStringRegisterStart);
-        tabPage3.Controls.Add(label22);
-        tabPage3.Controls.Add(btnReadStringRegisterSpan);
-        tabPage3.Controls.Add(label21);
-        tabPage3.Controls.Add(btnWriteStringRegisterSpan);
-        tabPage3.Location = new Point(4, 24);
-        tabPage3.Name = "tabPage3";
-        tabPage3.Padding = new Padding(3);
-        tabPage3.Size = new Size(231, 74);
-        tabPage3.TabIndex = 1;
-        tabPage3.Text = "String register (length)";
-        tabPage3.UseVisualStyleBackColor = true;
-        // 
-        // udStringRegisterLength
-        // 
-        udStringRegisterLength.Increment = new decimal(new int[] { 2, 0, 0, 0 });
-        udStringRegisterLength.Location = new Point(164, 9);
-        udStringRegisterLength.Margin = new Padding(4, 3, 4, 3);
-        udStringRegisterLength.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
-        udStringRegisterLength.Name = "udStringRegisterLength";
-        udStringRegisterLength.Size = new Size(60, 23);
-        udStringRegisterLength.TabIndex = 0;
-        udStringRegisterLength.Value = new decimal(new int[] { 100, 0, 0, 0 });
-        // 
-        // udStringRegisterStart
-        // 
-        udStringRegisterStart.Increment = new decimal(new int[] { 2, 0, 0, 0 });
-        udStringRegisterStart.Location = new Point(45, 9);
-        udStringRegisterStart.Margin = new Padding(4, 3, 4, 3);
-        udStringRegisterStart.Maximum = new decimal(new int[] { 1661992959, 1808227885, 5, 0 });
-        udStringRegisterStart.Name = "udStringRegisterStart";
-        udStringRegisterStart.Size = new Size(60, 23);
-        udStringRegisterStart.TabIndex = 0;
-        // 
-        // label22
-        // 
-        label22.AutoSize = true;
-        label22.Location = new Point(115, 12);
-        label22.Margin = new Padding(4, 0, 4, 0);
-        label22.Name = "label22";
-        label22.Size = new Size(47, 15);
-        label22.TabIndex = 1;
-        label22.Text = "Length:";
-        // 
-        // btnReadStringRegisterSpan
-        // 
-        btnReadStringRegisterSpan.Location = new Point(7, 40);
-        btnReadStringRegisterSpan.Margin = new Padding(4, 3, 4, 3);
-        btnReadStringRegisterSpan.Name = "btnReadStringRegisterSpan";
-        btnReadStringRegisterSpan.Size = new Size(103, 27);
-        btnReadStringRegisterSpan.TabIndex = 3;
-        btnReadStringRegisterSpan.Text = "Read";
-        btnReadStringRegisterSpan.UseVisualStyleBackColor = true;
-        btnReadStringRegisterSpan.Click += btnReadStringRegisterSpan_Click;
-        // 
-        // label21
-        // 
-        label21.AutoSize = true;
-        label21.Location = new Point(7, 12);
-        label21.Margin = new Padding(4, 0, 4, 0);
-        label21.Name = "label21";
-        label21.Size = new Size(34, 15);
-        label21.TabIndex = 1;
-        label21.Text = "Start:";
-        // 
-        // btnWriteStringRegisterSpan
-        // 
-        btnWriteStringRegisterSpan.Location = new Point(121, 41);
-        btnWriteStringRegisterSpan.Margin = new Padding(4, 3, 4, 3);
-        btnWriteStringRegisterSpan.Name = "btnWriteStringRegisterSpan";
-        btnWriteStringRegisterSpan.Size = new Size(103, 27);
-        btnWriteStringRegisterSpan.TabIndex = 4;
-        btnWriteStringRegisterSpan.Text = "Write";
-        btnWriteStringRegisterSpan.UseVisualStyleBackColor = true;
-        btnWriteStringRegisterSpan.Click += btnWriteStringRegisterSpan_Click;
-        // 
         // label4
         // 
         label4.AutoSize = true;
-        label4.Location = new Point(10, 8);
+        label4.Location = new Point(24, 8);
         label4.Margin = new Padding(4, 0, 4, 0);
         label4.Name = "label4";
         label4.Size = new Size(83, 15);
@@ -922,8 +806,6 @@
         // tabSignals
         // 
         tabSignals.Controls.Add(groupBox12);
-        tabSignals.Controls.Add(snpxSignalControlNumericIOs);
-        tabSignals.Controls.Add(snpxSignalControlDigitals);
         tabSignals.Location = new Point(4, 24);
         tabSignals.Margin = new Padding(4, 3, 4, 3);
         tabSignals.Name = "tabSignals";
@@ -942,7 +824,7 @@
         groupBox12.Controls.Add(udFlag);
         groupBox12.Controls.Add(label18);
         groupBox12.Dock = DockStyle.Left;
-        groupBox12.Location = new Point(532, 3);
+        groupBox12.Location = new Point(4, 3);
         groupBox12.Name = "groupBox12";
         groupBox12.Size = new Size(264, 543);
         groupBox12.TabIndex = 2;
@@ -1012,24 +894,6 @@
         label18.Size = new Size(35, 15);
         label18.TabIndex = 1;
         label18.Text = "Flag :";
-        // 
-        // snpxSignalControlNumericIOs
-        // 
-        snpxSignalControlNumericIOs.Dock = DockStyle.Left;
-        snpxSignalControlNumericIOs.Location = new Point(268, 3);
-        snpxSignalControlNumericIOs.Margin = new Padding(5, 3, 5, 3);
-        snpxSignalControlNumericIOs.Name = "snpxSignalControlNumericIOs";
-        snpxSignalControlNumericIOs.Size = new Size(264, 543);
-        snpxSignalControlNumericIOs.TabIndex = 1;
-        // 
-        // snpxSignalControlDigitals
-        // 
-        snpxSignalControlDigitals.Dock = DockStyle.Left;
-        snpxSignalControlDigitals.Location = new Point(4, 3);
-        snpxSignalControlDigitals.Margin = new Padding(5, 3, 5, 3);
-        snpxSignalControlDigitals.Name = "snpxSignalControlDigitals";
-        snpxSignalControlDigitals.Size = new Size(264, 543);
-        snpxSignalControlDigitals.TabIndex = 0;
         // 
         // tabSimulation
         // 
@@ -1898,12 +1762,6 @@
         panel3.ResumeLayout(false);
         panel3.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udStringRegister).EndInit();
-        tabControl2.ResumeLayout(false);
-        tabPage2.ResumeLayout(false);
-        tabPage3.ResumeLayout(false);
-        tabPage3.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)udStringRegisterLength).EndInit();
-        ((System.ComponentModel.ISupportInitialize)udStringRegisterStart).EndInit();
         panel2.ResumeLayout(false);
         panel2.PerformLayout();
         groupBox1.ResumeLayout(false);
@@ -2072,18 +1930,9 @@
     private NumericUpDown udTaskIndex;
     private PropertyGrid gridTaskStatus;
     private Label label20;
-    private TabControl tabControl2;
-    private TabPage tabPage2;
-    private TabPage tabPage3;
     private Panel panel3;
     private Label label4;
     private Panel panel2;
-    private NumericUpDown udStringRegisterStart;
-    private Button btnReadStringRegisterSpan;
-    private Button btnWriteStringRegisterSpan;
-    private NumericUpDown udStringRegisterLength;
-    private Label label22;
-    private Label label21;
     private TabPage tabComments;
     private Label label23;
     private Button btnWriteComment;

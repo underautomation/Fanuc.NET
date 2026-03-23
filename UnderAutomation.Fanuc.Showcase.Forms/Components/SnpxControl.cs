@@ -233,18 +233,6 @@ public partial class SnpxControl : UserControl, IUserControl
         _robot.Snpx.StringRegisters.Write((int)udStringRegister.Value, txtStringValue.Text);
     }
 
-
-    private void btnReadStringRegisterSpan_Click(object sender, EventArgs e)
-    {
-        string value = _robot.Snpx.StringRegistersSpan.Read((int)udStringRegister.Value, (int)udStringRegisterLength.Value, (int)udStringRegisterStart.Value);
-        txtStringValue.Text = value;
-    }
-
-    private void btnWriteStringRegisterSpan_Click(object sender, EventArgs e)
-    {
-        _robot.Snpx.StringRegistersSpan.Write((int)udStringRegister.Value, txtStringValue.Text, (int)udStringRegisterLength.Value, (int)udStringRegisterStart.Value);
-    }
-
     private void btnReadStringVariable_Click(object sender, System.EventArgs e)
     {
         string value = _robot.Snpx.StringSystemVariables.Read(txtStringVariable.Text);
