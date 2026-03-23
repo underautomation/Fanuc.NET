@@ -224,6 +224,41 @@
             Write <paramref name="value"/> to variable <paramref name="varName"/> in program <paramref name="progName"/>.
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadIo(UnderAutomation.Fanuc.Cgtp.IoPortType,System.Int32)">
+            <summary>
+            Read the value of I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteIo(UnderAutomation.Fanuc.Cgtp.IoPortType,System.Int32,System.Int32)">
+            <summary>
+            Set the value of I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetIoSimulationStatus(UnderAutomation.Fanuc.Cgtp.IoPortType,System.Int32)">
+            <summary>
+            Check whether I/O port at <paramref name="index"/> of type <paramref name="portType"/> is simulated.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SimulateIo(UnderAutomation.Fanuc.Cgtp.IoPortType,System.Int32)">
+            <summary>
+            Set I/O port at <paramref name="index"/> of type <paramref name="portType"/> to simulated.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.UnsimulateIo(UnderAutomation.Fanuc.Cgtp.IoPortType,System.Int32)">
+            <summary>
+            Remove simulation from I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadCartesianPosition(System.Int32)">
+            <summary>
+            Read the current Cartesian position of motion group <paramref name="groupNum"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadJointPosition(System.Int32)">
+            <summary>
+            Read the current joint angles of motion group <paramref name="groupNum"/>.
+            </summary>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ListFiles(System.String)">
             <summary>
             List files at the specified path on the controller.
@@ -46923,6 +46958,9 @@
         <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.AO">
             <summary>Analog Output.</summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.CommentType.Flag">
+            <summary> Flag </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Snpx.Internal.SimulationType">
             <summary>
             Identifies the type of I/O for which simulation status can be read or written.
@@ -48648,7 +48686,7 @@
             If no program is specified the default program is run. If uninitialized variables are encountered, program execution is paused.
             Execution begins at the first executable line.
             RUN is a motion command; therefore, the device from which it is issued must have motion control. If a RUN command is issued in a command file, it is executed as a NOWAIT command.
-            Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end.        ''' </summary>
+            Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end. </summary>
             <param name="program">The name of any KAREL or TP program without extension</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.SetPort(UnderAutomation.Fanuc.Telnet.KCLPorts,System.Int32,System.Int32)">
@@ -48701,14 +48739,14 @@
             <summary>
             Get the name, type, and value of the specified variable.
             You can display the values of system variables that allow KCL read access or the values of program variables.
-            Use brackets ([]) after the variable name to specify a specific ARRAY element. If you do not specify a specific element the entire variable is displayed.        ''' </summary>
+            Use brackets ([]) after the variable name to specify a specific ARRAY element. If you do not specify a specific element the entire variable is displayed.</summary>
             <param name="name">A valid program variable</param>
             <param name="program">The name of any KAREL or TP program</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase.Simulate(UnderAutomation.Fanuc.Telnet.KCLPorts,System.Int32,System.Int32)">
             <summary>
             Simulating I/O allows you to test a program that uses I/O. Simulating I/O does not actually send output signals or receive input signals.
-            When simulating a port value, you can specify its initial simulated value or allow the initial value to be the same as the physical port value. If no value is specified, the current physical port value is used.        ''' </summary>
+            When simulating a port value, you can specify its initial simulated value or allow the initial value to be the same as the physical port value. If no value is specified, the current physical port value is used.</summary>
             <param name="port">I/O port type</param>
             <param name="index">I/O port index</param>
             <param name="value">New value for the port</param>

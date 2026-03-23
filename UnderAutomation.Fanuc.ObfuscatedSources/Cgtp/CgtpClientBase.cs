@@ -209,6 +209,66 @@ namespace Cgtp {
 		}
 
 		/// <summary>
+		/// Read the value of I/O port at <code class="paramref">index</code> of type <code class="paramref">portType</code>.
+		/// </summary>
+		public int ReadIo(IoPortType portType, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Set the value of I/O port at <code class="paramref">index</code> of type <code class="paramref">portType</code>.
+		/// </summary>
+		public void WriteIo(IoPortType portType, int index, int value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Check whether I/O port at <code class="paramref">index</code> of type <code class="paramref">portType</code> is simulated.
+		/// </summary>
+		public bool GetIoSimulationStatus(IoPortType portType, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Set I/O port at <code class="paramref">index</code> of type <code class="paramref">portType</code> to simulated.
+		/// </summary>
+		public void SimulateIo(IoPortType portType, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Remove simulation from I/O port at <code class="paramref">index</code> of type <code class="paramref">portType</code>.
+		/// </summary>
+		public void UnsimulateIo(IoPortType portType, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Read the current Cartesian position of motion group <code class="paramref">groupNum</code>.
+		/// </summary>
+		public CartesianPosition ReadCartesianPosition(int groupNum = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Read the current joint angles of motion group <code class="paramref">groupNum</code>.
+		/// </summary>
+		public JointsPosition ReadJointPosition(int groupNum = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
 		/// List files at the specified path on the controller.
 		/// </summary>
 		public string[] ListFiles(string pathName = "MD:")

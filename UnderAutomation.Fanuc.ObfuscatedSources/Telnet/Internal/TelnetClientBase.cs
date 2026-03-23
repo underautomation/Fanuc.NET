@@ -143,7 +143,7 @@ namespace Telnet.Internal {
 		/// If no program is specified the default program is run. If uninitialized variables are encountered, program execution is paused.
 		/// Execution begins at the first executable line.
 		/// RUN is a motion command; therefore, the device from which it is issued must have motion control. If a RUN command is issued in a command file, it is executed as a NOWAIT command.
-		/// Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end.        '''
+		/// Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end.
 		/// </summary>
 		/// <param name="program">The name of any KAREL or TP program without extension</param>
 		public RunResult Run(string program = null)
@@ -221,7 +221,7 @@ namespace Telnet.Internal {
 		/// <summary>
 		/// Get the name, type, and value of the specified variable.
 		/// You can display the values of system variables that allow KCL read access or the values of program variables.
-		/// Use brackets ([]) after the variable name to specify a specific ARRAY element. If you do not specify a specific element the entire variable is displayed.        '''
+		/// Use brackets ([]) after the variable name to specify a specific ARRAY element. If you do not specify a specific element the entire variable is displayed.
 		/// </summary>
 		/// <param name="name">A valid program variable</param>
 		/// <param name="program">The name of any KAREL or TP program</param>
@@ -233,7 +233,7 @@ namespace Telnet.Internal {
 
 		/// <summary>
 		/// Simulating I/O allows you to test a program that uses I/O. Simulating I/O does not actually send output signals or receive input signals.
-		/// When simulating a port value, you can specify its initial simulated value or allow the initial value to be the same as the physical port value. If no value is specified, the current physical port value is used.        '''
+		/// When simulating a port value, you can specify its initial simulated value or allow the initial value to be the same as the physical port value. If no value is specified, the current physical port value is used.
 		/// </summary>
 		/// <param name="port">I/O port type</param>
 		/// <param name="index">I/O port index</param>

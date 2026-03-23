@@ -103,5 +103,10 @@ namespace Snpx.Internal {
 		/// Analog Output.
 		/// </summary>
 		AO = 18,
+
+		/// <summary>
+		/// Flag
+		/// </summary>
+		Flag = 19,
 	}
 }
