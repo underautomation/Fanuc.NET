@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
@@ -29,7 +25,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 
         private List<StyleGroupPair> _styleGroupPairs;
 
-        private readonly List<PatternStyleMap> _patternStyles = new List<PatternStyleMap>(); 
+        private readonly List<PatternStyleMap> _patternStyles = new List<PatternStyleMap>();
 
         public SyntaxHighlighter(RichTextBox richTextBox)
         {
@@ -94,7 +90,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
         {
             if (!DisableHighlighting)
             {
-                if (_isDuringHighlight) 
+                if (_isDuringHighlight)
                     return;
 
                 _richTextBox.DisableThenDoThenEnable(HighlighTextBase);

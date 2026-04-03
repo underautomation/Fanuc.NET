@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
+﻿namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
     public class CaseInsensitivePatternDefinition : PatternDefinition
     {

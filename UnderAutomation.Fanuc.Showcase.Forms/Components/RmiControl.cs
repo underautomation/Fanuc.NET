@@ -1,12 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
-using System.Reflection.PortableExecutable;
 using System.Text;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Rmi;
 using UnderAutomation.Fanuc.Rmi.Data;
 
 public partial class RmiControl : UserControl, IUserControl
@@ -122,7 +117,7 @@ public partial class RmiControl : UserControl, IUserControl
 
     private void DemoInitialize()
     {
-       var ErrorId= _robot.Rmi.Initialize();
+        var ErrorId = _robot.Rmi.Initialize();
         txtCommands.AppendText("Initialize error: " + ErrorId + Environment.NewLine);
     }
 

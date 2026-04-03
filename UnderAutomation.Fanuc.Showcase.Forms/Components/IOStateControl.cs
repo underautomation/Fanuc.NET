@@ -1,10 +1,8 @@
 ﻿using Equin.ApplicationFramework;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 
 public partial class IOStateControl : UserControl, IUserControl
 {
@@ -20,9 +18,10 @@ public partial class IOStateControl : UserControl, IUserControl
         grouper.DisplayGroup += Grouper_DisplayGroup;
 
         Header.Initialize(
+            _robot,
             "iostate.dg",
             FanucFileReaders.IOStateReader,
-            () => _robot.Ftp.GetIOState(),
+            (client) => client.GetIOState(),
             Show);
     }
 
@@ -33,9 +32,9 @@ public partial class IOStateControl : UserControl, IUserControl
     }
 
     #region IUserControl
-    public string Title => "IO State (FTP)";
+    public string Title => "IO State (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 
@@ -63,7 +62,7 @@ public partial class IOStateControl : UserControl, IUserControl
         var ioStatus = (grid.Rows[e.RowIndex].DataBoundItem as ObjectView<IOStatus>)?.Object;
         if (ioStatus is null) return;
 
-       if(_robot.Telnet.Connected)
+        if (_robot.Telnet.Connected)
         {
             //_robot.Telnet.SetPort(ioStatus.Port, ioStatus.Id, !ioStatus.Value);
         }

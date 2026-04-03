@@ -36,7 +36,7 @@ public partial class DpmControl : UserControl, IUserControl
         pos.CartesianPosition.Configuration.ArmLeftRight = UnderAutomation.Fanuc.Common.ArmLeftRight.Unknown;
 
 
-        txtPrg.Text =$@"/PROG DPM_MOUSE
+        txtPrg.Text = $@"/PROG DPM_MOUSE
 /ATTR
 OWNER		= MNEDITOR;
 COMMENT		= """";
@@ -70,7 +70,7 @@ P[1]{{GP1:
 }};
 P[2]{{GP1:
 	UF : 0, UT : {pos.UserTool},		CONFIG : '{pos.CartesianPosition.Configuration.ToString()}',
-	X =  {pos.CartesianPosition.X.ToString("0.000", CultureInfo.InvariantCulture)}  mm,	Y =     {pos.CartesianPosition.Y.ToString("0.000", CultureInfo.InvariantCulture)}  mm,	Z =   {(pos.CartesianPosition.Z+1).ToString("0.000", CultureInfo.InvariantCulture)}  mm,
+	X =  {pos.CartesianPosition.X.ToString("0.000", CultureInfo.InvariantCulture)}  mm,	Y =     {pos.CartesianPosition.Y.ToString("0.000", CultureInfo.InvariantCulture)}  mm,	Z =   {(pos.CartesianPosition.Z + 1).ToString("0.000", CultureInfo.InvariantCulture)}  mm,
 	W =      {pos.CartesianPosition.W.ToString("0.000", CultureInfo.InvariantCulture)} deg,	P =      {pos.CartesianPosition.P.ToString("0.000", CultureInfo.InvariantCulture)} deg,	R =     {pos.CartesianPosition.R.ToString("0.000", CultureInfo.InvariantCulture)} deg
 }};
 /END

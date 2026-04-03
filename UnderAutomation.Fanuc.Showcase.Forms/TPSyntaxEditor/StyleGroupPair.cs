@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
+﻿namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
     internal class StyleGroupPair
     {

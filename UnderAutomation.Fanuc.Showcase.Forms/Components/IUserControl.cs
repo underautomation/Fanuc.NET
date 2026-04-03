@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-interface IUserControl : IContainerControl
+﻿interface IUserControl : IContainerControl
 {
     // Title of the user control
     string Title { get; }

@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 
 public partial class CurrentPositionControl : UserControl, IUserControl
 {
@@ -22,16 +20,17 @@ public partial class CurrentPositionControl : UserControl, IUserControl
         InitializeComponent();
 
         Header.Initialize(
+            _robot,
             "curpos.dg",
             FanucFileReaders.CurrentPositionReader,
-            () => _robot.Ftp.GetCurrentPosition(),
+            (client) => client.GetCurrentPosition(),
             Show);
     }
 
     #region IUserControl
-    public string Title => "Current position (FTP)";
+    public string Title => "Current position (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 

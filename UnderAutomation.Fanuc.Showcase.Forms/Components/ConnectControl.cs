@@ -35,6 +35,8 @@ public partial class ConnectControl : UserControl, IUserControl
         chkStreamMotion.Checked = parameters.StreamMotion.Enable;
 
         chkCgtp.Checked = parameters.Cgtp.Enable;
+        txtCgtpLogin.Text = parameters.Cgtp.Login;
+        txtCgtpPassword.Text = parameters.Cgtp.Password;
 
         foreach (Languages language in Enum.GetValues<Languages>())
         {
@@ -98,6 +100,9 @@ public partial class ConnectControl : UserControl, IUserControl
         parameters.StreamMotion.Enable = chkStreamMotion.Checked;
 
         parameters.Cgtp.Enable = chkCgtp.Checked;
+        parameters.Cgtp.Login = txtCgtpLogin.Text;
+        parameters.Cgtp.Password = txtCgtpPassword.Text;
+
 
         // Store information
         Config.Current.ConnectParameters = parameters;

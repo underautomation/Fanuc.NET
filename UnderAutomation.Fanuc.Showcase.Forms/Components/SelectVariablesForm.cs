@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using UnderAutomation.Fanuc.Ftp;
+﻿using UnderAutomation.Fanuc.Ftp;
 
 public partial class SelectVariablesForm : Form
 {
-    public SelectVariablesForm(FtpListItem[] items)
+    public SelectVariablesForm(string[] items)
     {
         InitializeComponent();
 
@@ -15,7 +12,7 @@ public partial class SelectVariablesForm : Form
 
         foreach (var item in items)
         {
-            lst.Items.Add(item.Name, CheckedVariableFiles.Contains(item.Name));
+            lst.Items.Add(item, CheckedVariableFiles.Contains(item));
         }
     }
 

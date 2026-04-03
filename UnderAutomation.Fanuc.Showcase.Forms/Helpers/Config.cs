@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using UnderAutomation.Fanuc;
 
 // Save user information in a file next to the main executable

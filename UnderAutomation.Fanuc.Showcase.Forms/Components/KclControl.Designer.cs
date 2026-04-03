@@ -1,5 +1,5 @@
 ﻿
-partial class TelnetControl
+partial class KclControl
 {
     /// <summary> 
     /// Variable nécessaire au concepteur.
@@ -41,6 +41,10 @@ partial class TelnetControl
         splitMain = new SplitContainer();
         txtConsole = new RichTextBox();
         pnlMain = new Panel();
+        groupBox6 = new GroupBox();
+        btnSendCommand = new Button();
+        txtCommand = new TextBox();
+        label4 = new Label();
         groupBox5 = new GroupBox();
         btnGetCurrentPose = new Button();
         groupBox4 = new GroupBox();
@@ -65,23 +69,20 @@ partial class TelnetControl
         cbPorts = new ComboBox();
         groupBox1 = new GroupBox();
         btnReset = new Button();
-        groupBox6 = new GroupBox();
-        btnSendCommand = new Button();
-        label4 = new Label();
-        txtCommand = new TextBox();
+        gridVariableValue = new PropertyGrid();
         GroupBox3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)splitMain).BeginInit();
         splitMain.Panel1.SuspendLayout();
         splitMain.Panel2.SuspendLayout();
         splitMain.SuspendLayout();
         pnlMain.SuspendLayout();
+        groupBox6.SuspendLayout();
         groupBox5.SuspendLayout();
         groupBox4.SuspendLayout();
         groupBox2.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udNewValue).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udIndex).BeginInit();
         groupBox1.SuspendLayout();
-        groupBox6.SuspendLayout();
         SuspendLayout();
         // 
         // btnAbortAll
@@ -256,11 +257,55 @@ partial class TelnetControl
         pnlMain.Controls.Add(groupBox2);
         pnlMain.Controls.Add(groupBox1);
         pnlMain.Controls.Add(GroupBox3);
-        pnlMain.Location = new Point(4, 3);
+        pnlMain.Dock = DockStyle.Fill;
+        pnlMain.Location = new Point(0, 0);
         pnlMain.Margin = new Padding(4, 3, 4, 3);
         pnlMain.Name = "pnlMain";
-        pnlMain.Size = new Size(509, 706);
+        pnlMain.Size = new Size(630, 721);
         pnlMain.TabIndex = 9;
+        // 
+        // groupBox6
+        // 
+        groupBox6.Controls.Add(btnSendCommand);
+        groupBox6.Controls.Add(txtCommand);
+        groupBox6.Controls.Add(label4);
+        groupBox6.Location = new Point(217, 385);
+        groupBox6.Margin = new Padding(4, 3, 4, 3);
+        groupBox6.Name = "groupBox6";
+        groupBox6.Padding = new Padding(4, 3, 4, 3);
+        groupBox6.Size = new Size(276, 91);
+        groupBox6.TabIndex = 8;
+        groupBox6.TabStop = false;
+        groupBox6.Text = "Custom KCL command";
+        // 
+        // btnSendCommand
+        // 
+        btnSendCommand.Location = new Point(54, 51);
+        btnSendCommand.Margin = new Padding(4, 3, 4, 3);
+        btnSendCommand.Name = "btnSendCommand";
+        btnSendCommand.Size = new Size(182, 27);
+        btnSendCommand.TabIndex = 0;
+        btnSendCommand.Text = "Send Command";
+        btnSendCommand.UseVisualStyleBackColor = true;
+        btnSendCommand.Click += btnSendCommand_Click;
+        // 
+        // txtCommand
+        // 
+        txtCommand.Location = new Point(89, 22);
+        txtCommand.Margin = new Padding(4, 3, 4, 3);
+        txtCommand.Name = "txtCommand";
+        txtCommand.Size = new Size(173, 23);
+        txtCommand.TabIndex = 2;
+        // 
+        // label4
+        // 
+        label4.Location = new Point(7, 26);
+        label4.Margin = new Padding(4, 0, 4, 0);
+        label4.Name = "label4";
+        label4.Size = new Size(75, 15);
+        label4.TabIndex = 2;
+        label4.Text = "Command :";
+        label4.TextAlign = ContentAlignment.MiddleRight;
         // 
         // groupBox5
         // 
@@ -287,6 +332,8 @@ partial class TelnetControl
         // 
         // groupBox4
         // 
+        groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        groupBox4.Controls.Add(gridVariableValue);
         groupBox4.Controls.Add(btnGetVariable);
         groupBox4.Controls.Add(btnSetVariable);
         groupBox4.Controls.Add(txtVariableNewValue);
@@ -299,17 +346,17 @@ partial class TelnetControl
         groupBox4.Margin = new Padding(4, 3, 4, 3);
         groupBox4.Name = "groupBox4";
         groupBox4.Padding = new Padding(4, 3, 4, 3);
-        groupBox4.Size = new Size(479, 178);
+        groupBox4.Size = new Size(483, 177);
         groupBox4.TabIndex = 8;
         groupBox4.TabStop = false;
         groupBox4.Text = "Variables";
         // 
         // btnGetVariable
         // 
-        btnGetVariable.Location = new Point(270, 38);
+        btnGetVariable.Location = new Point(270, 23);
         btnGetVariable.Margin = new Padding(4, 3, 4, 3);
         btnGetVariable.Name = "btnGetVariable";
-        btnGetVariable.Size = new Size(182, 27);
+        btnGetVariable.Size = new Size(206, 27);
         btnGetVariable.TabIndex = 0;
         btnGetVariable.Text = "Get variable value";
         btnGetVariable.UseVisualStyleBackColor = true;
@@ -530,56 +577,24 @@ partial class TelnetControl
         btnReset.UseVisualStyleBackColor = true;
         btnReset.Click += btnReset_Click;
         // 
-        // groupBox6
+        // gridVariableValue
         // 
-        groupBox6.Controls.Add(btnSendCommand);
-        groupBox6.Controls.Add(txtCommand);
-        groupBox6.Controls.Add(label4);
-        groupBox6.Location = new Point(217, 385);
-        groupBox6.Margin = new Padding(4, 3, 4, 3);
-        groupBox6.Name = "groupBox6";
-        groupBox6.Padding = new Padding(4, 3, 4, 3);
-        groupBox6.Size = new Size(276, 91);
-        groupBox6.TabIndex = 8;
-        groupBox6.TabStop = false;
-        groupBox6.Text = "Custom KCL command";
+        gridVariableValue.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        gridVariableValue.HelpVisible = false;
+        gridVariableValue.Location = new Point(270, 56);
+        gridVariableValue.Name = "gridVariableValue";
+        gridVariableValue.PropertySort = PropertySort.NoSort;
+        gridVariableValue.Size = new Size(206, 121);
+        gridVariableValue.TabIndex = 3;
+        gridVariableValue.ToolbarVisible = false;
         // 
-        // btnSendCommand
-        // 
-        btnSendCommand.Location = new Point(54, 51);
-        btnSendCommand.Margin = new Padding(4, 3, 4, 3);
-        btnSendCommand.Name = "btnSendCommand";
-        btnSendCommand.Size = new Size(182, 27);
-        btnSendCommand.TabIndex = 0;
-        btnSendCommand.Text = "Send Command";
-        btnSendCommand.UseVisualStyleBackColor = true;
-        btnSendCommand.Click += btnSendCommand_Click;
-        // 
-        // label4
-        // 
-        label4.Location = new Point(7, 26);
-        label4.Margin = new Padding(4, 0, 4, 0);
-        label4.Name = "label4";
-        label4.Size = new Size(75, 15);
-        label4.TabIndex = 2;
-        label4.Text = "Command :";
-        label4.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // txtCommand
-        // 
-        txtCommand.Location = new Point(89, 22);
-        txtCommand.Margin = new Padding(4, 3, 4, 3);
-        txtCommand.Name = "txtCommand";
-        txtCommand.Size = new Size(173, 23);
-        txtCommand.TabIndex = 2;
-        // 
-        // TelnetControl
+        // KclControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         Controls.Add(splitMain);
         Margin = new Padding(4, 3, 4, 3);
-        Name = "TelnetControl";
+        Name = "KclControl";
         Size = new Size(957, 725);
         GroupBox3.ResumeLayout(false);
         GroupBox3.PerformLayout();
@@ -588,6 +603,8 @@ partial class TelnetControl
         ((System.ComponentModel.ISupportInitialize)splitMain).EndInit();
         splitMain.ResumeLayout(false);
         pnlMain.ResumeLayout(false);
+        groupBox6.ResumeLayout(false);
+        groupBox6.PerformLayout();
         groupBox5.ResumeLayout(false);
         groupBox4.ResumeLayout(false);
         groupBox4.PerformLayout();
@@ -595,8 +612,6 @@ partial class TelnetControl
         ((System.ComponentModel.ISupportInitialize)udNewValue).EndInit();
         ((System.ComponentModel.ISupportInitialize)udIndex).EndInit();
         groupBox1.ResumeLayout(false);
-        groupBox6.ResumeLayout(false);
-        groupBox6.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -643,4 +658,5 @@ partial class TelnetControl
     internal Button btnSendCommand;
     private TextBox txtCommand;
     private Label label4;
+    private PropertyGrid gridVariableValue;
 }

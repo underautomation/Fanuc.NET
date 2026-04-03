@@ -1,10 +1,7 @@
-﻿using System.Windows.Forms;
-using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
+﻿using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common.Files;
 
-public partial class SafetyStatusControl: UserControl, IUserControl
+public partial class SafetyStatusControl : UserControl, IUserControl
 {
     private FanucRobot _robot;
     public SafetyStatusControl(FanucRobot robot)
@@ -13,16 +10,17 @@ public partial class SafetyStatusControl: UserControl, IUserControl
         InitializeComponent();
 
         Header.Initialize(
+            _robot,
             "sftysig.dg",
             FanucFileReaders.SafetyStatusReader,
-            () => _robot.Ftp.GetSafetyStatus(),
+            (client) => client.GetSafetyStatus(),
             Show);
     }
 
     #region IUserControl
-    public string Title => "Safety status (FTP)";
+    public string Title => "Safety status (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 
@@ -37,6 +35,6 @@ public partial class SafetyStatusControl: UserControl, IUserControl
 
     private void Show(IFanucContent content)
     {
-        positionGrid.SetSelectedObject(content );
+        positionGrid.SetSelectedObject(content);
     }
 }

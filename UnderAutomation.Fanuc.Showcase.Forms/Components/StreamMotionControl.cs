@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.StreamMotion.Data;
 

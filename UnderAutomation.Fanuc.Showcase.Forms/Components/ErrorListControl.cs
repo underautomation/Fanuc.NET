@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
-using UnderAutomation.Fanuc.Ftp.List;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.List;
 
 public partial class ErrorListControl : UserControl, IUserControl
 {
@@ -18,16 +15,17 @@ public partial class ErrorListControl : UserControl, IUserControl
         InitializeComponent();
 
         Header.Initialize(
+            _robot,
             "errall.ls",
             FanucFileReaders.ErrorListReader,
-            () => _robot.Ftp.GetAllErrorsList(),
+            (client) => client.GetAllErrorsList(),
             Show);
     }
 
     #region IUserControl
-    public string Title => "Error list (FTP)";
+    public string Title => "Error list (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 
@@ -42,7 +40,7 @@ public partial class ErrorListControl : UserControl, IUserControl
 
     private void Show(IFanucContent content)
     {
-        gridErrorList.SetSelectedObject(content );
+        gridErrorList.SetSelectedObject(content);
 
         gridActiveAlarms.SetSelectedObject((content as ErrorList)?.FilterActiveAlarms());
     }

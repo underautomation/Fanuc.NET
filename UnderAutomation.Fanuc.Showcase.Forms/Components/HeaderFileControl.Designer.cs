@@ -29,66 +29,74 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Components
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsRefresh = new System.Windows.Forms.ToolStripButton();
-            this.tsBrowse = new System.Windows.Forms.ToolStripButton();
-            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            this.toolStrip1.SuspendLayout();
-            this.SuspendLayout();
+            lblStatus = new Label();
+            toolStrip1 = new ToolStrip();
+            tsProtocol = new ToolStripComboBox();
+            tsRefresh = new ToolStripButton();
+            tsBrowse = new ToolStripButton();
+            dlgOpen = new OpenFileDialog();
+            toolStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // lblStatus
             // 
-            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStatus.Location = new System.Drawing.Point(0, 25);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(792, 43);
-            this.lblStatus.TabIndex = 4;
-            this.lblStatus.Text = "...";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblStatus.Dock = DockStyle.Fill;
+            lblStatus.Location = new Point(0, 25);
+            lblStatus.Margin = new Padding(4, 0, 4, 0);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(924, 53);
+            lblStatus.TabIndex = 4;
+            lblStatus.Text = "...";
+            lblStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsRefresh,
-            this.tsBrowse});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(792, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tsProtocol, tsRefresh, tsBrowse });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(924, 25);
+            toolStrip1.TabIndex = 3;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // tsProtocol
+            // 
+            tsProtocol.DropDownStyle = ComboBoxStyle.DropDownList;
+            tsProtocol.Items.AddRange(new object[] { "Use CGTP", "Use FTP" });
+            tsProtocol.Name = "tsProtocol";
+            tsProtocol.Size = new Size(121, 25);
+            tsProtocol.SelectedIndexChanged += tsProtocol_SelectedIndexChanged;
             // 
             // tsRefresh
             // 
-            this.tsRefresh.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.refresh_line;
-            this.tsRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsRefresh.Name = "tsRefresh";
-            this.tsRefresh.Size = new System.Drawing.Size(66, 22);
-            this.tsRefresh.Text = "Refresh";
-            this.tsRefresh.Click += new System.EventHandler(this.tsRefresh_Click);
+            tsRefresh.Image = Properties.Resources.refresh_line;
+            tsRefresh.ImageTransparentColor = Color.Magenta;
+            tsRefresh.Name = "tsRefresh";
+            tsRefresh.Size = new Size(66, 22);
+            tsRefresh.Text = "Refresh";
+            tsRefresh.Click += tsRefresh_Click;
             // 
             // tsBrowse
             // 
-            this.tsBrowse.Image = global::UnderAutomation.Fanuc.Showcase.Forms.Properties.Resources.folder_line;
-            this.tsBrowse.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBrowse.Name = "tsBrowse";
-            this.tsBrowse.Size = new System.Drawing.Size(118, 22);
-            this.tsBrowse.Text = "Browse and open";
-            this.tsBrowse.Click += new System.EventHandler(this.tsBrowse_Click);
+            tsBrowse.Image = Properties.Resources.folder_line;
+            tsBrowse.ImageTransparentColor = Color.Magenta;
+            tsBrowse.Name = "tsBrowse";
+            tsBrowse.Size = new Size(118, 22);
+            tsBrowse.Text = "Browse and open";
+            tsBrowse.Click += tsBrowse_Click;
             // 
-            // CyclicReadingFileControl
+            // HeaderFileControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.toolStrip1);
-            this.Name = "CyclicReadingFileControl";
-            this.Size = new System.Drawing.Size(792, 68);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblStatus);
+            Controls.Add(toolStrip1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "HeaderFileControl";
+            Size = new Size(924, 78);
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -98,5 +106,6 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Components
         private System.Windows.Forms.ToolStripButton tsRefresh;
         private System.Windows.Forms.ToolStripButton tsBrowse;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
+        private ToolStripComboBox tsProtocol;
     }
 }

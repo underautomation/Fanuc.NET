@@ -1,11 +1,9 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
+using UnderAutomation.Fanuc.Common.Kcl;
 using UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor;
-using UnderAutomation.Fanuc.Telnet;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 public partial class TPEditorControl : UserControl, IUserControl
 {
@@ -266,7 +264,7 @@ public partial class TPEditorControl : UserControl, IUserControl
 
         var breakpoints = _robot.Telnet.GetBreakpoints(GetSelectedProgramName());
 
-        editor.InitializeBreakpoints(breakpoints.Breakpoints.Select(x=>x.Line));
+        editor.InitializeBreakpoints(breakpoints.Breakpoints.Select(x => x.Line));
     }
 
     private void btnStart_Click(object sender, EventArgs e)
@@ -319,7 +317,7 @@ public partial class TPEditorControl : UserControl, IUserControl
         var fileContent = StringUtils.GetEncoding(_robot.Ftp.Language).GetString(content);
 
         editor.Editor.Text = fileContent;
-    
+
     }
 
     private void editor_BreakpointAdded(object sender, int e)

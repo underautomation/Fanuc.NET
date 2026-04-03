@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.ComponentModel;
 
 namespace Subro.Controls
 {
@@ -315,7 +310,7 @@ namespace Subro.Controls
             res.Text = txt;
             res.Strip = this;
             OptionsMenuItem.DropDownItems.Add(res);
-            return res; 
+            return res;
         }
 
         void expand(object sender, EventArgs e)
@@ -418,7 +413,7 @@ namespace Subro.Controls
 
         class booloption : ToolStripMenuItem
         {
-            
+
             public readonly GroupingOption Option;
             public booloption(GroupingOption Option)
             {

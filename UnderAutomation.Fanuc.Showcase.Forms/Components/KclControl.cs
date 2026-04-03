@@ -1,18 +1,30 @@
-﻿using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Telnet;
+﻿using UnderAutomation.Fanuc.Common.Kcl;
 
-public partial class TelnetControl : UserControl, IUserControl
+public partial class KclControl : UserControl
 {
-    FanucRobot _robot;
-
-    public TelnetControl(FanucRobot robot)
+    private bool _supportVariableParse;
+    /// <summary>
+    /// Indicates if the protocol supports variable parsing
+    /// </summary>
+    public bool SupportVariableParse
     {
-        _robot = robot;
+        get => _supportVariableParse;
+        set
+        {
+            _supportVariableParse = value;
+            gridVariableValue.Visible = value;
+        }
+    }
+
+
+    public KclClientBase KclClient;
+
+    public KclControl()
+    {
         InitializeComponent();
 
         cbPorts.Items.AddRange(Enum.GetValues(typeof(KCLPorts)).OfType<object>().ToArray());
         cbPorts.SelectedItem = cbPorts.Items[0];
-
     }
 
     private void AppendTextWithColorAndStyle(string text, Color color, bool bold)
@@ -55,122 +67,112 @@ public partial class TelnetControl : UserControl, IUserControl
         txtConsole.ResumeLayout();
     }
 
-    #region IUserControl
-    public string Title => "Telnet";
-
-    public bool FeatureEnabled => _robot.Telnet.PollAndGetUpdatedConnectedState();
-
-    public void PeriodicUpdate() { }
-
-    public void OnClose() { }
-
-    public void OnOpen() { }
-    #endregion
-
     private void btnRun_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Run(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.Run), result);
+        var result = KclClient.Run(cbPrograms.Text);
+        LogCommand(nameof(KclClient.Run), result);
     }
 
     private void btnAbort_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Abort(cbPrograms.Text, force: true);
-        LogCommand(nameof(_robot.Telnet.Abort), result);
+        var result = KclClient.Abort(cbPrograms.Text, force: true);
+        LogCommand(nameof(KclClient.Abort), result);
     }
 
     private void btnPause_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Pause(cbPrograms.Text, force: true);
-        LogCommand(nameof(_robot.Telnet.Pause), result);
+        var result = KclClient.Pause(cbPrograms.Text, force: true);
+        LogCommand(nameof(KclClient.Pause), result);
     }
 
     private void btnContinue_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Continue(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.Continue), result);
+        var result = KclClient.Continue(cbPrograms.Text);
+        LogCommand(nameof(KclClient.Continue), result);
     }
 
     private void btnHold_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Hold(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.Hold), result);
+        var result = KclClient.Hold(cbPrograms.Text);
+        LogCommand(nameof(KclClient.Hold), result);
     }
 
     private void btnClearProgram_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.ClearProgram(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.ClearProgram), result);
+        var result = KclClient.ClearProgram(cbPrograms.Text);
+        LogCommand(nameof(KclClient.ClearProgram), result);
     }
 
     private void btnClearVariables_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.ClearVars(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.ClearVars), result);
+        var result = KclClient.ClearVars(cbPrograms.Text);
+        LogCommand(nameof(KclClient.ClearVars), result);
     }
 
     private void btnAbortAll_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.AbortAll(force: true);
-        LogCommand(nameof(_robot.Telnet.AbortAll), result);
+        var result = KclClient.AbortAll(force: true);
+        LogCommand(nameof(KclClient.AbortAll), result);
     }
 
     private void btnReset_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.Reset();
-        LogCommand(nameof(_robot.Telnet.Reset), result);
+        var result = KclClient.Reset();
+        LogCommand(nameof(KclClient.Reset), result);
     }
 
     private void btnSetPort_Click(object sender, System.EventArgs e)
     {
-        var result = _robot.Telnet.SetPort((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value, (int)udNewValue.Value);
-        LogCommand(nameof(_robot.Telnet.SetPort), result);
+        var result = KclClient.SetPort((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value, (int)udNewValue.Value);
+        LogCommand(nameof(KclClient.SetPort), result);
     }
     private void btnSimulate_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.Simulate((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value, (int)udNewValue.Value);
-        LogCommand(nameof(_robot.Telnet.Simulate), result);
+        var result = KclClient.Simulate((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value, (int)udNewValue.Value);
+        LogCommand(nameof(KclClient.Simulate), result);
     }
 
     private void btnUnsimulatePort_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.Unsimulate((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value);
-        LogCommand(nameof(_robot.Telnet.Unsimulate), result);
+        var result = KclClient.Unsimulate((KCLPorts)cbPorts.SelectedItem, (int)udIndex.Value);
+        LogCommand(nameof(KclClient.Unsimulate), result);
     }
     private void btnUnsimulate_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.UnsimulateAll();
-        LogCommand(nameof(_robot.Telnet.UnsimulateAll), result);
+        var result = KclClient.UnsimulateAll();
+        LogCommand(nameof(KclClient.UnsimulateAll), result);
     }
 
     private void btnGetCurrentPose_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.GetCurrentPose();
-        LogCommand(nameof(_robot.Telnet.GetCurrentPose), result);
+        var result = KclClient.GetCurrentPose();
+        LogCommand(nameof(KclClient.GetCurrentPose), result);
     }
 
     private void btnSetVariable_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.SetVariable(txtVariableName.Text, txtVariableNewValue.Text, txtVariableProgram.Text);
-        LogCommand(nameof(_robot.Telnet.SetVariable), result);
+        var result = KclClient.SetVariable(txtVariableName.Text, txtVariableNewValue.Text, txtVariableProgram.Text);
+        LogCommand(nameof(KclClient.SetVariable), result);
     }
 
     private void btnGetVariable_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.GetVariable(txtVariableName.Text, txtVariableProgram.Text);
-        LogCommand(nameof(_robot.Telnet.GetVariable), result);
+        var result = KclClient.GetVariable(txtVariableName.Text, txtVariableProgram.Text);
+        LogCommand(nameof(KclClient.GetVariable), result);
+
+        if (_supportVariableParse) gridVariableValue.SelectedObject = result.ParseResult();
     }
 
     private void btnGetTask_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.GetTaskInformation(cbPrograms.Text);
-        LogCommand(nameof(_robot.Telnet.GetTaskInformation), result);
+        var result = KclClient.GetTaskInformation(cbPrograms.Text);
+        LogCommand(nameof(KclClient.GetTaskInformation), result);
     }
 
     private void btnSendCommand_Click(object sender, EventArgs e)
     {
-        var result = _robot.Telnet.SendCustomCommand<TelnetControl.CustomCommandResult>(txtCommand.Text);
-        LogCommand(nameof(_robot.Telnet.SendCustomCommand), result);
+        var result = KclClient.SendCustomCommand(txtCommand.Text);
+        LogCommand(nameof(KclClient.SendCustomCommand), result);
     }
 
     public class CustomCommandResult : BaseResult

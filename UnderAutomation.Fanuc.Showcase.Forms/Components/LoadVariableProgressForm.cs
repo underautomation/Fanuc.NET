@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-public partial class LoadVariableProgressForm : Form
+﻿public partial class LoadVariableProgressForm : Form
 {
     public LoadVariableProgressForm()
     {

@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 
 public partial class ProgramStatesControl : UserControl, IUserControl
 {
@@ -17,16 +15,17 @@ public partial class ProgramStatesControl : UserControl, IUserControl
         InitializeComponent();
 
         Header.Initialize(
+            _robot,
             "prgstate.dg",
             FanucFileReaders.ProgramStates,
-            () => _robot.Ftp.GetProgramStates(),
+            (client) => client.GetProgramStates(),
             Show);
     }
 
     #region IUserControl
-    public string Title => "Program states (FTP)";
+    public string Title => "Program states (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 
@@ -41,6 +40,6 @@ public partial class ProgramStatesControl : UserControl, IUserControl
 
     private void Show(IFanucContent content)
     {
-        programStatesGrid.SetSelectedObject(content );
+        programStatesGrid.SetSelectedObject(content);
     }
 }

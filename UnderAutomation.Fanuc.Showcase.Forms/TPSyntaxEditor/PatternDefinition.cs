@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
@@ -64,13 +62,13 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
             _regex = new Regex(pattern, regexOptions);
         }
 
-        internal ExpressionType ExpressionType 
+        internal ExpressionType ExpressionType
         {
             get { return _expressionType; }
             set { _expressionType = value; }
         }
 
-        internal bool IsCaseSensitive 
+        internal bool IsCaseSensitive
         {
             get { return _isCaseSensitive; }
         }

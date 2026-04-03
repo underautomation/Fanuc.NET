@@ -29,6 +29,7 @@ partial class ConnectControl
     {
         components = new System.ComponentModel.Container();
         tableLayoutPanel1 = new TableLayoutPanel();
+        txtCgtpLogin = new TextBox();
         chkCgtp = new CheckBox();
         lblConnected = new Label();
         label1 = new Label();
@@ -51,6 +52,9 @@ partial class ConnectControl
         lblLicense = new Label();
         chkTelnet = new CheckBox();
         lnkConfigureTelnet = new LinkLabel();
+        txtCgtpPassword = new TextBox();
+        label6 = new Label();
+        label7 = new Label();
         addressTooltip = new ToolTip(components);
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
@@ -62,12 +66,13 @@ partial class ConnectControl
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 205F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+        tableLayoutPanel1.Controls.Add(txtCgtpLogin, 1, 18);
         tableLayoutPanel1.Controls.Add(chkCgtp, 1, 17);
-        tableLayoutPanel1.Controls.Add(lblConnected, 1, 20);
+        tableLayoutPanel1.Controls.Add(lblConnected, 1, 22);
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
         tableLayoutPanel1.Controls.Add(label5, 0, 5);
-        tableLayoutPanel1.Controls.Add(panel1, 1, 19);
+        tableLayoutPanel1.Controls.Add(panel1, 1, 21);
         tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
         tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
         tableLayoutPanel1.Controls.Add(label2, 0, 8);
@@ -79,13 +84,16 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(label4, 0, 2);
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
         tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
-        tableLayoutPanel1.Controls.Add(lblLicense, 2, 19);
+        tableLayoutPanel1.Controls.Add(lblLicense, 2, 21);
         tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
         tableLayoutPanel1.Controls.Add(lnkConfigureTelnet, 2, 4);
+        tableLayoutPanel1.Controls.Add(txtCgtpPassword, 1, 19);
+        tableLayoutPanel1.Controls.Add(label6, 0, 18);
+        tableLayoutPanel1.Controls.Add(label7, 0, 19);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
-        tableLayoutPanel1.RowCount = 22;
+        tableLayoutPanel1.RowCount = 24;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -104,12 +112,22 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
-        tableLayoutPanel1.Size = new Size(800, 585);
+        tableLayoutPanel1.Size = new Size(800, 646);
         tableLayoutPanel1.TabIndex = 10;
+        // 
+        // txtCgtpLogin
+        // 
+        txtCgtpLogin.Location = new Point(209, 481);
+        txtCgtpLogin.Margin = new Padding(4, 3, 4, 3);
+        txtCgtpLogin.Name = "txtCgtpLogin";
+        txtCgtpLogin.Size = new Size(116, 23);
+        txtCgtpLogin.TabIndex = 21;
         // 
         // chkCgtp
         // 
@@ -126,7 +144,7 @@ partial class ConnectControl
         // lblConnected
         // 
         lblConnected.Dock = DockStyle.Fill;
-        lblConnected.Location = new Point(209, 535);
+        lblConnected.Location = new Point(209, 593);
         lblConnected.Margin = new Padding(4, 0, 4, 0);
         lblConnected.Name = "lblConnected";
         lblConnected.Size = new Size(242, 29);
@@ -177,7 +195,7 @@ partial class ConnectControl
         panel1.Controls.Add(btnConnect);
         panel1.Controls.Add(btnDisconnect);
         panel1.Dock = DockStyle.Fill;
-        panel1.Location = new Point(209, 498);
+        panel1.Location = new Point(209, 556);
         panel1.Margin = new Padding(4, 3, 4, 3);
         panel1.Name = "panel1";
         panel1.Size = new Size(242, 34);
@@ -325,7 +343,7 @@ partial class ConnectControl
         // 
         lblLicense.Anchor = AnchorStyles.Left;
         lblLicense.AutoSize = true;
-        lblLicense.Location = new Point(455, 507);
+        lblLicense.Location = new Point(455, 565);
         lblLicense.Margin = new Padding(0);
         lblLicense.Name = "lblLicense";
         lblLicense.Size = new Size(13, 15);
@@ -355,6 +373,36 @@ partial class ConnectControl
         lnkConfigureTelnet.TabStop = true;
         lnkConfigureTelnet.Text = "See how to enable Telnet on your robot";
         lnkConfigureTelnet.LinkClicked += lnkConfigureTelnet_LinkClicked;
+        // 
+        // txtCgtpPassword
+        // 
+        txtCgtpPassword.Location = new Point(209, 510);
+        txtCgtpPassword.Margin = new Padding(4, 3, 4, 3);
+        txtCgtpPassword.Name = "txtCgtpPassword";
+        txtCgtpPassword.Size = new Size(116, 23);
+        txtCgtpPassword.TabIndex = 26;
+        // 
+        // label6
+        // 
+        label6.Anchor = AnchorStyles.Right;
+        label6.AutoSize = true;
+        label6.Location = new Point(132, 485);
+        label6.Margin = new Padding(0);
+        label6.Name = "label6";
+        label6.Size = new Size(73, 15);
+        label6.TabIndex = 27;
+        label6.Text = "HTTP Login:";
+        // 
+        // label7
+        // 
+        label7.Anchor = AnchorStyles.Right;
+        label7.AutoSize = true;
+        label7.Location = new Point(112, 514);
+        label7.Margin = new Padding(0);
+        label7.Name = "label7";
+        label7.Size = new Size(93, 15);
+        label7.TabIndex = 28;
+        label7.Text = "HTTP password:";
         // 
         // addressTooltip
         // 
@@ -404,4 +452,8 @@ partial class ConnectControl
     private Label lblLicense;
     private LinkLabel lnkConfigureTelnet;
     private CheckBox chkCgtp;
+    private TextBox txtCgtpLogin;
+    private TextBox txtCgtpPassword;
+    private Label label6;
+    private Label label7;
 }

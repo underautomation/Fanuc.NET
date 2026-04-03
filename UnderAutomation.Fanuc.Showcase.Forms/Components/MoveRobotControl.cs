@@ -1,12 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 using System.Text;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 
 public partial class MoveRobotControl : UserControl, IUserControl
 {
@@ -111,7 +109,7 @@ P[1]{{GP1:
         {
             _robot.Ftp.DirectFileHandling.UploadFileToController(Encoding.UTF8.GetBytes(prg), "/md:/" + fileName);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             MessageBox.Show($"{ex.Message}\r\nNext try will use a different file name.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             fileNumber++;

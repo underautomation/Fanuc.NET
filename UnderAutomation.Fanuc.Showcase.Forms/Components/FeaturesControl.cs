@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Diagnosis;
-using UnderAutomation.Fanuc.Ftp.Internal;
-using UnderAutomation.Fanuc.Ftp.List;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 
 public partial class FeaturesControl : UserControl, IUserControl
 {
@@ -19,16 +16,17 @@ public partial class FeaturesControl : UserControl, IUserControl
         InitializeComponent();
 
         Header.Initialize(
+            _robot,
             "summary.dg",
             FanucFileReaders.SummaryDiagnosticReader,
-            () => _robot.Ftp.GetSummaryDiagnostic(),
+            (client) => client.GetSummaryDiagnostic(),
             Show);
     }
 
     #region IUserControl
-    public string Title => "Features / Order No (FTP)";
+    public string Title => "Features / Order No (CGTP or FTP)";
 
-    public bool FeatureEnabled => _robot.Ftp.Connected;
+    public bool FeatureEnabled => _robot.Ftp.Connected || _robot.Cgtp.Enabled;
 
     public void PeriodicUpdate() { }
 
@@ -43,6 +41,6 @@ public partial class FeaturesControl : UserControl, IUserControl
 
     private void Show(IFanucContent content)
     {
-        gridErrorList.SetSelectedObject((content as SummaryDiagnosis)?.Features );
+        gridErrorList.SetSelectedObject((content as SummaryDiagnosis)?.Features);
     }
 }

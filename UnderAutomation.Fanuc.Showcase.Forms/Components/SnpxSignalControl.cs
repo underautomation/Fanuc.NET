@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
-using UnderAutomation.Fanuc;
+﻿using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Snpx.Internal;
 
 public partial class SnpxSignalControl : UserControl
@@ -46,7 +42,7 @@ public partial class SnpxSignalControl : UserControl
 
             for (int i = 0; i < values.Length; i++)
             {
-                pnl.Controls.Add(new CheckBox() {Margin = new Padding(0), Text = (index + i).ToString(), Checked = values[i] });
+                pnl.Controls.Add(new CheckBox() { Margin = new Padding(0), Text = (index + i).ToString(), Checked = values[i] });
             }
         }
         else if (SelectedNumericIO != null)

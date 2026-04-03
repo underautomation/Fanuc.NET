@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using System.Runtime.InteropServices;
 
 namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
@@ -383,7 +379,7 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
         /// </summary>
         private void SetCurrentExecutionLine(int line)
         {
-            if(currentExecutionLine == line && richTextBox.CurrentExecutionLine == line)  return;
+            if (currentExecutionLine == line && richTextBox.CurrentExecutionLine == line) return;
             currentExecutionLine = line;
             richTextBox.CurrentExecutionLine = line;
             marginPanel.Invalidate();

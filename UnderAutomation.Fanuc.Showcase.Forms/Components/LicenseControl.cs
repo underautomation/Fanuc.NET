@@ -1,5 +1,4 @@
 ﻿using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.License;
 
 public partial class LicenseControl : UserControl, IUserControl
 {

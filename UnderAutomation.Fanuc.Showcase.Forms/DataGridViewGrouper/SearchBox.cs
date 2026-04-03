@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Design;
-using System.Windows.Forms.Design;
 using System.Text.RegularExpressions;
+using System.Windows.Forms.Design;
 
 namespace Subro.Controls
 {
@@ -18,7 +12,7 @@ namespace Subro.Controls
         public SearchBoxBase()
         {
             searchmatcher = new StringSearchMatcher(GetDefaultMode());
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         StringSearchMatcher searchmatcher;
@@ -36,7 +30,7 @@ namespace Subro.Controls
             {
                 if (Mode == value) return;
                 searchmatcher.Mode = value;
-                btnNext.Visible = value != SearchBoxMode.Filter;                
+                btnNext.Visible = value != SearchBoxMode.Filter;
                 NotifyStateChanged(true);
             }
         }
@@ -102,10 +96,10 @@ namespace Subro.Controls
             disposed = true;
             OnDisposed();
         }
-        
+
 
         bool disposed;
-        
+
 
         protected virtual void OnDisposed() { }
 
@@ -139,11 +133,11 @@ namespace Subro.Controls
             isvalid = CheckIsReady();
             if (isvalid && !Supports(Mode))
             {
-                isvalid=false;
-                OnInvalidModeSelected();                
+                isvalid = false;
+                OnInvalidModeSelected();
             }
             txt.Enabled = isvalid;
-            
+
         }
 
 
@@ -159,14 +153,14 @@ namespace Subro.Controls
         protected virtual void OnInvalidModeSelected()
         {
             var ex = new Exception("Source does not support " + Mode);
-            if(DesignMode)
+            if (DesignMode)
                 throw ex;
             ShowException(ex);
         }
 
         protected virtual bool CheckIsReady()
         {
-            return initializing==0;
+            return initializing == 0;
         }
 
         protected virtual bool Supports(SearchBoxMode Mode)
@@ -226,7 +220,7 @@ namespace Subro.Controls
                 return labeltext;
             }
             set
-            {                
+            {
                 labeltext = value;
                 if (lbl == null)
                 {
@@ -275,7 +269,7 @@ namespace Subro.Controls
 
         void c_KeyDown(object sender, KeyEventArgs e)
         {
-            if(HandleRegisteredKeyDowns)
+            if (HandleRegisteredKeyDowns)
                 e.Handled = HandleKey(e);
         }
 
@@ -288,7 +282,7 @@ namespace Subro.Controls
             registeredcontrols.Add(c);
             c.KeyDown += new KeyEventHandler(c_KeyDown);
             c.KeyPress += new KeyPressEventHandler(c_KeyPress);
-        }       
+        }
 
         protected void UnRegisterControl(Control c)
         {
@@ -379,7 +373,7 @@ namespace Subro.Controls
 
         bool nullresult;
 
-        [Browsable(false),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool NullResult
         {
             get { return nullresult; }
@@ -506,7 +500,7 @@ namespace Subro.Controls
 
         protected virtual void ShowException(Exception ex)
         {
-            if (Disposing) return;            
+            if (Disposing) return;
             //new ErrorForm(ex).Show(this);            
             MessageBox.Show(ex.Message); //call your own error routine here
         }
@@ -551,19 +545,19 @@ namespace Subro.Controls
                     .Select(sm => new ModeItem(this, sm)).ToArray();
                 for (int i = 0; i < modeitems.Length; i++)
                     menu.Items.Insert(i, modeitems[i]);
-                OnOpeningContextMenu(menu,true);
+                OnOpeningContextMenu(menu, true);
             }
             else
             {
                 foreach (var m in modeitems)
                     m.Check();
-                OnOpeningContextMenu(menu,false);
+                OnOpeningContextMenu(menu, false);
             }
             tsInner.Checked = alwayswildcard;
             tsClear.Enabled = txt.TextLength > 0;
         }
 
-        protected virtual void OnOpeningContextMenu(ContextMenuStrip menu,bool FirstTime)
+        protected virtual void OnOpeningContextMenu(ContextMenuStrip menu, bool FirstTime)
         {
         }
 
@@ -589,7 +583,7 @@ namespace Subro.Controls
         protected class ModeItem : SearchBoxItem
         {
             public readonly SearchBoxMode Mode;
-            public ModeItem(SearchBoxBase sb, SearchBoxMode mode):base(sb)
+            public ModeItem(SearchBoxBase sb, SearchBoxMode mode) : base(sb)
             {
                 this.Mode = mode;
                 this.Text = Mode.ToString();
@@ -642,9 +636,9 @@ namespace Subro.Controls
                 if (needsetprops)
                     setprops();
                 else if (value == null || Columns == null)
-                    NotifyStateChanged(false);                
+                    NotifyStateChanged(false);
                 else
-                    SearchProperty = getcol(value,true);                
+                    SearchProperty = getcol(value, true);
             }
         }
 
@@ -657,7 +651,7 @@ namespace Subro.Controls
         }
 
         protected void SourceChanged()
-        {            
+        {
             needsetprops = true;
             NotifyStateChanged(true);
         }
@@ -666,7 +660,7 @@ namespace Subro.Controls
         {
             base.OnEndInit();
             if (propname != null)
-                PropertyName = propname;            
+                PropertyName = propname;
         }
 
         protected override bool search(StringSearchMatcher search)
@@ -734,7 +728,7 @@ namespace Subro.Controls
             public readonly string Name;
             public readonly Func<int, object> GetValue;
             public int? Index;
-            public Column(string Name, Func<int,object> GetValue)
+            public Column(string Name, Func<int, object> GetValue)
             {
                 this.Name = Name;
                 this.GetValue = GetValue;
@@ -824,7 +818,7 @@ namespace Subro.Controls
         {
             get { return pos; }
             set { pos = value; }
-        }        
+        }
 
         protected sealed override void SetFoundPosition()
         {
@@ -838,7 +832,7 @@ namespace Subro.Controls
             }
         }
 
-        protected abstract void SetPosition(int col,int row);
+        protected abstract void SetPosition(int col, int row);
 
         protected override object GetCurrent()
         {
@@ -861,7 +855,7 @@ namespace Subro.Controls
                     return true;
                 }
                 curcol = 0;
-                pos.X = props[0].Index.Value;                
+                pos.X = props[0].Index.Value;
             }
             return ++pos.Y < RecordCount;
         }
@@ -882,7 +876,7 @@ namespace Subro.Controls
                     break;
             }
             //DataGridView dg;
-            
+
             return true;
         }
 
@@ -891,7 +885,7 @@ namespace Subro.Controls
 
         protected override bool CheckIsReady()
         {
-            if (Columns == null)return false;
+            if (Columns == null) return false;
             if (col == null)
                 return Mode != SearchBoxMode.Filter;
             return true;
@@ -939,13 +933,13 @@ namespace Subro.Controls
             if (source == null) return Point.Empty;
             return new Point(0, source.Position);
         }
-        
+
         protected override int RecordCount
         {
             get { return source.Count; }
         }
 
-        
+
 
         protected override bool CanFilter
         {
@@ -962,8 +956,8 @@ namespace Subro.Controls
         }
 
         protected override void OnDisposed()
-        {        
-            BindingSource = null;            
+        {
+            BindingSource = null;
         }
 
         private CurrencyManager source;
@@ -976,7 +970,7 @@ namespace Subro.Controls
                 if (source == value) return;
                 if (source != null)
                 {
-                    source.PositionChanged -= source_PositionChanged;                    
+                    source.PositionChanged -= source_PositionChanged;
                     source.ListChanged -= new ListChangedEventHandler(source_ListChanged);
                 }
                 source = value;
@@ -1003,12 +997,12 @@ namespace Subro.Controls
 
         protected override IEnumerable<Column> GetColumns()
         {
-            if (source == null || source.List ==null ) return null;
+            if (source == null || source.List == null) return null;
             return source.GetItemProperties().Cast<PropertyDescriptor>()
                 .Select(pd => new Column(pd.Name, i => pd.GetValue(source.List[i])) { Header = pd.DisplayName });
         }
 
-  
+
 
         void source_PositionChanged(object sender, EventArgs e)
         {
@@ -1064,7 +1058,7 @@ namespace Subro.Controls
         }
 
         void grid_ColumnStateChanged(object sender, DataGridViewColumnStateChangedEventArgs e)
-        {            
+        {
             if (e.StateChanged == DataGridViewElementStates.Visible)
                 ResetColumns();
         }
@@ -1107,10 +1101,10 @@ namespace Subro.Controls
                    where c.Visible
                    orderby c.DisplayIndex
                    select new Column(c.DataPropertyName, i => grid[c.Index, i].Value)
-                {
-                    Header = c.HeaderText,
-                    Index = c.Index
-                };            
+                   {
+                       Header = c.HeaderText,
+                       Index = c.Index
+                   };
         }
 
         void grid_DataSourceChanged(object sender, EventArgs e)
@@ -1177,7 +1171,7 @@ namespace Subro.Controls
             else
             {
                 var col = grid.Columns[i];
-                prop = colsearchmode == ColumnSearchMode.ActiveColumn || Mode== SearchBoxMode.Filter ? Columns.First(c=>c.Index == i) : null;
+                prop = colsearchmode == ColumnSearchMode.ActiveColumn || Mode == SearchBoxMode.Filter ? Columns.First(c => c.Index == i) : null;
                 HandleRegisteredKeyDowns = col.ReadOnly;
             }
             if (SearchProperty == prop)
@@ -1251,23 +1245,23 @@ namespace Subro.Controls
         {
             if (storedpos != null)
                 lastnode = (TreeNode)storedpos;
-            else if(tv==null || tv.Nodes.Count==0)
+            else if (tv == null || tv.Nodes.Count == 0)
                 lastnode = null;
             else
-                lastnode = tv.Nodes[0];            
-        }        
+                lastnode = tv.Nodes[0];
+        }
 
         protected override bool IncreasePosition()
         {
-            if (lastnode == null || lastnode.TreeView==null)
+            if (lastnode == null || lastnode.TreeView == null)
             {
-                if(tv.Nodes.Count==0)
+                if (tv.Nodes.Count == 0)
                     return false;
                 lastnode = tv.Nodes[0];
                 return true;
             }
-            lastnode = GetNextNode(lastnode,false);
-            return lastnode!=null;            
+            lastnode = GetNextNode(lastnode, false);
+            return lastnode != null;
         }
 
         protected override void SetFoundPosition()
@@ -1289,7 +1283,7 @@ namespace Subro.Controls
             if (n.NextNode != null)
                 return n.NextNode;
 
-            return GetNextNode(n.Parent, true);            
+            return GetNextNode(n.Parent, true);
         }
 
         protected override bool CheckIsReady()
@@ -1332,15 +1326,15 @@ namespace Subro.Controls
                 {
                     tv.AfterSelect += new TreeViewEventHandler(tv_AfterSelect);
                     RegisterControl(tv);
-                    
+
                 }
                 NotifyStateChanged(true);
             }
         }
 
         protected override void OnDisposed()
-        {        
-            TreeView = null;         
+        {
+            TreeView = null;
         }
 
         void tv_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1440,7 +1434,7 @@ namespace Subro.Controls
 
     public class StringSearchMatcher
     {
-        
+
         Func<string, bool> fn;
         public StringSearchMatcher()
         {
@@ -1448,10 +1442,10 @@ namespace Subro.Controls
         }
         public StringSearchMatcher(SearchBoxMode Mode)
         {
-            this.Mode = Mode;            
+            this.Mode = Mode;
         }
 
-        public StringSearchMatcher(SearchBoxMode Mode, string SearchValue):this(Mode)
+        public StringSearchMatcher(SearchBoxMode Mode, string SearchValue) : this(Mode)
         {
             this.SearchText = SearchValue;
         }
@@ -1588,19 +1582,19 @@ namespace Subro.Controls
                 if (searchinner)
                     rx = new Regex(txt, RegexOptions.IgnoreCase);
                 else
-                    rx = new Regex("^"  + txt, RegexOptions.IgnoreCase);
+                    rx = new Regex("^" + txt, RegexOptions.IgnoreCase);
             }
             return rx.IsMatch(s);
         }
     }
 
-    public class ToolstripSearchBox<CT> : ToolStripControlHost,ISupportInitialize
-        where CT : SearchBoxBase,new()
+    public class ToolstripSearchBox<CT> : ToolStripControlHost, ISupportInitialize
+        where CT : SearchBoxBase, new()
     {
         public ToolstripSearchBox()
             : base(new CT())
         {
-            SearchBoxControl.MinimumSize = new Size(150, 20);   
+            SearchBoxControl.MinimumSize = new Size(150, 20);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -1680,7 +1674,7 @@ namespace Subro.Controls
     }
 
     public class ToolStripSourceSearchBox<CT> : ToolstripSearchBox<CT>
-        where CT : SourceSearchBox,new()
+        where CT : SourceSearchBox, new()
     {
         [DefaultValue(null)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -1715,7 +1709,7 @@ namespace Subro.Controls
     /// <summary>
     /// Encapsulates a <see cref="BindingSourceSearchBox"/> in a <see cref="ToolStripItem"/>
     /// </summary>
-    public class ToolstripBindingSourceSearchBox:ToolStripSourceSearchBox<BindingSourceSearchBox>
+    public class ToolstripBindingSourceSearchBox : ToolStripSourceSearchBox<BindingSourceSearchBox>
     {
         [DefaultValue(null)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -1764,7 +1758,7 @@ namespace Subro.Controls
             }
         }
 
-        
+
 
     }
 

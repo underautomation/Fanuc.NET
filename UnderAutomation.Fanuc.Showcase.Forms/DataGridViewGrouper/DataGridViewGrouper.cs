@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System.ComponentModel;
 
 namespace Subro.Controls
 {
@@ -55,7 +48,7 @@ namespace Subro.Controls
                     grid.MouseMove -= new MouseEventHandler(grid_MouseMove);
                     grid.SelectionChanged -= new EventHandler(grid_SelectionChanged);
                     grid.DataSourceChanged -= new EventHandler(grid_DataSourceChanged);
-                    grid.AllowUserToAddRowsChanged -= new EventHandler(grid_AllowUserToAddRowsChanged);    
+                    grid.AllowUserToAddRowsChanged -= new EventHandler(grid_AllowUserToAddRowsChanged);
                 }
                 RemoveGrouping();
                 selectedGroups.Clear();
@@ -72,7 +65,7 @@ namespace Subro.Controls
                     grid.MouseMove += new MouseEventHandler(grid_MouseMove);
                     grid.SelectionChanged += new EventHandler(grid_SelectionChanged);
                     grid.DataSourceChanged += new EventHandler(grid_DataSourceChanged);
-                    grid.AllowUserToAddRowsChanged += new EventHandler(grid_AllowUserToAddRowsChanged);       
+                    grid.AllowUserToAddRowsChanged += new EventHandler(grid_AllowUserToAddRowsChanged);
                 }
             }
         }
@@ -106,7 +99,7 @@ namespace Subro.Controls
                         return;
                     }
                 }
-            }            
+            }
             checkcollapsedfocused(-1, -1);
 
         }
@@ -174,7 +167,7 @@ namespace Subro.Controls
             invalidateselected();
         }
 
-        
+
         void invalidateselected()
         {
             if (selectedGroups.Count == 0 || grid.SelectionMode == DataGridViewSelectionMode.FullRowSelect) return;
@@ -183,8 +176,8 @@ namespace Subro.Controls
                 if (i < count)
                     grid.InvalidateRow(i);
         }
-        
-       
+
+
 
         public void ExpandAll()
         {
@@ -202,7 +195,7 @@ namespace Subro.Controls
             if (IsGroupRow(e.RowIndex) && capturedcollapsebox.Y != e.RowIndex && Options.SelectRowsOnDoubleClick)
             {
                 var gr = GetGroupRow(e.RowIndex);
-                gr.Collapsed = false;                
+                gr.Collapsed = false;
                 grid.SuspendLayout();
                 grid.CurrentCell = grid[1, e.RowIndex + 1];
                 grid.Rows[e.RowIndex].Selected = false;
@@ -219,12 +212,12 @@ namespace Subro.Controls
         IEnumerable<DataGridViewRow> GetRows(int index)
         {
             var gr = GetGroupRow(index);
-            
+
             for (int i = 0; i < gr.Count; i++)
             {
                 yield return grid.Rows[++index];
             }
-            
+
         }
 
         void SelectGroup(int offset)
@@ -407,7 +400,7 @@ namespace Subro.Controls
             return CheckSource().SetGroupOn(Property);
         }
 
-        public void SetCustomGroup<T>(Func<T,object> GroupValueProvider, string Description = null)
+        public void SetCustomGroup<T>(Func<T, object> GroupValueProvider, string Description = null)
         {
             CheckSource().SetCustomGroup(GroupValueProvider, Description);
         }
@@ -467,7 +460,7 @@ namespace Subro.Controls
             if (IsGroupRow(e.RowIndex))
             {
                 e.Handled = true;
-                PaintGroupRow(e);                
+                PaintGroupRow(e);
             }
         }
 
@@ -539,7 +532,7 @@ namespace Subro.Controls
                 info.Font = e.InheritedRowStyle.Font;
             var r = e.RowBounds;
             r.Height--;
-            
+
             using (var bgb = new SolidBrush(info.BackColor))
             {
                 //line under the group row
@@ -551,7 +544,7 @@ namespace Subro.Controls
                 {
                     int l = HeaderOffset + 1;
                     r.X = l - grid.HorizontalScrollingOffset;
-                    
+
 
                     //clear background
                     e.Graphics.FillRectangle(bgb, r);
@@ -580,10 +573,10 @@ namespace Subro.Controls
                             e.Graphics.DrawString(info.Summary, info.Font, fb, r, sf);
                         }
                     }
-                    
+
 
                     e.Graphics.FillRectangle(bgb, 0, r.Top, l, r.Height);
-                        
+
                 }
             }
 
@@ -691,7 +684,7 @@ namespace Subro.Controls
         {
             if (Summary == null)
                 return DisplayValue;
-            return string.Format("{0}   {1}", DisplayValue, Summary);            
+            return string.Format("{0}   {1}", DisplayValue, Summary);
         }
 
         /// <summary>

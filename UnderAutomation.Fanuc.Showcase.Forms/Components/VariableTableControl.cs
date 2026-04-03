@@ -1,11 +1,8 @@
 ﻿using Equin.ApplicationFramework;
-using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
 using UnderAutomation.Fanuc;
-using UnderAutomation.Fanuc.Ftp;
-using UnderAutomation.Fanuc.Ftp.Variables;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common.Files.Variables;
 
 public partial class VariableTableControl : UserControl
 {
@@ -20,9 +17,11 @@ public partial class VariableTableControl : UserControl
     }
 
     private FanucRobot _robot;
-    public void SetRobot(FanucRobot robot)
+    private FileClientBase _fileClient;
+    public void SetRobot(FanucRobot robot,FileClientBase fileClient)
     {
         _robot = robot;
+        _fileClient = fileClient;
     }
 
     private IGenericVariableType _current;
@@ -77,7 +76,7 @@ public partial class VariableTableControl : UserControl
 
     public void PeriodicUpdate()
     {
-        var connected = _robot.Telnet.Connected;
+        var connected = _robot.Telnet.Connected || _robot.Cgtp.Enabled;
         btnWrite.Enabled = connected;
         txtWriteInfo.Visible = !connected;
     }
@@ -138,7 +137,28 @@ public partial class VariableTableControl : UserControl
 
     private void btnWrite_Click(object sender, EventArgs e)
     {
-        var result = _robot?.Telnet.SetVariable(txtVariableName.Text, txtNewValue.Text);
+        try
+        {
+            _robot.Cgtp.WriteVariable(txtVariableName.Text, txtNewValue.Text.Replace("TRUE","1", StringComparison.InvariantCultureIgnoreCase).Replace("FALSE", "0", StringComparison.InvariantCultureIgnoreCase));
+        }
+        catch
+        {
+            try
+            {
+                _robot.Telnet.SetVariable(txtVariableName.Text, txtNewValue.Text);
+            }
+            catch
+            {
+                try
+                {
+                    _robot.Cgtp.Kcl.SetVariable(txtVariableName.Text, txtNewValue.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to write value by CGTP or Telnet. Please check connection and variable access rights.");
+                }
+            }
+        }
 
         if (_current is null) return;
 
@@ -154,7 +174,7 @@ public partial class VariableTableControl : UserControl
             if (ancestor is GenericVariableFile)
             {
                 var formerFile = (GenericVariableFile)ancestor;
-                updatedFile = _robot.Ftp.GetVariablesFromFile(formerFile.Name);
+                updatedFile = _fileClient.GetVariablesFromFile(formerFile.Name);
 
                 // replace former file with the new one
                 var fileList = formerFile.Parent as VariableFileList;
@@ -166,14 +186,14 @@ public partial class VariableTableControl : UserControl
 
                 updatedElement = updatedFile;
             }
-            else if(updatedElement is object)
+            else if (updatedElement is object)
             {
                 // once updatedFile has been set, continue hierarchy to find displayed value
                 updatedElement = updatedElement.GetField(ancestor.Name);
             }
         }
 
-        if(updatedElement is object)
+        if (updatedElement is object)
         {
             InternalShow(updatedElement);
         }

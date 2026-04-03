@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
+﻿namespace UnderAutomation.Fanuc.Showcase.Forms.TPSyntaxEditor
 {
     public class SyntaxStyle
     {

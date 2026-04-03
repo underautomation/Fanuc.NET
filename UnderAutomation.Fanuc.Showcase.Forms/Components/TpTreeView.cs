@@ -1,9 +1,4 @@
 ﻿using UnderAutomation.Fanuc.Showcase.Forms.Properties;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 
 /// <summary>
 /// EventArgs for the ItemRenamed event, carrying old and new names.

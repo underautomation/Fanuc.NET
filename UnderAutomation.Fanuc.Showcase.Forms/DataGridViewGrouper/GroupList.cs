@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Collections;
 using System.ComponentModel;
 
 namespace Subro.Controls
@@ -46,7 +42,7 @@ namespace Subro.Controls
                 {
                     g.Rows.Clear();
                     //if (startcollapsed)g.SetCollapsed(true, false);
-                }                
+                }
             }
             List.Clear();
             if (newrows != null)
@@ -89,7 +85,7 @@ namespace Subro.Controls
                         List.Add(g);
             }
             else
-                List.AddRange(allgroups);            
+                List.AddRange(allgroups);
 
             sort(Source.GroupSortOrder, false);
 
@@ -254,7 +250,7 @@ namespace Subro.Controls
             }
             else
                 return newrows.Add(res);
-           
+
         }
 
         internal bool HasNewRow
@@ -297,7 +293,7 @@ namespace Subro.Controls
             else if (i != -1)
             {
                 Rows.RemoveAt(i);
-                if(newrows.Count == 0)
+                if (newrows.Count == 0)
                     Source.FireBaseChanged(ListChangedType.ItemDeleted, i, true);
                 else
                 {
@@ -311,9 +307,9 @@ namespace Subro.Controls
 
         NewRowsGroup newrows;
 
-        class NewRowsGroup:GroupRow
+        class NewRowsGroup : GroupRow
         {
-            public NewRowsGroup(GroupList list):base(list)
+            public NewRowsGroup(GroupList list) : base(list)
             {
 
             }
@@ -466,7 +462,7 @@ namespace Subro.Controls
 
         public GroupDisplayEventArgs GetDisplayInfo(bool selected)
         {
-            GroupDisplayEventArgs e = new GroupDisplayEventArgs(this,Owner.Source.GroupOn);
+            GroupDisplayEventArgs e = new GroupDisplayEventArgs(this, Owner.Source.GroupOn);
             e.Selected = selected;
             SetDisplayInfo(e);
             if (e.Cancel) return null;
@@ -500,7 +496,7 @@ namespace Subro.Controls
             if (delete)
             {
                 Owner.Rows.RemoveAt(Index);
-                Owner.List.RemoveAt(i);                
+                Owner.List.RemoveAt(i);
             }
             Owner.ReIndex(i);
             Owner.Source.FireBaseChanged(
@@ -509,7 +505,7 @@ namespace Subro.Controls
 
         public virtual int Add(object rec)
         {
-            int i  = Owner.Rows.Add(rec);
+            int i = Owner.Rows.Add(rec);
             Owner.Source.FireBaseChanged(ListChangedType.ItemAdded, i, false);
             Rows.Add(rec);
             Owner.Source.FireBaseChanged(ListChangedType.ItemChanged, Index, false);

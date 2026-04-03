@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Equin.ApplicationFramework
 {
     public class CompositeItemFilter<T> : IItemFilter<T>
