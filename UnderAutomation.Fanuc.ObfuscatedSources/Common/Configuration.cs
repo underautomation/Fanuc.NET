@@ -35,6 +35,15 @@ namespace Common {
 		}
 
 		/// <summary>
+		/// Parse a Fanuc configuration from its string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
+		/// </summary>
+		public static Configuration Parse(string value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
 		/// Parse a Fanuc configuration string representation, like : "N U T, 0, 0, 0" or "R, 0, 0, 0"
 		/// </summary>
 		public void FromString(string value)

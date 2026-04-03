@@ -34,5 +34,15 @@ namespace Cgtp.Internal {
 		/// HTTP request timeout in milliseconds.
 		/// </summary>
 		public int RequestTimeoutMs { get; set; }
+
+		/// <summary>
+		/// Login for HTTP Basic authentication (optional).
+		/// </summary>
+		public string Login { get; set; }
+
+		/// <summary>
+		/// Password for HTTP Basic authentication (optional).
+		/// </summary>
+		public string Password { get; set; }
 	}
 }

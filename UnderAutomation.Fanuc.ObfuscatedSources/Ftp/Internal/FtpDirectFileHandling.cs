@@ -3,6 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System.IO;
+using Common.Files;
 using Ftp;
 
 namespace Ftp.Internal {
@@ -10,12 +11,6 @@ namespace Ftp.Internal {
 	/// Methods to handle files on a Fanuc controller (upload, download, delete, enumerate, ...)
 	/// </summary>
 	public class FtpDirectFileHandling {
-
-		/// <summary>
-		/// Delegate to track upload progress. The value provided is in the range 0 to 100
-		/// </summary>
-		/// <param name="progress">The value provided is in the range 0 to 100</param>
-		public delegate void OnProgressDelegate(double progress);
 
 		/// <summary>
 		/// Uploads the specified stream as a file onto the controller.
@@ -27,7 +22,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
-		public bool UploadFileToController(Stream fileStream, string remotePath, bool createRemoteDir = false, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool UploadFileToController(Stream fileStream, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -43,7 +38,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
-		public bool UploadFileToController(byte[] fileData, string remotePath, bool createRemoteDir = false, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool UploadFileToController(byte[] fileData, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -59,7 +54,7 @@ namespace Ftp.Internal {
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>If true then the file was uploaded, false otherwise.</returns>
-		public bool UploadFileToController(string localPath, string remotePath, bool createRemoteDir = false, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool UploadFileToController(string localPath, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -75,7 +70,7 @@ namespace Ftp.Internal {
 		/// <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the controller</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>The list of files that were uploaded successfully</returns>
-		public string[] UploadFilesToController(string[] localPaths, string remoteDir, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public string[] UploadFilesToController(string[] localPaths, string remoteDir, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -90,7 +85,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>If true then the file was downloaded, false otherwise.</returns>
-		public bool DownloadFileFromController(out byte[] outBytes, string remotePath, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool DownloadFileFromController(out byte[] outBytes, string remotePath, OnProgressDelegate progress = null)
 		{
 			outBytes = default;
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -106,7 +101,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>If true then the file was downloaded, false otherwise.</returns>
-		public bool DownloadFileFromController(Stream outStream, string remotePath, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool DownloadFileFromController(Stream outStream, string remotePath, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -122,7 +117,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="progress">Provide an implementation of IProgress to track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>If true then the file was downloaded, false otherwise.</returns>
-		public bool DownloadFileFromController(string localPath, string remotePath, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public bool DownloadFileFromController(string localPath, string remotePath, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -137,7 +132,7 @@ namespace Ftp.Internal {
 		/// <param name="remotePaths">The full paths to the files on the controller</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>The list of all local files downloaded</returns>
-		public string[] DownloadFilesFromController(string localDir, string[] remotePaths, FtpDirectFileHandling.OnProgressDelegate progress = null)
+		public string[] DownloadFilesFromController(string localDir, string[] remotePaths, OnProgressDelegate progress = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;

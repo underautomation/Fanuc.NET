@@ -4,7 +4,9 @@
 
 
 namespace Cgtp.Internal {
-
+	/// <summary>
+	/// CGTP function identifiers.
+	/// </summary>
 	public enum RpcId {
 
 
@@ -102,6 +104,9 @@ namespace Cgtp.Internal {
 
 
 		MMSETATR = 21,
+
+
+		MNCHGREP = 93,
 
 
 		PASTELIN = 225,

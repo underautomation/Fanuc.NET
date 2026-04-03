@@ -1,0 +1,49 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+
+namespace Common.Files.Diagnosis {
+	/// <summary>
+	/// Represents a single software feature installed on the controller.
+	/// </summary>
+	public class Feature {
+
+
+		public override string ToString()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override bool Equals(object obj)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public override int GetHashCode()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public Feature()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Name of the feature
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Order number of the feature (set of 4 alphanumeric characters)
+		/// </summary>
+		public string OrderNo { get; set; }
+	}
+}

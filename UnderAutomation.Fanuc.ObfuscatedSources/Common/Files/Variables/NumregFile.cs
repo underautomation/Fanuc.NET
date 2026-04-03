@@ -1,0 +1,29 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+using Common.Files;
+
+namespace Common.Files.Variables {
+	/// <summary>
+	/// Describes the Fanuc variable file numreg.va
+	/// </summary>
+	public class NumregFile : GenericVariableFile, IGenericVariableType, IFanucContent {
+
+
+		public NumregFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Value of variable $NUMREG
+		/// </summary>
+		public double[] Numreg { get; }
+
+		/// <summary>
+		/// Value of variable $MAXREGNUM
+		/// </summary>
+		public int Maxregnum { get; }
+	}
+}

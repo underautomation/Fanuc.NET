@@ -1,0 +1,27 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+
+namespace Common.Kcl {
+	/// <summary>
+	/// Result of adding a breakpoint.
+	/// </summary>
+	public class AddBreakpointResult : Result {
+
+		/// <summary>
+		/// During implementation, return true if it is assumed that the frame has finished being received.
+		/// </summary>
+		protected override bool FromResult(string data)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+
+		public AddBreakpointResult()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+	}
+}

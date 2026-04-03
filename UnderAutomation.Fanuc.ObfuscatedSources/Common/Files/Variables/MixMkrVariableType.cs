@@ -1,0 +1,33 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+
+namespace Common.Files.Variables {
+	/// <summary>
+	/// Describes the Fanuc type MIX_MKR_T
+	/// </summary>
+	public class MixMkrVariableType : GenericVariableType, IGenericVariableType {
+
+
+		public MixMkrVariableType()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Value of variable $LINE
+		/// </summary>
+		public byte[] Line { get; }
+
+		/// <summary>
+		/// Value of variable $LINE_SIZE
+		/// </summary>
+		public int LineSize { get; }
+
+		/// <summary>
+		/// Type Name on the robot
+		/// </summary>
+		public override string FanucInternalTypeName => default;
+	}
+}

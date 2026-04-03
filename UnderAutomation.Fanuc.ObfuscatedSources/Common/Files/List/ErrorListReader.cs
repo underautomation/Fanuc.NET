@@ -1,0 +1,32 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+using Common.Files;
+using System.IO;
+using Common;
+
+namespace Common.Files.List {
+	/// <summary>
+	/// Reader for the ERRALL.LS error log file
+	/// </summary>
+	public class ErrorListReader : FileReader<ErrorList>, IFileReader<ErrorList>, IFileReader {
+
+		/// <summary>
+		/// Creates a new instance of the error list reader
+		/// </summary>
+		public ErrorListReader()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Read and decode the file stream
+		/// </summary>
+		public override ErrorList ReadFile(Stream fileStream, Languages language, string fileName = null)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+	}
+}

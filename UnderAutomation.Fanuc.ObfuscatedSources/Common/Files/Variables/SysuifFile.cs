@@ -1,0 +1,39 @@
+//              WARNING
+// This file is an empty shell containing only public C# items.
+// The internal code is hidden; to access it, you need to obtain a Source licence of the library.
+
+using Common.Files;
+
+namespace Common.Files.Variables {
+	/// <summary>
+	/// Describes the Fanuc variable file sysuif.va
+	/// </summary>
+	public class SysuifFile : GenericVariableFile, IGenericVariableType, IFanucContent {
+
+
+		public SysuifFile()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Value of variable $UI_CONFIG
+		/// </summary>
+		public UiConfigVariableType UiConfig { get; }
+
+		/// <summary>
+		/// Value of variable $UI_CUSTOM
+		/// </summary>
+		public UiCustomVariableType[] UiCustom { get; }
+
+		/// <summary>
+		/// Value of variable $UI_TOPMENU
+		/// </summary>
+		public UiTopmenuVariableType[] UiTopmenu { get; }
+
+		/// <summary>
+		/// Value of variable $UI_USERVIEW
+		/// </summary>
+		public UiUsrviewVariableType[] UiUserview { get; }
+	}
+}
