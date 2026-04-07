@@ -985,10 +985,28 @@
             <param name="variables">Collection of variables to read. Each variable will have its value, Exists, IsUninitialized and IsReadOnly properties set after the call.</param>
             <returns>A result object containing the controller firmware version.</returns>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WritePositionRegisterAsCartesian(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition,System.Int32)">
+            <summary>
+            Write a cartesian position value to a position register (PR[])
+            </summary>
+            <param name="index">1-based register index.</param>
+            <param name="value">Cartesian position value to write.</param>
+            <param name="groupNum">Motion group number (1-based). Default is 1.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WritePositionRegisterAsJoint(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition,System.Int32)">
+            <summary>
+            Write a joint position value to a position register (PR[])
+            </summary>
+            <remarks>It uses WriteBatchVariables internally</remarks>
+            <param name="index">1-based register index.</param>
+            <param name="value">Joint position value to write.</param>
+            <param name="groupNum">Motion group number (1-based). Default is 1.</param>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteBatchVariables(UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpBatchVariables)">
             <summary>
             Write multiple variables to the controller in a single batch operation.
             </summary>
+            <remarks>It uses WriteBatchVariables internally</remarks>
             <param name="variables">Collection of variables to write. Each variable must have its value set before calling this method.</param>
             <returns>A result object.</returns>
         </member>
@@ -47041,7 +47059,7 @@
             Acknowledgement packet.
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.UNKNOWN_8">
+        <member name="F:UnderAutomation.Fanuc.Snpx.Internal.PacketType.START">
             <summary>
             Unknown packet type used during initialization.
             </summary>

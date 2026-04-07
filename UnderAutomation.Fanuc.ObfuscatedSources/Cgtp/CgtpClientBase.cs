@@ -406,6 +406,28 @@ namespace Cgtp {
 		}
 
 		/// <summary>
+		/// Write a cartesian position value to a position register (PR[])
+		/// </summary>
+		/// <param name="index">1-based register index.</param>
+		/// <param name="value">Cartesian position value to write.</param>
+		/// <param name="groupNum">Motion group number (1-based). Default is 1.</param>
+		public void WritePositionRegisterAsCartesian(int index, CartesianPosition value, int groupNum = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Write a joint position value to a position register (PR[])
+		/// </summary>
+		/// <param name="index">1-based register index.</param>
+		/// <param name="value">Joint position value to write.</param>
+		/// <param name="groupNum">Motion group number (1-based). Default is 1.</param>
+		public void WritePositionRegisterAsJoint(int index, JointsPosition value, int groupNum = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
 		/// Write multiple variables to the controller in a single batch operation.
 		/// </summary>
 		/// <param name="variables">Collection of variables to write. Each variable must have its value set before calling this method.</param>
