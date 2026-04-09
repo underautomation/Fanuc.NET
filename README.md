@@ -302,6 +302,29 @@ robot.Cgtp.PauseAllPrograms();
 robot.Cgtp.AbortTask("MAIN");
 ```
 
+#### 🔹 List programs
+
+```csharp
+// List all TP programs on the controller
+string[] allTp = robot.Cgtp.ListTpPrograms();
+
+// List Karel macros only
+string[] macros = robot.Cgtp.ListPrograms(CgtpProgramType.Karel, CgtpProgramSubType.Macro);
+```
+
+#### 🔹 Source code editing (firmware V9.10+)
+
+```csharp
+// Insert a line before line 3
+robot.Cgtp.InsertSourceLine("MY_PROGRAM", "L P[5] 100mm/sec FINE", 3);
+
+// Replace line 5
+robot.Cgtp.ReplaceSourceLine("MY_PROGRAM", "J P[1] 50% FINE", 5);
+
+// Delete 2 lines starting at line 4
+robot.Cgtp.DeleteSourceLines("MY_PROGRAM", 4, 2);
+```
+
 #### 🔹 I/O control
 
 ```csharp
