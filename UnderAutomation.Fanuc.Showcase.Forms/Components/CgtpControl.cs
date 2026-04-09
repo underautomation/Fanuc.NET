@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 using UnderAutomation.Fanuc;
 using UnderAutomation.Fanuc.Cgtp;
 using UnderAutomation.Fanuc.Cgtp.BatchVariables;
@@ -693,5 +694,83 @@ public partial class CgtpControl : UserControl, IUserControl
     {
         _robot.Cgtp.WriteStringRegister((int)udRegisterIndex.Value, txtStringRegisterValue.Text);
     }
+
     #endregion
+
+    private void btnListPrograms_Click(object sender, EventArgs e)
+    {
+        treePrograms.Nodes.Clear();
+        _robot.Cgtp.ListTpPrograms().ToList().ForEach(p => treePrograms.Nodes.Add(p));
+    }
+
+    private void treePrograms_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+        txtProgramName.Text = e.Node?.Text;
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnReadProgram_Click(object sender, EventArgs e)
+    {
+        var selectedIndex = treeLines.SelectedNode?.Index ?? -1;
+
+        treeLines.Nodes.Clear();
+
+        string content = _robot.Cgtp.GetFileAsString(@$"MD:\{txtProgramName.Text}.LS");
+
+        // Extract lines between /MN and /POS, removing line numbers
+        Regex.Matches(content, @"(?<=/MN\s*\r?\n)[\s\S]*?(?=/POS)")
+             .Cast<Match>()
+             .SelectMany(m => m.Value.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+             .Select(l => Regex.Replace(l.Trim(), @"^\d+:\s*", ""))
+             .ToList()
+             .ForEach(l => treeLines.Nodes.Add(l));
+
+        // Extract content inside {} for each position P[n]{...}
+        string[] stringPositions = Regex.Matches(content, @"P\[\d+\]\{\s*\r?\n([\s\S]*?)\}")
+            .Cast<Match>()
+            .Select(m => m.Groups[1].Value.TrimEnd())
+            .ToArray();
+
+        txtProgramPositions.Text = string.Join("\r\n---\r\n", stringPositions);
+
+        if (selectedIndex >= 0 && selectedIndex < treeLines.Nodes.Count)
+            treeLines.SelectedNode = treeLines.Nodes[selectedIndex];
+    }
+
+    private void btnEditLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.ReplaceSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnInsertLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.InsertSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
+       
+        // update lines
+        btnReadProgram_Click(sender, e);
+
+        // select new inserted line
+        if (udProgramLineEdit.Value < treeLines.Nodes.Count)
+            treeLines.SelectedNode = treeLines.Nodes[(int)udProgramLineEdit.Value];
+
+        treeLines.Focus();
+    }
+    private void btnDeleteLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.DeleteSourceLines(txtProgramName.Text, (int)udProgramLineEdit.Value);
+
+        // update lines
+        btnReadProgram_Click(sender, e);
+        treeLines.Focus();
+    }
+
+    private void treeLines_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+        txtProgramLine.Text = e.Node?.Text;
+
+        if (e.Node != null)
+            udProgramLineEdit.Value = e.Node.Index + 1;
+    }
+
 }

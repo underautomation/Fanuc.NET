@@ -35,7 +35,9 @@ It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
 - ⚡ **I/O Control:** Manage ports and I/O values (UI, UO, GI, GO, etc.).
 - 🔍 **State Monitoring:** Get safety status, position, diagnostics, and more.
 - 📂 **File Management:** Easily manipulate files.
-- 🏎️ **Remote motion:** Remote move the robot
+- 🌐 **CGTP Web Server:** Access registers, I/O, programs, and variables via HTTP.
+- 🏎️ **Remote motion:** Remote move the robot.
+- 🔄 **Stream Motion:** Real-time joint streaming at up to 250 Hz.
 - 📐 **Kinematics Calculations:** Perform forward and inverse kinematics offline.
 
 No additional installations or Fanuc options are required to use this SDK.
@@ -90,7 +92,7 @@ A Windows Forms application demonstrating all the features of the library.
 
 ### 🖥️ **1. Remote Control via Telnet KCL**
 
-Telnet KCL (Keyboard Command Line) allows sending commands to control the robot **remotely**—no additional options needed on the controller.
+Telnet KCL (Keyboard Command Line) allows sending commands to control the robot **remotely**:no additional options needed on the controller.
 
 #### 🔹 Reset alarms
 
@@ -139,18 +141,18 @@ It is used to **read/write registers, monitor alarms, and check robot status**.
 // Read position register 1
 Position register1 = robot.Snpx.PositionRegisters.Read(1);
 
-// Set a new value for register 2
-robot.Snpx.PositionRegisters.Write(2, new Position { X = 100, Y = 50, Z = 25 });
+// Write a Cartesian position to register 2
+robot.Snpx.PositionRegisters.Write(2, new CartesianPosition { X = 100, Y = 50, Z = 25, W = 180, P = 0, R = 0 });
 ```
 
 #### 🔹 Read & write numeric registers
 
 ```csharp
 // Read register R[1]
-double value = robot.Snpx.Registers.Read(1);
+float value = robot.Snpx.NumericRegisters.Read(1);
 
 // Write a value to R[2]
-robot.Snpx.Registers.Write(2, 123.45);
+robot.Snpx.NumericRegisters.Write(2, 123.45f);
 ```
 
 #### 🔹 Read and control robot signals (UI, UO, GI, GO)
@@ -205,7 +207,7 @@ The SDK provides **direct FTP access** to the robot's memory for **file transfer
 robot.Ftp.DirectFileHandling.UploadFileToController(@"C:\Programs\MyPrg.tp", "md:/MyPrg.tp");
 
 // Download a file from the robot
-robot.Ftp.DirectFileHandling.DownloadFileFromController("md:/Backup.va", @"C:\Backup\Backup.va");
+robot.Ftp.DirectFileHandling.DownloadFileFromController(@"C:\Backup\Backup.va", "md:/Backup.va");
 
 // Delete a file on the robot
 robot.Ftp.DirectFileHandling.DeleteFile("md:/OldProgram.tp");
@@ -240,7 +242,9 @@ Console.WriteLine($"Teach Pendant Enabled: {safetyStatus.TPEnable}");
 
 ```csharp
 CurrentPosition currentPosition = robot.Ftp.GetCurrentPosition();
-Console.WriteLine($"Cartesian Position: X={currentPosition.Cartesian.X}, Y={currentPosition.Cartesian.Y}, Z={currentPosition.Cartesian.Z}");
+GroupPosition group = currentPosition.GroupsPosition[0];
+Console.WriteLine($"Cartesian Position: X={group.WorldPositions[0].X}, Y={group.WorldPositions[0].Y}, Z={group.WorldPositions[0].Z}");
+Console.WriteLine($"Joint Position: J1={group.JointsPosition.J1}, J2={group.JointsPosition.J2}");
 ```
 
 ---
@@ -265,7 +269,105 @@ Console.WriteLine($"Cartesian Position: X={currentPosition.Cartesian.X}, Y={curr
   You need to enable option R553 ("HMI Device SNPX") in the robot's software configuration.
 
 - If Your Robot Uses "FANUC Ltd." Parameters (R651 FRL):
-  No additional option is required—SNPX is included by default.
+  No additional option is required:SNPX is included by default.
+
+### 🌐 **4. CGTP Web Server Protocol**
+
+CGTP (Controller Gateway Transfer Protocol) communicates with the robot controller's **built-in HTTP web server**. It provides a comprehensive API for program management, variable access, register operations, I/O control, and kinematics.
+
+#### 🔹 Read & write variables
+
+```csharp
+string value = robot.Cgtp.ReadVariableAsString("$MCR.$GENOVERRIDE");
+robot.Cgtp.WriteVariable("$MCR.$GENOVERRIDE", 50);
+```
+
+#### 🔹 Register access
+
+```csharp
+// Numeric registers
+robot.Cgtp.WriteNumericRegisterAsInteger(1, 42);
+var reg = robot.Cgtp.ReadNumericRegisterWithComment(1);
+
+// String registers
+robot.Cgtp.WriteStringRegister(1, "Hello CGTP");
+```
+
+#### 🔹 Program control
+
+```csharp
+robot.Cgtp.SelectProgram("MAIN", 1);
+robot.Cgtp.RunProgram("MAIN");
+robot.Cgtp.PauseAllPrograms();
+robot.Cgtp.AbortTask("MAIN");
+```
+
+#### 🔹 I/O control
+
+```csharp
+int ioValue = robot.Cgtp.ReadIo(CgtpIoPortType.DO, 1);
+robot.Cgtp.WriteIo(CgtpIoPortType.DO, 1, 1);
+robot.Cgtp.SimulateIo(CgtpIoPortType.DI, 3);
+robot.Cgtp.UnsimulateIo(CgtpIoPortType.DI, 3);
+```
+
+---
+
+### 🔄 **5. Stream Motion : Real-Time Joint Streaming**
+
+Stream Motion enables **real-time joint streaming at up to 250 Hz**, providing precise motion control for advanced applications.
+
+#### 🔹 Connect and start streaming
+
+```csharp
+var parameters = new ConnectionParameters("192.168.0.1");
+parameters.StreamMotion.Enable = true;
+robot.Connect(parameters);
+
+robot.StreamMotion.Start();
+```
+
+#### 🔹 Send motion commands
+
+```csharp
+robot.StreamMotion.SendJointCommand(
+    new MotionData { J1 = 10, J2 = 20, J3 = 30, J4 = 0, J5 = -45, J6 = 90 },
+    isLastData: false
+);
+```
+
+#### 🔹 Monitor state at high frequency
+
+```csharp
+robot.StreamMotion.StateReceived += (sender, e) =>
+{
+    var state = e.State;
+    Console.WriteLine($"J1={state.JointPosition.J1:F3}° Ready={state.Status.ReadyForCommands}");
+};
+```
+
+---
+
+### 🏎️ **6. Remote Motion via RMI**
+
+RMI (Remote Motion Interface) allows sending motion commands to the robot, including linear, joint, and circular motions.
+
+#### 🔹 Initialize and move
+
+```csharp
+robot.Rmi.Initialize();
+
+Frame target = new Frame { X = 500, Y = 200, Z = 300, W = 0, P = 90, R = 0 };
+MotionConfiguration config = new MotionConfiguration { UToolNumber = 1, UFrameNumber = 0 };
+
+robot.Rmi.LinearMotion(
+    sequenceId: 1, config: config, position: target,
+    speedType: SpeedType.MmSec, speed: 100,
+    termType: TerminationType.Fine, termValue: 0,
+    acc: null, offsetPr: null, visionPr: null, wristJoint: false, mrot: false,
+    lcbType: null, lcbValue: null, portType: null, portNumber: null, portValue: null
+);
+```
 
 ---
 
@@ -289,7 +391,7 @@ dh = DhParameters.FromArmKinematicModel(ArmKinematicModels.CRX10iA);
 dh = DhParameters.FromOpwParameters(0.15, -0.20, 0.60, 0.86, 0.10);
 
 // From an online robot (SYSMOTN file)
-dh = DhParameters.FromSymotnFile(_robot.Ftp.KnownVariableFiles.GetSymotnFile())[0];
+dh = DhParameters.FromSymotnFile(robot.Ftp.KnownVariableFiles.GetSymotnFile())[0];
 
 // ---- Forward kinematics ----
 CartesianPosition pose = KinematicsUtils.ForwardKinematics(position, dh);
@@ -321,7 +423,7 @@ using UnderAutomation.Fanuc;
 
 ```csharp
 var robot = new FanucRobot();
-var parameters = new ConnectParameters("192.168.0.1");
+var parameters = new ConnectionParameters("192.168.0.1");
 parameters.Language = Languages.English; // Japanese and Chinese controllers are also supported
 
 parameters.Telnet.Enable = true;

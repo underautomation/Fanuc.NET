@@ -76,6 +76,23 @@
         btnGetProgramStackSize = new Button();
         btnGetProgramOwner = new Button();
         btnGetProgramComment = new Button();
+        tabProgramEdit = new TabPage();
+        btnDeleteLine = new Button();
+        btnInsertLine = new Button();
+        btnEditLine = new Button();
+        udProgramLineEdit = new NumericUpDown();
+        txtProgramLine = new TextBox();
+        txtProgramPositions = new TextBox();
+        label38 = new Label();
+        label39 = new Label();
+        label37 = new Label();
+        label36 = new Label();
+        treeLines = new TreeView();
+        treePrograms = new TreeView();
+        btnWriteProgramPosition = new Button();
+        btnReadProgram = new Button();
+        btnListPrograms = new Button();
+        txtProgramName = new TextBox();
         tabFiles = new TabPage();
         label11 = new Label();
         label10 = new Label();
@@ -218,6 +235,8 @@
         groupBox2.SuspendLayout();
         groupBox1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udProgramStackSize).BeginInit();
+        tabProgramEdit.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udProgramLineEdit).BeginInit();
         tabFiles.SuspendLayout();
         tabPageIo.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udIoValue).BeginInit();
@@ -301,6 +320,7 @@
         // TabIo
         // 
         TabIo.Controls.Add(tabProgram);
+        TabIo.Controls.Add(tabProgramEdit);
         TabIo.Controls.Add(tabFiles);
         TabIo.Controls.Add(tabPageIo);
         TabIo.Controls.Add(tabKinematics);
@@ -750,6 +770,177 @@
         btnGetProgramComment.Text = "Get program comment";
         btnGetProgramComment.UseVisualStyleBackColor = true;
         btnGetProgramComment.Click += btnGetProgramComment_Click;
+        // 
+        // tabProgramEdit
+        // 
+        tabProgramEdit.Controls.Add(btnDeleteLine);
+        tabProgramEdit.Controls.Add(btnInsertLine);
+        tabProgramEdit.Controls.Add(btnEditLine);
+        tabProgramEdit.Controls.Add(udProgramLineEdit);
+        tabProgramEdit.Controls.Add(txtProgramLine);
+        tabProgramEdit.Controls.Add(txtProgramPositions);
+        tabProgramEdit.Controls.Add(label38);
+        tabProgramEdit.Controls.Add(label39);
+        tabProgramEdit.Controls.Add(label37);
+        tabProgramEdit.Controls.Add(label36);
+        tabProgramEdit.Controls.Add(treeLines);
+        tabProgramEdit.Controls.Add(treePrograms);
+        tabProgramEdit.Controls.Add(btnWriteProgramPosition);
+        tabProgramEdit.Controls.Add(btnReadProgram);
+        tabProgramEdit.Controls.Add(btnListPrograms);
+        tabProgramEdit.Controls.Add(txtProgramName);
+        tabProgramEdit.Location = new Point(4, 24);
+        tabProgramEdit.Name = "tabProgramEdit";
+        tabProgramEdit.Size = new Size(1136, 789);
+        tabProgramEdit.TabIndex = 12;
+        tabProgramEdit.Text = "Edit program";
+        tabProgramEdit.UseVisualStyleBackColor = true;
+        // 
+        // btnDeleteLine
+        // 
+        btnDeleteLine.Location = new Point(746, 223);
+        btnDeleteLine.Name = "btnDeleteLine";
+        btnDeleteLine.Size = new Size(81, 23);
+        btnDeleteLine.TabIndex = 13;
+        btnDeleteLine.Text = "Delete line";
+        btnDeleteLine.UseVisualStyleBackColor = true;
+        btnDeleteLine.Click += btnDeleteLine_Click;
+        // 
+        // btnInsertLine
+        // 
+        btnInsertLine.Location = new Point(593, 223);
+        btnInsertLine.Name = "btnInsertLine";
+        btnInsertLine.Size = new Size(120, 23);
+        btnInsertLine.TabIndex = 13;
+        btnInsertLine.Text = "Insert new line";
+        btnInsertLine.UseVisualStyleBackColor = true;
+        btnInsertLine.Click += btnInsertLine_Click;
+        // 
+        // btnEditLine
+        // 
+        btnEditLine.Location = new Point(491, 223);
+        btnEditLine.Name = "btnEditLine";
+        btnEditLine.Size = new Size(75, 23);
+        btnEditLine.TabIndex = 13;
+        btnEditLine.Text = "Edit line";
+        btnEditLine.UseVisualStyleBackColor = true;
+        btnEditLine.Click += btnEditLine_Click;
+        // 
+        // udProgramLineEdit
+        // 
+        udProgramLineEdit.Location = new Point(550, 167);
+        udProgramLineEdit.Maximum = new decimal(new int[] { 1410065407, 2, 0, 0 });
+        udProgramLineEdit.Name = "udProgramLineEdit";
+        udProgramLineEdit.Size = new Size(120, 23);
+        udProgramLineEdit.TabIndex = 12;
+        udProgramLineEdit.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // txtProgramLine
+        // 
+        txtProgramLine.Location = new Point(491, 196);
+        txtProgramLine.Name = "txtProgramLine";
+        txtProgramLine.Size = new Size(336, 23);
+        txtProgramLine.TabIndex = 11;
+        // 
+        // txtProgramPositions
+        // 
+        txtProgramPositions.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        txtProgramPositions.Location = new Point(272, 534);
+        txtProgramPositions.Multiline = true;
+        txtProgramPositions.Name = "txtProgramPositions";
+        txtProgramPositions.ReadOnly = true;
+        txtProgramPositions.Size = new Size(415, 252);
+        txtProgramPositions.TabIndex = 10;
+        // 
+        // label38
+        // 
+        label38.AutoSize = true;
+        label38.Location = new Point(272, 516);
+        label38.Name = "label38";
+        label38.Size = new Size(58, 15);
+        label38.TabIndex = 9;
+        label38.Text = "Positions:";
+        // 
+        // label39
+        // 
+        label39.Location = new Point(491, 165);
+        label39.Name = "label39";
+        label39.Size = new Size(53, 23);
+        label39.TabIndex = 9;
+        label39.Text = "Lines:";
+        label39.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // label37
+        // 
+        label37.AutoSize = true;
+        label37.Location = new Point(272, 106);
+        label37.Name = "label37";
+        label37.Size = new Size(37, 15);
+        label37.TabIndex = 9;
+        label37.Text = "Lines:";
+        // 
+        // label36
+        // 
+        label36.AutoSize = true;
+        label36.Location = new Point(272, 21);
+        label36.Name = "label36";
+        label36.Size = new Size(56, 15);
+        label36.TabIndex = 9;
+        label36.Text = "Program:";
+        // 
+        // treeLines
+        // 
+        treeLines.Location = new Point(272, 124);
+        treeLines.Name = "treeLines";
+        treeLines.Size = new Size(178, 372);
+        treeLines.TabIndex = 8;
+        treeLines.AfterSelect += treeLines_AfterSelect;
+        // 
+        // treePrograms
+        // 
+        treePrograms.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        treePrograms.Location = new Point(30, 46);
+        treePrograms.Name = "treePrograms";
+        treePrograms.Size = new Size(178, 740);
+        treePrograms.TabIndex = 8;
+        treePrograms.AfterSelect += treePrograms_AfterSelect;
+        // 
+        // btnWriteProgramPosition
+        // 
+        btnWriteProgramPosition.Enabled = false;
+        btnWriteProgramPosition.Location = new Point(693, 601);
+        btnWriteProgramPosition.Name = "btnWriteProgramPosition";
+        btnWriteProgramPosition.Size = new Size(134, 74);
+        btnWriteProgramPosition.TabIndex = 6;
+        btnWriteProgramPosition.Text = "Write Program Position\r\n(available in a future version)";
+        btnWriteProgramPosition.UseVisualStyleBackColor = true;
+        // 
+        // btnReadProgram
+        // 
+        btnReadProgram.Location = new Point(272, 70);
+        btnReadProgram.Name = "btnReadProgram";
+        btnReadProgram.Size = new Size(178, 23);
+        btnReadProgram.TabIndex = 6;
+        btnReadProgram.Text = "Read Program";
+        btnReadProgram.UseVisualStyleBackColor = true;
+        btnReadProgram.Click += btnReadProgram_Click;
+        // 
+        // btnListPrograms
+        // 
+        btnListPrograms.Location = new Point(30, 17);
+        btnListPrograms.Name = "btnListPrograms";
+        btnListPrograms.Size = new Size(178, 23);
+        btnListPrograms.TabIndex = 7;
+        btnListPrograms.Text = "List programs";
+        btnListPrograms.UseVisualStyleBackColor = true;
+        btnListPrograms.Click += btnListPrograms_Click;
+        // 
+        // txtProgramName
+        // 
+        txtProgramName.Location = new Point(272, 41);
+        txtProgramName.Name = "txtProgramName";
+        txtProgramName.Size = new Size(178, 23);
+        txtProgramName.TabIndex = 5;
         // 
         // tabFiles
         // 
@@ -2118,6 +2309,9 @@
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udProgramStackSize).EndInit();
+        tabProgramEdit.ResumeLayout(false);
+        tabProgramEdit.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udProgramLineEdit).EndInit();
         tabFiles.ResumeLayout(false);
         tabFiles.PerformLayout();
         tabPageIo.ResumeLayout(false);
@@ -2335,4 +2529,21 @@
     private Label label35;
     private Label label34;
     private Label label33;
+    private TabPage tabProgramEdit;
+    private Label label36;
+    private TreeView treePrograms;
+    private Button btnReadProgram;
+    private Button btnListPrograms;
+    private TextBox txtProgramName;
+    private TreeView treeLines;
+    private Label label38;
+    private Label label37;
+    private TextBox txtProgramPositions;
+    private Button btnWriteProgramPosition;
+    private NumericUpDown udProgramLineEdit;
+    private TextBox txtProgramLine;
+    private Label label39;
+    private Button btnInsertLine;
+    private Button btnEditLine;
+    private Button btnDeleteLine;
 }
