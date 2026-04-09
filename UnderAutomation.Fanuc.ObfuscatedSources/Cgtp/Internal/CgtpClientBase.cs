@@ -2,11 +2,11 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
+using Cgtp;
 using Common;
 using Cgtp.BatchVariables;
-using Cgtp.Internal;
 
-namespace Cgtp {
+namespace Cgtp.Internal {
 	/// <summary>
 	/// Base implementation for the CGTP Web Server client.
 	/// </summary>
@@ -188,6 +188,53 @@ namespace Cgtp {
 		/// From firmware 9.10
 		/// </summary>
 		public void RenameProgram(string sourceName, string newName)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// List all TP or Karel programs on the controller
+		/// </summary>
+		/// <param name="type">TP or Karel</param>
+		/// <param name="subType">Sub-type of the program (none, macro, job, ...)</param>
+		public string[] ListPrograms(CgtpProgramType type, CgtpProgramSubType subType)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// List all TP programs on the controller, regardless of their sub-type.
+		/// </summary>
+		public string[] ListTpPrograms()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Delete <code class="paramref">count</code> lines starting at <code class="paramref">lineNum</code> in program <code class="paramref">progName</code>.
+		/// From firmware 9.10
+		/// </summary>
+		public void DeleteSourceLines(string progName, int lineNum, int count = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Insert a source line before <code class="paramref">lineNum</code> in program <code class="paramref">progName</code>.
+		/// From firmware 9.10
+		/// </summary>
+		public void InsertSourceLine(string progName, string lineContent, int lineNum)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Replace the source line at <code class="paramref">lineNum</code> in program <code class="paramref">progName</code>.
+		/// From firmware 9.10
+		/// </summary>
+		public void ReplaceSourceLine(string progName, string lineContent, int lineNum)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

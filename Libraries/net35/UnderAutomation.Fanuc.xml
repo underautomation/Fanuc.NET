@@ -598,6 +598,17 @@
         <member name="F:UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType.Condition">
             <summary>Condition handler program.</summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpProgramType">
+            <summary>
+            Type of a TP program on the controller.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.CgtpProgramType.Tp">
+            <summary>TP program</summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Cgtp.CgtpProgramType.Karel">
+            <summary>Karel program</summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpVariableType">
             <summary>
             Data types that can be returned when reading a controller variable.
@@ -706,129 +717,129 @@
         <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpVariableValue.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:UnderAutomation.Fanuc.Cgtp.CgtpClientBase">
+        <member name="T:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase">
             <summary>
             Base implementation for the CGTP Web Server client.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Kcl">
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.Kcl">
             <summary>
             KCL client for executing KCL commands over CGTP.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Http">
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.Http">
             <summary>
             Provides methods to download and decode files from the controller via HTTP.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Language">
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.Language">
             <summary>
             Controller language (default is English)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Enabled">
+        <member name="P:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.Enabled">
             <summary>
             Indicates whether the client is currently connected to the CGTP Web Server.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.Disconnect">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.Disconnect">
             <summary>
             Disconnect from the CGTP Web Server. After calling this method, the client must be reconnected before it can be used again.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.AbortTask(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.AbortTask(System.String)">
             <summary>
             Abort the task specified by <paramref name="progName"/>.
             Set to null to abort all user tasks.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SelectProgram(System.String,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SelectProgram(System.String,System.Int32)">
             <summary>
             Open the TP program <paramref name="progName"/> and move cursor to <paramref name="lineNum"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.DeleteProgram(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.DeleteProgram(System.String)">
             <summary>
             Delete the program <paramref name="progName"/> from the controller.
             From firmware 9.10
             </summary>
             <param name="progName">Program name</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramComment(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramComment(System.String)">
             <summary>
             Get the comment of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramComment(System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramComment(System.String,System.String)">
             <summary>
             Set the comment of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramOwner(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramOwner(System.String)">
             <summary>
             Get the owner of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramOwner(System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramOwner(System.String,System.String)">
             <summary>
             Set the owner of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramStackSize(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramStackSize(System.String)">
             <summary>
             Get the stack size of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramStackSize(System.String,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramStackSize(System.String,System.Int32)">
             <summary>
             Set the stack size of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramIgnorePause(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramIgnorePause(System.String)">
             <summary>
             Get whether program <paramref name="progName"/> ignores pause requests.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramIgnorePause(System.String,System.Boolean)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramIgnorePause(System.String,System.Boolean)">
             <summary>
             Set whether program <paramref name="progName"/> ignores pause requests.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramWriteProtect(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramWriteProtect(System.String)">
             <summary>
             Get whether program <paramref name="progName"/> is write-protected.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramWriteProtect(System.String,System.Boolean)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramWriteProtect(System.String,System.Boolean)">
             <summary>
             Set whether program <paramref name="progName"/> is write-protected.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetProgramSubType(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetProgramSubType(System.String)">
             <summary>
             Get the sub-type of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetProgramSubType(System.String,UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramSubType(System.String,UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType)">
             <summary>
             Set the sub-type of program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.CreateProgram(System.String,System.String,System.String,System.Int32,UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.CreateProgram(System.String,System.String,System.String,System.Int32,UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType)">
             <summary>
             Create a new TP program on the controller.
             From firmware 9.10
@@ -839,37 +850,68 @@
             <param name="defaultGroup">Default motion group (0 = omit)</param>
             <param name="subType">Program sub-type (default: None)</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.RenameProgram(System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.RenameProgram(System.String,System.String)">
             <summary>
             Rename program <paramref name="sourceName"/> to <paramref name="newName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.RunProgram(System.String,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ListPrograms(UnderAutomation.Fanuc.Cgtp.CgtpProgramType,UnderAutomation.Fanuc.Cgtp.CgtpProgramSubType)">
+            <summary>
+            List all TP or Karel programs on the controller 
+            </summary>
+            <param name="type">TP or Karel</param>
+            <param name="subType">Sub-type of the program (none, macro, job, ...)</param>
+            <returns></returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ListTpPrograms">
+            <summary>
+            List all TP programs on the controller, regardless of their sub-type.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.DeleteSourceLines(System.String,System.Int32,System.Int32)">
+            <summary>
+            Delete <paramref name="count"/> lines starting at <paramref name="lineNum"/> in program <paramref name="progName"/>.
+            From firmware 9.10
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.InsertSourceLine(System.String,System.String,System.Int32)">
+            <summary>
+            Insert a source line before <paramref name="lineNum"/> in program <paramref name="progName"/>.
+            From firmware 9.10
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReplaceSourceLine(System.String,System.String,System.Int32)">
+            <summary>
+            Replace the source line at <paramref name="lineNum"/> in program <paramref name="progName"/>.
+            From firmware 9.10
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.RunProgram(System.String,System.Int32)">
             <summary>
             Run the specified program starting at <paramref name="lineNum"/>.
             From firmware 9.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ChangeActiveProgram(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ChangeActiveProgram(System.String)">
             <summary>
             Change the active TP program to <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.PauseAllPrograms">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.PauseAllPrograms">
             <summary>
             Pause program execution on the controller.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadVariableAsString(System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadVariableAsString(System.String,System.String)">
             <summary>
             Read the value of variable <paramref name="varName"/> in program <paramref name="progName"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadVariable(System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadVariable(System.String,System.String)">
             <summary>
             Read the typed value of variable <paramref name="varName"/> in program <paramref name="progName"/>.
             From firmware 9.10
@@ -878,25 +920,25 @@
             <param name="progName">Program name, or null for system variables.</param>
             <returns>The variable value with its data type.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteVariable(System.String,System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteVariable(System.String,System.String,System.String)">
             <summary>
             Write <paramref name="value"/> to variable <paramref name="varName"/> in program <paramref name="progName"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteVariable(System.String,System.Int32,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteVariable(System.String,System.Int32,System.String)">
             <summary>
             Write an integer <paramref name="value"/> to variable <paramref name="varName"/> in program <paramref name="progName"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteVariable(System.String,System.Double,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteVariable(System.String,System.Double,System.String)">
             <summary>
             Write a real (double) <paramref name="value"/> to variable <paramref name="varName"/> in program <paramref name="progName"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetComment(UnderAutomation.Fanuc.Cgtp.CgtpCommentType,System.Int32,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetComment(UnderAutomation.Fanuc.Cgtp.CgtpCommentType,System.Int32,System.String)">
             <summary>
             Set the comment of a register or I/O port identified by <paramref name="type"/> and <paramref name="index"/>.
             </summary>
@@ -904,60 +946,60 @@
             <param name="index">1-based index of the element.</param>
             <param name="comment">The comment to set.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteNumericRegisterAsDouble(System.Int32,System.Double)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteNumericRegisterAsDouble(System.Int32,System.Double)">
             <summary>
             Write a real (double) value to numeric register R[<paramref name="index"/>].
             </summary>
             <param name="index">1-based register index.</param>
             <param name="value">Value to write.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteNumericRegisterAsInteger(System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteNumericRegisterAsInteger(System.Int32,System.Int32)">
             <summary>
             Write an integer value to numeric register R[<paramref name="index"/>].
             </summary>
             <param name="index">1-based register index.</param>
             <param name="value">Value to write.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteStringRegister(System.Int32,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteStringRegister(System.Int32,System.String)">
             <summary>
             Write a string value to string register SR[<paramref name="index"/>].
             </summary>
             <param name="index">1-based register index.</param>
             <param name="value">String value to write.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SetUserAlarmSeverity(System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetUserAlarmSeverity(System.Int32,System.Int32)">
             <summary>
             Set the severity of a user alarm.
             </summary>
             <param name="index">1-based alarm index.</param>
             <param name="severity">Severity value to set.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadNumericRegistersWithComment">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadNumericRegistersWithComment">
             <summary>
             Read all numeric registers (R[]) with their comments and values.
             </summary>
             <returns>Array where index 0 corresponds to R[1], index 1 to R[2], etc.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadStringRegistersWithComment">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadStringRegistersWithComment">
             <summary>
             Read all string registers (SR[]) with their comments and values.
             </summary>
             <returns>Array where index 0 corresponds to SR[1], index 1 to SR[2], etc.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadUserAlarms">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadUserAlarms">
             <summary>
             Read all user alarm definitions with their comments and severity.
             </summary>
             <returns>Array where index 0 corresponds to User Alarm[1], index 1 to User Alarm[2], etc.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetIoComments(UnderAutomation.Fanuc.Cgtp.CgtpCommentIoType)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetIoComments(UnderAutomation.Fanuc.Cgtp.CgtpCommentIoType)">
             <summary>
             Read all I/O comments for the specified I/O type.
             </summary>
             <param name="type">The type of I/O pair to read comments for.</param>
             <returns>An <see cref="T:UnderAutomation.Fanuc.Common.IOComments"/> containing input and output comment arrays.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetComments(UnderAutomation.Fanuc.Cgtp.CgtpCommentType)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetComments(UnderAutomation.Fanuc.Cgtp.CgtpCommentType)">
             <summary>
             Read all comments for the specified element type.
             For I/O types (RI, RO, DI, DO, GI, GO, AI, AO), returns the input or output comments accordingly.
@@ -965,19 +1007,19 @@
             <param name="type">The type of element to read comments for.</param>
             <returns>Array of comments where index 0 corresponds to element 1.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadNumericRegisterWithComment(System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadNumericRegisterWithComment(System.Int32)">
             <summary>
             Read the numeric register (R[]) at <paramref name="index"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadPositionRegisterWithComment(System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadPositionRegisterWithComment(System.Int32,System.Int32)">
             <summary>
             Read the position register (PR[]) at <paramref name="index"/> for motion group <paramref name="groupNum"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadBatchVariables(UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpBatchVariables)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadBatchVariables(UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpBatchVariables)">
             <summary>
             Read multiple variables from the controller in a single batch operation.
             Each variable in <paramref name="variables"/> will be updated with the value read from the controller.
@@ -985,7 +1027,7 @@
             <param name="variables">Collection of variables to read. Each variable will have its value, Exists, IsUninitialized and IsReadOnly properties set after the call.</param>
             <returns>A result object containing the controller firmware version.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WritePositionRegisterAsCartesian(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WritePositionRegisterAsCartesian(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition,System.Int32)">
             <summary>
             Write a cartesian position value to a position register (PR[])
             </summary>
@@ -993,7 +1035,7 @@
             <param name="value">Cartesian position value to write.</param>
             <param name="groupNum">Motion group number (1-based). Default is 1.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WritePositionRegisterAsJoint(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WritePositionRegisterAsJoint(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition,System.Int32)">
             <summary>
             Write a joint position value to a position register (PR[])
             </summary>
@@ -1002,7 +1044,7 @@
             <param name="value">Joint position value to write.</param>
             <param name="groupNum">Motion group number (1-based). Default is 1.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteBatchVariables(UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpBatchVariables)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteBatchVariables(UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpBatchVariables)">
             <summary>
             Write multiple variables to the controller in a single batch operation.
             </summary>
@@ -1010,49 +1052,49 @@
             <param name="variables">Collection of variables to write. Each variable must have its value set before calling this method.</param>
             <returns>A result object.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
             <summary>
             Read the value of I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.WriteIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.WriteIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32,System.Int32)">
             <summary>
             Set the value of I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetIoSimulationStatus(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetIoSimulationStatus(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
             <summary>
             Check whether I/O port at <paramref name="index"/> of type <paramref name="portType"/> is simulated.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.SimulateIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SimulateIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
             <summary>
             Set I/O port at <paramref name="index"/> of type <paramref name="portType"/> to simulated.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.UnsimulateIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.UnsimulateIo(UnderAutomation.Fanuc.Cgtp.CgtpIoPortType,System.Int32)">
             <summary>
             Remove simulation from I/O port at <paramref name="index"/> of type <paramref name="portType"/>.
             From firmware 8.30
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadCartesianPosition(System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadCartesianPosition(System.Int32)">
             <summary>
             Read the current Cartesian position of motion group <paramref name="groupNum"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ReadJointPosition(System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ReadJointPosition(System.Int32)">
             <summary>
             Read the current joint angles of motion group <paramref name="groupNum"/>.
             From firmware 9.10
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.InvertKinematics(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition,System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.InvertKinematics(System.Int32,UnderAutomation.Fanuc.Common.CartesianPosition,System.Int32,System.Int32)">
             <summary>
             Compute the inverse kinematics on the controller: convert a Cartesian position to joint angles.
             </summary>
@@ -1062,7 +1104,7 @@
             <param name="userFrame">Optional user frame number to use for kinematics calculation, or -1 for world.</param>
             <returns>The corresponding joint position.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ForwardKinematics(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition,System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ForwardKinematics(System.Int32,UnderAutomation.Fanuc.Common.JointsPosition,System.Int32,System.Int32)">
             <summary>
             Compute the forward kinematics on the controller: convert joint angles to a Cartesian position.
             </summary>
@@ -1072,13 +1114,13 @@
             <param name="userFrame">Optional user frame number to use for kinematics calculation, or -1 for world.</param>
             <returns>The corresponding Cartesian position.</returns>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.ListFiles(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.ListFiles(System.String)">
             <summary>
             List files at the specified path on the controller.
             From firmware 9.40
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Cgtp.CgtpClientBase.GetFileAsString(System.String)">
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.GetFileAsString(System.String)">
             <summary>
             Download the content of a file from the controller as a string.
             From firmware 9.10

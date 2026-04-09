@@ -3,10 +3,20 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp.Internal {
+namespace Cgtp {
 	/// <summary>
-	/// Internal CGTP Web Server client used by the library infrastructure.
+	/// Type of a TP program on the controller.
 	/// </summary>
-	public class CgtpClientInternal : CgtpClientBase {
+	public enum CgtpProgramType {
+
+		/// <summary>
+		/// TP program
+		/// </summary>
+		Tp = 1,
+
+		/// <summary>
+		/// Karel program
+		/// </summary>
+		Karel = 2,
 	}
 }
