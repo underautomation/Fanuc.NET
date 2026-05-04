@@ -24,5 +24,10 @@ namespace Ftp.Internal {
 		/// FTP password associated to the user
 		/// </summary>
 		public string FtpPassword { get; set; }
+
+		/// <summary>
+		/// FTP connection timeout in milliseconds, default : 30000 (30 seconds)
+		/// </summary>
+		public int FtpTimeoutMs { get; set; }
 	}
 }

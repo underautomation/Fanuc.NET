@@ -24,7 +24,9 @@ namespace Ftp {
 		/// <param name="ip">IP or network name of the robot</param>
 		/// <param name="user">FTP username</param>
 		/// <param name="password">FTP password for username</param>
-		public void Connect(string ip, string user, string password)
+		/// <param name="port">FTP port</param>
+		/// <param name="timeoutMs">FTP connection timeout in milliseconds</param>
+		public void Connect(string ip, string user, string password, int port = 21, int timeoutMs = 30000)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

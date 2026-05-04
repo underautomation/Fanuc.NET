@@ -887,6 +887,21 @@
             From firmware 9.10
             </summary>
         </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramPositionToCurrentCartesianPosition(System.String,System.Int32,System.Int32)">
+            <summary>
+            Set position at index <paramref name="positionIndex"/> to the current Cartesian position in program <paramref name="progName"/> and return the updated position.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.SetProgramPosition(System.String,System.Int32,UnderAutomation.Fanuc.Common.Position)">
+            <summary>
+            Set position at index <paramref name="positionIndex"/> in program <paramref name="progName"/> to the given <paramref name="position"/>.
+            Supports both joint and Cartesian representations. Only the first motion group is supported via CGTP.
+            From firmware 9.10
+            </summary>
+            <param name="progName">Program name</param>
+            <param name="positionIndex">1-based position index in the program (P[n])</param>
+            <param name="position">Position to write. Either <see cref="P:UnderAutomation.Fanuc.Common.Position.CartesianPosition"/> or <see cref="P:UnderAutomation.Fanuc.Common.Position.JointsPosition"/> must be set.</param>
+        </member>
         <member name="M:UnderAutomation.Fanuc.Cgtp.Internal.CgtpClientBase.RunProgram(System.String,System.Int32)">
             <summary>
             Run the specified program starting at <paramref name="lineNum"/>.
@@ -44546,13 +44561,15 @@
             Instanciate a new FTP client connection
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.FtpClient.Connect(System.String,System.String,System.String)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.FtpClient.Connect(System.String,System.String,System.String,System.Int32,System.Int32)">
             <summary>
             Connect to a robot
             </summary>
             <param name="ip">IP or network name of the robot</param>
             <param name="user">FTP username</param>
             <param name="password">FTP password for username</param>
+            <param name="port">FTP port</param>
+            <param name="timeoutMs">FTP connection timeout in milliseconds</param>
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase">
             <summary>
@@ -44569,7 +44586,7 @@
             Controller language (default is English)
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.ConnectInternal(System.String,System.String,System.String,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.ConnectInternal(System.String,System.String,System.String,System.Int32,System.Int32)">
             <summary>
             Connect to a robot
             </summary>
@@ -44577,6 +44594,7 @@
             <param name="user">FTP username</param>
             <param name="password">FTP password for username</param>
             <param name="port">FTP port</param>
+            <param name="timeoutMs">FTP connection timeout in milliseconds</param>
         </member>
         <member name="P:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase.Connected">
             <summary>
@@ -44619,6 +44637,11 @@
         <member name="P:UnderAutomation.Fanuc.Ftp.Internal.FtpConnectParametersBase.FtpPassword">
             <summary>
             FTP password associated to the user
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Ftp.Internal.FtpConnectParametersBase.FtpTimeoutMs">
+            <summary>
+            FTP connection timeout in milliseconds, default : 30000 (30 seconds)
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling">

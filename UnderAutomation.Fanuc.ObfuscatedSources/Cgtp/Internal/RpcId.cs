@@ -142,6 +142,9 @@ namespace Cgtp.Internal {
 		SCGETPOS = 14,
 
 
+		SCSETPOS = 17,
+
+
 		TXCHGPRG = 43,
 
 

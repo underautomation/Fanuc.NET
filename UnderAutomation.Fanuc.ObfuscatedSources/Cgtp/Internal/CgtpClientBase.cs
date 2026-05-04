@@ -240,6 +240,28 @@ namespace Cgtp.Internal {
 		}
 
 		/// <summary>
+		/// Set position at index <code class="paramref">positionIndex</code> to the current Cartesian position in program <code class="paramref">progName</code> and return the updated position.
+		/// </summary>
+		public CartesianPosition SetProgramPositionToCurrentCartesianPosition(string progName, int positionIndex, int groupNumber = 1)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Set position at index <code class="paramref">positionIndex</code> in program <code class="paramref">progName</code> to the given <code class="paramref">position</code>.
+		/// Supports both joint and Cartesian representations. Only the first motion group is supported via CGTP.
+		/// From firmware 9.10
+		/// </summary>
+		/// <param name="progName">Program name</param>
+		/// <param name="positionIndex">1-based position index in the program (P[n])</param>
+		/// <param name="position">Position to write. Either <xref href="UnderAutomation.Fanuc.Common.Position.CartesianPosition" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.Common.Position.JointsPosition" data-throw-if-not-resolved="false"></xref> must be set.</param>
+		public void SetProgramPosition(string progName, int positionIndex, Position position)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
 		/// Run the specified program starting at <code class="paramref">lineNum</code>.
 		/// From firmware 9.30
 		/// </summary>
