@@ -455,6 +455,7 @@ parameters.Telnet.TelnetKclPassword = "your_telnet_password";
 parameters.Ftp.Enable = true;
 parameters.Ftp.FtpUser = "";
 parameters.Ftp.FtpPassword = "";
+parameters.Ftp.FtpTimeoutMs = 10000; // optional, default is 30 seconds
 
 parameters.Snpx.Enable = true;
 

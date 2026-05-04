@@ -746,7 +746,7 @@ public partial class CgtpControl : UserControl, IUserControl
     private void btnInsertLine_Click(object sender, EventArgs e)
     {
         _robot.Cgtp.InsertSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
-       
+
         // update lines
         btnReadProgram_Click(sender, e);
 
@@ -773,4 +773,9 @@ public partial class CgtpControl : UserControl, IUserControl
             udProgramLineEdit.Value = e.Node.Index + 1;
     }
 
+    private void btnSetProgramPositionToCurrentCartesianPosition_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.SetProgramPositionToCurrentCartesianPosition(txtProgramName.Text, (int)udProgramPositionIndex.Value, (int)udProgramPositionGroup.Value);
+        btnReadProgram_Click(sender, e);
+    }
 }

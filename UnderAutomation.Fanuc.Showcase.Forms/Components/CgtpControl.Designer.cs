@@ -89,7 +89,6 @@
         label36 = new Label();
         treeLines = new TreeView();
         treePrograms = new TreeView();
-        btnWriteProgramPosition = new Button();
         btnReadProgram = new Button();
         btnListPrograms = new Button();
         txtProgramName = new TextBox();
@@ -225,6 +224,11 @@
         btnHttpListPrograms = new Button();
         btnHttpListVariables = new Button();
         dlgSaveFile = new SaveFileDialog();
+        udProgramPositionIndex = new NumericUpDown();
+        label40 = new Label();
+        udProgramPositionGroup = new NumericUpDown();
+        label41 = new Label();
+        btnSetProgramPositionToCurrentCartesianPosition = new Button();
         ((System.ComponentModel.ISupportInitialize)udProgramLine).BeginInit();
         TabIo.SuspendLayout();
         tabProgram.SuspendLayout();
@@ -260,6 +264,8 @@
         tabComments.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udCommentIndex).BeginInit();
         tabHttp.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).BeginInit();
         SuspendLayout();
         // 
         // txtProgram
@@ -773,6 +779,11 @@
         // 
         // tabProgramEdit
         // 
+        tabProgramEdit.Controls.Add(btnSetProgramPositionToCurrentCartesianPosition);
+        tabProgramEdit.Controls.Add(label41);
+        tabProgramEdit.Controls.Add(label40);
+        tabProgramEdit.Controls.Add(udProgramPositionGroup);
+        tabProgramEdit.Controls.Add(udProgramPositionIndex);
         tabProgramEdit.Controls.Add(btnDeleteLine);
         tabProgramEdit.Controls.Add(btnInsertLine);
         tabProgramEdit.Controls.Add(btnEditLine);
@@ -785,7 +796,6 @@
         tabProgramEdit.Controls.Add(label36);
         tabProgramEdit.Controls.Add(treeLines);
         tabProgramEdit.Controls.Add(treePrograms);
-        tabProgramEdit.Controls.Add(btnWriteProgramPosition);
         tabProgramEdit.Controls.Add(btnReadProgram);
         tabProgramEdit.Controls.Add(btnListPrograms);
         tabProgramEdit.Controls.Add(txtProgramName);
@@ -904,16 +914,6 @@
         treePrograms.Size = new Size(178, 740);
         treePrograms.TabIndex = 8;
         treePrograms.AfterSelect += treePrograms_AfterSelect;
-        // 
-        // btnWriteProgramPosition
-        // 
-        btnWriteProgramPosition.Enabled = false;
-        btnWriteProgramPosition.Location = new Point(693, 601);
-        btnWriteProgramPosition.Name = "btnWriteProgramPosition";
-        btnWriteProgramPosition.Size = new Size(134, 74);
-        btnWriteProgramPosition.TabIndex = 6;
-        btnWriteProgramPosition.Text = "Write Program Position\r\n(available in a future version)";
-        btnWriteProgramPosition.UseVisualStyleBackColor = true;
         // 
         // btnReadProgram
         // 
@@ -2285,6 +2285,52 @@
         // 
         dlgSaveFile.Filter = "All Files|*.*";
         // 
+        // udProgramPositionIndex
+        // 
+        udProgramPositionIndex.Location = new Point(731, 570);
+        udProgramPositionIndex.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
+        udProgramPositionIndex.Name = "udProgramPositionIndex";
+        udProgramPositionIndex.Size = new Size(120, 23);
+        udProgramPositionIndex.TabIndex = 14;
+        udProgramPositionIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // label40
+        // 
+        label40.AutoSize = true;
+        label40.Location = new Point(731, 552);
+        label40.Name = "label40";
+        label40.Size = new Size(84, 15);
+        label40.TabIndex = 15;
+        label40.Text = "Position Index:";
+        // 
+        // udProgramPositionGroup
+        // 
+        udProgramPositionGroup.Location = new Point(900, 570);
+        udProgramPositionGroup.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
+        udProgramPositionGroup.Name = "udProgramPositionGroup";
+        udProgramPositionGroup.Size = new Size(120, 23);
+        udProgramPositionGroup.TabIndex = 14;
+        udProgramPositionGroup.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // label41
+        // 
+        label41.AutoSize = true;
+        label41.Location = new Point(900, 552);
+        label41.Name = "label41";
+        label41.Size = new Size(43, 15);
+        label41.TabIndex = 15;
+        label41.Text = "Group:";
+        // 
+        // btnSetProgramPositionToCurrentCartesianPosition
+        // 
+        btnSetProgramPositionToCurrentCartesianPosition.Location = new Point(731, 622);
+        btnSetProgramPositionToCurrentCartesianPosition.Name = "btnSetProgramPositionToCurrentCartesianPosition";
+        btnSetProgramPositionToCurrentCartesianPosition.Size = new Size(289, 23);
+        btnSetProgramPositionToCurrentCartesianPosition.TabIndex = 16;
+        btnSetProgramPositionToCurrentCartesianPosition.Text = "Set to current cartesian position";
+        btnSetProgramPositionToCurrentCartesianPosition.UseVisualStyleBackColor = true;
+        btnSetProgramPositionToCurrentCartesianPosition.Click += btnSetProgramPositionToCurrentCartesianPosition_Click;
+        // 
         // CgtpControl
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2344,6 +2390,8 @@
         tabComments.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udCommentIndex).EndInit();
         tabHttp.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).EndInit();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).EndInit();
         ResumeLayout(false);
     }
 
@@ -2539,11 +2587,15 @@
     private Label label38;
     private Label label37;
     private TextBox txtProgramPositions;
-    private Button btnWriteProgramPosition;
     private NumericUpDown udProgramLineEdit;
     private TextBox txtProgramLine;
     private Label label39;
     private Button btnInsertLine;
     private Button btnEditLine;
     private Button btnDeleteLine;
+    private Button btnSetProgramPositionToCurrentCartesianPosition;
+    private Label label41;
+    private Label label40;
+    private NumericUpDown udProgramPositionGroup;
+    private NumericUpDown udProgramPositionIndex;
 }
