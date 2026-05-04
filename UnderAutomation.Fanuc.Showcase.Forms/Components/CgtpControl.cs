@@ -43,6 +43,16 @@ public partial class CgtpControl : UserControl, IUserControl
         cbCommentType.SelectedIndex = 1;
 
         InitBatchVariable();
+
+        var prgCartesianPosition = new Position() { CartesianPosition = new ExtendedCartesianPosition() };
+        prgCartesianPosition.CartesianPosition.Configuration.ArmFrontBack = ArmFrontBack.Front;
+        prgCartesianPosition.CartesianPosition.Configuration.ArmUpDown = ArmUpDown.Up;
+        prgCartesianPosition.CartesianPosition.Configuration.WristFlip = WristFlip.Flip;
+
+        gridProgramCartesianPosition.SelectedObject = prgCartesianPosition;
+        gridProgramJointPosition.SelectedObject = new Position() { JointsPosition = new JointsPosition() };
+        gridProgramCartesianPosition.ExpandAllGridItems();
+        gridProgramJointPosition.ExpandAllGridItems();
     }
 
     #region IUserControl
@@ -166,6 +176,100 @@ public partial class CgtpControl : UserControl, IUserControl
     private void BtnPause_Click(object sender, EventArgs e)
     {
         _robot.Cgtp.PauseAllPrograms();
+    }
+
+    private void btnListPrograms_Click(object sender, EventArgs e)
+    {
+        treePrograms.Nodes.Clear();
+        _robot.Cgtp.ListTpPrograms().ToList().ForEach(p => treePrograms.Nodes.Add(p));
+    }
+
+    private void treePrograms_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+        txtProgramName.Text = e.Node?.Text;
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnReadProgram_Click(object sender, EventArgs e)
+    {
+        var selectedIndex = treeLines.SelectedNode?.Index ?? -1;
+
+        treeLines.Nodes.Clear();
+
+        string content = _robot.Cgtp.GetFileAsString(@$"MD:\{txtProgramName.Text}.LS");
+
+        // Extract lines between /MN and /POS, removing line numbers
+        Regex.Matches(content, @"(?<=/MN\s*\r?\n)[\s\S]*?(?=/POS)")
+             .Cast<Match>()
+             .SelectMany(m => m.Value.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+             .Select(l => Regex.Replace(l.Trim(), @"^\d+:\s*", ""))
+             .ToList()
+             .ForEach(l => treeLines.Nodes.Add(l));
+
+        // Extract content inside {} for each position P[n]{...}
+        string[] stringPositions = Regex.Matches(content, @"P\[\d+\]\{\s*\r?\n([\s\S]*?)\}")
+            .Cast<Match>()
+            .Select(m => m.Groups[1].Value.TrimEnd())
+            .ToArray();
+
+        txtProgramPositions.Text = string.Join("\r\n---\r\n", stringPositions);
+
+        if (selectedIndex >= 0 && selectedIndex < treeLines.Nodes.Count)
+            treeLines.SelectedNode = treeLines.Nodes[selectedIndex];
+    }
+
+    private void btnEditLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.ReplaceSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnInsertLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.InsertSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
+
+        // update lines
+        btnReadProgram_Click(sender, e);
+
+        // select new inserted line
+        if (udProgramLineEdit.Value < treeLines.Nodes.Count)
+            treeLines.SelectedNode = treeLines.Nodes[(int)udProgramLineEdit.Value];
+
+        treeLines.Focus();
+    }
+    private void btnDeleteLine_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.DeleteSourceLines(txtProgramName.Text, (int)udProgramLineEdit.Value);
+
+        // update lines
+        btnReadProgram_Click(sender, e);
+        treeLines.Focus();
+    }
+
+    private void treeLines_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+        txtProgramLine.Text = e.Node?.Text;
+
+        if (e.Node != null)
+            udProgramLineEdit.Value = e.Node.Index + 1;
+    }
+
+    private void btnSetProgramPositionToCurrentCartesianPosition_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.SetProgramPositionToCurrentCartesianPosition(txtProgramName.Text, (int)udProgramPositionIndex.Value, (int)udProgramPositionGroup.Value);
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnSetProgramCartesianPosition_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.SetProgramPosition(txtProgramName.Text, (int)udProgramPositionIndex.Value, (Position)gridProgramCartesianPosition.SelectedObject);
+        btnReadProgram_Click(sender, e);
+    }
+
+    private void btnSetProgramJointPosition_Click(object sender, EventArgs e)
+    {
+        _robot.Cgtp.SetProgramPosition(txtProgramName.Text, (int)udProgramPositionIndex.Value, (Position)gridProgramJointPosition.SelectedObject);
+        btnReadProgram_Click(sender, e);
     }
 
     #endregion
@@ -319,6 +423,8 @@ public partial class CgtpControl : UserControl, IUserControl
 
     #endregion
 
+
+    #region User alarms
     private void lstUserAlarms_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
     {
         if (!e.IsSelected) return;
@@ -333,7 +439,6 @@ public partial class CgtpControl : UserControl, IUserControl
         }
     }
 
-    #region User alarms
     private void btnUserAlarmSetComment_Click(object sender, EventArgs e)
     {
         _robot.Cgtp.SetComment(CgtpCommentType.UserAlarm, (int)udUserAlarmIndex.Value, txtUserAlarmComment.Text);
@@ -697,85 +802,5 @@ public partial class CgtpControl : UserControl, IUserControl
 
     #endregion
 
-    private void btnListPrograms_Click(object sender, EventArgs e)
-    {
-        treePrograms.Nodes.Clear();
-        _robot.Cgtp.ListTpPrograms().ToList().ForEach(p => treePrograms.Nodes.Add(p));
-    }
 
-    private void treePrograms_AfterSelect(object sender, TreeViewEventArgs e)
-    {
-        txtProgramName.Text = e.Node?.Text;
-        btnReadProgram_Click(sender, e);
-    }
-
-    private void btnReadProgram_Click(object sender, EventArgs e)
-    {
-        var selectedIndex = treeLines.SelectedNode?.Index ?? -1;
-
-        treeLines.Nodes.Clear();
-
-        string content = _robot.Cgtp.GetFileAsString(@$"MD:\{txtProgramName.Text}.LS");
-
-        // Extract lines between /MN and /POS, removing line numbers
-        Regex.Matches(content, @"(?<=/MN\s*\r?\n)[\s\S]*?(?=/POS)")
-             .Cast<Match>()
-             .SelectMany(m => m.Value.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
-             .Select(l => Regex.Replace(l.Trim(), @"^\d+:\s*", ""))
-             .ToList()
-             .ForEach(l => treeLines.Nodes.Add(l));
-
-        // Extract content inside {} for each position P[n]{...}
-        string[] stringPositions = Regex.Matches(content, @"P\[\d+\]\{\s*\r?\n([\s\S]*?)\}")
-            .Cast<Match>()
-            .Select(m => m.Groups[1].Value.TrimEnd())
-            .ToArray();
-
-        txtProgramPositions.Text = string.Join("\r\n---\r\n", stringPositions);
-
-        if (selectedIndex >= 0 && selectedIndex < treeLines.Nodes.Count)
-            treeLines.SelectedNode = treeLines.Nodes[selectedIndex];
-    }
-
-    private void btnEditLine_Click(object sender, EventArgs e)
-    {
-        _robot.Cgtp.ReplaceSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
-        btnReadProgram_Click(sender, e);
-    }
-
-    private void btnInsertLine_Click(object sender, EventArgs e)
-    {
-        _robot.Cgtp.InsertSourceLine(txtProgramName.Text, txtProgramLine.Text, (int)udProgramLineEdit.Value);
-
-        // update lines
-        btnReadProgram_Click(sender, e);
-
-        // select new inserted line
-        if (udProgramLineEdit.Value < treeLines.Nodes.Count)
-            treeLines.SelectedNode = treeLines.Nodes[(int)udProgramLineEdit.Value];
-
-        treeLines.Focus();
-    }
-    private void btnDeleteLine_Click(object sender, EventArgs e)
-    {
-        _robot.Cgtp.DeleteSourceLines(txtProgramName.Text, (int)udProgramLineEdit.Value);
-
-        // update lines
-        btnReadProgram_Click(sender, e);
-        treeLines.Focus();
-    }
-
-    private void treeLines_AfterSelect(object sender, TreeViewEventArgs e)
-    {
-        txtProgramLine.Text = e.Node?.Text;
-
-        if (e.Node != null)
-            udProgramLineEdit.Value = e.Node.Index + 1;
-    }
-
-    private void btnSetProgramPositionToCurrentCartesianPosition_Click(object sender, EventArgs e)
-    {
-        _robot.Cgtp.SetProgramPositionToCurrentCartesianPosition(txtProgramName.Text, (int)udProgramPositionIndex.Value, (int)udProgramPositionGroup.Value);
-        btnReadProgram_Click(sender, e);
-    }
 }

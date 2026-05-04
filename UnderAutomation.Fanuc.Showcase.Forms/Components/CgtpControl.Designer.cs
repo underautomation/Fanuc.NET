@@ -77,6 +77,16 @@
         btnGetProgramOwner = new Button();
         btnGetProgramComment = new Button();
         tabProgramEdit = new TabPage();
+        panel5 = new Panel();
+        btnSetProgramPositionToCurrentCartesianPosition = new Button();
+        label41 = new Label();
+        udProgramPositionGroup = new NumericUpDown();
+        gridProgramJointPosition = new PropertyGrid();
+        btnSetProgramJointPosition = new Button();
+        gridProgramCartesianPosition = new PropertyGrid();
+        btnSetProgramCartesianPosition = new Button();
+        label40 = new Label();
+        udProgramPositionIndex = new NumericUpDown();
         btnDeleteLine = new Button();
         btnInsertLine = new Button();
         btnEditLine = new Button();
@@ -224,11 +234,7 @@
         btnHttpListPrograms = new Button();
         btnHttpListVariables = new Button();
         dlgSaveFile = new SaveFileDialog();
-        udProgramPositionIndex = new NumericUpDown();
-        label40 = new Label();
-        udProgramPositionGroup = new NumericUpDown();
-        label41 = new Label();
-        btnSetProgramPositionToCurrentCartesianPosition = new Button();
+        label42 = new Label();
         ((System.ComponentModel.ISupportInitialize)udProgramLine).BeginInit();
         TabIo.SuspendLayout();
         tabProgram.SuspendLayout();
@@ -240,6 +246,9 @@
         groupBox1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udProgramStackSize).BeginInit();
         tabProgramEdit.SuspendLayout();
+        panel5.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).BeginInit();
         ((System.ComponentModel.ISupportInitialize)udProgramLineEdit).BeginInit();
         tabFiles.SuspendLayout();
         tabPageIo.SuspendLayout();
@@ -264,8 +273,6 @@
         tabComments.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)udCommentIndex).BeginInit();
         tabHttp.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).BeginInit();
         SuspendLayout();
         // 
         // txtProgram
@@ -341,7 +348,7 @@
         TabIo.Location = new Point(0, 0);
         TabIo.Name = "TabIo";
         TabIo.SelectedIndex = 0;
-        TabIo.Size = new Size(1144, 817);
+        TabIo.Size = new Size(1252, 817);
         TabIo.TabIndex = 4;
         // 
         // tabProgram
@@ -356,7 +363,7 @@
         tabProgram.Location = new Point(4, 24);
         tabProgram.Name = "tabProgram";
         tabProgram.Padding = new Padding(3);
-        tabProgram.Size = new Size(1136, 789);
+        tabProgram.Size = new Size(1244, 789);
         tabProgram.TabIndex = 1;
         tabProgram.Text = "Programs";
         tabProgram.UseVisualStyleBackColor = true;
@@ -779,10 +786,13 @@
         // 
         // tabProgramEdit
         // 
-        tabProgramEdit.Controls.Add(btnSetProgramPositionToCurrentCartesianPosition);
-        tabProgramEdit.Controls.Add(label41);
+        tabProgramEdit.Controls.Add(label42);
+        tabProgramEdit.Controls.Add(panel5);
+        tabProgramEdit.Controls.Add(gridProgramJointPosition);
+        tabProgramEdit.Controls.Add(btnSetProgramJointPosition);
+        tabProgramEdit.Controls.Add(gridProgramCartesianPosition);
+        tabProgramEdit.Controls.Add(btnSetProgramCartesianPosition);
         tabProgramEdit.Controls.Add(label40);
-        tabProgramEdit.Controls.Add(udProgramPositionGroup);
         tabProgramEdit.Controls.Add(udProgramPositionIndex);
         tabProgramEdit.Controls.Add(btnDeleteLine);
         tabProgramEdit.Controls.Add(btnInsertLine);
@@ -801,10 +811,111 @@
         tabProgramEdit.Controls.Add(txtProgramName);
         tabProgramEdit.Location = new Point(4, 24);
         tabProgramEdit.Name = "tabProgramEdit";
-        tabProgramEdit.Size = new Size(1136, 789);
+        tabProgramEdit.Size = new Size(1244, 789);
         tabProgramEdit.TabIndex = 12;
         tabProgramEdit.Text = "Edit program";
         tabProgramEdit.UseVisualStyleBackColor = true;
+        // 
+        // panel5
+        // 
+        panel5.BorderStyle = BorderStyle.FixedSingle;
+        panel5.Controls.Add(btnSetProgramPositionToCurrentCartesianPosition);
+        panel5.Controls.Add(label41);
+        panel5.Controls.Add(udProgramPositionGroup);
+        panel5.Location = new Point(719, 391);
+        panel5.Name = "panel5";
+        panel5.Size = new Size(414, 54);
+        panel5.TabIndex = 18;
+        // 
+        // btnSetProgramPositionToCurrentCartesianPosition
+        // 
+        btnSetProgramPositionToCurrentCartesianPosition.Location = new Point(142, 16);
+        btnSetProgramPositionToCurrentCartesianPosition.Name = "btnSetProgramPositionToCurrentCartesianPosition";
+        btnSetProgramPositionToCurrentCartesianPosition.Size = new Size(260, 23);
+        btnSetProgramPositionToCurrentCartesianPosition.TabIndex = 16;
+        btnSetProgramPositionToCurrentCartesianPosition.Text = "Set to current cartesian position";
+        btnSetProgramPositionToCurrentCartesianPosition.UseVisualStyleBackColor = true;
+        btnSetProgramPositionToCurrentCartesianPosition.Click += btnSetProgramPositionToCurrentCartesianPosition_Click;
+        // 
+        // label41
+        // 
+        label41.AutoSize = true;
+        label41.Location = new Point(15, 20);
+        label41.Name = "label41";
+        label41.Size = new Size(43, 15);
+        label41.TabIndex = 15;
+        label41.Text = "Group:";
+        // 
+        // udProgramPositionGroup
+        // 
+        udProgramPositionGroup.Location = new Point(68, 16);
+        udProgramPositionGroup.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
+        udProgramPositionGroup.Name = "udProgramPositionGroup";
+        udProgramPositionGroup.Size = new Size(68, 23);
+        udProgramPositionGroup.TabIndex = 14;
+        udProgramPositionGroup.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // gridProgramJointPosition
+        // 
+        gridProgramJointPosition.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridProgramJointPosition.HelpVisible = false;
+        gridProgramJointPosition.Location = new Point(943, 468);
+        gridProgramJointPosition.Name = "gridProgramJointPosition";
+        gridProgramJointPosition.PropertySort = PropertySort.NoSort;
+        gridProgramJointPosition.Size = new Size(190, 273);
+        gridProgramJointPosition.TabIndex = 17;
+        gridProgramJointPosition.ToolbarVisible = false;
+        // 
+        // btnSetProgramJointPosition
+        // 
+        btnSetProgramJointPosition.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnSetProgramJointPosition.Location = new Point(943, 747);
+        btnSetProgramJointPosition.Name = "btnSetProgramJointPosition";
+        btnSetProgramJointPosition.Size = new Size(190, 23);
+        btnSetProgramJointPosition.TabIndex = 16;
+        btnSetProgramJointPosition.Text = "Set program joints position";
+        btnSetProgramJointPosition.UseVisualStyleBackColor = true;
+        btnSetProgramJointPosition.Click += btnSetProgramJointPosition_Click;
+        // 
+        // gridProgramCartesianPosition
+        // 
+        gridProgramCartesianPosition.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        gridProgramCartesianPosition.HelpVisible = false;
+        gridProgramCartesianPosition.Location = new Point(719, 468);
+        gridProgramCartesianPosition.Name = "gridProgramCartesianPosition";
+        gridProgramCartesianPosition.PropertySort = PropertySort.NoSort;
+        gridProgramCartesianPosition.Size = new Size(190, 273);
+        gridProgramCartesianPosition.TabIndex = 17;
+        gridProgramCartesianPosition.ToolbarVisible = false;
+        // 
+        // btnSetProgramCartesianPosition
+        // 
+        btnSetProgramCartesianPosition.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        btnSetProgramCartesianPosition.Location = new Point(719, 747);
+        btnSetProgramCartesianPosition.Name = "btnSetProgramCartesianPosition";
+        btnSetProgramCartesianPosition.Size = new Size(190, 23);
+        btnSetProgramCartesianPosition.TabIndex = 16;
+        btnSetProgramCartesianPosition.Text = "Set program cartesian position";
+        btnSetProgramCartesianPosition.UseVisualStyleBackColor = true;
+        btnSetProgramCartesianPosition.Click += btnSetProgramCartesianPosition_Click;
+        // 
+        // label40
+        // 
+        label40.AutoSize = true;
+        label40.Location = new Point(771, 351);
+        label40.Name = "label40";
+        label40.Size = new Size(84, 15);
+        label40.TabIndex = 15;
+        label40.Text = "Position Index:";
+        // 
+        // udProgramPositionIndex
+        // 
+        udProgramPositionIndex.Location = new Point(861, 349);
+        udProgramPositionIndex.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
+        udProgramPositionIndex.Name = "udProgramPositionIndex";
+        udProgramPositionIndex.Size = new Size(120, 23);
+        udProgramPositionIndex.TabIndex = 14;
+        udProgramPositionIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // btnDeleteLine
         // 
@@ -955,7 +1066,7 @@
         tabFiles.Location = new Point(4, 24);
         tabFiles.Name = "tabFiles";
         tabFiles.Padding = new Padding(3);
-        tabFiles.Size = new Size(1136, 789);
+        tabFiles.Size = new Size(1244, 789);
         tabFiles.TabIndex = 0;
         tabFiles.Text = "Files";
         tabFiles.UseVisualStyleBackColor = true;
@@ -1049,7 +1160,7 @@
         tabPageIo.Location = new Point(4, 24);
         tabPageIo.Name = "tabPageIo";
         tabPageIo.Padding = new Padding(3);
-        tabPageIo.Size = new Size(1136, 789);
+        tabPageIo.Size = new Size(1244, 789);
         tabPageIo.TabIndex = 3;
         tabPageIo.Text = "I/O";
         tabPageIo.UseVisualStyleBackColor = true;
@@ -1191,7 +1302,7 @@
         tabKinematics.Location = new Point(4, 24);
         tabKinematics.Name = "tabKinematics";
         tabKinematics.Padding = new Padding(3);
-        tabKinematics.Size = new Size(1136, 789);
+        tabKinematics.Size = new Size(1244, 789);
         tabKinematics.TabIndex = 4;
         tabKinematics.Text = "Kinematics";
         tabKinematics.UseVisualStyleBackColor = true;
@@ -1295,7 +1406,7 @@
         tabVariables.Location = new Point(4, 24);
         tabVariables.Name = "tabVariables";
         tabVariables.Padding = new Padding(3);
-        tabVariables.Size = new Size(1136, 789);
+        tabVariables.Size = new Size(1244, 789);
         tabVariables.TabIndex = 2;
         tabVariables.Text = "Variables";
         tabVariables.UseVisualStyleBackColor = true;
@@ -1461,7 +1572,7 @@
         tabBatchVariables.Location = new Point(4, 24);
         tabBatchVariables.Name = "tabBatchVariables";
         tabBatchVariables.Padding = new Padding(3);
-        tabBatchVariables.Size = new Size(1136, 789);
+        tabBatchVariables.Size = new Size(1244, 789);
         tabBatchVariables.TabIndex = 7;
         tabBatchVariables.Text = "Batch variables & registers";
         tabBatchVariables.UseVisualStyleBackColor = true;
@@ -1630,7 +1741,7 @@
         tabRegisters.Location = new Point(4, 24);
         tabRegisters.Name = "tabRegisters";
         tabRegisters.Padding = new Padding(3);
-        tabRegisters.Size = new Size(1136, 789);
+        tabRegisters.Size = new Size(1244, 789);
         tabRegisters.TabIndex = 5;
         tabRegisters.Text = "Registers";
         tabRegisters.UseVisualStyleBackColor = true;
@@ -1920,7 +2031,7 @@
         tabKcl.Location = new Point(4, 24);
         tabKcl.Name = "tabKcl";
         tabKcl.Padding = new Padding(3);
-        tabKcl.Size = new Size(1136, 789);
+        tabKcl.Size = new Size(1244, 789);
         tabKcl.TabIndex = 6;
         tabKcl.Text = "KCL";
         tabKcl.UseVisualStyleBackColor = true;
@@ -1931,7 +2042,7 @@
         KclControl.Location = new Point(3, 3);
         KclControl.Margin = new Padding(4, 3, 4, 3);
         KclControl.Name = "KclControl";
-        KclControl.Size = new Size(1130, 783);
+        KclControl.Size = new Size(1238, 783);
         KclControl.SupportVariableParse = true;
         KclControl.TabIndex = 0;
         // 
@@ -1950,7 +2061,7 @@
         tabUserAlarms.Location = new Point(4, 24);
         tabUserAlarms.Name = "tabUserAlarms";
         tabUserAlarms.Padding = new Padding(3);
-        tabUserAlarms.Size = new Size(1136, 789);
+        tabUserAlarms.Size = new Size(1244, 789);
         tabUserAlarms.TabIndex = 9;
         tabUserAlarms.Text = "User Alarms";
         tabUserAlarms.UseVisualStyleBackColor = true;
@@ -2074,7 +2185,7 @@
         tabComments.Location = new Point(4, 24);
         tabComments.Name = "tabComments";
         tabComments.Padding = new Padding(3);
-        tabComments.Size = new Size(1136, 789);
+        tabComments.Size = new Size(1244, 789);
         tabComments.TabIndex = 10;
         tabComments.Text = "Comments";
         tabComments.UseVisualStyleBackColor = true;
@@ -2184,7 +2295,7 @@
         tabHttp.Location = new Point(4, 24);
         tabHttp.Name = "tabHttp";
         tabHttp.Padding = new Padding(3);
-        tabHttp.Size = new Size(1136, 789);
+        tabHttp.Size = new Size(1244, 789);
         tabHttp.TabIndex = 11;
         tabHttp.Text = "HTTP";
         tabHttp.UseVisualStyleBackColor = true;
@@ -2285,51 +2396,15 @@
         // 
         dlgSaveFile.Filter = "All Files|*.*";
         // 
-        // udProgramPositionIndex
+        // label42
         // 
-        udProgramPositionIndex.Location = new Point(731, 570);
-        udProgramPositionIndex.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
-        udProgramPositionIndex.Name = "udProgramPositionIndex";
-        udProgramPositionIndex.Size = new Size(120, 23);
-        udProgramPositionIndex.TabIndex = 14;
-        udProgramPositionIndex.Value = new decimal(new int[] { 1, 0, 0, 0 });
-        // 
-        // label40
-        // 
-        label40.AutoSize = true;
-        label40.Location = new Point(731, 552);
-        label40.Name = "label40";
-        label40.Size = new Size(84, 15);
-        label40.TabIndex = 15;
-        label40.Text = "Position Index:";
-        // 
-        // udProgramPositionGroup
-        // 
-        udProgramPositionGroup.Location = new Point(900, 570);
-        udProgramPositionGroup.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
-        udProgramPositionGroup.Name = "udProgramPositionGroup";
-        udProgramPositionGroup.Size = new Size(120, 23);
-        udProgramPositionGroup.TabIndex = 14;
-        udProgramPositionGroup.Value = new decimal(new int[] { 1, 0, 0, 0 });
-        // 
-        // label41
-        // 
-        label41.AutoSize = true;
-        label41.Location = new Point(900, 552);
-        label41.Name = "label41";
-        label41.Size = new Size(43, 15);
-        label41.TabIndex = 15;
-        label41.Text = "Group:";
-        // 
-        // btnSetProgramPositionToCurrentCartesianPosition
-        // 
-        btnSetProgramPositionToCurrentCartesianPosition.Location = new Point(731, 622);
-        btnSetProgramPositionToCurrentCartesianPosition.Name = "btnSetProgramPositionToCurrentCartesianPosition";
-        btnSetProgramPositionToCurrentCartesianPosition.Size = new Size(289, 23);
-        btnSetProgramPositionToCurrentCartesianPosition.TabIndex = 16;
-        btnSetProgramPositionToCurrentCartesianPosition.Text = "Set to current cartesian position";
-        btnSetProgramPositionToCurrentCartesianPosition.UseVisualStyleBackColor = true;
-        btnSetProgramPositionToCurrentCartesianPosition.Click += btnSetProgramPositionToCurrentCartesianPosition_Click;
+        label42.AutoSize = true;
+        label42.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+        label42.Location = new Point(758, 771);
+        label42.Name = "label42";
+        label42.Size = new Size(320, 15);
+        label42.TabIndex = 19;
+        label42.Text = "Writing a position is only supported for group 1, edit raw file";
         // 
         // CgtpControl
         // 
@@ -2339,7 +2414,7 @@
         Controls.Add(TabIo);
         Margin = new Padding(4, 3, 4, 3);
         Name = "CgtpControl";
-        Size = new Size(1144, 817);
+        Size = new Size(1252, 817);
         ((System.ComponentModel.ISupportInitialize)udProgramLine).EndInit();
         TabIo.ResumeLayout(false);
         tabProgram.ResumeLayout(false);
@@ -2357,6 +2432,10 @@
         ((System.ComponentModel.ISupportInitialize)udProgramStackSize).EndInit();
         tabProgramEdit.ResumeLayout(false);
         tabProgramEdit.PerformLayout();
+        panel5.ResumeLayout(false);
+        panel5.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).EndInit();
+        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).EndInit();
         ((System.ComponentModel.ISupportInitialize)udProgramLineEdit).EndInit();
         tabFiles.ResumeLayout(false);
         tabFiles.PerformLayout();
@@ -2390,8 +2469,6 @@
         tabComments.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)udCommentIndex).EndInit();
         tabHttp.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)udProgramPositionIndex).EndInit();
-        ((System.ComponentModel.ISupportInitialize)udProgramPositionGroup).EndInit();
         ResumeLayout(false);
     }
 
@@ -2598,4 +2675,10 @@
     private Label label40;
     private NumericUpDown udProgramPositionGroup;
     private NumericUpDown udProgramPositionIndex;
+    private PropertyGrid gridProgramJointPosition;
+    private Button btnSetProgramJointPosition;
+    private PropertyGrid gridProgramCartesianPosition;
+    private Button btnSetProgramCartesianPosition;
+    private Panel panel5;
+    private Label label42;
 }

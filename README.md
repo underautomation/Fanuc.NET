@@ -325,6 +325,30 @@ robot.Cgtp.ReplaceSourceLine("MY_PROGRAM", "J P[1] 50% FINE", 5);
 robot.Cgtp.DeleteSourceLines("MY_PROGRAM", 4, 2);
 ```
 
+#### 🔹 Write position data into a program (firmware V9.10+)
+
+`SetProgramPosition` writes a Cartesian or joint position to a position index P[n] inside a TP program. Only the first motion group is supported via CGTP.
+
+```csharp
+// Cartesian position
+var position = new Position(
+    userFrame: 0,
+    userTool: 1,
+    jointsPosition: null,
+    cartesianPosition: new ExtendedCartesianPosition(500, 200, 300, 0, 90, 0, 0, 0, 0)
+);
+robot.Cgtp.SetProgramPosition("MY_PROG", 1, position);
+
+// Joint position
+var jointPosition = new Position(
+    userFrame: 0,
+    userTool: 1,
+    jointsPosition: new JointsPosition { J1 = 0, J2 = 0, J3 = 0, J4 = 0, J5 = -90, J6 = 0 },
+    cartesianPosition: null
+);
+robot.Cgtp.SetProgramPosition("MY_PROG", 2, jointPosition);
+```
+
 #### 🔹 I/O control
 
 ```csharp
