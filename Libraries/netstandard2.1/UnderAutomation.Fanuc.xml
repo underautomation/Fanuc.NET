@@ -44552,6 +44552,38 @@
             <param name="port">FTP port</param>
             <param name="timeoutMs">FTP connection timeout in milliseconds</param>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior">
+            <summary>
+            Defines the behavior for handling files that already exist
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior.NoCheck">
+            <summary>
+            Do not check if the file exists. A bit faster than the other options. Only use this if you are SURE that the file does not exist on the server.
+            Otherwise it can cause the UploadFile method to hang due to filesize mismatch.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior.Skip">
+            <summary>
+            Skip the file if it exists, without any more checks.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior.Overwrite">
+            <summary>
+            Overwrite the file if it exists.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior.Append">
+            <summary>
+            Append to the file if it exists, by checking the length and adding the missing data.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Ftp.FtpExistsBehavior.AppendNoCheck">
+            <summary>
+            Append to the file, but don't check if it exists and add missing data.   This might be required if you don't have permissions on the server to list files in the folder.
+            Only use this if you are SURE that the file does not exist on the server otherwise it can cause the UploadFile method to hang due to filesize mismatch.
+            </summary>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Ftp.Internal.FtpClientBase">
             <summary>
             Base class for FTP features
@@ -44630,7 +44662,7 @@
             Methods to handle files on a Fanuc controller (upload, download, delete, enumerate, ...)
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.IO.Stream,System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,FtpExistsBehavior)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.IO.Stream,System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,UnderAutomation.Fanuc.Ftp.FtpExistsBehavior)">
             <summary>
             Uploads the specified stream as a file onto the controller.
             High-level API that takes care of various edge cases internally.
@@ -44643,7 +44675,7 @@
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.Byte[],System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,FtpExistsBehavior)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.Byte[],System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,UnderAutomation.Fanuc.Ftp.FtpExistsBehavior)">
             <summary>
             Uploads the specified byte array as a file onto the controller.
             High-level API that takes care of various edge cases internally.
@@ -44656,7 +44688,7 @@
             <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
             <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.String,System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,FtpExistsBehavior)">
+        <member name="M:UnderAutomation.Fanuc.Ftp.Internal.FtpDirectFileHandling.UploadFileToController(System.String,System.String,System.Boolean,UnderAutomation.Fanuc.Common.Files.OnProgressDelegate,UnderAutomation.Fanuc.Ftp.FtpExistsBehavior)">
             <summary>
             Uploads the specified file directly onto the controller.
             High-level API that takes care of various edge cases internally.
@@ -51343,38 +51375,6 @@
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.KclCommandReceived.GetHashCode">
             <inheritdoc />
-        </member>
-        <member name="T:FtpExistsBehavior">
-            <summary>
-            Defines the behavior for handling files that already exist
-            </summary>
-        </member>
-        <member name="F:FtpExistsBehavior.NoCheck">
-            <summary>
-            Do not check if the file exists. A bit faster than the other options. Only use this if you are SURE that the file does not exist on the server.
-            Otherwise it can cause the UploadFile method to hang due to filesize mismatch.
-            </summary>
-        </member>
-        <member name="F:FtpExistsBehavior.Skip">
-            <summary>
-            Skip the file if it exists, without any more checks.
-            </summary>
-        </member>
-        <member name="F:FtpExistsBehavior.Overwrite">
-            <summary>
-            Overwrite the file if it exists.
-            </summary>
-        </member>
-        <member name="F:FtpExistsBehavior.Append">
-            <summary>
-            Append to the file if it exists, by checking the length and adding the missing data.
-            </summary>
-        </member>
-        <member name="F:FtpExistsBehavior.AppendNoCheck">
-            <summary>
-            Append to the file, but don't check if it exists and add missing data.   This might be required if you don't have permissions on the server to list files in the folder.
-            Only use this if you are SURE that the file does not exist on the server otherwise it can cause the UploadFile method to hang due to filesize mismatch.
-            </summary>
         </member>
     </members>
 </doc>
