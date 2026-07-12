@@ -397,23 +397,105 @@ robot.StreamMotion.StateReceived += (sender, e) =>
 
 ### 🏎️ **6. Remote Motion via RMI**
 
-RMI (Remote Motion Interface) allows sending motion commands to the robot, including linear, joint, and circular motions.
+RMI (Remote Motion Interface, option R912) lets you send TP-equivalent motion instructions to the robot in real time. The client manages the controller instruction buffer automatically and returns a response object per instruction.
 
-#### 🔹 Initialize and move
+#### 🔹 Robot setup required
+
+The controller must have the **Remote Motion Interface (R912)** option. The bootstrap port is **16001** (TCP). The teach pendant must be disabled and the controller must be in AUTO mode before calling `Initialize()`.
+
+#### 🔹 Connect and initialize
 
 ```csharp
+var parameters = new ConnectionParameters("192.168.0.1");
+parameters.Rmi.Enable = true;
+robot.Connect(parameters);
+
+// Start the RMI_MOVE TP program on the controller
 robot.Rmi.Initialize();
+```
 
-Frame target = new Frame { X = 500, Y = 200, Z = 300, W = 0, P = 90, R = 0 };
-MotionConfiguration config = new MotionConfiguration { UToolNumber = 1, UFrameNumber = 0 };
+#### 🔹 Send motion instructions
 
-robot.Rmi.LinearMotion(
-    sequenceId: 1, config: config, position: target,
-    speedType: SpeedType.MmSec, speed: 100,
-    termType: TerminationType.Fine, termValue: 0,
-    acc: null, offsetPr: null, visionPr: null, wristJoint: false, mrot: false,
-    lcbType: null, lcbValue: null, portType: null, portNumber: null, portValue: null
-);
+```csharp
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Rmi.Data;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
+
+// Linear motion to a Cartesian target
+var instr = new LinearMotionTpInstruction
+{
+    SpeedType = RmiLinearSpeedType.MmSec,
+    Speed = 100,
+    TermType = RmiTerminationType.Fine,
+    Target = new CartesianPositionWithUserFrame(500, 200, 300, 0, 90, 0, tool: 1, frame: 0)
+};
+
+RmiInstructionResponse r = robot.Rmi.SendTpInstruction(instr);
+
+// Optional: wait for the instruction to complete
+r.WaitForCompletion();
+if (r.Status == RmiInstructionStatus.Error)
+    Console.WriteLine("Error: " + r.ErrorText);
+```
+
+#### 🔹 Joint motion with joint-angle target
+
+```csharp
+var jrep = new JointMotionJRepTpInstruction
+{
+    SpeedType = RmiJointSpeedType.Percent,
+    Speed = 10,
+    TermType = RmiTerminationType.Fine,
+    Joints = new JointsPosition(10, -20, 30, 0, 60, 0)
+};
+robot.Rmi.SendTpInstruction(jrep);
+```
+
+#### 🔹 Circular motion
+
+```csharp
+var arc = new CircularMotionTpInstruction
+{
+    SpeedType = RmiLinearSpeedType.MmSec,
+    Speed = 80,
+    TermType = RmiTerminationType.Fine,
+    Via = new CartesianPositionWithUserFrame(600, 100, 350, 0, 90, 0, 1, 0),   // arc via-point
+    Target = new CartesianPositionWithUserFrame(700, 0, 300, 0, 90, 0, 1, 0)   // destination
+};
+robot.Rmi.SendTpInstruction(arc);
+```
+
+#### 🔹 Non-motion instructions
+
+```csharp
+// Wait for digital input
+robot.Rmi.SendTpInstruction(new WaitDinTpInstruction { PortNumber = 1, Value = RmiOnOff.ON });
+
+// Time delay
+robot.Rmi.SendTpInstruction(new WaitTimeTpInstruction { Seconds = 0.5 });
+
+// Activate a payload schedule
+robot.Rmi.SendTpInstruction(new SetPayloadTpInstruction { ScheduleNumber = 1 });
+
+// Call a TP program (requires MajorVersion >= 4)
+robot.Rmi.SendTpInstruction(new CallProgramTpInstruction { ProgramName = "MY_PROG" });
+```
+
+#### 🔹 Admin commands
+
+```csharp
+// Check controller status before initializing
+var status = robot.Rmi.GetStatus();
+
+// Set speed override
+robot.Rmi.SetOverride(50);
+
+// Read current position
+var pos = robot.Rmi.ReadCartesianPosition();
+var joints = robot.Rmi.ReadJointAngles();
+
+// Abort the RMI_MOVE program when done
+robot.Rmi.Abort();
 ```
 
 ---

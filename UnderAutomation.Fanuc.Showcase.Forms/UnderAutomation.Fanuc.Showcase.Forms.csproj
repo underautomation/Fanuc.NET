@@ -27,10 +27,10 @@
     <Compile Update="Components\CgtpControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Components\TelnetControl.cs">
+    <Compile Update="Components\RmiControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Components\RmiControl.cs">
+    <Compile Update="Components\TelnetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Components\FeaturesControl.cs">

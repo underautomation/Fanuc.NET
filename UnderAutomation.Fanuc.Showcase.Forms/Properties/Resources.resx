@@ -142,6 +142,9 @@
   <data name="stop-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ik_diagram_background.drawio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ik_diagram_background.drawio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save-3-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-3-fill.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,11 +166,14 @@
   <data name="pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pause.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrow-go-forward-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-go-forward-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="PropertyNotFound" xml:space="preserve">
     <value>Property {0} does not exist in type {1}.</value>
   </data>
-  <data name="ItemTypeIncorrect" xml:space="preserve">
-    <value>Item was not of type {0}.</value>
+  <data name="Rice Field" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rice Field.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="folder-shared-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-shared-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,17 +196,32 @@
   <data name="SourceListAlreadyAdded" xml:space="preserve">
     <value>Source list already added to the view.</value>
   </data>
-  <data name="IncludeDelegateCannotBeNull" xml:space="preserve">
-    <value>includeDelegate cannot be null.</value>
+  <data name="CannotSetItem" xml:space="preserve">
+    <value>Cannot set an item in the view.</value>
+  </data>
+  <data name="delete-bin-2-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-bin-2-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PredicateFilter" xml:space="preserve">
     <value>(predicate filter)</value>
   </data>
+  <data name="ItemTypeIncorrect" xml:space="preserve">
+    <value>Item was not of type {0}.</value>
+  </data>
   <data name="fanuc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fanuc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrow-right-double-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-right-double-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IncludeDelegateCannotBeNull" xml:space="preserve">
+    <value>includeDelegate cannot be null.</value>
+  </data>
   <data name="CannotAddItem" xml:space="preserve">
     <value>Cannot add an external item to the view. Use AddNew() or add to source list instead.</value>
+  </data>
+  <data name="arrow-right-s-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-right-s-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,6 +238,9 @@
   <data name="delete-bin-5-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-bin-5-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eraser-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eraser-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="folder-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-line.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -229,6 +253,9 @@
   <data name="running-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\running-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrow-go-back-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-go-back-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,8 +265,11 @@
   <data name="SourceListNotFound" xml:space="preserve">
     <value>Source list is not in the view.</value>
   </data>
-  <data name="CannotSetItem" xml:space="preserve">
-    <value>Cannot set an item in the view.</value>
+  <data name="eraser-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eraser-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="send-ins-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\send-ins-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CannotClearView" xml:space="preserve">
     <value>Cannot clear this view.</value>
@@ -247,7 +277,7 @@
   <data name="ua" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ua.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ik_diagram_background.drawio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ik_diagram_background.drawio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Record RMI Position" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Record RMI Position.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

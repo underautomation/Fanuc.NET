@@ -63,9 +63,49 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_go_back_line {
+            get {
+                object obj = ResourceManager.GetObject("arrow-go-back-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_go_forward_line {
+            get {
+                object obj = ResourceManager.GetObject("arrow-go-forward-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right_double_line {
+            get {
+                object obj = ResourceManager.GetObject("arrow-right-double-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_right_line {
             get {
                 object obj = ResourceManager.GetObject("arrow-right-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right_s_line {
+            get {
+                object obj = ResourceManager.GetObject("arrow-right-s-line", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -147,6 +187,16 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_bin_2_fill {
+            get {
+                object obj = ResourceManager.GetObject("delete-bin-2-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_bin_5_line {
             get {
                 object obj = ResourceManager.GetObject("delete-bin-5-line", resourceCulture);
@@ -160,6 +210,26 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         internal static System.Drawing.Bitmap download_2_line {
             get {
                 object obj = ResourceManager.GetObject("download-2-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eraser_fill {
+            get {
+                object obj = ResourceManager.GetObject("eraser-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eraser_line {
+            get {
+                object obj = ResourceManager.GetObject("eraser-line", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -339,9 +409,29 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Record_RMI_Position {
+            get {
+                object obj = ResourceManager.GetObject("Record RMI Position", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh_line {
             get {
                 object obj = ResourceManager.GetObject("refresh-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rice_Field {
+            get {
+                object obj = ResourceManager.GetObject("Rice Field", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -392,6 +482,16 @@ namespace UnderAutomation.Fanuc.Showcase.Forms.Properties {
         internal static System.Drawing.Bitmap save_3_fill {
             get {
                 object obj = ResourceManager.GetObject("save-3-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap send_ins_line {
+            get {
+                object obj = ResourceManager.GetObject("send-ins-line", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,50 +1,120 @@
 ﻿using System.ComponentModel;
-using System.Globalization;
-using System.Text;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Fanuc.Rmi.Data;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
 
 public partial class RmiControl : UserControl, IUserControl
 {
     private FanucRobot _robot;
-
     public RmiControl(FanucRobot robot)
     {
-        TypeDescriptor.AddAttributes(typeof(Frame), new TypeConverterAttribute(typeof(ObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(MotionConfiguration), new TypeConverterAttribute(typeof(ObjectConverter)));
-        TypeDescriptor.AddAttributes(typeof(JointAngles), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(RmiControllerStatusResponse), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(RmiControllerStatusResponse), new ReadOnlyAttribute(true));
+        TypeDescriptor.AddAttributes(typeof(RmiInstructionResponse), new TypeConverterAttribute(typeof(ObjectConverter)));
+        TypeDescriptor.AddAttributes(typeof(RmiInstructionResponse), new ReadOnlyAttribute(true));
+        TypeDescriptor.AddAttributes(typeof(RmiInstructionBase), new TypeConverterAttribute(typeof(ObjectConverter)));
+
 
         _robot = robot;
         InitializeComponent();
 
-        // Init default objects for PropertyGrids (readable for a novice)
-        pgSetUFrameUTool.SelectedObject = new SetUFrameUToolParams();
 
-        pgReadDIN.SelectedObject = new ReadDINParams();
-        pgWriteDOUT.SelectedObject = new WriteDOUTParams();
+        pnlRelativeMoves.Controls.Clear();
+        pnlAbsoluteMoves.Controls.Clear();
+        pnlOtherInstructions.Controls.Clear();
 
-        pgReadUFrame.SelectedObject = new ReadUFrameParams();
-        pgWriteUFrame.SelectedObject = new WriteUFrameParams();
-        pgReadUTool.SelectedObject = new ReadUToolParams();
-        pgWriteUTool.SelectedObject = new WriteUToolParams();
 
-        pgReadPR.SelectedObject = new ReadPositionRegisterParams();
-        pgWritePR.SelectedObject = new WritePositionRegisterParams();
+        // Relative moves
+        AddInstruction<JointRelativeJRepTpInstruction>(pnlRelativeMoves);
+        AddInstruction<LinearRelativeJRepTpInstruction>(pnlRelativeMoves);
+        AddInstruction<JointRelativeTpInstruction>(pnlRelativeMoves);
+        AddInstruction<LinearRelativeTpInstruction>(pnlRelativeMoves);
+        AddInstruction<CircularRelativeTpInstruction>(pnlRelativeMoves);
 
-        // Instructions
-        pgWaitDin.SelectedObject = new WaitDinParams();
-        pgWaitTime.SelectedObject = new WaitTimeParams();
-        pgSetUFrameInstr.SelectedObject = new SetUFrameInstructionParams();
-        pgSetUToolInstr.SelectedObject = new SetUToolInstructionParams();
-        pgPayLoad.SelectedObject = new PayLoadParams();
-        pgLinearMotion.SelectedObject = new LinearMotionParams();
-        pgLinearRelative.SelectedObject = new LinearRelativeParams();
-        pgJointMotion.SelectedObject = new JointMotionParams();
-        pgJointRelative.SelectedObject = new JointRelativeParams();
-        pgCircularMotion.SelectedObject = new CircularMotionParams();
-        pgCircularRelative.SelectedObject = new CircularRelativeParams();
-        pgJointMotionJRep.SelectedObject = new JointMotionJRepParams();
-        pgJointRelativeJRep.SelectedObject = new JointRelativeJRepParams();
+        // Absolute moves
+        AddInstruction<JointMotionJRepTpInstruction>(pnlAbsoluteMoves);
+        AddInstruction<LinearMotionJRepTpInstruction>(pnlAbsoluteMoves);
+        AddInstruction<JointMotionTpInstruction>(pnlAbsoluteMoves);
+        AddInstruction<LinearMotionTpInstruction>(pnlAbsoluteMoves);
+        AddInstruction<CircularMotionTpInstruction>(pnlAbsoluteMoves);
+        SetRmiVersionForControl(AddInstruction<SplineMotionJRepTpInstruction>(pnlAbsoluteMoves), 7);
+        SetRmiVersionForControl(AddInstruction<SplineMotionTpInstruction>(pnlAbsoluteMoves), 7);
+
+        // Other instructions
+        AddInstruction<WaitDinTpInstruction>(pnlOtherInstructions);
+        AddInstruction<SetUFrameTpInstruction>(pnlOtherInstructions);
+        AddInstruction<SetUToolTpInstruction>(pnlOtherInstructions);
+        AddInstruction<WaitTimeTpInstruction>(pnlOtherInstructions);
+        AddInstruction<SetPayloadTpInstruction>(pnlOtherInstructions);
+        SetRmiVersionForControl(AddInstruction<CallProgramTpInstruction>(pnlOtherInstructions), 4);
+
+        lstInstructions.Items.Clear();
+        if (Config.Current.RmiState?.Instructions != null)
+        {
+            foreach (var instruction in Config.Current.RmiState.Instructions)
+            {
+                AddInstruction(instruction);
+            }
+        }
+
+
+
+        lstBuffer.Items.Clear();
+        lstBuffer.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+        .SetValue(lstBuffer, true, null);
+
+
+        gridUFrame.SelectedObject = new XYZWPRPosition();
+        gridUTool.SelectedObject = new XYZWPRPosition();
+
+        cbPortType.Items.Clear();
+        foreach (var value in Enum.GetValues<RmiIoPortType>()) cbPortType.Items.Add(value);
+        cbPortType.SelectedItem = RmiIoPortType.FLAG;
+
+        gridPRCartesian.SelectedObject = new CartesianPositionWithUserFrame();
+
+        gridPayloadValue.SelectedObject = new RmiSetPayloadParameters();
+        gridPayloadValue.ExpandAllGridItems();
+        gridPayloadCompensation.SelectedObject = new RmiSetPayloadCompensationParameters();
+        gridPayloadCompensation.ExpandAllGridItems();
+
+        lstInstructions_SelectedIndexChanged(null, null);
+
+        _robot.Rmi.UnknownPacketReceived += x => _showUnknownPacketReceived = true;
+
+        _robot.Rmi.RecordedCartesianPositionReceived += x =>
+        {
+            MessageBox.Show($"Recorded Cartesian Position Received:\nID:{x.PositionId}\nX:{x.Position.X}\nY:{x.Position.Y}\nZ:{x.Position.Z}\nW:{x.Position.W}\nP:{x.Position.P}\nR:{x.Position.R}", $"RMI Event : {nameof(_robot.Rmi.RecordedCartesianPositionReceived)}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        };
+
+        _robot.Rmi.RecordedJointPositionReceived += x => {
+            var joints = string.Join("\n", x.Joints.Values.Select((j, i) => $"J{i + 1}: {j}"));
+            MessageBox.Show($"Recorded Joint Position Received:\nID:{x.PositionId}\n{joints}", $"RMI Event : {nameof(_robot.Rmi.RecordedJointPositionReceived)}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        };
+    }
+
+    private bool _showUnknownPacketReceived;
+
+    private readonly Dictionary<Control, int> _rmiVersionFeatures = new Dictionary<Control, int>();
+
+    private void SetRmiVersionForControl(Control control, int version)
+    {
+        _rmiVersionFeatures[control] = version;
+    }
+
+    private void UpdateControlAvailabilityBasedOnRmiVersion()
+    {
+        if (!FeatureEnabled) return;
+
+        int version = _robot.Rmi.MajorVersion;
+        foreach (var ctrl in _rmiVersionFeatures)
+        {
+            var enabled = version >= ctrl.Value;
+            ctrl.Key.Enabled = enabled;
+
+            errorProvider.SetError(ctrl.Key, enabled ? null : $"Supported from RMI version {ctrl.Value}. Your current version is {version}");
+        }
     }
 
     #region IUserControl  
@@ -60,6 +130,83 @@ public partial class RmiControl : UserControl, IUserControl
 
     public void PeriodicUpdate()
     {
+        var connected = _robot.Rmi.Connected;
+
+        var status = connected ? _robot.Rmi.GetStatus() : null;
+
+        var ready = status?.TPEnabled == false && status?.ServoReady == true;
+
+        btnInitialize.Enabled = connected && status?.RmiMotionStatus == false && status?.TPEnabled == false;
+
+        btnPause.Enabled = ready && status?.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Running;
+
+        btnAbort.Enabled = ready && (status?.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Running || status?.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Paused);
+        btnContinue.Enabled = ready && status?.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Paused;
+
+        btnSendAll.Enabled = ready && lstInstructions.Items.Count > 0;
+        btnSendSelected.Enabled = btnSendAll.Enabled && lstInstructions.SelectedItems.Count > 0;
+
+        btnClearLocalQueued.Enabled = _robot.Rmi.Instructions.Any(x => x.Status == RmiInstructionStatus.LocalQueued);
+        btnClearCompleted.Enabled = _robot.Rmi.Instructions.Any(x => x.Status == RmiInstructionStatus.Completed || x.Status == RmiInstructionStatus.Error);
+
+        btnReset.Enabled = status?.RmiMotionStatus == true;
+
+        if (!connected) lblError.Text = "Not connected";
+        else if (status.TPEnabled) lblError.Text = "Turn TP Switch to OFF";
+        else if (!status.ServoReady) lblError.Text = "Servo not ready";
+        else if (_robot.Rmi.IsInHoldState) lblError.Text = "In HOLD state, cannot accept new commands. Press RESET...";
+        else lblError.Text = "";
+
+        if (!ready || lblError.Text != "") lblInfo.Text = "";
+        else if (status.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Aborted) lblInfo.Text = "Press Initialize to start...";
+        else if (status.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Running) lblInfo.Text = "RUNNING. Ready to receive instructions...";
+        else if (status.ProgramStatus == UnderAutomation.Fanuc.Common.TaskStatus.Paused) lblInfo.Text = "PAUSED. Press Continue to resume...";
+        else lblInfo.Text = "";
+
+
+        gridStatus.SelectedObject = new Status
+        {
+            Connected = connected,
+            IsInHoldState = _robot.Rmi.IsInHoldState,
+            ControllerStatus = status,
+            MajorVersion = _robot.Rmi.MajorVersion,
+            MinorVersion = _robot.Rmi.MinorVersion,
+            LastSequenceId = _robot.Rmi.LastSequenceId,
+            WorkingPort = _robot.Rmi.WorkingPort,
+        };
+        gridStatus.ExpandAllGridItems();
+
+        foreach (ListViewItem itm in lstBuffer.Items)
+        {
+            var response = (itm as ListViewItem)?.Tag as RmiInstructionResponse;
+            if (response != null)
+            {
+                if (response.Status == RmiInstructionStatus.Error)
+                {
+                    itm.SubItems[2].Text = $"Error:{response.ErrorText} ({response.ErrorId})";
+                }
+                else itm.SubItems[2].Text = response.Status.ToString();
+            }
+        }
+
+        lstBuffer.BeginUpdate();
+        lstBuffer.Items.Clear();
+        foreach (var value in _robot.Rmi.Instructions)
+        {
+            var itm = lstBuffer.Items.Add(new ListViewItem(new[]{
+                value.SequenceId.ToString(),
+                value.Instruction.GetType().Name.Replace("TpInstruction", ""),
+                value.Status== RmiInstructionStatus.Error ? $"Error:{value.ErrorText}" : value.Status.ToString()
+            }));
+            itm.Tag = value;
+        }
+        lstBuffer.EndUpdate();
+
+        if (_showUnknownPacketReceived)
+        {
+            _showUnknownPacketReceived = false;
+            MessageBox.Show("An unknown command was received and is not supported by your current controller firmware.", "Unknown command", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     public void OnClose()
@@ -68,558 +215,380 @@ public partial class RmiControl : UserControl, IUserControl
 
     public void OnOpen()
     {
+        UpdateControlAvailabilityBasedOnRmiVersion();
     }
     #endregion
 
-    // ===== Helpers for display =====
-
-    private static string FormatFrame(Frame f)
+    private void lstInstructions_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (f == null) return "<null>";
-        return string.Format(CultureInfo.InvariantCulture,
-            "X={0}, Y={1}, Z={2}, W={3}, P={4}, R={5}, Ext1={6}, Ext2={7}, Ext3={8}",
-            f.X, f.Y, f.Z, f.W, f.P, f.R, f.Ext1, f.Ext2, f.Ext3);
-    }
+        lstBuffer.SelectedIndices.Clear();
 
-    private static string FormatConfig(MotionConfiguration c)
-    {
-        if (c == null) return "<null>";
-        return string.Format(CultureInfo.InvariantCulture,
-            "UF={0}, UT={1}, FRONT={2}, UP={3}, LEFT={4}, FLIP={5}, T4={6}, T5={7}, T6={8}",
-            c.UFrameNumber, c.UToolNumber, c.Front, c.Up, c.Left, c.Flip, c.Turn4, c.Turn5, c.Turn6);
-    }
+        gridInstruction.SelectedObjects = lstInstructions.SelectedItems.Count > 0 ? lstInstructions.SelectedItems.OfType<ListViewItem>().Select(x => x.Tag).ToArray() : null;
+        gridInstruction.ExpandAllGridItems();
 
-    private static string FormatAngles(JointAngles j)
-    {
-        if (j == null) return "<null>";
-        return string.Format(CultureInfo.InvariantCulture,
-            "J1={0}, J2={1}, J3={2}, J4={3}, J5={4}, J6={5}, J7={6}, J8={7}, J9={8}",
-            j.J1, j.J2, j.J3, j.J4, j.J5, j.J6, j.J7, j.J8, j.J9);
+        btnUp.Enabled = lstInstructions.SelectedIndices.Count > 0 && lstInstructions.SelectedIndices[0] > 0;
+        btnDown.Enabled = lstInstructions.SelectedIndices.Count > 0 && lstInstructions.SelectedIndices[0] < lstInstructions.Items.Count - 1;
+        btnDelete.Enabled = lstInstructions.SelectedIndices.Count > 0;
     }
 
 
-    private static string BoolToOnOff(bool b)
+    private void lstBuffer_SelectedIndexChanged(object sender, EventArgs e)
     {
-        return b ? "ON" : "OFF";
+        lstInstructions.SelectedIndices.Clear();
+
+        gridInstruction.SelectedObjects = lstBuffer.SelectedItems.Count > 0 ? lstBuffer.SelectedItems.OfType<ListViewItem>().Select(x => x.Tag).ToArray() : null;
+        gridInstruction.ExpandAllGridItems();
     }
 
-    // Remplacement des méthodes utilisant => par des blocs { }
-
-    private void btnInitialize_Click(object sender, EventArgs e) { DemoInitialize(); }
-    private void btnAbort_Click(object sender, EventArgs e) { DemoAbort(); }
-    private void btnPause_Click(object sender, EventArgs e) { DemoPause(); }
-    private void btnContinue_Click(object sender, EventArgs e) { DemoContinue(); }
-    private void btnReset_Click(object sender, EventArgs e) { DemoReset(); }
-    private void btnGetStatus_Click(object sender, EventArgs e) { DemoGetStatus(); }
-    private void btnReadError_Click(object sender, EventArgs e) { DemoReadError(); }
-    private void btnGetUFrameUTool_Click(object sender, EventArgs e) { DemoGetUFrameUTool(); }
-    private void btnSetUFrameUTool_Click(object sender, EventArgs e) { DemoSetUFrameUTool(); }
-
-    private void DemoInitialize()
+    private void btnUp_Click(object sender, EventArgs e)
     {
-        var ErrorId = _robot.Rmi.Initialize();
-        txtCommands.AppendText("Initialize error: " + ErrorId + Environment.NewLine);
+        DoUpDown(-1);
     }
 
-    private void DemoAbort()
+    private void btnDown_Click(object sender, EventArgs e)
     {
-        _robot.Rmi.Abort();
-        txtCommands.AppendText("Abort: OK" + Environment.NewLine);
+        DoUpDown(1);
     }
 
-    private void DemoPause()
+    private void DoUpDown(int direction)
+    {
+        if (lstInstructions.SelectedIndices.Count == 0) return;
+        var index = lstInstructions.SelectedIndices[0];
+        var newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= lstInstructions.Items.Count) return;
+        var item = lstInstructions.Items[index];
+        lstInstructions.Items.RemoveAt(index);
+        lstInstructions.Items.Insert(newIndex, item);
+        lstInstructions.SelectedIndices.Clear();
+        lstInstructions.SelectedIndices.Add(newIndex);
+        SaveState();
+    }
+
+    private void SaveState()
+    {
+        var state = new RmiState();
+
+        state.Instructions = lstInstructions.Items.OfType<ListViewItem>().Select(it => it.Tag as RmiInstructionBase).ToArray();
+
+        Config.Current.RmiState = state;
+        Config.Save();
+    }
+
+    private Button AddInstruction<T>(Panel parent) where T : RmiInstructionBase, new()
+    {
+        var btn = new Button();
+        var name = typeof(T).Name.Replace("TpInstruction", "");
+        btn.Text = name;
+        btn.AutoSize = true;
+        parent.Controls.Add(btn);
+        btn.Click += (s, e) =>
+        {
+            var instruction = new T();
+
+            try
+            {
+                if (instruction is CartesianMotionTpInstructionBase)
+                {
+                    (instruction as CartesianMotionTpInstructionBase).Target = _robot.Rmi.ReadCartesianPosition().Position;
+                }
+                else if (instruction is JRepMotionTpInstructionBase)
+                {
+                    (instruction as JRepMotionTpInstructionBase).Joints = _robot.Rmi.ReadJointAngles().JointAngle;
+                }
+            }
+            catch { }
+
+            lstInstructions.SelectedIndices.Clear();
+            var itm = AddInstruction(instruction);
+            itm.Selected = true;
+            SaveState();
+        };
+        return btn;
+    }
+
+    private ListViewItem AddInstruction(RmiInstructionBase instruction)
+    {
+        var name = instruction.GetType().Name.Replace("TpInstruction", "");
+        var itm = lstInstructions.Items.Add(name);
+        itm.Tag = instruction;
+        return itm;
+    }
+
+    private void btnDelete_Click(object sender, EventArgs e)
+    {
+        if (lstInstructions.SelectedIndices.Count == 0) return;
+        var items = lstInstructions.SelectedItems.OfType<ListViewItem>().ToArray();
+        foreach (var item in items)
+            lstInstructions.Items.Remove(item);
+        SaveState();
+    }
+
+    private void gridInstruction_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+    {
+        SaveState();
+    }
+
+    private void btnInitialize_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.Initialize();
+    }
+
+    private void btnPause_Click(object sender, EventArgs e)
     {
         _robot.Rmi.Pause();
-        txtCommands.AppendText("Pause: OK" + Environment.NewLine);
     }
 
-    private void DemoContinue()
+    private void btnAbort_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.Abort();
+    }
+
+    private void btnContinue_Click(object sender, EventArgs e)
     {
         _robot.Rmi.Continue();
-        txtCommands.AppendText("Continue: OK" + Environment.NewLine);
     }
 
-    private void DemoReset()
+    private void btnReset_Click(object sender, EventArgs e)
     {
         _robot.Rmi.Reset();
-        txtCommands.AppendText("Reset: OK" + Environment.NewLine);
     }
 
-    private void DemoGetStatus()
+    private void btnSendAll_Click(object sender, EventArgs e)
     {
-        var s = _robot.Rmi.GetStatus();
-        var msg = string.Format(CultureInfo.InvariantCulture,
-            "GetStatus: ErrorId={0}, ServoReady={1}, TPMode={2}, RMIMotionStatus={3}, ProgramStatus={4}, SingleStepMode={5}, NumberUTool={6}, NumberUFrame={7}, NextSequenceId={8}",
-            s.ErrorId, s.ServoReady, s.TPMode, s.RMIMotionStatus, s.ProgramStatus, s.SingleStepMode, s.NumberUTool, s.NumberUFrame, s.NextSequenceId);
-        txtCommands.AppendText(msg + Environment.NewLine);
-    }
+        _robot.Rmi.AutoSetNextSequenceId();
 
-    private void DemoReadError()
-    {
-        var e = _robot.Rmi.ReadError();
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadError: ErrorId={0}, ErrorData={1}", e.ErrorId, e.ErrorData);
-        txtCommands.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoGetUFrameUTool()
-    {
-        var r = _robot.Rmi.GetUFrameUTool();
-        var msg = string.Format(CultureInfo.InvariantCulture, "GetUFrameUTool: ErrorId={0}, UFrame={1}, UTool={2}", r.ErrorId, r.UFrameNumber, r.UToolNumber);
-        txtCommands.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoSetUFrameUTool()
-    {
-        var p = (SetUFrameUToolParams)pgSetUFrameUTool.SelectedObject;
-        _robot.Rmi.SetUFrameUTool(p.UFrameNumber, p.UToolNumber);
-        txtCommands.AppendText(string.Format(CultureInfo.InvariantCulture, "SetUFrameUTool: UF={0}, UT={1} -> OK", p.UFrameNumber, p.UToolNumber) + Environment.NewLine);
-    }
-
-    // ===== I/O demos =====
-
-    private void btnReadDIN_Click(object sender, EventArgs e) { DemoReadDIN(); }
-    private void btnWriteDOUT_Click(object sender, EventArgs e) { DemoWriteDOUT(); }
-
-    private void DemoReadDIN()
-    {
-        var p = (ReadDINParams)pgReadDIN.SelectedObject;
-        var r = _robot.Rmi.ReadDIN(p.PortNumber);
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadDIN: ErrorId={0}, Port={1}, Value={2}", r.ErrorId, r.PortNumber, r.PortValue);
-        txtIO.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoWriteDOUT()
-    {
-        var p = (WriteDOUTParams)pgWriteDOUT.SelectedObject;
-        _robot.Rmi.WriteDOUT(p.PortNumber, p.PortValue);
-        txtIO.AppendText(string.Format(CultureInfo.InvariantCulture, "WriteDOUT: Port={0}, Value={1} -> OK", p.PortNumber, p.PortValue) + Environment.NewLine);
-    }
-
-    // ===== Frames & Tools demos =====
-
-    private void btnReadUFrameData_Click(object sender, EventArgs e) { DemoReadUFrameData(); }
-    private void btnWriteUFrameData_Click(object sender, EventArgs e) { DemoWriteUFrameData(); }
-    private void btnReadUToolData_Click(object sender, EventArgs e) { DemoReadUToolData(); }
-    private void btnWriteUToolData_Click(object sender, EventArgs e) { DemoWriteUToolData(); }
-
-    private void DemoReadUFrameData()
-    {
-        var p = (ReadUFrameParams)pgReadUFrame.SelectedObject;
-        var r = _robot.Rmi.ReadUFrame(p.FrameNumber);
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadUFrameData: ErrorId={0}, Index={1}, Frame=({2})", r.ErrorId, r.Index, FormatFrame(r.Frame));
-        txtFrames.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoWriteUFrameData()
-    {
-        var p = (WriteUFrameParams)pgWriteUFrame.SelectedObject;
-        _robot.Rmi.WriteUFrame(p.FrameNumber, p.Frame);
-        txtFrames.AppendText(string.Format(CultureInfo.InvariantCulture, "WriteUFrameData: UF={0} -> Frame({1}) -> OK", p.FrameNumber, FormatFrame(p.Frame)) + Environment.NewLine);
-    }
-
-    private void DemoReadUToolData()
-    {
-        var p = (ReadUToolParams)pgReadUTool.SelectedObject;
-        var r = _robot.Rmi.ReadUTool(p.ToolNumber);
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadUToolData: ErrorId={0}, Index={1}, Frame=({2})", r.ErrorId, r.Index, FormatFrame(r.Frame));
-        txtFrames.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoWriteUToolData()
-    {
-        var p = (WriteUToolParams)pgWriteUTool.SelectedObject;
-        _robot.Rmi.WriteUTool(p.ToolNumber, p.Frame);
-        txtFrames.AppendText(string.Format(CultureInfo.InvariantCulture, "WriteUToolData: UT={0} -> Frame({1}) -> OK", p.ToolNumber, FormatFrame(p.Frame)) + Environment.NewLine);
-    }
-
-    // ===== Positions demos =====
-
-    private void btnReadCartesianPosition_Click(object sender, EventArgs e) { DemoReadCartesianPosition(); }
-    private void btnReadJointAngles_Click(object sender, EventArgs e) { DemoReadJointAngles(); }
-    private void btnReadTCPSpeed_Click(object sender, EventArgs e) { DemoReadTCPSpeed(); }
-
-    private void DemoReadCartesianPosition()
-    {
-        var r = _robot.Rmi.ReadCartesianPosition();
-        var sb = new StringBuilder();
-        sb.AppendFormat(CultureInfo.InvariantCulture, "ReadCartesianPosition: ErrorId={0}, TimeTag={1}", r.ErrorId, r.TimeTag).AppendLine();
-        sb.Append("  Config: ").Append(FormatConfig(r.Configuration)).AppendLine();
-        sb.Append("  Pos   : ").Append(FormatFrame(r.Position));
-        txtPositions.AppendText(sb.ToString() + Environment.NewLine);
-    }
-
-    private void DemoReadJointAngles()
-    {
-        var r = _robot.Rmi.ReadJointAngles();
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadJointAngles: ErrorId={0}, TimeTag={1}, {2}", r.ErrorId, r.TimeTag, FormatAngles(r.JointAngle));
-        txtPositions.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoReadTCPSpeed()
-    {
-        var r = _robot.Rmi.ReadTcpSpeed();
-        var msg = string.Format(CultureInfo.InvariantCulture, "ReadTCPSpeed: ErrorId={0}, TimeTag={1}, Speed={2}", r.ErrorId, r.TimeTag, r.Speed);
-        txtPositions.AppendText(msg + Environment.NewLine);
-    }
-
-    // ===== Registers demos =====
-
-    private void btnReadPositionRegister_Click(object sender, EventArgs e) { DemoReadPositionRegister(); }
-    private void btnWritePositionRegister_Click(object sender, EventArgs e) { DemoWritePositionRegister(); }
-
-    private void DemoReadPositionRegister()
-    {
-        var p = (ReadPositionRegisterParams)pgReadPR.SelectedObject;
-        var r = _robot.Rmi.ReadPositionRegister(p.RegisterNumber);
-        var msg = string.Format(CultureInfo.InvariantCulture,
-            "ReadPositionRegister: ErrorId={0}, PR[{1}] Config({2}) Pos({3})",
-            r.ErrorId, r.RegisterNumber, FormatConfig(r.Configuration), FormatFrame(r.Position));
-        txtRegisters.AppendText(msg + Environment.NewLine);
-    }
-
-    private void DemoWritePositionRegister()
-    {
-        var p = (WritePositionRegisterParams)pgWritePR.SelectedObject;
-        _robot.Rmi.WritePositionRegister(p.RegisterNumber, p.Configuration, p.Position);
-        txtRegisters.AppendText(string.Format(CultureInfo.InvariantCulture, "WritePositionRegister: PR[{0}] -> OK", p.RegisterNumber) + Environment.NewLine);
-    }
-
-    // ===== Instructions demos =====
-
-    private void btnWaitDin_Click(object sender, EventArgs e) { DemoWaitDin(); }
-    private void btnWaitTime_Click(object sender, EventArgs e) { DemoWaitTime(); }
-    private void btnSetUFrame_Click(object sender, EventArgs e) { DemoSetUFrameInstr(); }
-    private void btnSetUTool_Click(object sender, EventArgs e) { DemoSetUToolInstr(); }
-    private void btnPayLoad_Click(object sender, EventArgs e) { DemoPayLoad(); }
-
-    private void btnLinearMotion_Click(object sender, EventArgs e) { DemoLinearMotion(); }
-    private void btnLinearRelative_Click(object sender, EventArgs e) { DemoLinearRelative(); }
-    private void btnJointMotion_Click(object sender, EventArgs e) { DemoJointMotion(); }
-    private void btnJointRelative_Click(object sender, EventArgs e) { DemoJointRelative(); }
-    private void btnCircularMotion_Click(object sender, EventArgs e) { DemoCircularMotion(); }
-    private void btnCircularRelative_Click(object sender, EventArgs e) { DemoCircularRelative(); }
-    private void btnJointMotionJRep_Click(object sender, EventArgs e) { DemoJointMotionJRep(); }
-    private void btnJointRelativeJRep_Click(object sender, EventArgs e) { DemoJointRelativeJRep(); }
-
-    private void DemoWaitDin()
-    {
-        var p = (WaitDinParams)pgWaitDin.SelectedObject;
-        var r = _robot.Rmi.WaitDin(p.SequenceId, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "WaitDin -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoWaitTime()
-    {
-        var p = (WaitTimeParams)pgWaitTime.SelectedObject;
-        var r = _robot.Rmi.WaitTime(p.SequenceId, p.Time);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "WaitTime -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoSetUFrameInstr()
-    {
-        var p = (SetUFrameInstructionParams)pgSetUFrameInstr.SelectedObject;
-        var r = _robot.Rmi.SetUFrameInstruction(p.SequenceId, p.FrameNumber);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "SetUFrame -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoSetUToolInstr()
-    {
-        var p = (SetUToolInstructionParams)pgSetUToolInstr.SelectedObject;
-        var r = _robot.Rmi.SetUToolInstruction(p.SequenceId, p.ToolNumber);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "SetUTool -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoPayLoad()
-    {
-        var p = (PayLoadParams)pgPayLoad.SelectedObject;
-        var r = _robot.Rmi.SetPayload(p.SequenceId, p.ScheduleNumber);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "PayLoad -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoLinearMotion()
-    {
-        var p = (LinearMotionParams)pgLinearMotion.SelectedObject;
-        var r = _robot.Rmi.LinearMotion(p.SequenceId, p.Configuration, p.Position,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.WristJoint, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "LinearMotion -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoLinearRelative()
-    {
-        var p = (LinearRelativeParams)pgLinearRelative.SelectedObject;
-        var r = _robot.Rmi.LinearRelative(p.SequenceId, p.Configuration, p.Position,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.WristJoint, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "LinearRelative -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoJointMotion()
-    {
-        var p = (JointMotionParams)pgJointMotion.SelectedObject;
-        var r = _robot.Rmi.JointMotion(p.SequenceId, p.Configuration, p.Position,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "JointMotion -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoJointRelative()
-    {
-        var p = (JointRelativeParams)pgJointRelative.SelectedObject;
-        var r = _robot.Rmi.JointRelative(p.SequenceId, p.Configuration, p.Position,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "JointRelative -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoCircularMotion()
-    {
-        var p = (CircularMotionParams)pgCircularMotion.SelectedObject;
-        var r = _robot.Rmi.CircularMotion(p.SequenceId, p.Configuration, p.Position, p.ViaConfiguration, p.ViaPosition,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.WristJoint, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "CircularMotion -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoCircularRelative()
-    {
-        var p = (CircularRelativeParams)pgCircularRelative.SelectedObject;
-        var r = _robot.Rmi.CircularRelative(p.SequenceId, p.Configuration, p.Position, p.ViaConfiguration, p.ViaPosition,
-            p.SpeedType, p.Speed, p.TermType, p.TermValue, p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.WristJoint, p.MROT,
-            p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "CircularRelative -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoJointMotionJRep()
-    {
-        var p = (JointMotionJRepParams)pgJointMotionJRep.SelectedObject;
-        var r = _robot.Rmi.JointMotionJRep(p.SequenceId, p.JointAngle, p.SpeedType, p.Speed, p.TermType, p.TermValue,
-            p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.MROT, p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "JointMotionJRep -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    private void DemoJointRelativeJRep()
-    {
-        var p = (JointRelativeJRepParams)pgJointRelativeJRep.SelectedObject;
-        var r = _robot.Rmi.JointRelativeJRep(p.SequenceId, p.JointAngle, p.SpeedType, p.Speed, p.TermType, p.TermValue,
-            p.ACC, p.OffsetPRNumber, p.VisionPRNumber, p.MROT, p.LCBType, p.LCBValue, p.PortType, p.PortNumber, p.PortValue);
-        txtInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, "JointRelativeJRep -> SequenceId={0}, ErrorId={1}", r.SequenceId, r.ErrorId) + Environment.NewLine);
-    }
-
-    // ===== UI parameter classes (shown in PropertyGrids) =====
-
-    public class SetUFrameUToolParams
-    {
-        [Category("Numbers")]
-        public byte UFrameNumber { get; set; }
-        [Category("Numbers")]
-        public byte UToolNumber { get; set; }
-        public SetUFrameUToolParams() { UFrameNumber = 1; UToolNumber = 1; }
-    }
-
-    public class ReadDINParams
-    {
-        [Category("I/O")]
-        public short PortNumber { get; set; }
-        public ReadDINParams() { PortNumber = 1; }
-    }
-
-    public class WriteDOUTParams
-    {
-        [Category("I/O")]
-        public short PortNumber { get; set; }
-        [Category("I/O")]
-        public OnOff PortValue { get; set; }
-        public WriteDOUTParams() { PortNumber = 1; PortValue = OnOff.ON; }
-    }
-
-    public class ReadUFrameParams
-    {
-        [Category("UFrame")]
-        public byte FrameNumber { get; set; }
-        public ReadUFrameParams() { FrameNumber = 1; }
-    }
-
-    public class WriteUFrameParams
-    {
-        [Category("UFrame")]
-        public byte FrameNumber { get; set; }
-        [Category("UFrame")]
-        public Frame Frame { get; set; }
-        public WriteUFrameParams()
+        foreach (ListViewItem item in lstInstructions.Items)
         {
-            FrameNumber = 1;
-            Frame = new Frame { X = 0, Y = 0, Z = 0, W = 0, P = 0, R = 0 };
+            var instruction = item.Tag as RmiInstructionBase;
+            if (instruction != null)
+            {
+                _robot.Rmi.SendTpInstruction(instruction);
+            }
         }
     }
 
-    public class ReadUToolParams
+    private void btnSendSelected_Click(object sender, EventArgs e)
     {
-        [Category("UTool")]
-        public byte ToolNumber { get; set; }
-        public ReadUToolParams() { ToolNumber = 1; }
-    }
+        _robot.Rmi.AutoSetNextSequenceId();
 
-    public class WriteUToolParams
-    {
-        [Category("UTool")]
-        public byte ToolNumber { get; set; }
-        [Category("UTool")]
-        public Frame Frame { get; set; }
-        public WriteUToolParams()
+        foreach (ListViewItem item in lstInstructions.SelectedItems.OfType<ListViewItem>().OrderBy(x => x.Index))
         {
-            ToolNumber = 1;
-            Frame = new Frame { X = 0, Y = 0, Z = 0, W = 0, P = 0, R = 0 };
+            var instruction = item.Tag as RmiInstructionBase;
+            if (instruction != null)
+            {
+                _robot.Rmi.SendTpInstruction(instruction);
+            }
         }
     }
 
-    public class ReadPositionRegisterParams
+    private void btnClearLocalQueued_Click(object sender, EventArgs e)
     {
-        [Category("Register")]
-        public short RegisterNumber { get; set; }
-        public ReadPositionRegisterParams() { RegisterNumber = 1; }
+        _robot.Rmi.ClearLocalQueuedInstructions();
     }
 
-    public class WritePositionRegisterParams
+    private void btnClearCompleted_Click(object sender, EventArgs e)
     {
-        [Category("Register")]
-        public short RegisterNumber { get; set; }
-        [Category("Register")]
-        public MotionConfiguration Configuration { get; set; }
-        [Category("Register")]
-        public Frame Position { get; set; }
-        public WritePositionRegisterParams()
-        {
-            RegisterNumber = 1;
-            Configuration = new MotionConfiguration { UFrameNumber = 1, UToolNumber = 1 };
-            Position = new Frame { X = 0, Y = 0, Z = 0, W = 0, P = 0, R = 0 };
-        }
+        _robot.Rmi.ClearCompletedInstructions();
     }
 
-    // ==== Instructions param classes ====
-
-    public class WaitDinParams
+    private void btnReadError_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Args")] public short PortNumber { get; set; }
-        [Category("Args")] public OnOff PortValue { get; set; }
-        public WaitDinParams() { SequenceId = 1; PortNumber = 1; PortValue = OnOff.ON; }
+        RmiControllerErrorTextResponse errors = _robot.Rmi.ReadError(udReadErrorCount.Value == -1 ? null : (byte)udReadErrorCount.Value);
+        gridReadError.SelectedObject = errors;
+        gridReadError.ExpandAllGridItems();
     }
 
-    public class WaitTimeParams
+    private void btnGetCurrentUFrameUTool_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Args")] public double Time { get; set; }
-        public WaitTimeParams() { SequenceId = 1; Time = 0.5; }
+        RmiUFrameUToolNumbersResponse response = _robot.Rmi.GetUFrameUTool();
+        udSetUFrame.Value = response.Frame;
+        udSetUTool.Value = response.Tool;
     }
 
-    public class SetUFrameInstructionParams
+    private void btnSetCurrentUFrameUTool_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Args")] public byte FrameNumber { get; set; }
-        public SetUFrameInstructionParams() { SequenceId = 1; FrameNumber = 1; }
+        _robot.Rmi.SetUFrameUTool((byte)udSetUFrame.Value, (byte)udSetUTool.Value);
     }
 
-    public class SetUToolInstructionParams
+    private void btnGetStatusExtended_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Args")] public byte ToolNumber { get; set; }
-        public SetUToolInstructionParams() { SequenceId = 1; ToolNumber = 1; }
+        RmiExtendedControllerStatusResponse status = _robot.Rmi.GetExtendedStatus();
+        gridStatusExtended.SelectedObject = status;
     }
 
-    public class PayLoadParams
+    private void btnReadUFrame_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Args")] public byte ScheduleNumber { get; set; }
-        public PayLoadParams() { SequenceId = 1; ScheduleNumber = 1; }
+        RmiIndexedFrameResponse frame = _robot.Rmi.ReadUFrame((byte)udUFrame.Value);
+        gridUFrame.SelectedObject = frame.Frame;
+        gridUFrame.ExpandAllGridItems();
     }
 
-    public class LinearBase
+    private void btnWriteUFrame_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Motion")] public MotionConfiguration Configuration { get; set; }
-        [Category("Motion")] public Frame Position { get; set; }
-        [Category("Speed")] public SpeedType SpeedType { get; set; }
-        [Category("Speed")] public short Speed { get; set; }
-        [Category("Termination")] public TerminationType TermType { get; set; }
-        [Category("Termination")] public byte TermValue { get; set; }
-
-        [Category("Options")] public byte? ACC { get; set; }
-        [Category("Options")] public short? OffsetPRNumber { get; set; }
-        [Category("Options")] public short? VisionPRNumber { get; set; }
-        [Category("Options")] public bool WristJoint { get; set; }
-        [Category("Options")] public bool MROT { get; set; }
-
-        [Category("LCB")] public string LCBType { get; set; }
-        [Category("LCB")] public short? LCBValue { get; set; }
-        [Category("LCB")] public PortType? PortType { get; set; }
-        [Category("LCB")] public short? PortNumber { get; set; }
-        [Category("LCB")] public OnOff? PortValue { get; set; }
-
-        public LinearBase()
-        {
-            SequenceId = 1;
-            Configuration = new MotionConfiguration { UFrameNumber = 1, UToolNumber = 1 };
-            Position = new Frame { X = 100, Y = 0, Z = 100, W = 0, P = 0, R = 0 };
-            SpeedType = SpeedType.MmSec;
-            Speed = 100;
-            TermType = TerminationType.Cnt;
-            TermValue = 100;
-        }
+        XYZWPRPosition frame = gridUFrame.SelectedObject as XYZWPRPosition;
+        _robot.Rmi.WriteUFrame((byte)udUFrame.Value, frame);
     }
 
-    public class LinearMotionParams : LinearBase { }
-    public class LinearRelativeParams : LinearBase { }
-
-    public class JointMotionParams : LinearBase { }
-    public class JointRelativeParams : LinearBase { }
-
-    public class CircularBase : LinearBase
+    private void btnReadUTool_Click(object sender, EventArgs e)
     {
-        [Category("Via")] public MotionConfiguration ViaConfiguration { get; set; }
-        [Category("Via")] public Frame ViaPosition { get; set; }
-
-        public CircularBase()
-        {
-            ViaConfiguration = new MotionConfiguration { UFrameNumber = 1, UToolNumber = 1 };
-            ViaPosition = new Frame { X = 150, Y = 50, Z = 120, W = 0, P = 0, R = 0 };
-        }
+        RmiIndexedFrameResponse tool = _robot.Rmi.ReadUTool((byte)udUTool.Value);
+        gridUTool.SelectedObject = tool.Frame;
+        gridUTool.ExpandAllGridItems();
     }
 
-    public class CircularMotionParams : CircularBase { }
-    public class CircularRelativeParams : CircularBase { }
-
-    public class JointRepBase
+    private void btnWriteUTool_Click(object sender, EventArgs e)
     {
-        [Category("Sequence")] public int SequenceId { get; set; }
-        [Category("Joints")] public JointAngles JointAngle { get; set; }
-        [Category("Speed")] public SpeedType SpeedType { get; set; }
-        [Category("Speed")] public short Speed { get; set; }
-        [Category("Termination")] public TerminationType TermType { get; set; }
-        [Category("Termination")] public byte TermValue { get; set; }
-
-        [Category("Options")] public byte? ACC { get; set; }
-        [Category("Options")] public short? OffsetPRNumber { get; set; }
-        [Category("Options")] public short? VisionPRNumber { get; set; }
-        [Category("Options")] public bool MROT { get; set; }
-
-        [Category("LCB")] public string LCBType { get; set; }
-        [Category("LCB")] public short? LCBValue { get; set; }
-        [Category("LCB")] public PortType? PortType { get; set; }
-        [Category("LCB")] public short? PortNumber { get; set; }
-        [Category("LCB")] public OnOff? PortValue { get; set; }
-
-        public JointRepBase()
-        {
-            SequenceId = 1;
-            JointAngle = new JointAngles { J1 = 0, J2 = 0, J3 = 0, J4 = 0, J5 = 0, J6 = 0 };
-            SpeedType = SpeedType.Percent;
-            Speed = 10;
-            TermType = TerminationType.Fine;
-            TermValue = 0;
-        }
+        XYZWPRPosition tool = gridUTool.SelectedObject as XYZWPRPosition;
+        _robot.Rmi.WriteUTool((byte)udUTool.Value, tool);
     }
 
-    public class JointMotionJRepParams : JointRepBase { }
-    public class JointRelativeJRepParams : JointRepBase { }
+    private void btnReadDIn_Click(object sender, EventArgs e)
+    {
+        RmiDigitalInputValueResponse value = _robot.Rmi.ReadDIN((short)udDinDout.Value);
+        lblDinValue.Text = value.PortValue.ToString();
+        lblDinValue.ForeColor = value.PortValue == RmiOnOff.ON ? Color.DarkGreen : Color.DarkRed;
+    }
+
+    private void BtnWriteDoutOn_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.WriteDOUT((short)udDinDout.Value, RmiOnOff.ON);
+    }
+
+    private void btnWriteDoutOff_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.WriteDOUT((short)udDinDout.Value, RmiOnOff.OFF);
+    }
+
+    private void btnReadIOPort_Click(object sender, EventArgs e)
+    {
+        RmiIoPortValueResponse response = _robot.Rmi.ReadIOPort((RmiIoPortType)cbPortType.SelectedItem, (int)udPortIndex.Value);
+        udPortValue.Value = (decimal)response.Value;
+    }
+
+    private void btnWriteIOPort_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.WriteIOPort((RmiIoPortType)cbPortType.SelectedItem, (int)udPortIndex.Value, (double)udPortValue.Value);
+    }
+
+    private void btnReadCartesian_Click(object sender, EventArgs e)
+    {
+        gridCurrentPosition.SelectedObject = _robot.Rmi.ReadCartesianPosition().Position;
+        gridCurrentPosition.ExpandAllGridItems();
+    }
+
+    private void btnReadJoints_Click(object sender, EventArgs e)
+    {
+        gridCurrentPosition.SelectedObject = _robot.Rmi.ReadJointAngles().JointAngle;
+        gridCurrentPosition.ExpandAllGridItems();
+    }
+
+    private void btnSetSpeedOverride_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.SetOverride((byte)udSpeedOverride.Value);
+    }
+
+    private void btnReadPR_Click(object sender, EventArgs e)
+    {
+        RmiPositionRegisterDataResponse response = _robot.Rmi.ReadPositionRegister((short)udPR.Value);
+        gridPRCartesian.SelectedObject = response.CartesianPosition;
+    }
+
+    private void btnWritePRCartesian_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.WritePositionRegisterCartesian((short)udPR.Value, gridPRCartesian.SelectedObject as CartesianPositionWithUserFrame);
+    }
+
+
+    private void btnReadNumericRegister_Click(object sender, EventArgs e)
+    {
+        RmiNumericRegisterValueResponse response = _robot.Rmi.ReadNumericRegister((int)udNumericRegisterIndex.Value);
+
+        rdNumericRegisterInteger.Checked = response.Value.IsInteger;
+        rdNumericRegisterReal.Checked = !response.Value.IsInteger;
+
+        udNumericRegisterValue.Value = (decimal)response.Value.RealValue;
+    }
+
+    private void btnWriteNumericRegister_Click(object sender, EventArgs e)
+    {
+        if (rdNumericRegisterInteger.Checked)
+            _robot.Rmi.WriteNumericRegisterAsInteger((int)udNumericRegisterIndex.Value, (int)udNumericRegisterValue.Value);
+        else
+            _robot.Rmi.WriteNumericRegisterAsDouble((int)udNumericRegisterIndex.Value, (double)udNumericRegisterValue.Value);
+    }
+
+    private void rdNumericRegisterInteger_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rdNumericRegisterInteger.Checked) udNumericRegisterValue.DecimalPlaces = 0;
+    }
+
+    private void rdNumericRegisterReal_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rdNumericRegisterReal.Checked) udNumericRegisterValue.DecimalPlaces = 5;
+    }
+
+
+    private void btnReadVariable_Click(object sender, EventArgs e)
+    {
+        RmiVariableValueResponse response = _robot.Rmi.ReadVariable(txtVariableName.Text);
+        rdVariableReal.Checked = !response.IsInteger;
+        rdVariableInteger.Checked = response.IsInteger;
+
+        udVariableValue.Value = (decimal)response.RealValue;
+    }
+
+    private void btnWriteVariable_Click(object sender, EventArgs e)
+    {
+        if (rdVariableInteger.Checked)
+            _robot.Rmi.WriteVariableAsInteger(txtVariableName.Text, (int)udVariableValue.Value);
+        else
+            _robot.Rmi.WriteVariableAsDouble(txtVariableName.Text, (double)udVariableValue.Value);
+    }
+
+    private void rdVariableInteger_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rdVariableInteger.Checked) udVariableValue.DecimalPlaces = 0;
+    }
+
+    private void rdVariableReal_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rdVariableReal.Checked) udVariableValue.DecimalPlaces = 0;
+    }
+
+    private void btnSetPayloadValue_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.SetPayloadValue(gridPayloadValue.SelectedObject as RmiSetPayloadParameters);
+    }
+
+    private void btnSetPayloadSchedule_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.SetPayloadSchedule((byte)udScheduleNumber.Value);
+    }
+
+    private void btnSetPayloadCompensation_Click(object sender, EventArgs e)
+    {
+        _robot.Rmi.SetPayloadCompensation(gridPayloadCompensation.SelectedObject as RmiSetPayloadCompensationParameters);
+    }
+
+    private void btnReadTcpSpeed_Click(object sender, EventArgs e)
+    {
+        lblTcpSpeed.Text = _robot.Rmi.ReadTcpSpeed().Speed.ToString("F2");
+    }
+}
+
+
+public class RmiState
+{
+    public RmiInstructionBase[] Instructions { get; set; }
+}
+
+public class Status
+{
+    public bool Connected { get; internal set; }
+    public bool IsInHoldState { get; internal set; }
+    public RmiControllerStatusResponse ControllerStatus { get; internal set; }
+    public int WorkingPort { get; internal set; }
+    public int LastSequenceId { get; internal set; }
+    public short MajorVersion { get; internal set; }
+    public short MinorVersion { get; internal set; }
 }

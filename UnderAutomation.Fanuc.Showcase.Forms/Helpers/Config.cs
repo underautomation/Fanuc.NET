@@ -1,5 +1,8 @@
-﻿using System.Xml.Serialization;
+﻿using System.Linq;
+using System.Xml.Serialization;
 using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
 
 // Save user information in a file next to the main executable
 public class Config
@@ -7,8 +10,25 @@ public class Config
     // Configuration instance
     public static Config Current { get; private set; } = new Config();
 
+    private static XmlSerializer CreateSerializer()
+    {
+        // Discover all concrete RmiInstructionBase subtypes from the SDK assembly at runtime,
+        // so no manual update is needed when new instruction types are added.
+        var knownTypes = typeof(RmiInstructionBase).Assembly
+            .GetTypes()
+            .Where(t => !t.IsAbstract && typeof(RmiInstructionBase).IsAssignableFrom(t))
+            .ToArray();
+
+        // JointsPosition.Values has a private setter — XmlSerializer cannot deserialize it.
+        // J1-J9 have public setters and carry the same data, so ignoring Values is safe.
+        var overrides = new XmlAttributeOverrides();
+        overrides.Add(typeof(JointsPosition), "Values", new XmlAttributes { XmlIgnore = true });
+
+        return new XmlSerializer(typeof(Config), overrides, knownTypes, null, null);
+    }
+
     // Serializer for configuration 
-    private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Config));
+    private static readonly XmlSerializer _serializer = CreateSerializer();
 
     // Configuration file
     private static string Path => $"{Environment.ProcessPath}.xml";
@@ -49,6 +69,7 @@ public class Config
     public string Licensee { get; set; }
     public string Key { get; set; }
     public string FtpPath { get; set; }
+    public RmiState RmiState { get; set; }
     #endregion
 }
 
