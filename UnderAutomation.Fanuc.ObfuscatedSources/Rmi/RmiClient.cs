@@ -24,8 +24,7 @@ namespace Rmi {
 		/// <param name="ip">Controller IP address or hostname.</param>
 		/// <param name="port">Bootstrap port number.</param>
 		/// <param name="readTimeoutMs">Read timeout in milliseconds.</param>
-		/// <param name="writeTimeoutMs">Write timeout in milliseconds.</param>
-		public void Connect(string ip, int port = 16001, int readTimeoutMs = 3000, int writeTimeoutMs = 3000)
+		public void Connect(string ip, int port = 16001, int readTimeoutMs = 2000)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

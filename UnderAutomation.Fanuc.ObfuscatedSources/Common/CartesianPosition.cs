@@ -7,7 +7,7 @@ namespace Common {
 	/// <summary>
 	/// Fanuc cartesian position and rotations
 	/// </summary>
-	public class CartesianPosition : XYZPosition {
+	public class CartesianPosition : XYZWPRPosition {
 
 		/// <summary>
 		/// Default constructor
@@ -116,23 +116,8 @@ namespace Common {
 		}
 
 		/// <summary>
-		/// W rotation in degrees (Rx)
-		/// </summary>
-		public double W { get; set; }
-
-		/// <summary>
-		/// P rotation in degrees (Ry)
-		/// </summary>
-		public double P { get; set; }
-
-		/// <summary>
-		/// R rotation in degrees (Rz)
-		/// </summary>
-		public double R { get; set; }
-
-		/// <summary>
 		/// Position configuration
 		/// </summary>
-		public Configuration Configuration { get; }
+		public Configuration Configuration { get; set; }
 	}
 }

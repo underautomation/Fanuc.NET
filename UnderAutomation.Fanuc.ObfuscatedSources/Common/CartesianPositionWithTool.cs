@@ -7,7 +7,7 @@ namespace Common {
 	/// <summary>
 	/// A cartesian position with a tool ID
 	/// </summary>
-	public class CartesianPositionWithTool : CartesianPosition {
+	public class CartesianPositionWithTool : ExtendedCartesianPosition {
 
 		/// <summary>
 		/// Default constructor
@@ -21,6 +21,14 @@ namespace Common {
 		/// Constructor with position, rotations and tool ID
 		/// </summary>
 		public CartesianPositionWithTool(double x, double y, double z, double w, double p, double r, int tool)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Constructor with position, rotations and tool ID
+		/// </summary>
+		public CartesianPositionWithTool(double x, double y, double z, double w, double p, double r, double e1, double e2, double e3, int tool)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

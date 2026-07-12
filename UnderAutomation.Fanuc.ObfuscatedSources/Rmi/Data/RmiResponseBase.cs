@@ -40,5 +40,10 @@ namespace Rmi.Data {
 		/// Error identifier. 0 means success; non-zero indicates a controller error.
 		/// </summary>
 		public int ErrorId { get; set; }
+
+		/// <summary>
+		/// Human-readable description of <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId" data-throw-if-not-resolved="false"></xref>. Empty string when there is no error.
+		/// </summary>
+		public string ErrorText { get; }
 	}
 }

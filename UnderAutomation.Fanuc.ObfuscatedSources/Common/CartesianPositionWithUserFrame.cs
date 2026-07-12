@@ -49,6 +49,6 @@ namespace Common {
 		/// <summary>
 		/// Frame ID in the controller
 		/// </summary>
-		public int Frame { get; }
+		public int Frame { get; set; }
 	}
 }

@@ -15,14 +15,9 @@ namespace Rmi.Internal {
 		public const int DEFAULT_PORT = 16001;
 
 		/// <summary>
-		/// Default read timeout in milliseconds (3000).
+		/// Default RMI read timeout (infinite).
 		/// </summary>
-		public const int DEFAULT_READ_TIMEOUT_MS = 3000;
-
-		/// <summary>
-		/// Default write timeout in milliseconds (3000).
-		/// </summary>
-		public const int DEFAULT_WRITE_TIMEOUT_MS = 3000;
+		public const int DEFAULT_READ_TIMEOUT_MS = 2000;
 
 
 		public RmiConnectParametersBase()
@@ -36,13 +31,8 @@ namespace Rmi.Internal {
 		public int Port { get; set; }
 
 		/// <summary>
-		/// Read timeout in milliseconds.
+		/// RMI read timeout in milliseconds.
 		/// </summary>
 		public int ReadTimeoutMs { get; set; }
-
-		/// <summary>
-		/// Write timeout in milliseconds.
-		/// </summary>
-		public int WriteTimeoutMs { get; set; }
 	}
 }

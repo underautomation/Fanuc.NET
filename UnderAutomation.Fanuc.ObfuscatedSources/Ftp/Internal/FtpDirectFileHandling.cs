@@ -22,7 +22,8 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
-		public bool UploadFileToController(Stream fileStream, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
+		/// <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
+		public bool UploadFileToController(Stream fileStream, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null, FtpExistsBehavior existsBehavior = FtpExistsBehavior.Overwrite)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -38,7 +39,8 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
-		public bool UploadFileToController(byte[] fileData, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
+		/// <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
+		public bool UploadFileToController(byte[] fileData, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null, FtpExistsBehavior existsBehavior = FtpExistsBehavior.Overwrite)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
@@ -53,8 +55,9 @@ namespace Ftp.Internal {
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
+		/// <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
 		/// <returns>If true then the file was uploaded, false otherwise.</returns>
-		public bool UploadFileToController(string localPath, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null)
+		public bool UploadFileToController(string localPath, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null, FtpExistsBehavior existsBehavior = FtpExistsBehavior.Overwrite)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
