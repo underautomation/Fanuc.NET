@@ -44934,6 +44934,12 @@
             <summary>
             Fanuc Robot Known Arm Models
             </summary>
+            <remarks>
+            Do not rely on the implicit integer values of this enum.
+            Members are sorted alphabetically. Adding new robot models inserts entries
+            at arbitrary positions, shifting the integer values of all subsequent members.
+            Always reference members by name, never by their numeric value.
+            </remarks>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate0iA">
             <summary>
@@ -44955,6 +44961,16 @@
             ARCMate100iD
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iDDC">
+            <summary>
+            ARCMate100iD-DC
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iDFG">
+            <summary>
+            ARCMate100iD-FG
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD10L">
             <summary>
             ARCMate100iD/10L
@@ -44965,6 +44981,11 @@
             ARCMate100iD/16S
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD16SB441">
+            <summary>
+            ARCMate100iD/16S-B441
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate100iD8L">
             <summary>
             ARCMate100iD/8L
@@ -44973,6 +44994,11 @@
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iD">
             <summary>
             ARCMate120iD
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iDFG">
+            <summary>
+            ARCMate120iD-FG
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.ARCMate120iD12L">
@@ -45000,12 +45026,22 @@
             CR-35iA
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR35iB">
+            <summary>
+            CR-35iB
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR7iA">
             <summary>
             CR-7iA
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR7iAL">
+            <summary>
+            CR-7iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CR7iAL_2">
             <summary>
             CR-7iA/L
             </summary>
@@ -45018,6 +45054,41 @@
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX10iAL">
             <summary>
             CRX-10iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX10iALPaint">
+            <summary>
+            CRX-10iA/L Paint
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX20iAL">
+            <summary>
+            CRX-20iA/L
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX30iA">
+            <summary>
+            CRX-30iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX3iA">
+            <summary>
+            CRX-3iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.CRX5iA">
+            <summary>
+            CRX-5iA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate1011AFoodClean">
+            <summary>
+            LR Mate/10-11A Food/Clean
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LR10iA10">
+            <summary>
+            LR-10iA/10
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD">
@@ -45040,9 +45111,24 @@
             LRMate200iD/7LC
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LRMate200iD7WE">
+            <summary>
+            LRMate200iD/7WE
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.LaserRobotHA">
             <summary>
             Laser Robot HA
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M1000550F46A">
+            <summary>
+            M-1000/550F-46A
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M1000iA">
+            <summary>
+            M-1000iA
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M10iA10M">
@@ -45120,17 +45206,22 @@
             M-20iB/25C
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410800F32C">
+            <summary>
+            M-410/800F-32C
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC110">
             <summary>
             M-410iC 110
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185_2">
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185">
             <summary>
             M-410iC 185
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185">
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M410iC185_2">
             <summary>
             M-410iC 185
             </summary>
@@ -45145,9 +45236,29 @@
             M-410iC 500
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M8006020B">
+            <summary>
+            M-800/60-20B
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M800iA60">
             <summary>
             M-800iA/60
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M800iB60">
+            <summary>
+            M-800iB/60
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M81019020B">
+            <summary>
+            M-810/190-20B
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M81027027B">
+            <summary>
+            M-810/270-27B
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB280L">
@@ -45175,9 +45286,34 @@
             M-900iB 700
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iB700E">
+            <summary>
+            M-900iB 700E
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M900iBKAI">
             <summary>
             M-900iB KAI
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M910400F37B">
+            <summary>
+            M-910/400F-37B
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M950500F28A">
+            <summary>
+            M-950/500F-28A
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M950iA500">
+            <summary>
+            M-950iA/500
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M950iA500SE">
+            <summary>
+            M-950iA/500-SE
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M20iB25">
@@ -45195,6 +45331,11 @@
             M710iC 12L
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC20L">
+            <summary>
+            M710iC 20L
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC20M">
             <summary>
             M710iC 20M
@@ -45208,6 +45349,26 @@
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iC50">
             <summary>
             M710iC 50
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iD50M_2">
+            <summary>
+            M710iD 50M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iD50M">
+            <summary>
+            M710iD 50M
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iD70">
+            <summary>
+            M710iD 70
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.M710iD70_2">
+            <summary>
+            M710iD 70
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.P700iANewRightyArmRightOffset">
@@ -45240,6 +45401,21 @@
             R-1000iA/80F
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000125F31E">
+            <summary>
+            R-2000/125F-31E
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000210F31E">
+            <summary>
+            R-2000_210F-31E
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000300F27E">
+            <summary>
+            R-2000_300F-27E
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB125L">
             <summary>
             R-2000iB/125L
@@ -45255,9 +45431,24 @@
             R-2000iC 100S
             </summary>
         </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC190S">
+            <summary>
+            R-2000iC 190S
+            </summary>
+        </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC270F">
             <summary>
             R-2000iC 270F
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC270FSE">
+            <summary>
+            R-2000iC 270F-SE
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iC190SSE">
+            <summary>
+            R-2000iC/190S-SE
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iD100FH">
@@ -45270,12 +45461,12 @@
             R1000iA 100F 7
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_3">
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_2">
             <summary>
             R1000iA 120F 7B
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_2">
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B_3">
             <summary>
             R1000iA 120F 7B
             </summary>
@@ -45283,11 +45474,6 @@
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7B">
             <summary>
             R1000iA 120F 7B
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS">
-            <summary>
-            R1000iA 120F 7BS
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS_3">
@@ -45298,6 +45484,16 @@
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS_2">
             <summary>
             R1000iA 120F 7BS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R1000iA120F7BS">
+            <summary>
+            R1000iA 120F 7BS
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000180F27E">
+            <summary>
+            R2000-180F-27E
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.Kinematics.ArmKinematicModels.R2000iB210FS">
@@ -45365,7 +45561,7 @@
             DHm transform i-1Ti per paper Eq. (1): Rx(α_{i-1}) · Tx(a_{i-1}) · Rz(θ_i) · Tz(r_i).
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters,System.Boolean,System.Double[])">
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.InverseKinematics(UnderAutomation.Fanuc.Common.CartesianPosition,UnderAutomation.Fanuc.Kinematics.DhParameters,System.Boolean)">
             <summary>
             Solve IK for a desired tool pose (WPR). Returns up to 16 solutions (including duals, Eq. (23)).
             This implements Steps 1..7 from paper §2.6 with references to Eqs. (13–23).
@@ -45373,7 +45569,6 @@
             <param name="pose">Target pose in WPR (deg) and XYZ (mm).</param>
             <param name="parameters">DH Parameters</param>
             <param name="includeDuals">Whether to add dual solutions per Eq. (23).</param>
-            <param name="seedJoints">Optional seed [J1..J6] (deg) to bias q-search near source.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.Dedup(System.Collections.Generic.List{UnderAutomation.Fanuc.Common.JointsPosition},System.Double)">
             <summary>
@@ -45389,6 +45584,47 @@
             <summary>
             3×3 transpose.
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.TrigPolyToAlgPoly(System.Double,System.Double[],System.Double[],System.Int32)">
+             <summary>
+             Converts trigonometric Fourier coefficients to an algebraic polynomial P(t) of degree 2K
+             via the Weierstrass substitution t = tan(θ/2): cos(θ)=(1-t²)/(1+t²), sin(θ)=2t/(1+t²).
+            
+             P(t) = f(θ)·(1+t²)^K, so roots of P(t) ↔ roots of f(θ) for θ ≠ π.
+            
+             The conversion uses the Chebyshev recurrences:
+               Pk(t) = Tk(c)·(1+t²)^k,   P0=1, P1=1-t², Pk+1 = 2(1-t²)·Pk - (1+t²)²·Pk-1
+               Qk(t) = U_{k-1}(c)·(1+t²)^{k-1}, Q1=1, Q2=2(1-t²), Qk+1 = 2(1-t²)·Qk - (1+t²)²·Qk-1
+             where c = (1-t²)/(1+t²), Tk = Chebyshev poly of 1st kind, U_{k-1} = 2nd kind.
+            
+             Result: P(t) = a0·(1+t²)^K + Σ_{k=1}^{K} [ ak·Pk·(1+t²)^{K-k} + bk·2t·Qk·(1+t²)^{K-k} ]
+             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.PolyRealRoots(System.Double[],System.Double)">
+            <summary>
+            Find all real roots of polynomial poly[0] + poly[1]·t + ... + poly[n]·t^n = 0 via the
+            companion-matrix eigenvalue method (QR iteration with Wilkinson shift).
+            Returns only eigenvalues whose imaginary part is negligible (|Im| &lt; tolIm·(1+|Re|)).
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.HqrEigenvalues(System.Double[0:,0:],System.Int32,System.Double)">
+            <summary>
+            QR iteration with Wilkinson single-shift on an n×n upper Hessenberg matrix h (modified
+            in-place). Extracts real eigenvalues from 1×1 and 2×2 converged diagonal blocks.
+            Suitable for n ≤ 16; O(n³) per iteration, typically converges in O(n) iterations.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.PolyAddScaled(System.Double[],System.Double[],System.Double)">
+            <summary>Element-wise a + scale·b, padded to the longer array.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.PolyAdd(System.Double[],System.Double[])">
+            <summary>Element-wise a + b, padded to the longer array.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.PolyScale(System.Double[],System.Double)">
+            <summary>Multiply every coefficient by a scalar.</summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Kinematics.Crx.CrxKinematicsUtils.PolyMul(System.Double[],System.Double[])">
+            <summary>Convolution-based polynomial multiplication.</summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Kinematics.IDhParameters">
             <summary>

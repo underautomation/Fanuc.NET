@@ -18,8 +18,7 @@ namespace Kinematics.Crx {
 		/// <param name="pose">Target pose in WPR (deg) and XYZ (mm).</param>
 		/// <param name="parameters">DH Parameters</param>
 		/// <param name="includeDuals">Whether to add dual solutions per Eq. (23).</param>
-		/// <param name="seedJoints">Optional seed [J1..J6] (deg) to bias q-search near source.</param>
-		public static JointsPosition[] InverseKinematics(CartesianPosition pose, DhParameters parameters, bool includeDuals = true, double[] seedJoints = null)
+		public static JointsPosition[] InverseKinematics(CartesianPosition pose, DhParameters parameters, bool includeDuals = true)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
