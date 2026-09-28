@@ -56,6 +56,8 @@ partial class ConnectControl
         label6 = new Label();
         label7 = new Label();
         addressTooltip = new ToolTip(components);
+        label8 = new Label();
+        cbStreamMotionVersion = new ComboBox();
         tableLayoutPanel1.SuspendLayout();
         panel1.SuspendLayout();
         SuspendLayout();
@@ -66,13 +68,13 @@ partial class ConnectControl
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 205F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanel1.Controls.Add(txtCgtpLogin, 1, 18);
-        tableLayoutPanel1.Controls.Add(chkCgtp, 1, 17);
-        tableLayoutPanel1.Controls.Add(lblConnected, 1, 22);
+        tableLayoutPanel1.Controls.Add(txtCgtpLogin, 1, 19);
+        tableLayoutPanel1.Controls.Add(chkCgtp, 1, 18);
+        tableLayoutPanel1.Controls.Add(lblConnected, 1, 23);
         tableLayoutPanel1.Controls.Add(label1, 0, 0);
         tableLayoutPanel1.Controls.Add(txtIP, 1, 0);
         tableLayoutPanel1.Controls.Add(label5, 0, 5);
-        tableLayoutPanel1.Controls.Add(panel1, 1, 21);
+        tableLayoutPanel1.Controls.Add(panel1, 1, 22);
         tableLayoutPanel1.Controls.Add(txtTelnetKclPassword, 1, 5);
         tableLayoutPanel1.Controls.Add(chkFtp, 1, 7);
         tableLayoutPanel1.Controls.Add(label2, 0, 8);
@@ -83,17 +85,19 @@ partial class ConnectControl
         tableLayoutPanel1.Controls.Add(chkRmi, 1, 13);
         tableLayoutPanel1.Controls.Add(label4, 0, 2);
         tableLayoutPanel1.Controls.Add(cbLanguage, 1, 2);
-        tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
-        tableLayoutPanel1.Controls.Add(lblLicense, 2, 21);
+        tableLayoutPanel1.Controls.Add(lblLicense, 2, 22);
         tableLayoutPanel1.Controls.Add(chkTelnet, 1, 4);
         tableLayoutPanel1.Controls.Add(lnkConfigureTelnet, 2, 4);
-        tableLayoutPanel1.Controls.Add(txtCgtpPassword, 1, 19);
-        tableLayoutPanel1.Controls.Add(label6, 0, 18);
-        tableLayoutPanel1.Controls.Add(label7, 0, 19);
+        tableLayoutPanel1.Controls.Add(txtCgtpPassword, 1, 20);
+        tableLayoutPanel1.Controls.Add(label6, 0, 19);
+        tableLayoutPanel1.Controls.Add(label7, 0, 20);
+        tableLayoutPanel1.Controls.Add(cbStreamMotionVersion, 1, 16);
+        tableLayoutPanel1.Controls.Add(label8, 0, 16);
+        tableLayoutPanel1.Controls.Add(chkStreamMotion, 1, 15);
         tableLayoutPanel1.Location = new Point(21, 32);
         tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
-        tableLayoutPanel1.RowCount = 24;
+        tableLayoutPanel1.RowCount = 25;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -110,6 +114,7 @@ partial class ConnectControl
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
+        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 17F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
@@ -123,7 +128,7 @@ partial class ConnectControl
         // 
         // txtCgtpLogin
         // 
-        txtCgtpLogin.Location = new Point(209, 481);
+        txtCgtpLogin.Location = new Point(209, 510);
         txtCgtpLogin.Margin = new Padding(4, 3, 4, 3);
         txtCgtpLogin.Name = "txtCgtpLogin";
         txtCgtpLogin.Size = new Size(116, 23);
@@ -133,7 +138,7 @@ partial class ConnectControl
         // 
         chkCgtp.Anchor = AnchorStyles.Left;
         chkCgtp.AutoSize = true;
-        chkCgtp.Location = new Point(209, 454);
+        chkCgtp.Location = new Point(209, 483);
         chkCgtp.Margin = new Padding(4, 3, 4, 3);
         chkCgtp.Name = "chkCgtp";
         chkCgtp.Size = new Size(213, 19);
@@ -144,7 +149,7 @@ partial class ConnectControl
         // lblConnected
         // 
         lblConnected.Dock = DockStyle.Fill;
-        lblConnected.Location = new Point(209, 593);
+        lblConnected.Location = new Point(209, 622);
         lblConnected.Margin = new Padding(4, 0, 4, 0);
         lblConnected.Name = "lblConnected";
         lblConnected.Size = new Size(242, 29);
@@ -195,7 +200,7 @@ partial class ConnectControl
         panel1.Controls.Add(btnConnect);
         panel1.Controls.Add(btnDisconnect);
         panel1.Dock = DockStyle.Fill;
-        panel1.Location = new Point(209, 556);
+        panel1.Location = new Point(209, 585);
         panel1.Margin = new Padding(4, 3, 4, 3);
         panel1.Name = "panel1";
         panel1.Size = new Size(242, 34);
@@ -343,7 +348,7 @@ partial class ConnectControl
         // 
         lblLicense.Anchor = AnchorStyles.Left;
         lblLicense.AutoSize = true;
-        lblLicense.Location = new Point(455, 565);
+        lblLicense.Location = new Point(455, 594);
         lblLicense.Margin = new Padding(0);
         lblLicense.Name = "lblLicense";
         lblLicense.Size = new Size(13, 15);
@@ -376,7 +381,7 @@ partial class ConnectControl
         // 
         // txtCgtpPassword
         // 
-        txtCgtpPassword.Location = new Point(209, 510);
+        txtCgtpPassword.Location = new Point(209, 539);
         txtCgtpPassword.Margin = new Padding(4, 3, 4, 3);
         txtCgtpPassword.Name = "txtCgtpPassword";
         txtCgtpPassword.Size = new Size(116, 23);
@@ -386,7 +391,7 @@ partial class ConnectControl
         // 
         label6.Anchor = AnchorStyles.Right;
         label6.AutoSize = true;
-        label6.Location = new Point(132, 485);
+        label6.Location = new Point(132, 514);
         label6.Margin = new Padding(0);
         label6.Name = "label6";
         label6.Size = new Size(73, 15);
@@ -397,7 +402,7 @@ partial class ConnectControl
         // 
         label7.Anchor = AnchorStyles.Right;
         label7.AutoSize = true;
-        label7.Location = new Point(112, 514);
+        label7.Location = new Point(112, 543);
         label7.Margin = new Padding(0);
         label7.Name = "label7";
         label7.Size = new Size(93, 15);
@@ -411,6 +416,27 @@ partial class ConnectControl
         addressTooltip.ToolTipTitle = "Examples :";
         addressTooltip.UseAnimation = false;
         addressTooltip.UseFading = false;
+        // 
+        // label8
+        // 
+        label8.Anchor = AnchorStyles.Right;
+        label8.AutoSize = true;
+        label8.Location = new Point(72, 439);
+        label8.Margin = new Padding(0);
+        label8.Name = "label8";
+        label8.Size = new Size(133, 15);
+        label8.TabIndex = 0;
+        label8.Text = "Stream Motion Version :";
+        // 
+        // cbStreamMotionVersion
+        // 
+        cbStreamMotionVersion.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbStreamMotionVersion.FormattingEnabled = true;
+        cbStreamMotionVersion.Items.AddRange(new object[] { "1", "2", "3" });
+        cbStreamMotionVersion.Location = new Point(208, 435);
+        cbStreamMotionVersion.Name = "cbStreamMotionVersion";
+        cbStreamMotionVersion.Size = new Size(117, 23);
+        cbStreamMotionVersion.TabIndex = 29;
         // 
         // ConnectControl
         // 
@@ -456,4 +482,6 @@ partial class ConnectControl
     private TextBox txtCgtpPassword;
     private Label label6;
     private Label label7;
+    private ComboBox cbStreamMotionVersion;
+    private Label label8;
 }

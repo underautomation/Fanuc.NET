@@ -37,10 +37,11 @@ It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
 - 📂 **File Management:** Easily manipulate files.
 - 🌐 **CGTP Web Server:** Access registers, I/O, programs, and variables via HTTP.
 - 🏎️ **Remote motion:** Remote move the robot.
-- 🔄 **Stream Motion:** Real-time joint streaming at up to 250 Hz.
+- 🔄 **Stream Motion:** Real-time motion at every communication cycle (option J519): trajectories, target tracking, I/O.
+- 🛤️ **Motion Planner:** Smooth jerk limited trajectories offline (J, L, C, CNT, CR, splines, shapes).
 - 📐 **Kinematics Calculations:** Perform forward and inverse kinematics offline.
 
-No additional installations or Fanuc options are required to use this SDK.
+Nothing has to be installed on the robot, and most features work without any Fanuc option. For advanced uses, if your controller has the RMI (R912), Stream Motion (J519) or HMI Device SNPX (R553) option, the SDK can use it too.
 
 ---
 
@@ -271,6 +272,14 @@ Console.WriteLine($"Joint Position: J1={group.JointsPosition.J1}, J2={group.Join
 - If Your Robot Uses "FANUC Ltd." Parameters (R651 FRL):
   No additional option is required:SNPX is included by default.
 
+### ✅ **Enable Stream Motion**
+
+1. **Check** that option **J519 Stream Motion** is installed (`Features.HasStreamMotion`)
+2. **Set** `$PARAM_GROUP[1].$SV_OFF_ENB[*]` to `FALSE`
+3. **Run** a TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override
+
+Full tutorial: [underautomation.com/fanuc/documentation/stream-motion](https://underautomation.com/fanuc/documentation/stream-motion)
+
 ### 🌐 **4. CGTP Web Server Protocol**
 
 CGTP communicates with the robot controller's **built-in HTTP web server**. It provides a comprehensive API for program management, variable access, register operations, I/O control, and kinematics.
@@ -360,38 +369,72 @@ robot.Cgtp.UnsimulateIo(CgtpIoPortType.DI, 3);
 
 ---
 
-### 🔄 **5. Stream Motion : Real-Time Joint Streaming**
+### 🔄 **5. Stream Motion (J519): Real-Time Motion**
 
-Stream Motion enables **real-time joint streaming at up to 250 Hz**, providing precise motion control for advanced applications.
+Stream Motion (option **J519**) gives the position of the robot at every communication cycle (2 to 8 ms). The SDK does the real-time part for you: it synchronizes the positions with the status of the robot, sends a few positions in advance, and stops the robot smoothly if your application stops giving positions.
 
-#### 🔹 Connect and start streaming
+The robot must run a TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override.
+
+#### 🔹 Connect and read the status
 
 ```csharp
 var parameters = new ConnectionParameters("192.168.0.1");
 parameters.StreamMotion.Enable = true;
+parameters.StreamMotion.ProtocolVersion = 1; // 1, 2 or 3, not higher than $STMO.$USABLE_VER
 robot.Connect(parameters);
 
-robot.StreamMotion.Start();
+// Read the limits of the robot, start the status output and measure the communication cycle
+robot.StreamMotion.StartMonitoring();
+
+StreamMotionStatus status = robot.StreamMotion.LastStatus;
+Console.WriteLine($"J1={status.JointPosition.J1:F3}° Moving={status.IsMoving}");
 ```
 
-#### 🔹 Send motion commands
+#### 🔹 Send trajectories
 
 ```csharp
-robot.StreamMotion.SendJointCommand(
-    new MotionData { J1 = 10, J2 = 20, J3 = 30, J4 = 0, J5 = -45, J6 = 90 },
-    isLastData: false
-);
+var sm = robot.StreamMotion;
+var planner = new MotionPlanner(sm.JointLimits, null);
+
+// J1 +10 degrees then back, at 20% of the velocity limits
+JointsPosition start = sm.QueueEndJointPosition;
+var target = new JointsPosition(start.Values) { J1 = start.J1 + 10 };
+Trajectory trajectory = planner.CreateJointPath(start)
+    .MoveJoint(target, 20, Termination.Cnt(100))
+    .MoveJoint(start, 20, Termination.Fine())
+    .Build();
+
+// The motion starts when the TP program reaches IBGN start
+int motionId = sm.Enqueue(trajectory);
+sm.WaitForMotion(motionId, 60000);
+
+// Release the TP program: it continues after IBGN end
+sm.Finish(10000);
 ```
 
-#### 🔹 Monitor state at high frequency
+`Override`, `Pause()`, `Resume()` and `Abort()` slow down or stop the trajectories smoothly on their path.
+
+#### 🔹 Follow a target in real time
 
 ```csharp
-robot.StreamMotion.StateReceived += (sender, e) =>
-{
-    var state = e.State;
-    Console.WriteLine($"J1={state.JointPosition.J1:F3}° Ready={state.Status.ReadyForCommands}");
-};
+// The robot goes to the last target, at 30% of its velocity limits
+sm.StartTracking(PositionFormat.Joint, 30);
+sm.SetJointTrackingTarget(new JointsPosition(start.Values) { J1 = start.J1 + 10 });
+sm.WaitForIdle(10000);
+sm.StopTracking();
 ```
+
+To compute the position yourself at every cycle, handle the `SetpointRequested` event and call `StartCallbackStreaming()`.
+
+#### 🔹 I/O during motion
+
+```csharp
+sm.AddIOMonitor(IOType.DI, 1);      // read DI[1] to DI[16] during the session
+bool di3 = sm.GetIO(IOType.DI, 3);
+sm.WriteIO(IOType.DO, 1, true);     // written with the next position sent
+```
+
+📖 [Stream Motion documentation](https://underautomation.com/fanuc/documentation/stream-motion)
 
 ---
 
@@ -531,6 +574,50 @@ JointsPosition[] positions = KinematicsUtils.InverseKinematics(pose, dh);
 
 ---
 
+## 🛤️ **Motion Planner:**
+
+The `UnderAutomation.Fanuc.Motion` namespace creates smooth trajectories offline, within velocity, acceleration and jerk limits. Motions are described as in a TP program: J, L and C motions with FINE, CNT or CR termination. Trajectories can be sent with Stream Motion, sampled for a simulation, or checked against the limits of the robot.
+
+```csharp
+using UnderAutomation.Fanuc.Motion;
+
+// Limits of each axis: read them with robot.StreamMotion.ReadLimits().ReferenceLimits
+var jointLimits = new JointLimits(
+    new double[] { 120, 120, 180, 180, 180, 180 },         // velocity, deg/s
+    new double[] { 300, 300, 450, 675, 675, 675 },         // acceleration, deg/s2
+    new double[] { 1125, 1125, 1687, 2530, 1265, 2530 });  // jerk, deg/s3
+var cartesianLimits = new CartesianLimits(500, 2000, 10000, 90, 360, 1800);
+var planner = new MotionPlanner(jointLimits, cartesianLimits);
+
+// J P[1] 50% CNT100, J P[2] 50% FINE
+var home = new JointsPosition(0, 0, 0, 0, -90, 0);
+var pick = new JointsPosition(30, 20, -10, 0, -70, 30);
+Trajectory joint = planner.CreateJointPath(home)
+    .MoveJoint(pick, 50, Termination.Cnt(100))
+    .MoveJoint(home, 50, Termination.Fine())
+    .Build();
+
+// L 200mm/sec CR10, then a circle of radius 30 mm at 150 mm/s
+var plane = new XYZWPRPosition(600, 0, 250, 0, 0, 0); // origin = center of the circle
+Trajectory cartesian = planner.CreateCartesianPath(new XYZWPRPosition(500, 0, 300, 180, 0, 0))
+    .MoveLinear(new XYZWPRPosition(600, 0, 300, 180, 0, 0), 200, Termination.Cr(10))
+    .AddCircle(plane, 30, 150, Termination.Fine())
+    .Build();
+
+// Duration, position at any time, one position per cycle
+Console.WriteLine($"Duration: {joint.Duration:0.000} s");
+JointsPosition[] samples = joint.SampleJoints(0.008);
+
+// Velocity, acceleration and jerk of each axis, computed as the robot does
+TrajectoryReport report = joint.Check(jointLimits, 0.008, false);
+```
+
+The planner also creates splines (`MoveSpline()`, `MoveJointSpline()`), shapes (`AddRectangle()`, `AddPolygon()`, `AddHelix()`, `AddSpiral()`), and trajectories from your own positions (`Trajectory.FromJointSamples()`, `Trajectory.FromTimedJoints()`...). `XYZWPRPosition` gives quaternions (`GetQuaternion()`) and frame changes (`FlangeToTcp()`, `WorldToUserFrame()`...).
+
+📖 [Motion planner documentation](https://underautomation.com/fanuc/documentation/motion)
+
+---
+
 ## 🛠 Installation
 
 ### 1️⃣ **Get the SDK**
@@ -574,7 +661,7 @@ robot.Connect(parameters);
 
 ## 🔍 Compatibility
 
-✅ **Supported Robots:** R-J3iB, R-30iA, R-30iB  
+✅ **Supported Robots:** R-J3iB, R-30iA, R-30iB, R-50iA
 ✅ **Operating Systems:** Windows, Linux, macOS  
 ✅ **.NET Versions:** .NET Framework (≥3.5), .NET Standard, .NET Core, .NET 5/6/8/9
 

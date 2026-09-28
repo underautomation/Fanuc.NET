@@ -33,6 +33,7 @@ public partial class ConnectControl : UserControl, IUserControl
         chkRmi.Checked = parameters.Rmi.Enable;
 
         chkStreamMotion.Checked = parameters.StreamMotion.Enable;
+        cbStreamMotionVersion.Text = parameters.StreamMotion.ProtocolVersion.ToString();
 
         chkCgtp.Checked = parameters.Cgtp.Enable;
         txtCgtpLogin.Text = parameters.Cgtp.Login;
@@ -98,6 +99,7 @@ public partial class ConnectControl : UserControl, IUserControl
         parameters.Rmi.Enable = chkRmi.Checked;
 
         parameters.StreamMotion.Enable = chkStreamMotion.Checked;
+        parameters.StreamMotion.ProtocolVersion = int.Parse(cbStreamMotionVersion.Text);
 
         parameters.Cgtp.Enable = chkCgtp.Checked;
         parameters.Cgtp.Login = txtCgtpLogin.Text;
