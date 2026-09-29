@@ -55,5 +55,10 @@ namespace Common.Files.Diagnosis {
 		/// Indicates if the robot has the ASCII upload feature enabled : R507 ("ASCII Upload" on older controllers) or R796 ("ASCII Program Loader" on most recent controllers).
 		/// </summary>
 		public bool HasAsciiUpload { get; }
+
+		/// <summary>
+		/// Indicates if the robot has the Stream Motion feature enabled (J519).
+		/// </summary>
+		public bool HasStreamMotion { get; }
 	}
 }

@@ -3,35 +3,34 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using StreamMotion.Data;
+using UnderAutomation.Robotics.Motion;
+using Common;
 using System;
 
 namespace StreamMotion.Internal {
 	/// <summary>
-	/// Base class for Stream Motion client (J519 option)
-	/// Provides UDP-based real-time streaming motion control.
-	/// The robot sends state packets continuously at high frequency (~500Hz).
-	/// Commands should be sent in response to StateReceived events using the sequence number from the received state.
+	/// Stream Motion client (J519 option): real-time control of the robot by sending a position every communication cycle.
 	/// </summary>
 	public abstract class StreamMotionClientBase : IDisposable {
 
 		/// <summary>
-		/// Creates a new instance of the Stream Motion client
+		/// Creates a Stream Motion client
 		/// </summary>
-		public StreamMotionClientBase()
+		protected StreamMotionClientBase()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Connect to the robot
+		/// Opens the UDP socket to the robot. The robot does not send anything before <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring" data-throw-if-not-resolved="false"></xref> is called.
 		/// </summary>
-		protected void ConnectInternal(string ip, int port, int sendTimeoutMs, int receiveTimeoutMs)
+		protected void ConnectInternal(string ip, StreamMotionConnectParametersBase parameters)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Disconnect from the robot
+		/// Disconnects from the robot. If a session is active, the robot is stopped smoothly and the session is finished first.
 		/// </summary>
 		public void Disconnect()
 		{
@@ -39,72 +38,242 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Start streaming motion. This starts a background thread that continuously receives state packets
-		/// and raises the StateReceived event for each packet.
+		/// Starts the status output of the robot. The robot then sends its status every communication cycle.
+		/// The limits of the robot are read first when they are not known yet, and this method returns when the communication cycle is measured.
 		/// </summary>
-		public void Start()
+		public void StartMonitoring()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Stop streaming motion
+		/// Stops the status output of the robot. Not allowed during a session: call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)" data-throw-if-not-resolved="false"></xref> first.
 		/// </summary>
-		public void Stop()
+		public void StopMonitoring()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}
 
 		/// <summary>
-		/// Queue a motion command to be sent with the next state packet's sequence number.
-		/// The command will be sent automatically when the next state packet is received.
-		/// It is recommended to call this method within the StateReceived event handler.
+		/// Waits until a program executes an IBGN start instruction and the robot accepts positions.
 		/// </summary>
-		/// <param name="command">Command packet to send</param>
-		public void SendCommand(CommandPacket command)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-		/// <summary>
-		/// Queue a joint motion command
-		/// </summary>
-		public void SendJointCommand(MotionData jointPositions, bool isLastData = false)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-		/// <summary>
-		/// Queue a joint motion command with I/O read
-		/// </summary>
-		public void SendJointCommand(MotionData jointPositions, IOType readIOType, ushort readIOIndex, ushort readIOMask, bool isLastData = false)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-		/// <summary>
-		/// Queue a Cartesian motion command
-		/// </summary>
-		public void SendCartesianCommand(MotionData cartesianPosition, bool isLastData = false)
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-		}
-
-		/// <summary>
-		/// Request threshold data for an axis.
-		/// Note: This is a synchronous blocking call that should not be called during active streaming.
-		/// </summary>
-		/// <param name="axisNumber">Axis number (1-9)</param>
-		/// <param name="thresholdType">Type of threshold to request</param>
-		/// <returns>Acknowledgment packet with threshold data</returns>
-		public AckPacket RequestThreshold(uint axisNumber, ThresholdType thresholdType)
+		/// <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+		/// <returns>True if the robot accepts positions, false after the timeout</returns>
+		public bool WaitForReady(int timeoutMs)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 			return default;
 		}
 
 		/// <summary>
-		/// Dispose the client
+		/// Reads the velocity, acceleration and jerk limits of all axes from the robot.
+		/// The status output is stopped during the reading and started again.
+		/// Some controllers do not answer while a program waits on an IBGN start instruction: read the limits before.
+		/// Not allowed during a session.
+		/// </summary>
+		/// <returns>Limits of the robot. They are also stored in <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Limits" data-throw-if-not-resolved="false"></xref>, and the reference limits in <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits" data-throw-if-not-resolved="false"></xref>.</returns>
+		public StreamMotionLimits ReadLimits()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Adds a trajectory at the end of the queue. The session starts automatically when the robot accepts positions,
+		/// and the trajectories are sent one after the other, without any change between them.
+		/// </summary>
+		/// <param name="trajectory">Trajectory to send. It must start at <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndJointPosition" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndCartesianPosition" data-throw-if-not-resolved="false"></xref>,
+		///             and trajectories created from samples must use the communication cycle of the robot (<xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CycleTime" data-throw-if-not-resolved="false"></xref>).
+		///             Its I/O events must use signals created by <xref href="UnderAutomation.Fanuc.Motion.FanucMotion.Signal(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>.</param>
+		/// <returns>Identifier of the motion, to use with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForMotion(System.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref></returns>
+		public int Enqueue(Trajectory trajectory)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Waits until the robot received the last position of a queued trajectory
+		/// </summary>
+		/// <param name="motionId">Identifier returned by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)" data-throw-if-not-resolved="false"></xref></param>
+		/// <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+		/// <returns>True when the trajectory was completely sent, false after the timeout or if the trajectory was cancelled</returns>
+		public bool WaitForMotion(int motionId, int timeoutMs)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Waits until the queue is empty and the robot does not move. During target tracking, waits until the robot is stopped on the target.
+		/// </summary>
+		/// <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+		/// <returns>True when idle, false after the timeout</returns>
+		public bool WaitForIdle(int timeoutMs)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Finishes the session when the queue is empty and the robot is at rest: the last position is sent with the end flag,
+		/// and the program continues after the IBGN end instruction. If a program waits on IBGN start without session, it is released at the current position.
+		/// The callback streaming and the target tracking are stopped first.
+		/// </summary>
+		/// <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+		/// <returns>True when the session is finished, false after the timeout or if the session ended for another reason</returns>
+		public bool Finish(int timeoutMs)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Stops smoothly on the path of the current trajectory. The queue is kept and <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Resume" data-throw-if-not-resolved="false"></xref> continues the motion.
+		/// Use it instead of a HOLD, which is not available during Stream Motion.
+		/// </summary>
+		public void Pause()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Continues the queued trajectories after <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Pause" data-throw-if-not-resolved="false"></xref>
+		/// </summary>
+		public void Resume()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Stops smoothly on the path of the current trajectory, then cancels the current and the queued trajectories.
+		/// The session stays open and the robot keeps its position. The callback streaming and the target tracking are stopped,
+		/// and the robot stops as fast as the limits allow.
+		/// </summary>
+		public void Abort()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Starts to take the positions from the <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested" data-throw-if-not-resolved="false"></xref> event instead of the queue.
+		/// The session starts automatically when the robot accepts positions.
+		/// </summary>
+		/// <param name="format">Format of the positions given by the event</param>
+		public void StartCallbackStreaming(PositionFormat format)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Stops the callback streaming. The last position is kept, and the robot stops smoothly if it was moving.
+		/// </summary>
+		public void StopCallbackStreaming()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Starts to follow a target position: the robot goes to the last target given by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)" data-throw-if-not-resolved="false"></xref> or
+		/// <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)" data-throw-if-not-resolved="false"></xref> as fast as the limits allow, and stops on it. The target can change at any time,
+		/// even during the motion: the robot then goes smoothly to the new target.
+		/// The limits are <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits" data-throw-if-not-resolved="false"></xref> in joint format, and <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CartesianLimits" data-throw-if-not-resolved="false"></xref> in Cartesian format (the linear and angular limits
+		/// are shared between X, Y, Z and between the 3 rotation axes). Each axis moves independently, so the path to the target is not a straight line.
+		/// The first target is the current position. The session starts automatically when the robot accepts positions.
+		/// The delay between a new target and the start of the motion is about <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.BufferLead" data-throw-if-not-resolved="false"></xref> cycles plus the delay of the robot:
+		/// reduce the buffer lead time of the connection parameters for a faster reaction.
+		/// </summary>
+		/// <param name="format">Format of the targets</param>
+		/// <param name="speedPercent">Velocity in percent of the limits (greater than 0, up to 100)</param>
+		/// <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+		public void StartTracking(PositionFormat format, double speedPercent = 100, double accelerationPercent = 100)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Gives a new joint target to follow (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref>)
+		/// </summary>
+		/// <param name="target">Target joint position</param>
+		public void SetJointTrackingTarget(JointsPosition target)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Gives a new Cartesian target to follow (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref>).
+		/// Extended axes are used when the target is an <xref href="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition" data-throw-if-not-resolved="false"></xref>, otherwise they keep their target.
+		/// </summary>
+		/// <param name="target">Target position, in the frame of the Cartesian positions sent to the robot</param>
+		public void SetCartesianTrackingTarget(XYZWPRPosition target)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Stops the target tracking. If the robot was moving, it stops as fast as the limits allow, then it keeps its position.
+		/// </summary>
+		public void StopTracking()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Adds a range of 16 consecutive I/O to read. Each position sent to the robot reads one range, so several ranges are read one after the other.
+		/// Values are only read during a session.
+		/// </summary>
+		/// <param name="type">I/O type</param>
+		/// <param name="index">Index of the first I/O of the range (starts at 1)</param>
+		public void AddIOMonitor(IOType type, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Removes all ranges of I/O to read
+		/// </summary>
+		public void ClearIOMonitors()
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Returns the last read state of one I/O. The I/O must be in a range added with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>.
+		/// It returns false while the range was never read.
+		/// </summary>
+		/// <param name="type">I/O type</param>
+		/// <param name="index">I/O index</param>
+		public bool GetIO(IOType type, int index)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+			return default;
+		}
+
+		/// <summary>
+		/// Writes one digital I/O with the next position sent to the robot (only during a session)
+		/// </summary>
+		/// <param name="type">I/O type</param>
+		/// <param name="index">I/O index (starts at 1)</param>
+		/// <param name="value">Value to write</param>
+		public void WriteIO(IOType type, int index, bool value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Writes up to 16 consecutive digital I/O with the next position sent to the robot (only during a session)
+		/// </summary>
+		/// <param name="type">I/O type</param>
+		/// <param name="index">Index of the first I/O (starts at 1)</param>
+		/// <param name="mask">Bits of the I/O to write. Bit 0 is the I/O at index.</param>
+		/// <param name="value">Values of the I/O. Bit 0 is the I/O at index.</param>
+		public void WriteIOGroup(IOType type, int index, int mask, int value)
+		{
+			// Source is hidden, a Source licence is needed to access internal code...
+		}
+
+		/// <summary>
+		/// Disconnects and releases the resources
 		/// </summary>
 		public void Dispose()
 		{
@@ -112,7 +281,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Dispose the client
+		/// Disconnects and releases the resources
 		/// </summary>
 		protected virtual void Dispose(bool disposing)
 		{
@@ -125,9 +294,14 @@ namespace StreamMotion.Internal {
 		public string Ip { get; }
 
 		/// <summary>
-		/// UDP port used for communication
+		/// UDP port of the robot
 		/// </summary>
 		public int Port { get; }
+
+		/// <summary>
+		/// Protocol version used by this client
+		/// </summary>
+		public int ProtocolVersion { get; }
 
 		/// <summary>
 		/// Indicates whether the client is connected
@@ -135,55 +309,160 @@ namespace StreamMotion.Internal {
 		public bool Connected { get; }
 
 		/// <summary>
-		/// Indicates whether the client is connected (alias for Connected)
+		/// Current state of the client
 		/// </summary>
-		public bool IsConnected { get; }
+		public StreamMotionState State { get; }
 
 		/// <summary>
-		/// Indicates whether streaming is currently active
+		/// Last status received from the robot, or null if no status was received
 		/// </summary>
-		public bool IsStreaming { get; }
+		public StreamMotionStatus LastStatus { get; }
 
 		/// <summary>
-		/// Last received state packet
+		/// Communication cycle of the robot measured from the status, in seconds (for example 0.008 or 0.002). 0 while it is not known.
+		/// Trajectories are sampled at this period.
 		/// </summary>
-		public StatePacket LastState { get; }
+		public double CycleTime { get; }
 
 		/// <summary>
-		/// Send timeout in milliseconds
+		/// Number of positions sent in advance and kept in the robot buffer during the current session
 		/// </summary>
-		public int SendTimeoutMs { get; }
+		public int BufferLead { get; }
 
 		/// <summary>
-		/// Receive timeout in milliseconds
+		/// Number of sessions started since the connection. A session starts when positions are sent after an IBGN start instruction.
 		/// </summary>
-		public int ReceiveTimeoutMs { get; }
+		public int SessionCount { get; }
 
 		/// <summary>
-		/// Frequency based on robot timestamp (Hz). Calculated from consecutive packet timestamps.
+		/// Communication statistics since the status output was started
 		/// </summary>
-		public double RobotFrequency { get; }
+		public StreamMotionStatistics Statistics { get; }
 
 		/// <summary>
-		/// Measured frequency based on PC receive time (Hz). Actual rate at which packets arrive.
+		/// Limits read from the robot by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReadLimits" data-throw-if-not-resolved="false"></xref> or when the status output starts. Null if they were not read.
 		/// </summary>
-		public double MeasuredFrequency { get; }
+		public StreamMotionLimits Limits { get; }
 
 		/// <summary>
-		/// Total number of state packets received since streaming started
+		/// Joint limits used to stop the robot smoothly when the positions stop in joint format.
+		/// It is set to the reference limits of the robot when the limits are read.
 		/// </summary>
-		public long PacketCount { get; }
+		public JointLimits JointLimits { get; set; }
 
 		/// <summary>
-		/// Event raised when a state packet is received from the robot.
-		/// This event is raised on a background thread at high frequency (~500Hz).
-		/// It is recommended to call SendCommand() within this handler to maintain proper timing.
+		/// Cartesian limits used to stop the robot smoothly when the positions stop in Cartesian format.
+		/// When it is null, conservative values are used.
 		/// </summary>
-		public event EventHandler<StateReceivedEventArgs> StateReceived;
+		public CartesianLimits CartesianLimits { get; set; }
 
 		/// <summary>
-		/// Event raised when an error occurs during packet receiving
+		/// Maximum distance between the first position of a trajectory and the position where it starts, in mm or degrees (default 0.01).
 		/// </summary>
-		public event EventHandler<ReceiveErrorEventArgs> ReceiveError;
+		public double StartTolerance { get; set; }
+
+		/// <summary>
+		/// Time in seconds by which the I/O events of trajectories are sent before their position (default 0).
+		/// It compensates the delay between the reception of a position by the robot and the real motion.
+		/// </summary>
+		public double IOAnticipation { get; set; }
+
+		/// <summary>
+		/// Position where the next queued joint trajectory must start: end of the queue, or current position when the queue is empty.
+		/// Null if no status was received.
+		/// </summary>
+		public JointsPosition QueueEndJointPosition { get; }
+
+		/// <summary>
+		/// Position where the next queued Cartesian trajectory must start: end of the queue, or last position sent when the queue is empty.
+		/// Before any Cartesian position was sent, it is the Cartesian position of the status (flange center in the world frame by default).
+		/// Some controllers expect Cartesian positions of the active tool frame: the start of the first trajectory is then not checked.
+		/// Null if no status was received.
+		/// </summary>
+		public ExtendedCartesianPosition QueueEndCartesianPosition { get; }
+
+		/// <summary>
+		/// Number of trajectories waiting or running
+		/// </summary>
+		public int QueuedMotionCount { get; }
+
+		/// <summary>
+		/// Indicates if positions are given by the <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested" data-throw-if-not-resolved="false"></xref> event
+		/// </summary>
+		public bool IsCallbackStreaming { get; }
+
+		/// <summary>
+		/// Indicates if the robot follows a target given by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)" data-throw-if-not-resolved="false"></xref>
+		/// </summary>
+		public bool IsTracking { get; }
+
+		/// <summary>
+		/// Indicates if the format of the positions is fixed. A session uses only one format, chosen by the first queued trajectory,
+		/// <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)" data-throw-if-not-resolved="false"></xref>. While this is true, positions in the other format
+		/// throw a <xref href="UnderAutomation.Fanuc.StreamMotion.StreamMotionException" data-throw-if-not-resolved="false"></xref> with <xref href="UnderAutomation.Fanuc.StreamMotion.StreamMotionError.FormatMismatch" data-throw-if-not-resolved="false"></xref>.
+		/// It becomes false when the queue is empty and no session is active: call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)" data-throw-if-not-resolved="false"></xref> to use the other format in the next session.
+		/// </summary>
+		public bool HasActiveFormat { get; }
+
+		/// <summary>
+		/// Format of the positions of the current session or of the queued trajectories. Only valid when <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.HasActiveFormat" data-throw-if-not-resolved="false"></xref> is true.
+		/// </summary>
+		public PositionFormat ActiveFormat { get; }
+
+		/// <summary>
+		/// Speed of the queued trajectories in percent (greater than 0, up to 100, default 100). The robot itself must run at 100% override,
+		/// so this value slows down the trajectories on their path: the positions are the same, only the time is stretched.
+		/// A change is applied progressively.
+		/// </summary>
+		public double Override { get; set; }
+
+		/// <summary>
+		/// Indicates if the queued trajectories are paused
+		/// </summary>
+		public bool IsPaused { get; }
+
+		/// <summary>
+		/// Last values of the ranges of I/O added with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>
+		/// </summary>
+		public IOValue[] IOValues { get; }
+
+		/// <summary>
+		/// Raised when a status is received. It is raised on a dedicated thread and only with the latest status:
+		/// if the handler is slow, some status are skipped.
+		/// </summary>
+		public event EventHandler<StatusReceivedEventArgs> StatusReceived;
+
+		/// <summary>
+		/// Raised when a session starts (first position sent after an IBGN start instruction)
+		/// </summary>
+		public event EventHandler<SessionEventArgs> SessionStarted;
+
+		/// <summary>
+		/// Raised when a session ends
+		/// </summary>
+		public event EventHandler<SessionEndedEventArgs> SessionEnded;
+
+		/// <summary>
+		/// Raised when the robot received the last position of a queued trajectory
+		/// </summary>
+		public event EventHandler<MotionEventArgs> MotionCompleted;
+
+		/// <summary>
+		/// Raised when the queue becomes empty while the robot is moving. The robot is then stopped smoothly.
+		/// </summary>
+		public event EventHandler<MotionEventArgs> Underrun;
+
+		/// <summary>
+		/// Raised when an error occurs in the communication thread
+		/// </summary>
+		public event EventHandler<StreamMotionErrorEventArgs> ErrorOccurred;
+
+		/// <summary>
+		/// Raised in callback streaming mode (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)" data-throw-if-not-resolved="false"></xref>) each time a position must be sent.
+		/// The handler must give the next position with SetJoints or SetCartesian.
+		/// It runs on the communication thread, a few cycles before the robot executes the position, and must return quickly.
+		/// The first requested position (CycleIndex 0) must be the current position of the robot, and the next ones must connect smoothly to it.
+		/// </summary>
+		public event EventHandler<SetpointRequestEventArgs> SetpointRequested;
 	}
 }

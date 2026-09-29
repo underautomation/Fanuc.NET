@@ -71,15 +71,6 @@ namespace Common {
 		}
 
 		/// <summary>
-		/// Convert position to a homogeneous rotation and translation 4x4 matrix
-		/// </summary>
-		public double[,] ToHomogeneousMatrix()
-		{
-			// Source is hidden, a Source licence is needed to access internal code...
-			return default;
-		}
-
-		/// <summary>
 		/// Create a CartesianPosition with unknow configuration from a homogeneous rotation and translation 4x4 matrix
 		/// </summary>
 		/// <param name="R">Homogeneous 4x4 matrix</param>

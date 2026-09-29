@@ -1329,11 +1329,6 @@
         <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.ToHomogeneousMatrix">
-            <summary>
-            Convert position to a homogeneous rotation and translation 4x4 matrix
-            </summary>
-        </member>
         <member name="M:UnderAutomation.Fanuc.Common.CartesianPosition.FromHomogeneousMatrix(System.Double[0:,0:])">
             <summary>
             Create a CartesianPosition with unknow configuration from a homogeneous rotation and translation 4x4 matrix
@@ -1791,6 +1786,11 @@
         <member name="P:UnderAutomation.Fanuc.Common.Files.Diagnosis.Features.HasAsciiUpload">
             <summary>
             Indicates if the robot has the ASCII upload feature enabled : R507 ("ASCII Upload" on older controllers) or R796 ("ASCII Program Loader" on most recent controllers).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Files.Diagnosis.Features.HasStreamMotion">
+            <summary>
+            Indicates if the robot has the Stream Motion feature enabled (J519).
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.Files.Diagnosis.Features.ToString">
@@ -39724,6 +39724,121 @@
             The program is a TP (Teach Pendant) program.
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Common.Quaternion">
+            <summary>
+            Quaternion that represents an orientation (Qw + Qx.i + Qy.j + Qz.k).
+            Use <see cref="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.GetQuaternion"/> and <see cref="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.SetQuaternion(UnderAutomation.Fanuc.Common.Quaternion)"/> to convert from and to W, P, R angles.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.#ctor">
+            <summary>
+            Creates the identity quaternion (no rotation)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a quaternion from its components
+            </summary>
+            <param name="qw">Scalar part</param>
+            <param name="qx">X component of the vector part</param>
+            <param name="qy">Y component of the vector part</param>
+            <param name="qz">Z component of the vector part</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Quaternion.Qw">
+            <summary>
+            Scalar part
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Quaternion.Qx">
+            <summary>
+            X component of the vector part
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Quaternion.Qy">
+            <summary>
+            Y component of the vector part
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Quaternion.Qz">
+            <summary>
+            Z component of the vector part
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Common.Quaternion.Norm">
+            <summary>
+            Norm of the quaternion (1 for a rotation)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Normalize">
+            <summary>
+            Returns this quaternion with a norm of 1
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Conjugate">
+            <summary>
+            Returns the conjugate of this quaternion. For a rotation, it is the inverse rotation.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Multiply(UnderAutomation.Fanuc.Common.Quaternion)">
+            <summary>
+            Returns the product this x other: the rotation other applied after the rotation this, in the frame of this.
+            </summary>
+            <param name="other">Right operand</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Dot(UnderAutomation.Fanuc.Common.Quaternion)">
+            <summary>
+            Dot product of the two quaternions
+            </summary>
+            <param name="other">Other quaternion</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.AngleTo(UnderAutomation.Fanuc.Common.Quaternion)">
+            <summary>
+            Angle of the rotation between the two orientations, in degrees (0 to 180)
+            </summary>
+            <param name="other">Other orientation</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Slerp(UnderAutomation.Fanuc.Common.Quaternion,UnderAutomation.Fanuc.Common.Quaternion,System.Double)">
+            <summary>
+            Spherical linear interpolation between two orientations, on the shortest way
+            </summary>
+            <param name="start">Orientation for t = 0</param>
+            <param name="end">Orientation for t = 1</param>
+            <param name="t">Interpolation parameter, usually between 0 and 1</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.FromAxisAngle(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a rotation around an axis
+            </summary>
+            <param name="x">X component of the axis</param>
+            <param name="y">Y component of the axis</param>
+            <param name="z">Z component of the axis</param>
+            <param name="angle">Rotation angle in degrees</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.ToAxisAngle">
+            <summary>
+            Returns the rotation axis and angle: [x, y, z, angle in degrees]. The axis is a unit vector and the angle is between 0 and 180.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.FromRotationMatrix(System.Double[0:,0:])">
+            <summary>
+            Creates a quaternion from a rotation matrix (3x3, or 4x4 homogeneous matrix)
+            </summary>
+            <param name="matrix">Rotation matrix</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.ToRotationMatrix">
+            <summary>
+            Returns the 3x3 rotation matrix of this orientation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.Quaternion.GetHashCode">
+            <inheritdoc />
+        </member>
         <member name="T:UnderAutomation.Fanuc.Common.RmiConnectParameters">
             <summary>
             RMI parameters
@@ -39947,6 +40062,57 @@
             <summary>
             R rotation in degrees (Rz)
             </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.ToHomogeneousMatrix">
+            <summary>
+            Convert position to a homogeneous rotation and translation 4x4 matrix
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.GetQuaternion">
+            <summary>
+            Returns the orientation W, P, R as a quaternion
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.SetQuaternion(UnderAutomation.Fanuc.Common.Quaternion)">
+            <summary>
+            Sets the orientation W, P, R from a quaternion. Angles are between -180 and 180 degrees.
+            </summary>
+            <param name="quaternion">Orientation</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.Multiply(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Returns the composition of this frame with another one: the pose <paramref name="other"/>, expressed in this frame, converted to the frame where this position is expressed.
+            </summary>
+            <param name="other">Pose expressed in this frame</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.Inverse">
+            <summary>
+            Returns the inverse of this frame
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.FlangeToTcp(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts a flange position to the position of the tool center point (TCP)
+            </summary>
+            <param name="tool">Tool frame, relative to the flange (for example a UTOOL value)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.TcpToFlange(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts a position of the tool center point (TCP) to the flange position
+            </summary>
+            <param name="tool">Tool frame, relative to the flange (for example a UTOOL value)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.UserFrameToWorld(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts this position, expressed in a user frame, to the world frame
+            </summary>
+            <param name="userFrame">User frame, relative to the world frame (for example a UFRAME value)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.WorldToUserFrame(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts this position, expressed in the world frame, to a user frame
+            </summary>
+            <param name="userFrame">User frame, relative to the world frame (for example a UFRAME value)</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.Common.XYZWPRPosition.ToString">
             <inheritdoc />
@@ -46105,6 +46271,83 @@
             The license that causes this exception
             </summary>
         </member>
+        <member name="T:UnderAutomation.Fanuc.Motion.FanucMotion">
+            <summary>
+            Conversions between the FANUC types (positions, FINE/CNT/CR terminations, I/O types) and the types of the motion planner
+            of namespace UnderAutomation.Robotics.Motion.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.Motion.FanucMotion.WprConvention">
+            <summary>
+            Convention of the W, P, R angles of FANUC positions: rotation W around the fixed X axis, then P around the fixed Y axis, then R around the fixed Z axis
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.ToCartesianPose(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts a FANUC position to a pose. The extended axes E1, E2 and E3 are copied when the position is an <see cref="T:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>.
+            </summary>
+            <param name="position">Position X, Y, Z, W, P, R</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.ToExtendedCartesianPosition(UnderAutomation.Robotics.Geometry.CartesianPose,UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Converts a pose to a FANUC position with extended axes (0 when the pose has no external axes).
+            </summary>
+            <param name="pose">Pose to convert</param>
+            <param name="reference">Position used to choose the W, P, R angles: the angles closest to the ones of this position are returned,
+            so that a sequence of positions stays continuous. When it is null, W and R are between -180 and 180 degrees, and P between -90 and 90 degrees.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.ToJointValues(UnderAutomation.Fanuc.Common.JointsPosition)">
+            <summary>
+            Converts a FANUC joint position (J1 to J9) to joint values
+            </summary>
+            <param name="position">Joint position</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.ToJointsPosition(UnderAutomation.Robotics.Geometry.JointValues)">
+            <summary>
+            Converts joint values to a FANUC joint position. Missing axes are 0.
+            </summary>
+            <param name="values">Joint values (up to 9 axes)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.Fine">
+            <summary>
+            FINE termination: the robot stops at the target position
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.Cnt(System.Int32)">
+            <summary>
+            CNT termination: the next motion starts during the deceleration of this one
+            </summary>
+            <param name="value">From 0 to 100: part of the deceleration during which both motions are combined. 100 gives the smoothest motion.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.Cr(System.Double)">
+            <summary>
+            CR termination (corner region): the corner is replaced by a smooth curve at constant speed. Only between Cartesian motions.
+            </summary>
+            <param name="distance">Distance from the target position where the curve starts and ends, in mm. It is limited to half of the length of each motion.</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.Signal(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)">
+            <summary>
+            Returns the digital signal of an I/O, to write it during a trajectory (for example DO[5])
+            </summary>
+            <param name="type">I/O type</param>
+            <param name="index">I/O index (starts at 1)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.FromCartesianSamples(UnderAutomation.Fanuc.Common.XYZWPRPosition[],System.Double)">
+            <summary>
+            Creates a Cartesian trajectory from FANUC positions taken at a fixed period.
+            The W, P, R angles are kept without any change, and the extended axes are used when the positions are <see cref="T:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>.
+            </summary>
+            <param name="samples">Positions (flange center in the world frame for Stream Motion), one per period</param>
+            <param name="cycleTime">Period between two positions, in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.Motion.FanucMotion.SampleCartesian(UnderAutomation.Robotics.Motion.Trajectory,System.Double)">
+            <summary>
+            Samples a Cartesian trajectory at a fixed period and returns FANUC positions. The W, P, R angles stay continuous from one position to the next.
+            </summary>
+            <param name="trajectory">Trajectory in Cartesian format</param>
+            <param name="cycleTime">Period between two samples, in seconds</param>
+            <returns>Positions from time 0 to the end of the trajectory</returns>
+        </member>
         <member name="T:UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase">
             <summary>
             Base class for RMI responses that return an error id from the controller.
@@ -50433,190 +50676,6 @@
             <param name="ip">The IP address of the robot.</param>
             <param name="port">The port number to connect to.</param>
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket">
-            <summary>
-            Acknowledgment packet received from the robot in response to a Request packet
-            Contains threshold data for motion limits
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.PacketType">
-            <summary>
-            Packet type (always Ack=3)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.VersionNumber">
-            <summary>
-            Protocol version number
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.AxisNumber">
-            <summary>
-            Axis number (1-9)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdType">
-            <summary>
-            Type of threshold data
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.MaxCartesianSpeed">
-            <summary>
-            Maximum Cartesian program speed of the robot (mm/s)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.Unknown0">
-            <summary>
-            Unknown field (reserved for future use)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdsNoLoad">
-            <summary>
-            Threshold values at various velocity percentages (no load)
-            Index 0 = 5% of Vmax, Index 1 = 10%, ..., Index 19 = 100%
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ThresholdsMaxLoad">
-            <summary>
-            Threshold values at various velocity percentages (maximum load)
-            Index 0 = 5% of Vmax, Index 1 = 10%, ..., Index 19 = 100%
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.ToString">
-            <summary>
-            Returns a string representation
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.Equals(System.Object)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.AckPacket.GetHashCode">
-            <inheritdoc />
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket">
-            <summary>
-            Command packet to send motion commands to the robot
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.#ctor(UnderAutomation.Fanuc.StreamMotion.Data.DataStyle,UnderAutomation.Fanuc.StreamMotion.Data.MotionData)">
-            <summary>
-            Constructor with motion data
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.IsLastData">
-            <summary>
-            Whether this is the last command data packet
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOType">
-            <summary>
-            Type of I/O to read
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOIndex">
-            <summary>
-            Index of I/O to read
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ReadIOMask">
-            <summary>
-            Mask for I/O read operation
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.DataStyle">
-            <summary>
-            Data style (Cartesian or Joint)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOType">
-            <summary>
-            Type of I/O to write
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOIndex">
-            <summary>
-            Index of I/O to write
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOMask">
-            <summary>
-            Mask for I/O write operation
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.WriteIOValue">
-            <summary>
-            Value to write to I/O
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.MotionData">
-            <summary>
-            Motion data (position values)
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.ToString">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.Equals(System.Object)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket.GetHashCode">
-            <inheritdoc />
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle">
-            <summary>
-            Data style for motion commands
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle.Cartesian">
-            <summary>
-            Cartesian coordinate system (X, Y, Z, W, P, R)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.DataStyle.Joint">
-            <summary>
-            Joint coordinate system (J1-J9)
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult">
-            <summary>
-            Result of an I/O read operation
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Type">
-            <summary>
-            Type of I/O that was read
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Index">
-            <summary>
-            Index of the I/O
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Mask">
-            <summary>
-            Mask applied to the read
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Value">
-            <summary>
-            Value read from the I/O
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.ToString">
-            <summary>
-            Returns a string representation
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.Equals(System.Object)">
-            <inheritdoc />
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOReadResult.GetHashCode">
-            <inheritdoc />
-        </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOType">
             <summary>
             I/O types supported by Stream Motion protocol
@@ -50697,392 +50756,503 @@
             Marker
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.MotionData">
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.IOValue">
             <summary>
-            Motion data containing 9 axis values (joint or cartesian + extended axes)
+            State of 16 consecutive I/O read by Stream Motion
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.#ctor">
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.RangeSize">
             <summary>
-            Default constructor
+            Number of I/O read in one range
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.#ctor(System.Single[])">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Type">
             <summary>
-            Constructor with initial values
+            I/O type
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Values">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index">
             <summary>
-            Raw axis values (9 values: J1-J6 or X,Y,Z,W,P,R + E1,E2,E3)
+            Index of the first I/O of the range
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis1">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Value">
             <summary>
-            First axis (J1 or X)
+            State of the 16 I/O. Bit 0 is the I/O at <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/>.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis2">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Age">
             <summary>
-            Second axis (J2 or Y)
+            Number of status received since this value was read. -1 if it was never read.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis3">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.GetState(System.Int32)">
             <summary>
-            Third axis (J3 or Z)
+            Returns the state of one I/O of the range
             </summary>
+            <param name="index">I/O index, between <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/> and <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/> + 15</param>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis4">
-            <summary>
-            Fourth axis (J4 or W)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis5">
-            <summary>
-            Fifth axis (J5 or P)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Axis6">
-            <summary>
-            Sixth axis (J6 or R)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis1">
-            <summary>
-            Extended axis 1
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis2">
-            <summary>
-            Extended axis 2
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ExtAxis3">
-            <summary>
-            Extended axis 3
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J1">
-            <summary>J1 (same as Axis1)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J2">
-            <summary>J2 (same as Axis2)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J3">
-            <summary>J3 (same as Axis3)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J4">
-            <summary>J4 (same as Axis4)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J5">
-            <summary>J5 (same as Axis5)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J6">
-            <summary>J6 (same as Axis6)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J7">
-            <summary>J7 (same as ExtAxis1)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J8">
-            <summary>J8 (same as ExtAxis2)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.J9">
-            <summary>J9 (same as ExtAxis3)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.X">
-            <summary>X (same as Axis1) in mm</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Y">
-            <summary>Y (same as Axis2) in mm</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Z">
-            <summary>Z (same as Axis3) in mm</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.W">
-            <summary>W (same as Axis4) in degrees</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.P">
-            <summary>P (same as Axis5) in degrees</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.R">
-            <summary>R (same as Axis6) in degrees</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E1">
-            <summary>E1 (same as ExtAxis1)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E2">
-            <summary>E2 (same as ExtAxis2)</summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.E3">
-            <summary>E3 (same as ExtAxis3)</summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.ToString">
-            <summary>
-            Returns a string representation
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.Equals(System.Object)">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.ToString">
             <inheritdoc />
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionData.GetHashCode">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Equals(System.Object)">
             <inheritdoc />
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot">
-            <summary>
-            Stream Motion packet types for PC to Robot communication
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Start">
-            <summary>
-            Start streaming motion
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Command">
-            <summary>
-            Motion command packet
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Stop">
-            <summary>
-            Stop streaming motion
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeToRobot.Request">
-            <summary>
-            Request threshold information
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot">
-            <summary>
-            Stream Motion packet types for Robot to PC communication
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot.State">
-            <summary>
-            Robot state/status packet
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.PacketTypeFromRobot.Ack">
-            <summary>
-            Acknowledgment packet (response to Request)
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs">
-            <summary>
-            Event arguments for receive error events
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.Exception">
-            <summary>
-            The exception that occurred during receiving
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.IsStreaming">
-            <summary>
-            Indicates whether streaming is still active after the error
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.#ctor(System.Exception,System.Boolean)">
-            <summary>
-            Creates a new instance of ReceiveErrorEventArgs
-            </summary>
-            <param name="exception">The exception that occurred</param>
-            <param name="isStreaming">Whether streaming is still active</param>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.ReceiveErrorEventArgs.ToString">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.IOValue.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags">
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable">
             <summary>
-            Robot status flags from state packet
+            Table of allowable limits of one axis for one type of limit.
+            The limit depends on the speed of the flange center: the table gives 20 values, for speeds up to 1/20, 2/20, ... 20/20 of <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/>,
+            with no payload and with the maximum payload.
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.None">
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.StageCount">
             <summary>
-            No flags set
+            Number of speed stages of a table
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.ReadyForCommands">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.Axis">
             <summary>
-            Robot is ready to receive command packets
+            Axis number (1 to 9)
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.CommandReceived">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.Type">
             <summary>
-            Robot has received at least one command packet
+            Type of limit
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.SystemReady">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed">
             <summary>
-            System ready (SYSRDY)
+            Maximum speed of the flange center (Vmax, system variable $STMO_GRP[1].$MAX_SPD), in mm/s
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatusFlags.InMotion">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.IntermediateCheckTime">
             <summary>
-            Robot is in motion
+            Time interval of the intermediate check of the limits, in seconds
             </summary>
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.NoPayload">
             <summary>
-            Robot status from state packet
+            Limits with no payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/> (20 values)
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.RawValue">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxPayload">
+            <summary>
+            Limits with the maximum payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/> (20 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.ReferenceValue">
+            <summary>
+            Reference limit: value with the maximum payload at the maximum speed.
+            It is the value of the system variables $STMO_GRP[1].$JNT_VEL_LIM, $JNT_ACC_LIM or $JNT_JRK_LIM.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.IsAxisPresent">
+            <summary>
+            Indicates if the axis exists (at least one value is not 0)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.GetValue(System.Double,System.Double,System.Double)">
+            <summary>
+            Computes the limit for a given flange speed and payload, as the robot does when $STMO_GRP[1].$LMT_MODE is 0:
+            linear interpolation between the speed stages (the first stage applies below Vmax/20, and values are extrapolated above Vmax),
+            then linear interpolation between no payload and maximum payload.
+            </summary>
+            <param name="flangeSpeed">Peak speed of the flange center, in mm/s</param>
+            <param name="payload">Payload mass, in kg</param>
+            <param name="maxPayload">Maximum payload of the robot, in kg</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StatusReceivedEventArgs">
+            <summary>
+            Arguments of the StatusReceived event
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatusReceivedEventArgs.Status">
+            <summary>
+            Last status received from the robot
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StatusReceivedEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.SessionEventArgs">
+            <summary>
+            Arguments of the session events
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.SessionEventArgs.SessionIndex">
+            <summary>
+            Index of the session since the connection (starts at 1)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SessionEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndedEventArgs">
+            <summary>
+            Arguments of the SessionEnded event
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndedEventArgs.Reason">
+            <summary>
+            Reason of the end of the session
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndedEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.MotionEventArgs">
+            <summary>
+            Arguments of the motion events
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.MotionEventArgs.MotionId">
+            <summary>
+            Identifier of the motion, returned by Enqueue. 0 if there is no motion.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.MotionEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionErrorEventArgs">
+            <summary>
+            Arguments of the ErrorOccurred event
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionErrorEventArgs.Exception">
+            <summary>
+            Error that occurred
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionErrorEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs">
+            <summary>
+            Arguments of the SetpointRequested event.
+            Call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetJoints(UnderAutomation.Fanuc.Common.JointsPosition)"/>, <see cref="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetCartesian(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/> or <see cref="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Hold"/> to give the next position to send.
+            The object is only valid during the call of the event handler.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Status">
+            <summary>
+            Last status received from the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.CycleIndex">
+            <summary>
+            Index of the requested position since the start of the callback streaming (starts at 0)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Time">
+            <summary>
+            Time of the requested position since the start of the callback streaming, in seconds (CycleIndex x cycle time)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetJoints(UnderAutomation.Fanuc.Common.JointsPosition)">
+            <summary>
+            Gives the next joint position to send. The callback streaming must be in joint format.
+            </summary>
+            <param name="position">Joint position in degrees (mm for linear axes)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetCartesian(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Gives the next Cartesian position to send (flange center in the world frame). The callback streaming must be in Cartesian format.
+            Extended axes values are used when the position is an <see cref="T:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>, otherwise they are 0.
+            </summary>
+            <param name="position">Cartesian position</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Hold">
+            <summary>
+            Keeps the last position. If the robot is moving, it stops smoothly.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits">
+            <summary>
+            Allowable velocity, acceleration and jerk limits of the robot axes, read from the robot.
+            The robot stops with an alarm when a position sent to it exceeds these limits.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.AxisCount">
+            <summary>
+            Number of axes of the robot (axes with limits)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.MaxSpeed">
+            <summary>
+            Maximum speed of the flange center (Vmax, system variable $STMO_GRP[1].$MAX_SPD), in mm/s
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.IntermediateCheckTime">
+            <summary>
+            Time interval of the intermediate check of the limits, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.ReferenceLimits">
+            <summary>
+            Reference limits of each axis: values with the maximum payload at the maximum speed.
+            They are equal to the system variables $STMO_GRP[1].$JNT_VEL_LIM, $JNT_ACC_LIM and $JNT_JRK_LIM, and they are always safe.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.GetTable(System.Int32,UnderAutomation.Robotics.Motion.LimitType)">
+            <summary>
+            Returns the table of limits of one axis
+            </summary>
+            <param name="axis">Axis number (1 to 9)</param>
+            <param name="type">Type of limit</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.ComputeLimits(System.Double,System.Double,System.Double)">
+            <summary>
+            Computes the limits of all axes for a given flange speed and payload, as the robot does when $STMO_GRP[1].$LMT_MODE is 0.
+            </summary>
+            <param name="flangeSpeed">Peak speed of the flange center, in mm/s</param>
+            <param name="payload">Payload mass, in kg</param>
+            <param name="maxPayload">Maximum payload of the robot, in kg</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionLimits.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState">
+            <summary>
+            State of a Stream Motion client
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Disconnected">
+            <summary>
+            The client is not connected
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Connected">
+            <summary>
+            The client is connected but the robot does not send its status (call StartMonitoring)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Monitoring">
+            <summary>
+            The robot sends its status, but no program is waiting on an IBGN start instruction
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Ready">
+            <summary>
+            A program is waiting on an IBGN start instruction and the robot accepts positions
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Streaming">
+            <summary>
+            Positions are sent to the robot every communication cycle
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionState.Finishing">
+            <summary>
+            The last position was sent. The client waits for the robot to leave the IBGN start instruction.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndReason">
+            <summary>
+            Reason of the end of a Stream Motion session
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndReason.Finished">
+            <summary>
+            The session was finished normally. The program continues after the IBGN end instruction.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndReason.ProgramStopped">
+            <summary>
+            The robot left the IBGN start instruction before the end of the session: program stopped, aborted, or alarm on the robot.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndReason.StatusLost">
+            <summary>
+            No status was received from the robot during the configured timeout
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.SessionEndReason.Disconnected">
+            <summary>
+            The client was disconnected
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics">
+            <summary>
+            Communication statistics of a Stream Motion client, since the status output was started
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.StatusCount">
+            <summary>
+            Number of status received from the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.LostStatusCount">
+            <summary>
+            Number of status sent by the robot but not received (detected with the sequence numbers)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.CommandCount">
+            <summary>
+            Number of positions sent to the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.CatchUpCommandCount">
+            <summary>
+            Number of extra positions sent to fill the robot buffer again after lost or late status
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.UnderrunCount">
+            <summary>
+            Number of times the queue became empty while the robot was moving
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.EstimatedBufferLevel">
+            <summary>
+            Estimated number of positions waiting in the robot buffer
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.MeanStatusInterval">
+            <summary>
+            Mean time between two received status, measured with the PC clock, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.MaxStatusInterval">
+            <summary>
+            Maximum time between two received status, measured with the PC clock, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.MaxProcessingTime">
+            <summary>
+            Maximum time spent to process a status and send the positions, in seconds
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatistics.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus">
+            <summary>
+            Status sent by the robot every communication cycle
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.SequenceNumber">
+            <summary>
+            Sequence number of this status. It starts at 1 when the status output starts.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.Timestamp">
+            <summary>
+            Time stamp of the robot when the position and the motor currents were read, in ms (resolution 2 ms)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.RawStatus">
             <summary>
             Raw status byte
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.Flags">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.IsWaitingForCommand">
             <summary>
-            Status flags
+            The robot executes an IBGN start instruction and waits for positions
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.ReadyForCommands">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.IsCommandReceived">
             <summary>
-            Robot is ready to receive command packets
+            The robot received at least one position during the current IBGN start instruction
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.CommandReceived">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.IsSystemReady">
             <summary>
-            Robot has received at least one command packet
+            System ready (SYSRDY) is ON
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.SystemReady">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.IsMoving">
             <summary>
-            System ready (SYSRDY)
+            The robot is moving
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.InMotion">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.OutputDivider">
             <summary>
-            Robot is in motion
+            With protocol version 3 or later, the robot sends a status once every n communication cycles when it slows down by itself,
+            and this value is n. It is 1 in normal operation and with older protocol versions.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.ToString">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.JointPosition">
             <summary>
-            Returns a string representation of the status
+            Current joint position of the robot (servo position), in degrees (mm for linear axes)
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.Equals(System.Object)">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.CartesianPosition">
+            <summary>
+            Current Cartesian position of the robot (servo position) in the world frame, with extended axes.
+            It is the flange center, or the tool center point when the system variable $STMO.$STAT_US_TCP is TRUE.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.MotorCurrents">
+            <summary>
+            Motor current of each axis, in A (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOType">
+            <summary>
+            Type of the I/O read in this status
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOIndex">
+            <summary>
+            Index of the first I/O read in this status
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOMask">
+            <summary>
+            Mask of the I/O read in this status
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOValue">
+            <summary>
+            State of the 16 I/O read in this status. Bit 0 is the I/O at <see cref="P:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOIndex"/>.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ToString">
             <inheritdoc />
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.RobotStatus.GetHashCode">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.Equals(System.Object)">
             <inheritdoc />
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket">
-            <summary>
-            State packet received from the robot containing current position, status, and motor currents
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ReceivedAtTicks">
-            <summary>
-            Time when this packet was received on the PC (UTC ticks)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ReceivedAt">
-            <summary>
-            Time when this packet was received on the PC
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.PacketType">
-            <summary>
-            Packet type (always State=0)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.VersionNumber">
-            <summary>
-            Protocol version number
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.SequenceNumber">
-            <summary>
-            Sequence number for packet tracking
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.Status">
-            <summary>
-            Robot status flags
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.IORead">
-            <summary>
-            Result of I/O read operation
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.TimeStamp">
-            <summary>
-            Time stamp when position data and motor current are recorded (ms, resolution 2ms)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.CartesianPosition">
-            <summary>
-            Current Cartesian position (world to tool0)
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.JointPosition">
-            <summary>
-            Current joint position
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.MotorCurrents">
-            <summary>
-            Current motor currents (Amperes)
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StatePacket.ToString">
-            <summary>
-            Returns a string representation
-            </summary>
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs">
-            <summary>
-            Event arguments for state received events
-            </summary>
-        </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.State">
-            <summary>
-            The state packet received from the robot
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.#ctor(UnderAutomation.Fanuc.StreamMotion.Data.StatePacket)">
-            <summary>
-            Creates a new instance of StateReceivedEventArgs
-            </summary>
-            <param name="state">The state packet received from the robot</param>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StateReceivedEventArgs.ToString">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.GetHashCode">
             <inheritdoc />
-        </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType">
-            <summary>
-            Threshold types for request packets
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Velocity">
-            <summary>
-            Velocity threshold (deg/s)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Acceleration">
-            <summary>
-            Acceleration threshold (deg/s²)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType.Jerk">
-            <summary>
-            Jerk threshold (deg/s³)
-            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase">
             <summary>
-            Base class for Stream Motion client (J519 option)
-            Provides UDP-based real-time streaming motion control.
-            The robot sends state packets continuously at high frequency (~500Hz).
-            Commands should be sent in response to StateReceived events using the sequence number from the received state.
+            Stream Motion client (J519 option): real-time control of the robot by sending a position every communication cycle.
             </summary>
+            <remarks>
+            Typical use:
+            <list type="number">
+            <item>Connect, then call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring"/> to receive the robot status.</item>
+            <item>Run on the robot a program with the instructions IBGN start[n] and IBGN end[n], in AUTO mode with 100% override.</item>
+            <item>Call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)"/> with trajectories. The session starts when the program reaches IBGN start[n].</item>
+            <item>Call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/>: the program continues after IBGN end[n].</item>
+            </list>
+            </remarks>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.#ctor">
             <summary>
-            Creates a new instance of the Stream Motion client
+            Creates a Stream Motion client
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Ip">
@@ -51092,7 +51262,12 @@
         </member>
         <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Port">
             <summary>
-            UDP port used for communication
+            UDP port of the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ProtocolVersion">
+            <summary>
+            Protocol version used by this client
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Connected">
@@ -51100,164 +51275,416 @@
             Indicates whether the client is connected
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsConnected">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.State">
             <summary>
-            Indicates whether the client is connected (alias for Connected)
+            Current state of the client
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsStreaming">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.LastStatus">
             <summary>
-            Indicates whether streaming is currently active
+            Last status received from the robot, or null if no status was received
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.LastState">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CycleTime">
             <summary>
-            Last received state packet
+            Communication cycle of the robot measured from the status, in seconds (for example 0.008 or 0.002). 0 while it is not known.
+            Trajectories are sampled at this period.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendTimeoutMs">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.BufferLead">
             <summary>
-            Send timeout in milliseconds
+            Number of positions sent in advance and kept in the robot buffer during the current session
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReceiveTimeoutMs">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SessionCount">
             <summary>
-            Receive timeout in milliseconds
+            Number of sessions started since the connection. A session starts when positions are sent after an IBGN start instruction.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.RobotFrequency">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Statistics">
             <summary>
-            Frequency based on robot timestamp (Hz). Calculated from consecutive packet timestamps.
+            Communication statistics since the status output was started
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.MeasuredFrequency">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Limits">
             <summary>
-            Measured frequency based on PC receive time (Hz). Actual rate at which packets arrive.
+            Limits read from the robot by <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReadLimits"/> or when the status output starts. Null if they were not read.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.PacketCount">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits">
             <summary>
-            Total number of state packets received since streaming started
+            Joint limits used to stop the robot smoothly when the positions stop in joint format.
+            It is set to the reference limits of the robot when the limits are read.
             </summary>
         </member>
-        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StateReceived">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CartesianLimits">
             <summary>
-            Event raised when a state packet is received from the robot.
-            This event is raised on a background thread at high frequency (~500Hz).
-            It is recommended to call SendCommand() within this handler to maintain proper timing.
+            Cartesian limits used to stop the robot smoothly when the positions stop in Cartesian format.
+            When it is null, conservative values are used.
             </summary>
         </member>
-        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReceiveError">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTolerance">
             <summary>
-            Event raised when an error occurs during packet receiving
+            Maximum distance between the first position of a trajectory and the position where it starts, in mm or degrees (default 0.01).
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ConnectInternal(System.String,System.Int32,System.Int32,System.Int32)">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IOAnticipation">
             <summary>
-            Connect to the robot
+            Time in seconds by which the I/O events of trajectories are sent before their position (default 0).
+            It compensates the delay between the reception of a position by the robot and the real motion.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndJointPosition">
+            <summary>
+            Position where the next queued joint trajectory must start: end of the queue, or current position when the queue is empty.
+            Null if no status was received.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndCartesianPosition">
+            <summary>
+            Position where the next queued Cartesian trajectory must start: end of the queue, or last position sent when the queue is empty.
+            Before any Cartesian position was sent, it is the Cartesian position of the status (flange center in the world frame by default).
+            Some controllers expect Cartesian positions of the active tool frame: the start of the first trajectory is then not checked.
+            Null if no status was received.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueuedMotionCount">
+            <summary>
+            Number of trajectories waiting or running
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsCallbackStreaming">
+            <summary>
+            Indicates if positions are given by the <see cref="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested"/> event
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsTracking">
+            <summary>
+            Indicates if the robot follows a target given by <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)"/> or <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/>
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.HasActiveFormat">
+            <summary>
+            Indicates if the format of the positions is fixed. A session uses only one format, chosen by the first queued trajectory,
+            <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/> or <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)"/>. While this is true, positions in the other format
+            throw a <see cref="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionException"/> with <see cref="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.FormatMismatch"/>.
+            It becomes false when the queue is empty and no session is active: call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> to use the other format in the next session.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ActiveFormat">
+            <summary>
+            Format of the positions of the current session or of the queued trajectories. Only valid when <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.HasActiveFormat"/> is true.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StatusReceived">
+            <summary>
+            Raised when a status is received. It is raised on a dedicated thread and only with the latest status:
+            if the handler is slow, some status are skipped.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SessionStarted">
+            <summary>
+            Raised when a session starts (first position sent after an IBGN start instruction)
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SessionEnded">
+            <summary>
+            Raised when a session ends
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.MotionCompleted">
+            <summary>
+            Raised when the robot received the last position of a queued trajectory
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Underrun">
+            <summary>
+            Raised when the queue becomes empty while the robot is moving. The robot is then stopped smoothly.
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ErrorOccurred">
+            <summary>
+            Raised when an error occurs in the communication thread
+            </summary>
+        </member>
+        <member name="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested">
+            <summary>
+            Raised in callback streaming mode (see <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)"/>) each time a position must be sent.
+            The handler must give the next position with SetJoints or SetCartesian.
+            It runs on the communication thread, a few cycles before the robot executes the position, and must return quickly.
+            The first requested position (CycleIndex 0) must be the current position of the robot, and the next ones must connect smoothly to it.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ConnectInternal(System.String,UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase)">
+            <summary>
+            Opens the UDP socket to the robot. The robot does not send anything before <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring"/> is called.
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Disconnect">
             <summary>
-            Disconnect from the robot
+            Disconnects from the robot. If a session is active, the robot is stopped smoothly and the session is finished first.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Start">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring">
             <summary>
-            Start streaming motion. This starts a background thread that continuously receives state packets
-            and raises the StateReceived event for each packet.
+            Starts the status output of the robot. The robot then sends its status every communication cycle.
+            The limits of the robot are read first when they are not known yet, and this method returns when the communication cycle is measured.
+            </summary>
+            <exception cref="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionException">No status was received. Check the IP address, the system variable $STMO.$PHYS_PORT,
+            and that the protocol version is not higher than the system variable $STMO.$USABLE_VER.</exception>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StopMonitoring">
+            <summary>
+            Stops the status output of the robot. Not allowed during a session: call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> first.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Stop">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForReady(System.Int32)">
             <summary>
-            Stop streaming motion
+            Waits until a program executes an IBGN start instruction and the robot accepts positions.
+            </summary>
+            <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+            <returns>True if the robot accepts positions, false after the timeout</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReadLimits">
+            <summary>
+            Reads the velocity, acceleration and jerk limits of all axes from the robot.
+            The status output is stopped during the reading and started again.
+            Some controllers do not answer while a program waits on an IBGN start instruction: read the limits before.
+            Not allowed during a session.
+            </summary>
+            <returns>Limits of the robot. They are also stored in <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Limits"/>, and the reference limits in <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits"/>.</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)">
+            <summary>
+            Adds a trajectory at the end of the queue. The session starts automatically when the robot accepts positions,
+            and the trajectories are sent one after the other, without any change between them.
+            </summary>
+            <param name="trajectory">Trajectory to send. It must start at <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndJointPosition"/> or <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndCartesianPosition"/>,
+            and trajectories created from samples must use the communication cycle of the robot (<see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CycleTime"/>).
+            Its I/O events must use signals created by <see cref="M:UnderAutomation.Fanuc.Motion.FanucMotion.Signal(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>.</param>
+            <returns>Identifier of the motion, to use with <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForMotion(System.Int32,System.Int32)"/></returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForMotion(System.Int32,System.Int32)">
+            <summary>
+            Waits until the robot received the last position of a queued trajectory
+            </summary>
+            <param name="motionId">Identifier returned by <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)"/></param>
+            <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+            <returns>True when the trajectory was completely sent, false after the timeout or if the trajectory was cancelled</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForIdle(System.Int32)">
+            <summary>
+            Waits until the queue is empty and the robot does not move. During target tracking, waits until the robot is stopped on the target.
+            </summary>
+            <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+            <returns>True when idle, false after the timeout</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)">
+            <summary>
+            Finishes the session when the queue is empty and the robot is at rest: the last position is sent with the end flag,
+            and the program continues after the IBGN end instruction. If a program waits on IBGN start without session, it is released at the current position.
+            The callback streaming and the target tracking are stopped first.
+            </summary>
+            <param name="timeoutMs">Maximum waiting time in milliseconds</param>
+            <returns>True when the session is finished, false after the timeout or if the session ended for another reason</returns>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Override">
+            <summary>
+            Speed of the queued trajectories in percent (greater than 0, up to 100, default 100). The robot itself must run at 100% override,
+            so this value slows down the trajectories on their path: the positions are the same, only the time is stretched.
+            A change is applied progressively.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendCommand(UnderAutomation.Fanuc.StreamMotion.Data.CommandPacket)">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IsPaused">
             <summary>
-            Queue a motion command to be sent with the next state packet's sequence number.
-            The command will be sent automatically when the next state packet is received.
-            It is recommended to call this method within the StateReceived event handler.
-            </summary>
-            <param name="command">Command packet to send</param>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendJointCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,System.Boolean)">
-            <summary>
-            Queue a joint motion command
+            Indicates if the queued trajectories are paused
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendJointCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.UInt16,System.UInt16,System.Boolean)">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Pause">
             <summary>
-            Queue a joint motion command with I/O read
+            Stops smoothly on the path of the current trajectory. The queue is kept and <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Resume"/> continues the motion.
+            Use it instead of a HOLD, which is not available during Stream Motion.
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SendCartesianCommand(UnderAutomation.Fanuc.StreamMotion.Data.MotionData,System.Boolean)">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Resume">
             <summary>
-            Queue a Cartesian motion command
+            Continues the queued trajectories after <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Pause"/>
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.RequestThreshold(System.UInt32,UnderAutomation.Fanuc.StreamMotion.Data.ThresholdType)">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Abort">
             <summary>
-            Request threshold data for an axis.
-            Note: This is a synchronous blocking call that should not be called during active streaming.
+            Stops smoothly on the path of the current trajectory, then cancels the current and the queued trajectories.
+            The session stays open and the robot keeps its position. The callback streaming and the target tracking are stopped,
+            and the robot stops as fast as the limits allow.
             </summary>
-            <param name="axisNumber">Axis number (1-9)</param>
-            <param name="thresholdType">Type of threshold to request</param>
-            <returns>Acknowledgment packet with threshold data</returns>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)">
+            <summary>
+            Starts to take the positions from the <see cref="E:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested"/> event instead of the queue.
+            The session starts automatically when the robot accepts positions.
+            </summary>
+            <param name="format">Format of the positions given by the event</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StopCallbackStreaming">
+            <summary>
+            Stops the callback streaming. The last position is kept, and the robot stops smoothly if it was moving.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)">
+            <summary>
+            Starts to follow a target position: the robot goes to the last target given by <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)"/> or
+            <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/> as fast as the limits allow, and stops on it. The target can change at any time,
+            even during the motion: the robot then goes smoothly to the new target.
+            The limits are <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits"/> in joint format, and <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CartesianLimits"/> in Cartesian format (the linear and angular limits
+            are shared between X, Y, Z and between the 3 rotation axes). Each axis moves independently, so the path to the target is not a straight line.
+            The first target is the current position. The session starts automatically when the robot accepts positions.
+            The delay between a new target and the start of the motion is about <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.BufferLead"/> cycles plus the delay of the robot:
+            reduce the buffer lead time of the connection parameters for a faster reaction.
+            </summary>
+            <param name="format">Format of the targets</param>
+            <param name="speedPercent">Velocity in percent of the limits (greater than 0, up to 100)</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+            <exception cref="T:System.InvalidOperationException">The limits for this format are not known.</exception>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)">
+            <summary>
+            Gives a new joint target to follow (see <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/>)
+            </summary>
+            <param name="target">Target joint position</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)">
+            <summary>
+            Gives a new Cartesian target to follow (see <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/>).
+            Extended axes are used when the target is an <see cref="T:UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>, otherwise they keep their target.
+            </summary>
+            <param name="target">Target position, in the frame of the Cartesian positions sent to the robot</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StopTracking">
+            <summary>
+            Stops the target tracking. If the robot was moving, it stops as fast as the limits allow, then it keeps its position.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)">
+            <summary>
+            Adds a range of 16 consecutive I/O to read. Each position sent to the robot reads one range, so several ranges are read one after the other.
+            Values are only read during a session.
+            </summary>
+            <param name="type">I/O type</param>
+            <param name="index">Index of the first I/O of the range (starts at 1)</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ClearIOMonitors">
+            <summary>
+            Removes all ranges of I/O to read
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.IOValues">
+            <summary>
+            Last values of the ranges of I/O added with <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.GetIO(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)">
+            <summary>
+            Returns the last read state of one I/O. The I/O must be in a range added with <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>.
+            It returns false while the range was never read.
+            </summary>
+            <param name="type">I/O type</param>
+            <param name="index">I/O index</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WriteIO(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32,System.Boolean)">
+            <summary>
+            Writes one digital I/O with the next position sent to the robot (only during a session)
+            </summary>
+            <param name="type">I/O type</param>
+            <param name="index">I/O index (starts at 1)</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WriteIOGroup(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Writes up to 16 consecutive digital I/O with the next position sent to the robot (only during a session)
+            </summary>
+            <param name="type">I/O type</param>
+            <param name="index">Index of the first I/O (starts at 1)</param>
+            <param name="mask">Bits of the I/O to write. Bit 0 is the I/O at index.</param>
+            <param name="value">Values of the I/O. Bit 0 is the I/O at index.</param>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Dispose">
             <summary>
-            Dispose the client
+            Disconnects and releases the resources
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Dispose(System.Boolean)">
             <summary>
-            Dispose the client
-            </summary>
-        </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finalize">
-            <summary>
-            Finalizer
+            Disconnects and releases the resources
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientInternal">
             <summary>
-            Internal Stream Motion client for use within FanucRobot
+            Stream Motion client used by <see cref="T:UnderAutomation.Fanuc.FanucRobot"/>
             </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase">
             <summary>
-            Base connection parameters for Stream Motion (J519)
+            Connection parameters for Stream Motion (J519 option)
             </summary>
         </member>
         <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_PORT">
             <summary>
-            Default UDP port for Stream Motion (J519)
+            Default UDP port of the robot for Stream Motion
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_SEND_TIMEOUT_MS">
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_PROTOCOL_VERSION">
             <summary>
-            Default send timeout in milliseconds
+            Default protocol version. Version 1 is accepted by all controllers.
             </summary>
         </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_RECEIVE_TIMEOUT_MS">
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_BUFFER_LEAD_TIME">
             <summary>
-            Default receive timeout in milliseconds
+            Default time of positions kept in advance in the robot buffer, in seconds
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_PACKET_STACK_SIZE">
+            <summary>
+            Default size of the robot buffer (default value of the system variable $STMO.$PKT_STACK)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.DEFAULT_STATUS_TIMEOUT_MS">
+            <summary>
+            Default maximum time without status from the robot, in milliseconds
             </summary>
         </member>
         <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.Port">
             <summary>
-            UDP port for Stream Motion communication
+            UDP port of the robot for Stream Motion
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.SendTimeoutMs">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.ProtocolVersion">
             <summary>
-            Send timeout in milliseconds
+            Protocol version, from 1 to 3. The highest version accepted by a controller is in the system variable $STMO.$USABLE_VER.
+            A higher version raises an alarm on the robot and no status is received.
+            Version 2 sends joint positions in double precision. Version 3 lets the robot send its status less often when it slows down by itself.
+            A version 4 exists on some recent controllers for ROS 2 only. It is not supported.
             </summary>
         </member>
-        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.ReceiveTimeoutMs">
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.BufferLeadTime">
             <summary>
-            Receive timeout in milliseconds
+            Time of positions sent in advance and kept in the robot buffer, in seconds.
+            It protects against late packets from the PC, but adds the same delay to the motion.
+            It is converted to a number of communication cycles, limited by <see cref="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.PacketStackSize"/> minus 2. 0 disables the advance.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.PacketStackSize">
+            <summary>
+            Size of the robot buffer. It must be equal to the system variable $STMO.$PKT_STACK of the robot (2 to 10).
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.StatusTimeoutMs">
+            <summary>
+            Maximum time without status from the robot before the connection is considered lost, in milliseconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.HighPriority">
+            <summary>
+            Runs the communication thread with a high priority to reduce delays (default: true)
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.ToString">
@@ -51269,71 +51696,123 @@
         <member name="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="T:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer">
-            <summary>
-            Binary serialization utilities for Stream Motion protocol (Big Endian)
-            Compatible with .NET 3.5+
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.PROTOCOL_VERSION">
-            <summary>
-            Protocol version
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.HEADER_SIZE">
-            <summary>
-            Header size (packet type + version)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.START_PACKET_SIZE">
-            <summary>
-            Start packet size (header only)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.STOP_PACKET_SIZE">
-            <summary>
-            Stop packet size (header only)
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.COMMAND_PACKET_SIZE">
-            <summary>
-            Command packet size: header(8) + seq(4) + lastData(1) + readIO(5) + dataStyle(1) + writeIO(7) + unused(2) + motionData(36) = 64
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.REQUEST_PACKET_SIZE">
-            <summary>
-            Request packet size: header(8) + axisNo(4) + threshType(4) = 16
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.STATE_PACKET_SIZE">
-            <summary>
-            State packet size: header(8) + seq(4) + status(1) + readIO(7) + timestamp(4) + cartesian(36) + joint(36) + motorCurrent(36) = 132
-            </summary>
-        </member>
-        <member name="F:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionSerializer.ACK_PACKET_SIZE">
-            <summary>
-            Ack packet size: header(8) + axisNo(4) + threshType(4) + maxCartSpd(4) + unknown(4) + noLoad(80) + maxLoad(80) = 184
-            </summary>
-        </member>
         <member name="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient">
             <summary>
-            Stream Motion client for standalone use (J519 option)
-            Provides UDP-based real-time streaming motion control for Fanuc robots
+            Stream Motion client for standalone use (J519 option): real-time control of the robot by sending a position every communication cycle.
             </summary>
         </member>
         <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient.#ctor">
             <summary>
-            Creates a new instance of the Stream Motion client
+            Creates a new Stream Motion client
             </summary>
         </member>
-        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient.Connect(System.String,System.Int32,System.Int32,System.Int32)">
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionClient.Connect(System.String,UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase)">
             <summary>
-            Connect to the robot using Stream Motion protocol
+            Connects to the robot. Call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring"/> next to receive the robot status.
             </summary>
             <param name="ip">IP address of the robot</param>
-            <param name="port">UDP port (default: 60015)</param>
-            <param name="sendTimeoutMs">Send timeout in milliseconds</param>
-            <param name="receiveTimeoutMs">Receive timeout in milliseconds</param>
+            <param name="parameters">Connection parameters. Default values are used when null.</param>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionError">
+            <summary>
+            Kind of Stream Motion error
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.NotConnected">
+            <summary>
+            The client is not connected
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.NotMonitoring">
+            <summary>
+            The robot status output is not started (call StartMonitoring)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.NoStatus">
+            <summary>
+            No status was received from the robot
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.VersionMismatch">
+            <summary>
+            The robot uses another protocol version than the one requested
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.SessionActive">
+            <summary>
+            The operation is not allowed while a session is active
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.SourceBusy">
+            <summary>
+            Another source of positions is active
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.FormatMismatch">
+            <summary>
+            The position format does not match the format of the session. A session uses only one format:
+            call <see cref="M:UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> and use the other format in the next session.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.CycleTimeMismatch">
+            <summary>
+            The trajectory was sampled with a period that is not the communication cycle of the robot
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.StartMismatch">
+            <summary>
+            The first position of the trajectory is too far from the position where it starts
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.LimitsUnavailable">
+            <summary>
+            The robot did not send its limits
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.SessionEnded">
+            <summary>
+            The session ended before the end of the operation
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.CallbackFailed">
+            <summary>
+            The callback did not give a position
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.CommunicationError">
+            <summary>
+            Error during the communication with the robot
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Fanuc.StreamMotion.StreamMotionError.NotTracking">
+            <summary>
+            The target tracking is not started (call StartTracking)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Fanuc.StreamMotion.StreamMotionException">
+            <summary>
+            Error raised by the Stream Motion client
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionException.#ctor(UnderAutomation.Fanuc.StreamMotion.StreamMotionError,System.String)">
+            <summary>
+            Creates a Stream Motion exception
+            </summary>
+            <param name="error">Kind of error</param>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:UnderAutomation.Fanuc.StreamMotion.StreamMotionException.#ctor(UnderAutomation.Fanuc.StreamMotion.StreamMotionError,System.String,System.Exception)">
+            <summary>
+            Creates a Stream Motion exception with an inner exception
+            </summary>
+            <param name="error">Kind of error</param>
+            <param name="message">Error message</param>
+            <param name="inner">Inner exception</param>
+        </member>
+        <member name="P:UnderAutomation.Fanuc.StreamMotion.StreamMotionException.Error">
+            <summary>
+            Kind of error
+            </summary>
         </member>
         <member name="T:UnderAutomation.Fanuc.Telnet.Internal.TelnetClientBase">
             <summary>
@@ -51610,6 +52089,1216 @@
             <inheritdoc />
         </member>
         <member name="M:UnderAutomation.Fanuc.Telnet.KclCommandReceived.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Geometry.CartesianPose">
+            <summary>
+            Cartesian pose: position X, Y, Z in mm, orientation, and optional values of external axes (mm or degrees).
+            It can describe a position of the robot or a frame.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.#ctor">
+            <summary>
+            Creates a pose at the origin, without rotation and without external axes
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.#ctor(System.Double,System.Double,System.Double,UnderAutomation.Robotics.Geometry.Orientation)">
+            <summary>
+            Creates a pose from a position and an orientation, without external axes
+            </summary>
+            <param name="x">X in mm</param>
+            <param name="y">Y in mm</param>
+            <param name="z">Z in mm</param>
+            <param name="orientation">Orientation (null for no rotation)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.FromEuler(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,UnderAutomation.Robotics.Geometry.EulerConvention)">
+            <summary>
+            Creates a pose from a position and three Euler angles, without external axes
+            </summary>
+            <param name="x">X in mm</param>
+            <param name="y">Y in mm</param>
+            <param name="z">Z in mm</param>
+            <param name="a">First angle in degrees</param>
+            <param name="b">Second angle in degrees</param>
+            <param name="c">Third angle in degrees</param>
+            <param name="convention">Convention of the angles</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.CartesianPose.X">
+            <summary>
+            X in mm
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.CartesianPose.Y">
+            <summary>
+            Y in mm
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.CartesianPose.Z">
+            <summary>
+            Z in mm
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.CartesianPose.Orientation">
+            <summary>
+            Orientation. Setting null gives the identity orientation.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.CartesianPose.ExternalAxes">
+            <summary>
+            Values of the external axes, in mm or degrees. Empty when the pose has no external axes. Setting null gives an empty array.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.Multiply(UnderAutomation.Robotics.Geometry.CartesianPose)">
+            <summary>
+            Returns the composition of this frame with another pose: the pose <paramref name="other"/>, expressed in this frame, converted to the frame where this pose is expressed.
+            The external axes of the result are the ones of <paramref name="other"/>.
+            </summary>
+            <param name="other">Pose expressed in this frame</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.Inverse">
+            <summary>
+            Returns the inverse of this frame. The result has no external axes.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.CartesianPose.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Geometry.EulerConvention">
+            <summary>
+            Convention of three Euler angles (a, b, c) that describe an orientation. Angles are in degrees.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Geometry.EulerConvention.FixedXYZ">
+            <summary>
+            Rotation a around the fixed X axis, then b around the fixed Y axis, then c around the fixed Z axis: R = Rz(c) * Ry(b) * Rx(a).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Geometry.EulerConvention.MobileXYZ">
+            <summary>
+            Rotation a around X, then b around the new Y axis, then c around the new Z axis: R = Rx(a) * Ry(b) * Rz(c).
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Geometry.EulerConvention.MobileZYX">
+            <summary>
+            Rotation a around Z, then b around the new Y axis, then c around the new X axis: R = Rz(a) * Ry(b) * Rx(c).
+            It is the same orientation as <see cref="F:UnderAutomation.Robotics.Geometry.EulerConvention.FixedXYZ"/> with the angles in reverse order.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Geometry.EulerConvention.MobileZYZ">
+            <summary>
+            Rotation a around Z, then b around the new Y axis, then c around the new Z axis: R = Rz(a) * Ry(b) * Rz(c).
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Geometry.JointValues">
+            <summary>
+            Position of the axes of a robot: one value per axis, in degrees for rotary axes and in mm for linear axes
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.JointValues.#ctor(System.Double[])">
+            <summary>
+            Creates a joint position from the values of the axes. The array is copied.
+            </summary>
+            <param name="values">Value of each axis</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.JointValues.Values">
+            <summary>
+            Value of each axis, in degrees or mm
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.JointValues.Count">
+            <summary>
+            Number of axes
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.JointValues.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Geometry.Orientation">
+            <summary>
+            Orientation in space, stored as a unit quaternion (Qw + Qx.i + Qy.j + Qz.k).
+            It can be created from and converted to Euler angles, a rotation vector, an axis and an angle, or a rotation matrix.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.#ctor">
+            <summary>
+            Creates the identity orientation (no rotation)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.Orientation.Qw">
+            <summary>
+            Scalar part of the unit quaternion
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.Orientation.Qx">
+            <summary>
+            X component of the vector part of the unit quaternion
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.Orientation.Qy">
+            <summary>
+            Y component of the vector part of the unit quaternion
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Geometry.Orientation.Qz">
+            <summary>
+            Z component of the vector part of the unit quaternion
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.FromQuaternion(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates an orientation from a quaternion. The quaternion is normalized.
+            </summary>
+            <param name="qw">Scalar part</param>
+            <param name="qx">X component of the vector part</param>
+            <param name="qy">Y component of the vector part</param>
+            <param name="qz">Z component of the vector part</param>
+            <exception cref="T:System.ArgumentException">The quaternion is null or contains an invalid number</exception>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.FromEuler(System.Double,System.Double,System.Double,UnderAutomation.Robotics.Geometry.EulerConvention)">
+            <summary>
+            Creates an orientation from three Euler angles
+            </summary>
+            <param name="a">First angle in degrees</param>
+            <param name="b">Second angle in degrees</param>
+            <param name="c">Third angle in degrees</param>
+            <param name="convention">Convention of the angles</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.ToEuler(UnderAutomation.Robotics.Geometry.EulerConvention)">
+            <summary>
+            Returns the three Euler angles [a, b, c] of this orientation, in degrees.
+            For <see cref="F:UnderAutomation.Robotics.Geometry.EulerConvention.MobileZYZ"/>, b is between 0 and 180. For the other conventions, b is between -90 and 90.
+            When the orientation is singular (b = 0 or 180 for ZYZ, b = -90 or 90 for the others), only a combination of a and c is defined:
+            a is set to 0 for <see cref="F:UnderAutomation.Robotics.Geometry.EulerConvention.FixedXYZ"/>, and c is set to 0 for the other conventions.
+            </summary>
+            <param name="convention">Convention of the angles</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.FromAxisAngle(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a rotation around an axis
+            </summary>
+            <param name="x">X component of the axis</param>
+            <param name="y">Y component of the axis</param>
+            <param name="z">Z component of the axis</param>
+            <param name="angle">Rotation angle in degrees</param>
+            <exception cref="T:System.ArgumentException">The axis is a null vector</exception>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.ToAxisAngle">
+            <summary>
+            Returns the rotation axis and angle: [x, y, z, angle in degrees]. The axis is a unit vector and the angle is between 0 and 180.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.FromRotationVector(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates an orientation from a rotation vector: its direction is the rotation axis and its norm is the angle in degrees
+            </summary>
+            <param name="x">X component</param>
+            <param name="y">Y component</param>
+            <param name="z">Z component</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.ToRotationVector">
+            <summary>
+            Returns the rotation vector [x, y, z] of this orientation: its direction is the rotation axis and its norm is the angle in degrees (0 to 180)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.FromRotationMatrix(System.Double[0:,0:])">
+            <summary>
+            Creates an orientation from a rotation matrix (3x3, or 4x4 homogeneous matrix)
+            </summary>
+            <param name="matrix">Rotation matrix</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.ToRotationMatrix">
+            <summary>
+            Returns the 3x3 rotation matrix of this orientation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.Multiply(UnderAutomation.Robotics.Geometry.Orientation)">
+            <summary>
+            Returns the composition this x other: the orientation <paramref name="other"/>, expressed in the frame of this orientation, converted to the reference frame
+            </summary>
+            <param name="other">Right operand</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.Inverse">
+            <summary>
+            Returns the inverse rotation
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.AngleTo(UnderAutomation.Robotics.Geometry.Orientation)">
+            <summary>
+            Angle of the rotation between the two orientations, in degrees (0 to 180)
+            </summary>
+            <param name="other">Other orientation</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.Slerp(UnderAutomation.Robotics.Geometry.Orientation,UnderAutomation.Robotics.Geometry.Orientation,System.Double)">
+            <summary>
+            Spherical linear interpolation between two orientations, on the shortest way
+            </summary>
+            <param name="start">Orientation for t = 0</param>
+            <param name="end">Orientation for t = 1</param>
+            <param name="t">Interpolation parameter, usually between 0 and 1</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.Equals(System.Object)">
+            <summary>
+            Two orientations are equal when their quaternions are equal or opposite (q and -q give the same orientation)
+            </summary>
+            <param name="obj">Other object</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Geometry.Orientation.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.IO.DigitalSignal">
+            <summary>
+            Digital signal of a robot controller, identified by a group and an index.
+            The names of the groups and the valid indexes depend on the robot.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.IO.DigitalSignal.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates a digital signal
+            </summary>
+            <param name="group">Group of the signal, as defined by the robot</param>
+            <param name="index">Index of the signal in its group</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.IO.DigitalSignal.Group">
+            <summary>
+            Group of the signal, as defined by the robot
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.IO.DigitalSignal.Index">
+            <summary>
+            Index of the signal in its group
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.IO.DigitalSignal.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.IO.DigitalSignal.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.IO.DigitalSignal.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.CartesianLimits">
+            <summary>
+            Cartesian velocity, acceleration and jerk limits, for the position (mm) and for the orientation (degrees)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianLimits.#ctor">
+            <summary>
+            Creates limits with all values set to 0
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianLimits.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Creates limits with the given values
+            </summary>
+            <param name="linearVelocity">Linear velocity limit in mm/s</param>
+            <param name="linearAcceleration">Linear acceleration limit in mm/s²</param>
+            <param name="linearJerk">Linear jerk limit in mm/s³</param>
+            <param name="angularVelocity">Angular velocity limit in deg/s</param>
+            <param name="angularAcceleration">Angular acceleration limit in deg/s²</param>
+            <param name="angularJerk">Angular jerk limit in deg/s³</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.LinearVelocity">
+            <summary>
+            Linear velocity limit in mm/s
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.LinearAcceleration">
+            <summary>
+            Linear acceleration limit in mm/s²
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.LinearJerk">
+            <summary>
+            Linear jerk limit in mm/s³
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.AngularVelocity">
+            <summary>
+            Angular velocity limit in deg/s
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.AngularAcceleration">
+            <summary>
+            Angular acceleration limit in deg/s²
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianLimits.AngularJerk">
+            <summary>
+            Angular jerk limit in deg/s³
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianLimits.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianLimits.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianLimits.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.CartesianPathBuilder">
+            <summary>
+            Builds a Cartesian trajectory from a sequence of linear and circular motions, splines and shapes.
+            Create it with <see cref="M:UnderAutomation.Robotics.Motion.MotionPlanner.CreateCartesianPath(UnderAutomation.Robotics.Geometry.CartesianPose)"/>. Targets are poses of the tool of the planner, in its user frame.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianPathBuilder.EndPosition">
+            <summary>
+            Pose at the end of the motions added so far, as a pose of the tool in the user frame of the planner
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.MoveLinear(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a linear motion: the tool moves on a straight line and its orientation turns on the shortest way.
+            </summary>
+            <param name="target">Target pose. When it has no external axes, the external axes keep their current values.</param>
+            <param name="speed">Speed in mm/s</param>
+            <param name="termination">Termination: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.MoveLinearTime(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,UnderAutomation.Robotics.Motion.Termination)">
+            <summary>
+            Adds a linear motion that lasts a given time. The motion takes more time when the limits do not allow this duration.
+            </summary>
+            <param name="target">Target pose. When it has no external axes, the external axes keep their current values.</param>
+            <param name="duration">Duration in seconds</param>
+            <param name="termination">Termination: stop or overlap</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.MoveCircular(UnderAutomation.Robotics.Geometry.CartesianPose,UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a circular motion: the tool moves on the circle arc that passes through the via point and ends at the target.
+            The orientation turns from the current orientation to the orientation of the target (the orientation of the via point is not used).
+            </summary>
+            <param name="via">Point on the arc</param>
+            <param name="target">Target pose. When it has no external axes, the external axes keep their current values.</param>
+            <param name="speed">Speed in mm/s</param>
+            <param name="termination">Termination: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.MoveSpline(UnderAutomation.Robotics.Geometry.CartesianPose[],System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a smooth motion that passes through a list of positions (cubic spline) and ends at the last one.
+            The orientation passes through the orientation of each position. The speed is constant along the path,
+            except where the curvature, the change of orientation or the external axes need a lower speed.
+            The points must describe a smooth path: close or noisy points give high curvatures and a slow motion.
+            </summary>
+            <param name="points">Positions to pass through. A first position equal to the current position is ignored.
+            Two consecutive positions cannot have the same X, Y, Z with different orientations.</param>
+            <param name="speed">Speed in mm/s</param>
+            <param name="termination">Termination at the last position: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.AddCircle(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a full circle in the XY plane of a frame, counterclockwise around its Z axis.
+            The circle starts and ends at the point (radius, 0, 0) of the frame. A linear motion to this point is added first when the tool is not there.
+            The orientation of the tool does not change.
+            </summary>
+            <param name="plane">Frame of the circle, in the user frame of the planner: its origin is the center and its XY plane is the plane of the circle</param>
+            <param name="radius">Radius in mm</param>
+            <param name="speed">Speed in mm/s. It is reduced if the curvature needs it.</param>
+            <param name="termination">Termination at the end of the circle: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.AddHelix(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,System.Double,System.Double,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a helix around the Z axis of a frame, counterclockwise. It starts at the point (radius, 0, 0) of the frame
+            and rises by the pitch along Z at each turn. A linear motion to the start point is added first when the tool is not there.
+            The orientation of the tool does not change.
+            </summary>
+            <param name="plane">Frame of the helix, in the user frame of the planner: its origin is the center of the first turn</param>
+            <param name="radius">Radius in mm</param>
+            <param name="pitch">Distance along Z of the frame for each turn, in mm (negative to go down)</param>
+            <param name="turns">Number of turns (greater than 0, can be fractional)</param>
+            <param name="speed">Speed in mm/s. It is reduced if the curvature needs it.</param>
+            <param name="termination">Termination at the end of the helix: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.AddSpiral(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,System.Double,System.Double,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a spiral in the XY plane of a frame, counterclockwise around its Z axis. The distance to the center changes regularly
+            from the start radius to the end radius (Archimedean spiral). It starts at the point (startRadius, 0, 0) of the frame.
+            A linear motion to the start point is added first when the tool is not there. The orientation of the tool does not change.
+            </summary>
+            <param name="plane">Frame of the spiral, in the user frame of the planner: its origin is the center and its XY plane is the plane of the spiral</param>
+            <param name="startRadius">Distance to the center at the start, in mm (0 or more)</param>
+            <param name="endRadius">Distance to the center at the end, in mm (0 or more)</param>
+            <param name="turns">Number of turns (greater than 0, can be fractional)</param>
+            <param name="speed">Speed in mm/s. It is reduced if the curvature needs it.</param>
+            <param name="termination">Termination at the end of the spiral: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.AddRectangle(UnderAutomation.Robotics.Geometry.CartesianPose,System.Double,System.Double,System.Double,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a rectangle centered on the origin of a frame, in its XY plane: the width is along X and the height along Y.
+            It starts and ends at the middle of the side at +X, the point (width / 2, 0, 0) of the frame, and turns counterclockwise around Z.
+            With a corner radius, the corners are circle arcs of this radius, and the curvature changes progressively at their ends.
+            Without corner radius, the robot stops at each corner.
+            A linear motion to the start point is added first when the tool is not there. The orientation of the tool does not change.
+            </summary>
+            <param name="plane">Frame of the rectangle, in the user frame of the planner</param>
+            <param name="width">Size along X of the frame in mm</param>
+            <param name="height">Size along Y of the frame in mm</param>
+            <param name="cornerRadius">Radius of the corners in mm, from 0 to half of the smallest side</param>
+            <param name="speed">Speed in mm/s. It is reduced if the curvature needs it.</param>
+            <param name="termination">Termination at the end of the rectangle: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.AddPolygon(UnderAutomation.Robotics.Geometry.CartesianPose,System.Int32,System.Double,System.Double,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a regular polygon centered on the origin of a frame, in its XY plane. One side is perpendicular to X:
+            the polygon starts and ends at the middle of this side, and turns counterclockwise around Z.
+            With a corner radius, the corners are circle arcs of this radius, and the curvature changes progressively at their ends.
+            Without corner radius, the robot stops at each corner.
+            A linear motion to the start point is added first when the tool is not there. The orientation of the tool does not change.
+            </summary>
+            <param name="plane">Frame of the polygon, in the user frame of the planner</param>
+            <param name="sideCount">Number of sides (3 or more)</param>
+            <param name="radius">Distance from the center to the corners (circumscribed circle), in mm</param>
+            <param name="cornerRadius">Radius of the corners in mm (0 for sharp corners)</param>
+            <param name="speed">Speed in mm/s. It is reduced if the curvature needs it.</param>
+            <param name="termination">Termination at the end of the polygon: stop, overlap or corner</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.Wait(System.Double)">
+            <summary>
+            Keeps the current position during a given time
+            </summary>
+            <param name="duration">Duration in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.SetIO(UnderAutomation.Robotics.IO.DigitalSignal,System.Boolean)">
+            <summary>
+            Writes a digital signal when the previous motion ends
+            </summary>
+            <param name="signal">Signal to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianPathBuilder.Build">
+            <summary>
+            Creates the trajectory. Its poses are flange poses in the world frame when the tool and user frames of the planner are set.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.DoubleSProfile">
+            <summary>
+            One-dimensional motion profile with bounded velocity, acceleration and jerk (7 phases, "double S" profile).
+            The acceleration is zero at the start and at the end. Start and end velocities can be different from zero.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Computes the fastest profile from a start position to an end position with the given limits
+            </summary>
+            <param name="startPosition">Start position</param>
+            <param name="endPosition">End position</param>
+            <param name="startVelocity">Velocity at the start</param>
+            <param name="endVelocity">Velocity at the end</param>
+            <param name="maxVelocity">Velocity limit (greater than 0)</param>
+            <param name="maxAcceleration">Acceleration limit (greater than 0)</param>
+            <param name="maxJerk">Jerk limit (greater than 0)</param>
+            <exception cref="T:System.ArgumentException">The limits are not positive, or the distance is too short to change the velocity from the start value to the end value</exception>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.StartPosition">
+            <summary>
+            Start position
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.EndPosition">
+            <summary>
+            End position
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.StartVelocity">
+            <summary>
+            Velocity at the start
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.EndVelocity">
+            <summary>
+            Velocity at the end
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.MaxVelocity">
+            <summary>
+            Velocity limit used to compute the profile
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.MaxAcceleration">
+            <summary>
+            Acceleration limit used to compute the profile
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.MaxJerk">
+            <summary>
+            Jerk limit used to compute the profile
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration">
+            <summary>
+            Duration of the profile in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.AccelerationTime">
+            <summary>
+            Duration of the acceleration phase in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.ConstantVelocityTime">
+            <summary>
+            Duration of the constant velocity phase in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.DecelerationTime">
+            <summary>
+            Duration of the deceleration phase in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.DoubleSProfile.PeakVelocity">
+            <summary>
+            Highest velocity reached (absolute value)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.GetPosition(System.Double)">
+            <summary>
+            Position at the given time (limited to [0, <see cref="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration"/>])
+            </summary>
+            <param name="time">Time in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.GetVelocity(System.Double)">
+            <summary>
+            Velocity at the given time (limited to [0, <see cref="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration"/>])
+            </summary>
+            <param name="time">Time in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.GetAcceleration(System.Double)">
+            <summary>
+            Acceleration at the given time (limited to [0, <see cref="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration"/>])
+            </summary>
+            <param name="time">Time in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.GetJerk(System.Double)">
+            <summary>
+            Jerk at the given time (limited to [0, <see cref="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration"/>])
+            </summary>
+            <param name="time">Time in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.StretchTo(System.Double)">
+            <summary>
+            Returns the same motion slowed down to last the given duration. The velocity is divided by k, the acceleration by k² and the jerk by k³,
+            where k is the ratio of the durations, so the limits are still respected. Only for profiles that start and end at rest.
+            </summary>
+            <param name="duration">New duration in seconds, not lower than <see cref="P:UnderAutomation.Robotics.Motion.DoubleSProfile.Duration"/></param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.DoubleSProfile.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.IOEvent">
+            <summary>
+            Digital signal change requested at a given time of a trajectory
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.IOEvent.#ctor(System.Double,UnderAutomation.Robotics.IO.DigitalSignal,System.Boolean)">
+            <summary>
+            Creates an I/O event
+            </summary>
+            <param name="time">Time from the start of the trajectory, in seconds</param>
+            <param name="signal">Signal to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.IOEvent.Time">
+            <summary>
+            Time from the start of the trajectory, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.IOEvent.Signal">
+            <summary>
+            Signal to write
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.IOEvent.Value">
+            <summary>
+            Value to write
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.IOEvent.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.IOEvent.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.IOEvent.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.JointLimits">
+            <summary>
+            Velocity, acceleration and jerk limits of the 9 axes of a robot.
+            Units are degrees (mm for linear axes) per second, per second squared and per second cubed.
+            A limit of 0 means that the axis is not present or not limited.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.JointLimits.AxisCount">
+            <summary>
+            Number of axes handled by this class
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.#ctor">
+            <summary>
+            Creates limits with all values set to 0
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.#ctor(System.Double[],System.Double[],System.Double[])">
+            <summary>
+            Creates limits from arrays of values. Arrays can contain less than 9 values, missing values are set to 0.
+            </summary>
+            <param name="velocity">Velocity limit of each axis</param>
+            <param name="acceleration">Acceleration limit of each axis</param>
+            <param name="jerk">Jerk limit of each axis</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.JointLimits.Velocity">
+            <summary>
+            Velocity limit of each axis (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.JointLimits.Acceleration">
+            <summary>
+            Acceleration limit of each axis (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.JointLimits.Jerk">
+            <summary>
+            Jerk limit of each axis (9 values)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.Scale(System.Double,System.Double,System.Double)">
+            <summary>
+            Returns a copy of these limits where each value is multiplied by the given factors
+            </summary>
+            <param name="velocityFactor">Factor applied to velocity limits</param>
+            <param name="accelerationFactor">Factor applied to acceleration limits</param>
+            <param name="jerkFactor">Factor applied to jerk limits</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointLimits.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.JointPathBuilder">
+            <summary>
+            Builds a joint trajectory from a sequence of joint motions.
+            Create it with <see cref="M:UnderAutomation.Robotics.Motion.MotionPlanner.CreateJointPath(UnderAutomation.Robotics.Geometry.JointValues)"/>.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.JointPathBuilder.EndPosition">
+            <summary>
+            Position at the end of the motions added so far
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.MoveJoint(UnderAutomation.Robotics.Geometry.JointValues,System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a joint motion: all axes move on a straight line in joint space and arrive at the same time
+            </summary>
+            <param name="target">Target joint position</param>
+            <param name="speedPercent">Speed in percent of the velocity limits (greater than 0, up to 100)</param>
+            <param name="termination">Termination: stop or overlap</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.MoveJointTime(UnderAutomation.Robotics.Geometry.JointValues,System.Double,UnderAutomation.Robotics.Motion.Termination)">
+            <summary>
+            Adds a joint motion that lasts a given time. The motion takes more time when the limits do not allow this duration.
+            </summary>
+            <param name="target">Target joint position</param>
+            <param name="duration">Duration in seconds</param>
+            <param name="termination">Termination: stop or overlap</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.MoveJointSpline(UnderAutomation.Robotics.Geometry.JointValues[],System.Double,UnderAutomation.Robotics.Motion.Termination,System.Double)">
+            <summary>
+            Adds a smooth joint motion that passes through a list of positions (cubic spline) and ends at the last one.
+            The speed changes along the path so that the velocity, acceleration and jerk of each axis stay within the limits.
+            The points must describe a smooth path: close or noisy points give high curvatures and a slow motion.
+            </summary>
+            <param name="points">Positions to pass through. A first position equal to the current position is ignored.</param>
+            <param name="speedPercent">Speed in percent of the velocity limits (greater than 0, up to 100)</param>
+            <param name="termination">Termination at the last position: stop or overlap</param>
+            <param name="accelerationPercent">Acceleration and jerk in percent of the limits (greater than 0, up to 100)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.Wait(System.Double)">
+            <summary>
+            Keeps the current position during a given time
+            </summary>
+            <param name="duration">Duration in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.SetIO(UnderAutomation.Robotics.IO.DigitalSignal,System.Boolean)">
+            <summary>
+            Writes a digital signal when the previous motion ends
+            </summary>
+            <param name="signal">Signal to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.JointPathBuilder.Build">
+            <summary>
+            Creates the trajectory
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.LimitType">
+            <summary>
+            Type of limit of a robot axis
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.LimitType.Velocity">
+            <summary>
+            Velocity limit, in deg/s (mm/s for linear axes)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.LimitType.Acceleration">
+            <summary>
+            Acceleration limit, in deg/s² (mm/s² for linear axes)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.LimitType.Jerk">
+            <summary>
+            Jerk limit, in deg/s³ (mm/s³ for linear axes)
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.MotionPlanner">
+            <summary>
+            Creates trajectories from joint motions, linear and circular motions, splines and shapes,
+            with velocity, acceleration and jerk limits.
+            </summary>
+            <remarks>
+            Joint motions follow a straight line in joint space with the limits of <see cref="P:UnderAutomation.Robotics.Motion.MotionPlanner.JointLimits"/>, scaled by the speed percentage.
+            Cartesian motions use the limits of <see cref="P:UnderAutomation.Robotics.Motion.MotionPlanner.CartesianLimits"/>. The joint limits of the robot cannot be checked for Cartesian motions.
+            </remarks>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.MotionPlanner.#ctor(UnderAutomation.Robotics.Motion.JointLimits,UnderAutomation.Robotics.Motion.CartesianLimits)">
+            <summary>
+            Creates a planner
+            </summary>
+            <param name="jointLimits">Limits for joint motions (can be null if only Cartesian motions are planned)</param>
+            <param name="cartesianLimits">Limits for Cartesian motions (can be null if only joint motions are planned)</param>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.MotionPlanner.JointLimits">
+            <summary>
+            Limits for joint motions. 100% speed uses the velocity limits of this object.
+            The limits of axes 7 to 9 are also used for the external axes of Cartesian motions.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.MotionPlanner.CartesianLimits">
+            <summary>
+            Limits for Cartesian motions
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.MotionPlanner.ToolFrame">
+            <summary>
+            Tool frame, relative to the flange. When it is set, the targets of Cartesian motions are poses of this tool,
+            and the trajectory gives the flange poses. Null when the targets are flange poses.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.MotionPlanner.UserFrame">
+            <summary>
+            User frame, relative to the world frame. When it is set, the targets of Cartesian motions are expressed in this frame,
+            and the trajectory gives poses in the world frame. Null when the targets are in the world frame.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.MotionPlanner.CreateJointPath(UnderAutomation.Robotics.Geometry.JointValues)">
+            <summary>
+            Starts a joint path
+            </summary>
+            <param name="start">Start position, for example the current position of the robot (up to <see cref="F:UnderAutomation.Robotics.Motion.Trajectory.MaxJointCount"/> axes)</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.MotionPlanner.CreateCartesianPath(UnderAutomation.Robotics.Geometry.CartesianPose)">
+            <summary>
+            Starts a Cartesian path
+            </summary>
+            <param name="start">Start pose of the flange in the world frame, for example the current pose of the robot.
+            It is converted with <see cref="P:UnderAutomation.Robotics.Motion.MotionPlanner.ToolFrame"/> and <see cref="P:UnderAutomation.Robotics.Motion.MotionPlanner.UserFrame"/>.</param>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.PositionFormat">
+            <summary>
+            Format of the positions of a trajectory
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.PositionFormat.Joint">
+            <summary>
+            Joint positions (up to 9 axes), in degrees (mm for linear axes)
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.PositionFormat.Cartesian">
+            <summary>
+            Cartesian positions X, Y, Z in mm with an orientation, plus up to 3 external axes
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.TerminationType">
+            <summary>
+            Type of termination of a motion
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.TerminationType.Stop">
+            <summary>
+            The robot stops at the target position
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.TerminationType.Overlap">
+            <summary>
+            The next motion starts during the deceleration of this one. The corner is rounded, more at high speed.
+            Between linear and circular motions, the corner is replaced by a smooth curve that starts where the robot would start to decelerate (overlap of 100%), or closer to the target.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.TerminationType.Corner">
+            <summary>
+            Corner region: the corner is replaced by a smooth curve that starts and ends at a given distance from the target position.
+            The speed stays constant in the curve, and is reduced when its curvature needs it. Only between Cartesian motions.
+            </summary>
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.Termination">
+            <summary>
+            Termination of a motion: stop at the target, overlap with the next motion, or corner region of a given size
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Termination.Type">
+            <summary>
+            Type of termination
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Termination.Value">
+            <summary>
+            Overlap in percent (0 to 100), or corner distance in mm. 0 for a stop.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.Stop">
+            <summary>
+            The robot stops at the target position
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.Overlap(System.Double)">
+            <summary>
+            The next motion starts during the deceleration of this one
+            </summary>
+            <param name="percent">From 0 to 100: part of the deceleration during which both motions are combined. 100 gives the smoothest motion.</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.Corner(System.Double)">
+            <summary>
+            Corner region: the corner is replaced by a smooth curve at constant speed. Only between Cartesian motions.
+            </summary>
+            <param name="distance">Distance from the target position where the curve starts and ends, in mm. It is limited to half of the length of each motion.</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Termination.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.Trajectory">
+            <summary>
+            Robot trajectory in joint or Cartesian format.
+            A trajectory can be evaluated at any time between 0 and <see cref="P:UnderAutomation.Robotics.Motion.Trajectory.Duration"/>, and can carry I/O events.
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.Trajectory.MaxJointCount">
+            <summary>
+            Maximum number of axes of a joint trajectory
+            </summary>
+        </member>
+        <member name="F:UnderAutomation.Robotics.Motion.Trajectory.MaxExternalAxisCount">
+            <summary>
+            Maximum number of external axes of a Cartesian trajectory
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.Format">
+            <summary>
+            Format of the positions of this trajectory
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.Duration">
+            <summary>
+            Duration of the trajectory in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.CycleTime">
+            <summary>
+            Period between two samples in seconds, when the trajectory was created from samples. 0 otherwise.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.StartsAtRest">
+            <summary>
+            Indicates if the velocity and the acceleration are zero at the start of the trajectory
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.EndsAtRest">
+            <summary>
+            Indicates if the velocity and the acceleration are zero at the end of the trajectory
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.Trajectory.IOEvents">
+            <summary>
+            I/O events of this trajectory, sorted by time
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.AddIOEvent(System.Double,UnderAutomation.Robotics.IO.DigitalSignal,System.Boolean)">
+            <summary>
+            Adds a digital signal change at a given time of the trajectory
+            </summary>
+            <param name="time">Time from the start of the trajectory, in seconds (between 0 and <see cref="P:UnderAutomation.Robotics.Motion.Trajectory.Duration"/>)</param>
+            <param name="signal">Signal to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.GetJoints(System.Double)">
+            <summary>
+            Returns the joint position at the given time. The trajectory must be in joint format.
+            </summary>
+            <param name="time">Time from the start of the trajectory, in seconds. It is limited to the range [0, <see cref="P:UnderAutomation.Robotics.Motion.Trajectory.Duration"/>].</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.GetCartesian(System.Double)">
+            <summary>
+            Returns the Cartesian pose at the given time. The trajectory must be in Cartesian format.
+            </summary>
+            <param name="time">Time from the start of the trajectory, in seconds. It is limited to the range [0, <see cref="P:UnderAutomation.Robotics.Motion.Trajectory.Duration"/>].</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.SampleJoints(System.Double)">
+            <summary>
+            Samples the trajectory at a fixed period. The trajectory must be in joint format.
+            </summary>
+            <param name="cycleTime">Period between two samples, in seconds</param>
+            <returns>Positions from time 0 to the end of the trajectory</returns>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.SampleCartesian(System.Double)">
+            <summary>
+            Samples the trajectory at a fixed period. The trajectory must be in Cartesian format.
+            </summary>
+            <param name="cycleTime">Period between two samples, in seconds</param>
+            <returns>Poses from time 0 to the end of the trajectory</returns>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.FromJointSamples(UnderAutomation.Robotics.Geometry.JointValues[],System.Double)">
+            <summary>
+            Creates a joint trajectory from positions taken at a fixed period.
+            When the trajectory is streamed to a robot at the same period, the positions are sent without any change.
+            </summary>
+            <param name="samples">Joint positions, one per period (up to <see cref="F:UnderAutomation.Robotics.Motion.Trajectory.MaxJointCount"/> axes)</param>
+            <param name="cycleTime">Period between two positions, in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.FromCartesianSamples(UnderAutomation.Robotics.Geometry.CartesianPose[],System.Double)">
+            <summary>
+            Creates a Cartesian trajectory from poses taken at a fixed period.
+            When the trajectory is streamed to a robot at the same period, the poses are sent without any change.
+            </summary>
+            <param name="samples">Cartesian poses, one per period (up to <see cref="F:UnderAutomation.Robotics.Motion.Trajectory.MaxExternalAxisCount"/> external axes)</param>
+            <param name="cycleTime">Period between two poses, in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.FromTimedJoints(UnderAutomation.Robotics.Geometry.JointValues[],System.Double[])">
+            <summary>
+            Creates a joint trajectory that passes through positions at given times.
+            The positions are joined by a smooth curve (cubic spline), and the robot is at rest at the first and the last position.
+            The times are kept: use <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.Check(UnderAutomation.Robotics.Motion.JointLimits,System.Double,System.Boolean)"/> to verify the limits, and <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.Retime(UnderAutomation.Robotics.Motion.JointLimits,System.Double,System.Boolean)"/> to slow down the trajectory if needed.
+            </summary>
+            <param name="points">Joint positions (at least 2)</param>
+            <param name="times">Time of each position in seconds, strictly increasing. The trajectory starts at the first time.</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.FromTimedCartesian(UnderAutomation.Robotics.Geometry.CartesianPose[],System.Double[])">
+            <summary>
+            Creates a Cartesian trajectory that passes through poses at given times.
+            The poses are joined by a smooth curve (cubic spline), and the robot is at rest at the first and the last pose.
+            The orientation is interpolated with quaternions, so it has no singularity.
+            The times are kept: use <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.CheckCartesian(UnderAutomation.Robotics.Motion.CartesianLimits,System.Double)"/> to verify the limits, and <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.RetimeCartesian(UnderAutomation.Robotics.Motion.CartesianLimits,System.Double)"/> to slow down the trajectory if needed.
+            </summary>
+            <param name="points">Cartesian poses, at least 2</param>
+            <param name="times">Time of each pose in seconds, strictly increasing. The trajectory starts at the first time.</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.Check(UnderAutomation.Robotics.Motion.JointLimits,System.Double,System.Boolean)">
+            <summary>
+            Checks the velocity, acceleration and jerk of each axis as a robot computes them from a stream of positions: positions sampled at the communication cycle,
+            differences between consecutive positions divided by the cycle time, and positions before the first one equal to the first one.
+            The trajectory must be in joint format.
+            </summary>
+            <param name="limits">Limits of each axis. Axes with a limit of 0 are not checked.</param>
+            <param name="cycleTime">Communication cycle of the robot in seconds</param>
+            <param name="singlePrecision">True to round the positions to single precision first, when the robot receives them in single precision</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.CheckCartesian(UnderAutomation.Robotics.Motion.CartesianLimits,System.Double)">
+            <summary>
+            Checks the linear and angular velocity, acceleration and jerk, computed from positions sampled at the communication cycle.
+            The trajectory must be in Cartesian format. The joint limits of the robot cannot be checked from Cartesian positions.
+            </summary>
+            <param name="limits">Cartesian limits. Values of 0 are not checked.</param>
+            <param name="cycleTime">Communication cycle of the robot in seconds</param>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.Retime(UnderAutomation.Robotics.Motion.JointLimits,System.Double,System.Boolean)">
+            <summary>
+            Returns the same path played slower so that the joint limits are respected (see <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.Check(UnderAutomation.Robotics.Motion.JointLimits,System.Double,System.Boolean)"/>).
+            The positions are the same, only the time is stretched. Returns this trajectory when it is already valid.
+            </summary>
+            <param name="limits">Limits of each axis</param>
+            <param name="cycleTime">Communication cycle of the robot in seconds</param>
+            <param name="singlePrecision">True to check the positions rounded to single precision, when the robot receives them in single precision</param>
+            <exception cref="T:System.InvalidOperationException">The trajectory cannot be made valid by slowing it down, for example when it does not start at rest.</exception>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.RetimeCartesian(UnderAutomation.Robotics.Motion.CartesianLimits,System.Double)">
+            <summary>
+            Returns the same path played slower so that the Cartesian limits are respected (see <see cref="M:UnderAutomation.Robotics.Motion.Trajectory.CheckCartesian(UnderAutomation.Robotics.Motion.CartesianLimits,System.Double)"/>).
+            The positions are the same, only the time is stretched. Returns this trajectory when it is already valid.
+            </summary>
+            <param name="limits">Cartesian limits</param>
+            <param name="cycleTime">Communication cycle of the robot in seconds</param>
+            <exception cref="T:System.InvalidOperationException">The trajectory cannot be made valid by slowing it down, for example when it does not start at rest.</exception>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.Trajectory.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.TrajectoryViolation">
+            <summary>
+            Limit exceeded by a trajectory at one sample
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Index">
+            <summary>
+            Index of the sample
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Time">
+            <summary>
+            Time of the sample in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Axis">
+            <summary>
+            Axis number (1 to 9). For a Cartesian check: 1 for the position, 2 for the orientation.
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Type">
+            <summary>
+            Type of limit exceeded
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Value">
+            <summary>
+            Value reached (absolute value)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryViolation.Limit">
+            <summary>
+            Limit
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.TrajectoryViolation.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.TrajectoryReport">
+            <summary>
+            Result of the check of a joint trajectory against velocity, acceleration and jerk limits
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.IsValid">
+            <summary>
+            True when no limit is exceeded
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.SampleCount">
+            <summary>
+            Number of samples checked
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.CycleTime">
+            <summary>
+            Period used for the check, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.MaxVelocity">
+            <summary>
+            Highest velocity of each axis (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.MaxAcceleration">
+            <summary>
+            Highest acceleration of each axis (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.MaxJerk">
+            <summary>
+            Highest jerk of each axis (9 values)
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.ViolationCount">
+            <summary>
+            Total number of values that exceed a limit
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.TrajectoryReport.Violations">
+            <summary>
+            First violations (at most 100)
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.TrajectoryReport.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport">
+            <summary>
+            Result of the check of a Cartesian trajectory against Cartesian velocity, acceleration and jerk limits
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.IsValid">
+            <summary>
+            True when no limit is exceeded
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.SampleCount">
+            <summary>
+            Number of samples checked
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.CycleTime">
+            <summary>
+            Period used for the check, in seconds
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxLinearVelocity">
+            <summary>
+            Highest linear velocity in mm/s
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxLinearAcceleration">
+            <summary>
+            Highest linear acceleration in mm/s²
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxLinearJerk">
+            <summary>
+            Highest linear jerk in mm/s³
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxAngularVelocity">
+            <summary>
+            Highest angular velocity in deg/s
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxAngularAcceleration">
+            <summary>
+            Highest angular acceleration in deg/s²
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.MaxAngularJerk">
+            <summary>
+            Highest angular jerk in deg/s³
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.ViolationCount">
+            <summary>
+            Total number of values that exceed a limit
+            </summary>
+        </member>
+        <member name="P:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.Violations">
+            <summary>
+            First violations (at most 100). Axis 1 is the position, axis 2 the orientation.
+            </summary>
+        </member>
+        <member name="M:UnderAutomation.Robotics.Motion.CartesianTrajectoryReport.ToString">
             <inheritdoc />
         </member>
         <member name="T:IProgress`1">

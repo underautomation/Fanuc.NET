@@ -6,13 +6,12 @@ using StreamMotion.Internal;
 
 namespace StreamMotion {
 	/// <summary>
-	/// Stream Motion client for standalone use (J519 option)
-	/// Provides UDP-based real-time streaming motion control for Fanuc robots
+	/// Stream Motion client for standalone use (J519 option): real-time control of the robot by sending a position every communication cycle.
 	/// </summary>
 	public class StreamMotionClient : StreamMotionClientBase, IDisposable {
 
 		/// <summary>
-		/// Creates a new instance of the Stream Motion client
+		/// Creates a new Stream Motion client
 		/// </summary>
 		public StreamMotionClient()
 		{
@@ -20,13 +19,11 @@ namespace StreamMotion {
 		}
 
 		/// <summary>
-		/// Connect to the robot using Stream Motion protocol
+		/// Connects to the robot. Call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring" data-throw-if-not-resolved="false"></xref> next to receive the robot status.
 		/// </summary>
 		/// <param name="ip">IP address of the robot</param>
-		/// <param name="port">UDP port (default: 60015)</param>
-		/// <param name="sendTimeoutMs">Send timeout in milliseconds</param>
-		/// <param name="receiveTimeoutMs">Receive timeout in milliseconds</param>
-		public void Connect(string ip, int port = 60015, int sendTimeoutMs = 1000, int receiveTimeoutMs = 1000)
+		/// <param name="parameters">Connection parameters. Default values are used when null.</param>
+		public void Connect(string ip, StreamMotionConnectParametersBase parameters = null)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
 		}

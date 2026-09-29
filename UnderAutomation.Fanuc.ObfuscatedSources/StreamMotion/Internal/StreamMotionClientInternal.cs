@@ -5,7 +5,7 @@
 
 namespace StreamMotion.Internal {
 	/// <summary>
-	/// Internal Stream Motion client for use within FanucRobot
+	/// Stream Motion client used by <xref href="UnderAutomation.Fanuc.FanucRobot" data-throw-if-not-resolved="false"></xref>
 	/// </summary>
 	public class StreamMotionClientInternal : StreamMotionClientBase, IDisposable {
 	}
