@@ -1,345 +1,257 @@
-# Fanuc Communication SDK
+# Fanuc Robot Communication SDK for .NET
 
-[![UnderAutomation Fanuc communication SDK](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/banner.png)](https://underautomation.com)
+[![UnderAutomation Fanuc communication SDK](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/banner.png)](https://underautomation.com/fanuc)
 
-[![NuGet](https://img.shields.io/nuget/dt/UnderAutomation.Fanuc?label=NuGet%20Downloads&logo=nuget)](https://www.nuget.org/packages/UnderAutomation.Fanuc/)
-[![.NET Framework](https://img.shields.io/badge/.NET_Framework-3.5+-blueviolet)](#)
-[![.NET Standard](https://img.shields.io/badge/.NET_Standard-2.0+-blueviolet)](#)
-[![.NET Core](https://img.shields.io/badge/.NET_Core-2.0+-blueviolet)](#)
-[![.NET Versions](https://img.shields.io/badge/.NET-5_6_8_9-blueviolet)](#)
+[![NuGet](https://img.shields.io/nuget/v/UnderAutomation.Fanuc?label=NuGet&logo=nuget)](https://www.nuget.org/packages/UnderAutomation.Fanuc/)
+[![NuGet downloads](https://img.shields.io/nuget/dt/UnderAutomation.Fanuc?label=Downloads&logo=nuget)](https://www.nuget.org/packages/UnderAutomation.Fanuc/)
+[![.NET Framework](https://img.shields.io/badge/.NET_Framework-3.5+-blueviolet)](#compatibility)
+[![.NET Standard](https://img.shields.io/badge/.NET_Standard-2.0_2.1-blueviolet)](#compatibility)
+[![License](https://img.shields.io/badge/license-commercial-blue)](https://underautomation.com/fanuc/eula)
 
-### 🤖 Effortlessly Communicate with Fanuc robots
+**UnderAutomation.Fanuc** is a fully managed .NET SDK that communicates with Fanuc robot controllers
+(R-J3iB, R-30iA, R-30iB, R-50iA) and with **ROBOGUIDE**. Nothing is installed on the robot. No PCDK and no
+Robot Interface are needed on the PC.
 
-The **Fanuc SDK** enables seamless integration with Fanuc robots for automation, data exchange, and remote control. Ideal for industrial automation, research, and advanced robotics applications.
+Use it to read and write variables, registers and I/O, run and stop programs, read and reset alarms,
+transfer files, read the state of the robot and move it, from a normal .NET application. It also computes
+the kinematics and plans trajectories offline.
 
-It allows you to connect to a **real robot**, but also to **ROBOGUIDE**.
+- Product page: [underautomation.com/fanuc](https://underautomation.com/fanuc)
+- Documentation: [underautomation.com/fanuc/documentation](https://underautomation.com/fanuc/documentation)
+- Also available for Python: [Fanuc.py](https://github.com/underautomation/Fanuc.py), and for LabVIEW: [Fanuc.vi](https://github.com/underautomation/Fanuc.vi)
+- Kinematics of the CRX cobots in the browser, built with this SDK: [fanuc-kinematics.underautomation.com](https://fanuc-kinematics.underautomation.com) ([sources](https://github.com/underautomation/fanuc-kinematics.underautomation.com))
 
-🔗 **More Information:** [https://underautomation.com/fanuc](https://underautomation.com/fanuc)  
-🔗 Also available for **[🟨 LabVIEW](https://github.com/underautomation/Fanuc.vi)** & **[🐍 Python](https://github.com/underautomation/Fanuc.py)**
+## What you can do
 
----
+| Feature | Protocol | Controller option |
+| --- | --- | --- |
+| Run, pause, hold, abort programs, read and write variables, set and simulate ports | Telnet KCL | none |
+| Upload and download files, read variable files, registers, I/O, alarms, safety status, diagnostics | FTP | none |
+| Fast read and write of registers, I/O, flags, system variables, current position, alarms | SNPX | R553 "HMI Device SNPX" on FANUC America controllers (R650 FRA), none on FANUC Ltd. controllers (R651 FRL) |
+| Programs, source lines, variables, registers, I/O, comments, kinematics on the controller | CGTP (web server of the controller) | none |
+| Motion instructions sent from the PC, with a status per instruction | RMI | R912 |
+| Real-time motion at every communication cycle: trajectories, target tracking, I/O | Stream Motion | J519 |
+| Forward and inverse kinematics, 80+ arm models | offline | none |
+| Motion planner: J, L, C motions, FINE, CNT, CR, splines, shapes, jerk limits | offline | none |
 
-[⭐ Star if you like it !](https://github.com/underautomation/Fanuc.NET/stargazers)
+Most features work with the standard protocols of every Fanuc controller. The SDK uses the RMI, Stream
+Motion and SNPX options when the controller has them.
 
-[👁️ Watch to be notified of latest updates !](https://github.com/underautomation/Fanuc.NET/watchers)
+## Example application
 
----
+A Windows Forms application shows every feature of the SDK. Its source code is in this repository, in
+[`UnderAutomation.Fanuc.Showcase.Forms`](UnderAutomation.Fanuc.Showcase.Forms).
 
-## 🚀 TL;DR (Too Long; Didn’t Read)
+**Download:** [UnderAutomation.Fanuc.Showcase.Forms.exe](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.Showcase.Forms.exe) ([all releases](https://github.com/underautomation/Fanuc.NET/releases))
 
-- ✔️ **PCDK Alternative:** No need for Fanuc’s PCDK or Robot Interface
-- 📖 **Read/Write Variables:** Access and modify system variables.
-- 🔄 **Register Control:** Read/write registers for positions, numbers, and strings.
-- 🎬 **Program Control:** Run, abort, and reset programs.
-- 🔔 **Alarm Management:** Reset alarms and view alarm history.
-- ⚡ **I/O Control:** Manage ports and I/O values (UI, UO, GI, GO, etc.).
-- 🔍 **State Monitoring:** Get safety status, position, diagnostics, and more.
-- 📂 **File Management:** Easily manipulate files.
-- 🌐 **CGTP Web Server:** Access registers, I/O, programs, and variables via HTTP.
-- 🏎️ **Remote motion:** Remote move the robot.
-- 🔄 **Stream Motion:** Real-time motion at every communication cycle (option J519): trajectories, target tracking, I/O.
-- 🛤️ **Motion Planner:** Smooth jerk limited trajectories offline (J, L, C, CNT, CR, splines, shapes).
-- 📐 **Kinematics Calculations:** Perform forward and inverse kinematics offline.
+Read variables:
 
-Nothing has to be installed on the robot, and most features work without any Fanuc option. For advanced uses, if your controller has the RMI (R912), Stream Motion (J519) or HMI Device SNPX (R553) option, the SDK can use it too.
+![Read variables](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif)
 
----
+Move the robot:
 
-## 📥 Download Example Applications
+![Move the robot](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif)
 
-Explore the **Fanuc SDK** with fully functional example applications and precompiled binaries for various platforms. [See Github releases](https://github.com/underautomation/Fanuc.NET/releases)
+Read and write registers with SNPX:
 
-### 🔹 Windows Forms Application (Full Feature Showcase)
+![SNPX registers](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif)
 
-A Windows Forms application demonstrating all the features of the library.
+Move the robot with a joystick or a 3D mouse:
 
-📌 **Download:** [📥 UnderAutomation.Fanuc.Showcase.Forms.exe](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.Showcase.Forms.exe)
+![Joystick and 3D mouse](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif)
 
----
+TP editor with breakpoints:
 
-**Read variables :**
+![TP editor with breakpoints](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/tp-editor-breakpoints.gif)
 
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/read-variables.gif)
+Forward and inverse kinematics:
 
----
+![Forward and inverse kinematics](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/forward-inverse-kinematics.png)
 
-**Move the robot :**
+## Installation
 
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/move-robot.gif)
-
----
-
-**High speed Read & Write registers :**
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/snpx.gif)
-
----
-
-**Live remote control with Jostick or 3D Mouse:**
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/dpm-mouse-control.gif)
-
----
-
-**TP Editor with breakpoints:**
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/tp-editor-breakpoints.gif)
-
----
-
-**Forward and Inverse Kinematics:**
-![](https://raw.githubusercontent.com/underautomation/Fanuc.NET/refs/heads/main/.github/assets/forward-inverse-kinematics.png)
-
----
-
-## 📌 Features
-
-### 🖥️ **1. Remote Control via Telnet KCL**
-
-Telnet KCL (Keyboard Command Line) allows sending commands to control the robot **remotely**:no additional options needed on the controller.
-
-#### 🔹 Reset alarms
-
-```csharp
-robot.Telnet.Reset();
+```bash
+dotnet add package UnderAutomation.Fanuc
 ```
 
-#### 🔹 Start, pause, hold, abort programs
+Or with the NuGet Package Manager console:
+
+```
+Install-Package UnderAutomation.Fanuc
+```
+
+You can also download [UnderAutomation.Fanuc.zip](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.zip)
+from the [releases page](https://github.com/underautomation/Fanuc.NET/releases). It contains one folder per
+target framework. On Windows, unblock the zip file before you extract it (right-click, "Properties",
+"Unblock"), then reference the DLL of your framework.
+
+## Getting started
 
 ```csharp
+using System;
+using UnderAutomation.Fanuc;
+using UnderAutomation.Fanuc.Common;
+
+// The SDK runs in trial mode for 30 days. Register your key to remove the trial limit.
+FanucRobot.RegisterLicense("Your Company", "your-license-key");
+
+var robot = new FanucRobot();
+
+// IP address of the controller, or the folder of a ROBOGUIDE robot
+var parameters = new ConnectionParameters("192.168.0.1");
+parameters.Language = Languages.English; // Japanese and Chinese controllers are also supported
+
+parameters.Telnet.Enable = true;
+parameters.Telnet.TelnetKclPassword = "your_telnet_password";
+
+parameters.Ftp.Enable = true;
+parameters.Ftp.FtpUser = "";
+parameters.Ftp.FtpPassword = "";
+
+parameters.Snpx.Enable = true;
+
+robot.Connect(parameters);
+
+float r1 = robot.Snpx.NumericRegisters.Read(1);
+Console.WriteLine($"R[1] = {r1}");
+
+robot.Disconnect();
+```
+
+Enable only the protocols you use. Each protocol needs its own setup on the controller, see
+[Robot configuration](#robot-configuration).
+
+## Features
+
+### Telnet KCL
+
+Telnet KCL (Karel Command Line) sends commands to the controller. It needs no option on the controller.
+
+```csharp
+// Reset alarms
+robot.Telnet.Reset();
+
+// Start, pause, hold, continue and abort programs
 robot.Telnet.Run("MyProgram");
 robot.Telnet.Pause("MyProgram");
 robot.Telnet.Hold("MyProgram");
 robot.Telnet.Continue("MyProgram");
 robot.Telnet.Abort("MyProgram", force: true);
-```
 
-#### 🔹 Set variables dynamically
-
-```csharp
+// Write variables
 robot.Telnet.SetVariable("my_variable", 42);
 robot.Telnet.SetVariable("$RMT_MASTER", 1);
-```
 
-#### 🔹 Control robot I/O ports
-
-```csharp
-// Set an output port (example: DOUT port 2 = 0)
+// Set an output port (DOUT[2] = 0)
 robot.Telnet.SetPort(KCLPorts.DOUT, 2, 0);
 
-// Simulate an input port (example: DIN port 3 = 1)
+// Simulate an input port (DIN[3] = 1)
 robot.Telnet.Simulate(KCLPorts.DIN, 3, 1);
 robot.Telnet.Unsimulate(KCLPorts.DIN, 3);
 ```
 
----
+### SNPX
 
-### 🚀 **2. High-Speed Data Exchange via SNPX (RobotIF)**
-
-SNPX (also known as **SRTP/RobotIF**) enables fast, structured data communication with the robot.  
-It is used to **read/write registers, monitor alarms, and check robot status**.
-
-#### 🔹 Read & write position registers
+SNPX (also known as SRTP or RobotIF) is the fastest way to read and write registers, I/O and variables.
 
 ```csharp
-// Read position register 1
+// Position registers
 Position register1 = robot.Snpx.PositionRegisters.Read(1);
-
-// Write a Cartesian position to register 2
 robot.Snpx.PositionRegisters.Write(2, new CartesianPosition { X = 100, Y = 50, Z = 25, W = 180, P = 0, R = 0 });
-```
 
-#### 🔹 Read & write numeric registers
-
-```csharp
-// Read register R[1]
+// Numeric registers
 float value = robot.Snpx.NumericRegisters.Read(1);
-
-// Write a value to R[2]
 robot.Snpx.NumericRegisters.Write(2, 123.45f);
-```
 
-#### 🔹 Read and control robot signals (UI, UO, GI, GO)
-
-```csharp
-// Read a User Input (UI) state
-bool UI1 = robot.Snpx.UI.Read(1);
-
-// Set a User Output (UO) signal
+// Signals (UI, UO, GI, GO...)
+bool ui1 = robot.Snpx.UI.Read(1);
 robot.Snpx.UO.Write(3, true);
-```
 
-#### 🔹 Read & write variables
-
-```csharp
-// Write a system variable
+// System variables and Karel program variables
 robot.Snpx.IntegerSystemVariables.Write("$RMT_MASTER", 1);
 robot.Snpx.StringSystemVariables.Write("$ALM_IF.$LAST_ALM", "No alarms");
-robot.Snpx.PositionSystemVariables.Write("$CELL_FLOOR", cellFloor);
-
-// Write a Karel program variable
 robot.Snpx.IntegerSystemVariables.Write("$[KarelProgram]KarelVariable", 1);
-```
 
-#### Clear alarms
-
-```csharp
-// Clear alarms
+// Alarms
 robot.Snpx.ClearAlarms();
-```
 
-#### Get current position
-
-```csharp
-// Read current joint and cartesian position
+// Current position, in the world frame and in a user frame
 Position position = robot.Snpx.CurrentPosition.ReadWorldPosition();
-
-// Read User frame cartesian position
 robot.Snpx.CurrentPosition.ReadUserFramePosition(1);
 ```
 
----
+### FTP
 
-### 📂 **3. File & Variable Management via FTP Memory Access**
-
-The SDK provides **direct FTP access** to the robot's memory for **file transfer, variable reading, and configuration management**.
-
-#### 🔹 Upload, download, and delete files
+FTP gives access to the files of the controller, and reads and decodes the variable files and the
+diagnostic files.
 
 ```csharp
-// Upload a TP program to the controller
+// Files
 robot.Ftp.DirectFileHandling.UploadFileToController(@"C:\Programs\MyPrg.tp", "md:/MyPrg.tp");
-
-// Download a file from the robot
 robot.Ftp.DirectFileHandling.DownloadFileFromController(@"C:\Backup\Backup.va", "md:/Backup.va");
-
-// Delete a file on the robot
 robot.Ftp.DirectFileHandling.DeleteFile("md:/OldProgram.tp");
-```
 
-#### 🔹 Read all declared variables
-
-```csharp
+// All the declared variables
 var allVariables = robot.Ftp.GetAllVariables();
 foreach (var variable in allVariables)
-{
     Console.WriteLine($"{variable.Name} = {variable.Value}");
-}
-```
 
-#### 🔹 Read known system variables
-
-```csharp
-// Read system variable $RMT_MASTER
+// Known system variables ($RMT_MASTER)
 int remoteMode = robot.Ftp.KnownVariableFiles.GetSystemFile().RmtMaster;
-```
 
-#### 🔹 Check robot safety status
-
-```csharp
+// Safety status
 SafetyStatus safetyStatus = robot.Ftp.GetSafetyStatus();
-Console.WriteLine($"Emergency Stop: {safetyStatus.ExternalEStop}");
-Console.WriteLine($"Teach Pendant Enabled: {safetyStatus.TPEnable}");
-```
+Console.WriteLine($"Emergency stop: {safetyStatus.ExternalEStop}");
+Console.WriteLine($"Teach pendant enabled: {safetyStatus.TPEnable}");
 
-#### 🔹 Retrieve the robot's current position
-
-```csharp
+// Current position of each motion group
 CurrentPosition currentPosition = robot.Ftp.GetCurrentPosition();
 GroupPosition group = currentPosition.GroupsPosition[0];
-Console.WriteLine($"Cartesian Position: X={group.WorldPositions[0].X}, Y={group.WorldPositions[0].Y}, Z={group.WorldPositions[0].Z}");
-Console.WriteLine($"Joint Position: J1={group.JointsPosition.J1}, J2={group.JointsPosition.J2}");
+Console.WriteLine($"X={group.WorldPositions[0].X}, Y={group.WorldPositions[0].Y}, Z={group.WorldPositions[0].Z}");
+Console.WriteLine($"J1={group.JointsPosition.J1}, J2={group.JointsPosition.J2}");
 ```
 
----
+### CGTP (web server of the controller)
 
-## 🔧 Configuration
-
-### ✅ **Enable Telnet KCL**
-
-1. **Go to** `SETUP > Host Comm`
-2. **Select** `TELNET` and press `[DETAIL]`
-3. **Set a password** and restart the robot
-
-### ✅ **Enable FTP Memory Access**
-
-1. **Go to** `SETUP > Host Comm > FTP`
-2. **Set a username & password**
-3. **Perform a cold start**
-
-### ✅ **Enable SNPX**
-
-- If Your Robot Uses "FANUC America Corp." Parameters (R650 FRA):
-  You need to enable option R553 ("HMI Device SNPX") in the robot's software configuration.
-
-- If Your Robot Uses "FANUC Ltd." Parameters (R651 FRL):
-  No additional option is required:SNPX is included by default.
-
-### ✅ **Enable Stream Motion**
-
-1. **Check** that option **J519 Stream Motion** is installed (`Features.HasStreamMotion`)
-2. **Set** `$PARAM_GROUP[1].$SV_OFF_ENB[*]` to `FALSE`
-3. **Run** a TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override
-
-Full tutorial: [underautomation.com/fanuc/documentation/stream-motion](https://underautomation.com/fanuc/documentation/stream-motion)
-
-### 🌐 **4. CGTP Web Server Protocol**
-
-CGTP communicates with the robot controller's **built-in HTTP web server**. It provides a comprehensive API for program management, variable access, register operations, I/O control, and kinematics.
-
-#### 🔹 Read & write variables
+CGTP uses the web server of the controller. It gives access to the programs, the variables, the
+registers, the I/O and the kinematics.
 
 ```csharp
+// Variables
 string value = robot.Cgtp.ReadVariableAsString("$MCR.$GENOVERRIDE");
 robot.Cgtp.WriteVariable("$MCR.$GENOVERRIDE", 50);
-```
 
-#### 🔹 Register access
-
-```csharp
-// Numeric registers
+// Registers
 robot.Cgtp.WriteNumericRegisterAsInteger(1, 42);
 var reg = robot.Cgtp.ReadNumericRegisterWithComment(1);
-
-// String registers
 robot.Cgtp.WriteStringRegister(1, "Hello CGTP");
-```
 
-#### 🔹 Program control
-
-```csharp
+// Programs
 robot.Cgtp.SelectProgram("MAIN", 1);
 robot.Cgtp.RunProgram("MAIN");
 robot.Cgtp.PauseAllPrograms();
 robot.Cgtp.AbortTask("MAIN");
-```
 
-#### 🔹 List programs
-
-```csharp
-// List all TP programs on the controller
 string[] allTp = robot.Cgtp.ListTpPrograms();
-
-// List Karel macros only
 string[] macros = robot.Cgtp.ListPrograms(CgtpProgramType.Karel, CgtpProgramSubType.Macro);
+
+// I/O
+int ioValue = robot.Cgtp.ReadIo(CgtpIoPortType.DO, 1);
+robot.Cgtp.WriteIo(CgtpIoPortType.DO, 1, 1);
+robot.Cgtp.SimulateIo(CgtpIoPortType.DI, 3);
+robot.Cgtp.UnsimulateIo(CgtpIoPortType.DI, 3);
 ```
 
-#### 🔹 Source code editing (firmware V9.10+)
+With firmware V9.10 or later, CGTP also edits the source of TP programs and writes positions into them
+(first motion group only):
 
 ```csharp
-// Insert a line before line 3
+// Insert a line before line 3, replace line 5, delete 2 lines from line 4
 robot.Cgtp.InsertSourceLine("MY_PROGRAM", "L P[5] 100mm/sec FINE", 3);
-
-// Replace line 5
 robot.Cgtp.ReplaceSourceLine("MY_PROGRAM", "J P[1] 50% FINE", 5);
-
-// Delete 2 lines starting at line 4
 robot.Cgtp.DeleteSourceLines("MY_PROGRAM", 4, 2);
-```
 
-#### 🔹 Write position data into a program (firmware V9.10+)
-
-`SetProgramPosition` writes a Cartesian or joint position to a position index P[n] inside a TP program. Only the first motion group is supported via CGTP.
-
-```csharp
-// Cartesian position
+// Write a Cartesian position to P[1]
 var position = new Position(
     userFrame: 0,
     userTool: 1,
@@ -348,7 +260,7 @@ var position = new Position(
 );
 robot.Cgtp.SetProgramPosition("MY_PROG", 1, position);
 
-// Joint position
+// Write a joint position to P[2]
 var jointPosition = new Position(
     userFrame: 0,
     userTool: 1,
@@ -358,24 +270,78 @@ var jointPosition = new Position(
 robot.Cgtp.SetProgramPosition("MY_PROG", 2, jointPosition);
 ```
 
-#### 🔹 I/O control
+### RMI (option R912)
+
+RMI (Remote Motion Interface) sends TP motion instructions to the robot. The SDK manages the instruction
+buffer of the controller and returns a response object for each instruction. The teach pendant must be
+disabled and the controller in AUTO mode before `Initialize()`.
 
 ```csharp
-int ioValue = robot.Cgtp.ReadIo(CgtpIoPortType.DO, 1);
-robot.Cgtp.WriteIo(CgtpIoPortType.DO, 1, 1);
-robot.Cgtp.SimulateIo(CgtpIoPortType.DI, 3);
-robot.Cgtp.UnsimulateIo(CgtpIoPortType.DI, 3);
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Rmi.Data;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
+
+var parameters = new ConnectionParameters("192.168.0.1");
+parameters.Rmi.Enable = true;
+robot.Connect(parameters);
+
+// Starts the RMI_MOVE program on the controller
+robot.Rmi.Initialize();
+robot.Rmi.SetOverride(50);
+
+// Linear motion to a Cartesian target
+var linear = new LinearMotionTpInstruction
+{
+    SpeedType = RmiLinearSpeedType.MmSec,
+    Speed = 100,
+    TermType = RmiTerminationType.Fine,
+    Target = new CartesianPositionWithUserFrame(500, 200, 300, 0, 90, 0, tool: 1, frame: 0)
+};
+RmiInstructionResponse response = robot.Rmi.SendTpInstruction(linear);
+response.WaitForCompletion();
+if (response.Status == RmiInstructionStatus.Error)
+    Console.WriteLine("Error: " + response.ErrorText);
+
+// Joint motion to joint angles
+robot.Rmi.SendTpInstruction(new JointMotionJRepTpInstruction
+{
+    SpeedType = RmiJointSpeedType.Percent,
+    Speed = 10,
+    TermType = RmiTerminationType.Fine,
+    Joints = new JointsPosition(10, -20, 30, 0, 60, 0)
+});
+
+// Circular motion through a via point
+robot.Rmi.SendTpInstruction(new CircularMotionTpInstruction
+{
+    SpeedType = RmiLinearSpeedType.MmSec,
+    Speed = 80,
+    TermType = RmiTerminationType.Fine,
+    Via = new CartesianPositionWithUserFrame(600, 100, 350, 0, 90, 0, 1, 0),
+    Target = new CartesianPositionWithUserFrame(700, 0, 300, 0, 90, 0, 1, 0)
+});
+
+// Other instructions: wait for an input, wait a time, payload, call a program (RMI version 4 or later)
+robot.Rmi.SendTpInstruction(new WaitDinTpInstruction { PortNumber = 1, Value = RmiOnOff.ON });
+robot.Rmi.SendTpInstruction(new WaitTimeTpInstruction { Seconds = 0.5 });
+robot.Rmi.SendTpInstruction(new SetPayloadTpInstruction { ScheduleNumber = 1 });
+robot.Rmi.SendTpInstruction(new CallProgramTpInstruction { ProgramName = "MY_PROG" });
+
+// Status and position
+var status = robot.Rmi.GetStatus();
+var pos = robot.Rmi.ReadCartesianPosition();
+var joints = robot.Rmi.ReadJointAngles();
+
+// Stops the RMI_MOVE program
+robot.Rmi.Abort();
 ```
 
----
+### Stream Motion (option J519)
 
-### 🔄 **5. Stream Motion (J519): Real-Time Motion**
-
-Stream Motion (option **J519**) gives the position of the robot at every communication cycle (2 to 8 ms). The SDK does the real-time part for you: it synchronizes the positions with the status of the robot, sends a few positions in advance, and stops the robot smoothly if your application stops giving positions.
-
-The robot must run a TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override.
-
-#### 🔹 Connect and read the status
+Stream Motion gives the position of the robot at every communication cycle (2 to 8 ms). The SDK does the
+real-time part: it synchronizes the positions with the status of the robot, sends a few positions in
+advance, and stops the robot smoothly when your application stops giving positions. The robot must run a
+TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override.
 
 ```csharp
 var parameters = new ConnectionParameters("192.168.0.1");
@@ -383,20 +349,15 @@ parameters.StreamMotion.Enable = true;
 parameters.StreamMotion.ProtocolVersion = 1; // 1, 2 or 3, not higher than $STMO.$USABLE_VER
 robot.Connect(parameters);
 
-// Read the limits of the robot, start the status output and measure the communication cycle
-robot.StreamMotion.StartMonitoring();
-
-StreamMotionStatus status = robot.StreamMotion.LastStatus;
-Console.WriteLine($"J1={status.JointPosition.J1:F3}° Moving={status.IsMoving}");
-```
-
-#### 🔹 Send trajectories
-
-```csharp
+// Reads the limits of the robot, starts the status output and measures the communication cycle
 var sm = robot.StreamMotion;
-var planner = new MotionPlanner(sm.JointLimits, null);
+sm.StartMonitoring();
+
+StreamMotionStatus status = sm.LastStatus;
+Console.WriteLine($"J1={status.JointPosition.J1:F3} Moving={status.IsMoving}");
 
 // J1 +10 degrees then back, at 20% of the velocity limits
+var planner = new MotionPlanner(sm.JointLimits, null);
 JointsPosition start = sm.QueueEndJointPosition;
 var target = new JointsPosition(start.Values) { J1 = start.J1 + 10 };
 Trajectory trajectory = planner.CreateJointPath(start)
@@ -408,175 +369,60 @@ Trajectory trajectory = planner.CreateJointPath(start)
 int motionId = sm.Enqueue(trajectory);
 sm.WaitForMotion(motionId, 60000);
 
-// Release the TP program: it continues after IBGN end
+// Follow a target that can change at any time, at 30% of the velocity limits
+sm.StartTracking(PositionFormat.Joint, 30);
+sm.SetJointTrackingTarget(target);
+sm.WaitForIdle(10000);
+sm.StopTracking();
+
+// I/O during the motion
+sm.AddIOMonitor(IOType.DI, 1);      // reads DI[1] to DI[16] during the session
+bool di3 = sm.GetIO(IOType.DI, 3);
+sm.WriteIO(IOType.DO, 1, true);     // written with the next position
+
+// Releases the TP program: it continues after IBGN end
 sm.Finish(10000);
 ```
 
-`Override`, `Pause()`, `Resume()` and `Abort()` slow down or stop the trajectories smoothly on their path.
+`Override`, `Pause()`, `Resume()` and `Abort()` slow down or stop the trajectories on their path. To
+compute each position yourself, handle the `SetpointRequested` event and call `StartCallbackStreaming()`.
+Documentation: [Stream Motion](https://underautomation.com/fanuc/documentation/stream-motion).
 
-#### 🔹 Follow a target in real time
+### Kinematics
 
-```csharp
-// The robot goes to the last target, at 30% of its velocity limits
-sm.StartTracking(PositionFormat.Joint, 30);
-sm.SetJointTrackingTarget(new JointsPosition(start.Values) { J1 = start.J1 + 10 });
-sm.WaitForIdle(10000);
-sm.StopTracking();
-```
-
-To compute the position yourself at every cycle, handle the `SetpointRequested` event and call `StartCallbackStreaming()`.
-
-#### 🔹 I/O during motion
-
-```csharp
-sm.AddIOMonitor(IOType.DI, 1);      // read DI[1] to DI[16] during the session
-bool di3 = sm.GetIO(IOType.DI, 3);
-sm.WriteIO(IOType.DO, 1, true);     // written with the next position sent
-```
-
-📖 [Stream Motion documentation](https://underautomation.com/fanuc/documentation/stream-motion)
-
----
-
-### 🏎️ **6. Remote Motion via RMI**
-
-RMI (Remote Motion Interface, option R912) lets you send TP-equivalent motion instructions to the robot in real time. The client manages the controller instruction buffer automatically and returns a response object per instruction.
-
-#### 🔹 Robot setup required
-
-The controller must have the **Remote Motion Interface (R912)** option. The bootstrap port is **16001** (TCP). The teach pendant must be disabled and the controller must be in AUTO mode before calling `Initialize()`.
-
-#### 🔹 Connect and initialize
-
-```csharp
-var parameters = new ConnectionParameters("192.168.0.1");
-parameters.Rmi.Enable = true;
-robot.Connect(parameters);
-
-// Start the RMI_MOVE TP program on the controller
-robot.Rmi.Initialize();
-```
-
-#### 🔹 Send motion instructions
-
-```csharp
-using UnderAutomation.Fanuc.Common;
-using UnderAutomation.Fanuc.Rmi.Data;
-using UnderAutomation.Fanuc.Rmi.TpInstructions;
-
-// Linear motion to a Cartesian target
-var instr = new LinearMotionTpInstruction
-{
-    SpeedType = RmiLinearSpeedType.MmSec,
-    Speed = 100,
-    TermType = RmiTerminationType.Fine,
-    Target = new CartesianPositionWithUserFrame(500, 200, 300, 0, 90, 0, tool: 1, frame: 0)
-};
-
-RmiInstructionResponse r = robot.Rmi.SendTpInstruction(instr);
-
-// Optional: wait for the instruction to complete
-r.WaitForCompletion();
-if (r.Status == RmiInstructionStatus.Error)
-    Console.WriteLine("Error: " + r.ErrorText);
-```
-
-#### 🔹 Joint motion with joint-angle target
-
-```csharp
-var jrep = new JointMotionJRepTpInstruction
-{
-    SpeedType = RmiJointSpeedType.Percent,
-    Speed = 10,
-    TermType = RmiTerminationType.Fine,
-    Joints = new JointsPosition(10, -20, 30, 0, 60, 0)
-};
-robot.Rmi.SendTpInstruction(jrep);
-```
-
-#### 🔹 Circular motion
-
-```csharp
-var arc = new CircularMotionTpInstruction
-{
-    SpeedType = RmiLinearSpeedType.MmSec,
-    Speed = 80,
-    TermType = RmiTerminationType.Fine,
-    Via = new CartesianPositionWithUserFrame(600, 100, 350, 0, 90, 0, 1, 0),   // arc via-point
-    Target = new CartesianPositionWithUserFrame(700, 0, 300, 0, 90, 0, 1, 0)   // destination
-};
-robot.Rmi.SendTpInstruction(arc);
-```
-
-#### 🔹 Non-motion instructions
-
-```csharp
-// Wait for digital input
-robot.Rmi.SendTpInstruction(new WaitDinTpInstruction { PortNumber = 1, Value = RmiOnOff.ON });
-
-// Time delay
-robot.Rmi.SendTpInstruction(new WaitTimeTpInstruction { Seconds = 0.5 });
-
-// Activate a payload schedule
-robot.Rmi.SendTpInstruction(new SetPayloadTpInstruction { ScheduleNumber = 1 });
-
-// Call a TP program (requires MajorVersion >= 4)
-robot.Rmi.SendTpInstruction(new CallProgramTpInstruction { ProgramName = "MY_PROG" });
-```
-
-#### 🔹 Admin commands
-
-```csharp
-// Check controller status before initializing
-var status = robot.Rmi.GetStatus();
-
-// Set speed override
-robot.Rmi.SetOverride(50);
-
-// Read current position
-var pos = robot.Rmi.ReadCartesianPosition();
-var joints = robot.Rmi.ReadJointAngles();
-
-// Abort the RMI_MOVE program when done
-robot.Rmi.Abort();
-```
-
----
-
-## 📐 **Kinematics Calculations:**
-
-The SDK includes tools for performing forward and inverse kinematics calculations offline, allowing you to compute the robot's end-effector position based on joint angles and vice versa, from DH parameters.
+The SDK computes the forward and inverse kinematics offline, from Denavit-Hartenberg parameters. It
+contains the parameters of more than 80 arm models (CRX cobots and OPW arms).
 
 ```csharp
 using UnderAutomation.Fanuc.Kinematics;
 
 JointsPosition position = new JointsPosition(10, 20, 120, 0, 0, 25);
 
-// ---- Get DH parameters ----
-// Example: CRX-10iA/L
+// DH parameters of a CRX-10iA/L
 DhParameters dh = new DhParameters(-540, 150, -160, 0, 710, 0);
 
-// From a known arm model
+// Or from a known arm model
 dh = DhParameters.FromArmKinematicModel(ArmKinematicModels.CRX10iA);
 
-// From OPW parameters: M10iA/7L
+// Or from OPW parameters (M-10iA/7L)
 dh = DhParameters.FromOpwParameters(0.15, -0.20, 0.60, 0.86, 0.10);
 
-// From an online robot (SYSMOTN file)
+// Or from a connected robot (SYSMOTN file)
 dh = DhParameters.FromSymotnFile(robot.Ftp.KnownVariableFiles.GetSymotnFile())[0];
 
-// ---- Forward kinematics ----
+// Forward kinematics
 CartesianPosition pose = KinematicsUtils.ForwardKinematics(position, dh);
 
-// ---- Inverse kinematics with multiple solutions ----
+// Inverse kinematics: every solution
 JointsPosition[] positions = KinematicsUtils.InverseKinematics(pose, dh);
 ```
 
----
+### Motion planner
 
-## 🛤️ **Motion Planner:**
-
-The `UnderAutomation.Fanuc.Motion` namespace creates smooth trajectories offline, within velocity, acceleration and jerk limits. Motions are described as in a TP program: J, L and C motions with FINE, CNT or CR termination. Trajectories can be sent with Stream Motion, sampled for a simulation, or checked against the limits of the robot.
+The namespace `UnderAutomation.Fanuc.Motion` creates trajectories offline, within velocity, acceleration
+and jerk limits. Motions are described as in a TP program: J, L and C motions with FINE, CNT or CR
+termination. A trajectory can be sent with Stream Motion, sampled for a simulation, or checked against
+the limits of the robot.
 
 ```csharp
 using UnderAutomation.Fanuc.Motion;
@@ -604,7 +450,7 @@ Trajectory cartesian = planner.CreateCartesianPath(new XYZWPRPosition(500, 0, 30
     .AddCircle(plane, 30, 150, Termination.Fine())
     .Build();
 
-// Duration, position at any time, one position per cycle
+// Duration, one position per cycle
 Console.WriteLine($"Duration: {joint.Duration:0.000} s");
 JointsPosition[] samples = joint.SampleJoints(0.008);
 
@@ -612,81 +458,76 @@ JointsPosition[] samples = joint.SampleJoints(0.008);
 TrajectoryReport report = joint.Check(jointLimits, 0.008, false);
 ```
 
-The planner also creates splines (`MoveSpline()`, `MoveJointSpline()`), shapes (`AddRectangle()`, `AddPolygon()`, `AddHelix()`, `AddSpiral()`), and trajectories from your own positions (`Trajectory.FromJointSamples()`, `Trajectory.FromTimedJoints()`...). `XYZWPRPosition` gives quaternions (`GetQuaternion()`) and frame changes (`FlangeToTcp()`, `WorldToUserFrame()`...).
+The planner also creates splines (`MoveSpline()`, `MoveJointSpline()`), shapes (`AddRectangle()`,
+`AddPolygon()`, `AddHelix()`, `AddSpiral()`), and trajectories from your own positions
+(`Trajectory.FromJointSamples()`, `Trajectory.FromTimedJoints()`...). `XYZWPRPosition` gives quaternions
+(`GetQuaternion()`) and frame changes (`FlangeToTcp()`, `WorldToUserFrame()`...). Documentation:
+[Motion planner](https://underautomation.com/fanuc/documentation/motion).
 
-📖 [Motion planner documentation](https://underautomation.com/fanuc/documentation/motion)
+## Robot configuration
 
----
+### Telnet KCL
 
-## 🛠 Installation
+1. Go to `SETUP > Host Comm`.
+2. Select `TELNET` and press `[DETAIL]`.
+3. Set a password and restart the controller.
 
-### 1️⃣ **Get the SDK**
+Tutorial: [underautomation.com/fanuc/documentation/telnet-enable-on-robot](https://underautomation.com/fanuc/documentation/telnet-enable-on-robot)
 
-Choose the installation method that works best for you:
+### FTP
 
-| Method             | NuGet (Recommended)                                                                     | Direct Download                                                                                                    |
-| ------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **How to Install** | Install via NuGet. [See on Nuget](https://www.nuget.org/packages/UnderAutomation.Fanuc) | Download and reference the DLL manually                                                                            |
-|                    | `dotnet add package UnderAutomation.Fanuc `                                             | 📥 [Download ZIP](https://github.com/underautomation/Fanuc.NET/releases/latest/download/UnderAutomation.Fanuc.zip) |
+1. Go to `SETUP > Host Comm > FTP`.
+2. Set a user and a password.
+3. Do a cold start.
 
-### 2️⃣ **Reference the SDK in Your Code**
+### SNPX
 
-```csharp
-using UnderAutomation.Fanuc;
-```
+- FANUC America parameters (R650 FRA): the controller needs option R553 "HMI Device SNPX".
+- FANUC Ltd. parameters (R651 FRL): no option is needed.
 
-### 3️⃣ **Connect to Your Robot**
+### Stream Motion
 
-```csharp
-var robot = new FanucRobot();
-var parameters = new ConnectionParameters("192.168.0.1");
-parameters.Language = Languages.English; // Japanese and Chinese controllers are also supported
+1. Check that option J519 Stream Motion is installed (`Features.HasStreamMotion`).
+2. Set `$PARAM_GROUP[1].$SV_OFF_ENB[*]` to `FALSE`.
+3. Run a TP program with `IBGN start[1]` and `IBGN end[1]`, in AUTO mode at 100% override.
 
-parameters.Telnet.Enable = true;
-parameters.Telnet.TelnetKclPassword = "your_telnet_password";
+Tutorial: [underautomation.com/fanuc/documentation/stream-motion](https://underautomation.com/fanuc/documentation/stream-motion)
 
-parameters.Ftp.Enable = true;
-parameters.Ftp.FtpUser = "";
-parameters.Ftp.FtpPassword = "";
-parameters.Ftp.FtpTimeoutMs = 10000; // optional, default is 30 seconds
+## Shell sources
 
-parameters.Snpx.Enable = true;
+The folder [`UnderAutomation.Fanuc.ObfuscatedSources`](UnderAutomation.Fanuc.ObfuscatedSources) contains
+every public type and member of the SDK, with its XML documentation. The bodies of the methods are
+replaced by "Source is hidden". Use it to:
 
-parameters.Rmi.Enable = true;
+- browse the public API and its documentation on GitHub;
+- jump to a definition from your code editor;
+- see the structure of the code that is delivered with a source license.
 
-robot.Connect(parameters);
-```
+The source license gives the complete source code of the library, with the Visual Studio solution. See
+the [license page](https://underautomation.com/fanuc/documentation/license) of the documentation.
 
----
+## Compatibility
 
-## 🔍 Compatibility
+| Target framework | Supported |
+| --- | --- |
+| .NET Standard 2.1 / 2.0 (also .NET Core 2.0 and later, .NET 5 to 10) | yes |
+| .NET Framework 4.0 to 4.8 | yes |
+| .NET Framework 3.5 | yes |
 
-✅ **Supported Robots:** R-J3iB, R-30iA, R-30iB, R-50iA
-✅ **Operating Systems:** Windows, Linux, macOS  
-✅ **.NET Versions:** .NET Framework (≥3.5), .NET Standard, .NET Core, .NET 5/6/8/9
+- **Operating systems:** Windows, Linux, macOS.
+- **No native dependency.** The .NET Standard targets depend on the NuGet package `System.Text.Encoding.CodePages`.
+- **Controllers:** R-J3iB, R-30iA, R-30iB, R-50iA, and ROBOGUIDE.
 
----
+## License
 
-## 📢 Contributing
+This SDK needs a commercial license. A 30-day trial starts at the first use, no key needed.
 
-We welcome contributions! Feel free to:
+- License agreement: [underautomation.com/fanuc/eula](https://underautomation.com/fanuc/eula) and [License.md](License.md)
+- Trial, license key and source license: [underautomation.com/fanuc/documentation/license](https://underautomation.com/fanuc/documentation/license)
+- Prices and quote: [underautomation.com/fanuc](https://underautomation.com/fanuc)
 
-- Report issues via [GitHub Issues](https://github.com/underautomation/Fanuc/issues)
-- Submit pull requests with improvements
-- Share feedback & feature requests
+## Support
 
----
-
-## 📜 License
-
-**⚠️ This SDK requires a commercial license.**  
-🔗 Learn more: [UnderAutomation Licensing](https://underautomation.com/fanuc/eula)
-
----
-
-## 📬 Need Help?
-
-If you have any questions or need support:
-
-- 📖 **Check the Docs**: [Documentation](https://underautomation.com/fanuc/documentation)
-- 📩 **Contact Us**: [Support](https://underautomation.com/contact)
+- Documentation: [underautomation.com/fanuc/documentation](https://underautomation.com/fanuc/documentation)
+- Issues: [GitHub Issues](https://github.com/underautomation/Fanuc.NET/issues)
+- Contact: [underautomation.com/contact](https://underautomation.com/contact)
