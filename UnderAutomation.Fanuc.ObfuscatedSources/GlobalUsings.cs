@@ -1,1 +1,1 @@
-﻿global using TaskStatus = Common.TaskStatus;
+﻿global using TaskStatus = UnderAutomation.Fanuc.Common.TaskStatus;
