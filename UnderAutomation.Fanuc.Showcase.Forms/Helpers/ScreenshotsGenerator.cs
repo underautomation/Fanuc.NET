@@ -12,7 +12,12 @@ public static class ScreenshotsGenerator
         foreach (TreeNode node in frm.leftTreeView.Nodes)
         {
             frm.leftTreeView.SelectedNode = node;
-            frm.SelectNode(node);
+
+            // Some pages read the robot when they open: without a connection they throw, but the page is still drawn
+            try { frm.SelectNode(node); }
+            catch { }
+
+            Application.DoEvents();
 
             var bm = new Bitmap(frm.Width, frm.Height);
             frm.DrawToBitmap(bm, new Rectangle(0, 0, bm.Width, bm.Height));
