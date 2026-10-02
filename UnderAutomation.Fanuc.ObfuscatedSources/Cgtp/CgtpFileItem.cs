@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp {
+namespace UnderAutomation.Fanuc.Cgtp {
 	/// <summary>
 	/// Represents a file entry returned by the controller's index pages.
 	/// </summary>

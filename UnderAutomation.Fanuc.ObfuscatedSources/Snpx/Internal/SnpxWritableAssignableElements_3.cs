@@ -3,14 +3,14 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Abstract base class for writable assignable SNPX elements.
 	/// </summary>
 	public abstract class SnpxWritableAssignableElements<TValue, TIndex, TAssignment> : SnpxAssignableElements<TValue, TIndex> where TAssignment : BatchAssignment<TValue, TIndex>, new() {
 
 		/// <summary>
-		/// Writes a value to the robot at the specified offset.
+		/// Writes a value to the robot, at the position given by the assignment.
 		/// </summary>
 		protected abstract void WriteInClient(int offset, TIndex index, TValue value);
 

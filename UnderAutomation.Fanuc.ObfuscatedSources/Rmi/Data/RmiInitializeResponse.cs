@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Response to the Initialize command, which starts the RMI motion program on the controller.
 	/// </summary>

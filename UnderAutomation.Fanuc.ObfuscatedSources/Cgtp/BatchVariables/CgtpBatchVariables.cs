@@ -3,10 +3,10 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System.Collections.Generic;
-using Common;
+using UnderAutomation.Fanuc.Common;
 using System.Collections;
 
-namespace Cgtp.BatchVariables {
+namespace UnderAutomation.Fanuc.Cgtp.BatchVariables {
 	/// <summary>
 	/// Collection of batch variables to read from or write to the controller in a single operation.
 	/// Provides convenience methods to add typed variables.

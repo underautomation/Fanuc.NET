@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Common.Kcl {
+namespace UnderAutomation.Fanuc.Common.Kcl {
 	/// <summary>
 	/// Abstract base class for KCL (Keyboard Command Line) clients.
 	/// Provides all KCL commands shared between Telnet and CGTP implementations.
@@ -142,6 +142,7 @@ namespace Common.Kcl {
 		/// RUN is a motion command; therefore, the device from which it is issued must have motion control. If a RUN command is issued in a command file, it is executed as a NOWAIT command.
 		/// Therefore, the statement following the RUN command will be executed immediately after the RUN command is issued without waiting for the program, specified by the RUN command, to end.
 		/// When used through the CGTP KCL client (Unsafe mode, from firmware 9.30), success or failure cannot be determined from the result.
+		/// With CGTP, prefer robot.Cgtp.RunProgram(), which can start at a given line and throws an exception when the controller refuses the command.
 		/// </summary>
 		/// <param name="program">The name of any KAREL or TP program without extension</param>
 		public RunResult Run(string program = null)

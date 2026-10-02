@@ -3,10 +3,10 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Common {
+namespace UnderAutomation.Fanuc.Common {
 	/// <summary>
 	/// Quaternion that represents an orientation (Qw + Qx.i + Qy.j + Qz.k).
-	/// Use <xref href="UnderAutomation.Fanuc.Common.XYZWPRPosition.GetQuaternion" data-throw-if-not-resolved="false"></xref> and <xref href="UnderAutomation.Fanuc.Common.XYZWPRPosition.SetQuaternion(UnderAutomation.Fanuc.Common.Quaternion)" data-throw-if-not-resolved="false"></xref> to convert from and to W, P, R angles.
+	/// Use <see cref="UnderAutomation.Fanuc.Common.XYZWPRPosition.GetQuaternion"/> and <see cref="UnderAutomation.Fanuc.Common.XYZWPRPosition.SetQuaternion(UnderAutomation.Fanuc.Common.Quaternion)"/> to convert from and to W, P, R angles.
 	/// </summary>
 	public class Quaternion {
 

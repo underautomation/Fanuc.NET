@@ -2,10 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
-using Kinematics;
+using UnderAutomation.Fanuc.Common;
 
-namespace Kinematics.Crx {
+namespace UnderAutomation.Fanuc.Kinematics.Crx {
 	/// <summary>
 	/// Utility methods implementing CRX collaborative robot inverse kinematics using a geometric approach.
 	/// </summary>

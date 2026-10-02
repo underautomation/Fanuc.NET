@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Rmi.Data;
+using UnderAutomation.Fanuc.Rmi.Data;
 
-namespace Rmi.TpInstructions {
+namespace UnderAutomation.Fanuc.Rmi.TpInstructions {
 	/// <summary>
 	/// Base class for all RMI motion instructions.
 	/// Carries the three parameters that are mandatory on every motion instruction.

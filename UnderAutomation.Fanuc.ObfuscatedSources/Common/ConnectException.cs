@@ -5,7 +5,7 @@
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 
-namespace Common {
+namespace UnderAutomation.Fanuc.Common {
 	/// <summary>
 	/// Exception thrown when connection to the robot fails
 	/// </summary>

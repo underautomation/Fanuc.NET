@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Common.Files.Variables {
+namespace UnderAutomation.Fanuc.Common.Files.Variables {
 	/// <summary>
 	/// Describes all elements inside an array. Basically, a wrapping of GenericField where some properties are inherited from it
 	/// </summary>

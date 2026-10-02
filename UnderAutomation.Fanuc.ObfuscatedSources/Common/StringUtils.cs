@@ -4,7 +4,7 @@
 
 using System.Text;
 
-namespace Common {
+namespace UnderAutomation.Fanuc.Common {
 	/// <summary>
 	/// Contains string related utility methods
 	/// </summary>

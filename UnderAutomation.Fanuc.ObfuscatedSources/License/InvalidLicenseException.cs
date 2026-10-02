@@ -5,7 +5,7 @@
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 
-namespace License {
+namespace UnderAutomation.Fanuc.License {
 	/// <summary>
 	/// Exception thrown while using the product if the license is not valid.
 	/// </summary>

@@ -4,16 +4,15 @@
 
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using Kinematics;
 
-namespace Kinematics.Internal {
+namespace UnderAutomation.Fanuc.Kinematics.Internal {
 	/// <summary>
 	/// Attribute that associates DH parameters with an arm kinematic model enum value.
 	/// </summary>
 	public class ArmModelAttribute : DescriptionAttribute, IDhParameters {
 
 		/// <summary>
-		/// Initializes a new instance of <xref href="UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute" data-throw-if-not-resolved="false"></xref> with the specified description and DH parameters.
+		/// Initializes a new instance of <see cref="UnderAutomation.Fanuc.Kinematics.Internal.ArmModelAttribute"/> with the specified description and DH parameters.
 		/// </summary>
 		/// <param name="description">The human-readable model name.</param>
 		/// <param name="d4">DH parameter D4 (mm).</param>

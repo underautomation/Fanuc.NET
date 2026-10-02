@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Identifies the type of I/O for which simulation status can be read or written.
 	/// </summary>

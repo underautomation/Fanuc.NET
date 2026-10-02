@@ -3,10 +3,10 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Rmi.TpInstructions {
+namespace UnderAutomation.Fanuc.Rmi.TpInstructions {
 	/// <summary>
 	/// Instruction for a <code>PAYLOAD[n]</code> schedule selection.
-	/// Pass to <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SendTpInstruction(UnderAutomation.Fanuc.Rmi.TpInstructions.RmiInstructionBase)" data-throw-if-not-resolved="false"></xref>.
+	/// Pass to <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SendTpInstruction(UnderAutomation.Fanuc.Rmi.TpInstructions.RmiInstructionBase)"/>.
 	/// </summary>
 	public class SetPayloadTpInstruction : RmiInstructionBase {
 

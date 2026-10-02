@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Rmi.Internal;
+using UnderAutomation.Fanuc.Rmi.Internal;
 
-namespace Rmi {
+namespace UnderAutomation.Fanuc.Rmi {
 	/// <summary>
 	/// RMI client for connecting to and controlling FANUC robots via the Remote Motion Interface protocol.
 	/// </summary>

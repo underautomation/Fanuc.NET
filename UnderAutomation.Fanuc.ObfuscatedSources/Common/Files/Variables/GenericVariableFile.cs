@@ -3,9 +3,8 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System.IO;
-using Common.Files;
 
-namespace Common.Files.Variables {
+namespace UnderAutomation.Fanuc.Common.Files.Variables {
 	/// <summary>
 	/// Represents a parsed Fanuc variable file containing one or more variables
 	/// </summary>

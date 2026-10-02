@@ -5,14 +5,14 @@
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 
-namespace Cgtp {
+namespace UnderAutomation.Fanuc.Cgtp {
 	/// <summary>
 	/// Represents an error returned by the FANUC controller via CGTP.
 	/// </summary>
 	public class CgtpException : Exception, ISerializable {
 
 		/// <summary>
-		/// The RPC status code returned by the controller when available.
+		/// The status code returned by the controller when available.
 		/// </summary>
 		public int Status { get; }
 	}

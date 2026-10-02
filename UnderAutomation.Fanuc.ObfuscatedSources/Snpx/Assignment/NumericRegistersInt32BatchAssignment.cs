@@ -2,17 +2,17 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Snpx.Internal;
+using UnderAutomation.Fanuc.Snpx.Internal;
 using System;
 
-namespace Snpx.Assignment {
+namespace UnderAutomation.Fanuc.Snpx.Assignment {
 	/// <summary>
 	/// Batch assignment for reading multiple numeric registers at once as 32-bit integers.
 	/// </summary>
 	public class NumericRegistersInt32BatchAssignment : BatchAssignment<int, int> {
 
 		/// <summary>
-		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment" data-throw-if-not-resolved="false"></xref> class.
+		/// Initializes a new instance of the <see cref="UnderAutomation.Fanuc.Snpx.Assignment.NumericRegistersInt32BatchAssignment"/> class.
 		/// </summary>
 		public NumericRegistersInt32BatchAssignment()
 		{

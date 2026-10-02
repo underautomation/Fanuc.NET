@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace StreamMotion {
+namespace UnderAutomation.Fanuc.StreamMotion {
 	/// <summary>
 	/// Kind of Stream Motion error
 	/// </summary>
@@ -41,7 +41,7 @@ namespace StreamMotion {
 
 		/// <summary>
 		/// The position format does not match the format of the session. A session uses only one format:
-		/// call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)" data-throw-if-not-resolved="false"></xref> and use the other format in the next session.
+		/// call <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> and use the other format in the next session.
 		/// </summary>
 		FormatMismatch = 6,
 

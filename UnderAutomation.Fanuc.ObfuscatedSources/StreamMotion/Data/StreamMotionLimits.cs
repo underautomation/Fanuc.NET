@@ -4,7 +4,7 @@
 
 using UnderAutomation.Robotics.Motion;
 
-namespace StreamMotion.Data {
+namespace UnderAutomation.Fanuc.StreamMotion.Data {
 	/// <summary>
 	/// Allowable velocity, acceleration and jerk limits of the robot axes, read from the robot.
 	/// The robot stops with an alarm when a position sent to it exceeds these limits.

@@ -4,7 +4,7 @@
 
 using System.Text.RegularExpressions;
 
-namespace Common.Kcl {
+namespace UnderAutomation.Fanuc.Common.Kcl {
 	/// <summary>
 	/// Base class for results that contain a former and new value.
 	/// </summary>

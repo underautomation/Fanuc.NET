@@ -2,9 +2,8 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
 
-namespace Common.Files.Diagnosis {
+namespace UnderAutomation.Fanuc.Common.Files.Diagnosis {
 	/// <summary>
 	/// Parser for the "TASK STATES" section, renamed from ProgramStatesReader to ProgramStatesParser.
 	/// Uses compiled Regex for efficiency.

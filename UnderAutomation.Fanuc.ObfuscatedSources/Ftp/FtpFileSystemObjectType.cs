@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Ftp {
+namespace UnderAutomation.Fanuc.Ftp {
 	/// <summary>
 	/// Type of file system of object
 	/// </summary>

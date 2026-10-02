@@ -2,11 +2,11 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Cgtp.Internal;
+using UnderAutomation.Fanuc.Cgtp.Internal;
 
-namespace Cgtp {
+namespace UnderAutomation.Fanuc.Cgtp {
 	/// <summary>
-	/// Standalone CGTP Web Server client for direct use without <xref href="UnderAutomation.Fanuc.FanucRobot" data-throw-if-not-resolved="false"></xref>.
+	/// Standalone CGTP Web Server client for direct use without <see cref="UnderAutomation.Fanuc.FanucRobot"/>.
 	/// </summary>
 	public class CgtpClient : CgtpClientBase {
 

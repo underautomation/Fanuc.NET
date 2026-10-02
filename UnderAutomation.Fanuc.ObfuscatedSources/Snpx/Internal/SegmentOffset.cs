@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Defines the base offset values for different I/O segment types.
+	/// Families of I/O signals that the SNPX client reads and writes. Used by the SDK to address the signals.
 	/// </summary>
 	public enum SegmentOffset {
 

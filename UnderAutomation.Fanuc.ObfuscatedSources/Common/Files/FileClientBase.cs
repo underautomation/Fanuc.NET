@@ -2,11 +2,11 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files.Diagnosis;
-using Common.Files.List;
-using Common.Files.Variables;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
+using UnderAutomation.Fanuc.Common.Files.List;
+using UnderAutomation.Fanuc.Common.Files.Variables;
 
-namespace Common.Files {
+namespace UnderAutomation.Fanuc.Common.Files {
 	/// <summary>
 	/// Base class for Fanuc file client. It provides methods to read and parse known files such as summary diagnostic, error list, current position, ...
 	/// </summary>

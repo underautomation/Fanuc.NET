@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Common.Files {
+namespace UnderAutomation.Fanuc.Common.Files {
 	/// <summary>
 	/// Abstract generic section parser that creates and populates a section of type <code class="typeparamref">T</code>.
 	/// </summary>
@@ -15,7 +15,7 @@ namespace Common.Files {
 		public readonly T Section;
 
 		/// <summary>
-		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Common.Files.SectionParser%601" data-throw-if-not-resolved="false"></xref> class.
+		/// Initializes a new instance of the <see cref="UnderAutomation.Fanuc.Common.Files.SectionParser`1"/> class.
 		/// </summary>
 		public SectionParser()
 		{

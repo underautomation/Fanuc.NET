@@ -2,12 +2,12 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using StreamMotion.Data;
+using UnderAutomation.Fanuc.StreamMotion.Data;
 using UnderAutomation.Robotics.Motion;
-using Common;
+using UnderAutomation.Fanuc.Common;
 using System;
 
-namespace StreamMotion.Internal {
+namespace UnderAutomation.Fanuc.StreamMotion.Internal {
 	/// <summary>
 	/// Stream Motion client (J519 option): real-time control of the robot by sending a position every communication cycle.
 	/// </summary>
@@ -22,7 +22,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Opens the UDP socket to the robot. The robot does not send anything before <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring" data-throw-if-not-resolved="false"></xref> is called.
+		/// Opens the UDP socket to the robot. The robot does not send anything before <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartMonitoring"/> is called.
 		/// </summary>
 		protected void ConnectInternal(string ip, StreamMotionConnectParametersBase parameters)
 		{
@@ -47,7 +47,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Stops the status output of the robot. Not allowed during a session: call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)" data-throw-if-not-resolved="false"></xref> first.
+		/// Stops the status output of the robot. Not allowed during a session: call <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> first.
 		/// </summary>
 		public void StopMonitoring()
 		{
@@ -71,7 +71,7 @@ namespace StreamMotion.Internal {
 		/// Some controllers do not answer while a program waits on an IBGN start instruction: read the limits before.
 		/// Not allowed during a session.
 		/// </summary>
-		/// <returns>Limits of the robot. They are also stored in <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Limits" data-throw-if-not-resolved="false"></xref>, and the reference limits in <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits" data-throw-if-not-resolved="false"></xref>.</returns>
+		/// <returns>Limits of the robot. They are also stored in <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Limits"/>, and the reference limits in <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits"/>.</returns>
 		public StreamMotionLimits ReadLimits()
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -82,10 +82,10 @@ namespace StreamMotion.Internal {
 		/// Adds a trajectory at the end of the queue. The session starts automatically when the robot accepts positions,
 		/// and the trajectories are sent one after the other, without any change between them.
 		/// </summary>
-		/// <param name="trajectory">Trajectory to send. It must start at <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndJointPosition" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndCartesianPosition" data-throw-if-not-resolved="false"></xref>,
-		///             and trajectories created from samples must use the communication cycle of the robot (<xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CycleTime" data-throw-if-not-resolved="false"></xref>).
-		///             Its I/O events must use signals created by <xref href="UnderAutomation.Fanuc.Motion.FanucMotion.Signal(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>.</param>
-		/// <returns>Identifier of the motion, to use with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForMotion(System.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref></returns>
+		/// <param name="trajectory">Trajectory to send. It must start at <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndJointPosition"/> or <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.QueueEndCartesianPosition"/>,
+		///             and trajectories created from samples must use the communication cycle of the robot (<see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CycleTime"/>).
+		///             Its I/O events must use signals created by <see cref="UnderAutomation.Fanuc.Motion.FanucMotion.Signal(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>.</param>
+		/// <returns>Identifier of the motion, to use with <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.WaitForMotion(System.Int32,System.Int32)"/></returns>
 		public int Enqueue(Trajectory trajectory)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -95,7 +95,7 @@ namespace StreamMotion.Internal {
 		/// <summary>
 		/// Waits until the robot received the last position of a queued trajectory
 		/// </summary>
-		/// <param name="motionId">Identifier returned by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)" data-throw-if-not-resolved="false"></xref></param>
+		/// <param name="motionId">Identifier returned by <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Enqueue(UnderAutomation.Robotics.Motion.Trajectory)"/></param>
 		/// <param name="timeoutMs">Maximum waiting time in milliseconds</param>
 		/// <returns>True when the trajectory was completely sent, false after the timeout or if the trajectory was cancelled</returns>
 		public bool WaitForMotion(int motionId, int timeoutMs)
@@ -129,7 +129,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Stops smoothly on the path of the current trajectory. The queue is kept and <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Resume" data-throw-if-not-resolved="false"></xref> continues the motion.
+		/// Stops smoothly on the path of the current trajectory. The queue is kept and <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Resume"/> continues the motion.
 		/// Use it instead of a HOLD, which is not available during Stream Motion.
 		/// </summary>
 		public void Pause()
@@ -138,7 +138,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Continues the queued trajectories after <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Pause" data-throw-if-not-resolved="false"></xref>
+		/// Continues the queued trajectories after <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Pause"/>
 		/// </summary>
 		public void Resume()
 		{
@@ -156,7 +156,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Starts to take the positions from the <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested" data-throw-if-not-resolved="false"></xref> event instead of the queue.
+		/// Starts to take the positions from the <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested"/> event instead of the queue.
 		/// The session starts automatically when the robot accepts positions.
 		/// </summary>
 		/// <param name="format">Format of the positions given by the event</param>
@@ -174,13 +174,13 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Starts to follow a target position: the robot goes to the last target given by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)" data-throw-if-not-resolved="false"></xref> or
-		/// <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)" data-throw-if-not-resolved="false"></xref> as fast as the limits allow, and stops on it. The target can change at any time,
+		/// Starts to follow a target position: the robot goes to the last target given by <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)"/> or
+		/// <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/> as fast as the limits allow, and stops on it. The target can change at any time,
 		/// even during the motion: the robot then goes smoothly to the new target.
-		/// The limits are <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits" data-throw-if-not-resolved="false"></xref> in joint format, and <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CartesianLimits" data-throw-if-not-resolved="false"></xref> in Cartesian format (the linear and angular limits
+		/// The limits are <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.JointLimits"/> in joint format, and <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.CartesianLimits"/> in Cartesian format (the linear and angular limits
 		/// are shared between X, Y, Z and between the 3 rotation axes). Each axis moves independently, so the path to the target is not a straight line.
 		/// The first target is the current position. The session starts automatically when the robot accepts positions.
-		/// The delay between a new target and the start of the motion is about <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.BufferLead" data-throw-if-not-resolved="false"></xref> cycles plus the delay of the robot:
+		/// The delay between a new target and the start of the motion is about <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.BufferLead"/> cycles plus the delay of the robot:
 		/// reduce the buffer lead time of the connection parameters for a faster reaction.
 		/// </summary>
 		/// <param name="format">Format of the targets</param>
@@ -192,7 +192,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Gives a new joint target to follow (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref>)
+		/// Gives a new joint target to follow (see <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/>)
 		/// </summary>
 		/// <param name="target">Target joint position</param>
 		public void SetJointTrackingTarget(JointsPosition target)
@@ -201,8 +201,8 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Gives a new Cartesian target to follow (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref>).
-		/// Extended axes are used when the target is an <xref href="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition" data-throw-if-not-resolved="false"></xref>, otherwise they keep their target.
+		/// Gives a new Cartesian target to follow (see <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/>).
+		/// Extended axes are used when the target is an <see cref="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>, otherwise they keep their target.
 		/// </summary>
 		/// <param name="target">Target position, in the frame of the Cartesian positions sent to the robot</param>
 		public void SetCartesianTrackingTarget(XYZWPRPosition target)
@@ -238,7 +238,7 @@ namespace StreamMotion.Internal {
 		}
 
 		/// <summary>
-		/// Returns the last read state of one I/O. The I/O must be in a range added with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>.
+		/// Returns the last read state of one I/O. The I/O must be in a range added with <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>.
 		/// It returns false while the range was never read.
 		/// </summary>
 		/// <param name="type">I/O type</param>
@@ -340,7 +340,7 @@ namespace StreamMotion.Internal {
 		public StreamMotionStatistics Statistics { get; }
 
 		/// <summary>
-		/// Limits read from the robot by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReadLimits" data-throw-if-not-resolved="false"></xref> or when the status output starts. Null if they were not read.
+		/// Limits read from the robot by <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.ReadLimits"/> or when the status output starts. Null if they were not read.
 		/// </summary>
 		public StreamMotionLimits Limits { get; }
 
@@ -387,25 +387,25 @@ namespace StreamMotion.Internal {
 		public int QueuedMotionCount { get; }
 
 		/// <summary>
-		/// Indicates if positions are given by the <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested" data-throw-if-not-resolved="false"></xref> event
+		/// Indicates if positions are given by the <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetpointRequested"/> event
 		/// </summary>
 		public bool IsCallbackStreaming { get; }
 
 		/// <summary>
-		/// Indicates if the robot follows a target given by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)" data-throw-if-not-resolved="false"></xref>
+		/// Indicates if the robot follows a target given by <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetJointTrackingTarget(UnderAutomation.Fanuc.Common.JointsPosition)"/> or <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.SetCartesianTrackingTarget(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/>
 		/// </summary>
 		public bool IsTracking { get; }
 
 		/// <summary>
 		/// Indicates if the format of the positions is fixed. A session uses only one format, chosen by the first queued trajectory,
-		/// <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat%2cSystem.Double%2cSystem.Double)" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)" data-throw-if-not-resolved="false"></xref>. While this is true, positions in the other format
-		/// throw a <xref href="UnderAutomation.Fanuc.StreamMotion.StreamMotionException" data-throw-if-not-resolved="false"></xref> with <xref href="UnderAutomation.Fanuc.StreamMotion.StreamMotionError.FormatMismatch" data-throw-if-not-resolved="false"></xref>.
-		/// It becomes false when the queue is empty and no session is active: call <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)" data-throw-if-not-resolved="false"></xref> to use the other format in the next session.
+		/// <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartTracking(UnderAutomation.Robotics.Motion.PositionFormat,System.Double,System.Double)"/> or <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)"/>. While this is true, positions in the other format
+		/// throw a <see cref="UnderAutomation.Fanuc.StreamMotion.StreamMotionException"/> with <see cref="UnderAutomation.Fanuc.StreamMotion.StreamMotionError.FormatMismatch"/>.
+		/// It becomes false when the queue is empty and no session is active: call <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.Finish(System.Int32)"/> to use the other format in the next session.
 		/// </summary>
 		public bool HasActiveFormat { get; }
 
 		/// <summary>
-		/// Format of the positions of the current session or of the queued trajectories. Only valid when <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.HasActiveFormat" data-throw-if-not-resolved="false"></xref> is true.
+		/// Format of the positions of the current session or of the queued trajectories. Only valid when <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.HasActiveFormat"/> is true.
 		/// </summary>
 		public PositionFormat ActiveFormat { get; }
 
@@ -422,7 +422,7 @@ namespace StreamMotion.Internal {
 		public bool IsPaused { get; }
 
 		/// <summary>
-		/// Last values of the ranges of I/O added with <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>
+		/// Last values of the ranges of I/O added with <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.AddIOMonitor(UnderAutomation.Fanuc.StreamMotion.Data.IOType,System.Int32)"/>
 		/// </summary>
 		public IOValue[] IOValues { get; }
 
@@ -458,7 +458,7 @@ namespace StreamMotion.Internal {
 		public event EventHandler<StreamMotionErrorEventArgs> ErrorOccurred;
 
 		/// <summary>
-		/// Raised in callback streaming mode (see <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)" data-throw-if-not-resolved="false"></xref>) each time a position must be sent.
+		/// Raised in callback streaming mode (see <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionClientBase.StartCallbackStreaming(UnderAutomation.Robotics.Motion.PositionFormat)"/>) each time a position must be sent.
 		/// The handler must give the next position with SetJoints or SetCartesian.
 		/// It runs on the communication thread, a few cycles before the robot executes the position, and must return quickly.
 		/// The first requested position (CycleIndex 0) must be the current position of the robot, and the next ones must connect smoothly to it.

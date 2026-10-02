@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Represents an SNPX memory assignment mapping a named element to a memory offset.
+	/// Represents an SNPX assignment: an element of the robot that the SNPX client can read in one request.
 	/// </summary>
 	public class Assignment {
 
@@ -31,7 +31,7 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets the memory offset for this assignment. Negative if cleared.
+		/// Gets the position of this assignment in the data of the SNPX client. Negative if cleared.
 		/// </summary>
 		public int Offset { get; }
 

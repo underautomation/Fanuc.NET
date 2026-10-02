@@ -2,17 +2,17 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 using System;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Represents the status of a running task on the robot controller.
 	/// </summary>
 	public class RobotTaskStatus : IEquatable<RobotTaskStatus> {
 
 		/// <summary>
-		/// Determines whether the specified <xref href="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus" data-throw-if-not-resolved="false"></xref> is equal to this instance.
+		/// Determines whether the specified <see cref="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> is equal to this instance.
 		/// </summary>
 		/// <param name="other">The task status to compare with.</param>
 		/// <returns>true if the task statuses are equal; otherwise, false.</returns>
@@ -44,12 +44,12 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Creates a <xref href="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus" data-throw-if-not-resolved="false"></xref> from a byte array.
+		/// Creates a <see cref="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> from a byte array.
 		/// </summary>
 		/// <param name="bytes">The byte array containing task status data.</param>
 		/// <param name="language">The controller language for string decoding.</param>
 		/// <param name="start">The starting offset in the byte array.</param>
-		/// <returns>A <xref href="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus" data-throw-if-not-resolved="false"></xref> parsed from the byte data, or null if bytes is null.</returns>
+		/// <returns>A <see cref="UnderAutomation.Fanuc.Snpx.Internal.RobotTaskStatus"/> parsed from the byte data, or null if bytes is null.</returns>
 		public static RobotTaskStatus FromBytes(byte[] bytes, Languages language, int start = 0)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

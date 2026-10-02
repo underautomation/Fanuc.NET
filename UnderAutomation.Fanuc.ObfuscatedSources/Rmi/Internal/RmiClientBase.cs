@@ -3,11 +3,11 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System;
-using Rmi.Data;
-using Common;
-using Rmi.TpInstructions;
+using UnderAutomation.Fanuc.Rmi.Data;
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
 
-namespace Rmi.Internal {
+namespace UnderAutomation.Fanuc.Rmi.Internal {
 	/// <summary>
 	/// High-level Remote Motion Interface (RMI) client for FANUC controllers.
 	/// Manages the connection lifecycle, all administrative commands, and the full set of
@@ -43,7 +43,7 @@ namespace Rmi.Internal {
 
 		/// <summary>
 		/// Initialize RMI and start the motion program. Must be called before sending any motion instructions.
-		/// It also Resets <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LastSequenceId" data-throw-if-not-resolved="false"></xref> and empty the instruction buffer <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Instructions" data-throw-if-not-resolved="false"></xref>
+		/// It also Resets <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LastSequenceId"/> and empty the instruction buffer <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Instructions"/>
 		/// </summary>
 		/// <param name="groupMask">Bitmask of motion groups to activate (bit N enables group N+1).
 		/// Required for multi-group controllers. <code>null</code> activates the default single group.
@@ -129,7 +129,7 @@ namespace Rmi.Internal {
 		}
 
 		/// <summary>
-		/// Calls internally <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.GetStatus" data-throw-if-not-resolved="false"></xref> and set <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LastSequenceId" data-throw-if-not-resolved="false"></xref> only if $RMI_CFG.$Chk_seqID = FALSE. It also set <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.CheckSequenceId" data-throw-if-not-resolved="false"></xref> to $RMI_CFG.$Chk_seqID.
+		/// Calls internally <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.GetStatus"/> and set <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.LastSequenceId"/> only if $RMI_CFG.$Chk_seqID = FALSE. It also set <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.CheckSequenceId"/> to $RMI_CFG.$Chk_seqID.
 		/// </summary>
 		public RmiControllerStatusResponse AutoSetNextSequenceId()
 		{
@@ -406,8 +406,8 @@ namespace Rmi.Internal {
 		}
 
 		/// <summary>
-		/// Removes all instructions with a terminal status (<xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed" data-throw-if-not-resolved="false"></xref>
-		/// or <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error" data-throw-if-not-resolved="false"></xref>) from the tracked instruction list.
+		/// Removes all instructions with a terminal status (<see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed"/>
+		/// or <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error"/>) from the tracked instruction list.
 		/// Instructions that are still pending or in progress are not affected.
 		/// </summary>
 		public void ClearCompletedInstructions()
@@ -417,9 +417,9 @@ namespace Rmi.Internal {
 
 		/// <summary>
 		/// Cancels and removes all instructions that are still in the local client buffer
-		/// (<xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.LocalQueued" data-throw-if-not-resolved="false"></xref>). These instructions have not been sent
+		/// (<see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.LocalQueued"/>). These instructions have not been sent
 		/// to the controller yet. Each cancelled instruction is marked with an error so that any
-		/// thread blocked on <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.WaitForCompletion(System.Int32)" data-throw-if-not-resolved="false"></xref> is unblocked.
+		/// thread blocked on <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.WaitForCompletion(System.Int32)"/> is unblocked.
 		/// Instructions already sent to the controller are not affected.
 		/// </summary>
 		public void ClearLocalQueuedInstructions()
@@ -428,8 +428,8 @@ namespace Rmi.Internal {
 		}
 
 		/// <summary>
-		/// Serializes the instruction to the RMI wire format and queues it on the controller.
-		/// Returns an <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse" data-throw-if-not-resolved="false"></xref> that tracks execution.
+		/// Sends the instruction to the controller, which queues it.
+		/// Returns an <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse"/> that tracks execution.
 		/// </summary>
 		/// <param name="instruction">Instruction to send. Must not be <code>null</code>.</param>
 		public RmiInstructionResponse SendTpInstruction(RmiInstructionBase instruction)
@@ -467,18 +467,18 @@ namespace Rmi.Internal {
 		public int WorkingPort { get; }
 
 		/// <summary>
-		/// Sequence ID used for the last instruction sent to the controller. Reset to 0 by <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable%7bSystem.Byte%7d%2cSystem.Nullable%7bSystem.Boolean%7d%2cSystem.Nullable%7bUnderAutomation.Fanuc.Rmi.Data.RmiPltzMode%7d)" data-throw-if-not-resolved="false"></xref>.. Modified by <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId" data-throw-if-not-resolved="false"></xref>.
+		/// Sequence ID used for the last instruction sent to the controller. Reset to 0 by <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable{System.Byte},System.Nullable{System.Boolean},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.RmiPltzMode})"/>.. Modified by <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId"/>.
 		/// </summary>
 		public int LastSequenceId { get; }
 
 		/// <summary>
-		/// Indicates whether the controller checks for consecutive sequence IDs in motion instructions ($RMI_CFG.$Chk_seqID). Modified by <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId" data-throw-if-not-resolved="false"></xref>.
+		/// Indicates whether the controller checks for consecutive sequence IDs in motion instructions ($RMI_CFG.$Chk_seqID). Modified by <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId"/>.
 		/// </summary>
 		public bool CheckSequenceId { get; set; }
 
 		/// <summary>
 		/// Indicates that the controller has entered the HOLD state and will not accept new TP instructions
-		/// until <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset" data-throw-if-not-resolved="false"></xref> is called.
+		/// until <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset"/> is called.
 		/// 
 		/// <p>
 		/// The HOLD state is entered in two situations:
@@ -486,17 +486,17 @@ namespace Rmi.Internal {
 		/// <ul><li>
 		/// An invalid sequence ID was detected (error RMIT-029, error code 2556957). RMI checks that sequence IDs are
 		/// consecutive. If a gap is found, RMI rejects the instruction and enters HOLD. The controller continues
-		/// executing the TP instructions already queued but blocks all new ones. Use <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId" data-throw-if-not-resolved="false"></xref>
-		/// to recover the correct sequence ID, then call <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset" data-throw-if-not-resolved="false"></xref> before resuming.
+		/// executing the TP instructions already queued but blocks all new ones. Use <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.AutoSetNextSequenceId"/>
+		/// to recover the correct sequence ID, then call <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset"/> before resuming.
 		/// </li><li>
 		/// An invalid motion instruction was received (error RMIT-024, error code 2556952), for example a motion
 		/// option that is not loaded on the controller. RMI returns an error for that instruction, puts the
 		/// controller in HOLD, and continues executing any instructions already in the TP program queue. Call
-		/// <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset" data-throw-if-not-resolved="false"></xref> once the problem is corrected, then resume sending instructions.
+		/// <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset"/> once the problem is corrected, then resume sending instructions.
 		/// </li></ul>
 		/// <p>
 		/// All instructions sent while in the HOLD state are ignored by the controller and returned with an error code.
-		/// This flag is cleared automatically when <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset" data-throw-if-not-resolved="false"></xref> succeeds.
+		/// This flag is cleared automatically when <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Reset"/> succeeds.
 		/// </p>
 		/// </summary>
 		public bool IsInHoldState { get; }
@@ -507,10 +507,10 @@ namespace Rmi.Internal {
 		public int ReadTimeoutMs { get; }
 
 		/// <summary>
-		/// All instructions submitted since the last <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable%7bSystem.Byte%7d%2cSystem.Nullable%7bSystem.Boolean%7d%2cSystem.Nullable%7bUnderAutomation.Fanuc.Rmi.Data.RmiPltzMode%7d)" data-throw-if-not-resolved="false"></xref> or explicit clear,
-		/// in submission order. Includes instructions in all states: <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.LocalQueued" data-throw-if-not-resolved="false"></xref>,
-		/// <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.ControllerQueued" data-throw-if-not-resolved="false"></xref>, <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Executing" data-throw-if-not-resolved="false"></xref>,
-		/// <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed" data-throw-if-not-resolved="false"></xref> and <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error" data-throw-if-not-resolved="false"></xref>.
+		/// All instructions submitted since the last <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable{System.Byte},System.Nullable{System.Boolean},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.RmiPltzMode})"/> or explicit clear,
+		/// in submission order. Includes instructions in all states: <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.LocalQueued"/>,
+		/// <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.ControllerQueued"/>, <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Executing"/>,
+		/// <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed"/> and <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error"/>.
 		/// Returns a snapshot array; the array is not updated after it is returned.
 		/// </summary>
 		public RmiInstructionResponse[] Instructions { get; }
@@ -538,7 +538,7 @@ namespace Rmi.Internal {
 		public event Action<RmiRecordedJointPosition> RecordedJointPositionReceived;
 
 		/// <summary>
-		/// Fired when an unknown packet is received from the controller.
+		/// Fired when the controller sends a response that the SDK does not know.
 		/// </summary>
 		public event Action<RmiResponseBase> UnknownPacketReceived;
 	}

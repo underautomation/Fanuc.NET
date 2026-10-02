@@ -2,11 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
 using System.IO;
-using Common;
 
-namespace Common.Files.Variables {
+namespace UnderAutomation.Fanuc.Common.Files.Variables {
 	/// <summary>
 	/// Typed variable file reader for specific variable file types
 	/// </summary>

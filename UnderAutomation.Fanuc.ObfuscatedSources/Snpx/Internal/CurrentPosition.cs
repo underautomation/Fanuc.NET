@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Provides access to the current robot position via SNPX.
 	/// </summary>
@@ -32,7 +32,7 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Reads a value from the client at the specified memory offset.
+		/// Reads a value from the robot, at the position given by the assignment.
 		/// </summary>
 		protected override Position ReadFromClient(int offset, CurrentPositionRequest index)
 		{

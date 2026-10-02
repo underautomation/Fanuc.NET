@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp {
+namespace UnderAutomation.Fanuc.Cgtp {
 	/// <summary>
 	/// Data types that can be returned when reading a controller variable.
 	/// </summary>

@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
-	/// Palletizing motion mode passed to <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable%7bSystem.Byte%7d%2cSystem.Nullable%7bSystem.Boolean%7d%2cSystem.Nullable%7bUnderAutomation.Fanuc.Rmi.Data.RmiPltzMode%7d)" data-throw-if-not-resolved="false"></xref>.
+	/// Palletizing motion mode passed to <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.Initialize(System.Nullable{System.Byte},System.Nullable{System.Boolean},System.Nullable{UnderAutomation.Fanuc.Rmi.Data.RmiPltzMode})"/>.
 	/// Requires MajorVersion &gt;= 7.
 	/// </summary>
 	public enum RmiPltzMode {

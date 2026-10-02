@@ -2,11 +2,10 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Cgtp;
-using Common;
-using Cgtp.BatchVariables;
+using UnderAutomation.Fanuc.Common;
+using UnderAutomation.Fanuc.Cgtp.BatchVariables;
 
-namespace Cgtp.Internal {
+namespace UnderAutomation.Fanuc.Cgtp.Internal {
 	/// <summary>
 	/// Base implementation for the CGTP Web Server client.
 	/// </summary>
@@ -255,7 +254,7 @@ namespace Cgtp.Internal {
 		/// </summary>
 		/// <param name="progName">Program name</param>
 		/// <param name="positionIndex">1-based position index in the program (P[n])</param>
-		/// <param name="position">Position to write. Either <xref href="UnderAutomation.Fanuc.Common.Position.CartesianPosition" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.Common.Position.JointsPosition" data-throw-if-not-resolved="false"></xref> must be set.</param>
+		/// <param name="position">Position to write. Either <see cref="UnderAutomation.Fanuc.Common.Position.CartesianPosition"/> or <see cref="UnderAutomation.Fanuc.Common.Position.JointsPosition"/> must be set.</param>
 		public void SetProgramPosition(string progName, int positionIndex, Position position)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -423,7 +422,7 @@ namespace Cgtp.Internal {
 		/// Read all I/O comments for the specified I/O type.
 		/// </summary>
 		/// <param name="type">The type of I/O pair to read comments for.</param>
-		/// <returns>An <xref href="UnderAutomation.Fanuc.Common.IOComments" data-throw-if-not-resolved="false"></xref> containing input and output comment arrays.</returns>
+		/// <returns>An <see cref="UnderAutomation.Fanuc.Common.IOComments"/> containing input and output comment arrays.</returns>
 		public IOComments GetIoComments(CgtpCommentIoType type)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -625,7 +624,9 @@ namespace Cgtp.Internal {
 		}
 
 		/// <summary>
-		/// KCL client for executing KCL commands over CGTP.
+		/// KCL client for executing KCL commands over CGTP. Use it instead of the Telnet KCL client, which is a legacy protocol.
+		/// Some commands are sent in Unsafe mode: the controller returns no status, so the result cannot tell if the command was executed.
+		/// To start a program, prefer RunProgram().
 		/// </summary>
 		public CgtpKclClient Kcl { get; }
 

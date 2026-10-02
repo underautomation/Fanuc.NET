@@ -2,16 +2,16 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Snpx.Internal;
+using UnderAutomation.Fanuc.Snpx.Internal;
 
-namespace Snpx {
+namespace UnderAutomation.Fanuc.Snpx {
 	/// <summary>
 	/// SNPX protocol client for communicating with Fanuc robots.
 	/// </summary>
 	public class SnpxClient : SnpxClientBase {
 
 		/// <summary>
-		/// Initializes a new instance of the <xref href="UnderAutomation.Fanuc.Snpx.SnpxClient" data-throw-if-not-resolved="false"></xref> class.
+		/// Initializes a new instance of the <see cref="UnderAutomation.Fanuc.Snpx.SnpxClient"/> class.
 		/// </summary>
 		public SnpxClient()
 		{

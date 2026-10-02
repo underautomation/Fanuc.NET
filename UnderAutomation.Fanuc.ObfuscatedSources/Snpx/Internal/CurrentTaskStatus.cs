@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Provides access to the current task (program) status on the robot via SNPX.
 	/// Index starts from 1.
@@ -33,7 +33,7 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Reads a value from the client at the specified memory offset.
+		/// Reads a value from the robot, at the position given by the assignment.
 		/// </summary>
 		protected override RobotTaskStatus ReadFromClient(int offset, int index)
 		{

@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace StreamMotion.Data {
+namespace UnderAutomation.Fanuc.StreamMotion.Data {
 	/// <summary>
 	/// State of 16 consecutive I/O read by Stream Motion
 	/// </summary>
@@ -17,7 +17,7 @@ namespace StreamMotion.Data {
 		/// <summary>
 		/// Returns the state of one I/O of the range
 		/// </summary>
-		/// <param name="index">I/O index, between <xref href="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index" data-throw-if-not-resolved="false"></xref> and <xref href="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index" data-throw-if-not-resolved="false"></xref> + 15</param>
+		/// <param name="index">I/O index, between <see cref="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/> and <see cref="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/> + 15</param>
 		public bool GetState(int index)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -56,7 +56,7 @@ namespace StreamMotion.Data {
 		public int Index { get; }
 
 		/// <summary>
-		/// State of the 16 I/O. Bit 0 is the I/O at <xref href="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index" data-throw-if-not-resolved="false"></xref>.
+		/// State of the 16 I/O. Bit 0 is the I/O at <see cref="UnderAutomation.Fanuc.StreamMotion.Data.IOValue.Index"/>.
 		/// </summary>
 		public int Value { get; }
 

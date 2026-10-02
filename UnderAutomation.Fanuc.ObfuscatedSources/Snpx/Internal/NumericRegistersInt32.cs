@@ -3,16 +3,16 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System;
-using Snpx.Assignment;
+using UnderAutomation.Fanuc.Snpx.Assignment;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Provides access to numeric registers as 32 bits integer (R[]) on the robot via SNPX.
 	/// </summary>
 	public class NumericRegistersInt32 : NumericRegistersBase<int, NumericRegistersInt32BatchAssignment> {
 
 		/// <summary>
-		/// Reads a value from the client at the specified memory offset.
+		/// Reads a value from the robot, at the position given by the assignment.
 		/// </summary>
 		protected override int ReadFromClient(int offset, int index)
 		{
@@ -21,7 +21,7 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Writes a value to the robot at the specified offset.
+		/// Writes a value to the robot, at the position given by the assignment.
 		/// </summary>
 		protected override void WriteInClient(int offset, int index, int value)
 		{

@@ -5,14 +5,14 @@
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 
-namespace Rmi {
+namespace UnderAutomation.Fanuc.Rmi {
 	/// <summary>
 	/// Represents an error reported by the FANUC RMI controller or thrown by the client runtime.
 	/// </summary>
 	public class RmiException : Exception, ISerializable {
 
 		/// <summary>
-		/// Constructs a new <xref href="UnderAutomation.Fanuc.Rmi.RmiException" data-throw-if-not-resolved="false"></xref> with a message.
+		/// Constructs a new <see cref="UnderAutomation.Fanuc.Rmi.RmiException"/> with a message.
 		/// </summary>
 		public RmiException(string message)
 		{
@@ -20,7 +20,7 @@ namespace Rmi {
 		}
 
 		/// <summary>
-		/// Constructs a new <xref href="UnderAutomation.Fanuc.Rmi.RmiException" data-throw-if-not-resolved="false"></xref> with a message and an inner exception.
+		/// Constructs a new <see cref="UnderAutomation.Fanuc.Rmi.RmiException"/> with a message and an inner exception.
 		/// </summary>
 		public RmiException(string message, Exception inner)
 		{
@@ -28,7 +28,7 @@ namespace Rmi {
 		}
 
 		/// <summary>
-		/// Constructs a new <xref href="UnderAutomation.Fanuc.Rmi.RmiException" data-throw-if-not-resolved="false"></xref> with an error id coming from the controller.
+		/// Constructs a new <see cref="UnderAutomation.Fanuc.Rmi.RmiException"/> with an error id coming from the controller.
 		/// </summary>
 		public RmiException(int errorId, string message)
 		{

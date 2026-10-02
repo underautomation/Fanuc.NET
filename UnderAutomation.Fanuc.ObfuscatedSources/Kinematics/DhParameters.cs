@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System.Xml.Linq;
-using Common.Files.Variables;
+using UnderAutomation.Fanuc.Common.Files.Variables;
 
-namespace Kinematics {
+namespace UnderAutomation.Fanuc.Kinematics {
 	/// <summary>
 	/// Denavit-Hartenberg parameters for a 6-axis robot arm.
 	/// </summary>
@@ -17,7 +17,7 @@ namespace Kinematics {
 		public object Tag;
 
 		/// <summary>
-		/// Initializes a new empty instance of <xref href="UnderAutomation.Fanuc.Kinematics.DhParameters" data-throw-if-not-resolved="false"></xref>.
+		/// Initializes a new empty instance of <see cref="UnderAutomation.Fanuc.Kinematics.DhParameters"/>.
 		/// </summary>
 		public DhParameters()
 		{
@@ -25,7 +25,7 @@ namespace Kinematics {
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <xref href="UnderAutomation.Fanuc.Kinematics.DhParameters" data-throw-if-not-resolved="false"></xref> with the specified values.
+		/// Initializes a new instance of <see cref="UnderAutomation.Fanuc.Kinematics.DhParameters"/> with the specified values.
 		/// </summary>
 		/// <param name="d4">DH parameter D4 (mm).</param>
 		/// <param name="d5">DH parameter D5 (mm).</param>
@@ -39,7 +39,7 @@ namespace Kinematics {
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <xref href="UnderAutomation.Fanuc.Kinematics.DhParameters" data-throw-if-not-resolved="false"></xref> by copying from an existing <xref href="UnderAutomation.Fanuc.Kinematics.IDhParameters" data-throw-if-not-resolved="false"></xref>.
+		/// Initializes a new instance of <see cref="UnderAutomation.Fanuc.Kinematics.DhParameters"/> by copying from an existing <see cref="UnderAutomation.Fanuc.Kinematics.IDhParameters"/>.
 		/// </summary>
 		/// <param name="parameters">The source parameters to copy.</param>
 		public DhParameters(IDhParameters parameters)

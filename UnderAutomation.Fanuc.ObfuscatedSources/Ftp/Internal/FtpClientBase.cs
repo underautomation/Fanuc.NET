@@ -2,11 +2,10 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
-using Ftp;
-using Common;
+using UnderAutomation.Fanuc.Common.Files;
+using UnderAutomation.Fanuc.Common;
 
-namespace Ftp.Internal {
+namespace UnderAutomation.Fanuc.Ftp.Internal {
 	/// <summary>
 	/// Base class for FTP features
 	/// </summary>

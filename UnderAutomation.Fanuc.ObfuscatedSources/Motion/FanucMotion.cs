@@ -2,13 +2,13 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 using UnderAutomation.Robotics.Geometry;
 using UnderAutomation.Robotics.Motion;
-using StreamMotion.Data;
+using UnderAutomation.Fanuc.StreamMotion.Data;
 using UnderAutomation.Robotics.IO;
 
-namespace Motion {
+namespace UnderAutomation.Fanuc.Motion {
 	/// <summary>
 	/// Conversions between the FANUC types (positions, FINE/CNT/CR terminations, I/O types) and the types of the motion planner
 	/// of namespace UnderAutomation.Robotics.Motion.
@@ -16,7 +16,7 @@ namespace Motion {
 	public static class FanucMotion {
 
 		/// <summary>
-		/// Converts a FANUC position to a pose. The extended axes E1, E2 and E3 are copied when the position is an <xref href="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition" data-throw-if-not-resolved="false"></xref>.
+		/// Converts a FANUC position to a pose. The extended axes E1, E2 and E3 are copied when the position is an <see cref="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>.
 		/// </summary>
 		/// <param name="position">Position X, Y, Z, W, P, R</param>
 		public static CartesianPose ToCartesianPose(XYZWPRPosition position)
@@ -99,7 +99,7 @@ namespace Motion {
 
 		/// <summary>
 		/// Creates a Cartesian trajectory from FANUC positions taken at a fixed period.
-		/// The W, P, R angles are kept without any change, and the extended axes are used when the positions are <xref href="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition" data-throw-if-not-resolved="false"></xref>.
+		/// The W, P, R angles are kept without any change, and the extended axes are used when the positions are <see cref="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>.
 		/// </summary>
 		/// <param name="samples">Positions (flange center in the world frame for Stream Motion), one per period</param>
 		/// <param name="cycleTime">Period between two positions, in seconds</param>

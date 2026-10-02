@@ -2,10 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
 using System;
 
-namespace Common.Files.Diagnosis {
+namespace UnderAutomation.Fanuc.Common.Files.Diagnosis {
 	/// <summary>
 	/// Parser for reading and interpreting safety status signals from diagnostic files.
 	/// </summary>

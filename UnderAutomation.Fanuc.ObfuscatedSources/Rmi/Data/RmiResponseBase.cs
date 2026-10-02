@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Base class for RMI responses that return an error id from the controller.
 	/// </summary>
@@ -42,7 +42,7 @@ namespace Rmi.Data {
 		public int ErrorId { get; set; }
 
 		/// <summary>
-		/// Human-readable description of <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId" data-throw-if-not-resolved="false"></xref>. Empty string when there is no error.
+		/// Human-readable description of <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId"/>. Empty string when there is no error.
 		/// </summary>
 		public string ErrorText { get; }
 	}

@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Kinematics {
+namespace UnderAutomation.Fanuc.Kinematics {
 	/// <summary>
 	/// Interface defining the Denavit-Hartenberg parameters for a 6-axis robot arm.
 	/// </summary>

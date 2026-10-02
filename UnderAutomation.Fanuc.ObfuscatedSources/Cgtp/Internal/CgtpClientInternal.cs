@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp.Internal {
+namespace UnderAutomation.Fanuc.Cgtp.Internal {
 	/// <summary>
 	/// Internal CGTP Web Server client used by the library infrastructure.
 	/// </summary>

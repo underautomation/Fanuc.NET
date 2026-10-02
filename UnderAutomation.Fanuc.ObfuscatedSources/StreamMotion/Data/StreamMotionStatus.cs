@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 
-namespace StreamMotion.Data {
+namespace UnderAutomation.Fanuc.StreamMotion.Data {
 	/// <summary>
 	/// Status sent by the robot every communication cycle
 	/// </summary>
@@ -104,7 +104,7 @@ namespace StreamMotion.Data {
 		public int ReadIOMask { get; }
 
 		/// <summary>
-		/// State of the 16 I/O read in this status. Bit 0 is the I/O at <xref href="UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOIndex" data-throw-if-not-resolved="false"></xref>.
+		/// State of the 16 I/O read in this status. Bit 0 is the I/O at <see cref="UnderAutomation.Fanuc.StreamMotion.Data.StreamMotionStatus.ReadIOIndex"/>.
 		/// </summary>
 		public int ReadIOValue { get; }
 	}

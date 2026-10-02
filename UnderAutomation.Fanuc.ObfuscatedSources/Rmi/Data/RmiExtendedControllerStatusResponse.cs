@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Extended controller status returned by FRC_GetExtStatus.
 	/// </summary>

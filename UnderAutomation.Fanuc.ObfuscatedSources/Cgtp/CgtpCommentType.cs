@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp {
+namespace UnderAutomation.Fanuc.Cgtp {
 	/// <summary>
 	/// Type of element whose comment can be read or written via CGTP.
 	/// </summary>

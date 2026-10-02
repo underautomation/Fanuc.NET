@@ -2,12 +2,12 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 
-namespace StreamMotion.Data {
+namespace UnderAutomation.Fanuc.StreamMotion.Data {
 	/// <summary>
 	/// Arguments of the SetpointRequested event.
-	/// Call <xref href="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetJoints(UnderAutomation.Fanuc.Common.JointsPosition)" data-throw-if-not-resolved="false"></xref>, <xref href="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetCartesian(UnderAutomation.Fanuc.Common.XYZWPRPosition)" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Hold" data-throw-if-not-resolved="false"></xref> to give the next position to send.
+	/// Call <see cref="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetJoints(UnderAutomation.Fanuc.Common.JointsPosition)"/>, <see cref="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.SetCartesian(UnderAutomation.Fanuc.Common.XYZWPRPosition)"/> or <see cref="UnderAutomation.Fanuc.StreamMotion.Data.SetpointRequestEventArgs.Hold"/> to give the next position to send.
 	/// The object is only valid during the call of the event handler.
 	/// </summary>
 	public class SetpointRequestEventArgs : EventArgs {
@@ -23,7 +23,7 @@ namespace StreamMotion.Data {
 
 		/// <summary>
 		/// Gives the next Cartesian position to send (flange center in the world frame). The callback streaming must be in Cartesian format.
-		/// Extended axes values are used when the position is an <xref href="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition" data-throw-if-not-resolved="false"></xref>, otherwise they are 0.
+		/// Extended axes values are used when the position is an <see cref="UnderAutomation.Fanuc.Common.ExtendedCartesianPosition"/>, otherwise they are 0.
 		/// </summary>
 		/// <param name="position">Cartesian position</param>
 		public void SetCartesian(XYZWPRPosition position)

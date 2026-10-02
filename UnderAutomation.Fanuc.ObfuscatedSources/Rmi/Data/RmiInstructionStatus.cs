@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Execution state of an RMI instruction in the pipeline.
 	/// </summary>
@@ -30,7 +30,7 @@ namespace Rmi.Data {
 		Completed = 3,
 
 		/// <summary>
-		/// The instruction ended with a controller error or was cancelled. Check <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId" data-throw-if-not-resolved="false"></xref>.
+		/// The instruction ended with a controller error or was cancelled. Check <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId"/>.
 		/// </summary>
 		Error = 4,
 	}

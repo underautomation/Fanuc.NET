@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Cgtp.Internal {
+namespace UnderAutomation.Fanuc.Cgtp.Internal {
 	/// <summary>
-	/// CGTP function identifiers.
+	/// Functions of the controller called by the CGTP client. Used by the SDK only.
 	/// </summary>
 	public enum RpcId {
 

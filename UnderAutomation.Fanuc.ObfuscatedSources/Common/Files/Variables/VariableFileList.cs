@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace Common.Files.Variables {
+namespace UnderAutomation.Fanuc.Common.Files.Variables {
 	/// <summary>
 	/// Collection of variable files that aggregates all variables from the controller
 	/// </summary>

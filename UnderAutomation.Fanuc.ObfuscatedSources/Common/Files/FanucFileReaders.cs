@@ -2,13 +2,12 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files.Variables;
-using Common.Files.List;
-using Common.Files.Diagnosis;
-using Common;
+using UnderAutomation.Fanuc.Common.Files.Variables;
+using UnderAutomation.Fanuc.Common.Files.List;
+using UnderAutomation.Fanuc.Common.Files.Diagnosis;
 using System.IO;
 
-namespace Common.Files {
+namespace UnderAutomation.Fanuc.Common.Files {
 	/// <summary>
 	/// Contains static functions to decode Fanuc files (variables, diagnosis, listing, ...)
 	/// </summary>

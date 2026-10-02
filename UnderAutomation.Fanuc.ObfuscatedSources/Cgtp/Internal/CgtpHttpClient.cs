@@ -2,11 +2,10 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
+using UnderAutomation.Fanuc.Common.Files;
 using System.IO;
-using Cgtp;
 
-namespace Cgtp.Internal {
+namespace UnderAutomation.Fanuc.Cgtp.Internal {
 	/// <summary>
 	/// Provides methods to download and list files from the controller via HTTP.
 	/// </summary>

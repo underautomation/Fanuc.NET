@@ -2,20 +2,20 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Rmi.TpInstructions;
+using UnderAutomation.Fanuc.Rmi.TpInstructions;
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
-	/// Response returned immediately when a motion instruction is queued. The <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.Status" data-throw-if-not-resolved="false"></xref> property
-	/// and <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId" data-throw-if-not-resolved="false"></xref> are updated in the background as the controller processes the instruction.
-	/// Use <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.WaitForCompletion(System.Int32)" data-throw-if-not-resolved="false"></xref> to block until the instruction reaches a terminal state.
+	/// Response returned immediately when a motion instruction is queued. The <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.Status"/> property
+	/// and <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiResponseBase.ErrorId"/> are updated in the background as the controller processes the instruction.
+	/// Use <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.WaitForCompletion(System.Int32)"/> to block until the instruction reaches a terminal state.
 	/// </summary>
 	public class RmiInstructionResponse : RmiResponseBase {
 
 		/// <summary>
 		/// Blocks the calling thread until the instruction reaches a terminal state
-		/// (<xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed" data-throw-if-not-resolved="false"></xref> or <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error" data-throw-if-not-resolved="false"></xref>),
+		/// (<see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Completed"/> or <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionStatus.Error"/>),
 		/// or until <code class="paramref">timeoutMs</code> milliseconds have elapsed.
 		/// Pass -1 (or omit) to wait indefinitely.
 		/// </summary>
@@ -70,7 +70,7 @@ namespace Rmi.Data {
 		public RmiInstructionBase Instruction { get; }
 
 		/// <summary>
-		/// Fired each time <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.Status" data-throw-if-not-resolved="false"></xref> changes. The argument is the new status value.
+		/// Fired each time <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse.Status"/> changes. The argument is the new status value.
 		/// This event may be raised from a background thread.
 		/// </summary>
 		public event Action<RmiInstructionStatus> StatusChanged;

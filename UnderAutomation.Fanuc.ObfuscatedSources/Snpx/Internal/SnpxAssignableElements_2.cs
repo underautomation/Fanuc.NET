@@ -3,14 +3,14 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Abstract base class for SNPX elements that support memory assignment for efficient access.
 	/// </summary>
 	public abstract class SnpxAssignableElements<TValue, TIndex> : SnpxElements<TValue, TIndex> {
 
 		/// <summary>
-		/// Reads a value from the client at the specified memory offset.
+		/// Reads a value from the robot, at the position given by the assignment.
 		/// </summary>
 		protected abstract TValue ReadFromClient(int offset, TIndex index);
 

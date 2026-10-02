@@ -4,10 +4,10 @@
 
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Parameters for defining payload compensation for a payload schedule.
-	/// Used by <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetPayloadCompensation(UnderAutomation.Fanuc.Rmi.Data.RmiSetPayloadCompensationParameters)" data-throw-if-not-resolved="false"></xref>.
+	/// Used by <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetPayloadCompensation(UnderAutomation.Fanuc.Rmi.Data.RmiSetPayloadCompensationParameters)"/>.
 	/// All positional values are in meters; mass in kg; inertia in kg·m².
 	/// </summary>
 	public class RmiSetPayloadCompensationParameters {

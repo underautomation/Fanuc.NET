@@ -3,12 +3,14 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 using System.IO;
-using Common.Files;
-using Ftp;
+using UnderAutomation.Fanuc.Common.Files;
 
-namespace Ftp.Internal {
+namespace UnderAutomation.Fanuc.Ftp.Internal {
 	/// <summary>
-	/// Methods to handle files on a Fanuc controller (upload, download, delete, enumerate, ...)
+	/// Methods to handle files on a Fanuc controller (upload, download, delete, enumerate, ...).
+	/// The controller can refuse an operation: the rights depend on the FTP user and on the password settings of the controller
+	/// (for example, an upload of a program needs a user with enough rights), and a program that is selected or runs cannot be
+	/// replaced. The error is an <see cref="UnderAutomation.Fanuc.Ftp.FtpException"/> with the reply of the controller.
 	/// </summary>
 	public class FtpDirectFileHandling {
 
@@ -23,6 +25,7 @@ namespace Ftp.Internal {
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
+		/// <returns>True if the file was uploaded, false if it was skipped or if the transfer failed.</returns>
 		public bool UploadFileToController(Stream fileStream, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null, FtpExistsBehavior existsBehavior = FtpExistsBehavior.Overwrite)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -40,6 +43,7 @@ namespace Ftp.Internal {
 		/// <param name="createRemoteDir">Create the remote directory if it does not exist. Slows down upload due to additional checks required.</param>
 		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <param name="existsBehavior">Specifies the behavior when the file already exists on the controller.</param>
+		/// <returns>True if the file was uploaded, false if it was skipped or if the transfer failed.</returns>
 		public bool UploadFileToController(byte[] fileData, string remotePath, bool createRemoteDir = false, OnProgressDelegate progress = null, FtpExistsBehavior existsBehavior = FtpExistsBehavior.Overwrite)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...
@@ -68,6 +72,7 @@ namespace Ftp.Internal {
 		/// All files are placed directly into the given folder regardless of their path on the local filesystem.
 		/// High-level API that takes care of various edge cases internally.
 		/// Supports very large files since it uploads data in chunks.
+		/// A file that fails is skipped: it is not in the returned list.
 		/// </summary>
 		/// <param name="localPaths">The full or relative paths to the files on the local file system. Files can be from multiple folders.</param>
 		/// <param name="remoteDir">The full or relative path to the directory that files will be uploaded on the controller</param>
@@ -118,7 +123,7 @@ namespace Ftp.Internal {
 		/// </summary>
 		/// <param name="localPath">The full or relative path to the file on the local file system</param>
 		/// <param name="remotePath">The full or relative path to the file on the controller</param>
-		/// <param name="progress">Provide an implementation of IProgress to track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
+		/// <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
 		/// <returns>If true then the file was downloaded, false otherwise.</returns>
 		public bool DownloadFileFromController(string localPath, string remotePath, OnProgressDelegate progress = null)
 		{
@@ -130,10 +135,11 @@ namespace Ftp.Internal {
 		/// Downloads the specified files into a local single directory.
 		/// High-level API that takes care of various edge cases internally.
 		/// Supports very large files since it downloads data in chunks.
+		/// A file that fails is skipped: it is not in the returned list.
 		/// </summary>
 		/// <param name="localDir">The full or relative path to the directory that files will be downloaded into.</param>
 		/// <param name="remotePaths">The full paths to the files on the controller</param>
-		/// <param name="progress">Track upload progress. The value provided is in the range 0 to 100, indicating the percentage of the file transferred. If the progress is indeterminate, -1 is sent.</param>
+		/// <param name="progress">Track download progress. The value provided is in the range 0 to 100, indicating the percentage of the files transferred.</param>
 		/// <returns>The list of all local files downloaded</returns>
 		public string[] DownloadFilesFromController(string localDir, string[] remotePaths, OnProgressDelegate progress = null)
 		{
@@ -197,7 +203,7 @@ namespace Ftp.Internal {
 		}
 
 		/// <summary>
-		/// Gets a file listing from the controller. Each <xref href="UnderAutomation.Fanuc.Ftp.FtpListItem" data-throw-if-not-resolved="false"></xref> object returned
+		/// Gets a file listing from the controller. Each <see cref="UnderAutomation.Fanuc.Ftp.FtpListItem"/> object returned
 		/// contains information about the file that was able to be retrieved.
 		/// </summary>
 		/// <param name="path">The path of the directory to list</param>
@@ -210,12 +216,12 @@ namespace Ftp.Internal {
 
 		/// <summary>
 		/// Returns information about a file system object. Returns null if the controller response can't
-		/// be parsed or the controller returns a failure completion code. The error for a failure
-		/// is logged with FtpTrace. No exception is thrown on error because that would negate
+		/// be parsed or the controller returns a failure completion code.
+		/// No exception is thrown on error because that would negate
 		/// the usefulness of this method for checking for the existence of an object.
 		/// </summary>
 		/// <param name="path">The path of the file or folder</param>
-		/// <returns>A FtpListItem object</returns>
+		/// <returns>A FtpListItem object, or null</returns>
 		public FtpListItem GetObjectInfo(string path)
 		{
 			// Source is hidden, a Source licence is needed to access internal code...

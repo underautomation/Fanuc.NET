@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files.Variables;
+using UnderAutomation.Fanuc.Common.Files.Variables;
 
-namespace Common.Files {
+namespace UnderAutomation.Fanuc.Common.Files {
 	/// <summary>
 	/// Wrapper class of methods to download and decode variable files
 	/// </summary>

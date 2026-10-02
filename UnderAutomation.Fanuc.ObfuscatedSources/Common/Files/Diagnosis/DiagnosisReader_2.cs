@@ -2,11 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common.Files;
 using System.IO;
-using Common;
 
-namespace Common.Files.Diagnosis {
+namespace UnderAutomation.Fanuc.Common.Files.Diagnosis {
 	/// <summary>
 	/// Generic diagnosis file reader that parses a specific section from a diagnostic stream.
 	/// </summary>

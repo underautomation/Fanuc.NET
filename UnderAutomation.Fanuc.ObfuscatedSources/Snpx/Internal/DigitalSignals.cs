@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Provides read/write access to digital I/O signals on the robot.
 	/// </summary>
@@ -54,17 +54,17 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets the segment selector for this signal group.
+		/// Gets the data area of the controller that holds this signal group. Used by the SDK.
 		/// </summary>
 		public SegmentSelector SegmentSelector { get; }
 
 		/// <summary>
-		/// Gets the segment offset for this signal group.
+		/// Gets the family of signals of this signal group. Used by the SDK.
 		/// </summary>
 		public SegmentOffset SegmentOffset { get; }
 
 		/// <summary>
-		/// Gets the segment name identifying this signal group.
+		/// Gets the name of the family of signals of this signal group.
 		/// </summary>
 		public SegmentName SegmentName { get; }
 	}

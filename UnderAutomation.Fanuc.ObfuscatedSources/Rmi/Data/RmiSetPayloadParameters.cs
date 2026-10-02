@@ -4,11 +4,11 @@
 
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Parameters for defining payload mass, center of gravity, and optionally inertia
 	/// for a payload schedule.
-	/// Used by <xref href="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetPayloadValue(UnderAutomation.Fanuc.Rmi.Data.RmiSetPayloadParameters)" data-throw-if-not-resolved="false"></xref>.
+	/// Used by <see cref="UnderAutomation.Fanuc.Rmi.Internal.RmiClientBase.SetPayloadValue(UnderAutomation.Fanuc.Rmi.Data.RmiSetPayloadParameters)"/>.
 	/// All positional values are in meters; mass in kg; inertia in kg·m².
 	/// </summary>
 	public class RmiSetPayloadParameters {

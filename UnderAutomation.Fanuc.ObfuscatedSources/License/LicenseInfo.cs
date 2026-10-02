@@ -4,7 +4,7 @@
 
 using System;
 
-namespace License {
+namespace UnderAutomation.Fanuc.License {
 	/// <summary>
 	/// Information about a license key
 	/// </summary>

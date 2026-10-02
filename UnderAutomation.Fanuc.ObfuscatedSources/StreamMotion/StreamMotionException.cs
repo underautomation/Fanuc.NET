@@ -5,7 +5,7 @@
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 
-namespace StreamMotion {
+namespace UnderAutomation.Fanuc.StreamMotion {
 	/// <summary>
 	/// Error raised by the Stream Motion client
 	/// </summary>

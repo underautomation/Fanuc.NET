@@ -4,10 +4,10 @@
 
 using UnderAutomation.Robotics.Motion;
 
-namespace StreamMotion.Data {
+namespace UnderAutomation.Fanuc.StreamMotion.Data {
 	/// <summary>
 	/// Table of allowable limits of one axis for one type of limit.
-	/// The limit depends on the speed of the flange center: the table gives 20 values, for speeds up to 1/20, 2/20, ... 20/20 of <xref href="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed" data-throw-if-not-resolved="false"></xref>,
+	/// The limit depends on the speed of the flange center: the table gives 20 values, for speeds up to 1/20, 2/20, ... 20/20 of <see cref="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/>,
 	/// with no payload and with the maximum payload.
 	/// </summary>
 	public class LimitTable {
@@ -73,12 +73,12 @@ namespace StreamMotion.Data {
 		public double IntermediateCheckTime { get; }
 
 		/// <summary>
-		/// Limits with no payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <xref href="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed" data-throw-if-not-resolved="false"></xref> (20 values)
+		/// Limits with no payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <see cref="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/> (20 values)
 		/// </summary>
 		public double[] NoPayload { get; }
 
 		/// <summary>
-		/// Limits with the maximum payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <xref href="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed" data-throw-if-not-resolved="false"></xref> (20 values)
+		/// Limits with the maximum payload, for flange speeds up to 1/20, 2/20, ... 20/20 of <see cref="UnderAutomation.Fanuc.StreamMotion.Data.LimitTable.MaxSpeed"/> (20 values)
 		/// </summary>
 		public double[] MaxPayload { get; }
 

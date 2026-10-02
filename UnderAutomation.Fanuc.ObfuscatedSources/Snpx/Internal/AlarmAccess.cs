@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Provides access to robot alarms (active or historical) via SNPX.
 	/// </summary>
@@ -32,7 +32,7 @@ namespace Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Reads a value from the client at the specified memory offset.
+		/// Reads a value from the robot, at the position given by the assignment.
 		/// </summary>
 		protected override RobotAlarm ReadFromClient(int offset, int index)
 		{

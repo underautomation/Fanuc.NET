@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Common {
+namespace UnderAutomation.Fanuc.Common {
 	/// <summary>
 	/// Cartesian position with extended axes (E1, E2, E3)
 	/// </summary>

@@ -2,10 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
-using Kinematics;
+using UnderAutomation.Fanuc.Common;
 
-namespace Kinematics.Opw {
+namespace UnderAutomation.Fanuc.Kinematics.Opw {
 	/// <summary>
 	/// Utility methods implementing OPW kinematics for a 6R industrial robot
 	/// with ortho-parallel base and spherical wrist (so called 3-2-1 structure).

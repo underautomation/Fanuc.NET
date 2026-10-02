@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Snpx.Internal {
+namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
 	/// Abstract base class for writable assignable elements accessed by integer index.
 	/// </summary>

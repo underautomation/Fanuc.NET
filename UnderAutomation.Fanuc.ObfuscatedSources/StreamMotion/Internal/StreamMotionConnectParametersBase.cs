@@ -3,7 +3,7 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace StreamMotion.Internal {
+namespace UnderAutomation.Fanuc.StreamMotion.Internal {
 	/// <summary>
 	/// Connection parameters for Stream Motion (J519 option)
 	/// </summary>
@@ -77,7 +77,7 @@ namespace StreamMotion.Internal {
 		/// <summary>
 		/// Time of positions sent in advance and kept in the robot buffer, in seconds.
 		/// It protects against late packets from the PC, but adds the same delay to the motion.
-		/// It is converted to a number of communication cycles, limited by <xref href="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.PacketStackSize" data-throw-if-not-resolved="false"></xref> minus 2. 0 disables the advance.
+		/// It is converted to a number of communication cycles, limited by <see cref="UnderAutomation.Fanuc.StreamMotion.Internal.StreamMotionConnectParametersBase.PacketStackSize"/> minus 2. 0 disables the advance.
 		/// </summary>
 		public double BufferLeadTime { get; set; }
 

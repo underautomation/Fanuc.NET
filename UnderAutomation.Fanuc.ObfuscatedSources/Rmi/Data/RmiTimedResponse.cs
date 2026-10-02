@@ -3,9 +3,9 @@
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
-	/// Base class for responses with a controller <xref href="UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag" data-throw-if-not-resolved="false"></xref> value.
+	/// Base class for responses with a controller <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiTimedResponse.TimeTag"/> value.
 	/// </summary>
 	public class RmiTimedResponse : RmiResponseBase {
 

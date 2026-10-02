@@ -2,13 +2,13 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using License;
-using Telnet.Internal;
-using Ftp.Internal;
-using Snpx.Internal;
-using Rmi.Internal;
-using StreamMotion.Internal;
-using Cgtp.Internal;
+using UnderAutomation.Fanuc.License;
+using UnderAutomation.Fanuc.Telnet.Internal;
+using UnderAutomation.Fanuc.Ftp.Internal;
+using UnderAutomation.Fanuc.Snpx.Internal;
+using UnderAutomation.Fanuc.Rmi.Internal;
+using UnderAutomation.Fanuc.StreamMotion.Internal;
+using UnderAutomation.Fanuc.Cgtp.Internal;
 
 namespace UnderAutomation.Fanuc {
 	/// <summary>
@@ -72,7 +72,8 @@ namespace UnderAutomation.Fanuc {
 		public bool Enabled { get; }
 
 		/// <summary>
-		/// Telnet client for remote command execution
+		/// Telnet KCL client for remote command execution.
+		/// Telnet KCL is a legacy protocol: it is not secured (password and commands are sent in clear text), and its behavior changes with the firmware version and on ROBOGUIDE. The same KCL commands are available on the web server of the controller with robot.Cgtp.Kcl (firmware V8.30 and later): prefer it for new developments.
 		/// </summary>
 		public TelnetClientInternal Telnet { get; }
 
@@ -97,7 +98,7 @@ namespace UnderAutomation.Fanuc {
 		public StreamMotionClientInternal StreamMotion { get; }
 
 		/// <summary>
-		/// CGTP Web Server client for HTTP-based COMET RPC interface
+		/// CGTP client, which uses the web server of the controller (HTTP)
 		/// </summary>
 		public CgtpClientInternal Cgtp { get; }
 

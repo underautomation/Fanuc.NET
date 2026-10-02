@@ -2,9 +2,9 @@
 // This file is an empty shell containing only public C# items.
 // The internal code is hidden; to access it, you need to obtain a Source licence of the library.
 
-using Common;
+using UnderAutomation.Fanuc.Common;
 
-namespace Cgtp.BatchVariables {
+namespace UnderAutomation.Fanuc.Cgtp.BatchVariables {
 	/// <summary>
 	/// Represents a generic controller variable for batch read/write operations.
 	/// Supports scalar values (integer, real, boolean, string, position, vector, configuration)
@@ -57,43 +57,43 @@ namespace Cgtp.BatchVariables {
 
 		/// <summary>
 		/// Gets or sets the value as a Cartesian position.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public CartesianPositionVariable CartesianPositionValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as a joint position.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public JointPositionVariable JointPositionValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as an integer.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public int IntegerValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as a double.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public double RealValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as a boolean.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public bool BooleanValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as a 3D vector.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public VectorVariable VectorValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value as a robot configuration.
-		/// Setting this property updates <xref href="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue" data-throw-if-not-resolved="false"></xref>.
+		/// Setting this property updates <see cref="UnderAutomation.Fanuc.Cgtp.BatchVariables.CgtpVariable.StringValue"/>.
 		/// </summary>
 		public Configuration ConfigurationValue { get; set; }
 	}

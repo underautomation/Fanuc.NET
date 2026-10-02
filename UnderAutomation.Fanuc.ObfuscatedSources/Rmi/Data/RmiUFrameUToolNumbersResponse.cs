@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Rmi.Data {
+namespace UnderAutomation.Fanuc.Rmi.Data {
 	/// <summary>
 	/// Current UFRAME and UTOOL numbers, optionally scoped to a motion group.
 	/// </summary>
