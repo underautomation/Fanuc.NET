@@ -211,6 +211,20 @@ Console.WriteLine($"X={group.WorldPositions[0].X}, Y={group.WorldPositions[0].Y}
 Console.WriteLine($"J1={group.JointsPosition.J1}, J2={group.JointsPosition.J2}");
 ```
 
+Every blocking FTP method also has an asynchronous version with a `CancellationToken` (not on .NET
+Framework 3.5 and 4.0). The file reading methods have it on `robot.Cgtp.Http` too.
+
+```csharp
+byte[] program = await robot.Ftp.DirectFileHandling.DownloadBytesFromControllerAsync("md:/MyPrg.ls");
+var numreg = await robot.Ftp.KnownVariableFiles.GetNumregFileAsync();
+```
+
+When the controller refuses an operation, the SDK throws an `FtpException` with the reply of the
+controller. Without an FTP user, the controller logs in at the OPERATOR level and can refuse the upload
+of a program ("Operation password protected"). A program that is selected or runs cannot be replaced
+(`FtpException.ProgramInUse`): select another program on the teach pendant, or with
+`robot.Cgtp.SelectProgram(...)` (firmware V9.10 and later).
+
 ### CGTP (web server of the controller)
 
 CGTP uses the web server of the controller. It gives access to the programs, the variables, the
