@@ -54,17 +54,17 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets the data area of the controller that holds this I/O group. Used by the SDK.
+		/// Gets the segment selector for this I/O group.
 		/// </summary>
 		public SegmentSelector SegmentSelector { get; }
 
 		/// <summary>
-		/// Gets the family of signals of this I/O group. Used by the SDK.
+		/// Gets the segment offset for this I/O group.
 		/// </summary>
 		public SegmentOffset SegmentOffset { get; }
 
 		/// <summary>
-		/// Gets the name of the family of signals of this I/O group.
+		/// Gets the segment name identifying this I/O group.
 		/// </summary>
 		public SegmentName SegmentName { get; }
 	}

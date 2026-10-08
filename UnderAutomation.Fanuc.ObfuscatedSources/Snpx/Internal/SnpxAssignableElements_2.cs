@@ -10,7 +10,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 	public abstract class SnpxAssignableElements<TValue, TIndex> : SnpxElements<TValue, TIndex> {
 
 		/// <summary>
-		/// Reads a value from the robot, at the position given by the assignment.
+		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
 		protected abstract TValue ReadFromClient(int offset, TIndex index);
 

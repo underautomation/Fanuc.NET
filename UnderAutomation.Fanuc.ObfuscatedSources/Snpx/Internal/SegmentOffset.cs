@@ -5,7 +5,7 @@
 
 namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Families of I/O signals that the SNPX client reads and writes. Used by the SDK to address the signals.
+	/// Defines the base offset values for different I/O segment types.
 	/// </summary>
 	public enum SegmentOffset {
 

@@ -5,7 +5,7 @@
 
 namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Data areas of the controller that the SNPX client reads and writes. Used by the SDK to address the signals.
+	/// Defines segment selector codes for SNPX memory access operations.
 	/// </summary>
 	public enum SegmentSelector : byte {
 

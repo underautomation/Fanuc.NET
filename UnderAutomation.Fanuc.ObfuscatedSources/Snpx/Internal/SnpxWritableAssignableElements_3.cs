@@ -10,7 +10,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 	public abstract class SnpxWritableAssignableElements<TValue, TIndex, TAssignment> : SnpxAssignableElements<TValue, TIndex> where TAssignment : BatchAssignment<TValue, TIndex>, new() {
 
 		/// <summary>
-		/// Writes a value to the robot, at the position given by the assignment.
+		/// Writes a value to the robot at the specified offset.
 		/// </summary>
 		protected abstract void WriteInClient(int offset, TIndex index, TValue value);
 

@@ -34,7 +34,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Reads a value from the robot, at the position given by the assignment.
+		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
 		protected override Position ReadFromClient(int offset, string index)
 		{
@@ -43,7 +43,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Writes a value to the robot, at the position given by the assignment.
+		/// Writes a value to the robot at the specified offset.
 		/// </summary>
 		protected override void WriteInClient(int offset, string index, Position value)
 		{

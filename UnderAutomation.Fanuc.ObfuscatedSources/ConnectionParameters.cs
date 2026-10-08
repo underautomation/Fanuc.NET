@@ -42,8 +42,7 @@ namespace UnderAutomation.Fanuc {
 		public Languages Language { get; set; }
 
 		/// <summary>
-		/// Parameters of the Telnet KCL client, which sends commands to the robot for remote control.
-		/// Telnet KCL is a legacy protocol: it is not secured (password and commands are sent in clear text), and its behavior changes with the firmware version and on ROBOGUIDE. The same KCL commands are available on the web server of the controller with robot.Cgtp.Kcl (firmware V8.30 and later): prefer it for new developments.
+		/// Sends commands to the robot for remote control
 		/// </summary>
 		public TelnetConnectParameters Telnet { get; set; }
 
@@ -68,7 +67,7 @@ namespace UnderAutomation.Fanuc {
 		public StreamMotionConnectParameters StreamMotion { get; set; }
 
 		/// <summary>
-		/// Parameters of the CGTP client, which uses the web server of the controller (HTTP)
+		/// Parameters for CGTP Web Server (HTTP-based COMET RPC interface)
 		/// </summary>
 		public CgtpConnectParameters Cgtp { get; set; }
 	}

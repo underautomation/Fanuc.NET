@@ -5,7 +5,7 @@
 
 namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Identifies a family of I/O signals.
+	/// Identifies the type of I/O segment.
 	/// </summary>
 	public enum SegmentName {
 

@@ -12,7 +12,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 	public class NumericRegistersInt32 : NumericRegistersBase<int, NumericRegistersInt32BatchAssignment> {
 
 		/// <summary>
-		/// Reads a value from the robot, at the position given by the assignment.
+		/// Reads a value from the client at the specified memory offset.
 		/// </summary>
 		protected override int ReadFromClient(int offset, int index)
 		{
@@ -21,7 +21,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Writes a value to the robot, at the position given by the assignment.
+		/// Writes a value to the robot at the specified offset.
 		/// </summary>
 		protected override void WriteInClient(int offset, int index, int value)
 		{

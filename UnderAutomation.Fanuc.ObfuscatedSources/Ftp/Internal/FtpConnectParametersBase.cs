@@ -16,8 +16,7 @@ namespace UnderAutomation.Fanuc.Ftp.Internal {
 		}
 
 		/// <summary>
-		/// FTP user. The rights depend on the user and on the password settings of the controller: for example, without a user
-		/// the controller logs in at the OPERATOR level and can refuse the upload of a program.
+		/// FTP user
 		/// </summary>
 		public string FtpUser { get; set; }
 

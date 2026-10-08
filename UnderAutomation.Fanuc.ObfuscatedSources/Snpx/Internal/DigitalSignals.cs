@@ -54,17 +54,17 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets the data area of the controller that holds this signal group. Used by the SDK.
+		/// Gets the segment selector for this signal group.
 		/// </summary>
 		public SegmentSelector SegmentSelector { get; }
 
 		/// <summary>
-		/// Gets the family of signals of this signal group. Used by the SDK.
+		/// Gets the segment offset for this signal group.
 		/// </summary>
 		public SegmentOffset SegmentOffset { get; }
 
 		/// <summary>
-		/// Gets the name of the family of signals of this signal group.
+		/// Gets the segment name identifying this signal group.
 		/// </summary>
 		public SegmentName SegmentName { get; }
 	}

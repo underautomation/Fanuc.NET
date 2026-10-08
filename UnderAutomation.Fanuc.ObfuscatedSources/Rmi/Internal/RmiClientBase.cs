@@ -428,7 +428,7 @@ namespace UnderAutomation.Fanuc.Rmi.Internal {
 		}
 
 		/// <summary>
-		/// Sends the instruction to the controller, which queues it.
+		/// Serializes the instruction to the RMI wire format and queues it on the controller.
 		/// Returns an <see cref="UnderAutomation.Fanuc.Rmi.Data.RmiInstructionResponse"/> that tracks execution.
 		/// </summary>
 		/// <param name="instruction">Instruction to send. Must not be <code>null</code>.</param>
@@ -538,7 +538,7 @@ namespace UnderAutomation.Fanuc.Rmi.Internal {
 		public event Action<RmiRecordedJointPosition> RecordedJointPositionReceived;
 
 		/// <summary>
-		/// Fired when the controller sends a response that the SDK does not know.
+		/// Fired when an unknown packet is received from the controller.
 		/// </summary>
 		public event Action<RmiResponseBase> UnknownPacketReceived;
 	}

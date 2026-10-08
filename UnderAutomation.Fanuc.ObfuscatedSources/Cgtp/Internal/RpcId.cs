@@ -5,7 +5,7 @@
 
 namespace UnderAutomation.Fanuc.Cgtp.Internal {
 	/// <summary>
-	/// Functions of the controller called by the CGTP client. Used by the SDK only.
+	/// CGTP function identifiers.
 	/// </summary>
 	public enum RpcId {
 

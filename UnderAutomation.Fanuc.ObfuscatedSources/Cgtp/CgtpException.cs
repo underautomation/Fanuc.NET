@@ -12,7 +12,7 @@ namespace UnderAutomation.Fanuc.Cgtp {
 	public class CgtpException : Exception, ISerializable {
 
 		/// <summary>
-		/// The status code returned by the controller when available.
+		/// The RPC status code returned by the controller when available.
 		/// </summary>
 		public int Status { get; }
 	}

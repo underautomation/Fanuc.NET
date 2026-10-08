@@ -6,8 +6,7 @@ using UnderAutomation.Fanuc.Telnet.Internal;
 
 namespace UnderAutomation.Fanuc.Telnet {
 	/// <summary>
-	/// Standalone Telnet KCL client for direct use without <see cref="UnderAutomation.Fanuc.FanucRobot"/>.
-	/// Telnet KCL is a legacy protocol: it is not secured (password and commands are sent in clear text), and its behavior changes with the firmware version and on ROBOGUIDE. The same KCL commands are available on the web server of the controller with Cgtp.CgtpClient.Kcl (firmware V8.30 and later): prefer it for new developments.
+	/// Main class that represents a connection to a Fanuc Motoman industrial robot
 	/// </summary>
 	public class TelnetClient : TelnetClientBase {
 

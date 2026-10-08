@@ -5,7 +5,7 @@
 
 namespace UnderAutomation.Fanuc.Snpx.Internal {
 	/// <summary>
-	/// Represents an SNPX assignment: an element of the robot that the SNPX client can read in one request.
+	/// Represents an SNPX memory assignment mapping a named element to a memory offset.
 	/// </summary>
 	public class Assignment {
 
@@ -31,7 +31,7 @@ namespace UnderAutomation.Fanuc.Snpx.Internal {
 		}
 
 		/// <summary>
-		/// Gets the position of this assignment in the data of the SNPX client. Negative if cleared.
+		/// Gets the memory offset for this assignment. Negative if cleared.
 		/// </summary>
 		public int Offset { get; }
 
